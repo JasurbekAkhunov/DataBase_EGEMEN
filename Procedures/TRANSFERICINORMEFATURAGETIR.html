@@ -1,0 +1,348 @@
+<HTML>
+<HEAD>
+<TITLE>TRANSFERICINORMEFATURAGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1878800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="TRANSFERICINORMEFATDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="TRANSFERICINORMEIRSDETAYGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">TRANSFERICINORMEFATURAGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AORMEFATURAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">FATURASERINO</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FATURANO</TD>
+    <TD><P CLASS="Base2">NUMERIC(18,0)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FATURATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ODEMETARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TRANSFERKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(55)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATRANSFERKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(55)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUHASEBEKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BRUTTOPLAM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISKONTOTOPLAMI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARASALISKONTO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISKONTOORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TAHSILEDILECEKKDV</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INDIRILECEKKDV</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARATOPLAM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GENELTOPLAM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISLEMDOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISLEMDOVIZKURU1</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISLEMDOVIZKURU2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISLEMDOVIZTOPLAM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISLEMDOVIZTAHSILEDILECEKKDV</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FATURAGRUPTRANSFERKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TEVKIFAT</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TEVKIFATORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SINIF</TD>
+    <TD><P CLASS="Base2">VARCHAR(1)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IRSALIYENO</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">EFATURA</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FATURAISKONTOSUTUTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMADOVIZKURU1</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMADOVIZKURU2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NOTU</TD>
+    <TD><P CLASS="Base2">VARCHAR(1024)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure TRANSFERICINORMEFATURAGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>TRANSFERICINORMEFATURAGETIR</u></font><b>(</b>
+<b>    </b>AORMEFATURAID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>FATURASERINO<b> </b><font color="# 080 0"><u>SERINOSIZE5</u></font><b>,</b>
+<b>    </b>FATURANO<b> </b><font color="# 080 0"><u>FATURANOSIZE</u></font><b>,</b>
+<b>    </b>FATURATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ODEMETARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIRMAADI<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>DOVIZID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>TRANSFERKODU<b> </b><b>VARCHAR</b><b>(</b>55<b>)</b><b>,</b>
+<b>    </b>ATRANSFERKODU<b> </b><b>VARCHAR</b><b>(</b>55<b>)</b><b>,</b>
+<b>    </b>MUHASEBEKODU<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>BRUTTOPLAM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ISKONTOTOPLAMI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PARASALISKONTO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ISKONTOORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TAHSILEDILECEKKDV<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>INDIRILECEKKDV<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ARATOPLAM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>GENELTOPLAM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ISLEMDOVIZID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>ISLEMDOVIZKURU1<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ISLEMDOVIZKURU2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ISLEMDOVIZTOPLAM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ISLEMDOVIZTAHSILEDILECEKKDV<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>FATURAGRUPTRANSFERKODU<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>TEVKIFAT<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TEVKIFATORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>SINIF<b> </b><b>VARCHAR</b><b>(</b>1<b>)</b><b>,</b>
+<b>    </b>IRSALIYENO<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>EFATURA<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FATURAISKONTOSUTUTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>FIRMADOVIZKURU1<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>FIRMADOVIZKURU2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>NOTU<b> </b><b>VARCHAR</b><b>(</b>1024<b>)</b><b>,</b>
+<b>    </b>INSERTTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIrsaliyeNo<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMusteriSiparisNo<b> </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FNotu<b> </b><b>Blob</b><b> </b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BlobSize<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IlkSiparis<b> </b><b>SmallInt</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FaturaTarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>OdemeTarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>SeriNo<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FaturaNo<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FirmaId<b>,</b>
+<b>         </b><b>Coalesce</b><b>(</b><font color="# 080 0"><u>DovizliFirmaTransfer</u></font><b>.</b>TransferKodu<b>,</b><font color="# 080 0"><u>Firma</u></font><b>.</b>TransferKodu<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>ATransferKodu<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>MuhasebeKodu<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>DovizId<b>,</b>
+<b>         </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>BrutToplam<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>ParasalIskonto<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FaturaIskontosuOrani<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>IskontoToplami<b>,</b>
+<b>         </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>TahsilEdilecekKdv<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>IndirilecekKdv<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>IslemDovizID<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>IslemDovizKuru1<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>IslemDovizKuru2<b>,</b>
+<b>         </b>IslemDovizToplam<b>,</b><b> </b>IslemDovizTahsilEdilecekKdv<b>,</b><b> </b><font color="# 080 0"><u>StokHareketGrup</u></font><b>.</b>TransferKodu<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>Tevkifat<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>Sinif<b>,</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>BrutToplam<b> </b><b>+</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>TahsilEdilecekKDV<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>IskontoToplami<b>)</b><b> </b>GenelToplam<b>,</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>BrutToplam<b> </b><b>+</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>TahsilEdilecekKDV<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>IskontoToplami<b> </b><b>+</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>IndirilecekKdv<b>)</b><b> </b>AraToplam<b>,</b><b> </b><b>(</b><b>cast</b><b>(</b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>TevkifatOrani1<b> </b><b>as</b><b> </b><b>Double</b><b> </b><b>Precision</b><b>)</b><b> </b><b>/</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>TevkifatOrani2<b>)</b><b> </b>TevkifatOrani<b>,</b>
+<b>         </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>EFatura<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FaturaIskontosuTutari<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FirmaDovizKuru1<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FirmaDovizKuru2<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>Notu<b>,</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>InsertTarihi<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FirmaId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DovizliFirmaTransfer</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>DovizliFirmaTransfer</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FirmaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>DovizliFirmaTransfer</u></font><b>.</b>DovizID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>IslemDovizID
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>StokHareketGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>StokHareketGrup</u></font><b>.</b>StokHareketGrupID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>FaturaGrupId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>OrmeFaturaID<b> </b><b>=</b><b> </b>:AOrmeFaturaId
+<b>  </b><b>into</b><b> </b>:FaturaTarihi<b>,</b><b> </b>:OdemeTarihi<b>,</b><b> </b>:FaturaSeriNo<b>,</b><b> </b>:FaturaNo<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>TransferKodu<b>,</b><b> </b>:ATransferKodu<b>,</b><b> </b>:MuhasebeKodu<b>,</b><b> </b>:DovizId<b>,</b>
+<b>       </b>:BrutToplam<b>,</b>
+<b>       </b>:ParasalIskonto<b>,</b><b> </b>:IskontoOrani<b>,</b><b> </b>:IskontoToplami<b>,</b><b> </b>:TahsilEdilecekKdv<b>,</b><b> </b>:IndirilecekKdv<b>,</b><b> </b>:IslemDovizID<b>,</b>
+<b>       </b>:IslemDovizKuru1<b>,</b><b> </b>:IslemDovizKuru2<b>,</b><b> </b>:IslemDovizToplam<b>,</b><b> </b>:IslemDovizTahsilEdilecekKdv<b>,</b><b> </b>:FaturaGrupTransferKodu<b>,</b>
+<b>       </b>:Tevkifat<b>,</b><b> </b>:Sinif<b>,</b><b> </b>:GenelToplam<b>,</b><b> </b>:AraToplam<b>,</b><b> </b>:TevkifatOrani<b>,</b><b> </b>:EFatura<b>,</b><b> </b>:FaturaIskontosuTutari<b>,</b><b> </b>:FirmaDovizKuru1<b>,</b><b> </b>:FirmaDovizKuru2<b>,</b><b> </b>:FNotu<b>,</b><b> </b>:InsertTarihi<b>,</b><b> </b>:FirmaAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>IrsaliyeNo<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>SeriNo<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>IrsaliyeNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>OrmeIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeIrsaliyeId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeFaturaID<b> </b><b>=</b><b> </b>:AOrmeFaturaId
+<b>      </b><b>Group</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>SeriNo<b>,</b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>IrsaliyeNo
+<b>    </b><b>into</b><b> </b>:FIrsaliyeNo<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>IrsaliyeNo<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>FIrsaliyeNo<b>)</b><b> </b><b>&lt;</b><b> </b>240<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>IrsaliyeNo<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>)</b><b> </b><b>then</b><b> </b>IrsaliyeNo<b> </b><b>=</b><b> </b>IrsaliyeNo<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>        </b>IrsaliyeNo<b> </b><b>=</b><b> </b>IrsaliyeNo<b> </b><b>|</b><b>|</b><b> </b>FIrsaliyeNo<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+<b>    </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b>FNotu<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>1023<b>)</b><b> </b><b>then</b><b> </b>Notu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FNotu<b>,</b><b> </b>1023<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Notu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b>Notu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b>IlkSiparis<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>MusteriSiparisNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeSiparisDetayId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeFaturaID<b> </b><b>=</b><b> </b>:AOrmeFaturaID
+<b>      </b><b>Group</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>MusteriSiparisNo
+<b>    </b><b>into</b><b> </b>:FMusteriSiparisNo<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>Notu<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>FMusteriSiparisNo<b>)</b><b> </b><b>&lt;</b><b> </b>970<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>IlkSiparis<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>Notu<b> </b><b>=</b><b> </b>Notu<b> </b><b>|</b><b>|</b><b> </b>' Sipler: '<b>;</b>
+<b>          </b>IlkSiparis<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Notu<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>)</b><b> </b><b>then</b><b> </b>Notu<b> </b><b>=</b><b> </b>Notu<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>        </b>Notu<b> </b><b>=</b><b> </b>Notu<b> </b><b>|</b><b>|</b><b> </b>FMusteriSiparisNo<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="TRANSFERICINORMEFATDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="TRANSFERICINORMEIRSDETAYGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

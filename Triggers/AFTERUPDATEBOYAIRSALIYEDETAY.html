@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERUPDATEBOYAIRSALIYEDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="257800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERUPDATEBOYAIRSALIYE.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERUPDATEBOYAREZERVFISIDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERUPDATEBOYAIRSALIYEDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERUPDATEBOYAIRSALIYEDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERUPDATEBOYAIRSALIYEDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BOYAIRSALIYEDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>biSatis<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>biAlisIade<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FVerilenSiparisDetayId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>biSatis<b>,</b><b> </b>biAlisIade<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeHareketTipiGetir</u></font><b> </b><b>into</b><b> </b>:biSatis<b>,</b><b> </b>:biAlisIade<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>RafDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b><b>Old</b><b>.</b>Kilo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>Kilo<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>Metre<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Metre<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>Adet<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Adet<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>FasonHamIade<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><b>new</b><b>.</b>HareketTipiId<b> </b><b>=</b><b> </b>biAlisIade<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>set</b><b> </b>IadeEdilecekKilo<b> </b><b>=</b><b> </b>IadeEdilecekKilo<b> </b><b>+</b><b> </b><b>old</b><b>.</b>Kilo<b> </b><b>-</b><b> </b><b>new</b><b>.</b>Kilo<b>,</b>
+<b>                        </b>IadeEdilenKilo<b> </b><b>=</b><b> </b>IadeEdilenKilo<b> </b><b>-</b><b> </b><b>Old</b><b>.</b>Kilo<b> </b><b>+</b><b> </b><b>new</b><b>.</b>Kilo<b>,</b>
+<b>                        </b>IadeEdilecekMetre<b> </b><b>=</b><b> </b>IadeEdilecekMetre<b> </b><b>+</b><b> </b><b>old</b><b>.</b>Metre<b> </b><b>-</b><b> </b><b>new</b><b>.</b>Metre<b>,</b>
+<b>                        </b>IadeEdilenMetre<b> </b><b>=</b><b> </b>IadeEdilenMetre<b> </b><b>-</b><b> </b><b>Old</b><b>.</b>Metre<b> </b><b>+</b><b> </b><b>new</b><b>.</b>Metre<b>,</b>
+<b>                        </b>IadeEdilecekKapAdedi<b> </b><b>=</b><b> </b>IadeEdilecekKapAdedi<b> </b><b>+</b><b> </b><b>old</b><b>.</b>KapAdedi<b> </b><b>-</b><b> </b><b>new</b><b>.</b>KapAdedi<b>,</b>
+<b>                        </b>IadeEdilenKapAdedi<b> </b><b>=</b><b> </b>IadeEdilenKapAdedi<b> </b><b>-</b><b> </b><b>Old</b><b>.</b>KapAdedi<b> </b><b>+</b><b> </b><b>new</b><b>.</b>KapAdedi<b>,</b>
+<b>                        </b>IadeEdilecekAdet<b> </b><b>=</b><b> </b>IadeEdilecekAdet<b> </b><b>+</b><b> </b><b>old</b><b>.</b>Adet<b> </b><b>-</b><b> </b><b>new</b><b>.</b>Adet<b>,</b>
+<b>                        </b>IadeEdilenAdet<b> </b><b>=</b><b> </b>IadeEdilenAdet<b> </b><b>-</b><b> </b><b>Old</b><b>.</b>Adet<b> </b><b>+</b><b> </b><b>new</b><b>.</b>Adet
+<b>       </b><b>where</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RafDetayId<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>set</b><b> </b>SatisKilo<b> </b><b>=</b><b> </b>SatisKilo<b> </b><b>-</b><b> </b><b>Old</b><b>.</b>Kilo<b> </b><b>+</b><b> </b><b>new</b><b>.</b>Kilo<b>,</b>
+<b>                        </b>SatisMetre<b> </b><b>=</b><b> </b>SatisMetre<b> </b><b>-</b><b> </b><b>Old</b><b>.</b>Metre<b> </b><b>+</b><b> </b><b>new</b><b>.</b>Metre
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RafDetayId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipiId<b> </b><b>=</b><b> </b>:biAlisIade<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>VerilenSiparisDetayId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RafDetay</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RafDetayId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>VerilenSiparisDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>      </b><b>into</b><b> </b>:FVerilenSiparisDetayId<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FVerilenSiparisDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>       </b><b>Update</b><b> </b><font color="# 080 0"><u>VerilenSiparisDetay</u></font><b> </b><b>Set</b><b> </b>IadeEdilenMiktar<b> </b><b>=</b><b> </b>IadeEdilenMiktar<b> </b><b>-</b><b> </b><b>Old</b><b>.</b>BrutMiktar<b> </b><b>+</b><b> </b><b>New</b><b>.</b>BrutMiktar<b>,</b><b> </b>LinkIslemi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>VerilenSiparisDetay</u></font><b>.</b>VerilenSiparisDetayId<b> </b><b>=</b><b> </b>:FVerilenSiparisDetayID<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>Logla</u></font><b>(</b>'U'<b>,</b><b> </b>2<b>,</b><b> </b>'BOYAIRSALIYEDETAY'<b>,</b><b> </b>'BOYAIRSALIYEDETAYID'<b>,</b><b> </b><b>new</b><b>.</b>BoyaIrsaliyeDetayId<b>,</b><b> </b>'BoyaIrsaliyeId:'<b>|</b><b>|</b><b>new</b><b>.</b>BoyaIrsaliyeId<b>|</b><b>|</b>' Tarih:'<b>|</b><b>|</b><b>Extract</b><b>(</b><b>DAY</b><b> </b><b>from</b><b> </b><b>new</b><b>.</b>IrsaliyeTarihi<b>)</b><b>|</b><b>|</b>'.'<b>|</b><b>|</b><b>Extract</b><b>(</b><b>MONTH</b><b> </b><b>from</b><b> </b><b>new</b><b>.</b>IrsaliyeTarihi<b>)</b><b>|</b><b>|</b>'.'<b>|</b><b>|</b><b>Extract</b><b>(</b><b>YEAR</b><b> </b><b>from</b><b> </b><b>new</b><b>.</b>IrsaliyeTarihi<b>)</b><b>|</b><b>|</b>' Firma Kodu: '<b>|</b><b>|</b><b>new</b><b>.</b>FirmaId<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERUPDATEBOYAIRSALIYE.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERUPDATEBOYAREZERVFISIDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

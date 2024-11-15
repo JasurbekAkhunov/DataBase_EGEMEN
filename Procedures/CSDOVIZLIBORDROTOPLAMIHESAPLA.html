@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>CSDOVIZLIBORDROTOPLAMIHESAPLA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="285800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="CSDETAYLICARIHAREKETIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="CSFIRMAYACIROEDILMISLER.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">CSDOVIZLIBORDROTOPLAMIHESAPLA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AV</TD>
+    <TD><P CLASS="Base2">VARCHAR(1)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CS</TD>
+    <TD><P CLASS="Base2">VARCHAR(1)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABORDROID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">DOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MEBLAG</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure CSDOVIZLIBORDROTOPLAMIHESAPLA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>CSDOVIZLIBORDROTOPLAMIHESAPLA</u></font><b>(</b>
+<b>    </b>AV<b> </b><b>VARCHAR</b><b>(</b>1<b>)</b><b>,</b>
+<b>    </b>CS<b> </b><b>VARCHAR</b><b>(</b>1<b>)</b><b>,</b>
+<b>    </b>ABORDROID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>DOVIZID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>MEBLAG<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>CekSenetDetay</u></font><b>.</b>Dovizid<b>,</b><b> </b><b>Sum</b><b>(</b>Meblag<b>)</b><b>  </b><b>from</b><b> </b><font color="# 080 0"><u>CekSenetDetay</u></font><b>  </b><b>where</b><b> </b>AV<b> </b><b>=</b><b> </b>:Av<b> </b><b>and</b><b> </b>CS<b> </b><b>=</b><b> </b>:Cs<b> </b><b>and</b><b> </b>BordroId<b> </b><b>=</b><b> </b>:ABordroId
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>CekSenetDetay</u></font><b>.</b>Dovizid
+<b>    </b><b>into</b><b> </b>:DovizId<b>,</b><b> </b>:Meblag<b> </b><b>do</b><b> </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="CSDETAYLICARIHAREKETIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="CSFIRMAYACIROEDILMISLER.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

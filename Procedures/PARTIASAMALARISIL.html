@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<TITLE>PARTIASAMALARISIL</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1412800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTIASAMALARIOLUSTUR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTIASAMALARISINIFKARTIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTIASAMALARISIL</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTIASAMALARIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTIASAMALARISIL)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTIASAMALARISIL</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APARTIASAMALARIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Konu<b>             </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Aciklama<b>         </b><b>varchar</b><b>(</b>1500<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiYil<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KullaniciAdi<b>     </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AsamaAdi<b>         </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><font color="# 0 0FF"><i>/*Select Count(*) from PartiAsamaStok where PartiAsamaStok.PartikayitId = :APartikayitId and PartiAsamaStok.GirisTarihi is not null into :KayitSayisi;*/</i></font>
+<b>  </b><font color="# 0 0FF"><i>/*Yukarida GirisTarihi olmasi bana sacma geldi ve sorun cikariyor, cikardim, CEYHUN */</i></font>
+<b>  </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartikayitId<b> </b><b>=</b><b> </b>:APartikayitId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>SilinenPartiAsamalari</u></font><b>(</b>PartiYil<b>,</b><b> </b>PartiId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>AsamaId<b>,</b><b> </b>ReceteId<b>,</b><b> </b>BoyaSiparisYil<b>,</b><b> </b>BoyaSiparisId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>         </b><b>Select</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiYil<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>AsamaId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteId<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisYil<b>,</b>
+<b>                </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisId<b>,</b><b> </b>:AKullaniciId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>         </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId
+<b>         </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>BoyaSiparisKayitId
+<b>         </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b>:APartiAsamalariId<b> </b><b>or</b><b> </b>:APartiAsamalariId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiYil<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartikayitId<b> </b><b>into</b><b> </b>:PartiYil<b>,</b><b> </b>:PartiId<b>;</b>
+
+<b>    </b><b>Select</b><b> </b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b>:AKullaniciId<b> </b><b>into</b><b> </b>:KullaniciAdi<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Asama</u></font><b> </b><b>on</b><b> </b><b>(</b><font color="# 080 0"><u>Asama</u></font><b>.</b>AsamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>AsamaId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>AsamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>UstAsamaId<b>)</b>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariID<b> </b><b>=</b><b> </b>:APartiAsamalariID
+<b>      </b><b>into</b><b> </b>:AsamaAdi<b>;</b>
+
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' Tarafından ('<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>PartiYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>PartiId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' nolu Parti''den Aşama Silinmiştir.'<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Silinen Aşama : '<b> </b><b>|</b><b>|</b><b> </b>AsamaAdi<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>    </b>Konu<b> </b><b>=</b><b> </b>'Aşama Silindi'<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>'SİSTEM YÖNETİCİSİ'<b>,</b><b> </b>:Konu<b>,</b><b> </b>:Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>PartiAsamaSilininceBildirilsin<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>Delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b>:APartiAsamalariId<b> </b><b>or</b><b> </b>:APartiAsamalariId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTIASAMALARIOLUSTUR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTIASAMALARISINIFKARTIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

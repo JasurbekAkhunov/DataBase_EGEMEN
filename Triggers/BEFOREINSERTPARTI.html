@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTPARTI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="993800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTPARCA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTPARTIASAMAIKAZLARI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTPARTI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTPARTI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTPARTI</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>PARTI</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGecerlilikTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFirmaId<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiTerminBosBirakilabilsin<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FaturadaPartininVadesiGecerli<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RefakatKartiIcinOnayZorunlu<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaVadeGun<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+
+<b>  </b><b>Select</b><b> </b>PartiTerminBosBirakilabilsin<b>,</b><b> </b>FaturadaPartininVadesiGecerli<b>,</b><b> </b>RefakatKartiIcinOnayZorunlu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font>
+<b>    </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1
+<b>    </b><b>into</b><b> </b>:PartiTerminBosBirakilabilsin<b>,</b><b> </b>:FaturadaPartininVadesiGecerli<b>,</b><b> </b>:RefakatKartiIcinOnayZorunlu<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BoyaSiparisKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>Fason<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BoyaSiparisKayitId
+<b>      </b><b>into</b><b> </b>:FFirmaId<b>,</b><b> </b><b>New</b><b>.</b>Fason<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>FirmaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FFirmaId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>SiparisBuMusteriyeAitDegil</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FaturadaPartininVadesiGecerli<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>VadeGun<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>FirmaId<b> </b><b>into</b><b> </b><b>New</b><b>.</b>VadeGun<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>VadeGun<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>VadeGun<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>PartiTerminBosBirakilabilsin<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>TerminTarihi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>TerminTarihi<b> </b><b>=</b><b> </b><b>Current_date</b><b>;</b>
+
+<b>  </b><b>update</b><b> </b><font color="# 080 0"><u>PartiNumarator</u></font><b> </b><b>set</b><b> </b>Id<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiId<b> </b><b>where</b><b> </b>Yil<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiYil<b> </b><b>and</b><b> </b>Id<b> </b><b>&lt;</b><b> </b><b>New</b><b>.</b>PartiId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>RefakatKartiIcinOnayZorunlu<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>OnayTarihi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>OnayTarihi<b> </b><b>=</b><b> </b><b>Current_date</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OnaylayanKullaniciId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>OnaylayanKullaniciId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>InsertKullaniciId<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>New</b><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>New</b><b>.</b>OnayTarihi<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>    </b><b>new</b><b>.</b>OnaylayanKullaniciId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>new</b><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>PartiKayit_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>SablonSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>new</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTPARCA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTPARTIASAMAIKAZLARI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

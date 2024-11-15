@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>PARTISONALISFIYATIUSD</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1528800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTISINIFUNITEHAREKETBILGISI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTISTOKASAMALARIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTISONALISFIYATIUSD</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ALISFIYATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTISONALISFIYATIUSD)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTISONALISFIYATIUSD</u></font><b>(</b>
+<b>    </b>APARTISINIFID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>ALISFIYATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DovizId<b>   </b><font color="# 080 0"><u>DovizSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTarih<b>    </b><b>timestamp</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b><b>first</b><b> </b>1<b>  </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>BirimFiyat<b>,</b>
+<b>  </b><b>iif</b><b>(</b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokFaturaid<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>,</b><b> </b><font color="# 080 0"><u>HamStokFatura</u></font><b>.</b>dovizid<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>DovizId<b>)</b><b>,</b>
+<b>  </b><b>iif</b><b>(</b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokFaturaid<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>,</b><b> </b><font color="# 080 0"><u>HamStokFatura</u></font><b>.</b>FaturaTarihi<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b>)</b>
+<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>RafDetayID
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>HamStokIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokIrsaliyeId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokFatura</u></font><b>  </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokFatura</u></font><b>.</b>HamStokFaturaid<b>=</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokFaturaid
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b>:APArtiSinifId
+<b>  </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>InsertTarihi<b> </b><b>desc</b><b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>InsertTarihi<b> </b><b>desc</b><b> </b><b>into</b><b> </b>:AlisFiyati<b>,</b><b> </b>:DovizId<b>,</b><b> </b>:FTarih<b>;</b>
+
+<b>   </b><b>if</b><b> </b><b>(</b>DovizID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>'USD'<b>)</b><b> </b><b>then</b>
+<b>   </b><b>begin</b>
+<b>     </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:DovizId<b>,</b><b> </b>'USD'<b>,</b><b> </b>:FTarih<b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+<b>   </b><b>end</b>
+<b>   </b><b>else</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>   </b><b>if</b><b> </b><b>(</b>AlisFiyati<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>     </b>AlisFiyati<b> </b><b>=</b><b> </b>AlisFiyati<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>   </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTISINIFUNITEHAREKETBILGISI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTISTOKASAMALARIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

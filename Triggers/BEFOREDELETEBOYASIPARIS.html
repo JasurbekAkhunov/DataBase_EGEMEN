@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREDELETEBOYASIPARIS</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="420800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREDELETEBOYAREZERVFISIDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREDELETEBOYASIPARISDALTBEZ.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREDELETEBOYASIPARIS</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREDELETEBOYASIPARIS)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREDELETEBOYASIPARIS</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BOYASIPARIS</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>DELETE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>begin</b>
+<b>  </b><b>Delete</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>SiparisStokGirisAlarm</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisStokGirisAlarm</u></font><b>.</b>BoyaSiparisKayitId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>BoyaSiparisKayitId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>KumasTemin<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>Set</b><b> </b>KTBoyaSiparisKayitId<b> </b><b>=</b><b> </b><b>Null</b><b>,</b><b> </b>LinkIslemi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>KTBoyaSiparisKayitId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>BoyaSiparisKayitId<b>;</b>
+
+<b>  </b><font color="# 0 0FF"><i>/*</i></font>
+<font color="# 0 0FF"><i>  insert into BoyaSiparisLog(Islem, BoyaSiparisKayitId, BoyaSiparisYil, BoyaSiparisId, FirmaId, SiparisTarihi, SozlesmeTarihi, SiparisiAlanKullaniciId, FirmaYetkiliId, IslemTipiId,</i></font>
+<font color="# 0 0FF"><i>                          SiparisGrupId, SiparisGrup2Id, Fason, OdemeSekliId, TeslimSekliId, YurtDisi, KumasTemin, Notu, SiparisTipiId, OrmeSiparisSekliId, OrmeSiparisTipiId,</i></font>
+<font color="# 0 0FF"><i>                                      PSKKEtiketTipiId, OrmeSiparisi, DokumaSiparisi, DokumaSiparisTipiID, InsertKullaniciId, InsertTarihi, KullaniciId, DegisimTarihi)</i></font>
+<font color="# 0 0FF"><i>             Select 0, BoyaSiparisKayitId, BoyaSiparisYil, BoyaSiparisId, FirmaId, SiparisTarihi, SozlesmeTarihi, SiparisiAlanKullaniciId, FirmaYetkiliId, IslemTipiId,</i></font>
+<font color="# 0 0FF"><i>                    SiparisGrupId, SiparisGrup2Id, Fason, OdemeSekliId, TeslimSekliId, YurtDisi, KumasTemin, Notu, SiparisTipiId, OrmeSiparisSekliId, OrmeSiparisTipiId,</i></font>
+<font color="# 0 0FF"><i>                                PSKKEtiketTipiId, OrmeSiparisi, DokumaSiparisi, DokumaSiparisTipiID, InsertKullaniciId, InsertTarihi, Coalesce(rdb$get_context('USER_SESSION', 'KULLANICIID'), KullaniciId), DegisimTarihi from BoyaSiparis</i></font>
+<font color="# 0 0FF"><i>             where BoyaSiparis.BoyaSiparisKayitID = Old.BoyaSiparisKayitId;</i></font>
+<font color="# 0 0FF"><i> */</i></font>
+
+<b>  </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>Logla</u></font><b>(</b>'D'<b>,</b><b> </b>2<b>,</b><b> </b>'BOYASIPARIS'<b>,</b><b> </b>'BOYASIPARISKAYITID'<b>,</b><b> </b><b>old</b><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b>'Boya Sipariş Yıl :'<b>|</b><b>|</b><b>old</b><b>.</b>BoyaSiparisYil<b>|</b><b>|</b>' Boya Sipariş Id :'<b>|</b><b>|</b><b>old</b><b>.</b>BoyaSiparisId<b>|</b><b>|</b>' Firma :'<b>|</b><b>|</b><b>old</b><b>.</b>FirmaId<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREDELETEBOYAREZERVFISIDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREDELETEBOYASIPARISDALTBEZ.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

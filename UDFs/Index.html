@@ -1,0 +1,1003 @@
+<HTML>
+<HEAD>
+<TITLE>User Defined Functions</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="8800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB"</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="../Index.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ALIGN.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">User Defined Functions</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>UDF</B></P>
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Entry Point</B></P>
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Library Name</B></P>
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Input Parameters</B></P>
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Returns</B></P>
+  <TH><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="ALIGN.html">ALIGN</A></TD>
+    <TD><P CLASS="Base2">Align</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255),<br>INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="BLOBABLOBEKLE.html">BLOBABLOBEKLE</A></TD>
+    <TD><P CLASS="Base2">BlobaBlobEkle</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">BLOB,<br>BLOB,<br>BLOB</TD>
+    <TD><P CLASS="Base2">PARAMETER 3</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="BLOBASTRINGEKLE.html">BLOBASTRINGEKLE</A></TD>
+    <TD><P CLASS="Base2">BlobaStringEkle</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(8000),<br>BLOB,<br>BLOB</TD>
+    <TD><P CLASS="Base2">PARAMETER 3</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="BLOBCREATE.html">BLOBCREATE</A></TD>
+    <TD><P CLASS="Base2">BlobCreate</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">BLOB</TD>
+    <TD><P CLASS="Base2">PARAMETER 1</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="BLOBDANSTRINGVER.html">BLOBDANSTRINGVER</A></TD>
+    <TD><P CLASS="Base2">BlobdanStringVer</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">BLOB</TD>
+    <TD><P CLASS="Base2">CSTRING(8000) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="BLOBDANSTRINGVERSIZE.html">BLOBDANSTRINGVERSIZE</A></TD>
+    <TD><P CLASS="Base2">BlobdanStringVerSize</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">BLOB,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(8000) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="BLOBUSTRINGEESITLE.html">BLOBUSTRINGEESITLE</A></TD>
+    <TD><P CLASS="Base2">BlobuStringeEsitle</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(8000),<br>BLOB,<br>BLOB</TD>
+    <TD><P CLASS="Base2">PARAMETER 3</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="CHR.html">CHR</A></TD>
+    <TD><P CLASS="Base2">Chr</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(2) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="DOUBLETOTIMESTAMP.html">DOUBLETOTIMESTAMP</A></TD>
+    <TD><P CLASS="Base2">DoubleToTimeStamp</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">TIMESTAMP FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="EGEMENCOPYSTR.html">EGEMENCOPYSTR</A></TD>
+    <TD><P CLASS="Base2">EgemenCopyStr</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(1024),<br>INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(1024) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="EGEMENINTEGERTOSTR.html">EGEMENINTEGERTOSTR</A></TD>
+    <TD><P CLASS="Base2">EgemenIntegerToStr</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="EGEMENINTTOLZSTR.html">EGEMENINTTOLZSTR</A></TD>
+    <TD><P CLASS="Base2">EgemenIntToLzStr</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="EGEMENLOGFILE.html">EGEMENLOGFILE</A></TD>
+    <TD><P CLASS="Base2">EgemenLogFile</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255),<br>CSTRING(255)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="EGEMENSTRTOINT.html">EGEMENSTRTOINT</A></TD>
+    <TD><P CLASS="Base2">EgemenStrToInt</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="EGEMENSTRTOINTOLURMU.html">EGEMENSTRTOINTOLURMU</A></TD>
+    <TD><P CLASS="Base2">EgemenStrToIntOlurmu</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="FMT_INT.html">FMT_INT</A></TD>
+    <TD><P CLASS="Base2">Fmt_Int</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255),<br>CSTRING(255)</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="FORMAT_FLOAT.html">FORMAT_FLOAT</A></TD>
+    <TD><P CLASS="Base2">Format_Float</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255),<br>DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_ADDMONTH.html">F_ADDMONTH</A></TD>
+    <TD><P CLASS="Base2">AddMonth</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_ADDYEAR.html">F_ADDYEAR</A></TD>
+    <TD><P CLASS="Base2">AddYear</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_AGEINDAYS.html">F_AGEINDAYS</A></TD>
+    <TD><P CLASS="Base2">AgeInDays</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_AGEINDAYSTHRESHOLD.html">F_AGEINDAYSTHRESHOLD</A></TD>
+    <TD><P CLASS="Base2">AgeInDaysThreshold</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>DATE,<br>INTEGER,<br>INTEGER,<br>INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_AGEINMONTHS.html">F_AGEINMONTHS</A></TD>
+    <TD><P CLASS="Base2">AgeInMonths</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_AGEINMONTHSTHRESHOLD.html">F_AGEINMONTHSTHRESHOLD</A></TD>
+    <TD><P CLASS="Base2">AgeInMonthsThreshold</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>DATE,<br>INTEGER,<br>INTEGER,<br>INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_AGEINWEEKS.html">F_AGEINWEEKS</A></TD>
+    <TD><P CLASS="Base2">AgeInWeeks</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_AGEINWEEKSTHRESHOLD.html">F_AGEINWEEKSTHRESHOLD</A></TD>
+    <TD><P CLASS="Base2">AgeInWeeksThreshold</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>DATE,<br>INTEGER,<br>INTEGER,<br>INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BIGLRTRIM.html">F_BIGLRTRIM</A></TD>
+    <TD><P CLASS="Base2">lrTrim</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(1024)</TD>
+    <TD><P CLASS="Base2">CSTRING(1024)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BIGSTRINGLENGTH.html">F_BIGSTRINGLENGTH</A></TD>
+    <TD><P CLASS="Base2">StringLength</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(1024)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BIGSUBSTR.html">F_BIGSUBSTR</A></TD>
+    <TD><P CLASS="Base2">SubStr</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(1024),<br>CSTRING(1024)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BLOBASPCHAR.html">F_BLOBASPCHAR</A></TD>
+    <TD><P CLASS="Base2">BlobAsPChar</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">BLOB</TD>
+    <TD><P CLASS="Base2">CSTRING(8000)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BLOBLEFT.html">F_BLOBLEFT</A></TD>
+    <TD><P CLASS="Base2">BlobLeft</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">BLOB,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(8000)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BLOBLINE.html">F_BLOBLINE</A></TD>
+    <TD><P CLASS="Base2">BlobLine</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">BLOB,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(8000)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BLOBMAXSEGMENTLENGTH.html">F_BLOBMAXSEGMENTLENGTH</A></TD>
+    <TD><P CLASS="Base2">BlobMaxSegmentLength</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">BLOB</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BLOBMID.html">F_BLOBMID</A></TD>
+    <TD><P CLASS="Base2">BlobMid</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">BLOB,<br>INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(8000)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BLOBRIGHT.html">F_BLOBRIGHT</A></TD>
+    <TD><P CLASS="Base2">BlobRight</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">BLOB,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(8000)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BLOBSEGMENTCOUNT.html">F_BLOBSEGMENTCOUNT</A></TD>
+    <TD><P CLASS="Base2">BlobSegmentCount</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">BLOB</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_BLOBSIZE.html">F_BLOBSIZE</A></TD>
+    <TD><P CLASS="Base2">BlobSize</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">BLOB</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_CDOWLONG.html">F_CDOWLONG</A></TD>
+    <TD><P CLASS="Base2">CDOWLong</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">CSTRING(10)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_CDOWSHORT.html">F_CDOWSHORT</A></TD>
+    <TD><P CLASS="Base2">CDOWShort</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">CSTRING(4)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_CHARACTER.html">F_CHARACTER</A></TD>
+    <TD><P CLASS="Base2">Character</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(2)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_CLOSEDEBUGGEROUTPUT.html">F_CLOSEDEBUGGEROUTPUT</A></TD>
+    <TD><P CLASS="Base2">CloseDebuggerOutput</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_CMONTHLONG.html">F_CMONTHLONG</A></TD>
+    <TD><P CLASS="Base2">CMonthLong</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">CSTRING(10)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_CMONTHSHORT.html">F_CMONTHSHORT</A></TD>
+    <TD><P CLASS="Base2">CMonthShort</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">CSTRING(4)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_CRLF.html">F_CRLF</A></TD>
+    <TD><P CLASS="Base2">CRLF</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+    <TD><P CLASS="Base2">CSTRING(3)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_DAYOFMONTH.html">F_DAYOFMONTH</A></TD>
+    <TD><P CLASS="Base2">DayOfMonth</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_DAYOFWEEK.html">F_DAYOFWEEK</A></TD>
+    <TD><P CLASS="Base2">DayOfWeek</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_DAYOFYEAR.html">F_DAYOFYEAR</A></TD>
+    <TD><P CLASS="Base2">DayOfYear</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_DEBUG.html">F_DEBUG</A></TD>
+    <TD><P CLASS="Base2">Debug</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(1024)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_DOLLARVAL.html">F_DOLLARVAL</A></TD>
+    <TD><P CLASS="Base2">DollarVal</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_DOUBLEABS.html">F_DOUBLEABS</A></TD>
+    <TD><P CLASS="Base2">DoubleAbs</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_EVALUATECYCLEEXPRESSION.html">F_EVALUATECYCLEEXPRESSION</A></TD>
+    <TD><P CLASS="Base2">EvaluateCycleExpression</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(1024),<br>INTEGER,<br>DATE,<br>DATE,<br>DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_EVALUATEEXPRESSION.html">F_EVALUATEEXPRESSION</A></TD>
+    <TD><P CLASS="Base2">EvaluateExpression</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(8000),<br>CSTRING(8000)</TD>
+    <TD><P CLASS="Base2">CSTRING(8000)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_FINDNTHWORD.html">F_FINDNTHWORD</A></TD>
+    <TD><P CLASS="Base2">FindNthWord</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(8000),<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_FINDWORD.html">F_FINDWORD</A></TD>
+    <TD><P CLASS="Base2">FindWord</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(8000),<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_FINDWORDINDEX.html">F_FINDWORDINDEX</A></TD>
+    <TD><P CLASS="Base2">FindWordIndex</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(8000),<br>INTEGER</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_FIXEDPOINT.html">F_FIXEDPOINT</A></TD>
+    <TD><P CLASS="Base2">FixedPoint</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_GENERATEFORMATTEDNAME.html">F_GENERATEFORMATTEDNAME</A></TD>
+    <TD><P CLASS="Base2">GenerateFormattedName</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(256),<br>CSTRING(64),<br>CSTRING(32),<br>CSTRING(2),<br>CSTRING(80),<br>CSTRING(32)</TD>
+    <TD><P CLASS="Base2">CSTRING(256)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_GENERATESNDXINDEX.html">F_GENERATESNDXINDEX</A></TD>
+    <TD><P CLASS="Base2">GenerateSndxIndex</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(256)</TD>
+    <TD><P CLASS="Base2">CSTRING(6)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_IBPASSWORD.html">F_IBPASSWORD</A></TD>
+    <TD><P CLASS="Base2">IBPassword</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(32)</TD>
+    <TD><P CLASS="Base2">CSTRING(32)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_IBTEMPPATH.html">F_IBTEMPPATH</A></TD>
+    <TD><P CLASS="Base2">IBTempPath</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+    <TD><P CLASS="Base2">CSTRING(1024)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_ISDIVISIBLEBY.html">F_ISDIVISIBLEBY</A></TD>
+    <TD><P CLASS="Base2">IsDivisibleBy</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_LEFT.html">F_LEFT</A></TD>
+    <TD><P CLASS="Base2">Left</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254),<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_LINEWRAP.html">F_LINEWRAP</A></TD>
+    <TD><P CLASS="Base2">LineWrap</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(1024),<br>INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_LRTRIM.html">F_LRTRIM</A></TD>
+    <TD><P CLASS="Base2">lrTrim</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_LTRIM.html">F_LTRIM</A></TD>
+    <TD><P CLASS="Base2">lTrim</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_MAXDATE.html">F_MAXDATE</A></TD>
+    <TD><P CLASS="Base2">MaxDate</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>DATE</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_MID.html">F_MID</A></TD>
+    <TD><P CLASS="Base2">Mid</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254),<br>INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_MINDATE.html">F_MINDATE</A></TD>
+    <TD><P CLASS="Base2">MinDate</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE,<br>DATE</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_MODULO.html">F_MODULO</A></TD>
+    <TD><P CLASS="Base2">Modulo</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_MONTH.html">F_MONTH</A></TD>
+    <TD><P CLASS="Base2">Month</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_PADLEFT.html">F_PADLEFT</A></TD>
+    <TD><P CLASS="Base2">PadLeft</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254),<br>CSTRING(10),<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_PADRIGHT.html">F_PADRIGHT</A></TD>
+    <TD><P CLASS="Base2">PadRight</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254),<br>CSTRING(10),<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_PROPERCASE.html">F_PROPERCASE</A></TD>
+    <TD><P CLASS="Base2">ProperCase</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_QUARTER.html">F_QUARTER</A></TD>
+    <TD><P CLASS="Base2">Quarter</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_RIGHT.html">F_RIGHT</A></TD>
+    <TD><P CLASS="Base2">Right</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254),<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_ROUNDFLOAT.html">F_ROUNDFLOAT</A></TD>
+    <TD><P CLASS="Base2">RoundFloat</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION,<br>DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_RTRIM.html">F_RTRIM</A></TD>
+    <TD><P CLASS="Base2">rTrim</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_SETDEBUGGEROUTPUT.html">F_SETDEBUGGEROUTPUT</A></TD>
+    <TD><P CLASS="Base2">SetDebuggerOutput</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(1024)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_STRBLOB.html">F_STRBLOB</A></TD>
+    <TD><P CLASS="Base2">StrBlob</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254),<br>BLOB</TD>
+    <TD><P CLASS="Base2">PARAMETER 2</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_STRINGLENGTH.html">F_STRINGLENGTH</A></TD>
+    <TD><P CLASS="Base2">StringLength</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_STRIPDATE.html">F_STRIPDATE</A></TD>
+    <TD><P CLASS="Base2">StripDate</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_STRIPSTRING.html">F_STRIPSTRING</A></TD>
+    <TD><P CLASS="Base2">StripString</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254),<br>CSTRING(254)</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_STRIPTIME.html">F_STRIPTIME</A></TD>
+    <TD><P CLASS="Base2">StripTime</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_SUBSTR.html">F_SUBSTR</A></TD>
+    <TD><P CLASS="Base2">SubStr</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(254),<br>CSTRING(254)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_TRUNCATE.html">F_TRUNCATE</A></TD>
+    <TD><P CLASS="Base2">Truncate</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_VALIDATECYCLEEXPRESSION.html">F_VALIDATECYCLEEXPRESSION</A></TD>
+    <TD><P CLASS="Base2">ValidateCycleExpression</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(1024),<br>INTEGER</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_VALIDATENAMEFORMAT.html">F_VALIDATENAMEFORMAT</A></TD>
+    <TD><P CLASS="Base2">ValidateNameFormat</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(256)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_VALIDATEREGULAREXPRESSION.html">F_VALIDATEREGULAREXPRESSION</A></TD>
+    <TD><P CLASS="Base2">ValidateRegularExpression</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(2048)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_VALIDATESTRINGINRE.html">F_VALIDATESTRINGINRE</A></TD>
+    <TD><P CLASS="Base2">ValidateStringInRE</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">CSTRING(2048),<br>CSTRING(2048)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_WEEKOFYEAR.html">F_WEEKOFYEAR</A></TD>
+    <TD><P CLASS="Base2">WeekOfYear</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_WOY.html">F_WOY</A></TD>
+    <TD><P CLASS="Base2">WOY</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">CSTRING(254)</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_YEAR.html">F_YEAR</A></TD>
+    <TD><P CLASS="Base2">Year</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="F_YEAROFYEAR.html">F_YEAROFYEAR</A></TD>
+    <TD><P CLASS="Base2">YearOfYear</TD>
+    <TD><P CLASS="Base2">FreeUDFLib.dll</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="ILKKELIMEYIBUL.html">ILKKELIMEYIBUL</A></TD>
+    <TD><P CLASS="Base2">IlkKelimeyiBul</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255)</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="INTKARSILASTIR.html">INTKARSILASTIR</A></TD>
+    <TD><P CLASS="Base2">IntKarsilastir</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="KISAADIHESAPLA.html">KISAADIHESAPLA</A></TD>
+    <TD><P CLASS="Base2">KisaAdiHesapla</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255)</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="KUSURATSIL.html">KUSURATSIL</A></TD>
+    <TD><P CLASS="Base2">KusuratSil</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION,<br>DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="KUTUKARSILASTIR.html">KUTUKARSILASTIR</A></TD>
+    <TD><P CLASS="Base2">KutuKarsilastir</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255),<br>CSTRING(255)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="MSGYAZ.html">MSGYAZ</A></TD>
+    <TD><P CLASS="Base2">MsgYaz</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255)</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="NOWTARIHSAATSTR.html">NOWTARIHSAATSTR</A></TD>
+    <TD><P CLASS="Base2">NowTarihSaatStr</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="PARSE.html">PARSE</A></TD>
+    <TD><P CLASS="Base2">Parse</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255),<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="POSBUL.html">POSBUL</A></TD>
+    <TD><P CLASS="Base2">PosBul</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(1024),<br>CSTRING(255)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="RDB$GET_CONTEXT.html">RDB$GET_CONTEXT</A></TD>
+    <TD><P CLASS="Base2">get_context</TD>
+    <TD><P CLASS="Base2">system_module</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)&nbsp;CHARACTER&nbsp;SET&nbsp;NONE,<br>VARCHAR(80)&nbsp;CHARACTER&nbsp;SET&nbsp;NONE</TD>
+    <TD><P CLASS="Base2">VARCHAR(255) CHARACTER SET NONE FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="RDB$SET_CONTEXT.html">RDB$SET_CONTEXT</A></TD>
+    <TD><P CLASS="Base2">set_context</TD>
+    <TD><P CLASS="Base2">system_module</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)&nbsp;CHARACTER&nbsp;SET&nbsp;NONE,<br>VARCHAR(80)&nbsp;CHARACTER&nbsp;SET&nbsp;NONE,<br>VARCHAR(255)&nbsp;CHARACTER&nbsp;SET&nbsp;NONE</TD>
+    <TD><P CLASS="Base2">INTEGER CHARACTER SET NONE BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="STRKARSILASTIR.html">STRKARSILASTIR</A></TD>
+    <TD><P CLASS="Base2">StrKarsilastir</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255),<br>CSTRING(255)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="STRLENGTH.html">STRLENGTH</A></TD>
+    <TD><P CLASS="Base2">StrLength</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(8000)</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TARIHSAAT.html">TARIHSAAT</A></TD>
+    <TD><P CLASS="Base2">TarihSaat</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TARIHTOSTR.html">TARIHTOSTR</A></TD>
+    <TD><P CLASS="Base2">TarihToStr</TD>
+    <TD><P CLASS="Base2">EgemenUdf</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TIMESTAMPTOAYILKGUN.html">TIMESTAMPTOAYILKGUN</A></TD>
+    <TD><P CLASS="Base2">TimeStampToAyIlkGun</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">TIMESTAMP FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TIMESTAMPTODATESTR.html">TIMESTAMPTODATESTR</A></TD>
+    <TD><P CLASS="Base2">TimeStampToDateStr</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TIMESTAMPTODATETIMESTR.html">TIMESTAMPTODATETIMESTR</A></TD>
+    <TD><P CLASS="Base2">TimeStampToDateTimeStr</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TIMESTAMPTODOUBLE.html">TIMESTAMPTODOUBLE</A></TD>
+    <TD><P CLASS="Base2">TimeStampToDouble</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TIMESTAMPTOTIME.html">TIMESTAMPTOTIME</A></TD>
+    <TD><P CLASS="Base2">TimeStampToTime</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">TIMESTAMP FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TIMESTAMPTOTIMESTR.html">TIMESTAMPTOTIMESTR</A></TD>
+    <TD><P CLASS="Base2">TimeStampToTimeStr</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TIMESTAMPTOYIL.html">TIMESTAMPTOYIL</A></TD>
+    <TD><P CLASS="Base2">TimeStampToYil</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TO_HEX.html">TO_HEX</A></TD>
+    <TD><P CLASS="Base2">To_Hex</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">INTEGER,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="TRKOEMCONVERT.html">TRKOEMCONVERT</A></TD>
+    <TD><P CLASS="Base2">TrkOemConvert</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">CSTRING(255)</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="VARDIYAHESAPLA.html">VARDIYAHESAPLA</A></TD>
+    <TD><P CLASS="Base2">VardiyaHesapla</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION,<br>INTEGER</TD>
+    <TD><P CLASS="Base2">INTEGER BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="YAZIILE.html">YAZIILE</A></TD>
+    <TD><P CLASS="Base2">YaziIle</TD>
+    <TD><P CLASS="Base2">EgemenUdf</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">CSTRING(255) FREE_IT</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2"><A HREF="YUVARLA.html">YUVARLA</A></TD>
+    <TD><P CLASS="Base2">Yuvarla</TD>
+    <TD><P CLASS="Base2">eg_udf</TD>
+    <TD><P CLASS="Base2">DOUBLE&nbsp;PRECISION,<br>DOUBLE&nbsp;PRECISION</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION BY VALUE</TD>
+    <TD><P CLASS="Base2">&nbsp</TD>
+  </TR>
+</TABLE>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="../Index.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ALIGN.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

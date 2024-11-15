@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTORMETHK</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="979800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTORMESTOKKAYDIRMA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTORMEVARDIYA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTORMETHK</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTORMETHK)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTORMETHK</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>ORMETALIMATHAMKONTROL</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>begin</b>
+<b>  </b><b>Update</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>Set</b><b> </b>NemOrani<b> </b><b>=</b><b> </b><b>New</b><b>.</b>NemOrani<b>,</b><b> </b>YikamaOncesiEn<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaOncesiEn<b>,</b><b> </b>YikamaOncesiGramaj<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaOncesiGramaj<b>,</b><b> </b>YikamaSonrasiEn<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaSonrasiEn<b>,</b>
+<b>                           </b>YikamaSonrasiGramaj<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaSonrasiGramaj<b>,</b><b> </b>EndenCekmezlik<b> </b><b>=</b><b> </b><b>New</b><b>.</b>EndenCekmezlik<b>,</b><b> </b>BoydanCekmezlik<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BoydanCekmezlik<b>,</b><b> </b>HamDonme<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamDonme<b>,</b>
+<b>                           </b>YikamaOncesiRaporBoyu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaOncesiRaporBoyu<b>,</b><b> </b>YikamaSonrasiRaporBoyu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaSonrasiRaporBoyu<b>,</b><b> </b>YikamaOncesiCPI<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaOncesiCPI<b>,</b>
+<b>                           </b>YikamaSonrasiCPI<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaSonrasiCPI<b>,</b><b> </b>YikamaOncesiWPI<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaOncesiWPI<b>,</b><b> </b>YikamaSonrasiWPI<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaSonrasiWPI<b>,</b><b> </b>YikamaHasligiYapildi<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaHasligiYapildi<b>,</b>
+<b>                           </b>HamKontrolIplikUzunlugu1<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamKontrolIplikUzunlugu1<b>,</b><b> </b>HamKontrolIplikUzunlugu2<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamKontrolIplikUzunlugu2<b>,</b><b> </b>HamKontrolIplikUzunlugu3<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamKontrolIplikUzunlugu3<b>,</b>
+<b>                           </b>HamKontrolIplikUzunlugu4<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamKontrolIplikUzunlugu4<b>,</b><b> </b>MerserizeHasligiYapildi<b> </b><b>=</b><b> </b><b>New</b><b>.</b>MerserizeHasligiYapildi<b>,</b><b> </b>YikamaHasligiKabul<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaHasligiKabul<b>,</b>
+<b>                           </b>MerserizeHasligiKabul<b> </b><b>=</b><b> </b><b>New</b><b>.</b>MerserizeHasligiKabul<b>,</b><b> </b>CekmezlikStandardiId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>CekmezlikStandardiId<b>,</b><b> </b>DemirTestiYapildi<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DemirTestiYapildi<b>,</b>
+<b>                           </b>DemirTestiKabul<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DemirTestiKabul<b>,</b><b> </b>IgneSayisi<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IgneSayisi<b>,</b><b> </b>HamKontrolKullanimYeri<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamKontrolKullanimYeri<b>,</b><b> </b>HamKontrolNotu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamKontrolNotu<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>2
+<b>                       </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>OrmePlanlamaId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmePlanlamaId<b>;</b>
+
+<b>  </b><b>New</b><b>.</b>InsertTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+
+<b>  </b><b>new</b><b>.</b>OrmeTalimatHamKontrolID<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>OrmeTalimatHamKontrol_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTORMESTOKKAYDIRMA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTORMEVARDIYA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,204 @@
+<HTML>
+<HEAD>
+<TITLE>HAMSTOGUNAKIBETIKALAN</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="660800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HAMSTOGUNAKIBETI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HAMSTOGUNRAFTRANSFERLERI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HAMSTOGUNAKIBETIKALAN</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHAMSTOKMASTERID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHAMSTOKDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">KILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">METRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANILANKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANILANMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALANKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALANMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">REZERVEDILENKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">REZERVEDILENMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RAFSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HAMSTOGUNAKIBETIKALAN)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HAMSTOGUNAKIBETIKALAN</u></font><b>(</b>
+<b>    </b>AHAMSTOKMASTERID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AHAMSTOKDETAYID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>KILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>METRE<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>KULLANILANKILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>KULLANILANMETRE<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>KALANKILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>KALANMETRE<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>REZERVEDILENKILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>REZERVEDILENMETRE<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>RAFSTR<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamStokDetayId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKullanilanKilo<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKullanilanMetre<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiIptalKilo<b>        </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiIptalMetre<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FRafId<b>                </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FRezervEdilenKilo<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FRezervEdilenMetre<b>    </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AHamStokDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>Select</b><b> </b>Kilo<b>,</b><b> </b>Metre<b>,</b><b> </b>HamStokMasterId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayID<b> </b><b>=</b><b> </b>:AHamStokDetayID<b> </b><b>into</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>  </b><b>else</b>
+<b>    </b><b>Select</b><b> </b>Kilo<b>,</b><b> </b>Metre<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterID<b> </b><b>=</b><b> </b>:AHamStokMasterID<b> </b><b>into</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>;</b>
+
+<b>  </b>KalanKilo<b> </b><b>=</b><b> </b>Kilo<b>;</b>
+<b>  </b>KalanMetre<b> </b><b>=</b><b> </b>Metre<b>;</b>
+<b>  </b>RafStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>FRezervEdilenKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FRezervEdilenMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>RezervEdilenKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>RezervEdilenMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>KullanilanKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>KullanilanMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b>,</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>RezervEdilenKilo<b>,</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>RezervEdilenMetre<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b>:AHamStokDetayId<b> </b><b>or</b><b> </b>:AHamStokDetayId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>  </b><b>into</b><b> </b>:HamStokDetayId<b>,</b><b> </b>:FRezervEdilenKilo<b>,</b><b> </b>:FRezervEdilenMetre<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>PartilenenKilo<b> </b><b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>IadeEdilenKilo<b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>SatisKilo<b>)</b><b>,</b>
+<b>           </b><b>sum</b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>PartilenenMetre<b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>IadeEdilenMetre<b> </b><b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>SatisMetre<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>RafDetay</u></font>
+<b>     </b><b>where</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b>:HamStokDetayId
+<b>     </b><b>into</b><b> </b>:FKullanilanKilo<b>,</b><b> </b>:FKullanilanMetre<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>Kilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>Metre<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>RafDetay</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b>:HamStokDetayId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>PartiStokIptalKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>    </b><b>into</b><b> </b>:PartiIptalKilo<b>,</b><b> </b>:PartiIptalMetre<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FKullanilanKilo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FKullanilanKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FKullanilanMetre<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FKullanilanMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>PartiIptalKilo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>PartiIptalKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>PartiIptalMetre<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>PartiIptalMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b>KalanKilo<b> </b><b>=</b><b> </b>KalanKilo<b> </b><b>-</b><b> </b>FKullanilanKilo<b> </b><b>+</b><b> </b>PartiIptalKilo<b>;</b>
+<b>    </b>KalanMetre<b> </b><b>=</b><b> </b>KalanMetre<b> </b><b>-</b><b> </b>FKullanilanMetre<b> </b><b>+</b><b> </b>PartiIptalMetre<b>;</b>
+
+<b>    </b>RezervEdilenKilo<b> </b><b>=</b><b> </b>RezervEdilenKilo<b> </b><b>+</b><b> </b>FRezervEdilenKilo<b>;</b>
+<b>    </b>RezervEdilenMetre<b> </b><b>=</b><b> </b>RezervEdilenMetre<b> </b><b>+</b><b> </b>FRezervEdilenMetre<b>;</b>
+
+<b>    </b>KullanilanKilo<b> </b><b>=</b><b> </b>KullanilanKilo<b> </b><b>+</b><b> </b>FKullanilanKilo<b>;</b>
+<b>    </b>KullanilanMetre<b> </b><b>=</b><b> </b>KullanilanMetre<b> </b><b>+</b><b> </b>FKullanilanMetre<b>;</b>
+
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b>:HamStokDetayId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>      </b><b>Group</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafId
+<b>      </b><b>into</b><b> </b>:FRafId<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>RafStr<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>FRafId<b>)</b><b> </b><b>&lt;</b><b> </b>48<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>       </b><b>if</b><b> </b><b>(</b>RafStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>)</b><b> </b><b>then</b><b> </b>RafStr<b> </b><b>=</b><b> </b>RafStr<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>       </b>RafStr<b> </b><b>=</b><b> </b>RafStr<b> </b><b>|</b><b>|</b><b> </b>FRafId<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+<b>  </b><b>end</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HAMSTOGUNAKIBETI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HAMSTOGUNRAFTRANSFERLERI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

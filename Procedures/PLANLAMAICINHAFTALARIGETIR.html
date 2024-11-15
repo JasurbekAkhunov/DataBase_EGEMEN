@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<TITLE>PLANLAMAICINHAFTALARIGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1593800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PLANLAMAGRUPANALIZISIPGRUP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PLANLAMARAPORUGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PLANLAMAICINHAFTALARIGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<P CLASS="Base"><I>(There are no input parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">HAFTAKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTAYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTANO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BASLANGICTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BITISTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SISTEMTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PLANLAMAICINHAFTALARIGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PLANLAMAICINHAFTALARIGETIR</u></font>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>HAFTAKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAFTAYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAFTANO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BASLANGICTARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>BITISTARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>SISTEMTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BulundugumHafta<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BulundugumYil<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PlanlanacakHaftaSayisi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBaslangicTarih<b>    </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBitisTarih<b>       </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Yilgun<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b>PlanlanacakHaftaSayisi<b> </b><b>=</b><b> </b>4<b>;</b>
+<b>  </b>BulundugumHafta<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_WeekOfYear</u></font><b>(</b><b>Current_date</b><b>)</b><b>;</b>
+
+<b>  </b>BulundugumYil<b>   </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>Current_date</b><b>)</b><b>;</b>
+<b>  </b>SistemTarihi<b> </b><b>=</b><b> </b><b>Current_date</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BulundugumHafta<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>Yilgun<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_DayOfYear</u></font><b>(</b><b>Current_date</b><b>)</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>YilGun<b> </b><b>&gt;</b><b> </b>360<b>)</b><b> </b><b>then</b><b> </b>BulundugumYil<b> </b><b>=</b><b> </b>BulundugumYil<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>BulundugumHafta<b> </b><b>&gt;</b><b>=</b><b> </b>53<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>Yilgun<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_DayOfYear</u></font><b>(</b><b>Current_date</b><b>)</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>YilGun<b> </b><b>&lt;</b><b> </b>10<b>)</b><b> </b><b>then</b><b> </b>BulundugumHafta<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>end</b>
+
+
+
+<b>  </b><b>Select</b><b> </b>BaslangicTarih<b>,</b><b> </b>BitisTarih<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>Yil<b> </b><b>=</b><b> </b>:BulundugumYil<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaNo<b> </b><b>=</b><b> </b>:BulundugumHafta<b> </b><b>into</b><b> </b>:FBaslangicTarih<b>,</b><b> </b>:FBitisTarih<b>;</b>
+
+<b>  </b>FBitisTarih<b> </b><b>=</b><b> </b>FBitisTarih<b> </b><b>+</b><b> </b>PlanlanacakHaftaSayisi<b> </b><b>*</b><b> </b>7<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaKayitId<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>Yil<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaNo<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BaslangicTarih<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BitisTarih<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Hafta</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BaslangicTarih<b> </b><b>&gt;</b><b>=</b><b> </b>:FBaslangicTarih<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BitisTarih<b> </b><b>&lt;</b><b>=</b><b> </b>:FBitisTarih
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>Yil<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaNo
+<b>    </b><b>into</b><b> </b>:HaftaKayitId<b>,</b><b> </b>:HaftaYil<b>,</b><b> </b>:HaftaNo<b>,</b><b> </b>:BaslangicTarih<b>,</b><b> </b>:BitisTarih<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaKayitId<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>Yil<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaNo<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BaslangicTarih<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BitisTarih<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Hafta</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenPlanlama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenPlanlama</u></font><b>.</b>HaftaKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaKayitId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>DesenPlanlama</u></font><b>.</b>HaftaKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BaslangicTarih<b> </b><b>&lt;</b><b> </b>:FBaslangicTarih
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaKayitId<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>Yil<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaNo<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BaslangicTarih<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BitisTarih
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>Yil<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaNo
+<b>    </b><b>into</b><b> </b>:HaftaKayitId<b>,</b><b> </b>:HaftaYil<b>,</b><b> </b>:HaftaNo<b>,</b><b> </b>:BaslangicTarih<b>,</b><b> </b>:BitisTarih<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PLANLAMAGRUPANALIZISIPGRUP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PLANLAMARAPORUGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

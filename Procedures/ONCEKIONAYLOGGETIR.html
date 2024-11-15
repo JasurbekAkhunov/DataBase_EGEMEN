@@ -1,0 +1,195 @@
+<HTML>
+<HEAD>
+<TITLE>ONCEKIONAYLOGGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1200800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ONAYLANMISHAMSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ONGORUPERFORMANSRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ONCEKIONAYLOGGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AONAYTIPI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHAREKETID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ONAYLOGID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAREKETID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYDEGERI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYDEGERISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYTIPI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYTIPISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(25)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYNOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYLAYANKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYLAYANKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ONCEKIONAYLOGGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ONCEKIONAYLOGGETIR</u></font><b>(</b>
+<b>    </b>AONAYTIPI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AHAREKETID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>ONAYLOGID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAREKETID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ONAYDEGERI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ONAYDEGERISTR<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ONAYTIPI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ONAYTIPISTR<b> </b><b>VARCHAR</b><b>(</b>25<b>)</b><b>,</b>
+<b>    </b>ONAYNOTU<b> </b><b>BLOB</b><b> </b><b>SUB_TYPE</b><b> </b>0<b> </b><b>SEGMENT</b><b> </b><b>SIZE</b><b> </b>80<b>,</b>
+<b>    </b>ONAYTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ONAYLAYANKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ONAYLAYANKULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Sorgu<b>    </b><b>varchar</b><b>(</b>1000<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b>Sorgu<b> </b><b>=</b><b> </b>' select OnayLog.OnayLogID, '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   Case OnayLog.OnayTipi '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 0 then  OnayLog.OrmeSiparisDetayID '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 1 then  OnayLog.OrmeSiparisDetayID '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 2 then  OnayLog.BoyaSiparisDetayID '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 3 then  OnayLog.OrmePlanlamaID '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 4 then  OnayLog.VerilenSiparisKayitID '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 5 then  OnayLog.SatinAlmaTalepKayitId '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 6 then  OnayLog.VerilenSiparisDetayID '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 7 then  OnayLog.HGSiparisDetayID '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 8 then  OnayLog.HGSiparisDetayID '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   when 9 then  OnayLog.HGIsEmriKayitId '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   else 0 end as HareketID, '<b> </b><b>|</b><b>|</b>
+<b>          </b>'   OnayLog.OnayDegeri, OnayLog.OnayTipi, OnayLog.OnayNotu, OnayLog.OnayTarihi, OnayLog.OnaylayanKullaniciID, Kullanici.Adi from OnayLog '<b> </b><b>|</b><b>|</b>
+<b>          </b>' Left Join Kullanici on Kullanici.KullaniciId = OnayLog.OnaylayanKullaniciID '<b> </b><b>|</b><b>|</b>
+<b>          </b>' where OnayLog.OnayTipi = '<b>|</b><b>|</b>:AOnayTipi<b>|</b><b>|</b>' and  '<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>(</b>:AOnayTipi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>or</b><b> </b><b>(</b>:AOnayTipi<b> </b><b>=</b><b> </b>1<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Sorgu<b> </b><b>=</b><b> </b>Sorgu<b> </b><b>|</b><b>|</b><b> </b>' OnayLog.OrmeSiparisDetayID = '<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>:AOnayTipi<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>Sorgu<b> </b><b>=</b><b> </b>Sorgu<b> </b><b>|</b><b>|</b><b> </b>' OnayLog.BoyaSiparisDetayID = '<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>:AOnayTipi<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>Sorgu<b> </b><b>=</b><b> </b>Sorgu<b> </b><b>|</b><b>|</b><b> </b>' OnayLog.OrmePlanlamaID = '<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>:AOnayTipi<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>Sorgu<b> </b><b>=</b><b> </b>Sorgu<b> </b><b>|</b><b>|</b><b> </b>' OnayLog.VerilenSiparisKayitID = '<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>:AOnayTipi<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>Sorgu<b> </b><b>=</b><b> </b>Sorgu<b> </b><b>|</b><b>|</b><b> </b>' OnayLog.SatinAlmaTalepKayitId = '<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>:AOnayTipi<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>Sorgu<b> </b><b>=</b><b> </b>Sorgu<b> </b><b>|</b><b>|</b><b> </b>' OnayLog.VerilenSiparisDetayID = '<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>:AOnayTipi<b> </b><b>=</b><b> </b>7<b> </b><b>or</b><b> </b>:AOnayTipi<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>Sorgu<b> </b><b>=</b><b> </b>Sorgu<b> </b><b>|</b><b>|</b><b> </b>' OnayLog.HGSiparisDetayID = '<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>:AOnayTipi<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b>Sorgu<b> </b><b>=</b><b> </b>Sorgu<b> </b><b>|</b><b>|</b><b> </b>' OnayLog.HGIsEmriKayitId = '<b>;</b>
+<b>      </b>Sorgu<b> </b><b>=</b><b> </b>Sorgu<b> </b><b>|</b><b>|</b><b> </b>:AHareketID<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>execute</b><b> </b><b>statement</b><b> </b><b>(</b>Sorgu<b>)</b>
+<b>      </b><b>into</b><b> </b>:OnayLogID<b>,</b><b> </b>:HareketID<b>,</b><b> </b>:OnayDegeri<b>,</b><b> </b>:OnayTipi<b>,</b><b> </b>:OnayNotu<b>,</b><b> </b>:OnayTarihi<b>,</b><b> </b>:OnaylayanKullaniciID<b>,</b><b> </b>:OnaylayanKullaniciAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>OnayDegeri<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>OnayDegeriStr<b> </b><b>=</b><b> </b>'İptal'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayDegeri<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>OnayDegeriStr<b> </b><b>=</b><b> </b>'Onay'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayDegeri<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>OnayDegeriStr<b> </b><b>=</b><b> </b>'Red'<b>;</b>
+<b>    </b><b>else</b><b> </b>OnayDegeriStr<b> </b><b>=</b><b> </b>'Bilinmiyor'<b>;</b>
+
+<b>    </b>OnayTipiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Örme Sip. Onay'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Örme Sip. Mali Onay'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Boya Sipariş Onay'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Talimat Onayi'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Verilen Sipariş Onayı'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Satin Alma Talep Onayı'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Verilen Sip. Detay Onayı'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Hazır Giyim Sip. Onay'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Hazır G. Sip. Mali Onay'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayTipi<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Hazır G. İş Emri Onay'<b>;</b>
+<b>    </b><b>else</b><b> </b>OnayTipiStr<b> </b><b>=</b><b> </b>'Bilinmiyor'<b>;</b>
+
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ONAYLANMISHAMSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ONGORUPERFORMANSRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>STOKDUSUMDUZENLE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1799800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="STOKDONEMKAPAT.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="STOKENVANTERRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">STOKDUSUMDUZENLE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure STOKDUSUMDUZENLE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>STOKDUSUMDUZENLE</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiKayitId<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiAsamalariId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiAsamalariID
+<b>    </b><b>Where</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>CikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>CikisTarihi<b> </b><b>&lt;</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>StoktanDusuldu<b> </b><b>=</b><b> </b>1
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId
+<b>    </b><b>into</b><b> </b>:PartiKayitId<b>,</b><b> </b>:PartiAsamalariId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>StoktanDusmeKarariVer</u></font><b>(</b>:PartiKayitId<b>,</b><b> </b>:PartiAsamalariId<b>,</b><b> </b>3<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="STOKDONEMKAPAT.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="STOKENVANTERRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

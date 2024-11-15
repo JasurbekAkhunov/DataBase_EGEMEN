@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<TITLE>DOZAJLAMASISTEMIICINURUNLISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="482800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DOZAJLAMAISEMRITARTIOLUSTUR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="EASICINIMALATBITTIKONTROLU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DOZAJLAMASISTEMIICINURUNLISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ADOZAJLAMASISTEMIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">URUNID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOZAJLAMAURUNID</TD>
+    <TD><P CLASS="Base2">VARCHAR(15)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUTFAKDEPONO</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URUNBIRIMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMCARPAN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMECIKISFIYATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DOZAJLAMASISTEMIICINURUNLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DOZAJLAMASISTEMIICINURUNLISTESI</u></font><b>(</b>
+<b>    </b>ADOZAJLAMASISTEMIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>URUNID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>DOZAJLAMAURUNID<b> </b><b>VARCHAR</b><b>(</b>15<b>)</b><b>,</b>
+<b>    </b>MUTFAKDEPONO<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>URUNBIRIMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BIRIMCARPAN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>URETIMECIKISFIYATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStokTabanDovizId<b>          </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUretimeCikisFiyatiDovizId<b> </b><b>Varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDovizKuru<b>             </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>STOKTABANDOVIZID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SISTEM</u></font><b> </b><b>where</b><b> </b>SISTEMID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FStokTabanDovizId<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>DozajlamaSistemiUrun</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>DozajlamaSistemiUrun</u></font><b>.</b>DozajlamaUrunId<b>,</b><b> </b><font color="# 080 0"><u>urun</u></font><b>.</b>MutfakDepoNo<b>,</b><b> </b>UBD<b>.</b>urunBirimId<b>,</b><b> </b>UBD<b>.</b>Carpan<b>,</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyati<b> </b><b>*</b><b> </b>UBUCF<b>.</b>Carpan<b> </b><b>/</b><b> </b>UBD<b>.</b>Carpan<b>,</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DozajlamaSistemiUrun</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DozajlamaSistemiUrun</u></font><b>.</b>UrunId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>UBD<b> </b><b>on</b><b> </b>UBD<b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>urun</u></font><b>.</b>Urunid<b> </b><b>and</b><b> </b>UBD<b>.</b>ReceteDefaultBirim<b> </b><b>=</b><b> </b>1
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>urun</u></font><b>.</b>Urunid
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>UBUCF<b> </b><b>on</b><b> </b>UBUCF<b>.</b>UrunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>urunFiyat</u></font><b>.</b>UretimeCikisFiyatiUrunBirimId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>DozajlamaSistemiUrun</u></font><b>.</b>DozajlamaSistemiID<b> </b><b>=</b><b> </b>:ADozajlamaSistemiID
+<b>    </b><b>into</b><b> </b>:UrunId<b>,</b><b> </b>:DozajlamaUrunId<b>,</b><b> </b>:MutfakDepoNo<b>,</b><b> </b>:urunBirimId<b>,</b><b> </b>:BirimCarpan<b>,</b><b> </b>:UretimeCikisFiyati<b>,</b><b> </b>:FUretimeCikisFiyatiDovizId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FStokTabanDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FUretimeCikisFiyatiDovizId<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FUretimeCikisFiyatiDovizId<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b><b>Current_Date</b><b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+
+<b>      </b>UretimeCikisFiyati<b> </b><b>=</b><b> </b>UretimeCikisFiyati<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b>UretimeCikisFiyati<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Yuvarla</u></font><b>(</b>UretimeCikisFiyati<b>,</b><b> </b>1000000<b>)</b><b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DOZAJLAMAISEMRITARTIOLUSTUR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="EASICINIMALATBITTIKONTROLU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

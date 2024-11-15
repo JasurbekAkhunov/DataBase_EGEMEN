@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREDELETEMDEPOTRANSFERFISI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="536800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREDELETEMBIEURUN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREDELETEMDTRANSFERFISIDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREDELETEMDEPOTRANSFERFISI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREDELETEMDEPOTRANSFERFISI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREDELETEMDEPOTRANSFERFISI</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>MAMULDEPOTRANSFERFISI</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>DELETE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LogAnahtar<b> </b><b>varchar</b><b>(</b>4000<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>TransferEdildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>TrasferEdilmisDegistirilmez</u></font><b>;</b>
+
+<b>  </b><b>Delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisiDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisiDetay</u></font><b>.</b>MamulDepoTransferFisiId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>MamulDepoTransferFisiId<b>;</b>
+<b>  </b>LogAnahtar<b> </b><b>=</b><b> </b>'Fiş No:('<b>|</b><b>|</b><b>old</b><b>.</b>FisYil<b>|</b><b>|</b>') '<b>|</b><b>|</b><b>old</b><b>.</b>FisNo<b>|</b><b>|</b>' Tarih:'<b>|</b><b>|</b><b>Extract</b><b>(</b><b>DAY</b><b> </b><b>from</b><b> </b><b>old</b><b>.</b>FisTarihi<b>)</b><b>|</b><b>|</b>'.'<b>|</b><b>|</b><b>Extract</b><b>(</b><b>MONTH</b><b> </b><b>from</b><b> </b><b>old</b><b>.</b>FisTarihi<b>)</b><b>|</b><b>|</b>'.'<b>|</b><b>|</b><b>Extract</b><b>(</b><b>YEAR</b><b> </b><b>from</b><b> </b><b>old</b><b>.</b>FisTarihi<b>)</b><b>|</b><b>|</b>' Depo:'<b>|</b><b>|</b><b>old</b><b>.</b>DepoId<b>|</b><b>|</b>' Transfer Depo:'<b>|</b><b>|</b><b>old</b><b>.</b>TransferDepoId<b>;</b>
+<b>  </b><b>execute</b><b> </b><b>procedure</b><b> </b><font color="# 080 0"><u>Logla</u></font><b>(</b>'D'<b>,</b><b> </b>2<b>,</b><b> </b>'MAMULDEPOTRANSFERFISI'<b>,</b><b> </b>'MAMULDEPOTRANSFERFISIID'<b>,</b><b> </b><b>old</b><b>.</b>MAMULDEPOTRANSFERFISIID<b>,</b><b> </b>:LogAnahtar<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREDELETEMBIEURUN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREDELETEMDTRANSFERFISIDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

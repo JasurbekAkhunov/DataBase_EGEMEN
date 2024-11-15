@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<TITLE>BOYASIPARISDETAYKOPYALA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="159800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BOYASIPARISDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BOYASIPARISDETAYLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BOYASIPARISDETAYKOPYALA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABOYASIPARISKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABOYASIPARISDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure BOYASIPARISDETAYKOPYALA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAYKOPYALA</u></font><b>(</b>
+<b>    </b>ABOYASIPARISKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABOYASIPARISDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisDetayId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SiparisKopyalarkenFiyatiTasi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SipKopyalarkenIslemGrubuTasima<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>SiparisKopyalarkenFiyatiTasi<b>,</b><b> </b>SipKopyalarkenIslemGrubuTasima<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:SiparisKopyalarkenFiyatiTasi<b>,</b><b> </b>:SipKopyalarkenIslemGrubuTasima<b>;</b>
+
+<b>  </b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>BoyaSiparisDetay_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>SiparisKopyalarkenFiyatiTasi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>(</b>BoyaSiparisDetayId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>BoyaSiparisRenkNo<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>FirmaSevkAdresiId<b>,</b><b> </b>MusteriSiparisNo<b>,</b><b> </b>ReferansSiparisNo<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>LabReceteKodu<b>,</b><b> </b>LabReceteAtisId<b>,</b>
+<b>                                 </b>RenkId<b>,</b><b> </b>RenkAdi<b>,</b><b> </b>ProsesId<b>,</b><b> </b>SiparisProsesId<b>,</b><b> </b>SiparisKilo<b>,</b><b> </b>SiparisMetre<b>,</b><b> </b>PaketlemeSekliId<b>,</b><b> </b>RenkDerinligiId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>HamStokBirimId<b>,</b>
+<b>                                 </b>FaturaEdilecekMiktarTipi<b>,</b><b> </b>DovizId<b>,</b><b> </b>UcretliTamir<b>,</b><b> </b>FaturaKesilecek<b>,</b><b> </b>VadeGun<b>,</b><b> </b>OdemeSekliId<b>,</b><b> </b>HamId<b>,</b><b> </b>Pus<b>,</b><b> </b>Feine<b>,</b><b> </b>Lot<b>,</b><b> </b>MusteriRenkKoduveAdi<b>,</b>
+<b>                                 </b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>DesenKenarYazisi</u></font><b>,</b><b> </b>DesenIlkBaski<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>FlamKodu<b>,</b>
+<b>                                 </b>KaliteId<b>,</b><b> </b>MusteriKaliteNo<b>,</b><b> </b>MusteriKaliteAdi<b>,</b><b> </b>Denye<b>,</b><b> </b>IstenenRaporBoyu<b>,</b><b> </b>IstenenOzelTuse<b>,</b><b> </b>EnIstenen<b>,</b><b> </b>GramajIstenen<b>,</b><b> </b>DonmeIstenen<b>,</b><b> </b>CekmezlikEnIstenen<b>,</b>
+<b>                                 </b>CekmezlikBoyIstenen<b>,</b><b> </b>YikamaHasligiIstenen<b>,</b><b> </b>SansIstenen<b>,</b><b> </b>ToleransEn<b>,</b><b> </b>ToleransGramaj<b>,</b><b> </b>ToleransEndenCekmezlik<b>,</b><b> </b>ToleransBoydanCekmezlik<b>,</b>
+<b>                                 </b>ToleransDonme<b>,</b><b> </b>ToleransSans<b>,</b><b> </b>TerminTarihi<b>,</b><b> </b>RevizeTerminTarihi<b>,</b><b> </b>TerminNotu<b>,</b><b> </b>Notu<b>,</b><b> </b>PlanlamaNotu<b>,</b>
+<b>                                 </b>YikamaDereceId<b>,</b><b> </b>KurutmaSekliId<b>,</b><b> </b>YikamaHasligiTestiId<b>,</b><b> </b>OngoruYapilacak<b>,</b><b> </b>FirmaAdimizEtiketteCiksinmi<b>,</b><b> </b>IslemGrubuId<b>,</b><b> </b>FasonBirimFiyati<b>,</b><b> </b>FasonBirimFiyatDovizId<b>,</b><b> </b>BaskiBirimFiyati<b>,</b><b> </b>BaskiBirimFiyatDovizId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>KopyaSonuUpdateYok<b>,</b><b> </b>MaximumFireOrani<b>,</b><b> </b>MinimumFireOrani<b>,</b><b> </b>SiparisteISBrutNetDaradan<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>                                 </b>KKLabel1<b>,</b><b> </b>KKLabel2<b>,</b><b> </b>KKLabel3<b>,</b><b> </b>KKLabel4<b>,</b><b> </b>KKLabel5<b>,</b><b> </b>KKLabel6<b>,</b><b> </b>KKLabel7<b>,</b><b> </b>KKDeger1<b>,</b><b> </b>KKDeger2<b>,</b><b> </b>KKDeger3<b>,</b><b> </b>KKDeger4<b>,</b><b> </b>KKDeger5<b>,</b><b> </b>KKDeger6<b>,</b><b> </b>KKDeger7<b>,</b><b> </b>PSKKEtiketTipiId<b>,</b><b> </b>BelgeHamAdi<b>)</b>
+<b>      </b><b>Select</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>BoyaSiparisRenkNo<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>FirmaSevkAdresiId<b>,</b><b> </b>MusteriSiparisNo<b>,</b><b> </b>ReferansSiparisNo<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>LabReceteKodu<b>,</b><b> </b>LabReceteAtisId<b>,</b>
+<b>             </b>RenkId<b>,</b><b> </b>RenkAdi<b>,</b><b> </b>ProsesId<b>,</b><b> </b>SiparisProsesId<b>,</b><b> </b>SiparisKilo<b>,</b><b> </b>SiparisMetre<b>,</b><b> </b>PaketlemeSekliId<b>,</b><b> </b>RenkDerinligiId<b>,</b><b> </b>0<b>,</b><b> </b>HamStokBirimId<b>,</b>
+<b>             </b>FaturaEdilecekMiktarTipi<b>,</b><b> </b>DovizId<b>,</b><b> </b>UcretliTamir<b>,</b><b> </b>FaturaKesilecek<b>,</b><b> </b>VadeGun<b>,</b><b> </b>OdemeSekliId<b>,</b><b> </b>HamId<b>,</b><b> </b>Pus<b>,</b><b> </b>Feine<b>,</b><b> </b>Lot<b>,</b><b> </b>MusteriRenkKoduveAdi<b>,</b>
+<b>             </b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>DesenKenarYazisi</u></font><b>,</b><b> </b>DesenIlkBaski<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>FlamKodu<b>,</b>
+<b>             </b>KaliteId<b>,</b><b> </b>MusteriKaliteNo<b>,</b><b> </b>MusteriKaliteAdi<b>,</b><b> </b>Denye<b>,</b><b> </b>IstenenRaporBoyu<b>,</b><b> </b>IstenenOzelTuse<b>,</b><b> </b>EnIstenen<b>,</b><b> </b>GramajIstenen<b>,</b><b> </b>DonmeIstenen<b>,</b><b> </b>CekmezlikEnIstenen<b>,</b>
+<b>             </b>CekmezlikBoyIstenen<b>,</b><b> </b>YikamaHasligiIstenen<b>,</b><b> </b>SansIstenen<b>,</b><b> </b>ToleransEn<b>,</b><b> </b>ToleransGramaj<b>,</b><b> </b>ToleransEndenCekmezlik<b>,</b><b> </b>ToleransBoydanCekmezlik<b>,</b>
+<b>             </b>ToleransDonme<b>,</b><b> </b>ToleransSans<b>,</b><b> </b>TerminTarihi<b>,</b><b> </b>RevizeTerminTarihi<b>,</b><b> </b>TerminNotu<b>,</b><b> </b>Notu<b>,</b><b> </b>PlanlamaNotu<b>,</b>
+<b>             </b>YikamaDereceId<b>,</b><b> </b>KurutmaSekliId<b>,</b><b> </b>YikamaHasligiTestiId<b>,</b><b> </b>OngoruYapilacak<b>,</b><b> </b>FirmaAdimizEtiketteCiksinmi<b>,</b><b> </b><b>iif</b><b>(</b>:SipKopyalarkenIslemGrubuTasima<b> </b><b>=</b><b> </b>1<b>,</b><b> </b><b>Null</b><b>,</b><b> </b>IslemGrubuId<b>)</b><b>,</b><b> </b>0<b>,</b><b> </b>FasonBirimFiyatDovizId<b>,</b><b> </b>0<b>,</b><b> </b>BaskiBirimFiyatDovizId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>MaximumFireOrani<b>,</b><b> </b>MinimumFireOrani<b>,</b><b> </b>SiparisteISBrutNetDaradan<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>             </b>KKLabel1<b>,</b><b> </b>KKLabel2<b>,</b><b> </b>KKLabel3<b>,</b><b> </b>KKLabel4<b>,</b><b> </b>KKLabel5<b>,</b><b> </b>KKLabel6<b>,</b><b> </b>KKLabel7<b>,</b><b> </b>KKDeger1<b>,</b><b> </b>KKDeger2<b>,</b><b> </b>KKDeger3<b>,</b><b> </b>KKDeger4<b>,</b><b> </b>KKDeger5<b>,</b><b> </b>KKDeger6<b>,</b><b> </b>KKDeger7<b>,</b><b> </b>PSKKEtiketTipiId<b>,</b><b> </b>BelgeHamAdi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>(</b>BoyaSiparisDetayId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>BoyaSiparisRenkNo<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>FirmaSevkAdresiId<b>,</b><b> </b>MusteriSiparisNo<b>,</b><b> </b>ReferansSiparisNo<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>LabReceteKodu<b>,</b><b> </b>LabReceteAtisId<b>,</b>
+<b>                                 </b>RenkId<b>,</b><b> </b>RenkAdi<b>,</b><b> </b>ProsesId<b>,</b><b> </b>SiparisProsesId<b>,</b><b> </b>SiparisKilo<b>,</b><b> </b>SiparisMetre<b>,</b><b> </b>PaketlemeSekliId<b>,</b><b> </b>RenkDerinligiId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>HamStokBirimId<b>,</b>
+<b>                                 </b>FaturaEdilecekMiktarTipi<b>,</b><b> </b>DovizId<b>,</b><b> </b>UcretliTamir<b>,</b><b> </b>FaturaKesilecek<b>,</b><b> </b>VadeGun<b>,</b><b> </b>OdemeSekliId<b>,</b><b> </b>HamId<b>,</b><b> </b>Pus<b>,</b><b> </b>Feine<b>,</b><b> </b>Lot<b>,</b><b> </b>MusteriRenkKoduveAdi<b>,</b>
+<b>                                 </b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>DesenKenarYazisi</u></font><b>,</b><b> </b>DesenIlkBaski<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>FlamKodu<b>,</b>
+<b>                                 </b>KaliteId<b>,</b><b> </b>MusteriKaliteNo<b>,</b><b> </b>MusteriKaliteAdi<b>,</b><b> </b>Denye<b>,</b><b> </b>IstenenRaporBoyu<b>,</b><b> </b>IstenenOzelTuse<b>,</b><b> </b>EnIstenen<b>,</b><b> </b>GramajIstenen<b>,</b><b> </b>DonmeIstenen<b>,</b><b> </b>CekmezlikEnIstenen<b>,</b>
+<b>                                 </b>CekmezlikBoyIstenen<b>,</b><b> </b>YikamaHasligiIstenen<b>,</b><b> </b>SansIstenen<b>,</b><b> </b>ToleransEn<b>,</b><b> </b>ToleransGramaj<b>,</b><b> </b>ToleransEndenCekmezlik<b>,</b><b> </b>ToleransBoydanCekmezlik<b>,</b>
+<b>                                 </b>ToleransDonme<b>,</b><b> </b>ToleransSans<b>,</b><b> </b>TerminTarihi<b>,</b><b> </b>RevizeTerminTarihi<b>,</b><b> </b>TerminNotu<b>,</b><b> </b>Notu<b>,</b><b> </b>PlanlamaNotu<b>,</b>
+<b>                                 </b>YikamaDereceId<b>,</b><b> </b>KurutmaSekliId<b>,</b><b> </b>YikamaHasligiTestiId<b>,</b><b> </b>OngoruYapilacak<b>,</b><b> </b>FirmaAdimizEtiketteCiksinmi<b>,</b><b> </b>IslemGrubuId<b>,</b><b> </b>FasonBirimFiyati<b>,</b><b> </b>FasonBirimFiyatDovizId<b>,</b><b> </b>BaskiBirimFiyati<b>,</b><b> </b>BaskiBirimFiyatDovizId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>KopyaSonuUpdateYok<b>,</b><b> </b>MaximumFireOrani<b>,</b><b> </b>MinimumFireOrani<b>,</b><b> </b>SiparisteISBrutNetDaradan<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>                                 </b>KKLabel1<b>,</b><b> </b>KKLabel2<b>,</b><b> </b>KKLabel3<b>,</b><b> </b>KKLabel4<b>,</b><b> </b>KKLabel5<b>,</b><b> </b>KKLabel6<b>,</b><b> </b>KKLabel7<b>,</b><b> </b>KKDeger1<b>,</b><b> </b>KKDeger2<b>,</b><b> </b>KKDeger3<b>,</b><b> </b>KKDeger4<b>,</b><b> </b>KKDeger5<b>,</b><b> </b>KKDeger6<b>,</b><b> </b>KKDeger7<b>,</b><b> </b>PSKKEtiketTipiId<b>,</b><b> </b>BelgeHamAdi<b>)</b>
+<b>      </b><b>Select</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>BoyaSiparisRenkNo<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>FirmaSevkAdresiId<b>,</b><b> </b>MusteriSiparisNo<b>,</b><b> </b>ReferansSiparisNo<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>LabReceteKodu<b>,</b><b> </b>LabReceteAtisId<b>,</b>
+<b>             </b>RenkId<b>,</b><b> </b>RenkAdi<b>,</b><b> </b>ProsesId<b>,</b><b> </b>SiparisProsesId<b>,</b><b> </b>SiparisKilo<b>,</b><b> </b>SiparisMetre<b>,</b><b> </b>PaketlemeSekliId<b>,</b><b> </b>RenkDerinligiId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>HamStokBirimId<b>,</b>
+<b>             </b>FaturaEdilecekMiktarTipi<b>,</b><b> </b>DovizId<b>,</b><b> </b>UcretliTamir<b>,</b><b> </b>FaturaKesilecek<b>,</b><b> </b>VadeGun<b>,</b><b> </b>OdemeSekliId<b>,</b><b> </b>HamId<b>,</b><b> </b>Pus<b>,</b><b> </b>Feine<b>,</b><b> </b>Lot<b>,</b><b> </b>MusteriRenkKoduveAdi<b>,</b>
+<b>             </b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>DesenKenarYazisi</u></font><b>,</b><b> </b>DesenIlkBaski<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>FlamKodu<b>,</b>
+<b>             </b>KaliteId<b>,</b><b> </b>MusteriKaliteNo<b>,</b><b> </b>MusteriKaliteAdi<b>,</b><b> </b>Denye<b>,</b><b> </b>IstenenRaporBoyu<b>,</b><b> </b>IstenenOzelTuse<b>,</b><b> </b>EnIstenen<b>,</b><b> </b>GramajIstenen<b>,</b><b> </b>DonmeIstenen<b>,</b><b> </b>CekmezlikEnIstenen<b>,</b>
+<b>             </b>CekmezlikBoyIstenen<b>,</b><b> </b>YikamaHasligiIstenen<b>,</b><b> </b>SansIstenen<b>,</b><b> </b>ToleransEn<b>,</b><b> </b>ToleransGramaj<b>,</b><b> </b>ToleransEndenCekmezlik<b>,</b><b> </b>ToleransBoydanCekmezlik<b>,</b>
+<b>             </b>ToleransDonme<b>,</b><b> </b>ToleransSans<b>,</b><b> </b>TerminTarihi<b>,</b><b> </b>RevizeTerminTarihi<b>,</b><b> </b>TerminNotu<b>,</b><b> </b>Notu<b>,</b><b> </b>PlanlamaNotu<b>,</b>
+<b>             </b>YikamaDereceId<b>,</b><b> </b>KurutmaSekliId<b>,</b><b> </b>YikamaHasligiTestiId<b>,</b><b> </b>OngoruYapilacak<b>,</b><b> </b>FirmaAdimizEtiketteCiksinmi<b>,</b><b> </b><b>iif</b><b>(</b>:SipKopyalarkenIslemGrubuTasima<b> </b><b>=</b><b> </b>1<b>,</b><b> </b><b>Null</b><b>,</b><b> </b>IslemGrubuId<b>)</b><b>,</b><b> </b>FasonBirimFiyati<b>,</b><b> </b>FasonBirimFiyatDovizId<b>,</b><b> </b>BaskiBirimFiyati<b>,</b><b> </b>BaskiBirimFiyatDovizId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>MaximumFireOrani<b>,</b><b> </b>MinimumFireOrani<b>,</b><b> </b>SiparisteISBrutNetDaradan<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>             </b>KKLabel1<b>,</b><b> </b>KKLabel2<b>,</b><b> </b>KKLabel3<b>,</b><b> </b>KKLabel4<b>,</b><b> </b>KKLabel5<b>,</b><b> </b>KKLabel6<b>,</b><b> </b>KKLabel7<b>,</b><b> </b>KKDeger1<b>,</b><b> </b>KKDeger2<b>,</b><b> </b>KKDeger3<b>,</b><b> </b>KKDeger4<b>,</b><b> </b>KKDeger5<b>,</b><b> </b>KKDeger6<b>,</b><b> </b>KKDeger7<b>,</b><b> </b>PSKKEtiketTipiId<b>,</b><b> </b>BelgeHamAdi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>(</b>BoyaSiparisDetayId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>DovizId<b>,</b><b> </b>IlaveIslemlerId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>    </b><b>Select</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>:ABoyaSiparisKayitId<b>,</b><b> </b>0<b>,</b><b> </b>DovizId<b>,</b><b> </b>IlaveIslemlerId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId<b>;</b>
+
+<b>  </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>SiparisOzelTestler</u></font><b>(</b>BoyaSiparisDetayId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OzelTestId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>OzelTestStandardiId<b>,</b><b> </b>OzelTestStandardiAdi<b>,</b><b> </b>Istenen<b>)</b>
+<b>    </b><b>Select</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>:ABoyaSiparisKayitId<b>,</b><b> </b>OzelTestId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>OzelTestStandardiId<b>,</b><b> </b>OzelTestStandardiAdi<b>,</b><b> </b>Istenen<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisOzelTestler</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisOzelTestler</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId<b>;</b>
+
+<b>  </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>SiparisOzelApreler</u></font><b>(</b>BoyaSiparisDetayId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OzelApreId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>    </b><b>Select</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>:ABoyaSiparisKayitId<b>,</b><b> </b>OzelApreId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisOzelApreler</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisOzelApreler</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId<b>;</b>
+
+<b>  </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetayAltBez</u></font><b>(</b>BoyaSiparisDetayAltBezId<b>,</b><b> </b>BoyaSiparisDetayId<b>,</b><b> </b>PartiSinifId<b>,</b><b> </b>InsertKullaniciId<b>)</b>
+<b>  </b><b>Select</b><b> </b>BoyaSiparisDetayAltBezId<b>,</b><b> </b>BoyaSiparisDetayId<b>,</b><b> </b>PartiSinifId<b>,</b><b> </b>:AKullaniciId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetayAltBez</u></font>
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetayAltBez</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId<b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaSiparisOlcu</u></font><b> </b><b>(</b>olcuid<b>,</b><b> </b>boyasiparisdetayid<b>,</b><b> </b>adet<b>,</b><b> </b>kilo<b>,</b><b> </b>insertkullaniciid<b>,</b><b> </b>kapadedi<b>)</b>
+<b>  </b><b>select</b><b> </b>olcuid<b>,</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>adet<b>,</b><b> </b>kilo<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>kapadedi
+<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>boyasiparisolcu</u></font>
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisOlcu</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId<b>;</b>
+
+<b>  </b><b>update</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b> </b><b>set</b><b> </b>KopyaSonuUpdateYok<b> </b><b>=</b><b> </b>0<b> </b><b>where</b><b> </b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:BoyaSiparisDetayId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BOYASIPARISDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BOYASIPARISDETAYLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

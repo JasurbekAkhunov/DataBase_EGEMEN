@@ -1,0 +1,954 @@
+<HTML>
+<HEAD>
+<TITLE>GUNLUKURETIMRAPORUPSKALITEKONT</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="620800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="GUNLUKURETIMRAPORUMDSEVKLERI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="GUNLUKURETIMRAPORUSEBASAMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">GUNLUKURETIMRAPORUPSKALITEKONT</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AMAKINAGRUBU</TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMAKINARAPORGRUPID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AAYLIKBASLANGIC</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AAYLIKBITIS</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">MAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAKINAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAKINAGRUBU</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAKINAGRUPADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAKINARAPORGRUPID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMTOPLAMI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BEYAZ</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKLI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SEKERKASAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KURUBOLUM</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CIFTBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIYAH</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NAYLONBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">POLYESTERBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIGER</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRBEYAZ</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRRENKLI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRYIKAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRSEKERKASAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRKURUBOLUM</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRCIFTBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRSIYAH</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRNAYLONBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRPOLYESTERBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICTAMIRDIGER</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRBEYAZ</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRRENKLI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRYIKAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRSEKERKASAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRKURUBOLUM</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRCIFTBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRSIYAH</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRNAYLONBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRPOLYESTERBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRDIGER</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRBEYAZ</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRRENKLI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRYIKAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRSEKERKASAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRKURUBOLUM</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRCIFTBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRSIYAH</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRNAYLONBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRPOLYESTERBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRDIGER</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRBEYAZ</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRRENKLI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRYIKAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRSEKERKASAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRKURUBOLUM</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRCIFTBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRSIYAH</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRNAYLONBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRPOLYESTERBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DISTAMIRDIGER</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRBEYAZ</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRRENKLI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRYIKAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRSEKERKASAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRKURUBOLUM</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRCIFTBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRSIYAH</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRNAYLONBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRPOLYESTERBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRDIGER</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRBEYAZ</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRRENKLI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRYIKAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRSEKERKASAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRKURUBOLUM</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRCIFTBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRSIYAH</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRNAYLONBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRPOLYESTERBOYAMA</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRDIGER</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZDISTAMIRKILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIDISTAMIRKILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETSIZICTAMIRKILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UCRETLIICTAMIRKILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYA1KILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYA2KILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYA3KILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYLIKURETIMTOPLAMI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYLIKESDEGERURETIMTOPLAMI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYLIKICTAMIRESDEGERURETIM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYLIKDISTAMIRESDEGERURETIM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYLIKICTAMIRURETIMTOPLAMI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYLIKUCRETLIICTAMIRTOPLAMI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYLIKUCRETSIZICTAMIRTOPLAMI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYLIKUCRETLIDISTAMIRTOPLAMI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYLIKUCRETSIZDISTAMIRTOPLAMI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GUNLUKKAPASITE</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure GUNLUKURETIMRAPORUPSKALITEKONT)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>GUNLUKURETIMRAPORUPSKALITEKONT</u></font><b>(</b>
+<b>    </b>AMAKINAGRUBU<b> </b><b>VARCHAR</b><b>(</b>4<b>)</b><b>,</b>
+<b>    </b>AMAKINARAPORGRUPID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AAYLIKBASLANGIC<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AAYLIKBITIS<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>MAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>MAKINAADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>MAKINAGRUBU<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>MAKINAGRUPADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>MAKINARAPORGRUPID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>URETIMTOPLAMI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>BEYAZ<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>RENKLI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>YIKAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>SEKERKASAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>KURUBOLUM<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>CIFTBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>SIYAH<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>NAYLONBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>POLYESTERBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DIGER<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRBEYAZ<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRRENKLI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRYIKAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRSEKERKASAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRKURUBOLUM<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRCIFTBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRSIYAH<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRNAYLONBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRPOLYESTERBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ICTAMIRDIGER<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRBEYAZ<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRRENKLI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRYIKAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRSEKERKASAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRKURUBOLUM<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRCIFTBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRSIYAH<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRNAYLONBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRPOLYESTERBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRDIGER<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRBEYAZ<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRRENKLI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRYIKAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRSEKERKASAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRKURUBOLUM<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRCIFTBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRSIYAH<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRNAYLONBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRPOLYESTERBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRDIGER<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRBEYAZ<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRRENKLI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRYIKAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRSEKERKASAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRKURUBOLUM<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRCIFTBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRSIYAH<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRNAYLONBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRPOLYESTERBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DISTAMIRDIGER<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRBEYAZ<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRRENKLI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRYIKAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRSEKERKASAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRKURUBOLUM<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRCIFTBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRSIYAH<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRNAYLONBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRPOLYESTERBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRDIGER<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRBEYAZ<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRRENKLI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRYIKAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRSEKERKASAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRKURUBOLUM<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRCIFTBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRSIYAH<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRNAYLONBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRPOLYESTERBOYAMA<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRDIGER<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>UCRETSIZDISTAMIRKILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>UCRETLIDISTAMIRKILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>UCRETSIZICTAMIRKILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>UCRETLIICTAMIRKILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>VARDIYA1KILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>VARDIYA2KILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>VARDIYA3KILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AYLIKURETIMTOPLAMI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AYLIKESDEGERURETIMTOPLAMI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AYLIKICTAMIRESDEGERURETIM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AYLIKDISTAMIRESDEGERURETIM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AYLIKICTAMIRURETIMTOPLAMI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AYLIKUCRETLIICTAMIRTOPLAMI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AYLIKUCRETSIZICTAMIRTOPLAMI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AYLIKUCRETLIDISTAMIRTOPLAMI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AYLIKUCRETSIZDISTAMIRTOPLAMI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>GUNLUKKAPASITE<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIslemGrubuId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIslemTipiId<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiTamirId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMiktar<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCikisTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>itTamir<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFaturaKesilecek<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUcretliIcTamir<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGunlukKapasite<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VardiyaSayisi<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Vardiya<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>T1<b>                </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KatSayi<b>  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<font color="# 0 0FF"><i>/*Bu Raporda Field isimlerinde Kilo geçiyor ama biz Miktar bilgisini select ediyoruz. Yani Metre olarakta çıktı verebilir.</i></font>
+<font color="# 0 0FF"><i>  Eski yapılan dizaynlar bozulmasın diye alan isimlerini ...Miktar olarak değiştirmedik*/</i></font>
+
+<b>  </b><b>Select</b><b> </b>itTamir<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IslemTipiGetir</u></font><b> </b><b>into</b><b> </b>:itTamir<b>;</b>
+<b>  </b><b>Select</b><b> </b>VardiyaSayisi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:VardiyaSayisi<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>VardiyaSayisi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>VardiyaSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>VardiyaSayisi<b> </b><b>=</b><b> </b>3<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>MakinaId<b>,</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>GunlukKapasite<b>,</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaGrubu<b>,</b><b> </b><font color="# 080 0"><u>MakinaGrup</u></font><b>.</b>Adi<b>,</b><font color="# 080 0"><u>Makina</u></font><b>.</b>RaporGrupId<b>,</b>
+<b>             </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Kilo<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Kilo<b> </b><b>*</b><b> </b><font color="# 080 0"><u>IslemGrubu</u></font><b>.</b>KatSayi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Makina</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>MakinaId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MakinaGrup</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MakinaGrup</u></font><b>.</b>MakinaGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaGrubu
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiKayitId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>IslemGrubu</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>IslemGrubu</u></font><b>.</b>IslemGrubuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>IslemGrubuId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PSKaliteKontrolAsamaID
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>SonKayit<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>        </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>InsertTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:AAylikBaslangic<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>InsertTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:AAylikBitis<b> </b><b>and</b>
+<b>        </b><b>(</b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaGrubu<b> </b><b>=</b><b> </b>:AMakinaGrubu<b> </b><b>or</b><b> </b>:AMakinaGrubu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>        </b><b>(</b><font color="# 080 0"><u>Makina</u></font><b>.</b>RaporGrupId<b> </b><b>=</b><b> </b>:AMakinaRaporGrupId<b> </b><b>or</b><b> </b>:AMakinaRaporGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>  </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>MakinaId<b>,</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>GunlukKapasite<b>,</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaGrubu<b>,</b><b> </b><font color="# 080 0"><u>MakinaGrup</u></font><b>.</b>Adi<b>,</b><font color="# 080 0"><u>Makina</u></font><b>.</b>RaporGrupId
+<b>  </b><b>into</b><b> </b>:MakinaId<b>,</b><b> </b>:MakinaAdi<b>,</b><b> </b>:GunlukKapasite<b>,</b><b> </b>:MakinaGrubu<b>,</b><b> </b>:MakinaGrupAdi<b>,</b><b> </b>:MakinaRaporGrupId<b>,</b><b> </b>:AylikUretimToplami<b>,</b><b> </b>:AylikEsdegerUretimToplami<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>UretimToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>AylikIcTamirUretimToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>AylikUcretliIcTamirToplami<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>AylikUcretsizIcTamirToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>AylikUcretliDisTamirToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>AylikUcretsizDisTamirToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>AylikIcTamirEsdegerUretim<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>AylikDisTamirEsdegerUretim<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Beyaz<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Renkli<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Yikama<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>SekerKasar<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>KuruBolum<b>     </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>CiftBoyama<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Siyah<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>NaylonBoyama<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>PolyesterBoyama<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Diger<b>         </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b>IcTamirBeyaz<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>IcTamirRenkli<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>IcTamirYikama<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>IcTamirSekerKasar<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>IcTamirKuruBolum<b>     </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>IcTamirCiftBoyama<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>IcTamirSiyah<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>IcTamirNaylonBoyama<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>IcTamirPolyesterBoyama<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>IcTamirDiger<b>         </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b>UcretliIcTamirBeyaz<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirRenkli<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirYikama<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirSekerKasar<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirKuruBolum<b>     </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirCiftBoyama<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirSiyah<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirNaylonBoyama<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirPolyesterBoyama<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirDiger<b>         </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b>UcretsizIcTamirBeyaz<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirRenkli<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirYikama<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirSekerKasar<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirKuruBolum<b>     </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirCiftBoyama<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirSiyah<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirNaylonBoyama<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirPolyesterBoyama<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirDiger<b>         </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b>DisTamirBeyaz<b>           </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>DisTamirRenkli<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>DisTamirYikama<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>DisTamirSekerKasar<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>DisTamirKuruBolum<b>       </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>DisTamirCiftBoyama<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>DisTamirSiyah<b>           </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>DisTamirNaylonBoyama<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>DisTamirPolyesterBoyama<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>DisTamirDiger<b>           </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b>UcretliDisTamirBeyaz<b>           </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirRenkli<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirYikama<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirSekerKasar<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirKuruBolum<b>       </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirCiftBoyama<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirSiyah<b>           </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirNaylonBoyama<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirPolyesterBoyama<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirDiger<b>           </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b>UcretsizDisTamirBeyaz<b>           </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizDisTamirRenkli<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizDisTamirYikama<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizDisTamirSekerKasar<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizDisTamirKuruBolum<b>       </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizDisTamirCiftBoyama<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizDisTamirSiyah<b>           </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizDisTamirNaylonBoyama<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizDisTamirPolyesterBoyama<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizDisTamirDiger<b>           </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b>UcretsizDisTamirKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliDisTamirKilo<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretsizIcTamirKilo<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>UcretliIcTamirKilo<b>   </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Vardiya1Kilo<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Vardiya2Kilo<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Vardiya3Kilo<b>         </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>IslemTipiId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>FaturaKesilecek<b>,</b><b> </b><font color="# 080 0"><u>TamirCozumSekli</u></font><b>.</b>Ucretli<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiTamirId<b>,</b>
+<b>               </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>IslemGrubu</u></font><b>.</b>KatSayi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PSKaliteKontrolAsamaID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>PartiAsamalariId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiTamir</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiTamir</u></font><b>.</b>PartiTamirId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiTamirId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>TamirCozumSekli</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>TamirCozumSekli</u></font><b>.</b>TamirCozumSekliid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Partitamir</u></font><b>.</b>TamirCozumSekliId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>IslemGrubu</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>IslemGrubu</u></font><b>.</b>IslemGrubuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>IslemGrubuId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>SonKayit<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>MakinaID<b> </b><b>=</b><b> </b>:MakinaId<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>InsertTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:AAylikBaslangic<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>InsertTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:AAylikBitis
+<b>    </b><b>into</b><b> </b>:FIslemTipiId<b>,</b><b> </b>:FFaturaKesilecek<b>,</b><b> </b>:FUcretliIcTamir<b>,</b><b> </b>:PartiTamirId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:KatSayi<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>PartiTamirID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FUcretliIcTamir<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>AylikUcretliIcTamirToplami<b> </b><b>=</b><b> </b>AylikUcretliIcTamirToplami<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b>AylikUcretsizIcTamirToplami<b> </b><b>=</b><b> </b>AylikUcretsizIcTamirToplami<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>        </b>AylikIcTamirUretimToplami<b> </b><b>=</b><b> </b>AylikIcTamirUretimToplami<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b>AylikIcTamirEsdegerUretim<b> </b><b>=</b><b> </b>AylikIcTamirEsdegerUretim<b> </b><b>+</b><b> </b>FMiktar<b> </b><b>*</b><b> </b>KatSayi<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemTipiId<b> </b><b>=</b><b> </b>itTamir<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>AylikUcretliDisTamirToplami<b> </b><b>=</b><b> </b>AylikUcretliDisTamirToplami<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b>AylikUcretsizDisTamirToplami<b> </b><b>=</b><b> </b>AylikUcretsizDisTamirToplami<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>        </b>AylikDisTamirEsdegerUretim<b> </b><b>=</b><b> </b>AylikDisTamirEsdegerUretim<b> </b><b>+</b><b> </b>FMiktar<b> </b><b>*</b><b> </b>KatSayi<b>;</b>
+<b>      </b><b>end</b>
+
+<b>    </b><b>end</b>
+
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>parti</u></font><b>.</b>IslemGrubuId<b>,</b><b> </b><font color="# 080 0"><u>parti</u></font><b>.</b>IslemTipiId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>FaturaKesilecek<b>,</b><b> </b><font color="# 080 0"><u>TamirCozumSekli</u></font><b>.</b>Ucretli<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiTamirId<b>,</b>
+<b>               </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>InsertTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PSKaliteKontrolAsamaID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>PartiAsamalariId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiTamir</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiTamir</u></font><b>.</b>PartiTamirId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiTamirId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>TamirCozumSekli</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>TamirCozumSekli</u></font><b>.</b>TamirCozumSekliid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Partitamir</u></font><b>.</b>TamirCozumSekliId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>SonKayit<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>MakinaID<b> </b><b>=</b><b> </b>:MakinaId<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>InsertTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>InsertTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>MakinaId
+<b>    </b><b>into</b><b> </b>:FIslemGrubuId<b>,</b><b> </b>:FIslemTipiId<b>,</b><b> </b>:FFaturaKesilecek<b>,</b><b> </b>:FUcretliIcTamir<b>,</b><b> </b>:PartiTamirId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FCikistarihi<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Beyaz<b> </b><b>=</b><b> </b>Beyaz<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>Renkli<b> </b><b>=</b><b> </b>Renkli<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>Yikama<b> </b><b>=</b><b> </b>Yikama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>SekerKasar<b> </b><b>=</b><b> </b>SekerKasar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>KuruBolum<b> </b><b>=</b><b> </b>KuruBolum<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>CiftBoyama<b> </b><b>=</b><b> </b>CiftBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>Siyah<b> </b><b>=</b><b> </b>Siyah<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>NaylonBoyama<b> </b><b>=</b><b> </b>NaylonBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>20<b>)</b><b> </b><b>then</b><b> </b>PolyesterBoyama<b> </b><b>=</b><b> </b>PolyesterBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b>Diger<b> </b><b>=</b><b> </b>Diger<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>      </b>UretimToplami<b> </b><b>=</b><b> </b>UretimToplami<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>PartiTamirID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FUcretliIcTamir<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>UcretliIcTamirKilo<b> </b><b>=</b><b> </b>UcretliIcTamirKilo<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>UcretliIcTamirBeyaz<b> </b><b>=</b><b> </b>UcretliIcTamirBeyaz<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretliIcTamirRenkli<b> </b><b>=</b><b> </b>UcretliIcTamirRenkli<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>UcretliIcTamirYikama<b> </b><b>=</b><b> </b>UcretliIcTamirYikama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>UcretliIcTamirSekerKasar<b> </b><b>=</b><b> </b>UcretliIcTamirSekerKasar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>UcretliIcTamirKuruBolum<b> </b><b>=</b><b> </b>UcretliIcTamirKuruBolum<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>UcretliIcTamirCiftBoyama<b> </b><b>=</b><b> </b>UcretliIcTamirCiftBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>UcretliIcTamirSiyah<b> </b><b>=</b><b> </b>UcretliIcTamirSiyah<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>UcretliIcTamirNaylonBoyama<b> </b><b>=</b><b> </b>UcretliIcTamirNaylonBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>20<b>)</b><b> </b><b>then</b><b> </b>UcretliIcTamirPolyesterBoyama<b> </b><b>=</b><b> </b>UcretliIcTamirPolyesterBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b>UcretliIcTamirDiger<b> </b><b>=</b><b> </b>UcretliIcTamirDiger<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b>UcretsizIcTamirKilo<b> </b><b>=</b><b> </b>UcretsizIcTamirKilo<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>UcretsizIcTamirBeyaz<b> </b><b>=</b><b> </b>UcretsizIcTamirBeyaz<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretsizIcTamirRenkli<b> </b><b>=</b><b> </b>UcretsizIcTamirRenkli<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>UcretsizIcTamirYikama<b> </b><b>=</b><b> </b>UcretsizIcTamirYikama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>UcretsizIcTamirSekerKasar<b> </b><b>=</b><b> </b>UcretsizIcTamirSekerKasar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>UcretsizIcTamirKuruBolum<b> </b><b>=</b><b> </b>UcretsizIcTamirKuruBolum<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>UcretsizIcTamirCiftBoyama<b> </b><b>=</b><b> </b>UcretsizIcTamirCiftBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>UcretsizIcTamirSiyah<b> </b><b>=</b><b> </b>UcretsizIcTamirSiyah<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>UcretsizIcTamirNaylonBoyama<b> </b><b>=</b><b> </b>UcretsizIcTamirNaylonBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>20<b>)</b><b> </b><b>then</b><b> </b>UcretsizIcTamirPolyesterBoyama<b> </b><b>=</b><b> </b>UcretsizIcTamirPolyesterBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b>UcretsizIcTamirDiger<b> </b><b>=</b><b> </b>UcretsizIcTamirDiger<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>IcTamirBeyaz<b> </b><b>=</b><b> </b>IcTamirBeyaz<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>IcTamirRenkli<b> </b><b>=</b><b> </b>IcTamirRenkli<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>IcTamirYikama<b> </b><b>=</b><b> </b>IcTamirYikama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>IcTamirSekerKasar<b> </b><b>=</b><b> </b>IcTamirSekerKasar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>IcTamirKuruBolum<b> </b><b>=</b><b> </b>IcTamirKuruBolum<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>IcTamirCiftBoyama<b> </b><b>=</b><b> </b>IcTamirCiftBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>IcTamirSiyah<b> </b><b>=</b><b> </b>IcTamirSiyah<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>IcTamirNaylonBoyama<b> </b><b>=</b><b> </b>IcTamirNaylonBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>20<b>)</b><b> </b><b>then</b><b> </b>IcTamirPolyesterBoyama<b> </b><b>=</b><b> </b>IcTamirPolyesterBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b>IcTamirDiger<b> </b><b>=</b><b> </b>IcTamirDiger<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemTipiId<b> </b><b>=</b><b> </b>itTamir<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>UcretliDisTamirKilo<b> </b><b>=</b><b> </b>UcretliDisTamirKilo<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>UcretliDisTamirBeyaz<b> </b><b>=</b><b> </b>UcretliDisTamirBeyaz<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>DisTamirRenkli<b> </b><b>=</b><b> </b>UcretliDisTamirRenkli<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>UcretliDisTamirYikama<b> </b><b>=</b><b> </b>UcretliDisTamirYikama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>UcretliDisTamirSekerKasar<b> </b><b>=</b><b> </b>UcretliDisTamirSekerKasar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>UcretliDisTamirKuruBolum<b> </b><b>=</b><b> </b>UcretliDisTamirKuruBolum<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>UcretliDisTamirCiftBoyama<b> </b><b>=</b><b> </b>UcretliDisTamirCiftBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>UcretliDisTamirSiyah<b> </b><b>=</b><b> </b>UcretliDisTamirSiyah<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>UcretliDisTamirNaylonBoyama<b> </b><b>=</b><b> </b>UcretliDisTamirNaylonBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>20<b>)</b><b> </b><b>then</b><b> </b>UcretliDisTamirPolyesterBoyama<b> </b><b>=</b><b> </b>UcretliDisTamirPolyesterBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b>UcretliDisTamirDiger<b> </b><b>=</b><b> </b>UcretliDisTamirDiger<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b>UcretsizDisTamirKilo<b> </b><b>=</b><b> </b>UcretsizDisTamirKilo<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>UcretsizDisTamirBeyaz<b> </b><b>=</b><b> </b>UcretsizDisTamirBeyaz<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>DisTamirRenkli<b> </b><b>=</b><b> </b>UcretsizDisTamirRenkli<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>UcretsizDisTamirYikama<b> </b><b>=</b><b> </b>UcretsizDisTamirYikama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>UcretsizDisTamirSekerKasar<b> </b><b>=</b><b> </b>UcretsizDisTamirSekerKasar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>UcretsizDisTamirKuruBolum<b> </b><b>=</b><b> </b>UcretsizDisTamirKuruBolum<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>UcretsizDisTamirCiftBoyama<b> </b><b>=</b><b> </b>UcretsizDisTamirCiftBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>UcretsizDisTamirSiyah<b> </b><b>=</b><b> </b>UcretsizDisTamirSiyah<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>UcretsizDisTamirNaylonBoyama<b> </b><b>=</b><b> </b>UcretsizDisTamirNaylonBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>20<b>)</b><b> </b><b>then</b><b> </b>UcretsizDisTamirPolyesterBoyama<b> </b><b>=</b><b> </b>UcretsizDisTamirPolyesterBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>          </b><b>else</b><b> </b>UcretsizDisTamirDiger<b> </b><b>=</b><b> </b>UcretsizDisTamirDiger<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DisTamirBeyaz<b> </b><b>=</b><b> </b>DisTamirBeyaz<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>DisTamirRenkli<b> </b><b>=</b><b> </b>DisTamirRenkli<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>DisTamirYikama<b> </b><b>=</b><b> </b>DisTamirYikama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>DisTamirSekerKasar<b> </b><b>=</b><b> </b>DisTamirSekerKasar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>DisTamirKuruBolum<b> </b><b>=</b><b> </b>DisTamirKuruBolum<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>DisTamirCiftBoyama<b> </b><b>=</b><b> </b>DisTamirCiftBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>DisTamirSiyah<b> </b><b>=</b><b> </b>DisTamirSiyah<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>DisTamirNaylonBoyama<b> </b><b>=</b><b> </b>DisTamirNaylonBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIslemGrubuId<b> </b><b>=</b><b> </b>20<b>)</b><b> </b><b>then</b><b> </b>DisTamirPolyesterBoyama<b> </b><b>=</b><b> </b>DisTamirPolyesterBoyama<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>        </b><b>else</b><b> </b>DisTamirDiger<b> </b><b>=</b><b> </b>DisTamirDiger<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+
+<b>      </b><b>end</b>
+
+<b>      </b>T1<b> </b><b>=</b><b> </b>FCikisTarihi<b> </b><b>-</b><b> </b>ABaslangicTarihi<b>;</b>
+<b>      </b>vardiya<b> </b><b>=</b><b> </b><font color="# 080 0"><u>VardiyaHesapla</u></font><b>(</b>T1<b>,</b><b> </b>VardiyaSayisi<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Vardiya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>Vardiya1Kilo<b> </b><b>=</b><b> </b>Vardiya1Kilo<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Vardiya<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>Vardiya2Kilo<b> </b><b>=</b><b> </b>Vardiya2Kilo<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Vardiya<b> </b><b>&gt;</b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>Vardiya3Kilo<b> </b><b>=</b><b> </b>Vardiya3Kilo<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="GUNLUKURETIMRAPORUMDSEVKLERI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="GUNLUKURETIMRAPORUSEBASAMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

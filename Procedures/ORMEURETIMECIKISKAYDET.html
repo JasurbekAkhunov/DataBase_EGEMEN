@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<TITLE>ORMEURETIMECIKISKAYDET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1362800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ORMEURETIMECIKISICINSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ORMEURETIMECIKISRAFLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ORMEURETIMECIKISKAYDET</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AEVRAKTIPI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AORMEFISIRSALIYEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AORMEPLANLAMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AORMERAFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKAPADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABRUTMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ORMEURETIMECIKISKAYDET)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ORMEURETIMECIKISKAYDET</u></font><b>(</b>
+<b>    </b>AEVRAKTIPI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AORMEFISIRSALIYEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AORMEPLANLAMAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AORMERAFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKAPADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AMIKTAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>AMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABRUTMIKTAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HareketTipi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RenkId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Lot<b>         </b><b>varchar</b><b>(</b>150<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MelanjKodu<b>  </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UreticiId<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeFisId<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeIrsaliyeId<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DepoId<b>      </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AEvrakTipi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>OrmeFisID<b> </b><b>=</b><b> </b>AOrmeFisIrsaliyeId<b>;</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeFis</u></font><b>.</b>HareketTipi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeFis</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeFis</u></font><b>.</b>OrmeFisID<b> </b><b>=</b><b> </b>:OrmeFisId<b> </b><b>into</b><b> </b>:HareketTipi<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RenkId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>UreticiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>MelanjKodu<b>,</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>DepoId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>RafID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RafId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b>:AOrmeRafId
+<b>      </b><b>into</b><b> </b>:RenkId<b>,</b><b> </b>:Lot<b>,</b><b> </b>:UreticiId<b>,</b><b> </b>:MelanjKodu<b>,</b><b> </b>:DepoId<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>OrmeIrsaliyeId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>Iade<b>,</b><b> </b>HamIade<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmePlanlamaId<b>,</b><b> </b>HamId<b>,</b><b> </b>OrmeRafId<b>,</b>
+<b>                            </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>BrutMiktar<b>,</b><b> </b>OrmeMakinaId<b>,</b><b> </b>RenkId<b>,</b><b> </b>Lot<b>,</b><b> </b>UreticiId<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>DepoId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>DovizID<b>)</b>
+<b>      </b><b>Select</b><b> </b>:OrmeFisId<b>,</b><b> </b>:OrmeIrsaliyeId<b>,</b><b> </b>:HareketTipi<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmeSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b>:AOrmePlanlamaId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>HamId<b>,</b><b> </b>:AOrmeRafId<b>,</b>
+<b>                            </b>:AKapAdedi<b>,</b><b> </b>:AMiktar<b>,</b><b> </b>:ABrutMiktar<b>,</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmeMakinaId<b>,</b><b> </b>:RenkId<b>,</b><b> </b>:Lot<b>,</b><b> </b>:UreticiId<b>,</b><b> </b>:MelanjKodu<b>,</b><b> </b>:DepoId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisFiyati<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisFiyatiDovizID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font>
+<b>        </b><b>left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b>:AOrmeRafId
+<b>        </b><b>left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>HamID
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmePlanlamaId<b> </b><b>=</b><b> </b>:AOrmePlanlamaId<b>;</b>
+
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b>OrmeIrsaliyeID<b> </b><b>=</b><b> </b>AOrmeFisIrsaliyeId<b>;</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>HareketTipi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>OrmeIrsaliyeId<b> </b><b>=</b><b> </b>:OrmeIrsaliyeId<b> </b><b>into</b><b> </b>:HareketTipi<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RenkId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>UreticiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>MelanjKodu<b>,</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>DepoId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>RafID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RafId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b>:AOrmeRafId
+<b>      </b><b>into</b><b> </b>:RenkId<b>,</b><b> </b>:Lot<b>,</b><b> </b>:UreticiId<b>,</b><b> </b>:MelanjKodu<b>,</b><b> </b>:DepoId<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>OrmeIrsaliyeId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>Iade<b>,</b><b> </b>HamIade<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmePlanlamaId<b>,</b><b> </b>HamId<b>,</b><b> </b>OrmeRafId<b>,</b>
+<b>                            </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>BrutMiktar<b>,</b><b> </b>OrmeMakinaId<b>,</b><b> </b>RenkId<b>,</b><b> </b>Lot<b>,</b><b> </b>UreticiId<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>DepoId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>DovizID<b>)</b>
+<b>      </b><b>Select</b><b> </b>:OrmeFisId<b>,</b><b> </b>:OrmeIrsaliyeId<b>,</b><b> </b>:HareketTipi<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmeSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b>:AOrmePlanlamaId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>HamId<b>,</b><b> </b>:AOrmeRafId<b>,</b>
+<b>                            </b>:AKapAdedi<b>,</b><b> </b>:AMiktar<b>,</b><b> </b>:ABrutMiktar<b>,</b><b> </b>:AMakinaId<b>,</b><b> </b>:RenkId<b>,</b><b> </b>:Lot<b>,</b><b> </b>:UreticiId<b>,</b><b> </b>:MelanjKodu<b>,</b><b> </b>:DepoId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisFiyati<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisFiyatiDovizID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font>
+<b>        </b><b>left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b>:AOrmeRafId
+<b>        </b><b>left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>HamID
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmePlanlamaId<b> </b><b>=</b><b> </b>:AOrmePlanlamaId<b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ORMEURETIMECIKISICINSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ORMEURETIMECIKISRAFLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEMODELKUMAS</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1385800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEMODELBEDENOLCU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEMODELPARCA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEMODELKUMAS</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEMODELKUMAS)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEMODELKUMAS</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>MODELKUMAS</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b> </b><b>Integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>AnaKumas<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>Old</b><b>.</b>AnaKumas<b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Ana Kumaş Bilgisi Değiştirilemez.'<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>AnaKumas<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Kapali<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>new</b><b>.</b>ModelKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b> </b><b>Where</b><b> </b>ModelKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ModelKayitId<b> </b><b>And</b><b> </b>Kapali<b> </b><b>=</b><b> </b>0<b> </b><b>And</b><b> </b>AnaKumas<b> </b><b>=</b><b> </b>1<b> </b><b>And</b><b> </b>HamId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>Into</b><b> </b>:KS<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Farklı Ham Adına Sahip Birden Fazla Aktif Ana Kumaş Bilgisi Olamaz.'<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b> </b><b>Where</b><b> </b>ModelKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ModelKayitId<b> </b><b>And</b><b> </b>Kapali<b> </b><b>=</b><b> </b>0<b> </b><b>And</b><b> </b>AnaKumas<b> </b><b>=</b><b> </b>1<b> </b><b>And</b><b> </b>HamId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>And</b><b> </b>RenkId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>RenkId<b> </b><b>Into</b><b> </b>:KS<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Aynı Ham Adına ve Renge Sahip Birden Fazla Aktif Ana Kumaş Bilgisi Olamaz.'<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>RenkId<b>,</b><b> </b><b>New</b><b>.</b>RenkId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Delete</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>Where</b><b> </b><b>(</b><b>Old</b><b>.</b>AnaKumas<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>AnaUrunID<b> </b><b>in</b><b> </b><b>(</b><b>Select</b><b> </b>MasterUrun<b>.</b>UrunID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b>MasterUrun<b> </b><b>where</b><b> </b>MasterUrun<b>.</b>ModelKayitID<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>ModelKayitID<b> </b><b>and</b><b> </b>MasterUrun<b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>ModelKumasID<b>)</b><b>)</b><b>;</b>
+<b>    </b><b>Delete</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>Where</b><b> </b><b>(</b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKayitID<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>ModelKayitID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>ModelKumasID<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>new</b><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEMODELBEDENOLCU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEMODELPARCA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTBUKUMTALIMAT</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="113800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTBTEKLIFILAVEISLEM.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTCARIVIRMAN.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTBUKUMTALIMAT</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTBUKUMTALIMAT)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTBUKUMTALIMAT</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BUKUMTALIMAT</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHamId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KullanimOrani<b>    </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IplikCinsiMelanj<b> </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Fason<b>            </b><b>smallint</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>ReceteHamId<b>,</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>KullanimOrani<b>,</b><b> </b><font color="# 080 0"><u>IplikCinsi</u></font><b>.</b>Melanj<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ham</u></font><b>.</b>hamID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>ReceteHamId
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>IplikCinsi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>IplikCinsi</u></font><b>.</b>IplikCinsiID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>IplikCinsiId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>hamid
+<b>        </b><b>into</b><b> </b>:FHamId<b>,</b><b> </b>:KullanimOrani<b>,</b><b> </b>:IplikCinsiMelanj<b> </b><b>do</b>
+<b>        </b><b>begin</b>
+<b>			</b><b>Select</b><b> </b><b>First</b><b> </b>1<b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>Fason<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BoyaSiparisKayitId<b> </b><b>into</b><b> </b>:Fason<b>;</b>
+<b>            </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BukumTalimatRecete</u></font><b>(</b>BukumTalimatid<b>,</b><b> </b>HamId<b>,</b><b> </b>KullanimOrani<b>,</b><b> </b>Fason<b>)</b><b> </b><b>Values</b><b> </b><b>(</b><b>new</b><b>.</b>BukumTalimatid<b>,</b><b> </b>:FHamId<b>,</b><b> </b>:KullanimOrani<b>,</b><b> </b>:Fason<b>)</b><b>;</b>
+<b>         </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTBTEKLIFILAVEISLEM.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTCARIVIRMAN.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

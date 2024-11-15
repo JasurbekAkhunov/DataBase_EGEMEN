@@ -1,0 +1,196 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTPARTIASAMALARI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="996800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTPARTIASAMAILAVESARF.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTPARTIASAMASTOK.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTPARTIASAMALARI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTPARTIASAMALARI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTPARTIASAMALARI</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>PARTIASAMALARI</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PaId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ASira<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiDurumu<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IslemTipiId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IslemGrubuId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Okey<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FRptKontrolu<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>itNormal<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>itRpt<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>itKontrol<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>itTamir<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>itNumune<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ReceteUstAsamaId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AsamaDepoNo<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ReceteYazildiDegisimKontYap<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ReceteYazildi<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>where</b><b> </b>PartiKayitId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PartiKayitId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>Koyultma<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Koyultma<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>itNormal<b>,</b><b> </b>itRpt<b>,</b><b> </b>itKontrol<b>,</b><b> </b>itTamir<b>,</b><b> </b>itNumune<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IslemTipiGetir</u></font><b> </b><b>into</b><b> </b>:itNormal<b>,</b><b> </b>:itRpt<b>,</b><b> </b>:itKontrol<b>,</b><b> </b>:itTamir<b>,</b><b> </b>:itNumune<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b><b>(</b><b>new</b><b>.</b>AsamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>(</b><b>new</b><b>.</b>AsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>AsamaVeyaReceteSecmelisiniz</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>SerbestAsama<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>SerbestAsama<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>KontrolAsama<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>KontrolAsama<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>PartiTamirId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Sira<b> </b><b>=</b><b> </b><b>-</b>1<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Sira<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><b>Max</b><b>(</b>sira<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiTamirSinif</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiTamirSinif</u></font><b>.</b>PartiSinifId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiAsamalariId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiTamirSinif</u></font><b>.</b>PartiTamirid<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiTamirId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>AsamayaDahil<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>OtomasyonaDahilmi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>         </b><b>(</b><b>(</b><b>(</b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiTamirId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiTamirId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>PartiTamirId<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>GirisTarihi<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiTamirId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiTamirId<b>)</b><b>)</b>
+<b>    </b><b>into</b><b> </b><b>new</b><b>.</b>Sira<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Sira<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Sira<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Sira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>    </b><b>else</b><b> </b><b>new</b><b>.</b>Sira<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>  </b><font color="# 0 0FF"><i>/* Rptmi Kontrol Et */</i></font>
+<b>    </b><b>Select</b><b> </b>RptKontrolu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>where</b><b> </b>sistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FRptKontrolu<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FRptKontrolu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>IslemTipiId<b>,</b><b> </b>IslemGrubuId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiKayitId<b> </b><b>into</b><b> </b>:IslemTipiId<b>,</b><b> </b>:IslemGrubuId<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>IslemTipiId<b> </b><b>=</b><b> </b>itNormal<b> </b><b>and</b><b> </b>IslemGrubuId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b>Okey<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteRptKontrolu</u></font><b>(</b><b>new</b><b>.</b>PartiKayitId<b>,</b><b> </b><b>new</b><b>.</b>ReceteId<b>)</b><b> </b><b>into</b><b> </b>:Okey<b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b>Okey<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>PartiIslemTipiRptOlmali</u></font><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Sira<b> </b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>ASira<b> </b><b>=</b><b> </b><b>new</b><b>.</b>Sira<b>;</b>
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b>PartiAsamalariId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>where</b><b> </b>PartiKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiKayitId<b> </b><b>and</b><b> </b>Sira<b> </b><b>&gt;</b><b>=</b><b> </b><b>new</b><b>.</b>Sira<b> </b><b>order</b><b> </b><b>by</b><b> </b>Sira<b> </b><b>into</b><b> </b>:PaId<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>update</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>set</b><b> </b>Sira<b> </b><b>=</b><b> </b>:ASira<b> </b><b>where</b><b> </b>PartiAsamalariId<b> </b><b>=</b><b> </b>:PaId<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><b>max</b><b>(</b>sira<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>where</b><b> </b>PartiKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiKayitId<b> </b><b>into</b><b> </b>:ASira<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>ASira<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ASira<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>else</b><b> </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>    </b><b>new</b><b>.</b>Sira<b> </b><b>=</b><b> </b>ASira<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b>ReceteYazildiDegisimKontYap<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:ReceteYazildiDegisimKontYap<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ReceteYazildiDegisimKontYap<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>ReceteYazildi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiKayitID<b> </b><b>into</b><b> </b>:ReceteYazildi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ReceteYazildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PartiKayitID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b>  </b><b>New</b><b>.</b>Sira<b> </b><b>&lt;</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>Sira
+<b>        </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>' Reçetesi Yazılmış Partinin Boya Öncesi Aşamalarına Müdahale Edilemez....'<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>PartininAsilRecetesimi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>else</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>PartininAsilRecetesimi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<font color="# 0 0FF"><i>/* secilen recete ile siparişte secilen recete uyuyormu diye bakıyoruz, uyuyorsa ve asıl recete girilmemiş ise asıl recete yapıcaz */</i></font>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>UstAsamaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteId<b> </b><b>into</b><b> </b>:ReceteUstAsamaId<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BoyaSiparisDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>LabReceteId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>UstAsamaId<b> </b><b>=</b><b> </b>:ReceteUstAsamaId
+<b>    </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartininAsilRecetesimi<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>PartininAsilRecetesimi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>AsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>CikistaKiloZorunlu<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>CikistaMetreZorunlu<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>CikistaArabaZorunlu<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>UretimMaliyeti<b>,</b>
+<b>      </b><font color="# 080 0"><u>Asama</u></font><b>.</b>UretimMaliyetiDovizId<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>UretimMaliyetiKg<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>UretimMaliyetiKgDovizId<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>IscilikUretimMaliyeti<b>,</b>
+<b>      </b><font color="# 080 0"><u>Asama</u></font><b>.</b>IscilikUretimMaliyetiDovizId<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>IscilikUretimMaliyetiKg<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>IscilikUretimMaliyetiKgDovizId<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>MutfakDepoNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Asama</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>AsamaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>AsamaId
+<b>      </b><b>into</b><b> </b><b>New</b><b>.</b>CikistaKiloZorunlu<b>,</b><b> </b><b>new</b><b>.</b>CikistaMetreZorunlu<b>,</b><b> </b><b>New</b><b>.</b>CikistaArabaZorunlu<b>,</b><b> </b><b>new</b><b>.</b>UretimMaliyeti<b>,</b>
+<b>      </b><b>new</b><b>.</b>UretimMaliyetiDovizId<b>,</b><b> </b><b>new</b><b>.</b>UretimMaliyetiKg<b>,</b><b> </b><b>new</b><b>.</b>UretimMaliyetiKgDovizId<b>,</b><b> </b><b>new</b><b>.</b>IscilikUretimMaliyeti<b>,</b>
+<b>      </b><b>new</b><b>.</b>IscilikUretimMaliyetiDovizId<b>,</b><b> </b><b>new</b><b>.</b>IscilikUretimMaliyetiKg<b>,</b><b> </b><b>new</b><b>.</b>IscilikUretimMaliyetiKgDovizId<b>,</b><b> </b>:AsamaDepoNo<b>;</b>
+
+
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>CikistaKiloZorunlu<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>CikistaMetreZorunlu<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>CikistaArabaZorunlu<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>UretimMaliyeti<b>,</b>
+<b>    </b><font color="# 080 0"><u>Asama</u></font><b>.</b>UretimMaliyetiDovizId<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>UretimMaliyetiKg<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>UretimMaliyetiKgDovizId<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>IscilikUretimMaliyeti<b>,</b>
+<b>      </b><font color="# 080 0"><u>Asama</u></font><b>.</b>IscilikUretimMaliyetiDovizId<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>IscilikUretimMaliyetiKg<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>IscilikUretimMaliyetiKgDovizId<b>,</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>MutfakDepoNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Recete</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Asama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>AsamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>UstAsamaId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteId
+<b>    </b><b>into</b><b> </b><b>New</b><b>.</b>CikistaKiloZorunlu<b>,</b><b> </b><b>new</b><b>.</b>CikistaMetreZorunlu<b>,</b><b> </b><b>New</b><b>.</b>CikistaArabaZorunlu<b>,</b><b> </b><b>new</b><b>.</b>UretimMaliyeti<b>,</b>
+<b>    </b><b>new</b><b>.</b>UretimMaliyetiDovizId<b>,</b><b> </b><b>new</b><b>.</b>UretimMaliyetiKg<b>,</b><b> </b><b>new</b><b>.</b>UretimMaliyetiKgDovizId<b>,</b><b> </b><b>new</b><b>.</b>IscilikUretimMaliyeti<b>,</b>
+<b>      </b><b>new</b><b>.</b>IscilikUretimMaliyetiDovizId<b>,</b><b> </b><b>new</b><b>.</b>IscilikUretimMaliyetiKg<b>,</b><b> </b><b>new</b><b>.</b>IscilikUretimMaliyetiKgDovizId<b>,</b><b> </b>:AsamaDepoNo<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>MutfakDepoNo<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>StoktanDusuldu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>AsamaDepoNo<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>new</b><b>.</b>MutfakDepoNo<b> </b><b>=</b><b> </b>AsamaDepoNo<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>AsamaDegistirildi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>new</b><b>.</b>AsamaDegisimTarihi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>AsamaDegisimTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTPARTIASAMAILAVESARF.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTPARTIASAMASTOK.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

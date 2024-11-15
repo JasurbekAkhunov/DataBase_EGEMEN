@@ -1,0 +1,187 @@
+<HTML>
+<HEAD>
+<TITLE>KALITEGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="945800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="KALITEETIKETLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="KALITEKONTDOKUMATALIMATLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">KALITEGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AKALITEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">KALITEADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">COMPOSITION</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RESIMDOSYAADI1</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RESIMDOSYAADI2</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMFIYAT</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MINSIPARISMIKTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ENISTENEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GRAMAJISTENEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 1 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KAPALI</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure KALITEGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>KALITEGETIR</u></font><b>(</b>
+<b>    </b>AKALITEID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b> </b><b>=</b><b> </b><b>Null</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>KALITEADI<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>COMPOSITION<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>RESIMDOSYAADI1<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>RESIMDOSYAADI2<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>BIRIMFIYAT<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DOVIZID<b> </b><font color="# 080 0"><u>DOVIZSIZE</u></font><b>,</b>
+<b>    </b>MINSIPARISMIKTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ENISTENEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>GRAMAJISTENEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>NOTU<b> </b><b>BLOB</b><b> </b><b>SUB_TYPE</b><b> </b>1<b> </b><b>SEGMENT</b><b> </b><b>SIZE</b><b> </b>80<b>,</b>
+<b>    </b>KAPALI<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBoyaTeklifKayitID<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SirketDisiKullanici<b> </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EgemenFirmaID<b>       </b><b>Integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>EgemenFirmaID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:EgemenFirmaId<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>EgemenFirmaId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*NY*/</i></font>
+<b>    </b><b>Select</b><b> </b><b>first</b><b> </b>1<b> </b>BoyaTeklifKayitID<b>,</b><b> </b>DovizID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b> </b><b>where</b><b> </b>FirmaID<b> </b><b>=</b><b> </b><b>(</b><b>Select</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>FirmaKodumuz<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>SistemId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>Order</b><b> </b><b>By</b><b> </b>TeklifTarihi<b> </b><b>Desc</b><b>,</b><b> </b>BoyaTeklifKayitID<b> </b><b>desc</b><b> </b><b>into</b><b> </b>:FBoyaTeklifKayitID<b>,</b><b> </b>:DovizID<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AKullaniciID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>Select</b><b> </b>SirketDisiKullanici<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>:AKullaniciID<b> </b><b>into</b><b> </b>:SirketDisiKullanici<b>;</b>
+<b>  </b><b>else</b><b> </b>SirketDisiKullanici<b> </b><b>=</b><b> </b>0<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>FBoyaTeklifKayitID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*NY*/</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>First</b><b> </b>1<b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteAdi<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>ResimDosyaAdi1<b>,</b><b> </b><b>Max</b><b>(</b>TeklifEdilenFiyat<b>)</b><b> </b>BirimFiyat<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>ResimDosyaAdi2<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Composition<b>,</b>
+<b>           </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>MinSiparisMiktari<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>EnIstenen<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>GramajIstenen<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Notu<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Kapali
+<b>      </b><b>FROM</b><b> </b><font color="# 080 0"><u>Kalite</u></font>
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>BoyaTeklifDetay</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>BoyaTeklifDetay</u></font><b>.</b>BoyaTeklifKayitID<b> </b><b>=</b><b> </b>:FBoyaTeklifKayitID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaTeklifDetay</u></font><b>.</b>KaliteID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteID
+<b>      </b><b>Where</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteID<b> </b><b>=</b><b> </b>:AKaliteID
+<b>      </b><b>and</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0
+<b>      </b><b>Group</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteAdi<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>ResimDosyaAdi1<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>ResimDosyaAdi2<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Composition<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>MinSiparisMiktari<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>EnIstenen<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>GramajIstenen<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Notu<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Kapali
+<b>    </b><b>into</b><b> </b>:KaliteAdi<b>,</b><b> </b>:ResimDosyaAdi1<b>,</b><b> </b>:BirimFiyat<b>,</b><b> </b>:ResimDosyaAdi2<b>,</b><b> </b>:Composition<b>,</b><b> </b>:MinSiparisMiktari<b>,</b><b> </b>:EnIstenen<b>,</b><b> </b>:GramajIstenen<b>,</b><b> </b>:Notu<b>,</b><b> </b>:Kapali<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteAdi<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>ResimDosyaAdi1<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>BirimFiyatMt<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>DovizId<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>ResimDosyaAdi2<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Composition<b>,</b>
+<b>           </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>MinSiparisMiktari<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>EnIstenen<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>GramajIstenen<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Notu<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Kapali
+<b>    </b><b>FROM</b><b>   </b><font color="# 080 0"><u>Kalite</u></font>
+<b>    </b><b>Where</b><b>  </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteID<b> </b><b>=</b><b> </b>:AKaliteID
+<b>      </b><b>and</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0
+<b>    </b><b>into</b><b> </b>:KaliteAdi<b>,</b><b> </b>:ResimDosyaAdi1<b>,</b><b> </b>:BirimFiyat<b>,</b><b> </b>:DovizId<b>,</b><b> </b>:ResimDosyaAdi2<b>,</b><b> </b>:Composition<b>,</b><b> </b>:MinSiparisMiktari<b>,</b><b> </b>:EnIstenen<b>,</b><b> </b>:GramajIstenen<b>,</b><b> </b>:Notu<b>,</b><b> </b>:Kapali<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>DovizID<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Select</b><b> </b>SistemDovizID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>SistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:DovizID<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>SirketDisiKullanici<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>Notu<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>KaliteAdi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="KALITEETIKETLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="KALITEKONTDOKUMATALIMATLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

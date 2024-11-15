@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<TITLE>RAFLAMAYISUMILEORGANIZEET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1630800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="RAFFIFOMALIYETGETIRTEMP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="RAFLANMAMISHAMSTOKRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">RAFLAMAYISUMILEORGANIZEET</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AORMERAFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure RAFLAMAYISUMILEORGANIZEET)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>RAFLAMAYISUMILEORGANIZEET</u></font><b>(</b>
+<b>    </b>AORMERAFID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NetGirisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BrutGirisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KapGirisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NetCikisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BrutCikisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KapCikisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>TrNetGirisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TrBrutGirisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TrKapGirisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TrNetCikisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TrBrutCikisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TrKapCikisToplami<b>  </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BobinGirisToplami<b>  </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BobinCikisToplami<b>  </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AdetGirisToplami<b>  </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AdetCikisToplami<b>  </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TrAdetGirisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TrAdetCikisToplami<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IslemDevamEdiyor<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DigerRafId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AOrmeRafId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exit</b><b>;</b>
+
+<b>  </b><b>select</b><b> </b>IslemDevamEdiyor<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>where</b><b> </b>OrmeRafId<b> </b><b>=</b><b> </b>:AOrmeRafId<b> </b><b>into</b><b> </b>:IslemDevamEdiyor<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>IslemDevamEdiyor<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Exit</b><b>;</b>
+
+<b>  </b><b>update</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>set</b><b> </b>IslemDevamEdiyor<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b>OrmeRafId<b> </b><b>=</b><b> </b>:AOrmeRafId<b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>sum</b><b>(</b>Miktar<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>BrutMiktar<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>KapAdedi<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>BobinSayisi<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>Adet<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b> </b><b>where</b><b> </b>OrmeRafId<b> </b><b>=</b><b> </b>:AOrmeRafId<b> </b><b>into</b><b> </b>:NetGirisToplami<b>,</b><b> </b>:BrutGirisToplami<b>,</b><b> </b>:KapGirisToplami<b>,</b><b> </b>:BobinGirisToplami<b>,</b><b> </b>:AdetGirisToplami<b>;</b>
+<b>  </b><b>select</b><b> </b><b>sum</b><b>(</b>Kilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>BrutKilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>KapAdedi<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>Adet<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRafTransferFisiDetay</u></font><b> </b><b>where</b><b> </b>YeniOrmeRafId<b> </b><b>=</b><b> </b>:AOrmeRafId<b> </b><b>and</b><b> </b>OnayDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:TrNetGirisToplami<b>,</b><b> </b>:TrBrutGirisToplami<b>,</b><b> </b>:TrKapGirisToplami<b>,</b><b> </b>:TrAdetGirisToplami<b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>sum</b><b>(</b>Miktar<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>BrutMiktar<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>KapAdedi<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>BobinSayisi<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>Adet<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>where</b><b> </b>OrmeRafId<b> </b><b>=</b><b> </b>:AOrmeRafId<b> </b><b>into</b><b> </b>:NetCikisToplami<b>,</b><b> </b>:BrutCikisToplami<b>,</b><b> </b>:KapCikisToplami<b>,</b><b> </b>:BobinCikisToplami<b>,</b><b> </b>:AdetCikisToplami<b>;</b>
+<b>  </b><b>select</b><b> </b><b>sum</b><b>(</b>Kilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>BrutKilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>KapAdedi<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>Adet<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRafTransferFisiDetay</u></font><b> </b><b>where</b><b> </b>OrmeRafId<b> </b><b>=</b><b> </b>:AOrmeRafId<b> </b><b>and</b><b> </b>OnayDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:TrNetCikisToplami<b>,</b><b> </b>:TrBrutCikisToplami<b>,</b><b> </b>:TrKapCikisToplami<b>,</b><b> </b>:TrAdetCikisToplami<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>NetGirisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>NetGirisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BrutGirisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>BrutGirisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>KapGirisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>KapGirisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>NetCikisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>NetCikisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BrutCikisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>BrutCikisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>KapCikisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>KapCikisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BobinGirisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>BobinGirisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BobinCikisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>BobinCikisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AdetGirisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>AdetGirisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AdetCikisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>AdetCikisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>TrNetGirisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TrNetGirisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>TrBrutGirisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TrBrutGirisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>TrKapGirisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TrKapGirisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>TrNetCikisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TrNetCikisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>TrBrutCikisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TrBrutCikisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>TrKapCikisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TrKapCikisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>TrAdetGirisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TrAdetGirisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>TrAdetCikisToplami<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TrAdetCikisToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><font color="# 0 0FF"><i>/*if (NetGirisToplami + TrNetGirisToplami &lt; NetCikisToplami + TrNetCikisToplami) then</i></font>
+<font color="# 0 0FF"><i>    Exception KayitHatasi ' AOrmeRafId: ' || AOrmeRafId;*/</i></font>
+
+<b>  </b><b>update</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>set</b><b> </b>GirisKapAdedi<b> </b><b>=</b><b> </b>:KapGirisToplami<b> </b><b>+</b><b> </b>:TrKapGirisToplami<b>,</b><b> </b>BrutGirisMiktari<b> </b><b>=</b><b> </b>:BrutGirisToplami<b> </b><b>+</b><b> </b>:TrBrutGirisToplami<b>,</b><b> </b>NetGirisMiktari<b> </b><b>=</b><b> </b>:NetGirisToplami<b> </b><b>+</b><b> </b>:TrNetGirisToplami<b>,</b>
+<b>    </b>CikisKapAdedi<b> </b><b>=</b><b> </b>:KapCikisToplami<b> </b><b>+</b><b> </b>:TrKapCikisToplami<b>,</b><b> </b>BrutCikisMiktari<b> </b><b>=</b><b> </b>:BrutCikisToplami<b> </b><b>+</b><b> </b>:TrBrutCikisToplami<b>,</b><b> </b>NetCikisMiktari<b> </b><b>=</b><b> </b>:NetCikisToplami<b> </b><b>+</b><b> </b>:TrNetCikisToplami<b>,</b>
+<b>    </b>GirisBobinSayisi<b> </b><b>=</b><b> </b>:BobinGirisToplami<b>,</b><b> </b>CikisBobinSayisi<b> </b><b>=</b><b> </b>:BobinCikisToplami<b>,</b><b> </b>GirisAdet<b> </b><b>=</b><b> </b>:AdetGirisToplami<b> </b><b>+</b><b> </b>:TrAdetGirisToplami<b>,</b><b> </b>CikisAdet<b> </b><b>=</b><b> </b>:AdetCikisToplami<b> </b><b>+</b><b> </b>:TrAdetCikisToplami
+<b>  </b><b>where</b><b> </b>OrmeRafId<b> </b><b>=</b><b> </b>:AOrmeRafId<b>;</b>
+
+<b>  </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>OrmeRafBosHavuzSil</u></font><b>(</b>:AOrmeRafId<b>)</b><b>;</b>
+
+<b>  </b><b>update</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>set</b><b> </b>IslemDevamEdiyor<b> </b><b>=</b><b> </b>0<b> </b><b>where</b><b> </b>OrmeRafId<b> </b><b>=</b><b> </b>:AOrmeRafId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="RAFFIFOMALIYETGETIRTEMP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="RAFLANMAMISHAMSTOKRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

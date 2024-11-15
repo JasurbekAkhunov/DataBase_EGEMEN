@@ -1,0 +1,245 @@
+<HTML>
+<HEAD>
+<TITLE>RECETESTOKLOTBILGISI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1666800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="RECETESONBOYANANPARTIBILGISI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="RECETETURUBOYAGRUPKIMYASALGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">RECETESTOKLOTBILGISI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARECETEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTIASAMALARIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">RENK</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LOT</TD>
+    <TD><P CLASS="Base2">VARCHAR(150)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ANAKUMASEN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ANAKUMASGRM2</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ANAKUMASYIKAMAONCESIEN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ANAKUMASYIKAMAONCESIGRAMAJ</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ANAKUMASTUPACIKENMAYLI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONFIKSEASAMASIVAR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILKKEZBOYANACAK</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure RECETESTOKLOTBILGISI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>RECETESTOKLOTBILGISI</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARECETEID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>APARTIASAMALARIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b><font color="# 080 0"><u>RENK</u></font><b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>LOT<b> </b><b>VARCHAR</b><b>(</b>150<b>)</b><b>,</b>
+<b>    </b>ANAKUMASEN<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ANAKUMASGRM2<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ANAKUMASYIKAMAONCESIEN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ANAKUMASYIKAMAONCESIGRAMAJ<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ANAKUMASTUPACIKENMAYLI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ONFIKSEASAMASIVAR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTISINIFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ILKKEZBOYANACAK<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLot<b> </b><b>varchar</b><b>(</b>150<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FRenk<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MaxKilo<b> </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamStokDetayId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EskiLabReceteKodu<b>  </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IlkBoyananPartiKayitId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Ilave<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SokumUzeriBoya<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b>Lot<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Lot<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>(</b>:APartiKayitId<b>,</b><b> </b>:AReceteId<b>,</b><b> </b>:APartiAsamalariId<b>)</b>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>.</b>PartiSinifID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>RafDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Lot<b> </b><b>into</b><b> </b>:FLot<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FLot<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>and</b><b> </b>FLot<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>Lot<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>FLot<b>)</b><b> </b><b>&lt;</b><b> </b>148<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Lot<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>)</b><b> </b><b>then</b><b> </b>Lot<b> </b><b>=</b><b> </b>Lot<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>      </b>Lot<b> </b><b>=</b><b> </b>Lot<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>FLot<b> </b><b>as</b><b> </b><b>blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b><font color="# 080 0"><u>Renk</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>(</b>:APartiKayitId<b>,</b><b> </b>:AReceteId<b>,</b><b> </b>:APartiAsamalariId<b>)</b>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>.</b>PartiSinifID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>RafDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b><font color="# 080 0"><u>Renk</u></font><b> </b><b>into</b><b> </b>:FRenk<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FRenk<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>and</b><b> </b>FRenk<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b><font color="# 080 0"><u>Renk</u></font><b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>FRenk<b>)</b><b> </b><b>&lt;</b><b> </b>95<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>Renk</u></font><b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>)</b><b> </b><b>then</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>=</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>      </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>=</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>FRenk<b> </b><b>as</b><b> </b><b>blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>IlkBoyananPartiKayitId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiLabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>SokumUzeriBoya<b>,</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>Ilave<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Recete</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>LabReceteId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:AReceteId
+<b>    </b><b>into</b><b> </b>:IlkBoyananPartiKayitId<b>,</b><b> </b>:EskiLabReceteKodu<b>,</b><b> </b>:SokumUzeriBoya<b>,</b><b> </b>:Ilave<b>;</b>
+
+<b>  </b>IlkKezBoyanacak<b> </b><b>=</b><b> </b>0<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>Ilave<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b>EskiLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>EskiLabReceteKodu<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>IlkBoyananPartiKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>KS<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_1</u></font><b>(</b>:APartiKayitId<b>,</b><b> </b>:AReceteId<b>,</b><b> </b>:APartiAsamalariId<b>)</b>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_1</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:IlkBoyananPartiKayitId
+<b>        </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Ks<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>IlkKezBoyanacak<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b>IlkKezBoyanacak<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>Select</b><b> </b><b>max</b><b>(</b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>.</b>Kilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>(</b>:APartiKayitId<b>,</b><b> </b>:AReceteId<b>,</b><b> </b>:APartiAsamalariId<b>)</b>
+<b>    </b><b>into</b><b> </b>:MaxKilo<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Max</b><b>(</b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>.</b>PartiSinifID<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>(</b>:APartiKayitId<b>,</b><b> </b>:AReceteId<b>,</b><b> </b>:APartiAsamalariId<b>)</b>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>.</b>PartiSinifID
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>.</b>Kilo<b> </b><b>=</b><b> </b>:MaxKilo
+<b>    </b><b>into</b><b> </b>:PartiSinifId<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>max</b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>(</b>:APartiKayitId<b>,</b><b> </b>:AReceteId<b>,</b><b> </b>:APartiAsamalariId<b>)</b>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>.</b>PartiSinifID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>RafDetayId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_3</u></font><b>.</b>Kilo<b> </b><b>=</b><b> </b>:MaxKilo
+<b>    </b><b>into</b><b> </b>:HamStokDetayId<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>En<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Grm2<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>YikamaOncesiEn<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>YikamaOncesiGramaj<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>TupAcikEnMayli<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterID
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b>:HamStokDetayId
+<b>    </b><b>into</b><b> </b>:AnaKumasEn<b>,</b><b> </b>:AnaKumasGrm2<b>,</b><b> </b>:AnaKumasYikamaOncesiEn<b>,</b><b> </b>:AnaKumasYikamaOncesiGramaj<b>,</b><b> </b>:AnaKumasTupAcikEnMayli<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Asama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>AsamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>AsamaId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:APartiKayitID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>OnFikseAsamasimi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>AsamayaDahil<b> </b><b>=</b><b> </b>1
+<b>    </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>OnFikseAsamasiVar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>else</b><b> </b>OnFikseAsamasiVar<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="RECETESONBOYANANPARTIBILGISI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="RECETETURUBOYAGRUPKIMYASALGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

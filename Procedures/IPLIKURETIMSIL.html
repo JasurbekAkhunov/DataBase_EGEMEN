@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>IPLIKURETIMSIL</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="913800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="IPLIKURETIMISEMRIRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="IPLIKVARDIYAHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">IPLIKURETIMSIL</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AIPLIKURETIMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure IPLIKURETIMSIL)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>IPLIKURETIMSIL</u></font><b>(</b>
+<b>    </b>AIPLIKURETIMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>IplikUretimLog</u></font><b>(</b>IptalKullaniciId<b>,</b><b> </b>IplikLotId<b>,</b><b> </b>IplikMakinaId<b>,</b><b> </b>IplikDepoId<b>,</b><b> </b>GirisTipi<b>,</b><b> </b>UretimTarihi<b>,</b><b> </b>SarimSekliId<b>,</b><b> </b>IplikStokId<b>,</b>
+<b>                             </b>AmbalajId<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>Lot<b>,</b><b> </b>KonikRengiId<b>,</b><b> </b>KonikCinsiId<b>,</b><b> </b>BobinSayisi<b>,</b><b> </b>AmbalajAgirligi<b>,</b><b> </b>KapNo<b>,</b><b> </b>PaletAgirligi<b>,</b><b> </b>Miktar<b>,</b><b> </b>NetMiktar<b>)</b>
+<b>              </b><b>Select</b><b> </b>:AKullaniciId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikLotId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikMakinaId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikDepoId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>GirisTipi<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>UretimTarihi<b>,</b>
+<b>                     </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>SarimSekliId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikStokId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>AmbalajId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>MelanjKodu<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>Lot<b>,</b>
+<b>                     </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>KonikRengiId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>KonikCinsiId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>BobinSayisi<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>AmbalajAgirligi<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>KapNo<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>PaletAgirligi<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>NetMiktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font>
+<b>                  </b><b>where</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikUretimID<b> </b><b>=</b><b> </b>:AIplikUretimID<b>;</b>
+
+<b>  </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikUretimId<b> </b><b>=</b><b> </b>:AIplikUretimId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="IPLIKURETIMISEMRIRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="IPLIKVARDIYAHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

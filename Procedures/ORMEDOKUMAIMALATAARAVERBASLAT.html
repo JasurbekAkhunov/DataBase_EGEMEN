@@ -1,0 +1,241 @@
+<HTML>
+<HEAD>
+<TITLE>ORMEDOKUMAIMALATAARAVERBASLAT</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1223800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ORMEDETAYLIHAMSTOKRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ORMEFATICINIRSALIYELISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ORMEDOKUMAIMALATAARAVERBASLAT</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AORMEMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADOKUMAMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APERSONELID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AARAVERMESEBEBIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLADIBITTI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">STATUS</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PERSONELID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PERSONELADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAVERMESEBEBIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAVERMESEBEBIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MESAJ</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ORMEDOKUMAIMALATAARAVERBASLAT)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ORMEDOKUMAIMALATAARAVERBASLAT</u></font><b>(</b>
+<b>    </b>AORMEMAKINAID<b> </b><font color="# 080 0"><u>MAKINAKODUSIZE</u></font><b>,</b>
+<b>    </b>ADOKUMAMAKINAID<b> </b><font color="# 080 0"><u>MAKINAKODUSIZE</u></font><b>,</b>
+<b>    </b>APERSONELID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AARAVERMESEBEBIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABASLADIBITTI<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>STATUS<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PERSONELID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PERSONELADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>ARAVERMESEBEBIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARAVERMESEBEBIADI<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>TARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>MESAJ<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BasladiOrmeMakinaDurumuId<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BittiOrmeMakinaDurumuId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ImalataAraVermeId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BaslamaTarihi<b>    </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GecenSure<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AOrmeMakinaId<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>ADokumaMakinaId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>Status<b> </b><b>=</b><b> </b>6<b>;</b>
+<b>    </b>mesaj<b> </b><b>=</b><b> </b>'Makina Kodu Boş Olamaz...'<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>    </b><b>Exit</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>AOrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>ADokumaMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>Status<b> </b><b>=</b><b> </b>7<b>;</b>
+<b>    </b>mesaj<b> </b><b>=</b><b> </b>'Parametre Hatası, İki Makina Kodu Birden Gönderilmiş...'<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>    </b><b>Exit</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ABasladiBitti<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>max</b><b>(</b>ImalataAraVermeId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font>
+<b>      </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:AOrmeMakinaId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>DokumaMakinaId<b> </b><b>=</b><b> </b>:ADokumaMakinaId<b>)</b><b> </b><b>and</b>
+<b>             </b>BittiOrmeMakinaDurumuId<b> </b><b>is</b><b> </b><b>null</b>
+<b>    </b><b>into</b><b> </b>:ImalataAraVermeId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ImalataAraVermeId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b>.</b>AraVermeSebebiId<b> </b><b>=</b><b> </b>:AAraVermeSebebiId<b> </b><b>into</b><b> </b>:AraVermeSebebiAdi<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>AraVermeSebebiAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>Status<b> </b><b>=</b><b> </b>5<b>;</b>
+<b>        </b>mesaj<b> </b><b>=</b><b> </b>'Ara Verme Sebebi Kayitli Degil..'<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>BasladiOrmeMakinaDurumuId<b> </b><b>=</b><b> </b><b>gen_Id</b><b>(</b><font color="# 080 0"><u>OrmeMakinaDurumu_id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>        </b>Tarih<b> </b><b>=</b><b> </b><b>Current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>(</b>OrmeMakinaDurumuID<b>,</b><b> </b>OrmeMakinaId<b>,</b><b> </b>DokumaMakinaId<b>,</b><b> </b>Tarih<b>,</b><b> </b>ImalataAraVerildi<b>,</b><b> </b>Tur<b>)</b><b> </b><b>values</b><b>(</b>:BasladiOrmeMakinaDurumuId<b>,</b><b> </b>:AOrmeMakinaId<b>,</b><b> </b>:ADokumaMakinaId<b>,</b><b> </b>:Tarih<b>,</b><b> </b>1<b>,</b><b> </b>0<b>)</b><b>;</b>
+
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>(</b>OrmeMakinaId<b>,</b><b> </b>DokumaMakinaId<b>,</b><b> </b>BasladiOrmeMakinaDurumuId<b>,</b><b> </b>AraVerdirenPersonelId<b>,</b><b> </b>AraVermeSebebiId<b>)</b>
+<b>                          </b><b>values</b><b>(</b>:AOrmeMakinaId<b>,</b><b> </b>:ADokumaMakinaId<b>,</b><b> </b>:BasladiOrmeMakinaDurumuId<b>,</b><b> </b>:APersonelId<b>,</b><b> </b>:AAraVermeSebebiId<b>)</b><b>;</b>
+<b>        </b>Status<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b>mesaj<b> </b><b>=</b><b> </b>'Kayit Yapıldı'<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>Status<b> </b><b>=</b><b> </b>2<b>;</b>
+<b>      </b>mesaj<b> </b><b>=</b><b> </b>'imalata daha once ara verilmis'<b>;</b>
+
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>AraVerdirenPersonelId<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>AraVermeSebebiId<b>,</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>BaslamaTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Personel</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PersonelId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>AraVerdirenPersonelId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b>.</b>AraVermeSebebiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>AraVermeSebebiId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>ImalataAraVermeId<b> </b><b>=</b><b> </b>:ImalataAraVermeId
+<b>        </b><b>into</b><b> </b>:PersonelId<b>,</b><b> </b>:PersonelAdi<b>,</b><b> </b>:AraVermeSebebiId<b>,</b><b> </b>:AraVermeSebebiAdi<b>,</b><b> </b>:Tarih<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>ABasladiBitti<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>ImalataAraVermeId<b>,</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>BaslamaTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font>
+<b>        </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:AOrmeMakinaId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>DokumaMakinaId<b> </b><b>=</b><b> </b>:ADokumaMakinaId<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>BittiOrmeMakinaDurumuId<b> </b><b>is</b><b> </b><b>null</b>
+<b>        </b><b>into</b><b> </b>:ImalataAraVermeId<b>,</b><b> </b>:BaslamaTarihi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ImalataAraVermeId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Tarih<b> </b><b>=</b><b> </b><b>Current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+
+<b>      </b>BittiOrmeMakinaDurumuId<b> </b><b>=</b><b> </b><b>gen_Id</b><b>(</b><font color="# 080 0"><u>OrmeMakinaDurumu_id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>(</b>OrmeMakinaDurumuID<b>,</b><b> </b>OrmeMakinaId<b>,</b><b> </b>DokumaMakinaId<b>,</b><b> </b>Tarih<b>,</b><b> </b>ImalataAraVerildi<b>,</b><b> </b>Tur<b>)</b><b> </b><b>values</b><b>(</b>:BittiOrmeMakinaDurumuId<b>,</b><b> </b>:AOrmeMakinaId<b>,</b><b> </b>:ADokumaMakinaId<b>,</b><b> </b>:Tarih<b>,</b><b> </b>2<b>,</b><b> </b>0<b>)</b><b>;</b><b> </b><font color="# 0 0FF"><i>/* ara bitirildi */</i></font>
+
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b> </b><b>Set</b><b> </b>BittiOrmeMakinaDurumuId<b> </b><b>=</b><b> </b>:BittiOrmeMakinaDurumuId<b>,</b><b> </b>ArayiBitirenPersonelId<b> </b><b>=</b><b> </b>:APersonelId<b>,</b><b> </b>BitisTarihi<b> </b><b>=</b><b> </b>:Tarih<b> </b><b>where</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>ImalataAraVermeID<b> </b><b>=</b><b> </b>:ImalataAraVermeId<b>;</b>
+
+<b>      </b>Status<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b>mesaj<b> </b><b>=</b><b> </b>'Kayit Yapıldı'<b>;</b>
+
+<font color="# 0 0FF"><i>/*      GecenSure = Tarih - BaslamaTarihi;</i></font>
+
+<font color="# 0 0FF"><i>      Update PartiAsamaStokDetay set AraVermeSuresi = AraVermeSuresi + :GecenSure</i></font>
+<font color="# 0 0FF"><i>        where PartiAsamaStokDetay.MakinaId = :AMakinaId and PartiAsamaStokDetay.CikisTarihi is null and PartiAsamaStokDetay.GirisTarihi is not null;*/</i></font>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>Status<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>      </b>mesaj<b> </b><b>=</b><b> </b>'imalata ara verilmemiş'<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b>Status<b> </b><b>=</b><b> </b>4<b>;</b>
+<b>    </b>mesaj<b> </b><b>=</b><b> </b>'Parametre Hatalı..Egemen Yazılıma Haber ver.. '<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ORMEDETAYLIHAMSTOKRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ORMEFATICINIRSALIYELISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

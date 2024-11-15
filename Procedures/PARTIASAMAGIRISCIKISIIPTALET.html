@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<TITLE>PARTIASAMAGIRISCIKISIIPTALET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1400800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTIASAMAFIYATLARIDUZENLE.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTIASAMAGIRISIIPTALET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTIASAMAGIRISCIKISIIPTALET</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIASAMASTOKDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">PARTIHAREKETLOGID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTIASAMAGIRISCIKISIIPTALET)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTIASAMAGIRISCIKISIIPTALET</u></font><b>(</b>
+<b>    </b>APARTIASAMASTOKDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>PARTIHAREKETLOGID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RV<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHamSTokMasterId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamSTokMasterIdStr<b>    </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiSinifId<b>          </b><b>integer</b><b>;</b>
+<b>begin</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiSinifId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiAsamalariId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiAsamaStokDetayId<b> </b><b>=</b><b> </b>:APartiAsamaStokDetayId
+<b>    </b><b>into</b><b> </b>:PartiSinifId<b>;</b>
+
+<b>  </b>HamSTokMasterIdStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaSiparisRezerv</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaSiparisRezerv</u></font><b>.</b>BoyaSiparisRezervId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>BoyaSiparisRezervId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaSiparisRezerv</u></font><b>.</b>HamStokDetayId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:PartiSinifId
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId
+<b>    </b><b>into</b><b> </b>:FHamStokMasterId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>HamSTokMasterIdStr<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>FHamStokMasterId<b>)</b><b> </b><b>&lt;</b><b> </b>100<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>     </b><b>if</b><b> </b><b>(</b>HamSTokMasterIdStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>)</b><b> </b><b>then</b><b> </b>HamSTokMasterIdStr<b> </b><b>=</b><b> </b>HamSTokMasterIdStr<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>     </b>HamSTokMasterIdStr<b> </b><b>=</b><b> </b>HamSTokMasterIdStr<b> </b><b>|</b><b>|</b><b> </b>FHamStokMasterId<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b>PartiHareketLogId<b> </b><b>=</b><b> </b><b>Gen_ID</b><b>(</b><font color="# 080 0"><u>PartiHareketLog_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>PartiHareketLog</u></font><b>(</b>PartiHareketLogId<b>,</b><b> </b>PartiYil<b>,</b><b> </b>PartiId<b>,</b><b> </b>HamAdiToplami<b>,</b><b> </b>AsamaId<b>,</b><b> </b>ReceteId<b>,</b><b> </b>BoyaSiparisYil<b>,</b><b> </b>BoyaSiparisId<b>,</b>
+<b>                              </b>BoyaSiparisDetayId<b>,</b><b> </b>MakinaId<b>,</b><b> </b>Kilo<b>,</b><b> </b>GirisPersonelId<b>,</b><b> </b>GirisTarihi<b>,</b><b> </b>CikisPersonelId<b>,</b><b> </b>CikisTarihi<b>,</b>
+<b>                              </b>GirisCikis<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>HamSTokMasterIdStr<b>)</b>
+<b>    </b><b>Select</b><b> </b>:PartiHareketLogId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiYil<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiId<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>HamAdiToplami<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>AsamaId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteId<b>,</b>
+<b>            </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisYil<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisId<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BoyaSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>MakinaId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>Kilo<b>,</b>
+<b>            </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>GirisPersonelId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>GirisTarihi<b>,</b>
+<b>            </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>CikisPersonelId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>CikisTarihi<b>,</b><b> </b>2<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:HamSTokMasterIdStr<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiAsamalariId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiSinifId
+<b>    </b><b>Left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitId
+<b>    </b><b>Left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>BoyaSiparisKayitId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiAsamaStokDetayID<b> </b><b>=</b><b> </b>:APartiAsamaStokDetayID<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaCikisiIptalEt</u></font><b>(</b>:APartiAsamaStokDetayId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>1<b>)</b><b> </b><b>into</b><b> </b>:RV<b>;</b>
+<b>  </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaGirisiIptalEt</u></font><b>(</b>:APartiAsamaStokDetayId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>1<b>)</b><b> </b><b>into</b><b> </b>:RV<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTIASAMAFIYATLARIDUZENLE.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTIASAMAGIRISIIPTALET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

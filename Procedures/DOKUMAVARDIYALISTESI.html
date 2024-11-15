@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<TITLE>DOKUMAVARDIYALISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="465800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DOKUMAVARDIYAKARTILISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DOKUMAVARDIYAPERSONELLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DOKUMAVARDIYALISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AAKTIF</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">RESULTID</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEVARDIYAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UNITEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UNITEADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYANO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DOKUMAVARDIYALISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DOKUMAVARDIYALISTESI</u></font><b>(</b>
+<b>    </b>AAKTIF<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>RESULTID<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>ORMEVARDIYAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>VARDIYATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>UNITEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>UNITEADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>VARDIYANO<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>OrmeVardiyaId<b>,</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>Tarih<b>,</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>VardiyaNo<b>,</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>UniteId<b>,</b><b> </b><font color="# 080 0"><u>Unite</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Unite</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Unite</u></font><b>.</b>UniteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>UniteId
+<b>    </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>Aktif<b> </b><b>=</b><b> </b>:AAktif<b> </b><b>or</b><b> </b>:AAktif<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>DokumaVardiyasi<b> </b><b>=</b><b> </b>1
+<b>    </b><b>Order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>tarih<b>,</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>UniteId<b>,</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>VardiyaNo
+<b>    </b><b>into</b><b> </b>:OrmeVardiyaId<b>,</b><b> </b>:VardiyaTarihi<b>,</b><b> </b>:VardiyaNo<b>,</b><b> </b>:UniteId<b>,</b><b> </b>:UniteAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>ResultId<b> </b><b>=</b><b> </b>'&quot;'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>OrmeVardiyaId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'&quot;,'<b> </b><b>;</b>
+<b>    </b>ResultId<b> </b><b>=</b><b> </b>ResultId<b> </b><b>|</b><b>|</b><b> </b>'&quot;'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>TimeStampToDateStr</u></font><b>(</b>VardiyaTarihi<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'&quot;,'<b> </b><b>;</b>
+<b>    </b>ResultId<b> </b><b>=</b><b> </b>ResultId<b> </b><b>|</b><b>|</b><b> </b>'&quot;'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>VardiyaNo<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'&quot;,'<b> </b><b>;</b>
+<b>    </b>ResultId<b> </b><b>=</b><b> </b>ResultId<b> </b><b>|</b><b>|</b><b> </b>'&quot;'<b> </b><b>|</b><b>|</b><b> </b>UniteAdi<b> </b><b>|</b><b>|</b><b> </b>'&quot;'<b> </b><b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DOKUMAVARDIYAKARTILISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DOKUMAVARDIYAPERSONELLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

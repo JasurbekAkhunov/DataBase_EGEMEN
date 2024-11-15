@@ -1,0 +1,255 @@
+<HTML>
+<HEAD>
+<TITLE>KIRPINTITASNIFYAP</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="998800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="KIRPINTITASNIFNUMARATORUAL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="KIRPINTIURETIMECIKISKAYDET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">KIRPINTITASNIFYAP</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AKIRPINTITASNIFKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKIRPINTITASNIFDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARENKID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AIPLIKDEPOID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">CIKISIPLIKIRSALIYEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CIKISIPLIKIRSALIYEDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GIRISIPLIKIRSALIYEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GIRISIPLIKIRSALIYEDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure KIRPINTITASNIFYAP)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>KIRPINTITASNIFYAP</u></font><b>(</b>
+<b>    </b>AKIRPINTITASNIFKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKIRPINTITASNIFDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AHAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARENKID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AIPLIKDEPOID<b> </b><font color="# 080 0"><u>DEPOKODUSIZE</u></font><b>,</b>
+<b>    </b>AKILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>CIKISIPLIKIRSALIYEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>CIKISIPLIKIRSALIYEDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>GIRISIPLIKIRSALIYEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>GIRISIPLIKIRSALIYEDETAYID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemDovizId<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKaynakHamId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHamId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastHamId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtKirpintiCikis<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretimKirpinti<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTasnifTarih<b>      </b><b>timestamp</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FIplikStokId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FNumarator<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SeriNo<b>          </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IrsaliyeNo<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKapNo<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKaynakIplikDepoId<b>  </b><font color="# 080 0"><u>DepoKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DepoKalanKilo<b>  </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DepoKilo<b>       </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKilo<b>          </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+
+<b>begin</b>
+<b>  </b><b>select</b><b> </b>IplikDepoId<b>,</b><b> </b>HamId<b>,</b><b> </b>Tarih<b> </b><b>from</b><b> </b><font color="# 080 0"><u>KirpintiTasnif</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>KirpintiTasnif</u></font><b>.</b>KirpintiTasnifKayitId<b> </b><b>=</b><b> </b>:AKirpintiTasnifKayitId<b> </b><b>into</b><b> </b>:FKaynakIplikDepoId<b>,</b><b> </b>:FKaynakHamId<b>,</b><b> </b>:FTasnifTarih<b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikDepoId<b> </b><b>=</b><b> </b>:FKaynakIplikDepoId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>CikisIplikIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b>HamID<b> </b><b>=</b><b> </b>:FKaynakHamId<b> </b><b>or</b><b> </b>:FKaynakHamId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>into</b><b> </b>:DepoKalanKilo<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AKilo<b> </b><b>&gt;</b><b> </b>DepoKalanKilo<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Depoda yeterli miktar yok! Depo mevcudu: '<b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_float</u></font><b>(</b>''<b>,</b>DepoKalanKilo<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Tasnif edilen: '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_float</u></font><b>(</b>''<b>,</b><b> </b>AKilo<b>)</b><b> </b><b>;</b>
+
+
+<b>  </b><b>select</b><b> </b>shtKirpintiCikis<b>,</b><b> </b>shtUretimKirpinti<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikStokHareketTipiGetir</u></font><b> </b><b>into</b><b> </b>:shtKirpintiCikis<b>,</b><b> </b>:shtUretimKirpinti<b>;</b>
+
+<b>  </b><b>select</b><b> </b>SistemDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SISTEMID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:SistemDovizId<b>;</b>
+
+
+<b>  </b><b>select</b><b> </b><b>max</b><b>(</b>IplikIrsaliyeId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>=</b><b> </b>:FTasnifTarih<b> </b><b>and</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>:shtKirpintiCikis
+<b>    </b><b>into</b><b> </b>:CikisIplikIrsaliyeId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>CikisIplikIrsaliyeId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b>IplikUretimeCikisSeriNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>:AKullaniciId<b> </b><b>into</b><b> </b>:SeriNo<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SeriNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>SeriNo<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>select</b><b> </b>IrsaliyeNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IrsaliyeNumaratorAl</u></font><b>(</b>:SeriNo<b>)</b><b> </b><b>into</b><b> </b>:IrsaliyeNo<b>;</b>
+
+<b>    </b>CikisIplikIrsaliyeId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>IplikIrsaliye_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>(</b>IplikIrsaliyeId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>SeriNo<b>,</b><b> </b>IrsaliyeNo<b>,</b><b> </b>IrsaliyeTarihi<b>,</b><b> </b>DovizId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>             </b><b>values</b><b>(</b>:CikisIplikIrsaliyeId<b>,</b><b> </b>:shtKirpintiCikis<b>,</b><b> </b>:SeriNo<b>,</b><b> </b>:IrsaliyeNo<b>,</b><b> </b>:FTasnifTarih<b>,</b><b> </b>:SistemDovizId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b>CikisIplikIrsaliyeDetayId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b>FKilo<b> </b><b>=</b><b> </b>AKilo<b>;</b>
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikStokId<b>,</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>Numarator<b>,</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>HamId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikDepoId<b> </b><b>=</b><b> </b>:FKaynakIplikDepoId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>CikisIplikIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b>HamID<b> </b><b>=</b><b> </b>:FKaynakHamId<b> </b><b>or</b><b> </b>:FKaynakHamId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>      </b><b>into</b><b> </b>:FIplikStokId<b>,</b><b> </b>:FNumarator<b>,</b><b> </b>:DepoKilo<b>,</b><b> </b>:FHamId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>CikisIplikIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b>FHamId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>LastHamId<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>CikisIplikIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Update</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b> </b><b>Set</b><b> </b>Miktar<b> </b><b>=</b><b> </b>:AKilo<b> </b><b>-</b><b> </b>:FKilo<b>,</b><b> </b>NetMiktar<b> </b><b>=</b><b> </b>:AKilo<b> </b><b>-</b><b> </b>:FKilo<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>IplikIrsaliyeDetayId<b> </b><b>=</b><b> </b>:CikisIplikIrsaliyeDetayId<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b>CikisIplikIrsaliyeDetayId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>IplikIrsaliyeDetay_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>(</b>IplikIrsaliyeId<b>,</b><b> </b>IplikIrsaliyeDetayId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>IplikDepoId<b>,</b><b> </b>HamId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>NetMiktar<b>,</b><b> </b>KirpintiTasnifDetayId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>                         </b><b>values</b><b> </b><b>(</b>:CikisIplikIrsaliyeId<b>,</b><b> </b>:CikisIplikIrsaliyeDetayId<b>,</b><b> </b>:shtKirpintiCikis<b>,</b><b> </b>:FKaynakIplikDepoId<b>,</b><b> </b>:FHamId<b>,</b><b> </b>1<b>,</b><b> </b>:FKilo<b>,</b><b> </b>:FKilo<b>,</b><b> </b>:AKirpintiTasnifDetayId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>)</b><b>;</b>
+<b>      </b>LastHamId<b> </b><b>=</b><b> </b>FHamId<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>DepoKilo<b> </b><b>&gt;</b><b> </b>FKilo<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>FNumarator<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>Select</b><b> </b>YENIIPLIKSTOKID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IPLIKSTOKBOL</u></font><b>(</b>:FIplikStokId<b>,</b><b> </b>:FKilo<b>,</b><b> </b>0<b>)</b><b> </b><b>into</b><b> </b>:FIplikStokId<b>;</b>
+<b>      </b>FKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>      </b>FKilo<b> </b><b>=</b><b> </b>FKilo<b> </b><b>-</b><b> </b>DepoKilo<b>;</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b> </b><b>set</b><b> </b>CikisIplikIrsaliyeDetayId<b> </b><b>=</b><b> </b>:CikisIplikIrsaliyeDetayId<b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikStokId<b> </b><b>=</b><b> </b>:FIplikStokId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>Numarator<b> </b><b>=</b><b> </b>:FNumarator<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FKilo<b> </b><b>&lt;</b><b>=</b><b> </b>0<b> </b><b>)</b><b> </b><b>then</b><b> </b><b>break</b><b>;</b>
+
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>select</b><b> </b><b>max</b><b>(</b>IplikIrsaliyeId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>=</b><b> </b>:FTasnifTarih<b> </b><b>and</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>:shtUretimKirpinti
+<b>    </b><b>into</b><b> </b>:GirisIplikIrsaliyeId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>GirisIplikIrsaliyeId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b>IplikUretimSeriNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>:AKullaniciId<b> </b><b>into</b><b> </b>:SeriNo<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SeriNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>SeriNo<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>select</b><b> </b>IrsaliyeNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IrsaliyeNumaratorAl</u></font><b>(</b>:SeriNo<b>)</b><b> </b><b>into</b><b> </b>:IrsaliyeNo<b>;</b>
+
+<b>    </b>GirisIplikIrsaliyeId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>IplikIrsaliye_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>(</b>IplikIrsaliyeId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>SeriNo<b>,</b><b> </b>IrsaliyeNo<b>,</b><b> </b>IrsaliyeTarihi<b>,</b><b> </b>DovizId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>             </b><b>values</b><b>(</b>:GirisIplikIrsaliyeId<b>,</b><b> </b>:shtUretimKirpinti<b>,</b><b> </b>:SeriNo<b>,</b><b> </b>:IrsaliyeNo<b>,</b><b> </b>:FTasnifTarih<b>,</b><b> </b>:SistemDovizId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>select</b><b> </b><b>max</b><b>(</b>IplikIrsaliyeDetayId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>:shtUretimKirpinti<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>IplikIrsaliyeId<b> </b><b>=</b><b> </b>:GirisIplikIrsaliyeId<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>IplikDepoId<b> </b><b>=</b><b> </b>:AIplikDepoId<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>KirpintiTasnifDetayId<b> </b><b>=</b><b> </b>:AKirpintiTasnifDetayId<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>RenkId<b> </b><b>=</b><b> </b>:ARenkId<b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b>:AHamId<b>)</b>
+<b>    </b><b>into</b><b> </b>:GirisIplikIrsaliyeDetayId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>GirisIplikIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Update</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b> </b><b>Set</b><b> </b>KapAdedi<b> </b><b>=</b><b> </b>KapAdedi<b> </b><b>+</b><b> </b>1<b>,</b><b> </b>Miktar<b> </b><b>=</b><b> </b>Miktar<b> </b><b>+</b><b> </b>:AKilo<b>,</b><b> </b>NetMiktar<b> </b><b>=</b><b> </b>NetMiktar<b> </b><b>+</b><b> </b>:AKilo<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>IplikIrsaliyeDetayId<b> </b><b>=</b><b> </b>:GirisIplikIrsaliyeDetayId<b>;</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b>GirisIplikIrsaliyeDetayId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>IplikIrsaliyeDetay_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>(</b>IplikIrsaliyeId<b>,</b><b> </b>IplikIrsaliyeDetayId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>IplikDepoId<b>,</b><b> </b>HamId<b>,</b><b> </b>RenkId<b>,</b><b> </b>KirpintiTasnifDetayId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>NetMiktar<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>                     </b><b>Values</b><b> </b><b>(</b>:GirisIplikIrsaliyeId<b>,</b><b> </b>:GirisIplikIrsaliyeDetayId<b>,</b><b> </b>:shtUretimKirpinti<b>,</b><b> </b>:AIplikDepoId<b>,</b><b> </b>:AHamId<b>,</b><b> </b>:ARenkId<b>,</b><b> </b>:AKirpintiTasnifDetayId<b>,</b><b> </b>1<b>,</b><b> </b>:AKilo<b>,</b><b> </b>:AKilo<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b> </b><b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="KIRPINTITASNIFNUMARATORUAL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="KIRPINTIURETIMECIKISKAYDET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

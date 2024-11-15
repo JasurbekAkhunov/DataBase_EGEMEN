@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTPSKKONTROLHATAMETRE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1033800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTPSKKONTROLHATA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTPSSEVKREZERV.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTPSKKONTROLHATAMETRE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTPSKKONTROLHATAMETRE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTPSKKONTROLHATAMETRE</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>PSKALITEKONTROLHATAMETRE</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NoktasalHata<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KKBitirenPersonelId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LinkIslemi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>KKBitirenPersonelId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>PSKaliteKontrolAsamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font><b>.</b>PSKaliteKontrolAsamaId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font><b>.</b>PsKaliteKontrolId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PsKaliteKontrolId
+<b>      </b><b>into</b><b> </b>:KKBitirenPersonelId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KKBitirenPersonelId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolTamamlanmis</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>Select</b><b> </b>NoktasalHata<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HataTipi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HataTipi</u></font><b>.</b>HataTipiId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HataTipiId<b> </b><b>into</b><b> </b>:NoktasalHata<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>NoktasalHata<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>BitisMetre<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BaslangicMetre<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>PSKaliteKontrolHataMetreId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>PSKaliteKontrolHataMetreId<b> </b><b>=</b><b> </b><b>Gen_Id</b><b>(</b><font color="# 080 0"><u>PSKaliteKontrolHataMetre_Id_Gen</u></font><b>,</b>1<b>)</b><b>;</b>
+
+<b>  </b><b>new</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTPSKKONTROLHATA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTPSSEVKREZERV.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<TITLE>MAKINABILGIRECETEOLUSTUR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1062800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="MAKINABILGIRECETEDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="MAKINACALISMABILGISI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">MAKINABILGIRECETEOLUSTUR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ARECETEADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMAKINABILGIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">MAKINABILGIRECETEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure MAKINABILGIRECETEOLUSTUR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>MAKINABILGIRECETEOLUSTUR</u></font><b>(</b>
+<b>    </b>ARECETEADI<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>AMAKINABILGIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>MAKINABILGIRECETEID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b>MakinaBilgiReceteId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>MakinaBilgiRecete_id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b> </b><b>(</b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>makinabilgireceteid<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>nem<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>isi<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>hiz<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>bacanem<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>dogalgaz<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>elektirik<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramustbesleme<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramaltbesleme<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramcalismahizi<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramgirisen<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>rambirbacafancalismayuzdesi<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramikibacafancalismayuzdesi<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramsogutmafaniust<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramsogutmafanialt<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramsogutmafaniustman<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramsogutmafanialtoto<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>rambacanemiotomatik<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>rambacanemi<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramcikisen<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramcikisnemdegeri<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>rambeslemehizi<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramkalipgenisligi<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramkumascekmezlikdegeri<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramkumasmaydegeri<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>ramkumasnemi<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>rammakinehizi<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>rammakinesilindirsicakligi<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>insertkullaniciid<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>inserttarihi<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>kullaniciid<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>degisimtarihi<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>notu<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>adi<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>fular1oto<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>fular2oto<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili1<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili2<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili3<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili4<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili5<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili6<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili7<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili8<b>,</b><b> </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili9<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinabilgirecete</u></font><b>.</b>enacmamili10<b>)</b>
+<b>  </b><b>select</b><b> </b>:MakinaBilgiReceteId<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>nem<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>isi<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>hiz<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>bacanem<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>dogalgaz<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>elektirik<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramustbesleme<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramaltbesleme<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramcalismahizi<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramgirisen<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>rambirbacafancalismayuzdesi<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramikibacafancalismayuzdesi<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramsogutmafaniust<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramsogutmafanialt<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramsogutmafaniustman<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramsogutmafanialtoto<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>rambacanemiotomatik<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>rambacanemi<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramcikisen<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramcikisnemdegeri<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>rambeslemehizi<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramkalipgenisligi<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramkumascekmezlikdegeri<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramkumasmaydegeri<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>ramkumasnemi<b>,</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>rammakinehizi<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>rammakinesilindirsicakligi<b>,</b><b> </b>:AKullaniciId<b>,</b>
+<b>         </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b>
+<b>         </b><b>null</b><b> </b>notu<b>,</b><b> </b>:AReceteAdi<b>,</b><b> </b><b>null</b><b> </b>fular1oto<b>,</b><b> </b><b>null</b><b> </b>fular2oto<b>,</b>
+<b>         </b><b>null</b><b> </b>enacmamili1<b>,</b><b> </b><b>null</b><b> </b>enacmamili2<b>,</b><b> </b><b>null</b><b> </b>enacmamili3<b>,</b>
+<b>         </b><b>null</b><b> </b>enacmamili4<b>,</b><b> </b><b>null</b><b> </b>enacmamili5<b>,</b><b> </b><b>null</b><b> </b>enacmamili6<b>,</b>
+<b>         </b><b>null</b><b> </b>enacmamili7<b>,</b><b> </b><b>null</b><b> </b>enacmamili8<b>,</b><b> </b><b>null</b><b> </b>enacmamili9<b>,</b>
+<b>         </b><b>null</b><b> </b>enacmamili10<b> </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>MakinaBilgi</u></font><b>.</b>MakinaBilgiId<b> </b><b>=</b><b> </b>:AMakinaBilgiId<b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b> </b><b>(</b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>makinabilgireceteid<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>kamarano<b>,</b><b> </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>sagisidegeri<b>,</b><b> </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>sagisidegeriset<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>solisidegeri<b>,</b><b> </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>solisidegeriset<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>altfancalismayuzdesi<b>,</b><b> </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>ustfancalismayuzdesi<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>endegeri<b>,</b><b> </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>insertkullaniciid<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>inserttarihi<b>,</b><b> </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>kullaniciid<b>,</b>
+<b>         </b><font color="# 080 0"><u>makinakamarabilgirecete</u></font><b>.</b>degisimtarihi<b>)</b>
+<b>  </b><b>select</b><b> </b>:MakinaBilgiReceteId<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b>.</b>kamarano<b>,</b><b> </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b>.</b>sagisidegeri<b>,</b><b> </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b>.</b>sagisidegeriset<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b>.</b>solisidegeri<b>,</b><b> </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b>.</b>solisidegeriset<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b>.</b>altfancalismayuzdesi<b>,</b><b> </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b>.</b>ustfancalismayuzdesi<b>,</b>
+<b>         </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b>.</b>endegeri<b>,</b><b> </b>:AKullaniciId<b>,</b>
+<b>         </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>MakinaKamaraBilgi</u></font><b>.</b>MakinaBilgiId<b> </b><b>=</b><b> </b>:AMAkinaBilgiId<b>;</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="MAKINABILGIRECETEDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="MAKINACALISMABILGISI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,187 @@
+<HTML>
+<HEAD>
+<TITLE>HAREKETTARIHIDEGISTIRMEIZNI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="715800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HAREKETGRUPLUCARIKARTTOPLAMI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HARMANLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HAREKETTARIHIDEGISTIRMEIZNI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIASAMASTOKDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">GIRISTARIHINIDEGISTIREBILIR</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CIKISTARIHINIDEGISTIREBILIR</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MINGIRISHAREKETTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MINCIKISHAREKETTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HAREKETTARIHIDEGISTIRMEIZNI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HAREKETTARIHIDEGISTIRMEIZNI</u></font><b>(</b>
+<b>    </b>APARTIASAMASTOKDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>GIRISTARIHINIDEGISTIREBILIR<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>CIKISTARIHINIDEGISTIREBILIR<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>MINGIRISHAREKETTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>MINCIKISHAREKETTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiKayitId<b> </b><b>integer</b><b> </b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKayitSayisi<b> </b><b>integer</b><b> </b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSira<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiSiraNo<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiSinifId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiAsamalariId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiAsamalariSira<b> </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FOncekiPartiAsamalariSira<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOncekiPartiAsamalariId<b> </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FMinGirisHareketTarihi<b> </b><b>timestamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMinCikisHareketTarihi<b> </b><b>timestamp</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FOncekiMinGirisHareketTarihi<b> </b><b>timestamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOncekiMinCikisHareketTarihi<b> </b><b>timestamp</b><b>;</b>
+
+<b>begin</b>
+<b>  </b>FPartiKayitId<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b>GirisTarihiniDegistirebilir<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>CikisTarihiniDegistirebilir<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>MinGirisHareketTarihi<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b>MinCikisHareketTarihi<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b>FMinGirisHareketTarihi<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b>FMinCikisHareketTarihi<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b>FKayitSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiKayitId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiAsamalariId<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font>
+<b>    </b><b>where</b><b>  </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiAsamaStokDetayId<b> </b><b>=</b><b> </b>:APartiAsamaStokDetayId<b> </b><b>into</b><b> </b>:FPartiKayitId<b>,</b><b> </b>:FPartiAsamalariId<b>;</b>
+
+<b>   </b><b>select</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>Sira<b>,</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>PartiSiraNo<b>,</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>PartiSinifId<b>  </b><b>FROM</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>(</b>:FPartiKayitId<b>,</b><b> </b>:AKullaniciId<b>)</b>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>PartiAsamaStokDetayId<b> </b><b>=</b><b> </b>:APartiAsamaStokDetayId<b> </b><b>into</b><b> </b>:FSira<b>,</b><b> </b>:FPartiSiraNo<b>,</b><b> </b>:FPartiSinifId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FPartiKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>select</b><b> </b><b>count</b><b>(</b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>Sira<b>)</b><b> </b><b>FROM</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>(</b>:FPartiKayitId<b>,</b><b> </b>:AKullaniciId<b>)</b>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:FPartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>Sira<b> </b><b>&gt;</b><b> </b>:FSira<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>GirisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>into</b><b> </b>:FKayitSayisi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FKayitSayisi<b>=</b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+
+<b>      </b><b>select</b><b> </b>GirisTarihi<b>,</b><b> </b>CikisTarihi<b> </b><b>FROM</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>(</b>:FPartiKayitId<b>,</b><b> </b>:AKullaniciId<b>)</b>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:FPartiSinifId<b> </b><b>and</b><b>  </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>Sira<b> </b><b>=</b><b> </b>:FSira<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>GirisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>into</b><b> </b>:FMinGirisHareketTarihi<b> </b><b>,</b><b> </b>:FMinCikisHareketTarihi<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>(</b>FMinGirisHareketTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b><b> </b><b>(</b>FMinCikisHareketTarihi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>CikisTarihiniDegistirebilir<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b>MinCikisHareketTarihi<b> </b><b>=</b><b>  </b>FMinGirisHareketTarihi<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>(</b>FMinGirisHareketTarihi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b><b> </b><b>(</b>FMinCikisHareketTarihi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>Sira<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b>:FPartiAsamalariId<b> </b><b>into</b><b> </b>:FPartiAsamalariSira<b>;</b>
+
+<b>        </b><b>select</b><b> </b><b>max</b><b>(</b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>Sira<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:FPartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>Sira<b> </b><b>&lt;</b><b> </b>:FPartiAsamalariSira<b> </b><b>into</b><b> </b>:FOncekiPartiAsamalariSira<b>;</b>
+
+<b>        </b><b>select</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:FPartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>Sira<b> </b><b>=</b><b> </b>:FOncekiPartiAsamalariSira<b> </b><b>into</b><b> </b>:FOncekiPartiAsamalariId<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FOncekiPartiAsamalariId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+
+<b>          </b><b>select</b><b> </b>GirisTarihi<b>,</b><b> </b>CikisTarihi<b> </b><b>FROM</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>(</b>:FPartiKayitId<b>,</b><b> </b>:AKullaniciId<b>)</b>
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:FPartiSinifId<b> </b><b>and</b><b>  </b><font color="# 080 0"><u>PartiHareketiGetir</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b>:FOncekiPartiAsamalariId<b>  </b><b>into</b><b> </b>:FOncekiMinGirisHareketTarihi<b> </b><b>,</b><b> </b>:FOncekiMinCikisHareketTarihi<b>;</b>
+
+<b>           </b><b>if</b><b> </b><b>(</b><b>(</b>FOncekiMinGirisHareketTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b><b> </b><b>(</b>FOncekiMinCikisHareketTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b>)</b><b> </b><b>then</b>
+<b>           </b><b>begin</b>
+<b>             </b>GirisTarihiniDegistirebilir<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>             </b>CikisTarihiniDegistirebilir<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>             </b>MinCikisHareketTarihi<b> </b><b>=</b><b>  </b>FOncekiMinCikisHareketTarihi<b>;</b>
+<b>             </b>MinGirisHareketTarihi<b> </b><b>=</b><b>  </b>FOncekiMinCikisHareketTarihi<b>;</b>
+<b>           </b><b>end</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HAREKETGRUPLUCARIKARTTOPLAMI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HARMANLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

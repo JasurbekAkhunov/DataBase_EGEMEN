@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEKALITE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1334800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEKALIP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEKALITERECETE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEKALITE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEKALITE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEKALITE</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>KALITE</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KalitedePartiSinifBilgiKullan<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<font color="# 0 0FF"><i>/*  if (new.PartiSinifId is not null) then*/</i></font>
+<font color="# 0 0FF"><i>/*  if (Old.PartiSinifId is null and (Old.PartiYil is not null or Old.PartiId is not null)) then exception KaliteyeManuelPartiGirilmis;*/</i></font>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OrmeBirimMaliyet<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>OrmeBirimMaliyet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>TeklifFiyatiHesaplama<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>TeklifFiyatiHesaplama<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>KalitedePartiSinifBilgiKullan<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>sistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KalitedePartiSinifBilgiKullan<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>:KalitedePartiSinifBilgiKullan<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>PartiSinifId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>And</b><b> </b><b>New</b><b>.</b>PartiSinifId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>Old</b><b>.</b>PartiSinifId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>PartiSinifId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KaliteninReferansPartiDegismez</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>PartiSinifId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>KalitedePartiSinifBilgiKullan<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiYil<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiId<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamAdiToplami<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteId<b>,</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>Denye<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>SiparisProsesId<b>,</b>
+<b>           </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>EnIStenen<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>GramajIstenen<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>CekmezlikEnIstenen<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>CekmezlikBoyIstenen<b>,</b>
+<b>           </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>DonmeIstenen<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>SansIstenen<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>Pus<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>Feine<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>DinlenmisGramaj<b>,</b>
+<b>           </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>IplikBoyu1<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>IplikBoyu2<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>IplikBoyu3<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>IplikBoyu4<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>TupAcikEnMayli<b>,</b>
+<b>           </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>VaryantAdi<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>Ozeltestler<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>OzelApreler<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BoyaSiparisDetayId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenVaryantId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>DesenVaryantId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PartiSinifId
+<b>      </b><b>into</b><b> </b><b>new</b><b>.</b>PartiYil<b>,</b><b> </b><b>new</b><b>.</b>PartiId<b>,</b><b> </b><b>New</b><b>.</b>HamId<b>,</b><b> </b><b>New</b><b>.</b>HamAdi<b>,</b><b> </b><b>new</b><b>.</b>ReceteKodu<b>,</b><b> </b><b>New</b><b>.</b>ReceteAdi<b>,</b>
+<b>           </b><b>New</b><b>.</b>Denye<b>,</b><b> </b><b>New</b><b>.</b>SiparisProsesId<b>,</b><b> </b><b>New</b><b>.</b>EnIStenen<b>,</b><b> </b><b>New</b><b>.</b>GramajIstenen<b>,</b><b> </b><b>New</b><b>.</b>CekmezlikEnIstenen<b>,</b><b> </b><b>New</b><b>.</b>CekmezlikBoyIstenen<b>,</b>
+<b>           </b><b>New</b><b>.</b>DonmeIstenen<b>,</b><b> </b><b>New</b><b>.</b>SansIstenen<b>,</b><b> </b><b>New</b><b>.</b>Pus<b>,</b><b> </b><b>New</b><b>.</b>Feine<b>,</b><b> </b><b>New</b><b>.</b>DinlenmisGramaj<b>,</b><b> </b><b>New</b><b>.</b>IplikBoyu1<b>,</b><b> </b><b>New</b><b>.</b>IplikBoyu2<b>,</b><b> </b><b>New</b><b>.</b>IplikBoyu3<b>,</b>
+<b>           </b><b>New</b><b>.</b>IplikBoyu4<b>,</b><b> </b><b>New</b><b>.</b>TupAcikEnMayli<b>,</b><b> </b><b>new</b><b>.</b>DesenKodu<b>,</b><b> </b><b>new</b><b>.</b>DesenAdi<b>,</b><b> </b><b>New</b><b>.</b>DesenVaryantAdi<b>,</b><b> </b><b>New</b><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b>,</b><b> </b><b>New</b><b>.</b>Ozeltestler<b>,</b><b> </b><b>New</b><b>.</b>OzelApreler<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>new</b><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>  </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>Logla</u></font><b>(</b>'U'<b>,</b><b> </b>1<b>,</b><b> </b>'KALITE'<b>,</b><b> </b>'KALITEID'<b>,</b><b> </b><b>New</b><b>.</b>KaliteId<b>,</b><b> </b><b>Null</b><b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEKALIP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEKALITERECETE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

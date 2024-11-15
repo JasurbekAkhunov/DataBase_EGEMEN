@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<TITLE>HASILISEMRIDETAYGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="722800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HARMANRECETESIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HESAPLANACAKRAFEKLE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HASILISEMRIDETAYGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHASILISEMRIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">HASILISEMRIDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HASILISEMRIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LEVENTADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TELADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HASILLEVENTMETRE</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ACIKLAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(60)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEGISIMTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HASILISEMRIDETAYGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HASILISEMRIDETAYGETIR</u></font><b>(</b>
+<b>    </b>AHASILISEMRIKAYITID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>HASILISEMRIDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HASILISEMRIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>LEVENTADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TELADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HASILLEVENTMETRE<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ACIKLAMA<b> </b><b>VARCHAR</b><b>(</b>60<b>)</b><b>,</b>
+<b>    </b>INSERTKULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>INSERTTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>KULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>DEGISIMTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>HasilIsEmriKayitId<b>,</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>HasilIsEmriDetayId<b>,</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>LeventAdedi<b>,</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>TelAdedi<b>,</b>
+<b>             </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>HasilLeventMetre<b>,</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>Aciklama<b>,</b><b> </b>Ik<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>InsertTarihi<b>,</b><b> </b>Sk<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>DegisimTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font>
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>IK<b> </b><b>on</b><b> </b>IK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>InsertKullaniciId
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>SK<b> </b><b>on</b><b> </b>SK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>KullaniciId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>HasilIsEmriDetay</u></font><b>.</b>HasilIsEmriKayitId<b> </b><b>=</b><b> </b>:AHasilIsEmriKayitId
+<b>  </b><b>into</b><b> </b>:HasilIsEmriKayitId<b>,</b><b> </b>:HasilIsEmriDetayId<b>,</b><b> </b>:LeventAdedi<b>,</b><b> </b>:TelAdedi<b>,</b><b> </b>:HasilLeventMetre<b>,</b><b> </b>:Aciklama<b>,</b><b> </b>:InsertKullaniciAdi<b>,</b><b> </b>:InsertTarihi<b>,</b><b> </b>:KullaniciAdi<b>,</b><b> </b>:DegisimTarihi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HARMANRECETESIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HESAPLANACAKRAFEKLE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

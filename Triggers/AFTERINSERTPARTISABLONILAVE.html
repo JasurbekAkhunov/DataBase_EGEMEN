@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTPARTISABLONILAVE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="205800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTPARTISABLON.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTPARTISTOK.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTPARTISABLONILAVE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTPARTISABLONILAVE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTPARTISABLONILAVE</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>PARTISABLONILAVE</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VaryantAdi<b>        </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TF<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VaryantPartiSinifId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TasarimVaryantNo<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>itDesenTasarim<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IslemTipiId<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenId<b>      </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>itDesenTasarim<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IslemTipiGetir</u></font><b> </b><b>into</b><b> </b>:itDesenTasarim<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>IslemTipiId<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>VaryantAdi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenVaryantID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>DesenVaryantId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PartiKayitID
+<b>    </b><b>into</b><b> </b>:IslemTipiId<b>,</b><b> </b>:DesenId<b>,</b><b> </b>:VaryantAdi<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>IslemTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>itDesenTasarim<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>VaryantAdi<b>)</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>TasarimVaryantNo<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>VaryantAdi<b>)</b><b>;</b>
+
+<b>      </b><b>Select</b><b> </b><b>Min</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>DesenVaryantId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenVaryantId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenId<b> </b><b>=</b><b> </b>:DesenId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>IslemTipiId<b> </b><b>=</b><b> </b>:itDesenTasarim<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>TasarimVaryantNo<b> </b><b>=</b><b> </b>:TasarimVaryantNo<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitID<b> </b><b>is</b><b> </b><b>null</b>
+<b>        </b><b>into</b><b> </b>:VaryantPartiSinifId<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>VaryantPartiSinifId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b>(</b>PartiSablonIlaveId<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>)</b>
+<b>          </b><b>Select</b><b> </b><b>New</b><b>.</b>PartiSablonIlaveId<b>,</b><b> </b><b>New</b><b>.</b>PartiKayitId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:VaryantPartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>SablonNo<b> </b><b>=</b><b> </b><b>New</b><b>.</b>SablonNo<b> </b><b>and</b>
+<b>                  </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>Pat<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTPARTISABLON.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTPARTISTOK.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

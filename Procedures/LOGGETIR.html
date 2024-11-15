@@ -1,0 +1,161 @@
+<HTML>
+<HEAD>
+<TITLE>LOGGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1049800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="LOGDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="LOGLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">LOGGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATIP</TD>
+    <TD><P CLASS="Base2">CHAR(1)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATABLOADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(32)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">LOGMASTERID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TIP</TD>
+    <TD><P CLASS="Base2">CHAR(1)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TABLOADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(32)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KEYVALUE</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ACIKLAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(1000)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ANAHTAR</TD>
+    <TD><P CLASS="Base2">VARCHAR(1000)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure LOGGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>LOGGETIR</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ATIP<b> </b><b>CHAR</b><b>(</b>1<b>)</b><b>,</b>
+<b>    </b>ATABLOADI<b> </b><b>VARCHAR</b><b>(</b>32<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>LOGMASTERID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TIP<b> </b><b>CHAR</b><b>(</b>1<b>)</b><b>,</b>
+<b>    </b>TABLOADI<b> </b><b>VARCHAR</b><b>(</b>32<b>)</b><b>,</b>
+<b>    </b>KEYVALUE<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ACIKLAMA<b> </b><b>VARCHAR</b><b>(</b>1000<b>)</b><b>,</b>
+<b>    </b>ANAHTAR<b> </b><b>VARCHAR</b><b>(</b>1000<b>)</b><b>,</b>
+<b>    </b>TARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>KULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KULLANICIADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b>LogMasterId<b>,</b><b> </b>Tip<b>,</b><b> </b>TabloAdi<b>,</b><b> </b>KeyValue<b>,</b><b> </b><b>Left</b><b>(</b>Aciklama<b>,</b><b> </b>1000<b>)</b><b>,</b><b> </b><b>Left</b><b>(</b>Anahtar<b>,</b><b> </b>1000<b>)</b><b>,</b><b> </b>Tarih<b>,</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>,</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>Adi
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>LogMaster</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LogMaster</u></font><b>.</b>KullaniciId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>LogMaster</u></font><b>.</b>Tarih<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LogMaster</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>    </b><b>(</b><font color="# 080 0"><u>LogMaster</u></font><b>.</b>Tip<b> </b><b>=</b><b> </b>:ATip<b> </b><b>or</b><b> </b>:ATip<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>    </b><b>(</b><font color="# 080 0"><u>LogMaster</u></font><b>.</b>TabloAdi<b> </b><b>=</b><b> </b>:ATabloAdi<b> </b><b>or</b><b> </b>:ATabloAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b>Tarih<b> </b><b>desc</b>
+<b>    </b><b>into</b><b> </b>:LogMasterId<b>,</b><b> </b>:Tip<b>,</b><b> </b>:TabloAdi<b>,</b><b> </b>:KeyValue<b>,</b><b> </b>:Aciklama<b>,</b><b> </b>:Anahtar<b>,</b><b> </b>:Tarih<b>,</b><b> </b>:KullaniciId<b>,</b><b> </b>:KullaniciAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="LOGDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="LOGLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

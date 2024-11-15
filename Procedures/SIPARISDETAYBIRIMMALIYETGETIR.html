@@ -1,0 +1,170 @@
+<HTML>
+<HEAD>
+<TITLE>SIPARISDETAYBIRIMMALIYETGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1749800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="SIPARISDETAYBILGILERINIKOPYALA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="SIPARISDETAYINPARTILERI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">SIPARISDETAYBIRIMMALIYETGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABOYASIPARISDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">HAMSTOKBIRIMMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMMALIYET</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure SIPARISDETAYBIRIMMALIYETGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>SIPARISDETAYBIRIMMALIYETGETIR</u></font><b>(</b>
+<b>    </b>APARTISINIFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABOYASIPARISDETAYID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>HAMSTOKBIRIMMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>BIRIMMALIYET<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StokTabanDovizId<b>  </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBirimMaliyet<b>  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDovizId<b>       </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>      </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMiktar<b>        </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTutar<b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FToplamMiktar<b>  </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>StokTabanDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>sistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:StokTabanDovizId<b>;</b><b> </b><font color="# 0 0FF"><i>/* YTL*/</i></font>
+
+<b>  </b>HamStokBirimMaliyeti<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FToplamMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>APartiSinifID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>DovizId<b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>NetBirimFiyat<b> </b><b>*</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>Miktar<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifID
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>RafDetayId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>HamStokIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokIrsaliyeId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId
+<b>      </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>DovizId
+<b>      </b><b>into</b><b> </b>:FDovizId<b>,</b><b> </b>:FTutar<b>,</b><b> </b>FMiktar<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>StokTabanDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FDovizId<b>)</b><b> </b><b>then</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FDovizId<b>,</b><b> </b>:StokTabanDovizId<b>,</b><b> </b><b>Current_Date</b><b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b>FToplamMiktar<b>  </b><b>=</b><b> </b>FToplamMiktar<b>  </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>      </b>HamStokBirimMaliyeti<b> </b><b>=</b><b> </b>HamStokBirimMaliyeti<b> </b><b>+</b><b> </b>FTutar<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FToplamMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b>HamStokBirimMaliyeti<b> </b><b>=</b><b> </b>HamStokBirimMaliyeti<b> </b><b>/</b><b> </b>FTOplamMiktar<b>;</b>
+
+<b>  </b>FBirimMaliyet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>BirimMaliyet<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ABoyaSiparisDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>BirimMaliyet<b>,</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>DovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>SiparisProsesID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>SiparisProsesID
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayID<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId
+<b>    </b><b>into</b><b> </b>:FBirimMaliyet<b>,</b><b> </b>:FDovizId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FBirimMaliyet<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FBirimMaliyet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>StokTabanDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FDovizId<b>)</b><b> </b><b>then</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FDovizId<b>,</b><b> </b>:StokTabanDovizId<b>,</b><b> </b><b>Current_Date</b><b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b>BirimMaliyet<b> </b><b>=</b><b> </b>FBirimMaliyet<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>.</b>BirimMaliyet<b>,</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>.</b>BirimMaliyetDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>.</b>IlaveIslemlerID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>IlaveIslemlerId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>BoyaSiparisDetayID<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId
+<b>      </b><b>into</b><b> </b>:FBirimMaliyet<b>,</b><b> </b>:FDovizId<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>StokTabanDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FDovizId<b>)</b><b> </b><b>then</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FDovizId<b>,</b><b> </b>:StokTabanDovizId<b>,</b><b> </b><b>Current_Date</b><b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FBirimMaliyet<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FBirimMaliyet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>BirimMaliyet<b> </b><b>=</b><b> </b>BirimMaliyet<b> </b><b>+</b><b> </b>FBirimMaliyet<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="SIPARISDETAYBILGILERINIKOPYALA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="SIPARISDETAYINPARTILERI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

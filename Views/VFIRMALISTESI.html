@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<TITLE>VFIRMALISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="52800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Views</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="VFIRMAKULLANICI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="VFIRMALISTESIOZEL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">VFIRMALISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for view VFIRMALISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Fields</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Field</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="40%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAID</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KISAADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAGRUP1</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAGRUP2</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAGRUP3</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SATICI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORGANIKORMECI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NOTU</P></TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VERGIDAIRESI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VERGIHESAPNO</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Triggers</P>
+<P CLASS="Base"><I>(There are no triggers for view VFIRMALISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>VIEW</b><b> </b><font color="# 080 0"><u>VFIRMALISTESI</u></font><b>(</b>
+<b>    </b>FIRMAID<b>,</b>
+<b>    </b>ADI<b>,</b>
+<b>    </b>KISAADI<b>,</b>
+<b>    </b>FIRMAGRUP1<b>,</b>
+<b>    </b>FIRMAGRUP2<b>,</b>
+<b>    </b>FIRMAGRUP3<b>,</b>
+<b>    </b>SATICI<b>,</b>
+<b>    </b>MUSTERI<b>,</b>
+<b>    </b>ORGANIKORMECI<b>,</b>
+<b>    </b>NOTU<b>,</b>
+<b>    </b>VERGIDAIRESI<b>,</b>
+<b>    </b>VERGIHESAPNO<b>)</b>
+<b>AS</b>
+<b>Select</b><b> </b>FirmaId<b>,</b><b> </b>Adi<b>,</b><b> </b>KisaAdi<b>,</b><b> </b>FirmaGrup1<b>,</b><b> </b>FirmaGrup2<b>,</b><b> </b>FirmaGrup3<b>,</b><b> </b>Satici<b>,</b><b> </b>Musteri<b>,</b><b> </b>OrganikOrmeci<b>,</b><b> </b>Notu<b>,</b><b> </b>VergiDairesi<b>,</b><b> </b>VergiHesapNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Firma</u></font>
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0
+<b>;</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="VFIRMAKULLANICI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="VFIRMALISTESIOZEL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

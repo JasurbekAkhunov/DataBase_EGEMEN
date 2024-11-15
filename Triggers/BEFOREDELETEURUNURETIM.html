@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREDELETEURUNURETIM</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="606800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREDELETEURUNRECETE.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREDELETEURUNURETIMTARTI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREDELETEURUNURETIM</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREDELETEURUNURETIM)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREDELETEURUNURETIM</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>URUNURETIM</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>DELETE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunId<b>             </b><font color="# 080 0"><u>UrunKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DSonAlisStokDetayId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSonAlisStokDetayId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMaxStokDetayId<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSonAlisTarihi<b>      </b><b>TimeStamp</b><b>;</b>
+<b>begin</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>SonAlisStokDetayId<b> </b><b>From</b><b> </b><font color="# 080 0"><u>Stok</u></font><b>,</b><b> </b><font color="# 080 0"><u>Stokdetay</u></font><b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>Stok</u></font><b>.</b>UrunUretimId<b>  </b><b>=</b><b> </b><b>Old</b><b>.</b>UrunUretimId<b>   </b><b>and</b><b> </b><font color="# 080 0"><u>Stok</u></font><b>.</b>StokId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>StokId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId
+<b>        </b><b>and</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>StokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>SonAlisStokDetayId
+<b>  </b><b>into</b><b>  </b>:FUrunId<b>,</b><b> </b>:DSonAlisStokDetayId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>FSonAlisStokDetayId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>    </b>FSonAlisTarihi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>    </b>FMaxStokDetayId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>    </b><b>select</b><b> </b><b>max</b><b>(</b>Tarih<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokDetay</u></font>
+<b>      </b><b>where</b><b> </b>Urunid<b> </b><b>=</b><b> </b>:FUrunId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>Harekettipi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>NetBirimFiyat<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>StokDetayId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:DSonAlisStokDetayId<b> </b><b>into</b><b> </b>:FSonAlisTarihi<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>max</b><b>(</b>StokDetayId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokDetay</u></font>
+<b>      </b><b>where</b><b> </b>Urunid<b> </b><b>=</b><b> </b>:FUrunId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>NetBirimFiyat<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>Tarih<b> </b><b>=</b><b> </b>:FSonAlisTarihi<b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>StokDetayId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:DSonAlisStokDetayId<b> </b><b>into</b><b> </b>:FMaxStokDetayId<b>;</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>Set</b><b> </b>SonAlisStokDetayId<b> </b><b>=</b><b> </b>:FMaxStokDetayId<b>,</b><b> </b>SonAlisTarihi<b> </b><b>=</b><b> </b>:FSonAlisTarihi<b> </b><b>where</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b>:FUrunId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FMaxStokDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>UrunFiyatiGuncelle</u></font><b>(</b>:FUrunId<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Stok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Stok</u></font><b>.</b>UrunUretimId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>UrunUretimId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREDELETEURUNRECETE.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREDELETEURUNURETIMTARTI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

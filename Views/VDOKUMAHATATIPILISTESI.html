@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<TITLE>VDOKUMAHATATIPILISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="37800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Views</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="VDOKUMADESENITANITIMLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="VDOKUMAMAKINABOLUMLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">VDOKUMAHATATIPILISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for view VDOKUMAHATATIPILISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Fields</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Field</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="40%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">DOKUMAHATATIPIID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NOKTASALHATA</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HATAPUANI</P></TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOKUMAHATASI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INDIGOHATASI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">COZGUHATASI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HASILHATASI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Triggers</P>
+<P CLASS="Base"><I>(There are no triggers for view VDOKUMAHATATIPILISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>VIEW</b><b> </b><font color="# 080 0"><u>VDOKUMAHATATIPILISTESI</u></font><b>(</b>
+<b>    </b>DOKUMAHATATIPIID<b>,</b>
+<b>    </b>ADI<b>,</b>
+<b>    </b>NOKTASALHATA<b>,</b>
+<b>    </b>HATAPUANI<b>,</b>
+<b>    </b>DOKUMAHATASI<b>,</b>
+<b>    </b>INDIGOHATASI<b>,</b>
+<b>    </b>COZGUHATASI<b>,</b>
+<b>    </b>HASILHATASI<b>)</b>
+<b>AS</b>
+<b>select</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>DokumaHataTipiId<b>,</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>NoktasalHata<b>,</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>HataPuani<b>,</b>
+<b>  </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>DokumaHatasi<b>,</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>IndigoHatasi<b>,</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>CozguHatasi<b>,</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>HasilHatasi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font>
+<b>;</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="VDOKUMADESENITANITIMLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="VDOKUMAMAKINABOLUMLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

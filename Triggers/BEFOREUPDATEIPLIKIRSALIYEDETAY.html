@@ -1,0 +1,173 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEIPLIKIRSALIYEDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1313800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEIPLIKIRSALIYE3.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEIPLIKIRSALIYEDETAY1.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEIPLIKIRSALIYEDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEIPLIKIRSALIYEDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEIPLIKIRSALIYEDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>IPLIKIRSALIYEDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretimCikisBoya<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretimBoya<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretimKirpinti<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtAlisIade<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretimIade<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamId<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FaturaDovizId<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IrsaliyeTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SiparisDovizId<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaId<b>        </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BirimFiyat<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SonDonemBitisTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtTelefGirisi<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b>shtUretimCikisBoya<b>,</b><b> </b>shtUretimBoya<b>,</b><b> </b>shtAlisIade<b>,</b><b> </b>shtUretimIade<b>,</b><b> </b>shtUretimKirpinti<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikStokHareketTipiGetir</u></font><b> </b><b>into</b><b> </b>:shtUretimCikisBoya<b>,</b><b> </b>:shtUretimBoya<b>,</b><b> </b>:shtAlisIade<b>,</b><b> </b>:shtUretimIade<b>,</b><b> </b>:shtUretimKirpinti<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtAlisIade<b> </b><b>or</b><b> </b><b>New</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtUretimIade<b> </b><b>or</b><b> </b><b>New</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtUretimCikisBoya<b> </b><b>or</b><b> </b><b>New</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtUretimBoya<b> </b><b>or</b><b> </b><b>New</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtUretimKirpinti<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>NetMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Miktar<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>hamId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>IplikTalepDetayId<b>,</b><b> </b><b>New</b><b>.</b>IplikTalepDetayId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>IplikTalepDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b>HamId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikTalepDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikTalepDetay</u></font><b>.</b>IplikTalepDetayID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IplikTalepDetayId<b> </b><b>into</b><b> </b>:HamId<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>HamId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>HamID<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>' Talep Stok ile İrsaliye Ham Stok uymuyor..'<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>IlaveMiktar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>IlaveMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Brut<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>New</b><b>.</b>FaturaMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Miktar<b> </b><b>+</b><b> </b><b>New</b><b>.</b>IlaveMiktar<b>;</b>
+<b>  </b><b>else</b>
+<b>    </b><b>New</b><b>.</b>FaturaMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>NetMiktar<b> </b><b>+</b><b> </b><b>New</b><b>.</b>IlaveMiktar<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>IplikFaturaId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>IplikFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>IplikTalepDetayID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b>DovizId<b>,</b><b> </b>FirmaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikFatura</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikFatura</u></font><b>.</b>IplikFaturaID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IplikFaturaId<b> </b><b>into</b><b> </b>:FaturaDovizId<b>,</b><b> </b>:FirmaId<b>;</b>
+
+<b>      </b><b>Select</b><b> </b>IrsaliyeTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>IplikIrsaliyeID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IplikIrsaliyeId<b> </b><b>into</b><b> </b>:IrsaliyeTarihi<b>;</b>
+
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>DovizId<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>SatisFiyati<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>VadeGun<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikTalepDetay</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>IplikTalepDetay</u></font><b>.</b>OrmeSiparisDetayId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>IplikTalepDetay</u></font><b>.</b>IplikTalepDetayId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IplikTalepDetayId
+<b>        </b><b>into</b><b> </b>:SiparisDovizId<b>,</b><b> </b><b>new</b><b>.</b>BirimFiyat<b>,</b><b> </b><b>New</b><b>.</b>VadeGun<b>;</b>
+
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>VadeGun<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>VadeGun<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>SiparisDovizID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FaturaDovizId<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>FirmaDovizKurlariniGetir</u></font><b>(</b>:FirmaId<b>,</b><b> </b>:SiparisDovizId<b>,</b><b> </b>:FaturaDovizId<b>,</b><b> </b>:IrsaliyeTarihi<b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>new</b><b>.</b>BirimFiyat<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BirimFiyat<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>IplikFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>IplikFaturaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>IplikTalepDetayID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>New</b><b>.</b>BirimFiyat<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>new</b><b>.</b>VadeGun<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>NeredenUpdate<b> </b><b>&lt;</b><b> </b>1<b> </b><b>or</b><b> </b><b>new</b><b>.</b>NeredenUpdate<b> </b><b>&gt;</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>NeredenUpdateBilgisiHatali</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>NeredenUpdate<b> </b><b>&lt;</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>HamStokIrsaliyeId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><b>New</b><b>.</b>OrmeIrsaliyeId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Evrak Transfer edilmiş, değişemez..'<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>NeredenGirildi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>NeredenGirildi<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>NeredenGirildiDegisemez</u></font><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>HareketTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>HareketTipi<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>HareketTipiDegisemez</u></font><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>IplikDepoID<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>IplikDepoID<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Depo Kodu Değiştirilemez..'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>IplikFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>IplikFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>Old</b><b>.</b>IplikFaturaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>IplikFaturaId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>FaturaIdDegisemez</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>KapAdedi<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><b>New</b><b>.</b>KapAdedi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>KapAdedi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Kdv<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Kdv<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BirimFiyat<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>BirimFiyat<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BirimIskontoParasal<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>BirimIskontoParasal<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BirimIskontoOrani1<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>BirimIskontoOrani1<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BirimIskontoOrani2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>BirimIskontoOrani2<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BirimIskontoToplami<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>BirimIskontoToplami<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>KdvHaricFiyat<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>KdvHaricFiyat<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>NetBirimFiyat<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>NetBirimFiyat<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>VadeGun<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>VadeGun<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Lot<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Lot<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>MelanjKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>MelanjKodu<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>FlamKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>FlamKodu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>IplikDepoID<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>IplikDepoID<b> </b><b>or</b>
+<b>      </b><b>Old</b><b>.</b>Lot<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Lot<b> </b><b>or</b>
+<b>      </b><b>Old</b><b>.</b>HamId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>or</b>
+<b>      </b><b>Old</b><b>.</b>MelanjKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>MelanjKodu<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>AmbalajId<b>,</b><b> </b><b>New</b><b>.</b>AmbalajID<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>RenkId<b>,</b><b> </b><b>New</b><b>.</b>RenkId<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>IplikIsletmeId<b>,</b><b> </b><b>New</b><b>.</b>IplikIsletmeId<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>KonikCinsiId<b>,</b><b> </b><b>New</b><b>.</b>KonikCinsiId<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>KonikRengiId<b>,</b><b> </b><b>New</b><b>.</b>KonikRengiId<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>TamirGirisKayitId<b>,</b><b> </b><b>New</b><b>.</b>TamirGirisKayitId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikIrsaliyeDetayID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IplikIrsaliyeDetayID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>CikisIplikIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>into</b><b> </b>:KS<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>' Çıkışı Var, Giriş Bilgileri değişemez'<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>ElyafUretimIsEmriRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ElyafUretimIsEmriRecete</u></font><b>.</b>IplikIrsaliyeDetayID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IplikIrsaliyeDetayID<b> </b><b>into</b><b> </b>:KS<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>' Elyaf üretim iş emrinde kullanılmış, giriş bilgileri değişemez'<b>;</b>
+
+<b>  </b><b>end</b>
+
+<b>  </b><b>select</b><b> </b><b>max</b><b>(</b>BitisTarihi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DonemKapatma</u></font><b> </b><b>where</b><b> </b>Bolum<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b>OnayKullaniciId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>into</b><b> </b>:SonDonemBitisTarihi<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>SonDonemBitisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><b>(</b>SonDonemBitisTarihi<b> </b><b>&gt;</b><b> </b><b>new</b><b>.</b>Tarih<b> </b><b>or</b><b> </b>SonDonemBitisTarihi<b> </b><b>&gt;</b><b> </b><b>old</b><b>.</b>Tarih<b>)</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>exception</b><b> </b><font color="# 080 0"><u>DonemKapaliHDegisemez</u></font><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEIPLIKIRSALIYE3.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEIPLIKIRSALIYEDETAY1.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

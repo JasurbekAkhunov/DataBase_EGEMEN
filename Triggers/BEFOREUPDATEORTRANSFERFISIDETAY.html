@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEORTRANSFERFISIDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1421800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEORMEVARDIYA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEOSIPDETAYRECETE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEORTRANSFERFISIDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEORTRANSFERFISIDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEORTRANSFERFISIDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>ORMERAFTRANSFERFISIDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KalanMiktar<b>           </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamId<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RenkId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisKayitId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeSiparisDetayId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisDetayId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisBaskiId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmePlanlamaId<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaPlanlamaId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Sakat<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AyarTopu<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaTalimatKayitId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BukumTalimatId<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimPartiNo<b>         </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CikisPartiNo<b>          </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Lot<b>                   </b><b>varchar</b><b>(</b>150<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MelanjKodu<b>            </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FlamKodu<b>              </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Sertifika<b>             </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UreticiFirmaId<b>        </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeMakinaId<b>          </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaMakinaId<b>        </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeciMakinaNo<b>        </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UreticiId<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Tamir<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EskiPartiYil<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EskiPartiNo<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonStok<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StokFirmaId<b>           </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KaliteAciklamaTipiId<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MamulProsesId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyahaneFasonIade<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenId<b>               </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenVaryantId<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StokGirisNo<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BirimMaliyet<b>          </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Brut<b>                  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TamirTipiId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DisTamirCozumSekliId<b>  </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CozguIsEmriKayitID<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HasilIsEmriKayitID<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IndigoIsEmriKayitID<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LeventNo<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LeventSiraNo<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DepoPartiNo<b>           </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BobinSayisi<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TelAdedi<b>              </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AtkiLotu<b>              </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CozguLotu<b>             </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LeventTipiId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BarkodId<b>              </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OlcuId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Adet<b>                  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IplikUzamaDegeri<b>      </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FisTarihi<b>             </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TransferEdildi<b>        </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>TransferEdildi<b> </b><b>From</b><b> </b><font color="# 080 0"><u>OrmeRafTransferFisi</u></font><b> </b><b>Where</b><b> </b>OrmeRafTransferFisiId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeRafTransferFisiId<b> </b><b>into</b><b> </b>:TransferEdildi<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>TransferEdildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>TrasferEdilmisDegistirilmez</u></font><b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>(</b>NetGirisMiktari<b> </b><b>-</b><b> </b>NetCikisMiktari<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeRafId<b> </b><b>into</b><b> </b>:KalanMiktar<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>KaliteNo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>KaliteNo<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>RafID<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>RafId<b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>OnayDurumu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>OnayDurumu<b> </b><b>and</b><b> </b><b>New</b><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>HamId<b>,</b><b> </b>RenkId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>BoyaSiparisDetayId<b>,</b><b> </b>OrmePlanlamaId<b>,</b><b> </b>DokumaPlanlamaId<b>,</b><b> </b>Sakat<b>,</b><b> </b>AyarTopu<b>,</b><b> </b>BoyaTalimatKayitId<b>,</b><b> </b>BukumTalimatId<b>,</b><b> </b>UretimPartiNo<b>,</b><b> </b>CikisPartiNo<b>,</b>
+<b>           </b>Lot<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>FlamKodu<b>,</b><b> </b>UreticiFirmaId<b>,</b><b> </b>OrmeMakinaId<b>,</b><b> </b>DokumaMakinaId<b>,</b><b> </b>OrmeciMakinaNo<b>,</b><b> </b>UreticiId<b>,</b><b> </b>Tamir<b>,</b><b> </b>EskiPartiYil<b>,</b><b> </b>EskiPartiNo<b>,</b><b> </b>FasonStok<b>,</b><b> </b>StokFirmaId<b>,</b>
+<b>           </b>KaliteAciklamaTipiId<b>,</b><b> </b>MamulProsesId<b>,</b><b> </b>BoyahaneFasonIade<b>,</b><b> </b>BoyaSiparisBaskiId<b>,</b><b> </b>DesenId<b>,</b><b> </b>DesenVaryantId<b>,</b><b> </b>StokGirisNo<b>,</b><b> </b>BirimMaliyet<b>,</b><b> </b>Brut<b>,</b><b> </b>TamirTipiId<b>,</b><b> </b>DisTamirCozumSekliId<b>,</b>
+<b>           </b>CozguIsEmriKayitID<b>,</b><b> </b>HasilIsEmriKayitID<b>,</b><b> </b>LeventNo<b>,</b><b> </b>DepoPartiNo<b>,</b><b> </b>TelAdedi<b>,</b><b> </b><b>(</b>GirisBobinSayisi<b> </b><b>-</b><b> </b>CikisBobinSayisi<b>)</b><b>,</b><b> </b>AtkiLotu<b>,</b><b> </b>CozguLotu<b>,</b><b> </b>LeventTipiId<b>,</b><b> </b>BarkodId<b>,</b>
+<b>           </b>OlcuId<b>,</b><b> </b><b>(</b>GirisAdet<b>-</b>CikisAdet<b>)</b><b>,</b><b> </b>Sertifika<b>,</b><b> </b>IndigoIsEmriKayitID<b>,</b><b> </b>LeventSiraNo<b>,</b><b> </b>IplikUzamaDegeri<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmeRafId
+<b>      </b><b>into</b><b> </b>:HamId<b>,</b><b> </b>:RenkId<b>,</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:OrmeSiparisDetayId<b>,</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>:OrmePlanlamaId<b>,</b><b> </b>:DokumaPlanlamaId<b>,</b><b> </b>:Sakat<b>,</b><b> </b>:AyarTopu<b>,</b><b> </b>:BoyaTalimatKayitId<b>,</b><b> </b>:BukumTalimatId<b>,</b><b> </b>:UretimPartiNo<b>,</b><b> </b>:CikisPartiNo<b>,</b>
+<b>           </b>:Lot<b>,</b><b> </b>:MelanjKodu<b>,</b><b> </b>:FlamKodu<b>,</b><b> </b>:UreticiFirmaId<b>,</b><b> </b>:OrmeMakinaId<b>,</b><b> </b>DokumaMakinaId<b>,</b><b> </b>OrmeciMakinaNo<b>,</b><b> </b>:UreticiId<b>,</b><b> </b>:Tamir<b>,</b><b> </b>:EskiPartiYil<b>,</b><b> </b>:EskiPartiNo<b>,</b><b> </b>:FasonStok<b>,</b><b> </b>:StokFirmaId<b>,</b>
+<b>           </b>:KaliteAciklamaTipiId<b>,</b><b> </b>:MamulProsesId<b>,</b><b> </b>:BoyahaneFasonIade<b>,</b><b> </b>:BoyaSiparisBaskiId<b>,</b><b> </b>:DesenId<b>,</b><b> </b>:DesenVaryantId<b>,</b><b> </b>:StokGirisNo<b>,</b><b> </b>:BirimMaliyet<b>,</b><b> </b>:Brut<b>,</b><b> </b>:TamirTipiId<b>,</b><b> </b>:DisTamirCozumSekliId<b>,</b>
+<b>           </b>:CozguIsEmriKayitID<b>,</b><b> </b>:HasilIsEmriKayitID<b>,</b><b> </b>:LeventNo<b>,</b><b> </b>:DepoPartiNo<b>,</b><b> </b>:TelAdedi<b>,</b><b> </b>:BobinSayisi<b>,</b><b> </b>:AtkiLotu<b>,</b><b> </b>:CozguLotu<b>,</b><b> </b>:LeventTipiId<b>,</b><b> </b>:BarkodId<b>,</b>
+<b>           </b>:OlcuId<b>,</b><b> </b>:Adet<b>,</b><b> </b>:Sertifika<b>,</b><b> </b>:IndigoIsEmriKayitID<b>,</b><b> </b>:LeventSiraNo<b>,</b><b> </b>:IplikUzamaDegeri<b>;</b>
+
+<b>    </b><b>Select</b><b> </b>OrmeRafId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRafKaydet</u></font><b>(</b><b>new</b><b>.</b>RafId<b>,</b><b> </b>:StokGirisNo<b>,</b><b> </b>:HamId<b>,</b><b> </b>:RenkId<b>,</b><b> </b>:DesenId<b>,</b><b> </b>:DesenVaryantId<b>,</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:OrmeSiparisDetayId<b>,</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>:BoyaSiparisBaskiId<b>,</b>
+<b>                                    </b>:OrmePlanlamaId<b>,</b><b> </b>:DokumaPlanlamaId<b>,</b><b> </b>:Sakat<b>,</b><b> </b>:AyarTopu<b>,</b><b> </b>:BoyaTalimatKayitId<b>,</b>
+<b>                                    </b>:UretimPartiNo<b>,</b><b> </b>:CikisPartiNo<b>,</b><b> </b>:Lot<b>,</b><b> </b>:MelanjKodu<b>,</b><b> </b>:FlamKodu<b>,</b><b> </b>:UreticiFirmaId<b>,</b><b> </b>:OrmeMakinaId<b>,</b><b> </b>:DokumaMakinaId<b>,</b><b> </b>:OrmeciMakinaNo<b>,</b><b> </b>:UreticiId<b>,</b><b> </b>:Tamir<b>,</b><b> </b>:EskiPartiYil<b>,</b>
+<b>                                    </b>:EskiPartiNo<b>,</b><b> </b><b>new</b><b>.</b>KaliteNo<b>,</b><b> </b>:FasonStok<b>,</b><b> </b>:StokFirmaId<b>,</b><b> </b>:KaliteAciklamaTipiId<b>,</b><b> </b>:MamulProsesId<b>,</b><b> </b>:BoyahaneFasonIade<b>,</b>
+<b>                                    </b><b>new</b><b>.</b>KapAdedi<b>,</b><b> </b><b>new</b><b>.</b>BrutKilo<b>,</b><b> </b><b>new</b><b>.</b>Kilo<b>,</b><b> </b>:Brut<b>,</b><b> </b>0<b>,</b><b> </b>:BirimMaliyet<b>,</b><b> </b>:TamirTipiId<b>,</b><b> </b>:DisTamirCozumSekliId<b>,</b>
+<b>                                    </b>:CozguIsEmriKayitID<b>,</b><b> </b>:HasilIsEmriKayitID<b>,</b><b> </b>:LeventNo<b>,</b><b> </b>:BobinSayisi<b>,</b><b> </b>:BukumTalimatId<b>,</b><b> </b>:DepoPartiNo<b>,</b><b> </b>:TelAdedi<b>,</b><b> </b>:AtkiLotu<b>,</b><b> </b>:LeventTipiId<b>,</b><b> </b>:CozguLotu<b>,</b><b> </b>:BarkodId<b>,</b>
+<b>                                    </b>:OlcuId<b>,</b><b> </b><b>new</b><b>.</b>Adet<b>,</b><b> </b>:Sertifika<b>,</b><b> </b>:IndigoIsEmriKayitID<b>,</b><b> </b>:LeventSiraNo<b>,</b><b> </b>:IplikUzamaDegeri<b>)</b>
+<b>     </b><b>into</b><b> </b><b>new</b><b>.</b>YeniOrmeRafId<b>;</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*Update OrmeRaf Set CikisKapAdedi = CikisKapAdedi - Old.KapAdedi,</i></font>
+<font color="# 0 0FF"><i>                       NetCikisMiktari = NetCikisMiktari - Old.Kilo,</i></font>
+<font color="# 0 0FF"><i>                       BrutCikisMiktari = BrutCikisMiktari - Old.BrutKilo</i></font>
+<font color="# 0 0FF"><i>      where OrmeRaf.OrmeRafId = Old.YeniOrmeRafId;*/</i></font>
+
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>Kilo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Kilo<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>BrutKilo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>BrutKilo<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>KapAdedi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>KapAdedi<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><font color="# 0 0FF"><i>/*Update OrmeRaf Set CikisKapAdedi = CikisKapAdedi - Old.KapAdedi + New.KapAdedi,</i></font>
+<font color="# 0 0FF"><i>                         NetCikisMiktari = NetCikisMiktari - Old.Kilo + New.kilo,</i></font>
+<font color="# 0 0FF"><i>                         BrutCikisMiktari = BrutCikisMiktari - Old.BrutKilo + New.Brutkilo</i></font>
+<font color="# 0 0FF"><i>        where OrmeRaf.OrmeRafId = New.YeniOrmeRafId;*/</i></font>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b>KalanMiktar<b> </b><b>+</b><b> </b><b>Old</b><b>.</b>Kilo<b>)</b><b> </b><b>&lt;</b><b> </b><b>new</b><b>.</b>Kilo<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>RaftaYeterliKiloMetreYok</u></font><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>FisTarihi<b> </b><b>From</b><b> </b><font color="# 080 0"><u>OrmeRafTransferFisi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeRafTransferFisi</u></font><b>.</b>OrmeRafTransferFisiId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmeRafTransferFisiId<b> </b><b>into</b><b> </b>:FisTarihi<b>;</b>
+<b>  </b><b>select</b><b> </b>BirimMaliyet<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RafFifoMaliyetGetir</u></font><b>(</b><b>New</b><b>.</b>OrmeRafId<b>,</b><b> </b><b>New</b><b>.</b>Kilo<b>,</b><b> </b>:FisTarihi<b>,</b><b> </b><b>Null</b><b>)</b><b> </b><b>into</b><b> </b><b>new</b><b>.</b>BirimMaliyet<b>;</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEORMEVARDIYA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEOSIPDETAYRECETE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

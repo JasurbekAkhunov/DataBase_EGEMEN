@@ -1,0 +1,446 @@
+<HTML>
+<HEAD>
+<TITLE>URETIMPERFORMANSRAPORUSEVKLER</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1916800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="URETIMPERFORMANSRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="URETIMPERFORMANSRAPORU_V2.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">URETIMPERFORMANSRAPORUSEVKLER</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ACIKLAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA1</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA2</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA3</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA4</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TOPLAM</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure URETIMPERFORMANSRAPORUSEVKLER)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>URETIMPERFORMANSRAPORUSEVKLER</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIH<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>ACIKLAMA<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>HAFTA1<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>HAFTA2<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>HAFTA3<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>HAFTA4<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>TOPLAM<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonIplikSevkToplamiH1<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonIplikSevkToplamiH2<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonIplikSevkToplamiH3<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonIplikSevkToplamiH4<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>SatisIplikSevkToplamiH1<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SatisIplikSevkToplamiH2<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SatisIplikSevkToplamiH3<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SatisIplikSevkToplamiH4<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonKumasSevkToplamiH1<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonKumasSevkToplamiH2<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonKumasSevkToplamiH3<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonKumasSevkToplamiH4<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>SatisKumasSevkToplamiH1<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SatisKumasSevkToplamiH2<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SatisKumasSevkToplamiH3<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SatisKumasSevkToplamiH4<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>UcretliTamirSevkToplamiH1<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UcretliTamirSevkToplamiH2<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UcretliTamirSevkToplamiH3<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UcretliTamirSevkToplamiH4<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>UcretsizTamirSevkToplamiH1<b>    </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UcretsizTamirSevkToplamiH2<b>    </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UcretsizTamirSevkToplamiH3<b>    </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UcretsizTamirSevkToplamiH4<b>    </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>IslemsizIadeSevkToplamiH1<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IslemsizIadeSevkToplamiH2<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IslemsizIadeSevkToplamiH3<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IslemsizIadeSevkToplamiH4<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>HamIadeSevkToplamiH1<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamIadeSevkToplamiH2<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamIadeSevkToplamiH3<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamIadeSevkToplamiH4<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiTipiId<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFason<b>                  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIslemTipiId<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFaturaKesilecek<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFasonHamIade<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTamir<b>                  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIrsaliyeTarihi<b>         </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBrutKilo<b>              </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FNetKilo<b>               </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BasH1<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BitH1<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BasH2<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BitH2<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BasH3<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BitH3<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BasH4<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BitH4<b> </b><b>TimeStamp</b><b>;</b>
+<b>begin</b>
+<b>  </b>BasH1<b> </b><b>=</b><b> </b>ABaslangicTarih<b>;</b>
+<b>  </b>BitH1<b> </b><b>=</b><b> </b>BasH1<b> </b><b>+</b><b> </b>6<b>;</b>
+
+<b>  </b>BasH2<b> </b><b>=</b><b> </b>BitH1<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b>BitH2<b> </b><b>=</b><b> </b>BasH2<b> </b><b>+</b><b> </b>6<b>;</b>
+
+<b>  </b>BasH3<b> </b><b>=</b><b> </b>BitH2<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b>BitH3<b> </b><b>=</b><b> </b>BasH3<b> </b><b>+</b><b> </b>6<b>;</b>
+
+<b>  </b>BasH4<b> </b><b>=</b><b> </b>BitH3<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b>BitH4<b> </b><b>=</b><b> </b>BasH4<b> </b><b>+</b><b> </b>6<b>;</b>
+
+<b>  </b>FasonIplikSevkToplamiH1<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FasonIplikSevkToplamiH2<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FasonIplikSevkToplamiH3<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FasonIplikSevkToplamiH4<b>  </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>SatisIplikSevkToplamiH1<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>SatisIplikSevkToplamiH2<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>SatisIplikSevkToplamiH3<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>SatisIplikSevkToplamiH4<b>  </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>FasonKumasSevkToplamiH1<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FasonKumasSevkToplamiH2<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FasonKumasSevkToplamiH3<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FasonKumasSevkToplamiH4<b>  </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>SatisKumasSevkToplamiH1<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>SatisKumasSevkToplamiH2<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>SatisKumasSevkToplamiH3<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>SatisKumasSevkToplamiH4<b>  </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>UcretliTamirSevkToplamiH1<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>UcretliTamirSevkToplamiH2<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>UcretliTamirSevkToplamiH3<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>UcretliTamirSevkToplamiH4<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>UcretsizTamirSevkToplamiH1<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>UcretsizTamirSevkToplamiH2<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>UcretsizTamirSevkToplamiH3<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>UcretsizTamirSevkToplamiH4<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>IslemsizIadeSevkToplamiH1<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>IslemsizIadeSevkToplamiH2<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>IslemsizIadeSevkToplamiH3<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>IslemsizIadeSevkToplamiH4<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>HamIadeSevkToplamiH1<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>HamIadeSevkToplamiH2<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>HamIadeSevkToplamiH3<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>HamIadeSevkToplamiH4<b> </b><b>=</b><b> </b>0<b>;</b>
+
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>IrsaliyeTarihi<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiTipiId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>Fason<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>IslemTipiId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>FaturaKesilecek<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>FasonHamIade<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Tamir<b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>BrutKilo<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>Kilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>PartiKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>RafDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:BasH1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:BitH4<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>HareketTipiID<b> </b><b>=</b><b> </b>0
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>IrsaliyeTarihi<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiTipiId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>Fason<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>IslemTipiId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>FaturaKesilecek<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>FasonHamIade<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Tamir
+<b>    </b><b>into</b><b> </b>:FIrsaliyeTarihi<b>,</b><b> </b>:FPartiTipiId<b>,</b><b> </b>:FFason<b>,</b><b> </b>:FIslemTipiId<b>,</b><b> </b>:FFaturaKesilecek<b>,</b><b> </b>:FFasonHamIade<b>,</b><b> </b>:FTamir<b>,</b><b> </b>:FBrutKilo<b>,</b><b> </b>:FNetKilo<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FIrsaliyeTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH1<b> </b><b>and</b><b> </b>FIrsaliyeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>BitH1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FPartiTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FPartiTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemTipiID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretliTamirSevkToplamiH1<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>UcretsizTamirSevkToplamiH1<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FasonIplikSevkToplamiH1<b> </b><b>=</b><b> </b>FasonIplikSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>SatisIplikSevkToplamiH1<b> </b><b>=</b><b> </b>SatisIplikSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemTipiID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretliTamirSevkToplamiH1<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>UcretsizTamirSevkToplamiH1<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FasonKumasSevkToplamiH1<b> </b><b>=</b><b> </b>FasonKumasSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>SatisKumasSevkToplamiH1<b> </b><b>=</b><b> </b>SatisKumasSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FFasonHamIade<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FTamir<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>IslemsizIadeSevkToplamiH1<b> </b><b>=</b><b> </b>IslemsizIadeSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>        </b><b>else</b><b> </b>HamIadeSevkToplamiH1<b> </b><b>=</b><b> </b>HamIadeSevkToplamiH1<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIrsaliyeTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH2<b> </b><b>and</b><b> </b>FIrsaliyeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>BitH2<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FPartiTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FPartiTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemTipiID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretliTamirSevkToplamiH2<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>UcretsizTamirSevkToplamiH2<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FasonIplikSevkToplamiH2<b> </b><b>=</b><b> </b>FasonIplikSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>SatisIplikSevkToplamiH2<b> </b><b>=</b><b> </b>SatisIplikSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemTipiID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretliTamirSevkToplamiH2<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>UcretsizTamirSevkToplamiH2<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FasonKumasSevkToplamiH2<b> </b><b>=</b><b> </b>FasonKumasSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>SatisKumasSevkToplamiH2<b> </b><b>=</b><b> </b>SatisKumasSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FFasonHamIade<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FTamir<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>IslemsizIadeSevkToplamiH2<b> </b><b>=</b><b> </b>IslemsizIadeSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>        </b><b>else</b><b> </b>HamIadeSevkToplamiH2<b> </b><b>=</b><b> </b>HamIadeSevkToplamiH2<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIrsaliyeTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH3<b> </b><b>and</b><b> </b>FIrsaliyeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>BitH3<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FPartiTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FPartiTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemTipiID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretliTamirSevkToplamiH3<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>UcretsizTamirSevkToplamiH3<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FasonIplikSevkToplamiH3<b> </b><b>=</b><b> </b>FasonIplikSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>SatisIplikSevkToplamiH3<b> </b><b>=</b><b> </b>SatisIplikSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemTipiID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretliTamirSevkToplamiH3<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>UcretsizTamirSevkToplamiH3<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FasonKumasSevkToplamiH3<b> </b><b>=</b><b> </b>FasonKumasSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>SatisKumasSevkToplamiH3<b> </b><b>=</b><b> </b>SatisKumasSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FFasonHamIade<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FTamir<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>IslemsizIadeSevkToplamiH3<b> </b><b>=</b><b> </b>IslemsizIadeSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>        </b><b>else</b><b> </b>HamIadeSevkToplamiH3<b> </b><b>=</b><b> </b>HamIadeSevkToplamiH3<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIrsaliyeTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH4<b> </b><b>and</b><b> </b>FIrsaliyeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>BitH4<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FPartiTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FPartiTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemTipiID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretliTamirSevkToplamiH4<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>UcretsizTamirSevkToplamiH4<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FasonIplikSevkToplamiH4<b> </b><b>=</b><b> </b>FasonIplikSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>SatisIplikSevkToplamiH4<b> </b><b>=</b><b> </b>SatisIplikSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FIslemTipiID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFaturaKesilecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>UcretliTamirSevkToplamiH4<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>UcretsizTamirSevkToplamiH4<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FFason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FasonKumasSevkToplamiH4<b> </b><b>=</b><b> </b>FasonKumasSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>            </b><b>else</b><b> </b>SatisKumasSevkToplamiH4<b> </b><b>=</b><b> </b>SatisKumasSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FFasonHamIade<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FTamir<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>IslemsizIadeSevkToplamiH4<b> </b><b>=</b><b> </b>IslemsizIadeSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>        </b><b>else</b><b> </b>HamIadeSevkToplamiH4<b> </b><b>=</b><b> </b>HamIadeSevkToplamiH4<b> </b><b>+</b><b> </b>FBrutKilo<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>'Fason İplik'<b>;</b>
+<b>  </b>Hafta1<b> </b><b>=</b><b> </b>FasonIplikSevkToplamiH1<b>;</b>
+<b>  </b>Hafta2<b> </b><b>=</b><b> </b>FasonIplikSevkToplamiH2<b>;</b>
+<b>  </b>Hafta3<b> </b><b>=</b><b> </b>FasonIplikSevkToplamiH3<b>;</b>
+<b>  </b>Hafta4<b> </b><b>=</b><b> </b>FasonIplikSevkToplamiH4<b>;</b>
+<b>  </b>Toplam<b> </b><b>=</b><b> </b>Hafta1<b> </b><b>+</b><b> </b>Hafta2<b> </b><b>+</b><b> </b>Hafta3<b> </b><b>+</b><b> </b>Hafta4<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>'Satış İplik'<b>;</b>
+<b>  </b>Hafta1<b> </b><b>=</b><b> </b>SatisIplikSevkToplamiH1<b>;</b>
+<b>  </b>Hafta2<b> </b><b>=</b><b> </b>SatisIplikSevkToplamiH2<b>;</b>
+<b>  </b>Hafta3<b> </b><b>=</b><b> </b>SatisIplikSevkToplamiH3<b>;</b>
+<b>  </b>Hafta4<b> </b><b>=</b><b> </b>SatisIplikSevkToplamiH4<b>;</b>
+<b>  </b>Toplam<b> </b><b>=</b><b> </b>Hafta1<b> </b><b>+</b><b> </b>Hafta2<b> </b><b>+</b><b> </b>Hafta3<b> </b><b>+</b><b> </b>Hafta4<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>'Fason Kumaş'<b>;</b>
+<b>  </b>Hafta1<b> </b><b>=</b><b> </b>FasonKumasSevkToplamiH1<b>;</b>
+<b>  </b>Hafta2<b> </b><b>=</b><b> </b>FasonKumasSevkToplamiH2<b>;</b>
+<b>  </b>Hafta3<b> </b><b>=</b><b> </b>FasonKumasSevkToplamiH3<b>;</b>
+<b>  </b>Hafta4<b> </b><b>=</b><b> </b>FasonKumasSevkToplamiH4<b>;</b>
+<b>  </b>Toplam<b> </b><b>=</b><b> </b>Hafta1<b> </b><b>+</b><b> </b>Hafta2<b> </b><b>+</b><b> </b>Hafta3<b> </b><b>+</b><b> </b>Hafta4<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>'Satış Kumaş'<b>;</b>
+<b>  </b>Hafta1<b> </b><b>=</b><b> </b>SatisKumasSevkToplamiH1<b>;</b>
+<b>  </b>Hafta2<b> </b><b>=</b><b> </b>SatisKumasSevkToplamiH2<b>;</b>
+<b>  </b>Hafta3<b> </b><b>=</b><b> </b>SatisKumasSevkToplamiH3<b>;</b>
+<b>  </b>Hafta4<b> </b><b>=</b><b> </b>SatisKumasSevkToplamiH4<b>;</b>
+<b>  </b>Toplam<b> </b><b>=</b><b> </b>Hafta1<b> </b><b>+</b><b> </b>Hafta2<b> </b><b>+</b><b> </b>Hafta3<b> </b><b>+</b><b> </b>Hafta4<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>'Ücretli Dış Tamir'<b>;</b>
+<b>  </b>Hafta1<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH1<b>;</b>
+<b>  </b>Hafta2<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH2<b>;</b>
+<b>  </b>Hafta3<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH3<b>;</b>
+<b>  </b>Hafta4<b> </b><b>=</b><b> </b>UcretliTamirSevkToplamiH4<b>;</b>
+<b>  </b>Toplam<b> </b><b>=</b><b> </b>Hafta1<b> </b><b>+</b><b> </b>Hafta2<b> </b><b>+</b><b> </b>Hafta3<b> </b><b>+</b><b> </b>Hafta4<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>'Ücretsiz Dış Tamir'<b>;</b>
+<b>  </b>Hafta1<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH1<b>;</b>
+<b>  </b>Hafta2<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH2<b>;</b>
+<b>  </b>Hafta3<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH3<b>;</b>
+<b>  </b>Hafta4<b> </b><b>=</b><b> </b>UcretsizTamirSevkToplamiH4<b>;</b>
+<b>  </b>Toplam<b> </b><b>=</b><b> </b>Hafta1<b> </b><b>+</b><b> </b>Hafta2<b> </b><b>+</b><b> </b>Hafta3<b> </b><b>+</b><b> </b>Hafta4<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>'İşlemsiz İade'<b>;</b>
+<b>  </b>Hafta1<b> </b><b>=</b><b> </b>IslemsizIadeSevkToplamiH1<b>;</b>
+<b>  </b>Hafta2<b> </b><b>=</b><b> </b>IslemsizIadeSevkToplamiH2<b>;</b>
+<b>  </b>Hafta3<b> </b><b>=</b><b> </b>IslemsizIadeSevkToplamiH3<b>;</b>
+<b>  </b>Hafta4<b> </b><b>=</b><b> </b>IslemsizIadeSevkToplamiH4<b>;</b>
+<b>  </b>Toplam<b> </b><b>=</b><b> </b>Hafta1<b> </b><b>+</b><b> </b>Hafta2<b> </b><b>+</b><b> </b>Hafta3<b> </b><b>+</b><b> </b>Hafta4<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>'Ham İade'<b>;</b>
+<b>  </b>Hafta1<b> </b><b>=</b><b> </b>HamIadeSevkToplamiH1<b>;</b>
+<b>  </b>Hafta2<b> </b><b>=</b><b> </b>HamIadeSevkToplamiH2<b>;</b>
+<b>  </b>Hafta3<b> </b><b>=</b><b> </b>HamIadeSevkToplamiH3<b>;</b>
+<b>  </b>Hafta4<b> </b><b>=</b><b> </b>HamIadeSevkToplamiH4<b>;</b>
+<b>  </b>Toplam<b> </b><b>=</b><b> </b>Hafta1<b> </b><b>+</b><b> </b>Hafta2<b> </b><b>+</b><b> </b>Hafta3<b> </b><b>+</b><b> </b>Hafta4<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="URETIMPERFORMANSRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="URETIMPERFORMANSRAPORU_V2.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

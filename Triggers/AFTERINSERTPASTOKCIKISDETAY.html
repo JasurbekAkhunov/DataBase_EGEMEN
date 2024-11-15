@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTPASTOKCIKISDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="213800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTPASAMASTOKDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTPERSONEL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTPASTOKCIKISDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTPASTOKCIKISDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTPASTOKCIKISDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>PARTIASAMASTOKCIKISDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>Declare</b><b> </b><b>variable</b><b> </b>FKilo<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>Declare</b><b> </b><b>variable</b><b> </b>FKiloDara<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>Declare</b><b> </b><b>variable</b><b> </b>FMetre<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b><b>Sum</b><b>(</b>Kilo<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b>KiloDara<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b>Metre<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaStokCikisDetay</u></font><b> </b><b>where</b><b> </b>PartiAsamaStokDetayID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiAsamaStokDetayID
+<b>    </b><b>into</b><b> </b>:FKilo<b>,</b><b> </b>:FKiloDara<b>,</b><b> </b>:FMetre<b>;</b>
+
+<b>  </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b> </b><b>Set</b><b> </b>CikisKilo<b> </b><b>=</b><b> </b>:FKilo<b>,</b><b> </b>CikisKiloDara<b> </b><b>=</b><b> </b>:FKiloDara<b>,</b><b> </b>CikisMetre<b> </b><b>=</b><b> </b>:FMetre<b> </b><b>where</b><b> </b>PartiAsamaStokDetayID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiAsamaStokDetayID<b>;</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTPASAMASTOKDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTPERSONEL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

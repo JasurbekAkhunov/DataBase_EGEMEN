@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<TITLE>SIPARISOZELTESTVEAPRELER</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1769800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="SIPARISOZELTESTLERIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="SIPARISPROSESASAMALARIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">SIPARISOZELTESTVEAPRELER</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABOYASIPARISDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">OZELTESTLER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3000)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">OZELAPRELER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3000)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILAVEISLEMLER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3000)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure SIPARISOZELTESTVEAPRELER)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>SIPARISOZELTESTVEAPRELER</u></font><b>(</b>
+<b>    </b>ABOYASIPARISDETAYID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>BOYASIPARISDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>OZELTESTLER<b> </b><b>VARCHAR</b><b>(</b>3000<b>)</b><b>,</b>
+<b>    </b>OZELAPRELER<b> </b><b>VARCHAR</b><b>(</b>3000<b>)</b><b>,</b>
+<b>    </b><font color="# 080 0"><u>ILAVEISLEMLER</u></font><b> </b><b>VARCHAR</b><b>(</b>3000<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOzelTestler<b> </b><b>varchar</b><b>(</b>3000<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOzelApreler<b> </b><b>varchar</b><b>(</b>3000<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIlaveIslemler<b> </b><b>varchar</b><b>(</b>3000<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAdi<b> </b><font color="# 080 0"><u>Adi80</u></font><b>;</b>
+<b>begin</b>
+<b>  </b>FOzelTestler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>FOzelApreler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>FIlaveIslemler<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OzelTest</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisOzelTestler</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OzelTest</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OzelTest</u></font><b>.</b>OzelTestId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisOzelTestler</u></font><b>.</b>OzelTestId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisOzelTestler</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId
+<b>    </b><b>order</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>OzelTest</u></font><b>.</b>Adi
+<b>    </b><b>into</b><b> </b>:FAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FOzelTestler<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>FOzelTestler<b> </b><b>=</b><b> </b>FOzelTestler<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b>;</b>
+<b>    </b>FOzelTestler<b> </b><b>=</b><b> </b>FOzelTestler<b> </b><b>|</b><b>|</b><b> </b>FAdi<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OzelApre</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisOzelApreler</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OzelApre</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OzelApre</u></font><b>.</b>OzelApreId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisOzelApreler</u></font><b>.</b>OzelApreId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisOzelApreler</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId
+<b>    </b><b>order</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>OzelApre</u></font><b>.</b>Adi
+<b>    </b><b>into</b><b> </b>:FAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FOzelApreler<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>FOzelApreler<b> </b><b>=</b><b> </b>FOzelApreler<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b>;</b>
+<b>    </b>FOzelApreler<b> </b><b>=</b><b> </b>FOzelApreler<b> </b><b>|</b><b>|</b><b> </b>FAdi<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>.</b>IlaveIslemlerId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>IlaveIslemlerId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b>:ABoyaSiparisDetayId
+<b>    </b><b>order</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>.</b>Adi
+<b>    </b><b>into</b><b> </b>:FAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FIlaveIslemler<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>FIlaveIslemler<b> </b><b>=</b><b> </b>FIlaveIslemler<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b>;</b>
+<b>    </b>FIlaveIslemler<b> </b><b>=</b><b> </b>FIlaveIslemler<b> </b><b>|</b><b>|</b><b> </b>FAdi<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FOzelTestler<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>or</b><b> </b>FOzelApreler<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>or</b><b> </b>FIlaveIslemler<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>OzelTestler<b> </b><b>=</b><b> </b>FOzelTestler<b>;</b>
+<b>    </b>OzelApreler<b> </b><b>=</b><b> </b>FOzelApreler<b>;</b>
+<b>    </b><font color="# 080 0"><u>IlaveIslemler</u></font><b> </b><b>=</b><b> </b>FIlaveIslemler<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="SIPARISOZELTESTLERIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="SIPARISPROSESASAMALARIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

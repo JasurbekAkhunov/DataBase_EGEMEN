@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<TITLE>RAFTANRAFATRANSFERYAP</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1635800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="RAFLOKASYONHAREKETRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="RAFTRANSFERFISIDETAYGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">RAFTANRAFATRANSFERYAP</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AKAYNAKRAFID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHEDEFRAFID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure RAFTANRAFATRANSFERYAP)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>RAFTANRAFATRANSFERYAP</u></font><b>(</b>
+<b>    </b>AKAYNAKRAFID<b> </b><font color="# 080 0"><u>RAFKODUSIZE</u></font><b>,</b>
+<b>    </b>AHEDEFRAFID<b> </b><font color="# 080 0"><u>RAFKODUSIZE</u></font><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FRafTransferFisNo<b> 			</b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FMamulDepoTransferFisNo<b> 	</b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FYil<b> 						</b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FRafTransferFisiId<b> 		</b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FMamulDepoTransferFisiId<b>	</b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FRafDetayId<b> 				</b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FKalanKilo<b> 				</b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FKalanMetre<b> 				</b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FKalanKapAdedi<b> 			</b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FKaliteNo<b> 					</b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FKaynakDepoId<b> 				</b><font color="# 080 0"><u>DepoKoduSize</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FHedefDepoId<b> 				</b><font color="# 080 0"><u>DepoKoduSize</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FPartiSinifId<b> 				</b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FPartiStokTartiId<b> 			</b><b>Integer</b><b>;</b>
+<b>Begin</b>
+<b>    </b><b>If</b><b> </b><b>(</b>AKaynakRafId<b> </b><b>=</b><b> </b>AHedefRafId<b>)</b><b> </b><b>Then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Kaynak ve hedef raf aynı olamaz...'<b>;</b>
+
+<b>    </b>FRafTransferFisNo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FRafTransferFisiId<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayId<b>,</b><b> </b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>Kilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>IadeEdilenKilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>AktarmayaCikanKilo<b> </b><b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>AktarmadanIadeEdienKilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>PartilenenKilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafTransferKilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>SatisKilo<b>)</b><b>,</b>
+<b>        </b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>Metre<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>IadeEdilenMetre<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>PartilenenMetre<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafTransferMetre<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>SatisMetre<b>)</b><b>,</b>
+<b>        </b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>KapAdedi<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>IadeEdilecekKapAdedi<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>PartilenenKapAdedi<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>IadeEdilenKapAdedi<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>KaliteNo<b> </b><b>From</b><b> </b><font color="# 080 0"><u>RafDetay</u></font>
+<b>        </b><b>Where</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafId<b> </b><b>=</b><b> </b>:AKaynakRafId<b> </b><b>And</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>StokVar<b> </b><b>=</b><b> </b>1<b> </b><b>And</b><b> </b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>Miktar<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>IadeEdilenMiktar<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>AktarmayaCikanKilo<b> </b><b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>AktarmadanIadeEdienKilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>PartilenenMiktar<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>SatisMiktar<b> </b><b>-</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafTransferMiktar<b>)</b><b> </b><b>&gt;</b><b> </b>0
+<b>    </b><b>Into</b><b> </b>:FRafDetayId<b>,</b><b> </b>:FKalanKilo<b>,</b><b> </b>:FKalanMetre<b>,</b><b> </b>:FKalanKapAdedi<b>,</b><b> </b>:FKaliteNo<b> </b><b>do</b>
+<b>    </b><b>Begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FRafTransferFisiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>            </b><b>Select</b><b> </b>Id<b>,</b><b> </b><b>Extract</b><b>(</b><b>Year</b><b> </b><b>From</b><b> </b><b>Current_date</b><b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>RafTransferFisiNumaratorAl</u></font><b>(</b><b>Extract</b><b>(</b><b>Year</b><b> </b><b>From</b><b> </b><b>Current_date</b><b>)</b><b>)</b><b> </b><b>Into</b><b> </b>:FRafTransferFisNo<b>,</b><b> </b>:FYil<b>;</b>
+
+<b>            </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>RafTransferFisi</u></font><b> </b><b>(</b>FisYil<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>            </b><b>Values</b><b>(</b>:FYil<b>,</b><b> </b>:FRafTransferFisNo<b>,</b><b> </b><b>Current_Date</b><b>,</b><b> </b>'Raftan Rafa Transfer'<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>)</b><b> </b><b>Returning</b><b> </b>RafTransferFisiId<b> </b><b>Into</b><b> </b>:FRafTransferFisiId<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>RafTransferFisiDetay</u></font><b>(</b>RafTransferFisiId<b>,</b><b> </b>RafDetayId<b>,</b><b> </b>Kilo<b>,</b><b> </b>Metre<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>RafId<b>,</b><b> </b>KaliteNo<b>,</b><b> </b>PaletNo<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>        </b><b>Values</b><b>(</b>:FRafTransferFisiId<b>,</b><b> </b>:FRafDetayId<b>,</b><b> </b>:FKalanKilo<b>,</b><b> </b>:FKalanMetre<b>,</b><b> </b>:FKalanKapAdedi<b>,</b><b> </b>:AHedefRafId<b>,</b><b> </b>:FKaliteNo<b>,</b><b> </b>''<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>)</b><b>;</b>
+<b>    </b><b>End</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*Mamul*/</i></font>
+<b>    </b>FKaynakDepoId<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b>FHedefDepoId<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b>FMamulDepoTransferFisNo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FMamulDepoTransferFisiId<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>Coalesce</b><b>(</b>DepoId<b>,</b><b> </b>''<b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b> </b><b>Where</b><b> </b>RafId<b> </b><b>=</b><b> </b>:AKaynakRafId<b> </b><b>Into</b><b> </b>:FKaynakDepoId<b>;</b>
+<b>    </b><b>Select</b><b> </b><b>Coalesce</b><b>(</b>DepoId<b>,</b><b> </b>''<b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b> </b><b>Where</b><b> </b>RafId<b> </b><b>=</b><b> </b>:AHedefRafId<b> </b><b>Into</b><b> </b>:FHedefDepoId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FKaynakDepoId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>and</b><b> </b>FHedefDepoId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>        </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiStokTartiId<b> </b><b>From</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>            </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisiDetay</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisiDetay</u></font><b>.</b>MamulDepoTransferFisiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>MamulDepoTransferFisiId<b> </b><b>And</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisiDetay</u></font><b>.</b>PartiStokTartiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiStokTartiId
+<b>            </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisiDetay</u></font><b>.</b>PartiSinifId
+<b>            </b><b>Where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeDetayId<b> </b><b>Is</b><b> </b><b>Null</b><b> </b><b>And</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>MamulDepoTransferFisiId<b> </b><b>Is</b><b> </b><b>Not</b><b> </b><b>Null</b><b> </b><b>And</b>
+<b>            </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>HamStokSarfFisiDetayId<b> </b><b>Is</b><b> </b><b>Null</b><b> </b><b>And</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitId<b> </b><b>Is</b><b> </b><b>Null</b><b> </b><b>And</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisiDetay</u></font><b>.</b>RafId<b> </b><b>=</b><b> </b>:AKaynakRafId
+<b>        </b><b>Into</b><b> </b>:FPartiSinifId<b>,</b><b> </b>:FPartiStokTartiId<b> </b><b>do</b>
+<b>        </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FMamulDepoTransferFisiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>                </b><b>Select</b><b> </b>Id<b>,</b><b> </b><b>Extract</b><b>(</b><b>Year</b><b> </b><b>From</b><b> </b><b>Current_date</b><b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>MDepoTransferFisiNumaratorAl</u></font><b>(</b>0<b>,</b><b> </b><b>Extract</b><b>(</b><b>Year</b><b> </b><b>From</b><b> </b><b>Current_date</b><b>)</b><b>)</b><b> </b><b>Into</b><b> </b>:FMamulDepoTransferFisNo<b>,</b><b> </b>:FYil<b>;</b>
+<b>    </b>
+<b>                </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>(</b>FisYil<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>Notu<b>,</b><b> </b>DepoId<b>,</b><b> </b>TransferDepoId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>                </b><b>Values</b><b>(</b>:FYil<b>,</b><b> </b>:FMamulDepoTransferFisNo<b>,</b><b> </b><b>Current_Date</b><b>,</b><b> </b>'Raftan Rafa Transfer'<b>,</b><b> </b>:FKaynakDepoId<b>,</b><b> </b>:FHedefDepoId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>)</b><b> </b><b>Returning</b><b> </b>MamulDepoTransferFisiId<b> </b><b>Into</b><b> </b>:FMamulDepoTransferFisiId<b>;</b>
+<b>            </b><b>end</b>
+
+<b>            </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisiDetay</u></font><b>(</b>MamulDepoTransferFisiId<b>,</b><b> </b>PartiSinifId<b>,</b><b> </b>PartiStokTartiId<b>,</b><b> </b>RafId<b>)</b>
+<b>            </b><b>Values</b><b>(</b>:FMamulDepoTransferFisiId<b>,</b><b> </b>:FPartiSinifId<b>,</b><b> </b>:FPartiStokTartiId<b>,</b><b> </b>:AHedefRafId<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>    </b><b>end</b>
+<b>End</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="RAFLOKASYONHAREKETRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="RAFTRANSFERFISIDETAYGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

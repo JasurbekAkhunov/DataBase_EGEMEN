@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<TITLE>PARTIBSIPARISBASKIIDDEGISTIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1417800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTIBOYASIPARISDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTIENERJISARFIYATIHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTIBSIPARISBASKIIDDEGISTIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABOYASIPARISBASKIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTIBSIPARISBASKIIDDEGISTIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTIBSIPARISBASKIIDDEGISTIR</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABOYASIPARISBASKIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PBoyaSiparisKayitId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisKayitId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiStokDesenVaryantId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldBoyaSiparisBaskiId<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Kilo<b>                    </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Metre<b>                   </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiSinifId<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisDetayId<b>      </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>BoyaSiparisKayitId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:APartiKayitID<b> </b><b>into</b><b> </b>:PBoyaSiparisKayitId<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font><b>.</b>DesenVaryantId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font>
+<b>     </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font><b>.</b>BoyaSiparisBaskiId<b> </b><b>=</b><b> </b>:ABoyaSiparisBaskiId
+<b>     </b><b>into</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:PartiStokDesenVaryantId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BoyaSiparisKayitId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>PBoyaSiparisKayitId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Siparişler eşleşmiyor'<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:APartiKayitID<b> </b><b>and</b><b> </b>Durumu<b> </b><b>&gt;</b><b>=</b><b> </b>8<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sevk Edilmiş, Varyant Değişemez'<b>;</b>
+
+<b>  </b><b>Update</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>Set</b><b> </b>DesenVaryantId<b> </b><b>=</b><b> </b>:PartiStokDesenVaryantId<b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b>PartiSinifId<b>,</b><b> </b>BoyaSiparisDetayId<b>,</b><b> </b>BoyaSiparisBaskiId<b>,</b><b> </b>Kilo<b>,</b><b> </b>Metre<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>     </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:APartiKayitID
+<b>      </b><b>into</b><b> </b>:PartiSinifId<b>,</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>:OldBoyaSiparisBaskiId<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>ABoyaSiparisBaskiID<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b>BoyaSiparisBaskiID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font><b>.</b>BoyaSiparisDetayID<b> </b><b>=</b><b> </b>:BoyaSiparisDetayID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font><b>.</b>DesenVaryantID<b> </b><b>=</b><b> </b>:PartiStokDesenVaryantId
+<b>      </b><b>into</b><b> </b>:ABoyaSiparisBaskiID<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ABoyaSiparisBaskiID<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'BoyaSiparişDetay''a a Desen Varyant Bulunamadı..'<b>;</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>Set</b><b> </b>BoyaSiparisBaskiID<b> </b><b>=</b><b> </b>:ABoyaSiparisBaskiID<b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b>:PartiSinifID<b>;</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font><b> </b><b>Set</b><b> </b>PartilenenKilo<b> </b><b>=</b><b> </b>PartilenenKilo<b> </b><b>-</b><b> </b>:Kilo<b>,</b><b> </b>PartilenenMetre<b> </b><b>=</b><b> </b>PartilenenMetre<b> </b><b>-</b><b> </b>:Metre<b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font><b>.</b>BoyaSiparisBaskiID<b> </b><b>=</b><b> </b>:OldBoyaSiparisBaskiId<b>;</b>
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font><b> </b><b>Set</b><b> </b>PartilenenKilo<b> </b><b>=</b><b> </b>PartilenenKilo<b> </b><b>+</b><b> </b>:Kilo<b>,</b><b> </b>PartilenenMetre<b> </b><b>=</b><b> </b>PartilenenMetre<b> </b><b>+</b><b> </b>:Metre<b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisBaski</u></font><b>.</b>BoyaSiparisBaskiID<b> </b><b>=</b><b> </b>:ABoyaSiparisBaskiId<b>;</b>
+<b>  </b><b>end</b>
+
+<font color="# 0 0FF"><i>/*</i></font>
+<font color="# 0 0FF"><i> bozuk hali</i></font>
+<font color="# 0 0FF"><i>  Select Min(BoyaSiparisBaskiId) from PartiStok where PartiStok.PartiKayitID = :APartiKayitID into :OldBoyaSiparisBaskiId;</i></font>
+
+<font color="# 0 0FF"><i>  Update PartiStok Set BoyaSiparisBaskiID = :ABoyaSiparisBaskiID where PartiStok.PartiKayitID = :APartiKayitID;</i></font>
+
+<font color="# 0 0FF"><i>  For Select Kilo, Metre from PartiStok where PartiStok.PartiKayitID = :APartiKayitID into :Kilo, :Metre do</i></font>
+<font color="# 0 0FF"><i>  begin</i></font>
+<font color="# 0 0FF"><i>    Update BoyaSiparisBaski Set PartilenenKilo = PartilenenKilo - :Kilo, PartilenenMetre = PartilenenMetre - :Metre where BoyaSiparisBaski.BoyaSiparisBaskiID = :OldBoyaSiparisBaskiId;</i></font>
+<font color="# 0 0FF"><i>    Update BoyaSiparisBaski Set PartilenenKilo = PartilenenKilo + :Kilo, PartilenenMetre = PartilenenMetre + :Metre where BoyaSiparisBaski.BoyaSiparisBaskiID = :ABoyaSiparisBaskiId;</i></font>
+<font color="# 0 0FF"><i>  end</i></font>
+<font color="# 0 0FF"><i>*/</i></font>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTIBOYASIPARISDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTIENERJISARFIYATIHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,178 @@
+<HTML>
+<HEAD>
+<TITLE>IPLIKPLANLAMASURUKLEBIRAK</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="881800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="IPLIKPLANLAMABILGISIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="IPLIKPLANLAMAYAZ.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">IPLIKPLANLAMASURUKLEBIRAK</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AIPLIKLOTID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AIPLIKMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AIPLIKURETIMISEMRIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AALTIPLIKURETIMISEMRIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AIPLIKMAKINATIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure IPLIKPLANLAMASURUKLEBIRAK)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>IPLIKPLANLAMASURUKLEBIRAK</u></font><b>(</b>
+<b>    </b>AIPLIKLOTID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AIPLIKMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>AIPLIKURETIMISEMRIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AALTIPLIKURETIMISEMRIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AIPLIKMAKINATIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSira<b>                  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPlanlanacakMiktar<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OPId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ASira<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTarih<b>         </b><b>Date</b><b>;</b>
+<b>begin</b>
+<b>  </b>FSira<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>FTarih<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+
+<b>  </b>FPlanlanacakMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AIplikUretimIsEmriKayitId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AIplikMakinaTipiID<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>Miktar<b> </b><b>-</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>CopsPlanlananMiktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikLot</u></font>
+<b>         </b><b>where</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>IplikLotId<b> </b><b>=</b><b> </b>:AIplikLotId
+<b>         </b><b>into</b><b> </b>:FPlanlanacakMiktar<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>Miktar<b> </b><b>-</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>BobinPlanlananMiktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikLot</u></font>
+<b>         </b><b>where</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>IplikLotId<b> </b><b>=</b><b> </b>:AIplikLotId
+<b>         </b><b>into</b><b> </b>:FPlanlanacakMiktar<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FPlanlanacakMiktar<b> </b><b>&lt;</b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>LotunTamamiPlanlanmis</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AIplikUretimIsEmriKayitId<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AIplikMakinaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b>.</b>IplikUretimIsEmriKayitID<b> </b><b>=</b><b> </b>:AIplikUretimIsEmriKayitId<b>;</b>
+<b>      </b><b>exit</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>AAltIplikUretimIsEmriKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>Sira<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b>.</b>IplikUretimIsEmriKayitId<b> </b><b>=</b><b> </b>:AAltIplikUretimIsEmriKayitId<b> </b><b>into</b><b> </b>:FSira<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FSira<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>IplikPlanlamaYerBulunamadi</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>AIplikUretimIsEmriKayitId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b>(</b>PlanlamaTarihi<b>,</b><b> </b>IplikMakinaId<b>,</b><b> </b>Sira<b>,</b><b> </b>IplikLotId<b>,</b><b> </b>PlanlananMiktar<b>,</b><b> </b>IplikMakinaTipiID<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>                      </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:AIplikMakinaId<b>,</b><b> </b>:FSira<b>,</b><b> </b>:AIplikLotId<b>,</b><b> </b>:FPlanlanacakMiktar<b>,</b><b> </b>:AIplikMakinaTipiID<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AIplikUretimIsEmriKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FSira<b> </b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>ASira<b> </b><b>=</b><b> </b>FSira<b>;</b>
+<b>        </b><b>for</b><b> </b><b>select</b><b> </b>IplikUretimIsEmriKayitID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b>.</b>IplikMakinaId<b> </b><b>=</b><b> </b>:AIplikMakinaId<b> </b><b>and</b><b> </b>Sira<b> </b><b>&gt;</b><b>=</b><b> </b>:FSira<b> </b><b>order</b><b> </b><b>by</b><b> </b>Sira<b> </b><b>into</b><b> </b>:OPId<b> </b><b>do</b>
+<b>        </b><b>begin</b>
+<b>          </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>          </b><b>update</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b> </b><b>set</b><b> </b>Sira<b> </b><b>=</b><b> </b>:ASira<b> </b><b>where</b><b> </b>IplikUretimIsEmriKayitId<b> </b><b>=</b><b> </b>:OPId<b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><b>max</b><b>(</b>Sira<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b>.</b>IplikMakinaId<b> </b><b>=</b><b> </b>:AIplikMakinaId<b> </b><b>into</b><b> </b>:ASira<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>ASira<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ASira<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b><b>else</b><b> </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>        </b>FSira<b> </b><b>=</b><b> </b>ASira<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b> </b><b>Set</b><b> </b>IplikMakinaId<b> </b><b>=</b><b> </b>:AIplikMakinaId<b>,</b><b> </b>Sira<b> </b><b>=</b><b> </b>:FSira<b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikUretimIsEmri</u></font><b>.</b>IplikUretimIsEmriKayitId<b> </b><b>=</b><b> </b>:AIplikUretimIsEmriKayitId<b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="IPLIKPLANLAMABILGISIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="IPLIKPLANLAMAYAZ.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

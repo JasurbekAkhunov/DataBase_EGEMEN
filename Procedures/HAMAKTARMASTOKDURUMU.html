@@ -1,0 +1,260 @@
+<HTML>
+<HEAD>
+<TITLE>HAMAKTARMASTOKDURUMU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="648800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HAKTARMAYACIKISRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HAMALTBEZPARTILERIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HAMAKTARMASTOKDURUMU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AFASON</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">HAMSTOKDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IRSALIYENO</TD>
+    <TD><P CLASS="Base2">NUMERIC(18,0)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IRSALIYETARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FASON</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FASONSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMAKTARMAYAGELENKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKTARILMISKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKTARILMAMISKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANILANKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEPOYAIADEEDILENKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALANKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HAMAKTARMASTOKDURUMU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HAMAKTARMASTOKDURUMU</u></font><b>(</b>
+<b>    </b>AFASON<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>HAMSTOKDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IRSALIYENO<b> </b><font color="# 080 0"><u>IRSALIYENOSIZE</u></font><b>,</b>
+<b>    </b>IRSALIYETARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FASON<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FASONSTR<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>FIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIRMAADI<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>HAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMADI<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>HAMAKTARMAYAGELENKILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>AKTARILMISKILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>AKTARILMAMISKILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>KULLANILANKILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>DEPOYAIADEEDILENKILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>KALANKILO<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLastHamStokDetayId<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLastHAktarmaFisiDetayId<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHAktarmaFisiDetayId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHamStokDetayId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHamId<b>                         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHamAdi<b>                        </b><b>varchar</b><b>(</b>255<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBitisTarihi<b>                   </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGelenKilo<b>                     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIadeEdilenKilo<b>                </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIsEmriHazirlananKilo<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIsEmriKilo<b>                    </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FFason<b>                         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIrsaliyeNo<b>                    </b><font color="# 080 0"><u>IrsaliyeNoSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIrsaliyeTarihi<b>                </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFirmaId<b>                       </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFirmaAdi<b>                      </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b>FLastHamStokDetayId<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>FLastHAktarmaFisiDetayID<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>IrsaliyeNo<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>Fason<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>HAktarmaFisiDetayId<b>,</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>HamStokDetayId<b>,</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>Kilo<b>,</b>
+<b>             </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>IsEmriHazirlananKilo<b>,</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>IadeEdilenKilo<b>,</b>
+<b>             </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b>.</b>BitisTarihi<b>,</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmriDetay</u></font><b>.</b>Kilo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>HamStokDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>HamStokIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokIrsaliyeId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>FirmaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmriDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmriDetay</u></font><b>.</b>HAktarmaFisiDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>HAktarmaFisiDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b>.</b>HAktarmaIsEmriKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmriDetay</u></font><b>.</b>HAktarmaIsEmriKayitId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>Fason<b> </b><b>=</b><b> </b>:AFason<b> </b><b>or</b><b> </b>:AFason<b> </b><b>is</b><b> </b><b>null</b>
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>HamStokDetayId<b>,</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>HAktarmaFisiDetayId
+<b>  </b><b>into</b><b> </b>:FIrsaliyeNo<b>,</b><b> </b>:FIrsaliyeTarihi<b>,</b><b> </b>:FFason<b>,</b><b> </b>:FFirmaId<b>,</b><b> </b>:FFirmaAdi<b>,</b><b> </b>:FHAktarmaFisiDetayId<b>,</b><b> </b>:FHamStokDetayId<b>,</b><b> </b>:FHamId<b>,</b><b> </b>:FHamAdi<b>,</b><b> </b>:FGelenKilo<b>,</b><b> </b>:FIsEmriHazirlananKilo<b>,</b><b> </b>:FIadeEdilenKilo<b>,</b><b> </b>:FBitisTarihi<b>,</b><b> </b>:FIsEmriKilo<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FHamStokDetayId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FLastHamStokDetayId<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FLastHamStokDetayId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>IadeEdilenKilo<b> </b><b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>PartilenenKilo<b> </b><b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>SatisKilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayID<b> </b><b>=</b><b> </b>:HamStokDetayId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>Aktarma<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KullanilanKilo<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>KullanilanKilo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>KullanilanKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>KalanKilo<b> </b><b>=</b><b> </b>HamAktarmayaGelenKilo<b> </b><b>-</b><b> </b>DepoyaIadeEdilenKilo<b> </b><b>-</b><b> </b>KullanilanKilo<b>;</b>
+
+<b>        </b><b>Suspend</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b>HamAktarmayaGelenKilo<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>AktarilmisKilo<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>AktarilmamisKilo<b>       </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>DepoyaIadeEdilenKilo<b>   </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>KullanilanKilo<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>KalanKilo<b>              </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>FLastHamStokDetayId<b> </b><b>=</b><b> </b>FHamStokDetayId<b>;</b>
+
+<b>      </b>HamId<b> </b><b>=</b><b> </b>FHamId<b>;</b>
+<b>      </b>HamAdi<b> </b><b>=</b><b> </b>FHamAdi<b>;</b>
+<b>      </b>HamStokDetayId<b> </b><b>=</b><b> </b>FHamStokDetayId<b>;</b>
+<b>      </b>IrsaliyeNo<b> </b><b>=</b><b> </b>FIrsaliyeNo<b>;</b>
+<b>      </b>IrsaliyeTarihi<b> </b><b>=</b><b> </b>FIrsaliyeTarihi<b>;</b>
+<b>      </b>FirmaId<b> </b><b>=</b><b> </b>FFirmaId<b>;</b>
+<b>      </b>FirmaAdi<b> </b><b>=</b><b> </b>FFirmaAdi<b>;</b>
+<b>      </b>Fason<b> </b><b>=</b><b> </b>FFason<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Fason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Fason'<b>;</b>
+<b>      </b><b>else</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FHAktarmaFisiDetayId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FLastHAktarmaFisiDetayId<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>HamAktarmayaGelenKilo<b>  </b><b>=</b><b> </b>HamAktarmayaGelenKilo<b> </b><b>+</b><b> </b>FGelenKilo<b>;</b>
+<b>      </b>DepoyaIadeEdilenKilo<b>   </b><b>=</b><b> </b>DepoyaIadeEdilenKilo<b> </b><b>+</b><b> </b>FIadeEdilenKilo<b>;</b>
+<b>      </b>AktarilmamisKilo<b> </b><b>=</b><b> </b>AktarilmamisKilo<b> </b><b>+</b><b> </b>FGelenKilo<b> </b><b>-</b><b> </b>FIadeEdilenKilo<b> </b><b>-</b><b> </b>FIsEmriHazirlananKilo<b>;</b>
+
+<b>      </b>FLastHAktarmaFisiDetayId<b> </b><b>=</b><b> </b>FHAktarmaFisiDetayId<b>;</b>
+<b>    </b><b>end</b>
+
+
+<b>    </b><b>if</b><b> </b><b>(</b>FIsEmriKilo<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FBitisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>AktarilmisKilo<b> </b><b>=</b><b> </b>AktarilmisKilo<b> </b><b>+</b><b> </b>FIsEmriKilo<b>;</b>
+<b>      </b><b>else</b><b> </b>AktarilmamisKilo<b> </b><b>=</b><b> </b>AktarilmamisKilo<b> </b><b>+</b><b> </b>FIsEmriKilo<b>;</b>
+<b>    </b><b>end</b>
+
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FLastHamStokDetayId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>IadeEdilenKilo<b> </b><b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>PartilenenKilo<b> </b><b>+</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>SatisKilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayID<b> </b><b>=</b><b> </b>:HamStokDetayId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>Aktarma<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KullanilanKilo<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KullanilanKilo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>KullanilanKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>KalanKilo<b> </b><b>=</b><b> </b>HamAktarmayaGelenKilo<b> </b><b>-</b><b> </b>DepoyaIadeEdilenKilo<b> </b><b>-</b><b> </b>KullanilanKilo<b>;</b>
+<b>    </b><b>Suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HAKTARMAYACIKISRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HAMALTBEZPARTILERIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

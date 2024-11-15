@@ -1,0 +1,539 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTDESEN</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="696800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTDEPOSAYIMDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTDESENBEKLEME.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTDESEN</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTDESEN)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTDESEN</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>DESEN</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenSablonSayisiDigit<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenNoDigit<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MaxDesenId<b>             </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>STR<b>                    </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSablonSayisi<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDesenSayisi<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TF<b>                     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDesenId<b>               </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenKoduFormatiSerbest<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenNoOtomatik<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IlkKarakter<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BaslangicKarakter<b>      </b><b>varChar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAdi<b>                   </b><b>varChar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b>                     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FEgemenFirmaId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Yil<b>                    </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Seri<b>                   </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MaxTasarimNo<b>           </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenUstBilgiTasarimNo<b> </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>COALESCE</b><b>(</b><font color="# 080 0"><u>rdb$get_context</u></font><b>(</b>'USER_TRANSACTION'<b>,</b><b> </b>'BaypasTrigger_Desen'<b>)</b><b>,</b><b> </b>0<b>)</b><b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>-- NULL olabiliyor, COALESCE'yi iptal etmeyin. (UP)</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>DesenSablonSayisiDigit<b>,</b><b> </b>DesenNoDigit<b>,</b><b> </b>DesenNoOtomatik<b>,</b><b> </b>DesenKoduFormatiSerbest<b>,</b><b> </b>EgemenFirmaId<b>,</b><b> </b>DesenUstBilgiTasarimNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font>
+<b>      </b><b>into</b><b> </b>:DesenSablonSayisiDigit<b>,</b><b> </b>:DesenNoDigit<b>,</b><b> </b>:DesenNoOtomatik<b>,</b><b> </b>:DesenKoduFormatiSerbest<b>,</b><b> </b>:FEgemenFirmaId<b>,</b><b> </b>DesenUstBilgiTasarimNo<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BaskiYonu<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>BaskiYonuVar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>else</b><b> </b><b>New</b><b>.</b>BaskiYonuVar<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>    </b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--&gt; Batı Basma</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>Coalesce</b><b>(</b><b>New</b><b>.</b>TasarimNo<b>,</b><b> </b>''<b>)</b><b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b> </b><b>and</b><b> </b><b>New</b><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>SablonSayisi<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><b>new</b><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sablon Sayısı girilmemis..'<b>;</b>
+
+<b>      </b><b>Select</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>Coalesce</b><b>(</b><b>Max</b><b>(</b>DesenID<b>)</b><b>,</b><b> </b><b>extract</b><b>(</b><b>year</b><b> </b><b>from</b><b> </b><b>Current_Date</b><b>)</b><b>|</b><b>|</b>'-0000'<b>)</b><b>,</b>
+<b>      </b><font color="# 080 0"><u>PosBul</u></font><b>(</b><b>Coalesce</b><b>(</b><b>Max</b><b>(</b>DesenID<b>)</b><b>,</b><b> </b><b>extract</b><b>(</b><b>year</b><b> </b><b>from</b><b> </b><b>Current_Date</b><b>)</b><b>|</b><b>|</b>'-0000'<b>)</b><b>,</b><b> </b>'-'<b>)</b><b> </b><b>+</b><b> </b>1<b>,</b><b> </b>4<b>)</b><b> </b><b>as</b><b> </b><b>Integer</b><b>)</b><b> </b><b>+</b><b> </b>1<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b>DijitalDesen<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DijitalDesen<b> </b><b>and</b>
+<b>      </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>like</b><b> </b>'%'<b> </b><b>|</b><b>|</b><b> </b><b>extract</b><b>(</b><b>year</b><b> </b><b>from</b><b> </b><b>Current_Date</b><b>)</b><b>|</b><b>|</b>'-%'<b> </b><b>into</b><b> </b>:MaxTasarimNo<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>DesenID<b> </b><b>=</b><b> </b><b>extract</b><b>(</b><b>year</b><b> </b><b>from</b><b> </b><b>Current_Date</b><b>)</b><b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>MaxTasarimNo<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>New</b><b>.</b>DesenID<b> </b><b>=</b><b>  </b>'D'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>DesenID<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b>Coalesce</b><b>(</b><b>New</b><b>.</b>TasarimNo<b>,</b><b> </b>''<b>)</b><b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Max</b><b>(</b>TasarimNo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DijitalDesen<b> </b><b>into</b><b> </b>:MaxDesenId<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>MaxDesenId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>2<b>,</b><b> </b>6<b>)</b><b>;</b>
+
+<b>            </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>            </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b>FDesenSayisi<b> </b><b>=</b><b> </b>FDesenSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>new</b><b>.</b>TasarimNo<b> </b><b>=</b><b> </b>'D'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>6<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>TasarimNo<b>,</b><b> </b>2<b>,</b><b> </b>6<b>)</b><b>;</b>
+<b>          </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>TasarimNo<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b> </b><b>&lt;</b><b>&gt;</b><b> </b>'D'<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>SablonSayisi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>SablonSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b><b>Coalesce</b><b>(</b><b>New</b><b>.</b>TasarimNo<b>,</b><b> </b>''<b>)</b><b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>Select</b><b> </b><b>Max</b><b>(</b>TasarimNo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>SablonSayisi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DijitalDesen<b> </b><b>into</b><b> </b>:MaxDesenId<b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>MaxDesenId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>            </b><b>else</b>
+<b>            </b><b>begin</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>DesenSablonSayisiDigit<b>+</b>1<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+
+<b>              </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>              </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>              </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>              </b>FDesenSayisi<b> </b><b>=</b><b> </b>FDesenSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>            </b><b>end</b>
+<b>            </b><b>new</b><b>.</b>TasarimNo<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>New</b><b>.</b>SablonSayisi<b>,</b><b> </b>DesenSablonSayisiDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>TasarimNo<b>,</b><b> </b>1<b>,</b><b> </b>DesenSablonSayisiDigit<b>)</b><b>;</b>
+<b>            </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>            </b><b>else</b><b> </b>FSablonSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>FSablonSayisi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>SablonSayisi<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>85<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--&gt; Aka Teks</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>DesenId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><b>First</b><b> </b>1<b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>DesenId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b>,</b><b> </b><b>Coalesce</b><b>(</b><b>Max</b><b>(</b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>DesenId<b>,</b><b> </b><b>Char_Length</b><b>(</b>DesenId<b>)</b><b> </b><b>-</b><b> </b>2<b>,</b><b> </b>3<b>)</b><b>)</b><b>,</b><b> </b>0<b>)</b>
+<b>        </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>like</b><b> </b>'A%'<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>like</b><b> </b>'B%'<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>like</b><b> </b>'C%'<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>like</b><b> </b>'D%'<b>)</b><b> </b><b>and</b>
+<b>        </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>SablonSayisi
+<b>        </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>DesenId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b>
+<b>        </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>DesenId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b> </b><b>desc</b><b> </b><b>into</b><b> </b>:Seri<b>,</b><b> </b>:KS<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>Seri<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>Seri<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>=</b><b> </b>999<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>Seri<b> </b><b>=</b><b> </b>'A'<b>)</b><b> </b><b>then</b><b> </b>Seri<b> </b><b>=</b><b> </b>'B'<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Seri<b> </b><b>=</b><b> </b>'B'<b>)</b><b> </b><b>then</b><b> </b>Seri<b> </b><b>=</b><b> </b>'C'<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Seri<b> </b><b>=</b><b> </b>'C'<b>)</b><b> </b><b>then</b><b> </b>Seri<b> </b><b>=</b><b> </b>'D'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>KS<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>=</b><b> </b>999<b>)</b><b> </b><b>then</b><b> </b>KS<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b><b>else</b><b> </b>KS<b> </b><b>=</b><b> </b>KS<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>        </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>Seri<b> </b><b>|</b><b>|</b><b> </b><b>new</b><b>.</b>SablonSayisi<b> </b><b>|</b><b>|</b><b> </b><b>Lpad</b><b>(</b>KS<b>,</b><b> </b>3<b>,</b><b> </b>'0'<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>DesenId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>Fason<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>64<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>--&gt; Forte (değil ise)</i></font>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Max</b><b>(</b>DesenId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DijitalDesen<b> </b><b>into</b><b> </b>:MaxDesenId<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>MaxDesenId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>14<b>)</b><b> </b><b>then</b>
+<b>             </b>FDesenSayisi<b> </b><b>=</b><b> </b>1000<b>;</b>
+<b>            </b><b>else</b>
+<b>             </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>14<b>)</b><b> </b><b>then</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>4<b>,</b><b> </b>7<b>)</b><b>;</b>
+<b>            </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>106<b>)</b><b> </b><b>then</b><b>   </b><font color="# 0 0FF"><i>/* Texco */</i></font>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>4<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>            </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>131<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>133<b>)</b><b> </b><b>then</b><b>   </b><font color="# 0 0FF"><i>/* Ünver ve BTEKS Çorlu*/</i></font>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>6<b>,</b><b> </b>6<b>)</b><b>;</b>
+<b>            </b><b>else</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>2<b>,</b><b> </b>DesenNoDigit<b>+</b>DesenSablonSayisiDigit<b>)</b><b>;</b>
+
+<b>            </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>            </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b>FDesenSayisi<b> </b><b>=</b><b> </b>FDesenSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--&gt; Gülle</i></font>
+<b>          </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>'T'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b> </b><b>+</b><b> </b>DesenSablonSayisiDigit<b>)</b><b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>64<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--&gt; Forte</i></font>
+<b>        </b><b>begin</b>
+<b>          </b>Yil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><font color="# 080 0"><u>F_year</u></font><b>(</b><b>current_date</b><b>)</b><b>,</b><b> </b>3<b>,</b><b> </b>2<b>)</b><b>;</b>
+<b>          </b><b>select</b><b> </b><b>Max</b><b>(</b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b><b>Replace</b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b>,</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>:Yil<b> </b><b>|</b><b>|</b>'-'<b>,</b><b> </b>''<b>)</b><b>)</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>like</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>:Yil<b> </b><b>|</b><b>|</b>'-%'<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b><b>Replace</b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b>,</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>:Yil<b> </b><b>|</b><b>|</b>'-'<b>,</b><b> </b>''<b>)</b><b>)</b><b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>KS<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>            </b>KS<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>else</b>
+<b>            </b>KS<b> </b><b>=</b><b> </b>KS<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>          </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>Yil<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>KS<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>106<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>/* Texco */</i></font>
+<b>        </b><b>begin</b>
+<b>          </b>Yil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><font color="# 080 0"><u>F_year</u></font><b>(</b><b>current_date</b><b>)</b><b>,</b><b> </b>3<b>,</b><b> </b>2<b>)</b><b>;</b>
+<b>          </b><b>select</b><b> </b><b>Max</b><b>(</b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b><b>Replace</b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b>,</b>:Yil<b> </b><b>|</b><b>|</b>'-'<b>,</b><b> </b>''<b>)</b><b>)</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font>
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>like</b><b> </b>:Yil<b> </b><b>|</b><b>|</b>'-%'<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b><b>Replace</b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b>,</b><b> </b>:Yil<b> </b><b>|</b><b>|</b>'-'<b>,</b><b> </b>''<b>)</b><b>)</b><b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>KS<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>            </b>KS<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>else</b>
+<b>            </b>KS<b> </b><b>=</b><b> </b>KS<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>          </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>Yil<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>KS<b>,</b><b>  </b>DesenNoDigit<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b>=</b>14<b>)</b><b> </b><b>then</b>
+<b>            </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>'D-0'<b> </b><b>|</b><b>|</b><b> </b>FDesenSayisi<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>99<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>--&gt; Megam</i></font>
+<b>            </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>'DJ'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b> </b><b>+</b><b> </b>DesenSablonSayisiDigit<b>)</b><b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>119<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>--&gt; Marmara</i></font>
+<b>            </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>'DG-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b> </b><b>+</b><b> </b>DesenSablonSayisiDigit<b>)</b><b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>131<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>--&gt; Ünver</i></font>
+<b>            </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>'RSDJ-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b> </b><b>+</b><b> </b>DesenSablonSayisiDigit<b>)</b><b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>133<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>--&gt; BTEKS CORLU</i></font>
+<b>            </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>'BTDJ-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b> </b><b>+</b><b> </b>DesenSablonSayisiDigit<b>)</b><b>;</b>
+<b>          </b><b>else</b>
+<b>            </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>'D'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b> </b><b>+</b><b> </b>DesenSablonSayisiDigit<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>67<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--&gt; Sateks</i></font>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Max</b><b>(</b><b>substring</b><b>(</b>DesenId<b> </b><b>from</b><b> </b>4<b> </b><b>for</b><b> </b>4<b>)</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>SablonSayisi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DijitalDesen<b> </b><b>into</b><b> </b>:MaxDesenId<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>MaxDesenId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>EgemenStrtoIntOlurmu</u></font><b>(</b>MaxDesenId<b>)</b><b>=</b>1<b>)</b><b> </b><b>then</b>
+<b>              </b>FDesenSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>egemenstrtoint</u></font><b>(</b>MaxDesenId<b>)</b><b> </b><b>+</b><b> </b>1<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>            </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>          </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b>  </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>New</b><b>.</b>SablonSayisi<b>,</b><b> </b>DesenSablonSayisiDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'-'<b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FEgemenFirmaid<b> </b><b>=</b><b> </b>99<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--&gt; Megam</i></font>
+<b>        </b><b>begin</b>
+
+<b>          </b><b>select</b><b> </b><b>max</b><b>(</b>DesenId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>SablonSayisi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DijitalDesen<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Fason<b> </b><b>=</b><b> </b>0<b> </b><b>into</b><b> </b>:MaxDesenId<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>MaxDesenId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>            </b>IlkKarakter<b> </b><b>=</b><b> </b><b>ascii_val</b><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>IlkKarakter<b> </b><b>&lt;</b><b> </b>65<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b><b>char_length</b><b>(</b><b>new</b><b>.</b>sablonsayisi<b>)</b><b>+</b>1<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+<b>            </b><b>else</b>
+<b>            </b><b>begin</b>
+<b>              </b>BaslangicKarakter<b> </b><b>=</b><b> </b>STR<b>;</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b><b>char_length</b><b>(</b><b>new</b><b>.</b>sablonsayisi<b>)</b><b>+</b>3<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+
+<b>            </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>            </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b><b>(</b>FDesenSayisi<b> </b><b>=</b><b> </b>999<b> </b><b>and</b><b> </b>DesenNoDigit<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>or</b><b> </b><b>(</b>FDesenSayisi<b> </b><b>=</b><b> </b>9999<b> </b><b>and</b><b> </b>DesenNoDigit<b> </b><b>=</b><b> </b>4<b>)</b><b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>              </b><b>if</b><b> </b><b>(</b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>                </b>BaslangicKarakter<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>              </b><b>else</b>
+<b>                </b>BaslangicKarakter<b> </b><b>=</b><b> </b><b>ascii_char</b><b>(</b>IlkKarakter<b> </b><b>+</b><b> </b>1<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+<b>            </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>FDesenSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>if</b><b> </b><b>(</b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>          </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b>  </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>SablonSayisi<b>,</b><b> </b>0<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>          </b><b>else</b>
+<b>          </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>BaslangicKarakter<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>SablonSayisi<b>,</b><b> </b>0<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FEgemenFirmaid<b> </b><b>=</b><b> </b>131<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--&gt; Ünver</i></font>
+<b>        </b><b>begin</b>
+<b>         </b><b>Select</b><b> </b><b>Max</b><b>(</b>DesenId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>SablonSayisi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DijitalDesen<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Fason<b> </b><b>=</b><b> </b>0<b> </b><b>into</b><b> </b>:MaxDesenId<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>MaxDesenId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>            </b>IlkKarakter<b> </b><b>=</b><b> </b><b>ascii_val</b><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>IlkKarakter<b> </b><b>&lt;</b><b> </b>65<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>DesenSablonSayisiDigit<b> </b><b>+</b><b> </b>1<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+<b>            </b><b>else</b>
+<b>            </b><b>begin</b>
+<b>              </b>BaslangicKarakter<b> </b><b>=</b><b> </b>STR<b>;</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>DesenSablonSayisiDigit<b> </b><b>+</b><b> </b>4<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+<b>            </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>            </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b><b>(</b>FDesenSayisi<b> </b><b>=</b><b> </b>999<b> </b><b>and</b><b> </b>DesenNoDigit<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>or</b><b> </b><b>(</b>FDesenSayisi<b> </b><b>=</b><b> </b>9999<b> </b><b>and</b><b> </b>DesenNoDigit<b> </b><b>=</b><b> </b>4<b>)</b><b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b>FDesenSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>              </b><b>if</b><b> </b><b>(</b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>                </b>BaslangicKarakter<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>              </b><b>else</b>
+<b>                </b>BaslangicKarakter<b> </b><b>=</b><b> </b><b>Ascii_Char</b><b>(</b>IlkKarakter<b> </b><b>+</b><b> </b>1<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+<b>            </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>FDesenSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>          </b><b>end</b>
+
+<b>           </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>'RS-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>New</b><b>.</b>SablonSayisi<b>,</b><b> </b>DesenSablonSayisiDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FEgemenFirmaid<b> </b><b>=</b><b> </b>133<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--&gt; BTEKS ÇORLU</i></font>
+<b>        </b><b>begin</b>
+<b>            </b><b>Select</b><b> </b><b>Max</b><b>(</b>DesenId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>SablonSayisi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DijitalDesen<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Fason<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>orjBitmisUrun<b>=</b>0<b> </b><b>into</b><b> </b>:MaxDesenId<b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>MaxDesenId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>            </b><b>else</b>
+<b>            </b><b>begin</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>              </b>IlkKarakter<b> </b><b>=</b><b> </b><b>ascii_val</b><b>(</b>STR<b>)</b><b>;</b>
+
+<b>              </b><b>if</b><b> </b><b>(</b>IlkKarakter<b> </b><b>&lt;</b><b> </b>65<b>)</b><b> </b><b>then</b>
+<b>              </b><b>begin</b>
+<b>                </b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>                </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>DesenSablonSayisiDigit<b> </b><b>+</b><b> </b>1<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>              </b><b>end</b>
+<b>              </b><b>else</b>
+<b>              </b><b>begin</b>
+<b>                </b>BaslangicKarakter<b> </b><b>=</b><b> </b>STR<b>;</b>
+<b>                </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>DesenSablonSayisiDigit<b> </b><b>+</b><b> </b>4<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>              </b><b>end</b>
+<b>              </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>              </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>              </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>              </b><b>if</b><b> </b><b>(</b><b>(</b>FDesenSayisi<b> </b><b>=</b><b> </b>999<b> </b><b>and</b><b> </b>DesenNoDigit<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>or</b><b> </b><b>(</b>FDesenSayisi<b> </b><b>=</b><b> </b>9999<b> </b><b>and</b><b> </b>DesenNoDigit<b> </b><b>=</b><b> </b>4<b>)</b><b>)</b><b> </b><b>then</b>
+<b>              </b><b>begin</b>
+<b>                </b>FDesenSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>                </b><b>if</b><b> </b><b>(</b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>                  </b>BaslangicKarakter<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>                </b><b>else</b>
+<b>                  </b>BaslangicKarakter<b> </b><b>=</b><b> </b><b>Ascii_Char</b><b>(</b>IlkKarakter<b> </b><b>+</b><b> </b>1<b>)</b><b>;</b>
+<b>              </b><b>end</b>
+<b>              </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>FDesenSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>            </b><b>end</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>FEgemenFirmaid<b> </b><b>=</b><b> </b>133<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--&gt; BTEKS ÇORLU</i></font>
+<b>              </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>'BT-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>New</b><b>.</b>SablonSayisi<b>,</b><b> </b>DesenSablonSayisiDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaid<b> </b><b>=</b><b> </b>138<b>)</b><b> </b><b>then</b><b>   </b><font color="# 0 0FF"><i>-------------- ARTESA 138------------------</i></font>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Max</b><b>(</b>DesenId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>SablonSayisi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DijitalDesen<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Fason<b> </b><b>=</b><b> </b>0<b> </b><b>into</b><b> </b>:MaxDesenId<b>;</b>
+
+
+<b>          </b><b>if</b><b> </b><b>(</b>MaxDesenId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+
+<b>            </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>            </b>IlkKarakter<b> </b><b>=</b><b> </b><b>ascii_val</b><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>IlkKarakter<b> </b><b>&lt;</b><b> </b>65<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>DesenSablonSayisiDigit<b> </b><b>+</b><b> </b>2<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+<b>            </b><b>else</b>
+<b>            </b><b>begin</b>
+<b>              </b>BaslangicKarakter<b> </b><b>=</b><b> </b>STR<b>;</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>DesenSablonSayisiDigit<b> </b><b>+</b><b> </b>3<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+
+<b>            </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>            </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b>FDesenSayisi<b> </b><b>=</b><b> </b>FDesenSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>BaslangicKarakter<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>New</b><b>.</b>SablonSayisi<b>,</b><b> </b>DesenSablonSayisiDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Max</b><b>(</b>DesenId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>SablonSayisi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DijitalDesen<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DijitalDesen<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Fason<b> </b><b>=</b><b> </b>0<b> </b><b>into</b><b> </b>:MaxDesenId<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>MaxDesenId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+
+
+<b>            </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>            </b>IlkKarakter<b> </b><b>=</b><b> </b><b>ascii_val</b><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>IlkKarakter<b> </b><b>&lt;</b><b> </b>65<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>DesenSablonSayisiDigit<b> </b><b>+</b><b> </b>1<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+<b>            </b><b>else</b>
+<b>            </b><b>begin</b>
+<b>              </b>BaslangicKarakter<b> </b><b>=</b><b> </b>STR<b>;</b>
+<b>              </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>MaxDesenId<b>,</b><b> </b>DesenSablonSayisiDigit<b> </b><b>+</b><b> </b>2<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+
+<b>            </b><b>end</b>
+
+<b>            </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>            </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b><b>(</b>FDesenSayisi<b> </b><b>=</b><b> </b>999<b> </b><b>and</b><b> </b>DesenNoDigit<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>or</b><b> </b><b>(</b>FDesenSayisi<b> </b><b>=</b><b> </b>9999<b> </b><b>and</b><b> </b>DesenNoDigit<b> </b><b>=</b><b> </b>4<b>)</b><b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b>FDesenSayisi<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>              </b><b>if</b><b> </b><b>(</b>BaslangicKarakter<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>                </b>BaslangicKarakter<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>              </b><b>else</b>
+<b>                </b>BaslangicKarakter<b> </b><b>=</b><b> </b><b>Ascii_Char</b><b>(</b>IlkKarakter<b> </b><b>+</b><b> </b>1<b>)</b><b>;</b>
+<b>            </b><b>end</b>
+<b>            </b><b>else</b><b> </b>FDesenSayisi<b> </b><b>=</b><b> </b>FDesenSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>new</b><b>.</b>DesenId<b> </b><b>=</b><b> </b>BaslangicKarakter<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>New</b><b>.</b>SablonSayisi<b>,</b><b> </b>DesenSablonSayisiDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b>FDesenSayisi<b>,</b><b> </b>DesenNoDigit<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>(</b><b>(</b>DesenNoOtomatik<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>or</b><b> </b><b>(</b>DesenKoduFormatiSerbest<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b>)</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>DijitalDesen<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>Fason<b>=</b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>DesenId<b>,</b><b> </b>1<b>,</b><b> </b>DesenSablonSayisiDigit<b>)</b><b>;</b>
+<b>          </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>          </b><b>else</b><b> </b>FSablonSayisi<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>STR<b>)</b><b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>FSablonSayisi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>SablonSayisi<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b>STR<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>DesenId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>          </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b>Str<b>,</b>'F'<b>)</b><b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenDesenNoHatali</u></font><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>DesenUstBilgiTasarimNo<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>new</b><b>.</b>DesenID<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>' Desen Kodu Boş Olamaz!'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>DesenKayitId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>DesenKayitId<b> </b><b>=</b><b> </b><b>Gen_Id</b><b>(</b><font color="# 080 0"><u>DesenKayit_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>TakimParcasimi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>New</b><b>.</b>DesenTakimID<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>TakimParcasimi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>FAdi<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Adi<b>;</b>
+<b>      </b><b>else</b><b> </b>FAdi<b> </b><b>=</b><b> </b>'Ana Desen Bilinmiyor'<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>DesenTakimId<b> </b><b>=</b><b> </b><b>Gen_ID</b><b>(</b><font color="# 080 0"><u>DesenTakim_Id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>DesenTakim</u></font><b>(</b>DesenTakimID<b>,</b><b> </b>Adi<b>,</b><b> </b>InsertKullaniciId<b>)</b><b> </b><b>values</b><b>(</b><b>New</b><b>.</b>DesenTakimId<b>,</b><b> </b><b>New</b><b>.</b>Adi<b>,</b><b> </b><b>New</b><b>.</b>InsertKullaniciId<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>TakimParcasimi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>New</b><b>.</b>DesenTakimID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>AnaDesen<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenTakimID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DesenTakimID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>AnaDesen<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KS<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>TakiminBirTaneAnaDeseniOlabilir</u></font><b>;</b>
+
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>DesenTakim</u></font><b> </b><b>set</b><b> </b>Adi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>Adi<b> </b><b>where</b><b> </b><font color="# 080 0"><u>DesenTakim</u></font><b>.</b>DesenTakimID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DesenTakimID<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>TasarimOnayDurumu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>TasarimOnayTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTDEPOSAYIMDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTDESENBEKLEME.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<TITLE>BARKODLASTOKIRSALIYESISATISYAP</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="59800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BARKODLASARIMACIKISIKAYDET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BARKODLATELEFECIKISKAYDET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BARKODLASTOKIRSALIYESISATISYAP</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AIRSALIYEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AFIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABARKODID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure BARKODLASTOKIRSALIYESISATISYAP)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>BARKODLASTOKIRSALIYESISATISYAP</u></font><b>(</b>
+<b>    </b>AIRSALIYEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AFIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ABARKODID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PaketId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IK<b> </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TF<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaKodumuz<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeFirmaKodumuz<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EgemenFirmaId<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHareketTipi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDepoId<b> </b><font color="# 080 0"><u>DepoKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunId<b> </b><font color="# 080 0"><u>UrunKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunBirimID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMiktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBirimFiyat<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLot<b> </b><b>varchar</b><b>(</b>150<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKdv<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKapAdedi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CikilanMiktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CikilanKapAdedi<b>  </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>ABarkodId<b>)</b><b> </b><b>&lt;</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>BarkodHatali1</u></font><b>;</b>
+<b>  </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>ABarkodId<b>)</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>BarkodHatali1</u></font><b>;</b>
+<b>  </b>PaketId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>ABarkodId<b>)</b><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>FirmaKodumuz<b>,</b><b> </b>OrmeFirmaKodumuz<b>,</b><b> </b>EgemenFirmaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FirmaKodumuz<b>,</b><b> </b>:OrmeFirmaKodumuz<b>,</b><b> </b>:EgemenFirmaId<b>;</b>
+
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>Irsaliye</u></font><b>.</b>HareketTipi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Irsaliye</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Irsaliye</u></font><b>.</b>IrsaliyeId<b> </b><b>=</b><b> </b>:AIrsaliyeId<b> </b><b>into</b><b> </b>:FHareketTipi<b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>count</b><b>(</b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>StokDetayID<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b> </b><b>where</b><b> </b>StokDetayId<b> </b><b>=</b><b> </b>:paketid<b> </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>BarkodHatali1</u></font><b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>Miktar<b>)</b><b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>KapAdedi<b>)</b><b>,</b><b> </b>0<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b> </b><b>where</b><b> </b>ReferansStokDetayId<b> </b><b>=</b><b> </b>:PaketId<b> </b><b>into</b><b> </b>:CikilanMiktar<b>,</b><b> </b>:CikilanKapAdedi<b>;</b>
+
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>DepoId<b>,</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>UrunBirimId<b>,</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>BirimFiyat<b>,</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>Kdv<b>,</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>KapAdedi
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b> </b><b>where</b><b> </b>StokDetayId<b> </b><b>=</b><b> </b>:PaketId
+<b>      </b><b>into</b><b> </b>:FDepoId<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunBirimID<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FBirimFiyat<b>,</b><b> </b>:FLot<b>,</b><b> </b>:FKdv<b>,</b><b> </b>:FKapAdedi<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>CikilanMiktar<b> </b><b>&gt;</b><b>=</b><b> </b>FMiktar<b>)</b><b> </b><b>then</b><b>  </b><b>exception</b><b> </b><font color="# 080 0"><u>BarkodHatali1</u></font><b> </b>' Bu Barkod Okutulmuş'<b>;</b>
+
+<b>  </b>FMiktar<b> </b><b>=</b><b> </b>FMiktar<b> </b><b>-</b><b> </b>CikilanMiktar<b>;</b>
+<b>  </b>FKapAdedi<b> </b><b>=</b><b> </b>FKapAdedi<b> </b><b>-</b><b> </b>CikilanKapAdedi<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FKapAdedi<b> </b><b>&lt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>FKapAdedi<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>IrsaliyeId<b>,</b><b> </b>FirmaID<b>,</b>Tarih<b>,</b><b> </b>HareketTipi<b>,</b><b>  </b>DepoId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>Lot<b>,</b><b> </b>Kdv<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>ReferansStokDetayId<b>  </b><b>)</b>
+<b>                 </b><b>values</b><b>(</b>:AIrsaliyeId<b>,</b><b> </b>:AFirmaId<b>,</b><b>current_timestamp</b><b>,</b><b> </b>:FHareketTipi<b>,</b><b>  </b>:FDepoId<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunBirimID<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FBirimFiyat<b>,</b><b> </b>:FLot<b>,</b><b> </b>:FKdv<b>,</b><b> </b>:FKapAdedi<b>,</b><b> </b>:PaketId<b>)</b><b>;</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BARKODLASARIMACIKISIKAYDET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BARKODLATELEFECIKISKAYDET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

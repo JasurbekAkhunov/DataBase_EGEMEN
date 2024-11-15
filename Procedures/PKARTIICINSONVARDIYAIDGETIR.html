@@ -1,0 +1,244 @@
+<HTML>
+<HEAD>
+<TITLE>PKARTIICINSONVARDIYAIDGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1589800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PIPETLEMEYEGONDERIMLISTESIURUN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PLANLAMAGRUPANALIZIFIRMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PKARTIICINSONVARDIYAIDGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AORMEMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADOKUMAMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PERSONELKOKUTULDU</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYANO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYASAATI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PKARTIICINSONVARDIYAIDGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PKARTIICINSONVARDIYAIDGETIR</u></font><b>(</b>
+<b>    </b>AORMEMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ADOKUMAMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>PERSONELKOKUTULDU<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>VARDIYAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>VARDIYANO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>VARDIYATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>VARDIYASAATI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>T1<b>                     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>T2<b>                     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>T3<b>                     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VardiyaBaslangicTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VardiyaBaslangicSaati<b>  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeVardiyaSayisi<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SuankiSaat<b>             </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FNow<b>                   </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ToleransT<b>              </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FVardiya1<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FVardiya2<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FVardiya3<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EsitOlmayanVardiyaKullan<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Personel1Id<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeDefaultUniteId<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeUnitesimi<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaUnitesimi<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b>                     </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b>FNow<b> </b><b>=</b><b>  </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>  </b>SuankiSaat<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TimeStampToDouble</u></font><b>(</b><font color="# 080 0"><u>TimeStampToTime</u></font><b>(</b>FNow<b>)</b><b>)</b><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>VardiyaBaslangicSaati<b>,</b><b> </b>OrmeVardiyaSayisi<b>,</b><b> </b>PersonelVardiyaToleransDakika<b>,</b><b> </b>EsitOlmayanVardiyaKullan<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font>
+<b>    </b><b>into</b><b> </b>:VardiyaBaslangicTarihi<b>,</b><b> </b>:OrmeVardiyaSayisi<b>,</b><b> </b>:ToleransT<b>,</b><b> </b>:EsitOlmayanVardiyaKullan<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ToleransT<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ToleransT<b> </b><b>=</b><b> </b>30<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>PersonelKOkutuldu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>ToleransT<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>VardiyaBaslangicSaati<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TimeStampToDouble</u></font><b>(</b><font color="# 080 0"><u>TimeStampToTime</u></font><b>(</b>VardiyaBaslangicTarihi<b>)</b><b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>TimeStampToDouble</u></font><b>(</b><font color="# 080 0"><u>TimeStampToTime</u></font><b>(</b>FNow<b>)</b><b>)</b><b> </b><b>+</b><b> </b><b>(</b><b>(</b>1<b>.</b>0000<b>/</b>24<b>.</b>0000<b>/</b>60<b>.</b>0000<b>)</b><b> </b><b>*</b><b> </b>ToleransT<b>)</b><b> </b><b>&lt;</b><b> </b>VardiyaBaslangicSaati<b>)</b><b> </b><b>then</b><b> </b>VardiyaTarihi<b> </b><b>=</b><b> </b><b>cast</b><b>(</b>Fnow<b> </b><b>as</b><b> </b><b>Date</b><b>)</b><b> </b><b>-</b><b> </b>1<b>;</b>
+<b>  </b><b>else</b><b> </b>VardiyaTarihi<b> </b><b>=</b><b> </b><b>cast</b><b>(</b>Fnow<b> </b><b>as</b><b> </b><b>Date</b><b>)</b><b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>EsitOlmayanVardiyaKullan<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>EsitOlmayanVardiyaKullan<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>FVardiya1<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FVardiya2<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FVardiya3<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>EsitOlmayanVardiyaKullan<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>FVardiya1<b> </b><b>=</b><b> </b><font color="# 080 0"><u>VardiyaHesapla</u></font><b>(</b>SuankiSaat<b> </b><b>-</b><b> </b>VardiyaBaslangicSaati<b>,</b>3<b>)</b><b>;</b>
+<b>    </b>FVardiya2<b> </b><b>=</b><b> </b><font color="# 080 0"><u>VardiyaHesapla</u></font><b>(</b>SuankiSaat<b> </b><b>-</b><b> </b><b>(</b><b>(</b>1<b>.</b>0000<b>/</b>24<b>.</b>0000<b>/</b>60<b>.</b>0000<b>)</b><b> </b><b>*</b><b> </b>ToleransT<b>)</b><b> </b><b>-</b><b> </b>VardiyaBaslangicSaati<b>,</b><b> </b>OrmeVardiyaSayisi<b>)</b><b>;</b>
+<b>    </b>FVardiya3<b> </b><b>=</b><b> </b><font color="# 080 0"><u>VardiyaHesapla</u></font><b>(</b>SuankiSaat<b> </b><b>+</b><b> </b><b>(</b><b>(</b>1<b>.</b>0000<b>/</b>24<b>.</b>0000<b>/</b>60<b>.</b>0000<b>)</b><b> </b><b>*</b><b> </b>ToleransT<b>)</b><b> </b><b>-</b><b> </b>VardiyaBaslangicSaati<b>,</b><b> </b>OrmeVardiyaSayisi<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b>VardiyaNo<b>,</b><b> </b>VardiyaSaati<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeVardiyaHesapla</u></font><b>(</b><b>current_timestamp</b><b>(</b>0<b>)</b><b>)</b><b> </b><b>into</b><b> </b>:FVardiya1<b>,</b><b> </b>:VardiyaSaati<b>;</b>
+<b>	</b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>TimeStampToDouble</u></font><b>(</b><font color="# 080 0"><u>TimeStampToTime</u></font><b>(</b>FNow<b>)</b><b>)</b><b> </b><b>+</b><b> </b><b>(</b><b>(</b>1<b>.</b>0000<b>/</b>24<b>.</b>0000<b>/</b>60<b>.</b>0000<b>)</b><b> </b><b>*</b><b> </b>ToleransT<b>)</b><b> </b><b>&lt;</b><b> </b>VardiyaBaslangicSaati<b>)</b><b> </b><b>then</b><b> </b>VardiyaSaati<b> </b><b>=</b><b> </b>VardiyaSaati<b> </b><b>-</b><b> </b>1<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>PersonelKOkutuldu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>select</b><b> </b>VardiyaNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeVardiyaHesapla</u></font><b>(</b><b>current_timestamp</b><b>(</b>0<b>)</b><b> </b><b>-</b><b> </b><b>(</b><b>(</b>1<b>.</b>0000<b>/</b>24<b>.</b>0000<b>/</b>60<b>.</b>0000<b>)</b><b> </b><b>*</b><b> </b>:ToleransT<b>)</b><b>)</b><b> </b><b>into</b><b> </b>:FVardiya2<b>;</b>
+<b>    </b><b>select</b><b> </b>VardiyaNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeVardiyaHesapla</u></font><b>(</b><b>current_timestamp</b><b>(</b>0<b>)</b><b> </b><b>+</b><b> </b><b>(</b><b>(</b>1<b>.</b>0000<b>/</b>24<b>.</b>0000<b>/</b>60<b>.</b>0000<b>)</b><b> </b><b>*</b><b> </b>:ToleransT<b>)</b><b>)</b><b> </b><b>into</b><b> </b>:FVardiya3<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FVardiya1<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>FVardiya1<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FVardiya2<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>FVardiya2<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FVardiya3<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>FVardiya3<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b>VardiyaNo<b> </b><b>=</b><b> </b>FVardiya1<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b>FVardiya1<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FVardiya2<b>)</b><b> </b><b>and</b><b> </b><b>(</b>FVardiya1<b> </b><b>=</b><b> </b>FVardiya3<b>)</b><b> </b><b>and</b><b> </b><b>(</b>FVardiya2<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b>)</b><b> </b><b>then</b>
+<b>    </b>VardiyaNo<b> </b><b>=</b><b> </b>FVardiya2<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b>FVardiya1<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FVardiya3<b>)</b><b> </b><b>and</b><b> </b><b>(</b>FVardiya3<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b>)</b><b> </b><b>then</b>
+<b>    </b>VardiyaNo<b> </b><b>=</b><b> </b>FVardiya3<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AOrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeVardiyaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeVardiyaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>OrmeVardiyaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeMakinaID<b> </b><b>=</b><b> </b>:AOrmeMakinaId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>Tarih<b> </b><b>=</b><b> </b>:VardiyaTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>VardiyaNo<b> </b><b>=</b><b> </b>:VardiyaNo<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:AOrmeMakinaId
+<b>      </b><b>order</b><b> </b><b>by</b><b> </b>tarih<b> </b><b>desc</b><b>,</b><b> </b>vardiyano<b> </b><b>desc</b>
+<b>      </b><b>into</b><b> </b>:VardiyaId<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>      </b><b>exit</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>OrmeVardiyaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>Tarih<b> </b><b>=</b><b> </b>:VardiyaTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>VardiyaNo<b> </b><b>=</b><b> </b>:VardiyaNo<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>DokumaVardiyasi<b> </b><b>=</b><b> </b>1
+<b>      </b><b>order</b><b> </b><b>by</b><b> </b>tarih<b> </b><b>desc</b><b>,</b><b> </b>vardiyano<b> </b><b>desc</b>
+<b>      </b><b>into</b><b> </b>:VardiyaId<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>      </b><b>exit</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>VardiyaId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b>OrmeDefaultUniteId<b>,</b><b> </b><font color="# 080 0"><u>Unite</u></font><b>.</b>OrmeUnitesimi<b>,</b><b> </b><font color="# 080 0"><u>Unite</u></font><b>.</b>DokumaUnitesimi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font>
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Unite</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Unite</u></font><b>.</b>UniteID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>OrmeDefaultUniteId
+<b>    </b><b>into</b><b> </b>:OrmeDefaultUniteId<b>,</b><b> </b>:OrmeUnitesimi<b>,</b><b> </b>:DokumaUnitesimi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>OrmeDefaultUniteId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>PersonelId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>KULLANICI</u></font><b> </b><b>where</b><b> </b>KULLANICIID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:Personel1Id<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>(</b>Personel1Id<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b><b> </b><b>(</b>Personel1Id<b> </b><b>&gt;</b><b> </b>0<b>)</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>Tarih<b> </b><b>=</b><b> </b>:VardiyaTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>VardiyaNo<b> </b><b>=</b><b> </b>:VardiyaNo<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>UniteId<b> </b><b>=</b><b> </b>:OrmeDefaultUniteId
+<b>        </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b> </b><b>(</b>Tarih<b>,</b><b> </b>VardiyaNo<b>,</b><b> </b>VardiyaAmiriPersonelId<b>,</b><b> </b>UniteId<b>,</b><b> </b>Aktif<b>,</b><b> </b>OrmeVardiyasi<b>,</b><b> </b>DokumaVardiyasi<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>)</b>
+<b>          </b><b>values</b><b>(</b>:VardiyaTarihi<b>,</b><b> </b>:VardiyaNo<b>,</b><b> </b>:Personel1Id<b>,</b><b> </b>:OrmeDefaultUniteId<b>,</b><b> </b>1<b>,</b><b> </b>:OrmeUnitesimi<b>,</b><b> </b>:DokumaUnitesimi<b>,</b><b> </b>1<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>1<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>AOrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeVardiyaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeVardiyaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>OrmeVardiyaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeMakinaID<b> </b><b>=</b><b> </b>:AOrmeMakinaId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>Tarih<b> </b><b>=</b><b> </b>:VardiyaTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>VardiyaNo<b> </b><b>=</b><b> </b>:VardiyaNo<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:AOrmeMakinaId
+<b>            </b><b>order</b><b> </b><b>by</b><b> </b>tarih<b> </b><b>desc</b><b>,</b><b> </b>vardiyano<b> </b><b>desc</b>
+<b>            </b><b>into</b><b> </b>:VardiyaId<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeVardiyaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeVardiyaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>OrmeVardiyaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>DokumaMakinaID<b> </b><b>=</b><b> </b>:ADokumaMakinaId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>Tarih<b> </b><b>=</b><b> </b>:VardiyaTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiya</u></font><b>.</b>VardiyaNo<b> </b><b>=</b><b> </b>:VardiyaNo<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>DokumaMakinaId<b> </b><b>=</b><b> </b>:ADokumaMakinaId
+<b>            </b><b>order</b><b> </b><b>by</b><b> </b>tarih<b> </b><b>desc</b><b>,</b><b> </b>vardiyano<b> </b><b>desc</b>
+<b>            </b><b>into</b><b> </b>:VardiyaId<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>suspend</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PIPETLEMEYEGONDERIMLISTESIURUN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PLANLAMAGRUPANALIZIFIRMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,157 @@
+<HTML>
+<HEAD>
+<TITLE>HGSIPARISICINURUNYARAT</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="753800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HGSIPARISDETAYKUMASGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HGSIPARISKESIMTALIMATYAZ.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HGSIPARISICINURUNYARAT</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AANAURUNID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARENKID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABEDENID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AURUNTIPIID</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">URUNID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HGSIPARISICINURUNYARAT)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HGSIPARISICINURUNYARAT</u></font><b>(</b>
+<b>    </b>AANAURUNID<b> </b><font color="# 080 0"><u>URUNKODUSIZE</u></font><b>,</b>
+<b>    </b>ARENKID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABEDENID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AURUNTIPIID<b> </b><b>SMALLINT</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>URUNID<b> </b><font color="# 080 0"><u>URUNKODUSIZE</u></font><b>)</b>
+<b>AS</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>BedenKodu<b> </b><b>Varchar</b><b>(</b>7<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>RenkAdi<b> </b><b>Varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>MaxNumara<b> </b><b>integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunID<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunAdi<b> </b><b>Varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>DefaultUniteID<b>  </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ModelKumasID<b>    </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ModelBedenID<b>    </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>AnaKumasModelKumasID<b> </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>KDVOrani<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ModelParcaID<b>    </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>KayitliUrunID<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FModelKayitId<b> </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunGrup1<b>                </b><font color="# 080 0"><u>UrunGrupKoduSize</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunGrup2<b>                </b><font color="# 080 0"><u>UrunGrupKoduSize</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunGrup3<b>                </b><font color="# 080 0"><u>UrunGrupKoduSize</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunGrup4<b>                </b><font color="# 080 0"><u>UrunGrupKoduSize</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FMutfakDepoNo<b>             </b><font color="# 080 0"><u>DepoKoduSize</u></font><b>;</b>
+
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>DefaultUniteID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b>:AKullaniciID<b> </b><b>into</b><b> </b>:DefaultUniteID<b>;</b>
+<b>  </b><b>Select</b><b> </b>KdvOrani<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>SistemID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KDVOrani<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>DefaultUniteID<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Kullanıcının Varsayılarn Unite Kodu Tanımlanmamış..'<b>;</b>
+
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKayitId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunGrup1<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunGrup2<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunGrup3<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunGrup4<b>,</b><b> </b>MutfakDepoNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b>:AAnaUrunID
+<b>    </b><b>into</b><b> </b>:FUrunAdi<b>,</b><b> </b>:FModelKayitId<b>,</b><b> </b>:FUrunGrup1<b>,</b><b> </b>:FUrunGrup2<b>,</b><b> </b>:FUrunGrup3<b>,</b><b> </b>:FUrunGrup4<b>,</b><b> </b>:FMutfakDepoNo<b>;</b>
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>RenkId<b> </b><b>=</b><b> </b>:ARenkId<b> </b><b>into</b><b> </b>:RenkAdi<b>;</b>
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>KisaKodu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Beden</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>BedenId<b> </b><b>=</b><b> </b>:ABedenID<b> </b><b>into</b><b> </b>:BedenKodu<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BedenKodu<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>BedenKodu<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>RenkAdi<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>RenkAdi<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Max</b><b>(</b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b><b>SubString</b><b>(</b>UrunID<b> </b><b>From</b><b> </b><b>Char_Length</b><b>(</b>:AAnaUrunID<b>)</b><b> </b><b>+</b><b> </b>2<b> </b><b>for</b><b> </b>3<b>)</b><b>)</b><b>)</b><b>  </b><b>from</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>AnaUrunID<b> </b><b>=</b><b> </b>:AAnaUrunID<b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>MaxNumara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>else</b><b> </b>MaxNumara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>  </b>FUrunID<b> </b><b>=</b><b> </b>AAnaUrunID<b> </b><b>|</b><b>|</b><b> </b>'.'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenInttoLzStr</u></font><b>(</b>MaxNumara<b>,</b><b> </b>2<b>)</b><b>;</b>
+<b>  </b>FUrunAdi<b> </b><b>=</b><b> </b>FUrunAdi<b> </b><b>|</b><b>|</b><b> </b>' / '<b> </b><b>|</b><b>|</b><b> </b>RenkAdi<b> </b><b>|</b><b>|</b>' '<b> </b><b>|</b><b>|</b><b> </b>BedenKodu<b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>(</b>UrunId<b>,</b><b> </b>Adi<b>,</b><b> </b>UrunTipiId<b>,</b><b> </b>UniteID<b>,</b><b> </b>KDVOrani<b>,</b><b> </b>ModelKayitId<b>,</b><b> </b>RenkID<b>,</b><b> </b>BedenID<b>,</b><b> </b>AnaUrunID<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>UrunGrup1<b>,</b><b> </b>UrunGrup2<b>,</b><b> </b>UrunGrup3<b>,</b><b> </b>UrunGrup4<b>,</b><b> </b>MutfakDepoNo<b>)</b>
+<b>           </b><b>Values</b><b> </b><b>(</b>:FUrunID<b>,</b><b> </b>:FUrunAdi<b>,</b><b> </b>:AUrunTipiID<b>,</b><b> </b>:DefaultUniteID<b>,</b><b> </b>:KdvOrani<b>,</b><b> </b>:FModelKayitId<b>,</b><b> </b>:ARenkId<b>,</b><b> </b>:ABedenID<b>,</b><b> </b>:AAnaUrunID<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:FUrunGrup1<b>,</b><b> </b>:FUrunGrup2<b>,</b><b> </b>:FUrunGrup3<b>,</b><b> </b>:FUrunGrup4<b>,</b><b> </b>:FMutfakDepoNo<b>)</b><b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>(</b>UrunID<b>,</b><b> </b>BirimID<b>,</b><b> </b>DefaultBirim<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b><b> </b><b>Values</b><b> </b><b>(</b>:FUrunID<b>,</b><b> </b>'Ad'<b>,</b><b> </b>1<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>)</b><b>;</b>
+
+<b>  </b>UrunID<b> </b><b>=</b><b> </b>FUrunID<b>;</b>
+
+<b>  </b><b>Suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HGSIPARISDETAYKUMASGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HGSIPARISKESIMTALIMATYAZ.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

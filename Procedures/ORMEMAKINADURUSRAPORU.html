@@ -1,0 +1,525 @@
+<HTML>
+<HEAD>
+<TITLE>ORMEMAKINADURUSRAPORU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1277800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ORMEMAKINACALISMARAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ORMEMAKINAGUNLUKURETIMRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ORMEMAKINADURUSRAPORU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICORMEMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISORMEMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AORMEMAKINAARALIKLI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICMAKINAGRUPID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISMAKINAGRUPID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMAKINAGRUPARALIKLI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AUNITEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADURUSSEBEBI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AORMEARIZATIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADURUSACIKLAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">HANGISINDEYIZ</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEMAKINAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DURUSSEBEBI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DURUSSURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DURUSSURESISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEMAKINADURUSID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEARIZATIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEARIZATIPIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DURUSACIKLAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ORMEMAKINADURUSRAPORU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ORMEMAKINADURUSRAPORU</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABASLANGICORMEMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ABITISORMEMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>AORMEMAKINAARALIKLI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABASLANGICMAKINAGRUPID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ABITISMAKINAGRUPID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>AMAKINAGRUPARALIKLI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AUNITEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ADURUSSEBEBI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AORMEARIZATIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ADURUSACIKLAMA<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>HANGISINDEYIZ<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMEMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ORMEMAKINAADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>BASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>BITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>DURUSSEBEBI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>DURUSSURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DURUSSURESISTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>ORMEMAKINADURUSID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMEARIZATIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMEARIZATIPIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>DURUSACIKLAMA<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAriza<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAyar<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBakim<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMemingerKoptu<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAltMemingerKoptu<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLycraKoptu<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIgneKoptu<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKapakAcildi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStartStop<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DurumTarihi<b> </b><b>Timestamp</b><b>;</b>
+<b>declare</b><b> </b>GonderimDurdur<b> </b><b>integer</b><b>;</b>
+<font color="# 0 0FF"><i>/*declare Hangisindeyiz integer;*/</i></font><b> </b><font color="# 0 0FF"><i>/*0 yok, 1 ariza, 2 ayar, 3 bakim */</i></font>
+<b>begin</b>
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b>OrmeMakinaId<b>,</b><b> </b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font>
+<b>    </b><b>where</b>
+<b>    </b><b>(</b><b>(</b>:AOrmeMakinaAralikli<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>OrmeMakinaId<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicOrmeMakinaId<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>OrmeMakinaId<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisOrmeMakinaId<b> </b><b>or</b><b> </b>:ABitisOrmeMakinaId<b> </b><b>=</b><b> </b>''<b>)</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b>:AOrmeMakinaAralikli<b> </b><b>=</b><b> </b>0<b>)</b><b>)</b><b>  </b><b>and</b>
+<b>    </b><b>(</b><b>(</b>:AMakinaGrupAralikli<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>MakinaGrupId<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicMakinaGrupId<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>MakinaGrupId<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisMakinaGrupId<b> </b><b>or</b><b> </b>:ABitisMakinaGrupId<b> </b><b>=</b><b> </b>''<b>)</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b>:AMakinaGrupAralikli<b> </b><b>=</b><b> </b>0<b>)</b><b>)</b><b> </b><b>and</b>
+<b>    </b><b>(</b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>UniteId<b> </b><b>=</b><b> </b>:AUniteId<b> </b><b>or</b><b> </b>:AUniteId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>into</b><b> </b>:OrmeMakinaId<b>,</b><b> </b>:OrmeMakinaAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>ArizaVar<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>ServisciVar<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b><font color="# 080 0"><u>AyarYapiliyor</u></font><b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>Tarih<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>MemingerKoptu<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>AltMemingerKoptu<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>LycraKoptu<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>IgneKoptu<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>KapakAcildi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>StartStop<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>Tarih<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b>TARIH<b>,</b><b> </b>OrmeMAKINADURUMUID
+<b>    </b><b>into</b><b> </b>:FAriza<b>,</b><b> </b>:FBakim<b>,</b><b> </b>:FAyar<b>,</b><b> </b>:DurumTarihi<b>,</b><b> </b>:FMemingerKoptu<b>,</b><b> </b>:FAltMemingerKoptu<b>,</b><b> </b>:FLycraKoptu<b>,</b><b> </b>:FIgneKoptu<b>,</b><b> </b>:FKapakAcildi<b>,</b><b> </b>:FStartStop<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b>OrmeMakinaDurusId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>OrmeArizaTipiAdi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>DurusAciklama<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FAriza<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BitisTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b>DurusSuresi<b> </b><b>=</b><b> </b>BitisTarihi<b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>          </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>          </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FAyar<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BitisTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b>DurusSuresi<b> </b><b>=</b><b> </b>BitisTarihi<b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>          </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>          </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FBakim<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BitisTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b>DurusSuresi<b> </b><b>=</b><b> </b>BitisTarihi<b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>          </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>          </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FMemingerKoptu<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BitisTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b>DurusSuresi<b> </b><b>=</b><b> </b>BitisTarihi<b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>          </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>          </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FIgneKoptu<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BitisTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b>DurusSuresi<b> </b><b>=</b><b> </b>BitisTarihi<b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>          </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>          </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FKapakAcildi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BitisTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b>DurusSuresi<b> </b><b>=</b><b> </b>BitisTarihi<b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>          </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>          </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FStartStop<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BitisTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b>DurusSuresi<b> </b><b>=</b><b> </b>BitisTarihi<b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>          </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>          </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FAltMemingerKoptu<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BitisTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b>DurusSuresi<b> </b><b>=</b><b> </b>BitisTarihi<b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>          </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>          </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FLycraKoptu<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BitisTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b>DurusSuresi<b> </b><b>=</b><b> </b>BitisTarihi<b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>          </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>          </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+
+
+<b>      </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FAriza<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BaslangicTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>          </b>DurusSebebi<b> </b><b>=</b><b> </b>'Arıza'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FAyar<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BaslangicTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>2<b>;</b>
+<b>          </b>DurusSebebi<b> </b><b>=</b><b> </b>'Ayar'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FBakim<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BaslangicTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>          </b>DurusSebebi<b> </b><b>=</b><b> </b>'Bakım (Arızasız)'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FMemingerKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BaslangicTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>4<b>;</b>
+<b>          </b>DurusSebebi<b> </b><b>=</b><b> </b>'Meminger Koptu'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FIgneKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BaslangicTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>5<b>;</b>
+<b>          </b>DurusSebebi<b> </b><b>=</b><b> </b>'İğne Kırıldı'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FKapakAcildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BaslangicTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>6<b>;</b>
+<b>          </b>DurusSebebi<b> </b><b>=</b><b> </b>'Kapak Açıldı'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FStartStop<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BaslangicTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>7<b>;</b>
+<b>          </b>DurusSebebi<b> </b><b>=</b><b> </b>'Start/Stop'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FAltMemingerKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BaslangicTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>8<b>;</b>
+<b>          </b>DurusSebebi<b> </b><b>=</b><b> </b>'Alt Meminger Koptu'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FLycraKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>BaslangicTarihi<b> </b><b>=</b><b> </b>DurumTarihi<b>;</b>
+<b>          </b>Hangisindeyiz<b> </b><b>=</b><b> </b>9<b>;</b>
+<b>          </b>DurusSebebi<b> </b><b>=</b><b> </b>'Likra Koptu'<b>;</b>
+<b>        </b><b>end</b>
+
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Hangisindeyiz<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>BitisTarihi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b><font color="# 0 0FF"><i>/*Hangisindeyiz = 0;*/</i></font>
+<b>      </b>DurusSuresi<b> </b><b>=</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b> </b><b>-</b><b> </b>BaslangicTarihi<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>      </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaDurusId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId<b>,</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeArizaTipi</u></font><b>.</b>OrmeArizaTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeArizaTipiId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>BaslangicTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>TIMESTAMPTODOUBLE</u></font><b>(</b>:BaslangicTarihi<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurus</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:OrmeMakinaId
+<b>            </b><b>into</b><b> </b>:OrmeMakinaDurusId<b>,</b><b> </b>:OrmeArizaTipiId<b>,</b><b> </b>:OrmeArizaTipiAdi<b>,</b><b> </b>:DurusAciklama<b>;</b>
+
+<b>      </b>GonderimDurdur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ADurusSebebi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>Hangisindeyiz<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>ADurusAciklama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>DurusAciklama<b> </b><b>&lt;</b><b>&gt;</b><b> </b>ADurusAciklama<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>AOrmeArizaTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>OrmeArizaTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AOrmeArizaTipiId<b>)</b><b> </b><b>then</b><b> </b>GonderimDurdur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>GonderimDurdur<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>Suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ORMEMAKINACALISMARAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ORMEMAKINAGUNLUKURETIMRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

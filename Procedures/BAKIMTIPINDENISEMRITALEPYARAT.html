@@ -1,0 +1,206 @@
+<HTML>
+<HEAD>
+<TITLE>BAKIMTIPINDENISEMRITALEPYARAT</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="48800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BAKIMTIPINDENISEMRIOLUSTUR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BAKIMURUNKRITIKSEVIYERAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BAKIMTIPINDENISEMRITALEPYARAT</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AMAKINABAKIMISEMRIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASADECEZORUNLULAR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">SATINALMATALEPKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SATINALMATALEPYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SATINALMATALEPID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure BAKIMTIPINDENISEMRITALEPYARAT)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>BAKIMTIPINDENISEMRITALEPYARAT</u></font><b>(</b>
+<b>    </b>AMAKINABAKIMISEMRIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ASADECEZORUNLULAR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>SATINALMATALEPKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SATINALMATALEPYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SATINALMATALEPID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BakimSatinAlmaDepartmanId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BakimSatinAlmaTalepYeriId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BakimSatinAlmaBirimId<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BakimSatinAlmaKullanimYeriId<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunId<b>                    </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunAdi<b>                   </b><b>varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemDovizId<b>                    </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DefaultBirimId<b>                   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IsEmriTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>begin</b>
+<b>  </b>SatinAlmaTalepKayitId<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b><font color="# 0 0FF"><i>/*if (SatinAlmaTalepKayitId is not Null) then Exception KayitHatasi 'Bu iş emri için daha önceden talep oluşturulmuş...';*/</i></font>
+
+<b>  </b><b>select</b><b> </b>TahminiBaslangic<b> </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaBakimIsEmri</u></font><b> </b><b>where</b><b> </b>MakinaBakimIsEmriId<b> </b><b>=</b><b> </b>:AMakinaBakimIsEmriId<b> </b><b>into</b><b> </b>:IsEmriTarihi<b>;</b>
+
+<b>  </b><b>select</b><b> </b>BakimSatinAlmaDepartmanId<b>,</b><b> </b>BakimSatinAlmaTalepYeriId<b>,</b><b> </b>BakimSatinAlmaBirimId<b>,</b><b> </b>BakimSatinAlmaKullanimYeriId<b>,</b><b> </b>SistemDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font>
+<b>    </b><b>into</b><b> </b>:BakimSatinAlmaDepartmanId<b>,</b><b> </b>:BakimSatinAlmaTalepYeriId<b>,</b><b> </b>:BakimSatinAlmaBirimId<b>,</b><b> </b>:BakimSatinAlmaKullanimYeriId<b>,</b><b> </b>:SistemDovizId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BakimSatinAlmaDepartmanId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sistemde BakimSatinAlmaDepartmanId bilgisi girilmemiş...'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BakimSatinAlmaTalepYeriId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sistemde BakimSatinAlmaTalepYeriId bilgisi girilmemiş...'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BakimSatinAlmaBirimId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sistemde BakimSatinAlmaBirimId bilgisi girilmemiş...'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BakimSatinAlmaKullanimYeriId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sistemde BakimSatinAlmaKullanimYeriId bilgisi girilmemiş...'<b>;</b>
+
+<b>  </b>SatinAlmaTalepKayitId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>SatinAlmaTalepKayit_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b>SatinAlmaTalepYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>Current_date</b><b>)</b><b>;</b>
+<b>  </b><b>select</b><b> </b>Id<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepNumaratoruAl</u></font><b>(</b>:SatinAlmaTalepYil<b>)</b><b> </b><b>into</b><b> </b>:SatinAlmaTalepId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ASadeceZorunlular<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><b>sum</b><b>(</b>Miktar<b>)</b>
+<b>        </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>MakinaBakimIEHizmetId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>MakinaBakimIEHizmetId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>MakinaBakimIsEmriId<b> </b><b>=</b><b> </b>:AMakinaBakimIsEmriId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>Opsiyonel<b> </b><b>=</b><b> </b>0
+<b>        </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><b>sum</b><b>(</b>Miktar<b>)</b>
+<b>        </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>MakinaBakimIEHizmetId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>MakinaBakimIEHizmetId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>MakinaBakimIsEmriId<b> </b><b>=</b><b> </b>:AMakinaBakimIsEmriId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0
+<b>        </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>KayitSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>SatinAlmaTalep</u></font><b>(</b>SatinAlmaTalepKayitId<b>,</b><b> </b>SatinAlmaTalepYil<b>,</b><b> </b>SatinAlmaTalepId<b>,</b><b> </b>TalepKullaniciId<b>,</b><b> </b>Tarih<b>,</b><b> </b>DepartmanId<b>,</b>
+<b>        </b>SatinAlmaTalepYeriId<b>,</b><b> </b>SadeceFiyatArastirmasi<b>,</b><b> </b>SatinAlmaBirimId<b>,</b><b> </b>IstekYeri<b>,</b><b> </b>VerilenSiparisTipiId<b>,</b>
+<b>        </b>OnayDurumu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>)</b>
+<b>        </b><b>values</b><b>(</b>
+<b>        </b>:SatinAlmaTalepKayitId<b>,</b><b> </b>:SatinAlmaTalepYil<b>,</b><b> </b>:SatinAlmaTalepId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_date</b><b>,</b><b> </b>:BakimSatinAlmaDepartmanId<b>,</b>
+<b>        </b>:BakimSatinAlmaTalepYeriId<b>,</b><b> </b>0<b>,</b><b> </b>:BakimSatinAlmaBirimId<b>,</b><b> </b>1<b>,</b><b> </b>3<b>,</b>
+<b>        </b>0<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ASadeceZorunlular<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b>,</b><b> </b><b>sum</b><b>(</b>Miktar<b>)</b>
+<b>          </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>MakinaBakimIEHizmetId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>MakinaBakimIEHizmetId
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>MakinaBakimIsEmriId<b> </b><b>=</b><b> </b>:AMakinaBakimIsEmriId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>Opsiyonel<b> </b><b>=</b><b> </b>0
+<b>          </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>Opsiyonel
+<b>          </b><b>into</b><b> </b>:UrunId<b>,</b><b> </b>:UrunAdi<b>,</b><b> </b>:KayitSayisi<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><b>first</b><b> </b>1<b> </b>UrunBirimId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b>:UrunId<b> </b><b>and</b><b> </b>DefaultBirim<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:DefaultBirimId<b>;</b>
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepDetay</u></font><b>(</b>SatinAlmaTalepKayitId<b>,</b><b> </b>VerilenSiparisTipiId<b>,</b><b> </b>UrunId<b>,</b><b>  </b>Miktar<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>DovizId<b>,</b>
+<b>          </b>TerminTarihi<b>,</b><b> </b>SatinAlmaKullanimYeriId<b>,</b><b> </b>SiparisiVerilenMiktar<b>,</b><b> </b>TalepNotu<b>,</b>
+<b>          </b>Notu<b>,</b><b> </b>Kapali<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>)</b>
+<b>          </b><b>values</b><b>(</b>:SatinAlmaTalepKayitId<b>,</b><b> </b>3<b>,</b><b> </b>:UrunId<b>,</b><b> </b>:KayitSayisi<b>,</b><b> </b>:DefaultBirimId<b>,</b><b> </b>:SistemDovizId<b>,</b>
+<b>          </b>:IsEmriTarihi<b>,</b><b> </b>:BakimSatinAlmaKullanimYeriId<b>,</b><b> </b>0<b>,</b><b> </b>:AMakinaBakimIsEmriId<b> </b><b>|</b><b>|</b><b> </b>' nolu bakım iş emri talebi'<b>,</b>
+<b>          </b>:AMakinaBakimIsEmriId<b> </b><b>|</b><b>|</b><b> </b>' nolu bakım iş emri talebi'<b>,</b><b> </b>0<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>)</b><b>;</b>
+<b>        </b><b>update</b><b> </b><font color="# 080 0"><u>MakinaBakimIsEmri</u></font><b> </b><b>set</b><b> </b>SatinAlmaTalepKayitId<b> </b><b>=</b><b> </b>:SatinAlmaTalepKayitId<b> </b><b>where</b><b> </b>MakinaBakimIsEmriId<b> </b><b>=</b><b> </b>:AMakinaBakimIsEmriId<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b>,</b><b> </b><b>sum</b><b>(</b>Miktar<b>)</b>
+<b>          </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>MakinaBakimIEHizmetId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>MakinaBakimIEHizmetId
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>MakinaBakimIsEmriId<b> </b><b>=</b><b> </b>:AMakinaBakimIsEmriId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaBakimIEHizmet</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>Opsiyonel<b> </b><b>=</b><b> </b>0
+<b>          </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>MakinaBakimIEUrun</u></font><b>.</b>Opsiyonel
+<b>          </b><b>into</b><b> </b>:UrunId<b>,</b><b> </b>:UrunAdi<b>,</b><b> </b>:KayitSayisi<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><b>first</b><b> </b>1<b> </b>UrunBirimId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b>:UrunId<b> </b><b>and</b><b> </b>DefaultBirim<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:DefaultBirimId<b>;</b>
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepDetay</u></font><b>(</b>SatinAlmaTalepKayitId<b>,</b><b> </b>VerilenSiparisTipiId<b>,</b><b> </b>UrunId<b>,</b><b>  </b>Miktar<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>DovizId<b>,</b>
+<b>          </b>TerminTarihi<b>,</b><b> </b>SatinAlmaKullanimYeriId<b>,</b><b> </b>SiparisiVerilenMiktar<b>,</b><b> </b>TalepNotu<b>,</b>
+<b>          </b>Notu<b>,</b><b> </b>Kapali<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>)</b>
+<b>          </b><b>values</b><b>(</b>:SatinAlmaTalepKayitId<b>,</b><b> </b>3<b>,</b><b> </b>:UrunId<b>,</b><b> </b>:KayitSayisi<b>,</b><b> </b>:DefaultBirimId<b>,</b><b> </b>:SistemDovizId<b>,</b>
+<b>          </b>:IsEmriTarihi<b>,</b><b> </b>:BakimSatinAlmaKullanimYeriId<b>,</b><b> </b>0<b>,</b><b> </b>:AMakinaBakimIsEmriId<b> </b><b>|</b><b>|</b><b> </b>' nolu bakım iş emri talebi'<b>,</b>
+<b>          </b>:AMakinaBakimIsEmriId<b> </b><b>|</b><b>|</b><b> </b>' nolu bakım iş emri talebi'<b>,</b><b> </b>0<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>)</b><b>;</b>
+<b>        </b><b>update</b><b> </b><font color="# 080 0"><u>MakinaBakimIsEmri</u></font><b> </b><b>set</b><b> </b>SatinAlmaTalepKayitId<b> </b><b>=</b><b> </b>:SatinAlmaTalepKayitId<b> </b><b>where</b><b> </b>MakinaBakimIsEmriId<b> </b><b>=</b><b> </b>:AMakinaBakimIsEmriId<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>Suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BAKIMTIPINDENISEMRIOLUSTUR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BAKIMURUNKRITIKSEVIYERAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

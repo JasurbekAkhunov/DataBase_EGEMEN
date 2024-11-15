@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>DESENVARYANTDANILAVERECETECEK</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="338800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DESENTAKIMLISTESIDETAYI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DESENVARYANTDANRECETECEK.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DESENVARYANTDANILAVERECETECEK</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTISABLONILAVEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASABLONNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DESENVARYANTDANILAVERECETECEK)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DESENVARYANTDANILAVERECETECEK</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APARTISABLONILAVEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ASABLONNO<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenVaryantID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiSablonId<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenVaryantSablonID<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SablonNo<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Acilim1<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Acilim2<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DepoId<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EmulsiyonUrunId<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b>.</b>PartiSablonIlaveId<b> </b><b>=</b><b> </b>:APartiSablonIlaveId<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>DesenVaryantID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>into</b><b> </b>:DesenVaryantID<b>;</b>
+
+
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b>SablonNo<b>,</b><b> </b>Acilim1<b>,</b><b> </b>Acilim2<b>,</b><b> </b>DepoId<b>,</b><b>  </b>EmulsiyonUrunId<b>,</b><b> </b>DesenVaryantSablonID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font>
+<b>     </b><b>where</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DesenVaryantID<b> </b><b>=</b><b> </b>:DesenvaryantId
+<b>     </b><b>into</b><b> </b>:SablonNo<b>,</b><b> </b>:Acilim1<b>,</b><b> </b>:Acilim2<b>,</b><b> </b>:DepoId<b>,</b><b>  </b>:EmulsiyonUrunId<b>,</b><b> </b>:DesenVaryantSablonID<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>ASablonNo<b> </b><b>=</b><b> </b>SablonNo<b>)</b><b> </b><b>then</b>
+<b>        </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b>(</b>PartiSablonIlaveId<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>)</b>
+<b>        </b><b>Select</b><b> </b>:APartiSablonIlaveId<b>,</b><b> </b>:APartiKayitId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryantSablonRecete</u></font>
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>DesenVaryantSablonRecete</u></font><b>.</b>DesenVaryantSablonID<b> </b><b>=</b><b> </b>:DesenVaryantSablonID<b> </b><b>and</b>
+<b>                </b><font color="# 080 0"><u>DesenVaryantSablonRecete</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>;</b>
+
+
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DESENTAKIMLISTESIDETAYI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DESENVARYANTDANRECETECEK.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

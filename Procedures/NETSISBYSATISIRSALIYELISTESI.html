@@ -1,0 +1,178 @@
+<HTML>
+<HEAD>
+<TITLE>NETSISBYSATISIRSALIYELISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1177800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="NAKITAKISRAPORUKASADOK.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="NETSISORMETALIMATBILGISI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">NETSISBYSATISIRSALIYELISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">BOYAIRSALIYEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEIRSALIYEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IRSALIYESERINO</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IRSALIYENO</TD>
+    <TD><P CLASS="Base2">NUMERIC(18,0)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IRSALIYETARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIILISEVKTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TRANSFEREDILDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure NETSISBYSATISIRSALIYELISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>NETSISBYSATISIRSALIYELISTESI</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>BOYAIRSALIYEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMEIRSALIYEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIRMAADI<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>IRSALIYESERINO<b> </b><font color="# 080 0"><u>SERINOSIZE5</u></font><b>,</b>
+<b>    </b>IRSALIYENO<b> </b><font color="# 080 0"><u>IRSALIYENOSIZE</u></font><b>,</b>
+<b>    </b>IRSALIYETARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FIILISEVKTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>TRANSFEREDILDI<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeFirmaKodumuz<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaKodumuz<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>OrmeFirmaKodumuz<b>,</b><b> </b>FirmaKodumuz<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:OrmeFirmaKodumuz<b>,</b><b> </b>:FirmaKodumuz<b>;</b><b> </b><font color="# 0 0FF"><i>/* boyahaneden örmeye transfer icin kesilen irsaliyeler listeye gelmesin */</i></font>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OrmeFirmaKodumuz<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OrmeFirmaKodumuz<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>BoyaIrsaliyeId<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeSeriNo<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeNo<b>,</b>
+<b>             </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>SevkTarihi<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>TransferEdildi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>FirmaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>TK<b> </b><b>On</b><b> </b>TK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>TransferKullaniciId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>BoyaIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>BoyaIrsaliyeId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>PartiKayitId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>HareketTipiId<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>FasonHamIade<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>and</b>
+<b>           </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>BoyaIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>FirmaID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:OrmeFirmaKodumuz<b>)</b>
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>BoyaIrsaliyeId<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeSeriNo<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeNo<b>,</b>
+<b>             </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>SevkTarihi<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>TransferEdildi
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeSeriNo<b>,</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeNo
+<b>  </b><b>into</b><b> </b>:BoyaIrsaliyeId<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:IrsaliyeSeriNo<b>,</b><b> </b>:IrsaliyeNo<b>,</b><b> </b>:IrsaliyeTarihi<b>,</b><b> </b>FiiliSevkTarihi<b>,</b><b> </b>:TransferEdildi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b>BoyaIrsaliyeId<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>OrmeIrsaliyeId<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>SeriNo<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>IrsaliyeNo<b>,</b>
+<b>             </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>FiiliSevkTarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>TransferEdildi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>FirmaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>TK<b> </b><b>On</b><b> </b>TK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>TransferKullaniciId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>OrmeIrsaliyeId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>2<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeIrsaliyeId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>FirmaID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:FirmaKodumuz<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>FirmaID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:OrmeFirmaKodumuz<b>)</b>
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>OrmeIrsaliyeId<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>SeriNo<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>IrsaliyeNo<b>,</b>
+<b>             </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>FiiliSevkTarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>TransferEdildi
+<b>  </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>SeriNo<b>,</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>IrsaliyeNo
+<b>  </b><b>into</b><b> </b>:OrmeIrsaliyeId<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:IrsaliyeSeriNo<b>,</b><b> </b>:IrsaliyeNo<b>,</b><b> </b>:IrsaliyeTarihi<b>,</b><b> </b>:FiiliSevkTarihi<b>,</b><b> </b>:TransferEdildi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="NAKITAKISRAPORUKASADOK.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="NETSISORMETALIMATBILGISI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

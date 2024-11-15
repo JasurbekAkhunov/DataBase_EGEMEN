@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTORMEMAKINADURUMU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="189800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTORMEMAKINA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTORMEPLANLAMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTORMEMAKINADURUMU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTORMEMAKINADURUMU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTORMEMAKINADURUMU</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>ORMEMAKINADURUMU</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>begin</b>
+<b>  </b><b>Update</b><b> </b><font color="# 080 0"><u>MakinaDurumuOzet</u></font><b> </b><b>set</b><b> </b>OrmeMakinaDurumuID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeMakinaDurumuId<b>,</b>
+<b>   </b>MemingerKoptu<b> </b><b>=</b><b> </b><b>new</b><b>.</b>MemingerKoptu<b>,</b>
+<b>   </b>AltMemingerKoptu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>AltMemingerKoptu<b>,</b>
+<b>   </b>StartStop<b> </b><b>=</b><b> </b><b>New</b><b>.</b>StartStop<b>,</b>
+<b>   </b>IgneKoptu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IgneKoptu<b>,</b>
+<b>   </b>LycraKoptu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LycraKoptu<b>,</b>
+<b>   </b>KapakAcildi<b> </b><b>=</b><b> </b><b>New</b><b>.</b>KapakAcildi<b>,</b>
+<b>   </b>KenarStop<b> </b><b>=</b><b> </b><b>New</b><b>.</b>KenarStop<b>,</b>
+<b>   </b>CozguKoptu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>CozguKoptu<b>,</b>
+<b>   </b>AtkiKoptu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>AtkiKoptu<b>,</b>
+<b>   </b>LeventSonu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LeventSonu<b>,</b>
+<b>   </b>Tur<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Tur<b>,</b>
+<b>   </b>PersonelID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PersonelID<b>,</b>
+<b>   </b>TemizlikYapildi<b> </b><b>=</b><b> </b><b>New</b><b>.</b>TemizlikYapildi<b>,</b>
+<b>   </b>TopKesme<b> </b><b>=</b><b> </b><b>New</b><b>.</b>TopKesme
+<b>   </b><b>where</b><b> </b><b>(</b>OrmeMakinaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeMakinaId<b> </b><b>or</b><b> </b>DokumaMakinaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DokumaMakinaId<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTORMEMAKINA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTORMEPLANLAMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

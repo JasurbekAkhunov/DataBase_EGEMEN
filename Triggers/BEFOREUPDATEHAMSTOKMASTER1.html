@@ -1,0 +1,249 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEHAMSTOKMASTER1</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1259800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEHAMSTOKMASTER.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEHAMSTOKMASTER2.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEHAMSTOKMASTER1</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEHAMSTOKMASTER1)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEHAMSTOKMASTER1</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>HAMSTOKMASTER</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>1
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Degisti<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TamirDegerlendirmeBitti<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DetayMiktar<b>      </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RaflananMiktar<b>      </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamKontrolVar<b>                  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OnayliHamKontrolDegistirebilir<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Fason<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>Select</b><b> </b>AlislardaHamKontrolVar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:HamKontrolVar<b>;</b>
+<b>  </b><b>else</b>
+<b>    </b><b>Select</b><b> </b>FasondaHamKontrolVar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:HamKontrolVar<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Sum</b><b>(</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId<b>  </b><b>into</b><b> </b>:DetayMiktar<b>;</b>
+
+<font color="# 0 0FF"><i>/* Onay veriliyor ise tüm departmanlar onaylamıs ve dıs tamir ise dis tamir degerlendirmesi yapılmıs olmalı, kontrol ediyoruz */</i></font>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>OnayDurumu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>Old</b><b>.</b>OnayDurumu<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Sum</b><b>(</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId<b> </b><b>into</b><b> </b>:RaflananMiktar<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>RaflananMiktar<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>RaflananMiktar<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Miktar<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>GeciciKabulTamamiRaflanmamis</u></font><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>DetayMiktar<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>Miktar<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>HSDDetayKiloToplamiEksikOlamaz</u></font><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Tamir<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b>TamirDegerlendirmeBitti<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DisTamir</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>DisTamir</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HamStokMasterId<b> </b><b>into</b><b> </b>:TamirDegerlendirmeBitti<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>TamirDegerlendirmeBitti<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>TamirDegerlendirmeBitti<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>HSDisTamirDegerlendirmesiYok</u></font><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>KS<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaSiparisRezerv</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaSiparisRezerv</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaSiparisRezerv</u></font><b>.</b>BoyaSiparisRezervId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>      </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>RezervEdilmisHSOnayiIptalOlmaz</u></font><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamIadeRezerv</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamIadeRezerv</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HamIadeRezerv</u></font><b>.</b>HamIadeRezervId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>      </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>RezervEdilmisHSOnayiIptalOlmaz</u></font><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>HamStokDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HAktarmaFisiDetay</u></font><b>.</b>HAktarmaFisiDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>      </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>HAktaraCikmisHSOnayiIptalOlmaz</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b>Degisti<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>KontrolDurumu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>KontrolDurumu<b> </b><b>and</b><b> </b><b>Old</b><b>.</b>KontrolDurumu<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMasterKabul</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMasterKabul</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HamStokMasterKabul</u></font><b>.</b>KontrolKullaniciId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KKarariVerilmisKontrolDegisemez</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b>OnayliHamKontrolDegistirebilir<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>KullaniciId<b> </b><b>into</b><b> </b>:OnayliHamKontrolDegistirebilir<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>HamKontrolVar<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>KontrolDurumu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>KontrolDurumu<b> </b><b>and</b><b> </b><b>New</b><b>.</b>KontrolDurumu<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b>OnayliHamKontrolDegistirebilir<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>Old</b><b>.</b>NemOrani<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>NemOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>NemOrani<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>NemOrani<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>NemOrani<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>NemOrani<b> </b><b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaOncesiEn<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaOncesiEn<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaOncesiEn<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaOncesiEn<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaOncesiEn<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaOncesiEn<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>2<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiEn<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaSonrasiEn<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiEn<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaSonrasiEn<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiEn<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaSonrasiEn<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>3<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiEn<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaSonrasiEn<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiEn<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaSonrasiEn<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiEn<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaSonrasiEn<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>4<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaOncesiGramaj<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaOncesiGramaj<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaOncesiGramaj<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaOncesiGramaj<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaOncesiGramaj<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaOncesiGramaj<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>5<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiGramaj<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaSonrasiGramaj<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiGramaj<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>YikamaSonrasiGramaj<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiGramaj<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaSonrasiGramaj<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>6<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>EndenCekmezlik<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>EndenCekmezlik<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>EndenCekmezlik<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>EndenCekmezlik<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>EndenCekmezlik<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>EndenCekmezlik<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>7<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>boydanCekmezlik<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>boydanCekmezlik<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>boydanCekmezlik<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>boydanCekmezlik<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>boydanCekmezlik<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>boydanCekmezlik<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>8<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>HamDonme<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>HamDonme<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>HamDonme<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>HamDonme<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>HamDonme<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>HamDonme<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>9<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaOncesiRaporBoyu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaOncesiRaporBoyu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaOncesiRaporBoyu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaOncesiRaporBoyu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaOncesiRaporBoyu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaOncesiRaporBoyu<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>10<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiRaporBoyu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaSonrasiRaporBoyu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiRaporBoyu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaSonrasiRaporBoyu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaSonrasiRaporBoyu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaSonrasiRaporBoyu<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>11<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaHasligiYapildi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaHasligiYapildi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>YikamaHasligiYapildi<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaHasligiYapildi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>YikamaHasligiYapildi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaHasligiYapildi<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>12<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>MerserizeHasligiYapildi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>MerserizeHasligiYapildi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>MerserizeHasligiYapildi<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>MerserizeHasligiYapildi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>MerserizeHasligiYapildi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>MerserizeHasligiYapildi<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>13<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaHasligiKabul<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaHasligiKabul<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>YikamaHasligiKabul<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaHasligiKabul<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>YikamaHasligiKabul<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaHasligiKabul<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>14<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>MerserizeHasligiKabul<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>MerserizeHasligiKabul<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>MerserizeHasligiKabul<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>MerserizeHasligiKabul<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>MerserizeHasligiKabul<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>MerserizeHasligiKabul<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>15<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>BoyamaKabiliyeti<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>BoyamaKabiliyeti<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>BoyamaKabiliyeti<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>BoyamaKabiliyeti<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>BoyamaKabiliyeti<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>BoyamaKabiliyeti<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>16<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>DemirTestiYapildi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>DemirTestiYapildi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>DemirTestiYapildi<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>DemirTestiYapildi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>DemirTestiYapildi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>DemirTestiYapildi<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>16<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>DemirTestiKabul<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>DemirTestiKabul<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>DemirTestiKabul<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>DemirTestiKabul<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b>
+<b>        </b><b>(</b><b>Old</b><b>.</b>DemirTestiKabul<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>DemirTestiKabul<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>14<b>;</b>
+
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>YikamaHasligi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaHasligi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaHasligi<b> </b><b>is</b><b>  </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>YikamaHasligi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaHasligi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>YikamaHasligi<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>17<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>NumaraTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>NumaraTipiId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>NumaraTipiId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>NumaraTipiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>NumaraTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>NumaraTipiId<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>18<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>Numara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>Numara<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>Numara<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>Numara<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>19<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>Bukum<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>Bukum<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>Bukum<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>Bukum<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>Bukum<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>Bukum<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>20<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>Mukavemet<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>Mukavemet<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>Mukavemet<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>Mukavemet<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>Mukavemet<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>Mukavemet<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>21<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>Uzama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>Uzama<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>Uzama<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>Uzama<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>Uzama<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>Uzama<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>22<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>UVKontrol<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>UVKontrol<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>UVKontrol<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>UVKontrol<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>UVKontrol<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>UVKontrol<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>23<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>DuzgunsuzlukOnayi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>DuzgunsuzlukOnayi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>DuzgunsuzlukOnayi<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>DuzgunsuzlukOnayi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>DuzgunsuzlukOnayi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>DuzgunsuzlukOnayi<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>24<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>YikamaOncesiCPI<b>,</b><b> </b><b>New</b><b>.</b>YikamaOncesiCPI<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>25<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>YikamaSonrasiCPI<b>,</b><b> </b><b>New</b><b>.</b>YikamaSonrasiCPI<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>25<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>YikamaOncesiWPI<b>,</b><b> </b><b>New</b><b>.</b>YikamaOncesiWPI<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>25<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>YikamaSonrasiCPI<b>,</b><b> </b><b>New</b><b>.</b>YikamaSonrasiCPI<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>25<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>HamKontrolIplikUzunlugu1<b>,</b><b> </b><b>New</b><b>.</b>HamKontrolIplikUzunlugu1<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>25<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>HamKontrolIplikUzunlugu2<b>,</b><b> </b><b>New</b><b>.</b>HamKontrolIplikUzunlugu2<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>25<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>HamKontrolIplikUzunlugu3<b>,</b><b> </b><b>New</b><b>.</b>HamKontrolIplikUzunlugu3<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>25<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>HamKontrolIplikUzunlugu4<b>,</b><b> </b><b>New</b><b>.</b>HamKontrolIplikUzunlugu4<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>25<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b><b>Old</b><b>.</b>HamKontrolYogunluk<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>and</b><b> </b><b>New</b><b>.</b>HamKontrolYogunluk<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>HamKontrolYogunluk<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>HamKontrolYogunluk<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>HamKontrolYogunluk<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>HamKontrolYogunluk<b>)</b><b>)</b><b> </b><b>then</b><b> </b>Degisti<b> </b><b>=</b><b> </b>19<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Degisti<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>HamKontrolBitirilmisDegisemez</u></font><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEHAMSTOKMASTER.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEHAMSTOKMASTER2.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

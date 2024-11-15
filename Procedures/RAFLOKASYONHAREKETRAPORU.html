@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<TITLE>RAFLOKASYONHAREKETRAPORU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1634800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="RAFLARINURETICIIDSIFIRLA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="RAFTANRAFATRANSFERYAP.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">RAFLOKASYONHAREKETRAPORU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAFID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAFLOKASYONID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">RAFLOKASYONHAREKETID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RAFID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RAFADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RAFLOKASYONID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RAFLOKASYONADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure RAFLOKASYONHAREKETRAPORU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>RAFLOKASYONHAREKETRAPORU</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ARAFID<b> </b><font color="# 080 0"><u>RAFKODUSIZE</u></font><b>,</b>
+<b>    </b>ARAFLOKASYONID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>RAFLOKASYONHAREKETID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RAFID<b> </b><font color="# 080 0"><u>RAFKODUSIZE</u></font><b>,</b>
+<b>    </b>RAFADI<b> </b><font color="# 080 0"><u>ADI30</u></font><b>,</b>
+<b>    </b>RAFLOKASYONID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>RAFLOKASYONADI<b> </b><font color="# 080 0"><u>ADI50</u></font><b>,</b>
+<b>    </b>KULLANICIADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>,</b>
+<b>    </b>TARIH<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBitisTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>begin</b>
+<b>    </b>FBitisTarihi<b> </b><b>=</b><b> </b><b>Dateadd</b><b>(</b>1<b> </b><b>day</b><b> </b><b>to</b><b> </b>ABitisTarihi<b>)</b><b>;</b>
+
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>RafLokasyonHareketId<b>,</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>RafId<b>,</b><b> </b><font color="# 080 0"><u>Raf</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>RafLokasyonId<b>,</b><b> </b><font color="# 080 0"><u>RafLokasyon</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>InsertTarihi<b> </b><b>From</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font>
+<b>    </b><b>Left</b><b> </b><b>Join</b><b>  </b><font color="# 080 0"><u>Raf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>RafId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Raf</u></font><b>.</b>RafId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b>  </b><font color="# 080 0"><u>RafLokasyon</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafLokasyon</u></font><b>.</b>RafLokasyonId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>RafLokasyonId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b>  </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>InsertKullaniciId
+<b>    </b><b>Where</b><b> </b><b>(</b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>InsertTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>InsertTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:FBitisTarihi<b>)</b><b> </b><b>and</b>
+<b>    </b><b>(</b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>RafId<b> </b><b>=</b><b> </b>:ARafId<b> </b><b>or</b><b> </b>:ARafId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>    </b><b>(</b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>RafLokasyonId<b> </b><b>=</b><b> </b>:ARafLokasyonId<b> </b><b>or</b><b> </b>:ARafLokasyonId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>    </b><b>Order</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>RafLokasyonHareket</u></font><b>.</b>InsertTarihi<b> </b><b>Desc</b>
+<b>    </b><b>Into</b><b> </b>:RafLokasyonHareketId<b>,</b><b> </b>:RafId<b>,</b><b> </b>:RafAdi<b>,</b><b> </b>:RafLokasyonId<b>,</b><b> </b>:RafLokasyonAdi<b>,</b><b> </b>:KullaniciAdi<b>,</b><b> </b>:Tarih<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>        </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="RAFLARINURETICIIDSIFIRLA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="RAFTANRAFATRANSFERYAP.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

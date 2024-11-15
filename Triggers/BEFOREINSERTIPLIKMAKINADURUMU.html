@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTIPLIKMAKINADURUMU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="847800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTIPLIKMAKINA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTIPLIKMAKINASAYAC.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTIPLIKMAKINADURUMU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTIPLIKMAKINADURUMU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTIPLIKMAKINADURUMU</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>IPLIKMAKINADURUMU</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIplikMakinaDurumuId<b>  </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAriza<b>                </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCalisiyor<b>            </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FServisciVar<b>          </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FImalataAraVerildi<b>    </b><b>SmallInt</b><b>;</b>
+<b>begin</b>
+<b>  </b>FIplikMakinaDurumuID<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>Select</b><b> </b>IplikMakinaDurumuId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikMakina</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikMakina</u></font><b>.</b>IplikMakinaID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IplikMakinaId<b> </b><b>into</b><b> </b>:FIplikMakinaDurumuId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FIplikMakinaDurumuID<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>FCalisiyor<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FAriza<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FServisciVar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FImalataAraVerildi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>Calisiyor<b>,</b><b> </b>Ariza<b>,</b><b> </b>ServisciVar<b>,</b><b> </b>ImalataAraVerildi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikMakinaDurumu</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikMakinaDurumu</u></font><b>.</b>IplikMakinaDurumuID<b> </b><b>=</b><b> </b>:FIplikMakinaDurumuId
+<b>      </b><b>into</b><b> </b>:FCalisiyor<b>,</b><b> </b>:FAriza<b>,</b><b> </b>:FServisciVar<b>,</b><b> </b>:FImalataAraVerildi<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FCalisiyor<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FCalisiyor<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FAriza<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FAriza<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FServisciVar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FServisciVar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FImalataAraVerildi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FImalataAraVerildi<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Ariza<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FAriza<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>FAriza<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Ariza<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FAriza<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>FAriza<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Ariza<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Calisiyor<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Calisiyor<b> </b><b>=</b><b> </b>FCalisiyor<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ServisciGeldi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>ServisciGeldi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ServisciVar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>ServisciVar<b> </b><b>=</b><b> </b>FServisciVar<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ImalataAraVerildi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FImalataAraVerildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>FImalataAraVerildi<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>ImalataAraVerildi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FImalataAraVerildi<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>FImalataAraVerildi<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>ImalataAraVerildi<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>IplikMakinaDurumuId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>IplikMakinaDurumuId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>IplikMakinaDurumu_id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>Update</b><b> </b><font color="# 080 0"><u>IplikMakina</u></font><b> </b><b>Set</b><b> </b>IplikMakinaDurumuID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IplikMakinaDurumuId<b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikMakina</u></font><b>.</b>IplikMakinaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IplikMakinaId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTIPLIKMAKINA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTIPLIKMAKINASAYAC.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+<TITLE>PARTIKAPALIURUNKONTROLU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1454800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTIKALITEKONTROLTARTIYAAKTAR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTIKUMASBILGIRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTIKAPALIURUNKONTROLU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARECETEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTIASAMALARIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">KAPALIURUNVAR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KAPALIURUNLER</TD>
+    <TD><P CLASS="Base2">VARCHAR(1024)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTIKAPALIURUNKONTROLU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTIKAPALIURUNKONTROLU</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARECETEID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>APARTIASAMALARIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>KAPALIURUNVAR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KAPALIURUNLER<b> </b><b>VARCHAR</b><b>(</b>1024<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunID<b>        </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMiktar<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLabMiktar<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteAtisID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunAdi<b> </b><font color="# 080 0"><u>Adi80</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunKapali<b> </b><b>integer</b><b>;</b>
+
+<b>begin</b>
+<b>  </b>KapaliUrunler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>KapaliUrunVar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>Select</b><b> </b>LabReceteAtisID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:AReceteID<b> </b><b>into</b><b> </b>:LabReceteAtisID<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>LabReceteAtisID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b>.</b>UrunId<b>,</b><b> </b><b>Sum</b><b>(</b>Miktar<b>+</b>Banyo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b>.</b>UrunId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:AReceteID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><font color="# 0 0FF"><i>--and Urun.UrunTipiId = 0</i></font>
+<b>      </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b>.</b>UrunId
+<b>      </b><b>into</b><b> </b>:FUrunID<b>,</b><b> </b>:FMiktar<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b>,</b><font color="# 080 0"><u>Urun</u></font><b>.</b>Kapali<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b>:FUrunId<b> </b><b>into</b><b> </b>:FUrunAdi<b>,</b><b> </b>:FUrunKapali<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FUrunKapali<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>KapaliUrunVar<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>char_length</b><b>(</b>KapaliUrunler<b>)</b><b> </b><b>&gt;</b><b> </b>0<b> </b><b>)</b><b> </b><b>then</b><b> </b>KapaliUrunler<b> </b><b>=</b><b> </b>KapaliUrunler<b>|</b><b>|</b><b>ASCII_CHAR</b><b>(</b>13<b>)</b><b>|</b><b>|</b><b>ASCII_CHAR</b><b>(</b>10<b>)</b><b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>char_length</b><b>(</b>KapaliUrunler<b>)</b><b> </b><b>+</b><b> </b><b>char_length</b><b>(</b>FUrunAdi<b>)</b><b>+</b><b> </b><b>char_length</b><b>(</b>FUrunId<b>)</b><b> </b><b>&lt;</b><b> </b>1020<b> </b><b>)</b><b> </b><b>then</b><b> </b>KapaliUrunler<b> </b><b>=</b><b> </b>KapaliUrunler<b>|</b><b>|</b>FUrunId<b>|</b><b>|</b>'-'<b>|</b><b>|</b>FUrunAdi<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId<b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><font color="# 0 0FF"><i>--and Urun.UrunTipiId = 0</i></font>
+<b>      </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>      </b><b>into</b><b> </b>:FUrunID<b>,</b><b> </b>:FLabMiktar<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b>,</b><font color="# 080 0"><u>Urun</u></font><b>.</b>Kapali<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b>:FUrunId<b> </b><b>into</b><b> </b>:FUrunAdi<b>,</b><b> </b>:FUrunKapali<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FUrunKapali<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>KapaliUrunVar<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>char_length</b><b>(</b>KapaliUrunler<b>)</b><b> </b><b>&gt;</b><b> </b>0<b> </b><b>)</b><b> </b><b>then</b><b> </b>KapaliUrunler<b> </b><b>=</b><b> </b>KapaliUrunler<b>|</b><b>|</b><b>ASCII_CHAR</b><b>(</b>13<b>)</b><b>|</b><b>|</b><b>ASCII_CHAR</b><b>(</b>10<b>)</b><b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>char_length</b><b>(</b>KapaliUrunler<b>)</b><b> </b><b>+</b><b> </b><b>char_length</b><b>(</b>FUrunAdi<b>)</b><b>+</b><b> </b><b>char_length</b><b>(</b>FUrunId<b>)</b><b> </b><b>&lt;</b><b> </b>1020<b> </b><b>)</b><b> </b><b>then</b><b> </b>KapaliUrunler<b> </b><b>=</b><b> </b>KapaliUrunler<b>|</b><b>|</b>FUrunId<b>|</b><b>|</b>'-'<b>|</b><b>|</b>FUrunAdi<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTIKALITEKONTROLTARTIYAAKTAR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTIKUMASBILGIRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

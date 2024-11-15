@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<TITLE>KALITEKOPYALA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="957800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="KALITEKONTROLYAPILACAKGIRISLER2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="KALITERAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">KALITEKOPYALA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AKALITEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYENIKALITEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">YENIKALITEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure KALITEKOPYALA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>KALITEKOPYALA</u></font><b>(</b>
+<b>    </b>AKALITEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AYENIKALITEID<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>YENIKALITEID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>(</b>KaliteId<b>,</b><b> </b>KaliteAdi<b>,</b><b> </b>PartiSinifId<b>,</b><b> </b>PartiYil<b>,</b><b> </b>PartiId<b>,</b><b> </b>HamId<b>,</b><b> </b>HamAdi<b>,</b><b> </b>ReceteKodu<b>,</b><b> </b>ReceteAdi<b>,</b><b> </b>DesenKodu<b>,</b><b> </b>DesenAdi<b>,</b><b> </b>DesenVaryantAdi<b>,</b>
+<b>                     </b>Denye<b>,</b><b> </b>SiparisProsesId<b>,</b><b> </b>EnIstenen<b>,</b><b> </b>GramajIstenen<b>,</b><b> </b>CekmezlikEnIstenen<b>,</b><b> </b>CekmezlikBoyIstenen<b>,</b><b> </b>DonmeIstenen<b>,</b><b> </b>SansIstenen<b>,</b><b> </b>Pus<b>,</b><b> </b>Feine<b>,</b>
+<b>                     </b>DinlenmisGramaj<b>,</b><b> </b>HamEn<b>,</b><b> </b>IplikBoyu1<b>,</b><b> </b>IplikBoyu2<b>,</b><b> </b>IplikBoyu3<b>,</b><b> </b>IplikBoyu4<b>,</b><b> </b>TupAcikEnMayli<b>,</b><b> </b>OzelTestler<b>,</b><b> </b>OzelApreler<b>,</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>,</b>
+<b>                     </b>Aciklama<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>DovizId<b>,</b><b> </b>MinSiparisMiktari<b>,</b><b> </b>MetrajNumunesiVar<b>,</b><b> </b>Notu<b>,</b><b> </b>YikamaTalimatiID<b>,</b><b> </b>AgartmaTalimatiID<b>,</b><b> </b>KurutmaTalimatiID<b>,</b>
+<b>                     </b>SikmaTalimatiID<b>,</b><b> </b>UtuTalimatiID<b>,</b><b> </b>KuruTemizlemeTalimatiID<b>,</b><b> </b>ResimDosyaAdi1<b>,</b><b> </b>Composition<b>,</b><b> </b>ResimDosyaAdi2<b>,</b><b> </b>KartelaStokMevcudu<b>,</b><b> </b>BirimFiyatMt<b>,</b>
+<b>                     </b>Kapali<b>,</b><b> </b>DyeAndDyeIngMethod<b>,</b><b> </b>YarnCount<b>,</b><b> </b>MinNumuneMiktari<b>,</b><b> </b>ExtensionModulEn<b>,</b><b> </b>ExtensionModulBoy<b>,</b><b> </b>PillingTuylenme<b>,</b><b> </b>PillingTuylenmeTour<b>,</b>
+<b>                     </b>PillingTuylenmeHours<b>,</b><b> </b>BURSTINGSTRENGTHKPA<b>,</b><b> </b>BURSTINGSTRENGTHMM<b>,</b><b> </b>BURSTINGSTRENGTHSN<b>,</b><b> </b>CekmezlikTesti<b>,</b><b> </b>LightFastnessLightStaining<b>,</b><b> </b>LightFastnessLightFading<b>,</b>
+<b>                     </b>LightFastnessDarkStaining<b>,</b><b> </b>LightFastnessDarkFading<b>,</b><b> </b>ALightFastnessLightStaining<b>,</b><b> </b>ALightFastnessLightFading<b>,</b><b> </b>ALightFastnessDarkStaining<b>,</b>
+<b>                     </b>ALightFastnessDarkFading<b>,</b><b> </b>WashingFastnessLightStaining<b>,</b><b> </b>WashingFastnessLightFading<b>,</b><b> </b>WashingFastnessDarkStaining<b>,</b><b> </b>WashingFastnessDarkFading<b>,</b>
+<b>                     </b>WaterFastnessLightStaining<b>,</b><b>  </b>WaterFastnessLightFading<b>,</b><b> </b>WaterFastnessDarkStaining<b>,</b><b> </b>WaterFastnessDarkFading<b>,</b><b> </b>PFastnessToAlcaliLightStaining<b>,</b>
+<b>                     </b>PFastnessToAlcaliLightFading<b>,</b><b> </b>PFastnessToAlcaliDarkStaining<b>,</b><b> </b>PFastnessToAlcaliDarkFading<b>,</b><b> </b>PFastnessToAsitLightStaining<b>,</b><b>  </b>PFastnessToAsitLightFading<b>,</b>
+<b>                     </b>PFastnessToAsitDarkStaining<b>,</b><b> </b>PFastnessToAsitDarkFading<b>,</b><b> </b>RFastnessWetLightStaining<b>,</b><b> </b>RFastnessWetLightFading<b>,</b><b> </b>RFastnessWetDarkStaining<b>,</b><b>  </b>RFastnessWetDarkFading<b>,</b>
+<b>                     </b>RFastnessDryLightStaining<b>,</b><b> </b>RFastnessDryLightFading<b>,</b><b> </b>RFastnessDryDarkStaining<b>,</b><b>  </b>RFastnessDryDarkFading<b>,</b><b> </b>SColorWetFastnessLightStaining<b>,</b><b> </b>SColorWetFastnessLightFading<b>,</b>
+<b>                     </b>SColorWetFastnessDarkStaining<b>,</b><b> </b>SColorWetFastnessDarkFading<b>,</b><b> </b>RaporBoyu1<b>,</b><b> </b>RaporBoyu2<b>,</b><b> </b>RaporBoyu3<b>,</b><b> </b>RaporBoyu4<b>,</b><b> </b>OrgucuMakina<b>,</b><b> </b>FasonMaliyet<b>,</b><b> </b>HamMaliyet<b>,</b>
+<b>                     </b>MamulMaliyet<b>,</b><b> </b>Hiz<b>,</b><b> </b>ISI<b>,</b><b> </b>Besleme<b>,</b><b> </b>OrmeBirimMaliyet<b>,</b><b> </b>TeklifFiyatiHesaplama<b>,</b><b> </b>HesaplamaCarpimDegeri<b>,</b><b> </b>BaskiTipiId<b>,</b><b> </b>MakinaUstuGramaj<b>,</b><b> </b>OrmeTopKilosu<b>,</b><b> </b>GrupId<b>,</b>
+<b>                     </b>MiktarGun<b>,</b><b> </b>ArtikelNo<b>,</b><b> </b>ArtikelAdi<b>,</b><b> </b>MamulAtkiSikligi<b>,</b><b> </b>MamulCozguSikligi<b>,</b><b> </b>MetreKare<b>,</b><b> </b>MetreTul<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>)</b>
+<b>  </b><b>select</b><b> </b>:AYeniKaliteId<b>,</b><b> </b>KaliteAdi<b>,</b><b> </b>PartiSinifId<b>,</b><b> </b>PartiYil<b>,</b><b> </b>PartiId<b>,</b><b> </b>HamId<b>,</b><b> </b>HamAdi<b>,</b><b> </b>ReceteKodu<b>,</b><b> </b>ReceteAdi<b>,</b><b> </b>DesenKodu<b>,</b><b> </b>DesenAdi<b>,</b><b> </b>DesenVaryantAdi<b>,</b>
+<b>         </b>Denye<b>,</b><b> </b>SiparisProsesId<b>,</b><b> </b>EnIstenen<b>,</b><b> </b>GramajIstenen<b>,</b><b> </b>CekmezlikEnIstenen<b>,</b><b> </b>CekmezlikBoyIstenen<b>,</b><b> </b>DonmeIstenen<b>,</b><b> </b>SansIstenen<b>,</b><b> </b>Pus<b>,</b><b> </b>Feine<b>,</b>
+<b>         </b>DinlenmisGramaj<b>,</b><b> </b>HamEn<b>,</b><b> </b>IplikBoyu1<b>,</b><b> </b>IplikBoyu2<b>,</b><b> </b>IplikBoyu3<b>,</b><b> </b>IplikBoyu4<b>,</b><b> </b>TupAcikEnMayli<b>,</b><b> </b>OzelTestler<b>,</b><b> </b>OzelApreler<b>,</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>,</b>
+<b>         </b>Aciklama<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>DovizId<b>,</b><b> </b>MinSiparisMiktari<b>,</b><b> </b>MetrajNumunesiVar<b>,</b><b> </b>Notu<b>,</b><b> </b>YikamaTalimatiID<b>,</b><b> </b>AgartmaTalimatiID<b>,</b><b> </b>KurutmaTalimatiID<b>,</b>
+<b>         </b>SikmaTalimatiID<b>,</b><b> </b>UtuTalimatiID<b>,</b><b> </b>KuruTemizlemeTalimatiID<b>,</b><b> </b>ResimDosyaAdi1<b>,</b><b> </b>Composition<b>,</b><b> </b>ResimDosyaAdi2<b>,</b><b> </b>KartelaStokMevcudu<b>,</b><b> </b>BirimFiyatMt<b>,</b>
+<b>         </b>Kapali<b>,</b><b> </b>DyeAndDyeIngMethod<b>,</b><b> </b>YarnCount<b>,</b><b> </b>MinNumuneMiktari<b>,</b><b> </b>ExtensionModulEn<b>,</b><b> </b>ExtensionModulBoy<b>,</b><b> </b>PillingTuylenme<b>,</b><b> </b>PillingTuylenmeTour<b>,</b>
+<b>         </b>PillingTuylenmeHours<b>,</b><b> </b>BURSTINGSTRENGTHKPA<b>,</b><b> </b>BURSTINGSTRENGTHMM<b>,</b><b> </b>BURSTINGSTRENGTHSN<b>,</b><b> </b>CekmezlikTesti<b>,</b><b> </b>LightFastnessLightStaining<b>,</b><b> </b>LightFastnessLightFading<b>,</b>
+<b>         </b>LightFastnessDarkStaining<b>,</b><b> </b>LightFastnessDarkFading<b>,</b><b> </b>ALightFastnessLightStaining<b>,</b><b> </b>ALightFastnessLightFading<b>,</b><b> </b>ALightFastnessDarkStaining<b>,</b>
+<b>         </b>ALightFastnessDarkFading<b>,</b><b> </b>WashingFastnessLightStaining<b>,</b><b> </b>WashingFastnessLightFading<b>,</b><b> </b>WashingFastnessDarkStaining<b>,</b><b> </b>WashingFastnessDarkFading<b>,</b>
+<b>         </b>WaterFastnessLightStaining<b>,</b><b>  </b>WaterFastnessLightFading<b>,</b><b> </b>WaterFastnessDarkStaining<b>,</b><b> </b>WaterFastnessDarkFading<b>,</b><b> </b>PFastnessToAlcaliLightStaining<b>,</b>
+<b>         </b>PFastnessToAlcaliLightFading<b>,</b><b> </b>PFastnessToAlcaliDarkStaining<b>,</b><b> </b>PFastnessToAlcaliDarkFading<b>,</b><b> </b>PFastnessToAsitLightStaining<b>,</b><b>  </b>PFastnessToAsitLightFading<b>,</b>
+<b>         </b>PFastnessToAsitDarkStaining<b>,</b><b> </b>PFastnessToAsitDarkFading<b>,</b><b> </b>RFastnessWetLightStaining<b>,</b><b> </b>RFastnessWetLightFading<b>,</b><b> </b>RFastnessWetDarkStaining<b>,</b><b>  </b>RFastnessWetDarkFading<b>,</b>
+<b>         </b>RFastnessDryLightStaining<b>,</b><b> </b>RFastnessDryLightFading<b>,</b><b> </b>RFastnessDryDarkStaining<b>,</b><b>  </b>RFastnessDryDarkFading<b>,</b><b> </b>SColorWetFastnessLightStaining<b>,</b><b> </b>SColorWetFastnessLightFading<b>,</b>
+<b>         </b>SColorWetFastnessDarkStaining<b>,</b><b> </b>SColorWetFastnessDarkFading<b>,</b><b> </b>RaporBoyu1<b>,</b><b> </b>RaporBoyu2<b>,</b><b> </b>RaporBoyu3<b>,</b><b> </b>RaporBoyu4<b>,</b><b> </b>OrgucuMakina<b>,</b><b> </b>FasonMaliyet<b>,</b><b> </b>HamMaliyet<b>,</b>
+<b>         </b>MamulMaliyet<b>,</b><b> </b>Hiz<b>,</b><b> </b>ISI<b>,</b><b> </b>Besleme<b>,</b><b> </b>OrmeBirimMaliyet<b>,</b><b> </b>TeklifFiyatiHesaplama<b>,</b><b> </b>HesaplamaCarpimDegeri<b>,</b><b> </b>BaskiTipiId<b>,</b><b> </b>MakinaUstuGramaj<b>,</b><b> </b>OrmeTopKilosu<b>,</b><b> </b>GrupId<b>,</b>
+<b>         </b>MiktarGun<b>,</b><b> </b>ArtikelNo<b>,</b><b> </b>ArtikelAdi<b>,</b><b> </b>MamulAtkiSikligi<b>,</b><b> </b>MamulCozguSikligi<b>,</b><b> </b>MetreKare<b>,</b><b> </b>MetreTul<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b>
+<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteId<b> </b><b>=</b><b> </b>:AKaliteId<b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>KaliteRecete</u></font><b>(</b>KaliteReceteID<b>,</b><b> </b>KaliteId<b>,</b><b> </b>ReceteHamId<b>,</b>KullanimOrani<b>,</b><b> </b>FireOrani<b>,</b><b> </b>CozguFireOrani<b>,</b><b> </b>RenkId<b>,</b><b> </b>AtkiCozgu<b>,</b><b> </b>TelSayisi<b>,</b>
+<b>         </b>SiraNo<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>BirimFiyatDovizId<b>,</b><b> </b>MaliyetFireOrani<b>,</b><b> </b>IplikSikligiCm<b>,</b><b> </b>DiskTanitimId<b>,</b><b> </b>Uzama<b>,</b><b> </b>TansiyonAyari<b>,</b>
+<b>         </b>MmRack<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>)</b>
+<b>  </b><b>select</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>KaliteRecete_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>,</b><b> </b>:AYeniKaliteId<b>,</b><b> </b>ReceteHamId<b>,</b>KullanimOrani<b>,</b><b> </b>FireOrani<b>,</b><b> </b>CozguFireOrani<b>,</b><b> </b>RenkId<b>,</b><b> </b>AtkiCozgu<b>,</b><b> </b>TelSayisi<b>,</b>
+<b>         </b>SiraNo<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>BirimFiyatDovizId<b>,</b><b> </b>MaliyetFireOrani<b>,</b><b> </b>IplikSikligiCm<b>,</b><b> </b>DiskTanitimId<b>,</b><b> </b>Uzama<b>,</b><b> </b>TansiyonAyari<b>,</b>
+<b>         </b>MmRack<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b>
+<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>KaliteRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>KaliteRecete</u></font><b>.</b>KaliteId<b> </b><b>=</b><b> </b>:AKaliteId<b>;</b>
+
+<b>  </b>YeniKaliteId<b> </b><b>=</b><b> </b>:AYeniKaliteId<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="KALITEKONTROLYAPILACAKGIRISLER2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="KALITERAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

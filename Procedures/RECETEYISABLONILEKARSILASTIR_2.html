@@ -1,0 +1,420 @@
+<HTML>
+<HEAD>
+<TITLE>RECETEYISABLONILEKARSILASTIR_2</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1672800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="RECETEYISABLONILEKARSILASTIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="REFPARTIARAKONTROLDEGERLERGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">RECETEYISABLONILEKARSILASTIR_2</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ARECETEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">RECETEDEGISENLER</TD>
+    <TD><P CLASS="Base2">VARCHAR(1024)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RECETEDETAYDEGISENLER</TD>
+    <TD><P CLASS="Base2">VARCHAR(1024)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure RECETEYISABLONILEKARSILASTIR_2)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>RECETEYISABLONILEKARSILASTIR_2</u></font><b>(</b>
+<b>    </b>ARECETEID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>RECETEDEGISENLER<b> </b><b>VARCHAR</b><b>(</b>1024<b>)</b><b>,</b>
+<b>    </b>RECETEDETAYDEGISENLER<b> </b><b>VARCHAR</b><b>(</b>1024<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRFirmaId<b>                </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRUstAsamaId<b>               </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRReceteTipi<b>               </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRReceteTuruId<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRRenkOkey<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRReceteKapatma<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRReceteGrafikId<b>           </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRReceteAsamaId<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRReceteAltAsamaId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRReceteAsamaSablonId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRUrunId<b>                   </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRUrunBirimId<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRMiktar<b>                   </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRBanyo<b>                    </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRLabReceteGrupId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRIlave<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRSokumUzeriBoya<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRLabRenkGrupId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRRenkDerinligiId<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRBanyoSayisi<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRToplamSicaklikDegisimi<b> </b><b>integer</b><b>;</b>
+
+
+<b>declare</b><b> </b><b>variable</b><b> </b>SRFirmaId<b>                </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRUstAsamaId<b>               </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRReceteTipi<b>               </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRReceteTuruId<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRRenkOkey<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRReceteKapatma<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRReceteGrafikId<b>           </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRReceteAsamaId<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRReceteAltAsamaId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRReceteAsamaSablonId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRUrunId<b>                   </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRUrunBirimId<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRMiktar<b>                   </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRBanyo<b>                    </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRLabReceteGrupId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRIlave<b>                  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRSokumUzeriBoya<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRLabRenkGrupId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRRenkDerinligiId<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRBanyoSayisi<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRToplamSicaklikDegisimi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRSira<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRSira<b>              </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FT1<b>                      </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTarih<b>                   </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Sablon<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSablonReceteID<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ReceteDetayInsert<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBoyaAsamasi<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastBoyaAsamasi<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRAtisRenkSira<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRAtisRenkColor<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRAtisRenkSira<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRAtisRenkColor<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRAtisRenkKodu<b>        </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KRAtisRenkAdi<b>         </b><b>varchar</b><b>(</b>120<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRAtisRenkKodu<b>        </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SRAtisRenkAdi<b>         </b><b>varchar</b><b>(</b>120<b>)</b><b>;</b>
+
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>SablonReceteID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b><b>where</b><b> </b>ReceteID<b> </b><b>=</b><b> </b>:AReceteId<b> </b><b>into</b><b> </b>:FSablonReceteID<b>;</b>
+
+<b>  </b>ReceteDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>KRReceteGrafikId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b>SRReceteGrafikId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b>LastBoyaAsamasi<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><b>distinct</b><b> </b><b>iif</b><b> </b><b>(</b>KRD<b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>null</b><b>,</b><b> </b><b>(</b><b>Select</b><b> </b><b>First</b><b> </b>1<b> </b>RDS<b>.</b>ReceteAsamaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b>RDS<b> </b><b>Where</b><b> </b>RDS<b>.</b>ReceteId<b> </b><b>=</b><b> </b>KRD<b>.</b>ReceteId<b> </b><b>and</b><b> </b>RDS<b>.</b>Sira<b> </b><b>&lt;</b><b> </b>KRD<b>.</b>Sira<b> </b><b>and</b><b> </b>RDS<b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b> </b><b>order</b><b> </b><b>by</b><b> </b>RDS<b>.</b>Sira<b> </b><b>Desc</b><b>)</b><b>,</b><b> </b>KRD<b>.</b>ReceteAsamaId<b>)</b><b> </b>ReceteAsamaId<b>,</b>
+<b>         </b>KRD<b>.</b>UrunId<b>,</b><b> </b>KRD<b>.</b>UrunBirimId<b>,</b><b> </b>KRD<b>.</b>Miktar<b>,</b><b> </b>KRD<b>.</b>Banyo<b>,</b><b> </b>KRD<b>.</b>Sira<b>,</b><b> </b>KRD<b>.</b>AtisRenkSira<b>,</b><b> </b>KRD<b>.</b>AtisRenkColor<b>,</b><b> </b>KRD<b>.</b>AtisRenkKodu<b>,</b><b> </b>KRD<b>.</b>AtisRenkAdi<b>,</b>
+<b>         </b>SRD<b>.</b>ReceteAsamaId<b>,</b><b> </b>SRD<b>.</b>UrunId<b>,</b><b> </b>SRD<b>.</b>UrunBirimId<b>,</b><b> </b>SRD<b>.</b>Miktar<b>,</b><b> </b>SRD<b>.</b>Banyo<b>,</b><b> </b>SRD<b>.</b>Sira<b>,</b><b> </b>SRD<b>.</b>AtisRenkSira<b>,</b><b> </b>SRD<b>.</b>AtisRenkColor<b>,</b><b> </b>SRD<b>.</b>AtisRenkKodu<b>,</b><b> </b>SRD<b>.</b>AtisRenkAdi<b>,</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b>.</b>BoyaAsamasimi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b>KRD
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b>KR<b> </b><b>on</b><b> </b>KR<b>.</b>ReceteID<b> </b><b>=</b><b> </b>KRD<b>.</b>ReceteID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b>SR<b> </b><b>on</b><b> </b>SR<b>.</b>ReceteID<b> </b><b>=</b><b> </b>KR<b>.</b>SablonReceteID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><b>(</b><b>Select</b><b> </b>ReceteID<b> </b><b>,</b><b>iif</b><b> </b><b>(</b>RDM<b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>null</b><b>,</b><b> </b><b>(</b><b>Select</b><b> </b><b>First</b><b> </b>1<b> </b>ReceteAsamaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b>RDS<b> </b><b>Where</b><b> </b>RDS<b>.</b>ReceteId<b> </b><b>=</b><b> </b>RDM<b>.</b>ReceteId<b> </b><b>and</b><b> </b>RDS<b>.</b>Sira<b> </b><b>&lt;</b><b> </b>RDM<b>.</b>Sira<b> </b><b>and</b><b> </b>RDS<b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b> </b><b>order</b><b> </b><b>by</b><b> </b>RDS<b>.</b>Sira<b> </b><b>Desc</b><b>)</b><b>,</b><b>  </b>RDM<b>.</b>ReceteAsamaId<b>)</b><b> </b>ReceteAsamaId<b> </b><b>,</b><b> </b>RDM<b>.</b>ReceteAltAsamaId<b>,</b><b> </b>RDM<b>.</b>ReceteAsamaSablonId<b>,</b>
+<b>           </b>RDM<b>.</b>UrunId<b>,</b><b> </b>RDM<b>.</b>UrunBirimId<b>,</b><b> </b>RDM<b>.</b>Miktar<b>,</b><b> </b>RDM<b>.</b>Banyo<b>,</b><b> </b>RDM<b>.</b>AtisRenkSira<b>,</b><b> </b>RDM<b>.</b>AtisRenkColor<b>,</b><b> </b>RDM<b>.</b>AtisRenkKodu<b>,</b><b> </b>RDM<b>.</b>AtisRenkAdi<b>,</b><b> </b>RDM<b>.</b>ReceteGrafikId<b>,</b><b> </b>Sira<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b>RDM<b>)</b><b> </b>SRD<b>  </b><b>on</b><b> </b>SRD<b>.</b>ReceteID<b> </b><b>=</b><b> </b>SR<b>.</b>ReceteID<b>  </b><b>and</b><b> </b>SRD<b>.</b>UrunId<b> </b><b>=</b><b> </b>KRD<b>.</b>UrunId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b>  </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b>.</b>ReceteAsamaID<b> </b><b>=</b><b> </b>KRD<b>.</b>ReceteAsamaID
+<b>    </b><b>where</b><b> </b>KRD<b>.</b>ReceteId<b> </b><b>=</b><b> </b>:AReceteId
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b>KRD<b>.</b>Sira
+<b>    </b><b>into</b><b> </b>:KRReceteAsamaId<b>,</b><b> </b>:KRUrunId<b>,</b><b> </b>:KRUrunBirimId<b>,</b><b> </b>:KRMiktar<b>,</b><b> </b>:KRBanyo<b>,</b><b> </b>:KRSira<b>,</b><b> </b>:KRAtisRenkSira<b>,</b><b> </b>:KRAtisRenkColor<b>,</b><b> </b>:KRAtisRenkKodu<b>,</b><b> </b>:KRAtisRenkAdi<b>,</b>
+<b>         </b>:SRReceteAsamaId<b>,</b><b> </b>:SRUrunId<b>,</b><b> </b>:SRUrunBirimId<b>,</b><b> </b>:SRMiktar<b>,</b><b> </b>:SRBanyo<b>,</b><b> </b>:SRSira<b>,</b><b> </b>:SRAtisRenkSira<b>,</b><b> </b>:SRAtisRenkColor<b>,</b><b> </b>:SRAtisRenkKodu<b>,</b><b> </b>:SRAtisRenkAdi<b>,</b><b> </b>:FBoyaAsamasi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FBoyaAsamasi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>LastBoyaAsamasi<b> </b><b>=</b><b> </b>FBoyaAsamasi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>LastBoyaAsamasi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><b>(</b>KRReceteAsamaId<b> </b><b>=</b><b> </b>SRReceteAsamaId<b>)</b><b> </b><b>or</b><b> </b><b>(</b>SRReceteAsamaId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b>)</b><b> </b><b>and</b><b> </b><b>(</b>KRUrunId<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>null</b><b>)</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b>KRUrunId<b>,</b><b> </b>SRUrunId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRUrunId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', UrunId = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', UrunId =  '''<b> </b><b>|</b><b>|</b><b> </b>SRUrunId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b>KRUrunBirimId<b>,</b><b> </b>SRUrunBirimId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRUrunBirimId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', UrunBirimId = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', UrunBirimId = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRUrunBirimId<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b>KRMiktar<b>,</b><b> </b>SRMiktar<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRMiktar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Miktar = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Miktar = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRMiktar<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b>KRAtisRenkSira<b>,</b><b> </b>SRAtisRenkSira<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRAtisRenkSira<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', AtisRenkSira = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', AtisRenkSira = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkSira<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b>KRAtisRenkColor<b>,</b><b> </b>SRAtisRenkColor<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRAtisRenkColor<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', AtisRenkColor = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', AtisRenkColor = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkColor<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b>KRAtisRenkKodu<b>,</b><b> </b>SRAtisRenkKodu<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRAtisRenkKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', AtisRenkKodu = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', AtisRenkKodu = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkKodu<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b>KRAtisRenkAdi<b>,</b><b> </b>SRAtisRenkAdi<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRAtisRenkAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', AtisRenkAdi = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', AtisRenkAdi = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkAdi<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b>KRBanyo<b> </b><b>&lt;</b><b>&gt;</b><b> </b>SRBanyo<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRBanyo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Banyo = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Banyo = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRBanyo<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>ReceteDetayDegisenler<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b><b>substring</b><b>(</b>ReceteDetayDegisenler<b> </b><b>from</b><b> </b>2<b> </b><b>for</b><b> </b>1024<b>)</b><b>;</b>
+<b>        </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', KullaniciId = '<b> </b><b>|</b><b>|</b><b> </b>:AKullaniciId<b>;</b>
+<b>        </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>'Update ReceteDetay set '<b> </b><b>|</b><b>|</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>' where ReceteId = '''<b> </b><b>|</b><b>|</b><b> </b>:AReceteId<b> </b><b>|</b><b>|</b><b> </b>''' and Sira = '<b> </b><b>|</b><b>|</b><b> </b>:KRSira<b>;</b>
+<b>        </b><b>Suspend</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b>ReceteDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>ReceteDetayInsert<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b>KRD<b>.</b>ReceteAsamaId<b>,</b><b> </b>KRD<b>.</b>ReceteAltAsamaId<b>,</b><b> </b>KRD<b>.</b>ReceteAsamaSablonId<b>,</b><b> </b>KRD<b>.</b>ReceteGrafikId<b>,</b><b> </b>KRD<b>.</b>Sira<b>,</b>
+<b>             </b>SRD<b>.</b>ReceteAsamaId<b>,</b><b> </b>SRD<b>.</b>ReceteAltAsamaId<b>,</b><b> </b>SRD<b>.</b>ReceteAsamaSablonId<b>,</b><b> </b>SRD<b>.</b>ReceteGrafikId<b>,</b><b> </b>SRD<b>.</b>Sira<b>,</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b>.</b>BoyaAsamasimi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b>KRD
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b>KR<b> </b><b>on</b><b> </b>KR<b>.</b>ReceteID<b> </b><b>=</b><b> </b>KRD<b>.</b>ReceteID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b>SR<b> </b><b>on</b><b> </b>SR<b>.</b>ReceteID<b> </b><b>=</b><b> </b>KR<b>.</b>SablonReceteID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b>SRD<b>  </b><b>on</b><b> </b>SRD<b>.</b>ReceteID<b> </b><b>=</b><b> </b>SR<b>.</b>ReceteID<b>  </b><b>and</b><b> </b>SRD<b>.</b>ReceteAsamaId<b> </b><b>=</b><b> </b>KRD<b>.</b>ReceteAsamaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b>  </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b>.</b>ReceteAsamaID<b> </b><b>=</b><b> </b>KRD<b>.</b>ReceteAsamaID
+<b>    </b><b>where</b><b> </b>KRD<b>.</b>ReceteId<b> </b><b>=</b><b> </b>:AReceteId<b>  </b><b>and</b><b> </b>KRD<b>.</b>UrunID<b> </b><b>is</b><b> </b><b>Null</b>
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b>KRD<b>.</b>Sira
+<b>    </b><b>into</b><b> </b>:KRReceteAsamaId<b>,</b><b> </b>:KRReceteAltAsamaId<b>,</b><b> </b>:KRReceteAsamaSablonId<b>,</b><b> </b>:KRReceteGrafikId<b>,</b><b> </b>:KRSira<b>,</b>
+<b>         </b>:SRReceteAsamaId<b>,</b><b> </b>:SRReceteAltAsamaId<b>,</b><b> </b>:SRReceteAsamaSablonId<b>,</b><b> </b>:SRReceteGrafikId<b>,</b><b> </b>:SRSira<b>,</b><b> </b>:FBoyaAsamasi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FBoyaAsamasi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b>KRReceteAsamaId<b>,</b><b> </b>SRReceteAsamaId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRReceteAsamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', ReceteAsamaId = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', ReceteAsamaId = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRReceteAsamaId<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b>KRReceteAltAsamaId<b>,</b><b> </b>SRReceteAltAsamaId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRReceteAltAsamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', ReceteAltAsamaId = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', ReceteAltAsamaId = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRReceteAltAsamaId<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b>KRReceteAsamaSablonId<b>,</b><b> </b>SRReceteAsamaSablonId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRReceteAsamaSablonId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', ReceteAsamaSablonId = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', ReceteAsamaSablonId = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRReceteAsamaSablonId<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b>KRReceteGrafikId<b>,</b><b> </b>SRReceteGrafikId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SRReceteGrafikId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', ReceteGrafikId = Null'<b>;</b>
+<b>        </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', ReceteGrafikId =  '''<b> </b><b>|</b><b>|</b><b> </b>SRReceteGrafikId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>ReceteDetayDegisenler<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b><b>substring</b><b>(</b>ReceteDetayDegisenler<b> </b><b>from</b><b> </b>2<b> </b><b>for</b><b> </b>1024<b>)</b><b>;</b>
+<b>        </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', KullaniciId = '<b> </b><b>|</b><b>|</b><b> </b>:AKullaniciId<b>;</b>
+<b>        </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>'Update ReceteDetay set '<b> </b><b>|</b><b>|</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>' where ReceteId = '''<b> </b><b>|</b><b>|</b><b> </b>:AReceteId<b> </b><b>|</b><b>|</b><b> </b>''' and Sira = '<b> </b><b>|</b><b>|</b><b> </b>:KRSira<b>;</b>
+<b>        </b><b>Suspend</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b>ReceteDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>ReceteDetayInsert<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b>SR<b>.</b>Sira<b>,</b><b> </b>SR<b>.</b>ReceteAsamaId<b>,</b><b> </b>SR<b>.</b>ReceteAltAsamaId<b>,</b><b> </b>SR<b>.</b>ReceteAsamaSablonId<b>,</b><b> </b>SR<b>.</b>UrunId<b>,</b><b> </b>SR<b>.</b>UrunBirimId<b>,</b><b> </b>SR<b>.</b>Miktar<b>,</b><b> </b>SR<b>.</b>Banyo<b>,</b><b> </b>SR<b>.</b>AtisRenkSira<b>,</b><b> </b>SR<b>.</b>AtisRenkColor<b>,</b><b> </b>SR<b>.</b>AtisRenkKodu<b>,</b><b> </b>SR<b>.</b>AtisRenkAdi<b>,</b><b> </b>SR<b>.</b>ReceteGrafikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b>SR
+<b>    </b><b>where</b><b> </b>SR<b>.</b>ReceteId<b> </b><b>=</b><b> </b>:FSablonReceteID<b> </b><b>and</b><b> </b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>SR<b>.</b>UrunID<b> </b><b>not</b><b> </b><b>in</b><b> </b><b>(</b><b>Select</b><b> </b>UrunID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b><b>where</b><b> </b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>ReceteId<b> </b><b>=</b><b> </b>:AReceteId<b>)</b>
+<b>    </b><b>into</b><b> </b>:SRSira<b>,</b><b> </b>:SRReceteAsamaId<b>,</b><b> </b>:SRReceteAltAsamaId<b>,</b><b> </b>:SRReceteAsamaSablonId<b>,</b><b> </b>:SRUrunId<b>,</b><b> </b>:SRUrunBirimId<b>,</b><b> </b>:SRMiktar<b>,</b><b> </b>:SRBanyo<b>,</b><b> </b>:SRAtisRenkSira<b>,</b><b> </b>:SRAtisRenkColor<b>,</b><b> </b>:SRAtisRenkKodu<b>,</b><b> </b>:SRAtisRenkAdi<b>,</b><b> </b>:SRReceteGrafikId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ReceteDetayInsert<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>ReceteDetayInsert<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>'Update Recete Set OzelDurumLinkIslemi = 1 where ReceteId =  '''<b> </b><b>|</b><b>|</b><b> </b>AReceteId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+
+
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>'insert into ReceteDetay(ReceteId, Sira, ReceteAsamaId, ReceteAltAsamaId, ReceteAsamaSablonId, UrunId, UrunBirimId, Miktar, Banyo, AtisRenkSira, AtisRenkColor, AtisRenkKodu, AtisRenkAdi, ReceteGrafikId, KullaniciId) values( '''<b> </b><b>|</b><b>|</b><b> </b>AReceteId<b> </b><b>|</b><b>|</b><b> </b>''' , '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRSira<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRReceteAsamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRReceteAsamaId<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRReceteAltAsamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRReceteAltAsamaId<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRReceteAsamaSablonId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRReceteAsamaSablonId<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRUrunId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b>SRUrunId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRUrunBirimId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRUrunBirimId<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRMiktar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRMiktar<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRBanyo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRBanyo<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRAtisRenkSira<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkSira<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRAtisRenkColor<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkColor<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRAtisRenkKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkKodu<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRAtisRenkAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkAdi<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRReceteGrafikId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b>SRReceteGrafikId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>AKullaniciID<b>)</b><b> </b><b>|</b><b>|</b><b> </b>')'<b>;</b>
+
+<b>    </b><b>Suspend</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ReceteDetayInsert<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>'Update Recete Set OzelDurumLinkIslemi = 0 where ReceteId =  '''<b> </b><b>|</b><b>|</b><b> </b>AReceteId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b>ReceteDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>ReceteDetayInsert<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b>SR<b>.</b>Sira<b>,</b><b> </b>SR<b>.</b>ReceteAsamaId<b>,</b><b> </b>SR<b>.</b>ReceteAltAsamaId<b>,</b><b> </b>SR<b>.</b>ReceteAsamaSablonId<b>,</b><b> </b>SR<b>.</b>UrunId<b>,</b><b> </b>SR<b>.</b>UrunBirimId<b>,</b><b> </b>SR<b>.</b>Miktar<b>,</b><b> </b>SR<b>.</b>Banyo<b>,</b><b> </b>SR<b>.</b>AtisRenkSira<b>,</b><b> </b>SR<b>.</b>AtisRenkColor<b>,</b><b> </b>SR<b>.</b>AtisRenkKodu<b>,</b><b> </b>SR<b>.</b>AtisRenkAdi<b>,</b><b> </b>SR<b>.</b>ReceteGrafikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b>SR
+<b>    </b><b>where</b><b> </b>SR<b>.</b>ReceteId<b> </b><b>=</b><b> </b>:FSablonReceteID<b> </b><b>and</b><b> </b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>SR<b>.</b>ReceteAsamaId<b> </b><b>not</b><b> </b><b>in</b><b> </b><b>(</b><b>Select</b><b> </b>ReceteAsamaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b><b>where</b><b> </b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>ReceteId<b> </b><b>=</b><b> </b>:AReceteId<b>)</b>
+<b>    </b><b>into</b><b> </b>:SRSira<b>,</b><b> </b>:SRReceteAsamaId<b>,</b><b> </b>:SRReceteAltAsamaId<b>,</b><b> </b>:SRReceteAsamaSablonId<b>,</b><b> </b>:SRUrunId<b>,</b><b> </b>:SRUrunBirimId<b>,</b><b> </b>:SRMiktar<b>,</b><b> </b>:SRBanyo<b>,</b><b> </b>:SRAtisRenkSira<b>,</b><b> </b>:SRAtisRenkColor<b>,</b><b> </b>:SRAtisRenkKodu<b>,</b><b> </b>:SRAtisRenkAdi<b>,</b><b> </b>:SRReceteGrafikId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ReceteDetayInsert<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>ReceteDetayInsert<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>'Update Recete Set OzelDurumLinkIslemi = 1 where ReceteId =  '''<b> </b><b>|</b><b>|</b><b> </b>AReceteId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+
+
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>'insert into ReceteDetay(ReceteId, Sira, ReceteAsamaId, ReceteAltAsamaId, ReceteAsamaSablonId, UrunId, UrunBirimId, Miktar, Banyo, AtisRenkSira, AtisRenkColor, AtisRenkKodu, AtisRenkAdi, ReceteGrafikId, KullaniciId) values( '''<b> </b><b>|</b><b>|</b><b> </b>AReceteId<b> </b><b>|</b><b>|</b><b> </b>''' , '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRSira<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRReceteAsamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRReceteAsamaId<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRReceteAltAsamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRReceteAltAsamaId<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRReceteAsamaSablonId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRReceteAsamaSablonId<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRUrunId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b>SRUrunId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRUrunBirimId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRUrunBirimId<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRMiktar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRMiktar<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRBanyo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRBanyo<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRAtisRenkSira<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkSira<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRAtisRenkColor<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkColor<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRAtisRenkKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkKodu<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRAtisRenkAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>SRAtisRenkAdi<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SRReceteGrafikId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b>', Null'<b>;</b>
+<b>    </b><b>else</b><b> </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b>SRReceteGrafikId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>ReceteDetayDegisenler<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>AKullaniciID<b>)</b><b> </b><b>|</b><b>|</b><b> </b>')'<b>;</b>
+
+<b>    </b><b>Suspend</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ReceteDetayInsert<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>ReceteDetayDegisenler<b> </b><b>=</b><b> </b>'Update Recete Set OzelDurumLinkIslemi = 0 where ReceteId =  '''<b> </b><b>|</b><b>|</b><b> </b>AReceteId<b> </b><b>|</b><b>|</b><b> </b>''''<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="RECETEYISABLONILEKARSILASTIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="REFPARTIARAKONTROLDEGERLERGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<TITLE>SIPARISILAVEISLEMLERIGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1760800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="SIPARISICINIPLIKTALEPOLUSTUR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="SIPARISILAVEISLEMVEFIREHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">SIPARISILAVEISLEMLERIGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABOYASIPARISKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASIPARISTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISILAVEISLEMLERID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISRENKNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILAVEISLEMLERID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILAVEISLEMLERADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMFIYAT</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEGISIMTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure SIPARISILAVEISLEMLERIGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>SIPARISILAVEISLEMLERIGETIR</u></font><b>(</b>
+<b>    </b>ABOYASIPARISKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ASIPARISTIPIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>SIPARISILAVEISLEMLERID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYASIPARISDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYASIPARISRENKNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ILAVEISLEMLERID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ILAVEISLEMLERADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>BIRIMFIYAT<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DOVIZID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>INSERTKULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>INSERTTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>KULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>DEGISIMTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>SiparisIlaveIslemlerId<b>,</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>BoyaSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>BirimFiyat<b>,</b>
+<b>             </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>DovizId<b>,</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>IlaveIslemlerId<b>,</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>.</b>Adi<b>,</b>
+<b>             </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisRenkNo<b>,</b>
+<b>             </b>IK<b>.</b>ADI<b>,</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>Inserttarihi<b>,</b><b> </b>SK<b>.</b>ADI<b>,</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>DegisimTarihi<b>  </b><b>FROM</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font>
+<b>  </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>BoyaSiparisDetayId
+<b>  </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>IlaveIslemler</u></font><b>.</b>IlaveIslemlerId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>IlaveIslemlerId
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>IK<b> </b><b>on</b><b> </b>IK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>InsertKullaniciId
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>SK<b> </b><b>on</b><b> </b>SK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>KullaniciId
+<b>  </b><b>WHERE</b><b> </b><font color="# 080 0"><u>SiparisIlaveIslemler</u></font><b>.</b>BoyaSiparisKayitId<b> </b><b>=</b><b> </b>:ABoyaSiparisKayitId<b> </b><b>and</b>
+<b>        </b><b>(</b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>SiparisTipiID<b> </b><b>=</b><b> </b>:ASiparisTipiID<b> </b><b>or</b><b> </b>:ASiparisTipiID<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>  </b><b>into</b><b> </b>:SiparisIlaveIslemlerId<b>,</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>:BirimFiyat<b>,</b><b> </b>:DovizId<b>,</b><b> </b>:IlaveIslemlerId<b>,</b><b> </b>:IlaveIslemlerAdi<b>,</b>
+<b>       </b>:BoyaSiparisRenkNo<b>,</b>
+<b>       </b>:InsertKullaniciAdi<b>,</b><b> </b>:InsertTarihi<b>,</b><b> </b>:KullaniciAdi<b>,</b><b> </b>:DegisimTarihi<b> </b><b>do</b><b> </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="SIPARISICINIPLIKTALEPOLUSTUR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="SIPARISILAVEISLEMVEFIREHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

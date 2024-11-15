@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<TITLE>DOKUMABOLUNMUSTOPOLUSTUR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="370800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DOKUMABARKODLUKUMASUCIKISYAP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DOKUMABOYAURETIMCIKISTOPLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DOKUMABOLUNMUSTOPOLUSTUR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ADOKUMAKALITEKONTROLID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADOKUMAPLANLAMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">TOPNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HATASTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(200)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DOKUMABOLUNMUSTOPOLUSTUR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DOKUMABOLUNMUSTOPOLUSTUR</u></font><b>(</b>
+<b>    </b>ADOKUMAKALITEKONTROLID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ADOKUMAPLANLAMAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>TOPNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HATASTR<b> </b><b>VARCHAR</b><b>(</b>200<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaKaliteKontrolIdRef<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b>DokumaKaliteKontrolIdRef<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b>.</b>DokumaKaliteKontrolId<b> </b><b>=</b><b> </b>:ADokumaKaliteKontrolId<b> </b><b>into</b><b> </b>:DokumaKaliteKontrolIdRef<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>DokumaKaliteKontrolIdRef<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>HataStr<b> </b><b>=</b><b> </b><b>Cast</b><b>(</b>'Bu Top, Zaten Başka Bir Toptan Bölünerek Oluşturulmuş.'<b>|</b><b>|</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b>|</b><b>|</b><font color="# 080 0"><u>Chr</u></font><b>(</b>10<b>)</b><b>|</b><b>|</b>'Yine Aynı Topu Bölerek Yeni Top Oluşturabilirsiniz.'<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b>HataStr<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>    </b><b>Select</b><b> </b>TopNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKKTopNoGetir</u></font><b>(</b>:ADokumaPlanlamaId<b>)</b><b> </b><b>into</b><b> </b>:TopNo<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Dokumakalitekontrol</u></font><b> </b><b>(</b>Dokumaplanlamaid<b>,</b><b> </b>Tarih<b>,</b><b> </b>Topno<b>,</b><b> </b>Miktar<b>,</b><b> </b>Kapadedi<b>,</b><b> </b>Dokumamakinaid<b>,</b><b> </b>Depoid<b>,</b><b> </b>Rafid<b>,</b><b> </b>Sakat<b>,</b><b> </b>Ayartopu<b>,</b><b> </b>Lot<b>,</b><b> </b>Sakathamhatatipiid<b>,</b><b> </b>Stokhareketid<b>,</b>
+<b>             </b>Ormerafdetayid<b>,</b><b> </b>Ormeirsaliyeid<b>,</b><b> </b>Satisstokhareketid<b>,</b><b> </b>Ormeucikisirsaliyeid<b>,</b><b> </b>Uretimecikisstokhareketid<b>,</b><b> </b>Insertkullaniciid<b>,</b><b> </b>Inserttarihi<b>,</b><b> </b>Kullaniciid<b>,</b><b> </b>Degisimtarihi<b>,</b>
+<b>             </b>Linkislemi<b>,</b><b> </b>Leventno<b>,</b><b> </b>Leventbitti<b>,</b><b> </b>Depopartino<b>,</b><b> </b>Kilo<b>,</b><b> </b>Ormevardiyaid<b>,</b><b> </b>Vardiyatarihi<b>,</b><b> </b>Vardiya<b>,</b><b> </b>Vardiyaamiripersonelid<b>,</b><b> </b>Personelid<b>,</b><b> </b>Atkilotu<b>,</b><b> </b>Cozguisemrikayitid<b>,</b>
+<b>             </b>Noktasalhatahatapuani<b>,</b><b> </b>Sureklihatahatapuani<b>,</b><b> </b>Bitirenkullaniciid<b>,</b><b> </b>Bitistarihi<b>,</b><b> </b>Kontrolbitti<b>,</b><b> </b>Notu<b>,</b><b> </b>Ormerafid<b>,</b><b> </b>Cozgulotu<b>,</b><b> </b>Dokumakalitekontrolidref<b>)</b>
+<b>          </b><b>select</b><b> </b>Dokumaplanlamaid<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:TopNo<b>,</b><b> </b>1<b>,</b><b> </b>Kapadedi<b>,</b><b> </b>Dokumamakinaid<b>,</b><b> </b>Depoid<b>,</b><b> </b>Rafid<b>,</b><b> </b>Sakat<b>,</b><b> </b>Ayartopu<b>,</b><b> </b>Lot<b>,</b><b> </b>Sakathamhatatipiid<b>,</b><b> </b>Stokhareketid<b>,</b><b> </b>Ormerafdetayid<b>,</b><b> </b>Ormeirsaliyeid<b>,</b><b> </b>Satisstokhareketid<b>,</b>
+<b>         </b>Ormeucikisirsaliyeid<b>,</b><b> </b>Uretimecikisstokhareketid<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>Degisimtarihi<b>,</b><b> </b>0<b>,</b><b> </b>Leventno<b>,</b><b> </b>Leventbitti<b>,</b><b> </b>Depopartino<b>,</b><b> </b><b>Null</b><b>,</b><b> </b>Ormevardiyaid<b>,</b><b> </b>Vardiyatarihi<b>,</b><b> </b>Vardiya<b>,</b>
+<b>         </b>Vardiyaamiripersonelid<b>,</b><b> </b>Personelid<b>,</b><b> </b>Atkilotu<b>,</b><b> </b>Cozguisemrikayitid<b>,</b><b> </b>Noktasalhatahatapuani<b>,</b><b> </b>Sureklihatahatapuani<b>,</b><b> </b><b>null</b><b>,</b><b> </b><b>null</b><b>,</b><b> </b>0<b>,</b><b> </b>Notu<b>,</b><b> </b>Ormerafid<b>,</b><b> </b>Cozgulotu<b>,</b><b> </b>:ADokumaKaliteKontrolId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Dokumakalitekontrol</u></font>
+<b>         </b><b>where</b><b> </b>DokumaKaliteKontrolId<b> </b><b>=</b><b> </b>:ADokumaKaliteKontrolId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DOKUMABARKODLUKUMASUCIKISYAP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DOKUMABOYAURETIMCIKISTOPLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

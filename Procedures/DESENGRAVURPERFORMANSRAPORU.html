@@ -1,0 +1,651 @@
+<HTML>
+<HEAD>
+<TITLE>DESENGRAVURPERFORMANSRAPORU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="322800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DESENDURUMRAPORU_4.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DESENINKULLANILDIGIPARTILER.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DESENGRAVURPERFORMANSRAPORU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ARAPORTIPI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADEPARTMANID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICDESENISTEKTIPIID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISDESENISTEKTIPIID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADESENISTEKTIPIARALIKLI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASADECEYAPILANLARIDOK</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADESENISTEKGRUPID</TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AFIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AISTEKYAPANKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">DESENISTEKLERIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TASARIMNO</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENISTEKTIPIID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENISTEKTIPIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENISTEKGRUPID</TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISTEKTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TERMINTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISTEKYAPANKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISTEKYAPANKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BASLATANKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BASLAMATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BITIRENKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEPARTMANID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEPARTMANADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYDURUMUSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONAYLAYANKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PLANLANANDESENISTASYONID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PLANLANANDESENISTASYONADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PLANLANANHAFTAKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PLANLANANHAFTAYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PLANLANANHAFTANO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PLANLANANHAFTANOSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTABASLANGICTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTABITISTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORJINALBICIMI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SABLONSAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LASERGRAVUR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAXEXPOSER</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENSABLONBOYU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENGRAVURBOYU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENSABLONENI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENISTEKLERINOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DESENGRAVURPERFORMANSRAPORU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DESENGRAVURPERFORMANSRAPORU</u></font><b>(</b>
+<b>    </b>ARAPORTIPI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ADEPARTMANID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABASLANGICDESENISTEKTIPIID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>ABITISDESENISTEKTIPIID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>ADESENISTEKTIPIARALIKLI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ASADECEYAPILANLARIDOK<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ADESENISTEKGRUPID<b> </b><b>VARCHAR</b><b>(</b>4<b>)</b><b>,</b>
+<b>    </b>AFIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>AISTEKYAPANKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>DESENISTEKLERIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DESENID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>DESENADI<b> </b><b>VARCHAR</b><b>(</b>80<b>)</b><b>,</b>
+<b>    </b>TASARIMNO<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIRMAADI<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>DESENISTEKTIPIID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>DESENISTEKTIPIADI<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>DESENISTEKGRUPID<b> </b><b>VARCHAR</b><b>(</b>4<b>)</b><b>,</b>
+<b>    </b>ISTEKTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>TERMINTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ISTEKYAPANKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ISTEKYAPANKULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>BASLATANKULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>BASLAMATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>BITIRENKULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>BITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>DEPARTMANID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DEPARTMANADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>ONAYDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ONAYDURUMUSTR<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>ONAYTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ONAYLAYANKULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>PLANLANANDESENISTASYONID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PLANLANANDESENISTASYONADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>PLANLANANHAFTAKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PLANLANANHAFTAYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PLANLANANHAFTANO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PLANLANANHAFTANOSTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>HAFTABASLANGICTARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>HAFTABITISTARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ORJINALBICIMI<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>SABLONSAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>LASERGRAVUR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>MAXEXPOSER<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DESENSABLONBOYU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DESENGRAVURBOYU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DESENSABLONENI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DESENISTEKLERINOTU<b> </b><font color="# 080 0"><u>MEMO</u></font><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Okey<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOrjKagitKolaj<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOrjDijitalGoruntu<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOrjDijitalSepare<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOrjGiydirme<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOrjBitmisUrun<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOrjDiger<b>              </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>ARaporTipi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekleriId<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekGrupId<b>,</b>
+<b>               </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekTarihi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>TerminTarihi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekYapanKullaniciId<b>,</b><b> </b>IYK<b>.</b>Adi<b>,</b><b> </b>BasK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BaslamaTarihi<b>,</b><b> </b>BitK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitisTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>YapacakDepartmanId<b>,</b><b> </b><font color="# 080 0"><u>Departman</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>OnayDurumu<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>OnayTarihi<b>,</b><b> </b>OK<b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananDesenIstasyonId<b>,</b><b> </b>PDI<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananHaftaKayitId<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>Yil<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaNo<b>,</b>
+<b>               </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BaslangicTarih<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BitisTarih<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjKagitKolaj<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjDijitalGoruntu<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjDijitalSepare<b>,</b>
+<b>               </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjGiydirme<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjBitmisUrun<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjDiger<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>LaserGravur<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MaxExposer<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>TasarimNo<b>,</b>
+<b>               </b>DesenGravurBoyu<b>.</b><font color="# 080 0"><u>Olcu</u></font><b>,</b><b> </b>DesenSablonBoyu<b>.</b><font color="# 080 0"><u>Olcu</u></font><b>,</b><b> </b>DesenSablonEni<b>.</b><font color="# 080 0"><u>Olcu</u></font><b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>Notu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font>
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>BasK<b> </b><b>on</b><b> </b>BasK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BaslatanKullaniciId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>BitK<b> </b><b>on</b><b> </b>BitK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitirenKullaniciId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Departman</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Departman</u></font><b>.</b>DepartmanId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>YapacakDepartmanId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>IYK<b> </b><b>on</b><b> </b>IYK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekYapanKullaniciId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>OK<b> </b><b>on</b><b> </b>OK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>OnaylayanKullaniciId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananHaftaKayitId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>DesenIstasyon</u></font><b> </b>PDI<b> </b><b>on</b><b> </b>PDI<b>.</b>DesenIstasyonId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananDesenIstasyonId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenOlcu</u></font><b> </b>DesenGravurBoyu<b> </b><b>on</b><b> </b>DesenGravurBoyu<b>.</b>DesenolcuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>GravurBoyuDesenOlcuId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenOlcu</u></font><b> </b>DesenSablonBoyu<b> </b><b>on</b><b> </b>DesenSablonBoyu<b>.</b>DesenolcuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonBoyuDesenOlcuId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenOlcu</u></font><b> </b>DesenSablonEni<b> </b><b>on</b><b> </b>DesenSablonEni<b>.</b>DesenolcuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonEniDesenOlcuId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>:ASadeceYapilanlariDok<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>or</b><b> </b>:AFirmaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><b> </b><b>(</b>:ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicDesenIstekTipiId<b>)</b><b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisDesenIstekTipiId<b> </b><b>or</b><b> </b>:ABitisDesenIstekTipiId<b> </b><b>=</b><b> </b>''<b>)</b><b>)</b><b> </b><b>or</b>
+<b>           </b><b>(</b>:ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>0<b>)</b><b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>YapacakDepartmanId<b> </b><b>=</b><b> </b>:ADepartmanId<b> </b><b>or</b><b> </b>:ADepartmanId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekGrupId<b> </b><b>=</b><b> </b>:ADesenIstekGrupId<b> </b><b>or</b><b> </b>:ADesenIstekGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekYapanKullaniciId<b> </b><b>=</b><b> </b>:AIstekYapanKullaniciId<b> </b><b>or</b><b> </b>:AIstekYapanKullaniciId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>    </b><b>into</b><b> </b>:DesenIstekleriId<b>,</b><b> </b>:DesenId<b>,</b><b> </b>:DesenAdi<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b>
+<b>         </b>:DesenIstekTipiId<b>,</b><b> </b>:DesenIstekTipiAdi<b>,</b><b> </b>:DesenIstekGrupId<b>,</b><b> </b>:IstekTarihi<b>,</b><b> </b>:TerminTarihi<b>,</b><b> </b>:IstekYapanKullaniciId<b>,</b><b> </b>:IstekYapanKullaniciAdi<b>,</b>
+<b>         </b>:BaslatanKullaniciAdi<b>,</b><b> </b>:BaslamaTarihi<b>,</b><b> </b>:BitirenKullaniciAdi<b>,</b><b> </b>:BitisTarihi<b>,</b><b> </b>:DepartmanId<b>,</b><b> </b>:DepartmanAdi<b>,</b><b> </b>:OnayDurumu<b>,</b>
+<b>         </b>:OnayTarihi<b>,</b><b> </b>:OnaylayanKullaniciAdi<b>,</b><b> </b>:PlanlananDesenIstasyonId<b>,</b><b> </b>:PlanlananDesenIstasyonAdi<b>,</b><b> </b>:PlanlananHaftaKayitId<b>,</b>
+<b>         </b>:PlanlananHaftaYil<b>,</b><b> </b>:PlanlananHaftaNo<b>,</b><b> </b>:HaftaBaslangicTarih<b>,</b><b> </b>:HaftaBitisTarih<b>,</b>
+<b>         </b>:FOrjKagitKolaj<b>,</b><b> </b>:FOrjDijitalGoruntu<b>,</b><b> </b>:FOrjDijitalSepare<b>,</b><b> </b>:FOrjGiydirme<b>,</b><b> </b>:FOrjBitmisUrun<b>,</b><b> </b>:FOrjDiger<b>,</b><b> </b>:SablonSayisi<b>,</b>
+<b>         </b>:LaserGravur<b>,</b><b> </b>:MaxExposer<b>,</b><b> </b>:TasarimNo<b>,</b><b> </b>:DesenGravurBoyu<b>,</b><b> </b>:DesenSablonBoyu<b>,</b><b> </b>:DesenSablonEni<b>,</b><b> </b>:DesenIstekleriNotu<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b>Okey<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>KutuKarsilastir</u></font><b>(</b>ABaslangicDesenIstekTipiId<b>,</b><b> </b>DesenIstekTipiId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>okey<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Okey<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>OnayDurumuStr<b> </b><b>=</b><b> </b>'Kabul'<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayDurumu<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>OnayDurumuStr<b> </b><b>=</b><b> </b>'Ret'<b>;</b>
+<b>        </b><b>else</b><b> </b>OnayDurumuStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PlanlananHaftaNo<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>PlanlananHaftaNoStr<b> </b><b>=</b><b> </b>'('<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>PlanlananHaftaYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>PlanlananHaftaNo<b>)</b><b>;</b>
+<b>        </b><b>else</b><b> </b>PlanlananHaftaNoStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>        </b>OrjinalBicimi<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjKagitKolaj<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>'Kağıt Kolaj'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjDijitalGoruntu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b>  </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Dijital Görüntü'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjDijitalSepare<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Dijital Separe'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjGiydirme<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Giydirme'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjBitmisUrun<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Bitmiş Ürün'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjDiger<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Diğer'<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>suspend</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekleriId<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekGrupId<b>,</b>
+<b>               </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekTarihi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>TerminTarihi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekYapanKullaniciId<b>,</b><b> </b>IYK<b>.</b>Adi<b>,</b><b> </b>BasK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BaslamaTarihi<b>,</b><b> </b>BitK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitisTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>YapacakDepartmanId<b>,</b><b> </b><font color="# 080 0"><u>Departman</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>OnayDurumu<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>OnayTarihi<b>,</b><b> </b>OK<b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananDesenIstasyonId<b>,</b><b> </b>PDI<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananHaftaKayitId<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>Yil<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaNo<b>,</b>
+<b>               </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BaslangicTarih<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BitisTarih<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjKagitKolaj<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjDijitalGoruntu<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjDijitalSepare<b>,</b>
+<b>               </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjGiydirme<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjBitmisUrun<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjDiger<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>LaserGravur<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MaxExposer<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>TasarimNo<b>,</b>
+<b>               </b>DesenGravurBoyu<b>.</b><font color="# 080 0"><u>Olcu</u></font><b>,</b><b> </b>DesenSablonBoyu<b>.</b><font color="# 080 0"><u>Olcu</u></font><b>,</b><b> </b>DesenSablonEni<b>.</b><font color="# 080 0"><u>Olcu</u></font><b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>Notu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font>
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>BasK<b> </b><b>on</b><b> </b>BasK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BaslatanKullaniciId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>BitK<b> </b><b>on</b><b> </b>BitK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitirenKullaniciId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Departman</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Departman</u></font><b>.</b>DepartmanId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>YapacakDepartmanId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>IYK<b> </b><b>on</b><b> </b>IYK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekYapanKullaniciId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>OK<b> </b><b>on</b><b> </b>OK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>OnaylayanKullaniciId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananHaftaKayitId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>DesenIstasyon</u></font><b> </b>PDI<b> </b><b>on</b><b> </b>PDI<b>.</b>DesenIstasyonId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananDesenIstasyonId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenOlcu</u></font><b> </b>DesenGravurBoyu<b> </b><b>on</b><b> </b>DesenGravurBoyu<b>.</b>DesenolcuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>GravurBoyuDesenOlcuId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenOlcu</u></font><b> </b>DesenSablonBoyu<b> </b><b>on</b><b> </b>DesenSablonBoyu<b>.</b>DesenolcuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonBoyuDesenOlcuId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenOlcu</u></font><b> </b>DesenSablonEni<b> </b><b>on</b><b> </b>DesenSablonEni<b>.</b>DesenolcuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonEniDesenOlcuId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitisTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>or</b><b> </b>:AFirmaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><b> </b><b>(</b>:ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicDesenIstekTipiId<b>)</b><b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisDesenIstekTipiId<b> </b><b>or</b><b> </b>:ABitisDesenIstekTipiId<b> </b><b>=</b><b> </b>''<b>)</b><b>)</b><b> </b><b>or</b>
+<b>           </b><b>(</b>:ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>0<b>)</b><b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>YapacakDepartmanId<b> </b><b>=</b><b> </b>:ADepartmanId<b> </b><b>or</b><b> </b>:ADepartmanId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekGrupId<b> </b><b>=</b><b> </b>:ADesenIstekGrupId<b> </b><b>or</b><b> </b>:ADesenIstekGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekYapanKullaniciId<b> </b><b>=</b><b> </b>:AIstekYapanKullaniciId<b> </b><b>or</b><b> </b>:AIstekYapanKullaniciId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>    </b><b>into</b><b> </b>:DesenIstekleriId<b>,</b><b> </b>:DesenId<b>,</b><b> </b>:DesenAdi<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b>
+<b>         </b>:DesenIstekTipiId<b>,</b><b> </b>:DesenIstekTipiAdi<b>,</b><b> </b>:DesenIstekGrupId<b>,</b><b> </b>:IstekTarihi<b>,</b><b> </b>:TerminTarihi<b>,</b><b> </b>:IstekYapanKullaniciId<b>,</b><b> </b>:IstekYapanKullaniciAdi<b>,</b>
+<b>         </b>:BaslatanKullaniciAdi<b>,</b><b> </b>:BaslamaTarihi<b>,</b><b> </b>:BitirenKullaniciAdi<b>,</b><b> </b>:BitisTarihi<b>,</b><b> </b>:DepartmanId<b>,</b><b> </b>:DepartmanAdi<b>,</b><b> </b>:OnayDurumu<b>,</b>
+<b>         </b>:OnayTarihi<b>,</b><b> </b>:OnaylayanKullaniciAdi<b>,</b><b> </b>:PlanlananDesenIstasyonId<b>,</b><b> </b>:PlanlananDesenIstasyonAdi<b>,</b><b> </b>:PlanlananHaftaKayitId<b>,</b>
+<b>         </b>:PlanlananHaftaYil<b>,</b><b> </b>:PlanlananHaftaNo<b>,</b><b> </b>:HaftaBaslangicTarih<b>,</b><b> </b>:HaftaBitisTarih<b>,</b>
+<b>         </b>:FOrjKagitKolaj<b>,</b><b> </b>:FOrjDijitalGoruntu<b>,</b><b> </b>:FOrjDijitalSepare<b>,</b><b> </b>:FOrjGiydirme<b>,</b><b> </b>:FOrjBitmisUrun<b>,</b><b> </b>:FOrjDiger<b>,</b><b> </b>:SablonSayisi<b>,</b>
+<b>         </b>:LaserGravur<b>,</b><b> </b>:MaxExposer<b>,</b><b> </b>:TasarimNo<b>,</b><b> </b>:DesenGravurBoyu<b>,</b><b> </b>:DesenSablonBoyu<b>,</b><b> </b>:DesenSablonEni<b>,</b><b> </b>:DesenIstekleriNotu<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b>Okey<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>KutuKarsilastir</u></font><b>(</b>ABaslangicDesenIstekTipiId<b>,</b><b> </b>DesenIstekTipiId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>okey<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Okey<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>OnayDurumuStr<b> </b><b>=</b><b> </b>'Kabul'<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayDurumu<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>OnayDurumuStr<b> </b><b>=</b><b> </b>'Ret'<b>;</b>
+<b>        </b><b>else</b><b> </b>OnayDurumuStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PlanlananHaftaNo<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>PlanlananHaftaNoStr<b> </b><b>=</b><b> </b>'('<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>PlanlananHaftaYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>PlanlananHaftaNo<b>)</b><b>;</b>
+<b>        </b><b>else</b><b> </b>PlanlananHaftaNoStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>        </b>OrjinalBicimi<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjKagitKolaj<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>'Kağıt Kolaj'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjDijitalGoruntu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b>  </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Dijital Görüntü'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjDijitalSepare<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Dijital Separe'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjGiydirme<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Giydirme'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjBitmisUrun<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Bitmiş Ürün'<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FOrjDiger<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Diğer'<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>suspend</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ASadeceYapilanlariDok<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekleriId<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b>
+<b>                 </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekGrupId<b>,</b>
+<b>                 </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekTarihi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>TerminTarihi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekYapanKullaniciId<b>,</b><b> </b>IYK<b>.</b>Adi<b>,</b><b> </b>BasK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BaslamaTarihi<b>,</b><b> </b>BitK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitisTarihi<b>,</b>
+<b>                 </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>YapacakDepartmanId<b>,</b><b> </b><font color="# 080 0"><u>Departman</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>OnayDurumu<b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>OnayTarihi<b>,</b><b> </b>OK<b>.</b>Adi<b>,</b>
+<b>                 </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananDesenIstasyonId<b>,</b><b> </b>PDI<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenPlanlama</u></font><b>.</b>HaftaKayitId<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>Yil<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaNo<b>,</b>
+<b>                 </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BaslangicTarih<b>,</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>BitisTarih<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjKagitKolaj<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjDijitalGoruntu<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjDijitalSepare<b>,</b>
+<b>                 </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjGiydirme<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjBitmisUrun<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>OrjDiger<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonSayisi<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>LaserGravur<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MaxExposer<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>TasarimNo<b>,</b>
+<b>                 </b>DesenGravurBoyu<b>.</b><font color="# 080 0"><u>Olcu</u></font><b>,</b><b> </b>DesenSablonBoyu<b>.</b><font color="# 080 0"><u>Olcu</u></font><b>,</b><b> </b>DesenSablonEni<b>.</b><font color="# 080 0"><u>Olcu</u></font><b>,</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>Notu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font>
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>BasK<b> </b><b>on</b><b> </b>BasK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BaslatanKullaniciId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>BitK<b> </b><b>on</b><b> </b>BitK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitirenKullaniciId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Departman</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Departman</u></font><b>.</b>DepartmanId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>YapacakDepartmanId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>IYK<b> </b><b>on</b><b> </b>IYK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekYapanKullaniciId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>OK<b> </b><b>on</b><b> </b>OK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>OnaylayanKullaniciId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>DesenPlanlama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenPlanlama</u></font><b>.</b>DesenIstekleriId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekleriId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Hafta</u></font><b>.</b>HaftaKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenPlanlama</u></font><b>.</b>HaftaKayitId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>DesenIstasyon</u></font><b> </b>PDI<b> </b><b>on</b><b> </b>PDI<b>.</b>DesenIstasyonId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>PlanlananDesenIstasyonId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenOlcu</u></font><b> </b>DesenGravurBoyu<b> </b><b>on</b><b> </b>DesenGravurBoyu<b>.</b>DesenolcuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>GravurBoyuDesenOlcuId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenOlcu</u></font><b> </b>DesenSablonBoyu<b> </b><b>on</b><b> </b>DesenSablonBoyu<b>.</b>DesenolcuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonBoyuDesenOlcuId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenOlcu</u></font><b> </b>DesenSablonEni<b> </b><b>on</b><b> </b>DesenSablonEni<b>.</b>DesenolcuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>SablonEniDesenOlcuId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>BitisTarihi<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>            </b><b>(</b><b> </b><b>(</b>:ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicDesenIstekTipiId<b>)</b><b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisDesenIstekTipiId<b> </b><b>or</b><b> </b>:ABitisDesenIstekTipiId<b> </b><b>=</b><b> </b>''<b>)</b><b>)</b><b> </b><b>or</b>
+<b>              </b><b>(</b>:ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>0<b>)</b><b>)</b><b> </b><b>and</b>
+<b>            </b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>or</b><b> </b>:AFirmaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>            </b><b>(</b><b> </b><b>(</b>:ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicDesenIstekTipiId<b>)</b><b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiId<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisDesenIstekTipiId<b> </b><b>or</b><b> </b>:ABitisDesenIstekTipiId<b> </b><b>=</b><b> </b>''<b>)</b><b>)</b><b> </b><b>or</b>
+<b>              </b><b>(</b>:ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>0<b>)</b><b>)</b><b> </b><b>and</b>
+<b>            </b><b>(</b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>YapacakDepartmanId<b> </b><b>=</b><b> </b>:ADepartmanId<b> </b><b>or</b><b> </b>:ADepartmanId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>            </b><b>(</b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekGrupId<b> </b><b>=</b><b> </b>:ADesenIstekGrupId<b> </b><b>or</b><b> </b>:ADesenIstekGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>            </b><b>(</b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>IstekYapanKullaniciId<b> </b><b>=</b><b> </b>:AIstekYapanKullaniciId<b> </b><b>or</b><b> </b>:AIstekYapanKullaniciId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>      </b><b>into</b><b> </b>:DesenIstekleriId<b>,</b><b> </b>:DesenId<b>,</b><b> </b>:DesenAdi<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b>
+<b>           </b>:DesenIstekTipiId<b>,</b><b> </b>:DesenIstekTipiAdi<b>,</b><b> </b>:DesenIstekGrupId<b>,</b><b> </b>:IstekTarihi<b>,</b><b> </b>:TerminTarihi<b>,</b><b> </b>:IstekYapanKullaniciId<b>,</b><b> </b>:IstekYapanKullaniciAdi<b>,</b>
+<b>           </b>:BaslatanKullaniciAdi<b>,</b><b> </b>:BaslamaTarihi<b>,</b><b> </b>:BitirenKullaniciAdi<b>,</b><b> </b>:BitisTarihi<b>,</b><b> </b>:DepartmanId<b>,</b><b> </b>:DepartmanAdi<b>,</b><b> </b>:OnayDurumu<b>,</b>
+<b>           </b>:OnayTarihi<b>,</b><b> </b>:OnaylayanKullaniciAdi<b>,</b><b> </b>:PlanlananDesenIstasyonId<b>,</b><b> </b>:PlanlananDesenIstasyonAdi<b>,</b><b> </b>:PlanlananHaftaKayitId<b>,</b>
+<b>           </b>:PlanlananHaftaYil<b>,</b><b> </b>:PlanlananHaftaNo<b>,</b><b> </b>:HaftaBaslangicTarih<b>,</b><b> </b>:HaftaBitisTarih<b>,</b>
+<b>           </b>:FOrjKagitKolaj<b>,</b><b> </b>:FOrjDijitalGoruntu<b>,</b><b> </b>:FOrjDijitalSepare<b>,</b><b> </b>:FOrjGiydirme<b>,</b><b> </b>:FOrjBitmisUrun<b>,</b><b> </b>:FOrjDiger<b>,</b><b> </b>:SablonSayisi<b>,</b>
+<b>           </b>:LaserGravur<b>,</b><b> </b>:MaxExposer<b>,</b><b> </b>:TasarimNo<b>,</b><b> </b>:DesenGravurBoyu<b>,</b><b> </b>:DesenSablonBoyu<b>,</b><b> </b>:DesenSablonEni<b>,</b><b> </b>:DesenIstekleriNotu<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b>Okey<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>ADesenIstekTipiAralikli<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>KutuKarsilastir</u></font><b>(</b>ABaslangicDesenIstekTipiId<b>,</b><b> </b>DesenIstekTipiId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>okey<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>Okey<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>OnayDurumuStr<b> </b><b>=</b><b> </b>'Kabul'<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>OnayDurumu<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>OnayDurumuStr<b> </b><b>=</b><b> </b>'Ret'<b>;</b>
+<b>          </b><b>else</b><b> </b>OnayDurumuStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>PlanlananHaftaNo<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>PlanlananHaftaNoStr<b> </b><b>=</b><b> </b>'('<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>PlanlananHaftaYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>PlanlananHaftaNo<b>)</b><b>;</b>
+<b>          </b><b>else</b><b> </b>PlanlananHaftaNoStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>          </b>OrjinalBicimi<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>FOrjKagitKolaj<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>            </b>OrjinalBicimi<b> </b><b>=</b><b> </b>'Kağıt Kolaj'<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FOrjDijitalGoruntu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b>  </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>            </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Dijital Görüntü'<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FOrjDijitalSepare<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>            </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Dijital Separe'<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FOrjGiydirme<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>            </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Giydirme'<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FOrjBitmisUrun<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>            </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Bitmiş Ürün'<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FOrjDiger<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>OrjinalBicimi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>', '<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>2<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>            </b>OrjinalBicimi<b> </b><b>=</b><b> </b>OrjinalBicimi<b> </b><b>|</b><b>|</b><b> </b>'Diğer'<b>;</b>
+<b>          </b><b>end</b>
+
+<b>          </b><b>suspend</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DESENDURUMRAPORU_4.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DESENINKULLANILDIGIPARTILER.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

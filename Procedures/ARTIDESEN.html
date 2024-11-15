@@ -1,0 +1,213 @@
+<HTML>
+<HEAD>
+<TITLE>ARTIDESEN</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="19800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ARIZAYERILISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ASAMADEGISIMRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ARTIDESEN</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ADESENKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AEKSABLONSAYISI</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">YENIDESENKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YENIDESENID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ARTIDESEN)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ARTIDESEN</u></font><b>(</b>
+<b>    </b>ADESENKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AEKSABLONSAYISI<b> </b><b>SMALLINT</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>YENIDESENKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>YENIDESENID<b> </b><font color="# 080 0"><u>DESENKODUSIZE</u></font><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aYeniDesenKayitID<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aYeniDesenID<b>                     </b><font color="# 080 0"><u>DESENKODUSIZE</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aEskiDesenID<b>                     </b><font color="# 080 0"><u>DESENKODUSIZE</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aEskiDesenVaryantID<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aYeniDesenVaryantID<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aSiraNo<b>                          </b><b>integer</b><b>;</b><b> </b><font color="# 0 0FF"><i>/* orjinalinde sürekli SIFIR gelmiş. Burada yeniden numaralandırıyoruz... Ömer'e soruldu -up- */</i></font>
+<b>declare</b><b> </b><b>variable</b><b> </b>aEskiDesenVaryantSablonID<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aYeniDesenVaryantSablonID<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aEskiDesenVaryantSablonReceteID<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aYeniDesenVaryantSablonReceteID<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aID<b>                              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>aEskiSablonSayisi<b>                </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b><b>First</b><b> </b>1<b> </b>DesenID<b>,</b><b> </b>SablonSayisi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b>DesenKayitID<b> </b><b>=</b><b> </b>:aDesenKayitID<b> </b><b>and</b><b> </b>DijitalDesen<b> </b><b>=</b><b> </b>0<b> </b><b>into</b><b> </b>:aEskiDesenID<b>,</b><b> </b>:aEskiSablonSayisi<b>;</b><b>    </b><font color="# 0 0FF"><i>/* Dijital desenler desteklenmiyor. */</i></font>
+
+<b>  </b><b>if</b><b> </b><b>(</b>:aEskiDesenID<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>              </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>BuDesenKopyalanamaz</u></font><b>;</b><b>   </b><font color="# 0 0FF"><i>/* Kopyalanacak bir desen yok veya bu Dijital bir desen olabilir... */</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b><b>not</b><b> </b>aEkSablonSayisi<b> </b><b>in</b><b> </b><b>(</b>1<b>,</b><b> </b>2<b>)</b><b> </b><b>)</b><b>     </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ArtiDesenLimitiAsildi</u></font><b>;</b><b> </b><font color="# 0 0FF"><i>/* Ömer ile konuşulduğunda ya 1, ya da en fazla 2 olabileceği söylendi. */</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b><b>position</b><b>(</b>'+'<b>,</b><b> </b>:aEskiDesenID<b>)</b><b> </b><b>&gt;</b><b> </b>0<b>)</b><b>   </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>BuDesenMukerrer</u></font><b>;</b><b>       </b><font color="# 0 0FF"><i>/* Eğer söylediğimiz desen başka bir desenden kopyalanmışsa bu işlemi yapmayacağız. */</i></font>
+
+<b>  </b>aYeniDesenID<b> </b><b>=</b><b> </b>aEskiDesenID<b> </b><b>|</b><b>|</b><b> </b>'+'<b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>aEkSablonSayisi<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>1<b>)</b><b>)</b><b>;</b><b>    </b><font color="# 0 0FF"><i>/* &quot;50511&quot;   &gt; &quot;50511+1&quot; gibi bir şey olacak. BU NEDENLE bazı triggerleri BAYPAS EDİYORUZ... */</i></font>
+
+<b>  </b><b>select</b><b> </b><b>First</b><b> </b>1<b> </b>DesenKayitID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b>DesenID<b> </b><b>=</b><b> </b>:aYeniDesenID<b> </b><b>into</b><b> </b>:aID<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>aID<b> </b><b>is</b><b> </b><b>NOT</b><b> </b><b>NULL</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>BuDesenKopyalanamaz</u></font><b> </b>'Böyle bir desen zaten var.'<b>;</b>
+
+<b>  </b><font color="# 080 0"><u>rdb$set_context</u></font><b>(</b>'USER_TRANSACTION'<b>,</b><b> </b>'BaypasTrigger_Desen'<b>,</b><b> </b>1<b>)</b><b>;</b><b>  </b><font color="# 0 0FF"><i>--&gt; Bu TRANSACTION düzeyinde FLAG bırakıp okuyabileceğimiz bir yapı. Firebird 2.1 ile geldi.</i></font>
+<b>                                                                  </b><font color="# 0 0FF"><i>--&gt; NOT : Transaction sırasında bir hata oluştuğunda bu değişkenler de yok olur.</i></font>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>DESEN</u></font>
+<b>        </b><b>(</b>DesenKayitID<b>,</b><b>         </b><font color="# 0 0FF"><i>--&gt; Triggeri baypas etmiştik...</i></font>
+<b>         </b>DesenID<b>,</b><b>              </b><font color="# 0 0FF"><i>-- Dikkat</i></font>
+<b>         </b>Adi<b>,</b><b>                  </b><font color="# 0 0FF"><i>-- Dikkat</i></font>
+<b>         </b>SablonSayisi<b>,</b><b>         </b><font color="# 0 0FF"><i>-- Dikkat</i></font>
+<b>         </b>FirmaID<b>,</b><b> </b>IlkIstekTarihi<b>,</b><b> </b>CalismaNo<b>,</b><b> </b>TasarimNo<b>,</b><b> </b>GelisTarihi<b>,</b><b> </b>DesenKatalogID<b>,</b><b> </b>DesenGrupID<b>,</b><b> </b>EskiDesenNo<b>,</b><b> </b>DesEnicerikID<b>,</b><b> </b>ReferansDesenNo<b>,</b><b> </b>ReferansDesenAdi<b>,</b>
+<b>         </b>MUsteriDesenNo1<b>,</b><b> </b>MUsteriDesenAdi1<b>,</b><b> </b>MUsteriDesenNo2<b>,</b><b> </b>MUsteriDesenAdi2<b>,</b><b> </b>TasarimFirmaID<b>,</b><b> </b>DesinatorAdi<b>,</b><b> </b>OrjKagitKolaj<b>,</b><b> </b>OrjDijitalGoruntu<b>,</b><b> </b>OrjDijitalSepare<b>,</b><b> </b>OrjGiydirme<b>,</b><b> </b>OrjBitmisUrun<b>,</b>
+<b>         </b>OrjDiger<b>,</b><b> </b>OrjinalMaster<b>,</b><b> </b>DijitalDesen<b>,</b><b> </b>DesenTakimID<b>,</b><b> </b>TakimParcasimi<b>,</b><b> </b>AnaDesen<b>,</b><b> </b>DesenDurumu<b>,</b><b> </b>DesenCalismaSekliID<b>,</b><b> </b>DesenKullanimAmaciID<b>,</b><b> </b>BaskiYonu<b>,</b><b> </b>BaskiYonuVar<b>,</b><b> </b>BaskiYonuNotu<b>,</b>
+<b>         </b>OzelYerlesim<b>,</b><b> </b>OzelYerlesimNotu<b>,</b><b> </b>OzelYerlesimDosyaAdi<b>,</b><b> </b>RaportlamaYapilacak<b>,</b><b> </b>RaportAciklama<b>,</b><b> </b>OrjinaleGoreFark<b>,</b><b> </b>OrjinaleGoreFarkNotu<b>,</b><b> </b>OrjinaleGoreFarkDosyaAdi<b>,</b><b> </b>Raportlama<b>,</b><b> </b>OrjinalVaryant<b>,</b>
+<b>         </b>OrjinalVaryantNotu<b>,</b><b> </b>IlaveVaryant<b>,</b><b> </b>KenarYazisi<b>,</b><b> </b>KenarYazisiNotu<b>,</b><b> </b>DuzeltmeIstemiDosyaAdi1<b>,</b><b> </b>DuzeltmeIstemiDosyaAdi2<b>,</b><b> </b>DolulukOrani<b>,</b><b> </b>Notu<b>,</b><b> </b>IadeFaturasiKesildi<b>,</b><b> </b>IadeFaturaNo<b>,</b><b> </b>IadeFaturaTarihi<b>,</b>
+<b>         </b>SablonCekimTarihi<b>,</b><b> </b>DeseNokeyTarihi<b>,</b><b> </b>PrintVerilisTarihi<b>,</b><b> </b>SablonGondermeTarihi<b>,</b><b> </b>SablonDurumuID<b>,</b><b> </b>IlkVaryantOtomatik<b>,</b><b> </b>ArsivNotu<b>,</b><b> </b>BaskiCinsiID<b>,</b><b> </b>BaskiTeknigiID<b>,</b><b> </b>SablonSilinmis<b>,</b><b> </b>SablonCekildi<b>,</b>
+<b>         </b>BEKLEMEDE<b>,</b><b> </b>SablonMUsteriDE<b>,</b><b> </b>SablonMUsteriyeAit<b>,</b><b> </b>SablonBasliksiz<b>,</b><b> </b>LaserGravur<b>,</b><b> </b>MaxExposer<b>,</b><b> </b>TasarimOnayDurumu<b>,</b><b> </b>TasarimOnayTarihi<b>,</b><b> </b>TasarimOnayKullaniciID<b>,</b><b> </b>Fason<b>,</b><b> </b>BaskiEni<b>,</b><b> </b>SablonCekimParam1<b>,</b>
+<b>         </b>SablonCekimParam2<b>,</b><b> </b>SablonCekimParam3<b>,</b><b> </b>SablonCekimParam4<b>,</b><b> </b>SablonCekimParam5<b>,</b><b> </b>SablonCekimParam6<b>,</b><b> </b>SablonCekimParam7<b>,</b><b> </b>SablonCekimParam8<b>,</b><b> </b>SablonCekimParam9<b>,</b><b> </b>UstRaportOlcuSU<b>,</b><b> </b>YanRaportOlcuSU<b>,</b>
+<b>         </b>OzelYanTekrarOlcuSU<b>,</b><b> </b>IlaveVaryantOrjFarkliMi<b>,</b><b> </b>IlaveVaryantOrjFarkNotu<b>,</b><b> </b>DijitalDesenRaport<b>,</b><b> </b>GravurMakinaID<b>,</b><b> </b>HamTipiID<b>,</b><b> </b>HamID<b>,</b><b> </b>RaportSekliID<b>,</b><b> </b>SablonEniDeseNolcuID<b>,</b><b> </b>GravurBoyuDeseNolcuID<b>,</b>
+<b>         </b>SablonBoyuDeseNolcuID<b>,</b><b> </b>DesenRaportBoyuDeseNolcuID<b>)</b>
+<b>  </b><b>select</b><b> </b><b>FIRST</b><b> </b>1
+<b>         </b><b>Gen_Id</b><b>(</b><font color="# 080 0"><u>DesenKayit_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>,</b><b>    </b><font color="# 0 0FF"><i>--&gt; Triggeri baypas etmiştik...</i></font>
+<b>         </b>:aYeniDesenId<b> </b><b>as</b><b> </b>DesenId<b>,</b><b>        </b><font color="# 0 0FF"><i>-- Dikkat</i></font>
+<b>         </b>:aYeniDesenId<b> </b><b>as</b><b> </b>Adi<b>,</b><b>            </b><font color="# 0 0FF"><i>-- Dikkat</i></font>
+<b>         </b>SablonSAYISI<b> </b><b>+</b><b> </b>:aEkSablonSayisi<b>,</b><b> </b><font color="# 0 0FF"><i>-- Dikkat</i></font>
+<b>         </b>FirmaID<b>,</b><b> </b>IlkIstekTarihi<b>,</b><b> </b>CalismaNo<b>,</b><b> </b>TasarimNo<b>,</b><b> </b>GelisTarihi<b>,</b><b> </b>DesenKatalogID<b>,</b><b> </b>DesenGrupID<b>,</b><b> </b>EskiDesenNo<b>,</b><b> </b>DesEnicerikID<b>,</b><b> </b>ReferansDesenNo<b>,</b><b> </b>ReferansDesenAdi<b>,</b>
+<b>         </b>MUsteriDesenNo1<b>,</b><b> </b>MUsteriDesenAdi1<b>,</b><b> </b>MUsteriDesenNo2<b>,</b><b> </b>MUsteriDesenAdi2<b>,</b><b> </b>TasarimFirmaID<b>,</b><b> </b>DesinatorAdi<b>,</b><b> </b>OrjKagitKolaj<b>,</b><b> </b>OrjDijitalGoruntu<b>,</b><b> </b>OrjDijitalSepare<b>,</b><b> </b>OrjGiydirme<b>,</b><b> </b>OrjBitmisUrun<b>,</b>
+<b>         </b>OrjDiger<b>,</b><b> </b>OrjinalMaster<b>,</b><b> </b>DijitalDesen<b>,</b><b> </b>DesenTakimID<b>,</b><b> </b>TakimParcasimi<b>,</b><b> </b>AnaDesen<b>,</b><b> </b>DesenDurumu<b>,</b><b> </b>DesenCalismaSekliID<b>,</b><b> </b>DesenKullanimAmaciID<b>,</b><b> </b>BaskiYonu<b>,</b><b> </b>BaskiYonuVAR<b>,</b><b> </b>BaskiYonuNotu<b>,</b>
+<b>         </b>OzelYerlesim<b>,</b><b> </b>OzelYerlesimNotu<b>,</b><b> </b>OzelYerlesimDosyaAdi<b>,</b><b> </b>RaportlamaYapilacak<b>,</b><b> </b>RaportAciklama<b>,</b><b> </b>OrjinalEGoreFark<b>,</b><b> </b>OrjinalEGoreFarkNotu<b>,</b><b> </b>OrjinalEGoreFarkDosyaAdi<b>,</b><b> </b>Raportlama<b>,</b><b> </b>OrjinalVaryant<b>,</b>
+<b>         </b>OrjinalVaryantNotu<b>,</b><b> </b>IlaveVaryant<b>,</b><b> </b>KenarYazisi<b>,</b><b> </b>KenarYazisiNotu<b>,</b><b> </b>DuzeltmeIstemiDosyaAdi1<b>,</b><b> </b>DuzeltmeIstemiDosyaAdi2<b>,</b><b> </b>DolulukOrani<b>,</b><b> </b>Notu<b>,</b><b> </b>IadeFaturasiKesildi<b>,</b><b> </b>IadeFaturaNo<b>,</b><b> </b>IadeFaturaTarihi<b>,</b>
+<b>         </b>SablonCekimTarihi<b>,</b><b> </b>DeseNokeyTarihi<b>,</b><b> </b>PrintVerilisTarihi<b>,</b><b> </b>SablonGondermeTarihi<b>,</b><b> </b>SablonDurumuID<b>,</b><b> </b>IlkVaryantOtomatik<b>,</b><b> </b>ArsivNotu<b>,</b><b> </b>BaskiCinsiID<b>,</b><b> </b>BaskiTeknigiID<b>,</b><b> </b>SablonSilinmis<b>,</b><b> </b>SablonCekildi<b>,</b>
+<b>         </b>BEKLEMEDE<b>,</b><b> </b>SablonMUsteriDE<b>,</b><b> </b>SablonMUsteriyeAit<b>,</b><b> </b>SablonBasliksiz<b>,</b><b> </b>LaserGravur<b>,</b><b> </b>MaxExposer<b>,</b><b> </b>TasarimOnayDurumu<b>,</b><b> </b>TasarimOnayTarihi<b>,</b><b> </b>TasarimOnayKullaniciID<b>,</b><b> </b>Fason<b>,</b><b> </b>BaskiEni<b>,</b><b> </b>SablonCekimParam1<b>,</b>
+<b>         </b>SablonCekimParam2<b>,</b><b> </b>SablonCekimParam3<b>,</b><b> </b>SablonCekimParam4<b>,</b><b> </b>SablonCekimParam5<b>,</b><b> </b>SablonCekimParam6<b>,</b><b> </b>SablonCekimParam7<b>,</b><b> </b>SablonCekimParam8<b>,</b><b> </b>SablonCekimParam9<b>,</b><b> </b>UstRaportOlcuSU<b>,</b><b> </b>YanRaportOlcuSU<b>,</b>
+<b>         </b>OzelYanTekrarOlcuSU<b>,</b><b> </b>IlaveVaryantOrjFarkliMi<b>,</b><b> </b>IlaveVaryantOrjFarkNotu<b>,</b><b> </b>DijitalDesenRaport<b>,</b><b> </b>GravurMakinaID<b>,</b><b> </b>HamTipiID<b>,</b><b> </b>HamID<b>,</b><b> </b>RaportSekliID<b>,</b><b> </b>SablonEniDeseNolcuID<b>,</b><b> </b>GravurBoyuDeseNolcuID<b>,</b>
+<b>         </b>SablonBoyuDeseNolcuID<b>,</b><b> </b>DesenRaportBoyuDeseNolcuID
+<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font>
+<b>  </b><b>WHERE</b><b> </b>DesenKayitID<b> </b><b>=</b><b> </b>:aDesenKayitID<b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>First</b><b> </b>1<b> </b>DesenKayitID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b>DesenID<b> </b><b>=</b><b> </b>:aYeniDesenID<b> </b><b>into</b><b> </b>:aYeniDesenKayitID<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>aYeniDesenKayitID<b> </b><b>is</b><b> </b><b>NOT</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><font color="# 080 0"><u>rdb$set_context</u></font><b>(</b>'USER_TRANSACTION'<b>,</b><b> </b>'BaypasTrigger_DesenVaryant'<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>    </b><font color="# 080 0"><u>rdb$set_context</u></font><b>(</b>'USER_TRANSACTION'<b>,</b><b> </b>'BaypasTrigger_DesenVaryantSablon'<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>    </b>aSiraNo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><font color="# 0 0FF"><i>/* Eski desendeki varyantların listesini aldık, DESENVARYANTID üzerinden tek tek geziyoruz. */</i></font>
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b>DesenVaryantID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b> </b><b>where</b><b> </b>DESENID<b> </b><b>=</b><b> </b>:aEskiDesenID<b> </b><b>ORDER</b><b> </b><b>BY</b><b> </b>SiraNo<b>,</b><b> </b>DesenVaryantID<b> </b><b>into</b><b> </b>:aEskiDesenVaryantID<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b>aSiraNo<b> </b><b>=</b><b> </b>aSiraNo<b> </b><b>+</b><b> </b>1<b>;</b><b>  </b><font color="# 0 0FF"><i>/* Ömer, bunun sıralı gelmesi gerektiğini söyledi. O nedenle orjinaline göre değil ürettiğimiz sıraya göre fieldi dolduruyoruz. */</i></font>
+
+<b>      </b><font color="# 0 0FF"><i>/* Yeni desen varyantlarını sırayla ekliyoruz. */</i></font>
+<b>      </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b> </b><b>(</b>DesenID<b>,</b><b> </b>VaryantAdi<b>,</b><b> </b>RenkCalisildi<b>,</b><b> </b>HamID<b>,</b><b> </b>ReceteID<b>,</b><b> </b>Aciklama<b>,</b><b> </b>MusteriBarkodNo<b>,</b><b> </b>SiraNo<b>)</b>
+<b>      </b><b>select</b><b> </b>:aYeniDesenID<b> </b><b>as</b><b> </b>DesenID<b>,</b><b> </b>VaryantAdi<b>,</b><b> </b>RenkCalisildi<b>,</b><b> </b>HamID<b>,</b><b> </b>ReceteID<b>,</b><b> </b>Aciklama<b>,</b><b> </b>MusteriBarkodNo<b>,</b><b> </b>:aSiraNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font>
+<b>      </b><b>where</b><b> </b>DesenVaryantID<b> </b><b>=</b><b> </b>:aEskiDesenVaryantID<b>;</b>
+
+<b>      </b><b>select</b><b> </b><b>Max</b><b>(</b>DesenVaryantID<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b> </b><b>where</b><b> </b>DesenID<b> </b><b>=</b><b> </b>:aYeniDesenID<b> </b><b>into</b><b> </b>:aYeniDesenVaryantID<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>aYeniDesenVaryantID<b> </b><b>is</b><b> </b><b>NOT</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>for</b><b> </b><b>select</b><b> </b>DesenVaryantSablonID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b> </b><b>where</b><b> </b>DesenVaryantId<b> </b><b>=</b><b> </b>:aEskiDesenVaryantID<b> </b><b>order</b><b> </b><b>by</b><b> </b>DesenVaryantSablonID<b> </b><b>into</b><b> </b>:aEskiDesenVaryantSablonID<b> </b><b>DO</b>
+<b>        </b><b>begin</b>
+<b>          </b><font color="# 0 0FF"><i>/* Orjinaldeki şablonları sırayla yenisine ekliyoruz. */</i></font>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>(</b>DesenVaryantId<b>,</b><b> </b>SablonNo<b>,</b><b> </b>Sira<b>,</b><b> </b>DepoId<b>,</b><b> </b>DolulukOrani<b>,</b><b> </b>MeshID<b>,</b><b> </b>SablonRenkId<b>,</b><b> </b>EmulsiyonUrunId<b>,</b><b> </b>Acilim1<b>,</b><b> </b>Acilim2<b>)</b>
+<b>          </b><b>select</b><b> </b>:aYeniDesenVaryantID<b> </b><b>as</b><b> </b>DesenVaryantID<b>,</b><b> </b>SablonNo<b>,</b><b> </b>Sira<b>,</b><b> </b>DepoId<b>,</b><b> </b>DolulukOrani<b>,</b><b> </b>MeshID<b>,</b><b> </b>SablonRenkId<b>,</b><b> </b>EmulsiyonUrunId<b>,</b><b> </b>Acilim1<b>,</b><b> </b>Acilim2<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font>
+<b>          </b><b>where</b><b> </b>DesenVaryantSablonID<b> </b><b>=</b><b> </b>:aEskiDesenVaryantSablonID<b>;</b>
+
+<b>          </b><b>select</b><b> </b><b>Max</b><b>(</b>DesenVaryantSablonID<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b> </b><b>where</b><b> </b>DesenVaryantID<b> </b><b>=</b><b> </b>:aYeniDesenVaryantID<b> </b><b>into</b><b> </b>:aYeniDesenVaryantSablonID<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>aYeniDesenVaryantSablonID<b> </b><b>is</b><b> </b><b>NOT</b><b> </b><b>NULL</b><b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>for</b><b> </b><b>select</b><b> </b>DesenVaryantSablonReceteID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryantSablonRecete</u></font><b> </b><b>where</b><b> </b>DesenVaryantSablonID<b> </b><b>=</b><b> </b>:aEskiDesenVaryantSablonID<b> </b><b>into</b><b> </b>:aEskiDesenVaryantSablonReceteID<b> </b><b>do</b>
+<b>            </b><b>begin</b>
+<b>              </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>DesenVaryantSablonRecete</u></font><b> </b><b>(</b>DesenVaryantSablonID<b>,</b><b> </b>DesenVaryantID<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>               </b><b>select</b><b> </b>:aYeniDesenVaryantSablonID<b> </b><b>as</b><b> </b>DesenVaryantSablonID<b>,</b><b> </b>:aYeniDesenVaryantID<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryantSablonRecete</u></font>
+<b>               </b><b>where</b><b> </b>DesenVaryantSablonReceteID<b> </b><b>=</b><b> </b>:aEskiDesenVaryantSablonReceteID<b>;</b>
+<b>            </b><b>end</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+
+<b>        </b><font color="# 0 0FF"><i>/* yeni şablonları sırayla ekliyoruz. Zira bunlarda reçete olmadığı için sadece şablonu eklemekle yetiniyoruz.*/</i></font>
+<b>        </b>aID<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b><b>while</b><b> </b><b>(</b>aID<b> </b><b>&lt;</b><b>=</b><b> </b>:aEkSablonSayisi<b>)</b><b> </b><b>do</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>(</b>DesenVaryantId<b>,</b><b> </b>SablonNo<b>,</b><b> </b>Sira<b>)</b><b> </b><b>values</b><b>(</b>:aYeniDesenVaryantId<b>,</b><b> </b>:aEskiSablonSayisi<b> </b><b>+</b><b> </b>:aID<b>,</b><b> </b><b>-</b>1<b>)</b><b>;</b>
+<b>          </b>aID<b> </b><b>=</b><b> </b>aID<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>        </b><b>end</b>
+
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><font color="# 080 0"><u>rdb$set_context</u></font><b>(</b>'USER_TRANSACTION'<b>,</b><b> </b>'BaypasTrigger_DesenVaryantSablon'<b>,</b><b> </b>0<b>)</b><b>;</b>
+<b>    </b><font color="# 080 0"><u>rdb$set_context</u></font><b>(</b>'USER_TRANSACTION'<b>,</b><b> </b>'BaypasTrigger_DesenVaryant'<b>,</b><b> </b>0<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><font color="# 080 0"><u>rdb$set_context</u></font><b>(</b>'USER_TRANSACTION'<b>,</b><b> </b>'BaypasTrigger_Desen'<b>,</b><b> </b>0<b>)</b><b>;</b>
+
+<b>  </b><font color="# 0 0FF"><i>-- Sonuç</i></font>
+<b>  </b>YeniDesenKayitID<b> </b><b>=</b><b> </b>:aYeniDesenKayitID<b>;</b>
+<b>  </b>YeniDesenID<b> </b><b>=</b><b> </b>:aYeniDesenID<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ARIZAYERILISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ASAMADEGISIMRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

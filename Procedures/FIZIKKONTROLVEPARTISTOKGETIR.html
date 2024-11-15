@@ -1,0 +1,2897 @@
+<HTML>
+<HEAD>
+<TITLE>FIZIKKONTROLVEPARTISTOKGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="580800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="FIYATONAYISTENSINMI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="FOREIGNKEYVARMI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">FIZIKKONTROLVEPARTISTOKGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTIASAMALARIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">PARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTISIRANO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISSARJID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISBASKIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PROSESID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALITEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAMULKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMADITOPLAMI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMFIYAT</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PLANLANANKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PLANLANANMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PLANLANANADET</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KAPADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BRUTSEVKMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETSEVKMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BRUTSARFMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETSARFMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">METRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADET</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOBINSAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETADET</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETKAPADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DENYE</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TAMAMITARTILDI</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FATURAKESILECEK</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIYATONAYIISTENSIN</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIPAKETTENFIYATLANDIRILDI</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIYATONAYLAYANKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIYATONAYTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIREORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIREONAYIKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIREONAYTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIREONAYNOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRESEBEPTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIREKARARMIKTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BRUTSEVKKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BRUTSEVKMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETSEVKKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETSEVKMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BRUTSARFKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BRUTSARFMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETSARFKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETSARFMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETSEVKADET</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETSEVKKAPADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILAVEYUMUSATICI</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONGORULENEN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ONGORULENGRAMAJ</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMNEMORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISTENENRAPORBOYU</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISTENENOZELTUSE</TD>
+    <TD><P CLASS="Base2">VARCHAR(25)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ENISTENEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GRAMAJISTENEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DONMEISTENEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKENISTENEN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKBOYISTENEN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMAHASLIGIISTENEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UNITEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISLETMEICITAMIR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIASAMALARIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ETIKETKAPADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ETIKETYAZILDI</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PAKETLEMESEKLIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILKSEVKTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SEVKTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GECIKMENOTU</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GECIKMETIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTISTOKIPTALKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">REFERANSPARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMKONTROLNOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMKONTROLDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMKONTROLKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMKONTROLTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMKONTROLONAYDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMKONTROLONAYKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMKONTROLONAYTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KKBITIRENPERSONELID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KKBITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KKNOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SEVKONCELIKNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SEVKNOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SEVKKENDIARACIMIZLA</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILAVESEVKNOTU</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">EN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GRAMAJ</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORTALAMAEN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORTALAMAGRAMAJ</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HESAPLANANFIYAT</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HESAPLANANUCRETLITAMIRFIYATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HESAPLANANUCRETSIZTAMIRFIYATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAXIMUMFIREORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TARTIICINFIREORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GENELKONTROLNOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GENELKONTROLKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GENELKONTROLTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TAMIRTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMASEVKADRESIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SONCIKISMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SONCIKISKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SONCIKISMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICKONTROL1</TD>
+    <TD><P CLASS="Base2">VARCHAR(15)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICKONTROL2</TD>
+    <TD><P CLASS="Base2">VARCHAR(15)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICKONTROL3</TD>
+    <TD><P CLASS="Base2">VARCHAR(15)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICKONTROLADI1</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICKONTROLADI2</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICKONTROLADI3</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAKONTROL1</TD>
+    <TD><P CLASS="Base2">VARCHAR(15)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAKONTROL2</TD>
+    <TD><P CLASS="Base2">VARCHAR(15)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAKONTROL3</TD>
+    <TD><P CLASS="Base2">VARCHAR(15)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAKONTROLADI1</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAKONTROLADI2</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAKONTROLADI3</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HACIMEN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HACIMBOY</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HACIMYUKSEKLIK</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRINCIKALITESEVKEDILEMEZ</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SARIMACIKLAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KONIKCINSIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KONIKRENGIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KKESME</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARCAFIRE</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTILEMEONAYIKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTILEMEONAYTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SEVKEHAZIRTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKTARTIBASLATANPERSONELID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKTARTIBASLAMATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKTARTIBITIRENPERSONELID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKTARTIBITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TOPLAMTAMAMLANMAPUANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TASARIMVARYANTNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMSTOKADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMSTOKDIGERADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMSTOKDIGERADI2</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMSTOKDIGERADI3</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIZIKSELKONTROLKAGITTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIZIKKONTROLEKRANTIPI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKTESTSTANDARDI</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIZIKSELPERSTANDARDIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKHASLIKPERSTANDARDIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKSTANDARDIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GRAMAJSTANDARDIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DONMESTANDARDIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RKONTROLCMCDEGERI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RKONTROLKANATFARKIDEGERI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RKONTROLCIEBEYAZLIKDEGER</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CIKISNEMORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ENVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GRAMAJVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DONMEVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ENBASKIONCESI</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GRAMAJBASKIONCESI</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DONMEBASKIONCESI</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKENBASKIONCESI</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKBOYBASKIONCESI</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ENDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GRAMAJDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DONMEDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SONUCRAPORBOYU</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKENVERILEN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKBOYVERILEN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKENVERILEN2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKBOYVERILEN2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIK1DURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIK2DURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PILLINGVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PILLINGVERILENTUR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PILLINGSAAT</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PILLINGARKAVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PILLINGARKAVERILENTUR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PILLINGARKASAAT</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISIKHASLIGIVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISIKHASLIGIVERILENALKALI</TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISIKHASLIGIVERILENASIDIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISIKHASLIGIVERILENISLAK</TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KURUSURTMEHASLIGIVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YASSURTMEHASLIGIVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KLORHASLIGIVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KURUTEMIZLEMEVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PATLAMAMUKAVEMETIVERILEN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PATLAMAMUKAVEMETIVERILENMM</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PATLAMAMUKAVEMETIVERILENSN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SARARMAHASLIGIVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FENOLIKSARARMA</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KURUSURTMEHASLIGIVERILENBOY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YASSURTMEHASLIGIVERILENBOY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KURUSURTMEHASLIGIDURUMUBOY</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YASSURTMEHASLIGIDURUMUBOY</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PATLAMAMUKAVEMETIDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KURUSURTMEHASLIGIDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YASSURTMEHASLIGIDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PILLINGVERILENDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISIKHASLIGIVERILENDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISIKHASLIGIVERILENDURUMU2</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">EXTENSIONMODULEDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SARARMAHASLIGIDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIKISKOLAYLIGIDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SUEMISI</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KURUTMAZAMANI</TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YHCHANGE</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YHSTAIN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YHSECONDARY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YHBLEACHED</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YHNAYLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YHPOLYESTER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YHAKRELIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YHYUN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YHDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KTCHANGE</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KTSTAIN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KTSECONDARY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KTBLEACHED</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KTNAYLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KTPOLYESTER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KTAKRELIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KTYUN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KTDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RBCHANGE</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RBSTAIN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RBSECONDARY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RBBLEACHED</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RBNAYLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RBPOLYESTER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RBAKRELIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RBYUN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RBDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SHCHANGE</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SHSTAIN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SHSECONDARY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SHBLEACHED</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SHNAYLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SHPOLYESTER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SHAKRELIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SHYUN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SHDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THALKALICHANGE</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THALKALIASTAIN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THALKALISECONDARY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THALKALIBLEACHED</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THALKALINAYLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THALKALIPOLYESTER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THALKALIAKRELIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THALKALIYUN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THALKALIDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THASIDIKCHANGE</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THASIDIKASTAIN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THASIDIKSECONDARY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THASIDIKBLEACHED</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THASIDIKNAYLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THASIDIKPOLYESTER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THASIDIKAKRELIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THASIDIKYUN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">THASIDIKDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">EXTENSIONMODULEEN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">EXTENSIONMODULEBOY</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">EXTENSIONMODULEPH</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">OXIDATIVEBLEACH</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PERBORAT</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MODULUSEN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MODULUSBOY</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALICIUZAMAEN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALICIUZAMABOY</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">OXIDATIVEBLEACHDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PERBORATDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MODULUSDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALICIUZAMADURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SURTUNMEKATSAYISI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">REFERANSACIKLAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABRAJ</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ICDISKONTROL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">OLCULENNE</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL1KONTROLDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL1KONTROLTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL1KONTROLKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL1ONAYDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL1ONAYTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL1ONAYKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL2KONTROLDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL2KONTROLTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL2KONTROLKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL2ONAYDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL2ONAYTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL2ONAYKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIZIKSELKONTROLNOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIZIKSELKONTROLNOTU2</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SONKAYIT</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEGISIMTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SALCHANGE</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SALSTAIN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SALSECONDARY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SALBLEACHED</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SALNAYLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SALPOLYESTER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SALAKRELIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SALYUN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SALDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PH1</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PH2</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PH3</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIGRASYONCHANGE</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIGRASYONSTAIN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIGRASYONSECONDARY</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIGRASYONBLEACHED</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIGRASYONNAYLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIGRASYONPOLYESTER</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIGRASYONAKRELIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIGRASYONYUN</TD>
+    <TD><P CLASS="Base2">VARCHAR(3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIGRASYONDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GECIRGENLIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISICEKMEZLIKENISTENEN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISICEKMEZLIKBOYISTENEN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISICEKMEZLIKENSONUC</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISICEKMEZLIKBOYSONUC</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KLORLUSUHASLIGI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DENIZSUYUHASLIGI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TERLIISIKHASLIGI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SUITICI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YAGITICI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KOPMA1</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KOPMA2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KOPMA3</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIKISACILIMI1</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIKISACILIMI2</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIKISACILIMI3</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PACAKESMESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TITAN1</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TITAN2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TITAN3</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASINDIRMA1</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASINDIRMA2</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASINDIRMA3</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BONCUKLAMAPEELING</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ESNEKLIK</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALICIUZAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NUMUNEGIDISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NUMUNEGONDERENKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NUMUNENOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 1 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ELASTIKIYETEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ELASTIKIYETBOY</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NUMUNEGONDERILDI</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SANSVERILEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SANSVERILEN2</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ELASTIKIYETENISTENEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ELASTIKIYETBOYISTENEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SANSISTENEN</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL1KONTROLKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL2KONTROLKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL1ONAYKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FKONTROL2ONAYKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIZIKSELPERSTANDARDIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKHASLIKPERSTANDARDIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKSTANDARDIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KURUTMASEKLIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMADERECE</TD>
+    <TD><P CLASS="Base2">VARCHAR(6)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMAHASLIGITESTIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISKALITEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERISIPARISNO</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERIKALITEADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISNOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISPLANLAMANOTU</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISKALITEADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISPROSESADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIPILAVEISLEMLER</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERIRENKKODUVEADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BELGEHAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(60)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKENVERILENSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CEKMEZLIKBOYVERILENSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">OZELTESTLER</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">OZELAPRELER</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TOPLAMBOYAYACIKIS</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTILENENKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPTALKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PUS</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FEINE</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SUITICILIKTESTI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HATAPUANI1</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HATAPUANI2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BASKITIPIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIAGONALSURTME</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIAGONALSURTMEDURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIRTILMAATKI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIRTILMAATKIBIRIMIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIRTILMACOZGU</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIRTILMACOZGUBIRIMIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KOPMA1BIRIMIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KOPMA2BIRIMIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KOPMA3BIRIMIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TITAN1BIRIMIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TITAN2BIRIMIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TITAN3BIRIMIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CAPRAZLEKELEMEYIKAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CAPRAZLEKELEMESU</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKDEGISIMIYIKAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKDEGISIMISU</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMAONCESIPACA</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMASONRASIPACA</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIRTILMAWARP</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIRTILMAWEFT</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIRTILMAPENDULUMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRINCIELYAFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRINCIELYAFDEGER</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IKINCIELYAFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IKINCIELYAFDEGER</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">OXIDATIVEBLEACHTONEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TUKRUKHASLIGIRENKDEGISIMI</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ISO_12945_2</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIAGONALSURTMEYAS</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIAGONALSURTMEKURU</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PILLING12945_1</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PILLING12945_2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KOPMAATKI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KOPMACOZGU</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMAONCESIELASTIKIYET</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMAONCESIRECOVERY</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMASONRASIELASTIKIYET</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YIKAMASONRASIRECOVERY</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIKISACILIMIATKI13936_1</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIKISACILIMIATKI13936_2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASINDIRMA1BIRIMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASINDIRMA2BIRIMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASINDIRMA3BIRIMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIKISACILIMI1BIRIMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIKISACILIMI2BIRIMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DIKISACILIMI3BIRIMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure FIZIKKONTROLVEPARTISTOKGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>FIZIKKONTROLVEPARTISTOKGETIR</u></font><b>(</b>
+<b>    </b>APARTISINIFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APARTIASAMALARIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>PARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTISINIFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTISIRANO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYASIPARISKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYASIPARISDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYASIPARISSARJID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYASIPARISBASKIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PROSESID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KALITEID<b> </b><font color="# 080 0"><u>KALITEKODUSIZE</u></font><b>,</b>
+<b>    </b><font color="# 080 0"><u>MAMULKODU</u></font><b> </b><font color="# 080 0"><u>MAMULKODUSIZE</u></font><b>,</b>
+<b>    </b>HAMTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMADITOPLAMI<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>BIRIMFIYAT<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DOVIZID<b> </b><font color="# 080 0"><u>DOVIZSIZE</u></font><b> </b><b>NOT</b><b> </b><b>NULL</b><b>,</b>
+<b>    </b>PLANLANANKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>PLANLANANMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>PLANLANANADET<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KAPADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>MIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>BRUTSEVKMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETSEVKMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>BRUTSARFMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETSARFMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>KILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>METRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>ADET<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOBINSAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>NETKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETADET<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>NETKAPADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DENYE<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>TAMAMITARTILDI<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>FATURAKESILECEK<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>FIYATONAYIISTENSIN<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>PARTIPAKETTENFIYATLANDIRILDI<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>FIYATONAYLAYANKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FIYATONAYTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FIREORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>FIREONAYIKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FIREONAYTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FIREONAYNOTU<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>FIRESEBEPTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FIREKARARMIKTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>BRUTSEVKKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>BRUTSEVKMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETSEVKKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETSEVKMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>BRUTSARFKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>BRUTSARFMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETSARFKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETSARFMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>NETSEVKADET<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>NETSEVKKAPADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ILAVEYUMUSATICI<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>ONGORULENEN<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ONGORULENGRAMAJ<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMNEMORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ISTENENRAPORBOYU<b> </b><font color="# 080 0"><u>ADI100</u></font><b>,</b>
+<b>    </b>ISTENENOZELTUSE<b> </b><b>VARCHAR</b><b>(</b>25<b>)</b><b>,</b>
+<b>    </b>ENISTENEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>GRAMAJISTENEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>DONMEISTENEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>CEKMEZLIKENISTENEN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>CEKMEZLIKBOYISTENEN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIKAMAHASLIGIISTENEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>DURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>UNITEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ISLETMEICITAMIR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTIASAMALARIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ETIKETKAPADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ETIKETYAZILDI<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>PAKETLEMESEKLIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ILKSEVKTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>SEVKTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>GECIKMENOTU<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>GECIKMETIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTISTOKIPTALKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>REFERANSPARTISINIFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMKONTROLNOTU<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>HAMKONTROLDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMKONTROLKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMKONTROLTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>HAMKONTROLONAYDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMKONTROLONAYKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMKONTROLONAYTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>KKBITIRENPERSONELID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KKBITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>KKNOTU<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>SEVKONCELIKNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SEVKNOTU<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>SEVKKENDIARACIMIZLA<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>ILAVESEVKNOTU<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>EN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>GRAMAJ<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ORTALAMAEN<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORTALAMAGRAMAJ<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HESAPLANANFIYAT<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HESAPLANANUCRETLITAMIRFIYATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HESAPLANANUCRETSIZTAMIRFIYATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>MAXIMUMFIREORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TARTIICINFIREORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>GENELKONTROLNOTU<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>GENELKONTROLKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>GENELKONTROLTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>TAMIRTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FIRMASEVKADRESIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SONCIKISMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>SONCIKISKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>SONCIKISMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>ICKONTROL1<b> </b><b>VARCHAR</b><b>(</b>15<b>)</b><b>,</b>
+<b>    </b>ICKONTROL2<b> </b><b>VARCHAR</b><b>(</b>15<b>)</b><b>,</b>
+<b>    </b>ICKONTROL3<b> </b><b>VARCHAR</b><b>(</b>15<b>)</b><b>,</b>
+<b>    </b>ICKONTROLADI1<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>ICKONTROLADI2<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>ICKONTROLADI3<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>ARAKONTROL1<b> </b><b>VARCHAR</b><b>(</b>15<b>)</b><b>,</b>
+<b>    </b>ARAKONTROL2<b> </b><b>VARCHAR</b><b>(</b>15<b>)</b><b>,</b>
+<b>    </b>ARAKONTROL3<b> </b><b>VARCHAR</b><b>(</b>15<b>)</b><b>,</b>
+<b>    </b>ARAKONTROLADI1<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>ARAKONTROLADI2<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>ARAKONTROLADI3<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>HACIMEN<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HACIMBOY<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HACIMYUKSEKLIK<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BIRINCIKALITESEVKEDILEMEZ<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>SARIMACIKLAMA<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>KONIKCINSIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KONIKRENGIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KKESME<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PARCAFIRE<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PARTILEMEONAYIKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTILEMEONAYTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>SEVKEHAZIRTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>IPLIKTARTIBASLATANPERSONELID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IPLIKTARTIBASLAMATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>IPLIKTARTIBITIRENPERSONELID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IPLIKTARTIBITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>TOPLAMTAMAMLANMAPUANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TASARIMVARYANTNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMSTOKADI<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>HAMSTOKDIGERADI<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>HAMSTOKDIGERADI2<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>HAMSTOKDIGERADI3<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>FIZIKSELKONTROLKAGITTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FIZIKKONTROLEKRANTIPI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>CEKMEZLIKTESTSTANDARDI<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>FIZIKSELPERSTANDARDIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RENKHASLIKPERSTANDARDIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>CEKMEZLIKSTANDARDIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>GRAMAJSTANDARDIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DONMESTANDARDIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RKONTROLCMCDEGERI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>RKONTROLKANATFARKIDEGERI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>RKONTROLCIEBEYAZLIKDEGER<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>CIKISNEMORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ENVERILEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>GRAMAJVERILEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>DONMEVERILEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ENBASKIONCESI<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>GRAMAJBASKIONCESI<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>DONMEBASKIONCESI<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>CEKMEZLIKENBASKIONCESI<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>CEKMEZLIKBOYBASKIONCESI<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ENDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>GRAMAJDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DONMEDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SONUCRAPORBOYU<b> </b><font color="# 080 0"><u>ADI100</u></font><b>,</b>
+<b>    </b>CEKMEZLIKENVERILEN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>CEKMEZLIKBOYVERILEN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>CEKMEZLIKENVERILEN2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>CEKMEZLIKBOYVERILEN2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>CEKMEZLIK1DURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>CEKMEZLIK2DURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PILLINGVERILEN<b> </b><b>VARCHAR</b><b>(</b>7<b>)</b><b>,</b>
+<b>    </b>PILLINGVERILENTUR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PILLINGSAAT<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>PILLINGARKAVERILEN<b> </b><b>VARCHAR</b><b>(</b>7<b>)</b><b>,</b>
+<b>    </b>PILLINGARKAVERILENTUR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PILLINGARKASAAT<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>ISIKHASLIGIVERILEN<b> </b><b>VARCHAR</b><b>(</b>7<b>)</b><b>,</b>
+<b>    </b>ISIKHASLIGIVERILENALKALI<b> </b><b>VARCHAR</b><b>(</b>7<b>)</b><b>,</b>
+<b>    </b>ISIKHASLIGIVERILENASIDIK<b> </b><b>VARCHAR</b><b>(</b>7<b>)</b><b>,</b>
+<b>    </b>ISIKHASLIGIVERILENISLAK<b> </b><b>VARCHAR</b><b>(</b>7<b>)</b><b>,</b>
+<b>    </b>KURUSURTMEHASLIGIVERILEN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YASSURTMEHASLIGIVERILEN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KLORHASLIGIVERILEN<b> </b><b>VARCHAR</b><b>(</b>7<b>)</b><b>,</b>
+<b>    </b>KURUTEMIZLEMEVERILEN<b> </b><b>VARCHAR</b><b>(</b>7<b>)</b><b>,</b>
+<b>    </b>PATLAMAMUKAVEMETIVERILEN<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PATLAMAMUKAVEMETIVERILENMM<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>PATLAMAMUKAVEMETIVERILENSN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>SARARMAHASLIGIVERILEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>FENOLIKSARARMA<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KURUSURTMEHASLIGIVERILENBOY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YASSURTMEHASLIGIVERILENBOY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KURUSURTMEHASLIGIDURUMUBOY<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>YASSURTMEHASLIGIDURUMUBOY<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PATLAMAMUKAVEMETIDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KURUSURTMEHASLIGIDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>YASSURTMEHASLIGIDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PILLINGVERILENDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ISIKHASLIGIVERILENDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ISIKHASLIGIVERILENDURUMU2<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>EXTENSIONMODULEDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SARARMAHASLIGIDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DIKISKOLAYLIGIDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SUEMISI<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>KURUTMAZAMANI<b> </b><b>VARCHAR</b><b>(</b>7<b>)</b><b>,</b>
+<b>    </b>YHCHANGE<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YHSTAIN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YHSECONDARY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YHBLEACHED<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YHNAYLON<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YHPOLYESTER<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YHAKRELIK<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YHYUN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>YHDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KTCHANGE<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KTSTAIN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KTSECONDARY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KTBLEACHED<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KTNAYLON<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KTPOLYESTER<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KTAKRELIK<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KTYUN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>KTDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RBCHANGE<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>RBSTAIN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>RBSECONDARY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>RBBLEACHED<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>RBNAYLON<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>RBPOLYESTER<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>RBAKRELIK<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>RBYUN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>RBDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SHCHANGE<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SHSTAIN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SHSECONDARY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SHBLEACHED<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SHNAYLON<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SHPOLYESTER<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SHAKRELIK<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SHYUN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SHDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>THALKALICHANGE<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THALKALIASTAIN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THALKALISECONDARY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THALKALIBLEACHED<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THALKALINAYLON<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THALKALIPOLYESTER<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THALKALIAKRELIK<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THALKALIYUN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THALKALIDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>THASIDIKCHANGE<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THASIDIKASTAIN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THASIDIKSECONDARY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THASIDIKBLEACHED<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THASIDIKNAYLON<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THASIDIKPOLYESTER<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THASIDIKAKRELIK<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THASIDIKYUN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>THASIDIKDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>EXTENSIONMODULEEN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>EXTENSIONMODULEBOY<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>EXTENSIONMODULEPH<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>OXIDATIVEBLEACH<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>PERBORAT<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>MODULUSEN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>MODULUSBOY<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KALICIUZAMAEN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KALICIUZAMABOY<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>OXIDATIVEBLEACHDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PERBORATDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>MODULUSDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KALICIUZAMADURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SURTUNMEKATSAYISI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>REFERANSACIKLAMA<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>ABRAJ<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ICDISKONTROL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>OLCULENNE<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>FKONTROL1KONTROLDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FKONTROL1KONTROLTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FKONTROL1KONTROLKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FKONTROL1ONAYDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FKONTROL1ONAYTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FKONTROL1ONAYKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FKONTROL2KONTROLDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FKONTROL2KONTROLTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FKONTROL2KONTROLKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FKONTROL2ONAYDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FKONTROL2ONAYTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FKONTROL2ONAYKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FIZIKSELKONTROLNOTU<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>FIZIKSELKONTROLNOTU2<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>SONKAYIT<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>KULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DEGISIMTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>SALCHANGE<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SALSTAIN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SALSECONDARY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SALBLEACHED<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SALNAYLON<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SALPOLYESTER<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SALAKRELIK<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SALYUN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>SALDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PH1<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>PH2<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>PH3<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>MIGRASYONCHANGE<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>MIGRASYONSTAIN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>MIGRASYONSECONDARY<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>MIGRASYONBLEACHED<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>MIGRASYONNAYLON<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>MIGRASYONPOLYESTER<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>MIGRASYONAKRELIK<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>MIGRASYONYUN<b> </b><b>VARCHAR</b><b>(</b>3<b>)</b><b>,</b>
+<b>    </b>MIGRASYONDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>GECIRGENLIK<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ISICEKMEZLIKENISTENEN<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ISICEKMEZLIKBOYISTENEN<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ISICEKMEZLIKENSONUC<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ISICEKMEZLIKBOYSONUC<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KLORLUSUHASLIGI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DENIZSUYUHASLIGI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TERLIISIKHASLIGI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>SUITICI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YAGITICI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KOPMA1<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KOPMA2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KOPMA3<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DIKISACILIMI1<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>DIKISACILIMI2<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>DIKISACILIMI3<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>PACAKESMESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TITAN1<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TITAN2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TITAN3<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ASINDIRMA1<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ASINDIRMA2<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ASINDIRMA3<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>BONCUKLAMAPEELING<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ESNEKLIK<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>KALICIUZAMA<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>NUMUNEGIDISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>NUMUNEGONDERENKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>NUMUNENOTU<b> </b><b>BLOB</b><b> </b><b>SUB_TYPE</b><b> </b>1<b> </b><b>SEGMENT</b><b> </b><b>SIZE</b><b> </b>80<b>,</b>
+<b>    </b>ELASTIKIYETEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ELASTIKIYETBOY<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>NUMUNEGONDERILDI<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>SANSVERILEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>SANSVERILEN2<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>ELASTIKIYETENISTENEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ELASTIKIYETBOYISTENEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>SANSISTENEN<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>FKONTROL1KONTROLKULLANICIADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>,</b>
+<b>    </b>FKONTROL2KONTROLKULLANICIADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>,</b>
+<b>    </b>FKONTROL1ONAYKULLANICIADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>,</b>
+<b>    </b>FKONTROL2ONAYKULLANICIADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>,</b>
+<b>    </b>FIZIKSELPERSTANDARDIADI<b> </b><font color="# 080 0"><u>ADI50</u></font><b>,</b>
+<b>    </b>RENKHASLIKPERSTANDARDIADI<b> </b><font color="# 080 0"><u>ADI50</u></font><b>,</b>
+<b>    </b>CEKMEZLIKSTANDARDIADI<b> </b><font color="# 080 0"><u>ADI50</u></font><b>,</b>
+<b>    </b>KURUTMASEKLIADI<b> </b><font color="# 080 0"><u>ADI20</u></font><b>,</b>
+<b>    </b><font color="# 080 0"><u>YIKAMADERECE</u></font><b> </b><b>VARCHAR</b><b>(</b>6<b>)</b><b>,</b>
+<b>    </b>YIKAMAHASLIGITESTIADI<b> </b><font color="# 080 0"><u>ADI30</u></font><b>,</b>
+<b>    </b>SIPARISKALITEID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>MUSTERISIPARISNO<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>MUSTERIKALITEADI<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>SIPARISNOTU<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>SIPARISPLANLAMANOTU<b> </b><font color="# 080 0"><u>MEMO</u></font><b>,</b>
+<b>    </b>SIPARISKALITEADI<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>SIPARISPROSESADI<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>SIPILAVEISLEMLER<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>MUSTERIRENKKODUVEADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>BELGEHAMADI<b> </b><font color="# 080 0"><u>ADI60</u></font><b>,</b>
+<b>    </b>CEKMEZLIKENVERILENSTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>CEKMEZLIKBOYVERILENSTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>OZELTESTLER<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>OZELAPRELER<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>TOPLAMBOYAYACIKIS<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>PARTILENENKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>IPTALKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>SIPARISKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>PUS<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FEINE<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SUITICILIKTESTI<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>HATAPUANI1<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HATAPUANI2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>BASKITIPIADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>,</b>
+<b>    </b>DIAGONALSURTME<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>DIAGONALSURTMEDURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>YIRTILMAATKI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIRTILMAATKIBIRIMIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>YIRTILMACOZGU<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIRTILMACOZGUBIRIMIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KOPMA1BIRIMIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KOPMA2BIRIMIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KOPMA3BIRIMIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TITAN1BIRIMIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TITAN2BIRIMIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TITAN3BIRIMIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>CAPRAZLEKELEMEYIKAMA<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>CAPRAZLEKELEMESU<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>RENKDEGISIMIYIKAMA<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>RENKDEGISIMISU<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>YIKAMAONCESIPACA<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIKAMASONRASIPACA<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>YIRTILMAWARP<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIRTILMAWEFT<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIRTILMAPENDULUMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BIRINCIELYAFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BIRINCIELYAFDEGER<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>IKINCIELYAFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IKINCIELYAFDEGER<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>OXIDATIVEBLEACHTONEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TUKRUKHASLIGIRENKDEGISIMI<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>ISO_12945_2<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DIAGONALSURTMEYAS<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DIAGONALSURTMEKURU<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PILLING12945_1<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PILLING12945_2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KOPMAATKI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KOPMACOZGU<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIKAMAONCESIELASTIKIYET<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIKAMAONCESIRECOVERY<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIKAMASONRASIELASTIKIYET<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>YIKAMASONRASIRECOVERY<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DIKISACILIMIATKI13936_1<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DIKISACILIMIATKI13936_2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ASINDIRMA1BIRIMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ASINDIRMA2BIRIMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ASINDIRMA3BIRIMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DIKISACILIMI1BIRIMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DIKISACILIMI2BIRIMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DIKISACILIMI3BIRIMID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartilenenMiktardanIptaliDus<b> </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>Begin</b>
+<b>  </b><b>select</b><b> </b>PartilenenMiktardanIptaliDus<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>SistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:PartilenenMiktardanIptaliDus<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitId<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSiraNo<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>boyasiparisdetayid<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>boyasiparissarjid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>boyasiparisbaskiid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>prosesid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>kaliteid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b><font color="# 080 0"><u>mamulkodu</u></font><b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamtipiid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamaditoplami<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>birimfiyat<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>dovizid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>planlanankilo<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>planlananmetre<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>planlananadet<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>kapadedi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>miktar<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netmiktar<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>brutsevkmiktar<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netsevkmiktar<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>brutsarfmiktar<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netsarfmiktar<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>kilo<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>metre<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>adet<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>bobinsayisi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netkilo<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netmetre<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netadet<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netkapadedi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>denye<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>tamamitartildi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>faturakesilecek<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>fiyatonayiistensin<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>partipakettenfiyatlandirildi<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>fiyatonaylayankullaniciid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>fiyatonaytarihi<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>fireorani<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>fireonayikullaniciid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>fireonaytarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>fireonaynotu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>firesebeptipiid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>firekararmiktari<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>brutsevkkilo<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>brutsevkmetre<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netsevkkilo<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netsevkmetre<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>brutsarfkilo<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>brutsarfmetre<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netsarfkilo<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netsarfmetre<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netsevkadet<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>netsevkkapadedi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ilaveyumusatici<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ongorulenen<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ongorulengramaj<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamnemorani<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>istenenraporboyu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>istenenozeltuse<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>enistenen<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>gramajistenen<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>donmeistenen<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>cekmezlikenistenen<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>cekmezlikboyistenen<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>yikamahasligiistenen<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>durumu<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>uniteid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>isletmeicitamir<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>partiasamalariid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>etiketkapadedi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>etiketyazildi<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>paketlemesekliid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ilksevktarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>sevktarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>gecikmenotu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>gecikmetipiid<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>partistokiptalkayitid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>referanspartisinifid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamkontrolnotu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamkontroldurumu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamkontrolkullaniciid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamkontroltarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamkontrolonaydurumu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamkontrolonaykullaniciid<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hamkontrolonaytarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>kkbitirenpersonelid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>kkbitistarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>kknotu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>sevkoncelikno<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>sevknotu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>sevkkendiaracimizla<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ilavesevknotu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>en<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>gramaj<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ortalamaen<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ortalamagramaj<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hesaplananfiyat<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hesaplananucretlitamirfiyati<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hesaplananucretsiztamirfiyati<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>maximumfireorani<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>tartiicinfireorani<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>genelkontrolnotu<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>genelkontrolkullaniciid<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>genelkontroltarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>tamirtipiid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>firmasevkadresiid<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>soncikismiktar<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>soncikiskilo<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>soncikismetre<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ickontrol1<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ickontrol2<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ickontrol3<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ickontroladi1<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ickontroladi2<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ickontroladi3<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>arakontrol1<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>arakontrol2<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>arakontrol3<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>arakontroladi1<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>arakontroladi2<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>arakontroladi3<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hacimen<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hacimboy<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>hacimyukseklik<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>birincikalitesevkedilemez<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>sarimaciklama<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>konikcinsiid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>konikrengiid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>kkesme<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>parcafire<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>partilemeonayikullaniciid<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>partilemeonaytarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>sevkehazirtarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ipliktartibaslatanpersonelid<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ipliktartibaslamatarihi<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ipliktartibitirenpersonelid<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ipliktartibitistarihi<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>toplamtamamlanmapuani<b>,</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>tasarimvaryantno<b>,</b>
+<b>        </b><font color="# 080 0"><u>HAM</u></font><b>.</b>ADI<b> </b>HAMSTOKADI<b>,</b><b> </b><font color="# 080 0"><u>HAM</u></font><b>.</b>ADI2<b> </b>HamStokDigerAdi<b>,</b><b> </b><font color="# 080 0"><u>HAM</u></font><b>.</b>ADI3<b> </b>HamStokDigerAdi2<b>,</b><b> </b><font color="# 080 0"><u>HAM</u></font><b>.</b>ADI4<b> </b>HamStokDigerAdi3<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FizikselKontrolKagitTipiId<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FizikKontrolEkranTipi<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikTestStandardi<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FizikselPerStandardiId<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RenkHaslikPerStandardiId<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikStandardiId<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>GramajStandardiId<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DonmeStandardiId<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RKontrolCmcDegeri<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RKontrolKanatFarkiDegeri<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RKontrolCieBeyazlikDeger<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CikisNemOrani<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>EnVerilen<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>GramajVerilen<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DonmeVerilen<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>EnBaskiOncesi<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>GramajBaskiOncesi<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DonmeBaskiOncesi<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikEnBaskiOncesi<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikBoyBaskiOncesi<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>EnDurumu<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>GramajDurumu<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DonmeDurumu<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SonucRaporBoyu<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikEnVerilen<b> </b><b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CEKMEZLIKBOYVERILEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikEnVerilen2<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikBoyVerilen2<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CEKMEZLIK1DURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CEKMEZLIK2DURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PILLINGVERILEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PILLINGVERILENTUR<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PILLINGSAAT<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PILLINGARKAVERILEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PILLINGARKAVERILENTUR<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PILLINGARKASAAT<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISIKHASLIGIVERILEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISIKHASLIGIVERILENALKALI<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISIKHASLIGIVERILENASIDIK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISIKHASLIGIVERILENISLAK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KURUSURTMEHASLIGIVERILEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YASSURTMEHASLIGIVERILEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KLORHASLIGIVERILEN<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KURUTEMIZLEMEVERILEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PATLAMAMUKAVEMETIVERILEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PATLAMAMUKAVEMETIVERILENMM<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PATLAMAMUKAVEMETIVERILENSN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SARARMAHASLIGIVERILEN<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FENOLIKSARARMA<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KURUSURTMEHASLIGIVERILENBOY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YASSURTMEHASLIGIVERILENBOY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KURUSURTMEHASLIGIDURUMUBOY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YASSURTMEHASLIGIDURUMUBOY<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PATLAMAMUKAVEMETIDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KURUSURTMEHASLIGIDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YASSURTMEHASLIGIDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PILLINGVERILEnDurumu<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISIKHASLIGIVERILEnDurumu<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISIKHASLIGIVERILEnDurumu2<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>EXTENSIONMODULEDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SARARMAHASLIGIDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DIKISKOLAYLIGIDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SUEMISI<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KURUTMAZAMANI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YHCHANGE<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YHSTAIN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YHSECONDARY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YHBLEACHED<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YHNAYLON<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YHPOLYESTER<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YHAKRELIK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YHYUN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YHDURUMU<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KTCHANGE<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KTSTAIN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KTSECONDARY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KTBLEACHED<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KTNAYLON<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KTPOLYESTER<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KTAKRELIK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KTYUN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KTDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RBCHANGE<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RBSTAIN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RBSECONDARY<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RBBLEACHED<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RBNAYLON<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RBPOLYESTER<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RBAKRELIK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RBYUN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RBDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SHCHANGE<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SHSTAIN<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SHSECONDARY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SHBLEACHED<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SHNAYLON<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SHPOLYESTER<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SHAKRELIK<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SHYUN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SHDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THALKALICHANGE<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THALKALIASTAIN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THALKALISECONDARY<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THALKALIBLEACHED<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THALKALINAYLON<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THALKALIPOLYESTER<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THALKALIAKRELIK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THALKALIYUN<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THALKALIDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THASIDIKCHANGE<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THASIDIKASTAIN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THASIDIKSECONDARY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THASIDIKBLEACHED<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THASIDIKNAYLON<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THASIDIKPOLYESTER<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THASIDIKAKRELIK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THASIDIKYUN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>THASIDIKDURUMU<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>EXTENSIONMODULEEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>EXTENSIONMODULEBOY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>EXTENSIONMODULEPH<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>OXIDATIVEBLEACH<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PERBORAT<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MODULUSEN<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MODULUSBOY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KALICIUZAMAEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KALICIUZAMABOY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>OXIDATIVEBLEACHDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PERBORATDURUMU<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MODULUSDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KALICIUZAMADURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SURTUNMEKATSAYISI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>REFERANSACIKLAMA<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ABRAJ<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ICDISKONTROL<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>OLCULENNE<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL1KONTROLDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL1KONTROLTARIHI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL1KONTROLKULLANICIID<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL1ONAYDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL1ONAYTARIHI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL1ONAYKULLANICIID<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL2KONTROLDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL2KONTROLTARIHI<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL2KONTROLKULLANICIID<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL2ONAYDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL2ONAYTARIHI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL2ONAYKULLANICIID<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FIZIKSELKONTROLNOTU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FIZIKSELKONTROLNOTU2<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SONKAYIT<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KULLANICIID<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DEGISIMTARIHI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SALCHANGE<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SALSTAIN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SALSECONDARY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SALBLEACHED<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SALNAYLON<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SALPOLYESTER<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SALAKRELIK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SALYUN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SALDURUMU<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PH1<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PH2<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PH3<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MIGRASYONCHANGE<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MIGRASYONSTAIN<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MIGRASYONSECONDARY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MIGRASYONBLEACHED<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MIGRASYONNAYLON<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MIGRASYONPOLYESTER<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MIGRASYONAKRELIK<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MIGRASYONYUN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>MIGRASYONDURUMU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>GECIRGENLIK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISICEKMEZLIKENISTENEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISICEKMEZLIKBOYISTENEN<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISICEKMEZLIKENSONUC<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ISICEKMEZLIKBOYSONUC<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KLORLUSUHASLIGI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DENIZSUYUHASLIGI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>TERLIISIKHASLIGI<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SUITICI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YAGITICI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KOPMA1<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KOPMA2<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KOPMA3<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DIKISACILIMI1<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DIKISACILIMI2<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DIKISACILIMI3<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PACAKESMESI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>TITAN1<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>TITAN2<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>TITAN3<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ASINDIRMA1<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ASINDIRMA2<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ASINDIRMA3<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>BONCUKLAMAPEELING<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ESNEKLIK<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KALICIUZAMA<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>NUMUNEGIDISTARIHI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>NUMUNEGONDERENKULLANICIID<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>NUMUNENOTU<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ELASTIKIYETEN<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>ELASTIKIYETBOY<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>NUMUNEGONDERILDI<b>,</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SANSVERILEN<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SANSVERILEN2<b>,</b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>ELASTIKIYETEN<b> </b>ELASTIKIYETENISTENEN<b>,</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>ELASTIKIYETBOY<b> </b>ELASTIKIYETBOYISTENEN<b>,</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>SANSISTENEN<b>,</b>
+<b>        </b>FK1<b>.</b>ADI<b> </b>FKONTROL1KONTROLKULLANICIADI<b>,</b><b> </b>FK2<b>.</b>ADI<b> </b>FKONTROL2KONTROLKULLANICIADI<b>,</b><b> </b>FO1<b>.</b>ADI<b> </b>FKONTROL1ONAYKULLANICIADI<b>,</b><b> </b>FO2<b>.</b>ADI<b> </b>FKONTROL2ONAYKULLANICIADI<b>,</b>
+<b>        </b><font color="# 080 0"><u>FIZIKSELPERSTANDARDI</u></font><b>.</b>ADI<b> </b>FIZIKSELPERSTANDARDIADI<b>,</b><b> </b><font color="# 080 0"><u>RENKHASLIKPERSTANDARDI</u></font><b>.</b>ADI<b> </b>RENKHASLIKPERSTANDARDIADI<b>,</b><b> </b><font color="# 080 0"><u>CEKMEZLIKSTANDARDI</u></font><b>.</b>ADI<b> </b>CEKMEZLIKSTANDARDIADI<b>,</b><font color="# 080 0"><u>KURUTMASEKLI</u></font><b>.</b>ADI<b> </b>KURUTMASEKLIADI<b>,</b>
+<b>        </b><font color="# 080 0"><u>YIKAMADERECE</u></font><b>.</b>DERECE<b> </b><font color="# 080 0"><u>YIKAMADERECE</u></font><b>,</b><b> </b><font color="# 080 0"><u>YIKAMAHASLIGITESTI</u></font><b>.</b>ADI<b> </b>YIKAMAHASLIGITESTIADI<b>,</b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>KALITEID<b> </b>SIPARISKALITEID<b>,</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>MUSTERISIPARISNO<b>,</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>MUSTERIKALITEADI<b>,</b>
+<b>        </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>NOTU<b> </b>SIPARISNOTU<b>,</b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>PLANLAMANOTU<b> </b>SIPARISPLANLAMANOTU<b>,</b><font color="# 080 0"><u>KALITE</u></font><b>.</b>KALITEADI<b> </b>SIPARISKALITEADI<b>,</b><font color="# 080 0"><u>SIPARISPROSES</u></font><b>.</b>ADI<b> </b>SIPARISPROSESADI<b>,</b>
+<b>        </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b>  </b>SIPILAVEISLEMLER<b>,</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>MusteriRenkKoduveAdi<b>,</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>BelgeHamAdi<b>,</b>
+<b>        </b><b>cast</b><b> </b><b>(</b><b>case</b><b> </b><b>when</b><b> </b><b>(</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikEnVerilen<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>''''
+<b>               </b><b>else</b><b> </b><font color="# 080 0"><u>format_float</u></font><b>(</b>'0.##'<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikEnVerilen<b> </b><b>)</b>
+<b>               </b><b>end</b><b> </b><b>as</b><b> </b><b>varchar</b><b> </b><b>(</b>30<b>)</b><b>)</b><b> </b>CekmezlikEnVerilenStr<b>,</b>
+<b>        </b><b>cast</b><b> </b><b>(</b><b>case</b><b> </b><b>when</b><b> </b><b>(</b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikBoyVerilen<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>''''
+<b>             </b><b>else</b><b> </b><font color="# 080 0"><u>format_float</u></font><b>(</b>'0.##'<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikBoyVerilen<b>)</b>
+<b>             </b><b>end</b><b> </b><b>as</b><b> </b><b>varchar</b><b> </b><b>(</b>30<b>)</b><b>)</b><b> </b>CekmezlikBoyVerilenStr<b>,</b>
+<b>        </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>OzelTestler<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>OzelApreler<b>,</b><b> </b><b>(</b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Durumu<b> </b><b>&gt;</b><b> </b>4<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BoyaSiparisDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayID<b>)</b><b> </b>ToplamBoyayaCikis<b>,</b>
+<b>        </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>PartilenenKilo<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>IptalKilo<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>SiparisKilo<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>Pus<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>Feine<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>SuIticilik<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>HataPuani1<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>HataPuani2<b>,</b><b> </b><font color="# 080 0"><u>BaskiTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DiagonalSurtme<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DiagonalSurtmeDurumu<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YirtilmaAtki<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YirtilmaAtkiBirimiId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YirtilmaCozgu<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YirtilmaCozguBirimiId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Kopma1BirimiId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Kopma2BirimiId<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Kopma3BirimiId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Titan1BirimiId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Titan2BirimiId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Titan3BirimiId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CaprazLekelemeYikama<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CaprazLekelemeSu<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RenkDegisimiYikama<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RenkDegisimiSu<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YikamaOncesiPaca<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YikamaSonrasiPaca<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YirtilmaWarp<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YirtilmaWeft<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YirtilmaPendulumId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>BirinciElyafId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>BirinciElyafDeger<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>IkinciElyafId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>IkinciElyafDeger<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>OxidativeBleachToneId<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>TukrukHasligiRenkDegisimi<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Iso_12945_2<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DiagonalSurtmeYas<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DiagonalSurtmeKuru<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Pilling12945_1<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Pilling12945_2<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KopmaAtki<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>KopmaCozgu<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YikamaOncesiElastikiyet<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YikamaOncesiRecovery<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YikamaSonrasiElastikiyet<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>YikamaSonrasiRecovery<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DikisAcilimiAtki13936_1<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DikisAcilimiAtki13936_2<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Asindirma1BirimId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Asindirma2BirimId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>Asindirma3BirimId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DikisAcilimi1BirimId<b>,</b>
+<b>        </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DikisAcilimi2BirimId<b>,</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>DikisAcilimi3BirimId
+<b>         </b><b>FROM</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font>
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>PARTISTOK</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PartiSinifId
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>HAM</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>HAM</u></font><b>.</b>HAMID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>HAMID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>KULLANICI</u></font><b> </b>FK1<b> </b><b>ON</b><b> </b>FK1<b>.</b>KULLANICIID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL1KONTROLKULLANICIID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>KULLANICI</u></font><b> </b>FK2<b> </b><b>ON</b><b> </b>FK2<b>.</b>KULLANICIID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL2KONTROLKULLANICIID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>KULLANICI</u></font><b> </b>FO1<b> </b><b>ON</b><b> </b>FO1<b>.</b>KULLANICIID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL1ONAYKULLANICIID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>KULLANICI</u></font><b> </b>FO2<b> </b><b>ON</b><b> </b>FO2<b>.</b>KULLANICIID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FKONTROL2ONAYKULLANICIID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>FIZIKSELPERSTANDARDI</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>FIZIKSELPERSTANDARDI</u></font><b>.</b>FizikselPerStandardiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>FizikselPerStandardiId
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>RENKHASLIKPERSTANDARDI</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>RENKHASLIKPERSTANDARDI</u></font><b>.</b>RenkHaslikPerStandardiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>RenkHaslikPerStandardiId
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>CEKMEZLIKSTANDARDI</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>CEKMEZLIKSTANDARDI</u></font><b>.</b>CekmezlikStandardiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>CekmezlikStandardiId
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>BOYASIPARISDETAYID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BOYASIPARISDETAYID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>BASKITIPI</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>BASKITIPI</u></font><b>.</b>BASKITIPIID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>BASKITIPIID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>SIPARISPROSES</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>SIPARISPROSES</u></font><b>.</b>SIPARISPROSESID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>SIPARISPROSESID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>KURUTMASEKLI</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>KURUTMASEKLI</u></font><b>.</b>KURUTMASEKLIID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>KURUTMASEKLIID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>YIKAMADERECE</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>YIKAMADERECE</u></font><b>.</b>YIKAMADERECEID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>YIKAMADERECEID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>YIKAMAHASLIGITESTI</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>YIKAMAHASLIGITESTI</u></font><b>.</b>YIKAMAHASLIGITESTIID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>YIKAMAHASLIGITESTIID
+<b>      </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>KALITE</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>KALITE</u></font><b>.</b>KALITEID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font><b>.</b>KALITEID
+<b>  </b><b>WHERE</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>AND</b><b> </b><font color="# 080 0"><u>PartiStokFizikKontrol</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b>:APartiAsamalariId
+<b>  </b><b>into</b><b>   </b>:Partikayitid<b>,</b><b> </b>:Partisinifid<b>,</b><b> </b>:Partisirano<b>,</b><b> </b>:Boyasipariskayitid<b>,</b><b> </b>:Boyasiparisdetayid<b>,</b><b> </b>:Boyasiparissarjid<b>,</b>
+<b>         </b>:Boyasiparisbaskiid<b>,</b><b> </b>:Hamid<b>,</b><b> </b>:Prosesid<b>,</b><b> </b>:Kaliteid<b>,</b><b> </b>:Mamulkodu<b>,</b><b> </b>:Hamtipiid<b>,</b><b> </b>:Hamaditoplami<b>,</b>
+<b>         </b>:Birimfiyat<b>,</b><b> </b>:Dovizid<b>,</b><b> </b>:Planlanankilo<b>,</b><b> </b>:Planlananmetre<b>,</b><b> </b>:Planlananadet<b>,</b><b> </b>:Kapadedi<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:Netmiktar<b>,</b>
+<b>         </b>:Brutsevkmiktar<b>,</b><b> </b>:Netsevkmiktar<b>,</b><b> </b>:Brutsarfmiktar<b>,</b><b> </b>:Netsarfmiktar<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>:Adet<b>,</b><b> </b>:Bobinsayisi<b>,</b><b> </b>:Netkilo<b>,</b>
+<b>         </b>:Netmetre<b>,</b><b> </b>:Netadet<b>,</b><b> </b>:Netkapadedi<b>,</b><b> </b>:Denye<b>,</b><b> </b>:Tamamitartildi<b>,</b><b> </b>:Faturakesilecek<b>,</b><b> </b>:Fiyatonayiistensin<b>,</b>
+<b>         </b>:Partipakettenfiyatlandirildi<b>,</b><b> </b>:Fiyatonaylayankullaniciid<b>,</b><b> </b>:Fiyatonaytarihi<b>,</b><b> </b>:Fireorani<b>,</b>
+<b>         </b>:Fireonayikullaniciid<b>,</b><b> </b>:Fireonaytarihi<b>,</b><b> </b>:Fireonaynotu<b>,</b><b> </b>:Firesebeptipiid<b>,</b><b> </b>:Firekararmiktari<b>,</b><b> </b>:Brutsevkkilo<b>,</b>
+<b>         </b>:Brutsevkmetre<b>,</b><b> </b>:Netsevkkilo<b>,</b><b> </b>:Netsevkmetre<b>,</b><b> </b>:Brutsarfkilo<b>,</b><b> </b>:Brutsarfmetre<b>,</b><b> </b>:Netsarfkilo<b>,</b><b> </b>:Netsarfmetre<b>,</b>
+<b>         </b>:Netsevkadet<b>,</b><b> </b>:Netsevkkapadedi<b>,</b><b> </b>:Ilaveyumusatici<b>,</b><b> </b>:Ongorulenen<b>,</b><b> </b>:Ongorulengramaj<b>,</b><b> </b>:Hamnemorani<b>,</b>
+<b>         </b>:Istenenraporboyu<b>,</b><b> </b>:Istenenozeltuse<b>,</b><b> </b>:Enistenen<b>,</b><b> </b>:Gramajistenen<b>,</b><b> </b>:Donmeistenen<b>,</b><b> </b>:Cekmezlikenistenen<b>,</b>
+<b>         </b>:Cekmezlikboyistenen<b>,</b><b> </b>:Yikamahasligiistenen<b>,</b><b> </b>:Durumu<b>,</b><b> </b>:Uniteid<b>,</b><b> </b>:Isletmeicitamir<b>,</b><b> </b>:Partiasamalariid<b>,</b>
+<b>         </b>:Etiketkapadedi<b>,</b><b> </b>:Etiketyazildi<b>,</b><b> </b>:Paketlemesekliid<b>,</b><b> </b>:Ilksevktarihi<b>,</b><b> </b>:Sevktarihi<b>,</b><b> </b>:Gecikmenotu<b>,</b><b> </b>:Gecikmetipiid<b>,</b>
+<b>         </b>:Partistokiptalkayitid<b>,</b><b> </b>:Referanspartisinifid<b>,</b><b> </b>:Hamkontrolnotu<b>,</b><b> </b>:Hamkontroldurumu<b>,</b>:Hamkontrolkullaniciid<b>,</b>
+<b>         </b>:Hamkontroltarihi<b>,</b><b> </b>:Hamkontrolonaydurumu<b>,</b><b> </b>:Hamkontrolonaykullaniciid<b>,</b><b> </b>:Hamkontrolonaytarihi<b>,</b>
+<b>         </b>:Kkbitirenpersonelid<b>,</b><b> </b>:Kkbitistarihi<b>,</b><b> </b>:Kknotu<b>,</b><b> </b>:Sevkoncelikno<b>,</b><b> </b>:Sevknotu<b>,</b><b> </b>:Sevkkendiaracimizla<b>,</b><b> </b>:Ilavesevknotu<b>,</b>
+<b>         </b>:En<b>,</b><b> </b>:Gramaj<b>,</b><b> </b>:Ortalamaen<b>,</b><b> </b>:Ortalamagramaj<b>,</b><b> </b>:Hesaplananfiyat<b>,</b><b> </b>:Hesaplananucretlitamirfiyati<b>,</b>
+<b>         </b>:Hesaplananucretsiztamirfiyati<b>,</b><b> </b>:Maximumfireorani<b>,</b><b> </b>:Tartiicinfireorani<b>,</b><b> </b>:Genelkontrolnotu<b>,</b>
+<b>         </b>:Genelkontrolkullaniciid<b>,</b><b> </b>:Genelkontroltarihi<b>,</b><b> </b>:Tamirtipiid<b>,</b><b> </b>:Firmasevkadresiid<b>,</b><b> </b>:Soncikismiktar<b>,</b>
+<b>         </b>:Soncikiskilo<b>,</b><b> </b>:Soncikismetre<b>,</b><b> </b>:Ickontrol1<b>,</b><b> </b>:Ickontrol2<b>,</b><b> </b>:Ickontrol3<b>,</b><b> </b>:Ickontroladi1<b>,</b><b> </b>:Ickontroladi2<b>,</b>
+<b>         </b>:Ickontroladi3<b>,</b><b> </b>:Arakontrol1<b>,</b><b> </b>:Arakontrol2<b>,</b><b> </b>:Arakontrol3<b>,</b><b> </b>:Arakontroladi1<b>,</b><b> </b>:Arakontroladi2<b>,</b><b> </b>:Arakontroladi3<b>,</b>:Hacimen<b>,</b><b> </b>:Hacimboy<b>,</b><b> </b>:Hacimyukseklik<b>,</b><b> </b>:Birincikalitesevkedilemez<b>,</b><b> </b>:Sarimaciklama<b>,</b><b> </b>:Konikcinsiid<b>,</b><b> </b>:Konikrengiid<b>,</b>
+<b>         </b>:Kkesme<b>,</b><b> </b>:Parcafire<b>,</b><b> </b>:Partilemeonayikullaniciid<b>,</b><b> </b>:Partilemeonaytarihi<b>,</b><b> </b>:Sevkehazirtarihi<b>,</b>
+<b>         </b>:Ipliktartibaslatanpersonelid<b>,</b><b> </b>:Ipliktartibaslamatarihi<b>,</b><b> </b>:Ipliktartibitirenpersonelid<b>,</b><b> </b>:Ipliktartibitistarihi<b>,</b>
+<b>         </b>:Toplamtamamlanmapuani<b>,</b><b> </b>:Tasarimvaryantno<b>,</b><b> </b>:HAMSTOKADI<b>,</b><b> </b>:HamStokDigerAdi<b>,</b><b> </b>:HamStokDigerAdi2<b>,</b><b> </b>:HamStokDigerAdi3<b> </b><b>,</b>
+<b>         </b>:FizikselKontrolKagitTipiId<b>,</b><b> </b>:FizikKontrolEkranTipi<b>,</b>
+<b>         </b>:CekmezlikTestStandardi<b>,</b><b> </b>:FizikselPerStandardiId<b>,</b><b> </b>:RenkHaslikPerStandardiId<b>,</b><b> </b>:CekmezlikStandardiId<b>,</b>
+<b>         </b>:GramajStandardiId<b>,</b><b> </b>:DonmeStandardiId<b>,</b><b> </b>:RKontrolCmcDegeri<b>,</b><b> </b>:RKontrolKanatFarkiDegeri<b>,</b><b> </b>:RKontrolCieBeyazlikDeger<b>,</b>
+<b>         </b>:CikisNemOrani<b>,</b><b> </b>:EnVerilen<b>,</b><b> </b>:GramajVerilen<b>,</b><b> </b>:DonmeVerilen<b>,</b><b> </b>:EnBaskiOncesi<b>,</b><b> </b>:GramajBaskiOncesi<b>,</b><b> </b>:DonmeBaskiOncesi<b>,</b>
+<b>         </b>:CekmezlikEnBaskiOncesi<b>,</b><b> </b>:CekmezlikBoyBaskiOncesi<b>,</b><b> </b>:EnDurumu<b>,</b><b> </b>:GramajDurumu<b>,</b><b> </b>:DonmeDurumu<b>,</b><b> </b>:SonucRaporBoyu<b>,</b>
+<b>         </b>:CekmezlikEnVerilen<b> </b><b>,</b><b> </b>:CEKMEZLIKBOYVERILEN<b>,</b><b> </b>:CekmezlikEnVerilen2<b>,</b><b> </b>:CekmezlikBoyVerilen2<b>,</b><b> </b>:CEKMEZLIK1DURUMU<b>,</b>
+<b>         </b>:CEKMEZLIK2DURUMU<b>,</b>:PILLINGVERILEN<b>,</b><b> </b>:PILLINGVERILENTUR<b>,</b><b> </b>:PILLINGSAAT<b>,</b><b> </b>:PILLINGARKAVERILEN<b>,</b><b> </b>:PILLINGARKAVERILENTUR<b>,</b>
+<b>         </b>:PILLINGARKASAAT<b>,</b><b> </b>:ISIKHASLIGIVERILEN<b>,</b><b> </b>:ISIKHASLIGIVERILENALKALI<b>,</b><b> </b>:ISIKHASLIGIVERILENASIDIK<b>,</b>
+<b>         </b>:ISIKHASLIGIVERILENISLAK<b>,</b><b> </b>:KURUSURTMEHASLIGIVERILEN<b>,</b><b> </b>:YASSURTMEHASLIGIVERILEN<b>,</b><b> </b>:KLORHASLIGIVERILEN<b>,</b>
+<b>         </b>:KURUTEMIZLEMEVERILEN<b>,</b><b> </b>:PATLAMAMUKAVEMETIVERILEN<b>,</b><b> </b>:PATLAMAMUKAVEMETIVERILENMM<b>,</b><b> </b>:PATLAMAMUKAVEMETIVERILENSN<b>,</b>
+<b>         </b>:SARARMAHASLIGIVERILEN<b>,</b><b> </b>:FENOLIKSARARMA<b>,</b><b> </b>:KURUSURTMEHASLIGIVERILENBOY<b>,</b><b> </b>:YASSURTMEHASLIGIVERILENBOY<b>,</b>
+<b>         </b>:KURUSURTMEHASLIGIDURUMUBOY<b>,</b><b> </b>:YASSURTMEHASLIGIDURUMUBOY<b>,</b>:PATLAMAMUKAVEMETIDURUMU<b>,</b><b> </b>:KURUSURTMEHASLIGIDURUMU<b>,</b>
+<b>         </b>:YASSURTMEHASLIGIDURUMU<b>,</b><b> </b>:PILLINGVERILEnDurumu<b>,</b><b> </b>:ISIKHASLIGIVERILEnDurumu<b>,</b><b> </b>:ISIKHASLIGIVERILEnDurumu2<b>,</b>
+<b>         </b>:EXTENSIONMODULEDURUMU<b>,</b><b> </b>:SARARMAHASLIGIDURUMU<b>,</b><b> </b>:DIKISKOLAYLIGIDURUMU<b>,</b><b> </b>:SUEMISI<b>,</b><b> </b>:KURUTMAZAMANI<b>,</b><b> </b>:YHCHANGE<b>,</b>
+<b>         </b>:YHSTAIN<b>,</b><b> </b>:YHSECONDARY<b>,</b><b> </b>:YHBLEACHED<b>,</b><b> </b>:YHNAYLON<b>,</b><b> </b>:YHPOLYESTER<b>,</b><b> </b>:YHAKRELIK<b>,</b><b> </b>:YHYUN<b>,</b><b> </b>:YHDURUMU<b>,</b><b> </b>:KTCHANGE<b>,</b><b> </b>:KTSTAIN<b>,</b>
+<b>         </b>:KTSECONDARY<b>,</b><b> </b>:KTBLEACHED<b>,</b><b> </b>:KTNAYLON<b>,</b><b> </b>:KTPOLYESTER<b>,</b><b> </b>:KTAKRELIK<b>,</b><b> </b>:KTYUN<b>,</b><b> </b>:KTDURUMU<b>,</b><b> </b>:RBCHANGE<b>,</b><b> </b>:RBSTAIN<b>,</b>
+<b>         </b>:RBSECONDARY<b>,</b><b> </b>:RBBLEACHED<b>,</b><b> </b>:RBNAYLON<b>,</b><b> </b>:RBPOLYESTER<b>,</b><b> </b>:RBAKRELIK<b>,</b><b> </b>:RBYUN<b>,</b><b> </b>:RBDURUMU<b>,</b><b> </b>:SHCHANGE<b>,</b><b> </b>:SHSTAIN<b>,</b>
+<b>         </b>:SHSECONDARY<b>,</b><b> </b>:SHBLEACHED<b>,</b><b> </b>:SHNAYLON<b>,</b><b> </b>:SHPOLYESTER<b>,</b><b> </b>:SHAKRELIK<b>,</b><b> </b>:SHYUN<b>,</b><b> </b>:SHDURUMU<b>,</b><b> </b>:THALKALICHANGE<b>,</b>
+<b>         </b>:THALKALIASTAIN<b>,</b><b> </b>:THALKALISECONDARY<b>,</b><b> </b>:THALKALIBLEACHED<b>,</b><b> </b>:THALKALINAYLON<b>,</b><b> </b>:THALKALIPOLYESTER<b>,</b><b> </b>:THALKALIAKRELIK<b>,</b>
+<b>         </b>:THALKALIYUN<b>,</b><b> </b>:THALKALIDURUMU<b>,</b><b> </b>:THASIDIKCHANGE<b>,</b><b> </b>:THASIDIKASTAIN<b>,</b><b> </b>:THASIDIKSECONDARY<b>,</b><b> </b>:THASIDIKBLEACHED<b>,</b>
+<b>         </b>:THASIDIKNAYLON<b>,</b><b> </b>:THASIDIKPOLYESTER<b>,</b><b> </b>:THASIDIKAKRELIK<b>,</b><b> </b>:THASIDIKYUN<b>,</b><b> </b>:THASIDIKDURUMU<b>,</b><b> </b>:EXTENSIONMODULEEN<b>,</b>
+<b>         </b>:EXTENSIONMODULEBOY<b>,</b><b> </b>:EXTENSIONMODULEPH<b>,</b><b> </b>:OXIDATIVEBLEACH<b>,</b><b> </b>:PERBORAT<b>,</b><b> </b>:MODULUSEN<b>,</b><b> </b>:MODULUSBOY<b>,</b><b> </b>:KALICIUZAMAEN<b>,</b>
+<b>         </b>:KALICIUZAMABOY<b>,</b><b> </b>:OXIDATIVEBLEACHDURUMU<b>,</b><b> </b>:PERBORATDURUMU<b>,</b><b> </b>:MODULUSDURUMU<b>,</b><b> </b>:KALICIUZAMADURUMU<b>,</b><b> </b>:SURTUNMEKATSAYISI<b>,</b>
+<b>         </b>:REFERANSACIKLAMA<b>,</b><b> </b>:ABRAJ<b>,</b><b> </b>:ICDISKONTROL<b>,</b><b> </b>:OLCULENNE<b>,</b><b> </b>:FKONTROL1KONTROLDURUMU<b>,</b><b> </b>:FKONTROL1KONTROLTARIHI<b>,</b>
+<b>         </b>:FKONTROL1KONTROLKULLANICIID<b>,</b><b> </b>:FKONTROL1ONAYDURUMU<b>,</b><b> </b>:FKONTROL1ONAYTARIHI<b>,</b><b> </b>:FKONTROL1ONAYKULLANICIID<b>,</b>
+<b>         </b>:FKONTROL2KONTROLDURUMU<b>,</b><b> </b>:FKONTROL2KONTROLTARIHI<b>,</b><b> </b>:FKONTROL2KONTROLKULLANICIID<b>,</b><b> </b>:FKONTROL2ONAYDURUMU<b>,</b>
+<b>         </b>:FKONTROL2ONAYTARIHI<b>,</b><b> </b>:FKONTROL2ONAYKULLANICIID<b>,</b><b> </b>:FIZIKSELKONTROLNOTU<b>,</b><b> </b>:FIZIKSELKONTROLNOTU2<b>,</b><b> </b>:SONKAYIT<b>,</b>
+<b>         </b>:KULLANICIID<b>,</b><b> </b>:DEGISIMTARIHI<b>,</b><b> </b>:SALCHANGE<b>,</b><b> </b>:SALSTAIN<b>,</b><b> </b>:SALSECONDARY<b>,</b><b> </b>:SALBLEACHED<b>,</b><b> </b>:SALNAYLON<b>,</b>
+<b>         </b>:SALPOLYESTER<b>,</b><b> </b>:SALAKRELIK<b>,</b><b> </b>:SALYUN<b>,</b><b> </b>:SALDURUMU<b>,</b><b> </b>:PH1<b>,</b><b> </b>:PH2<b>,</b><b> </b>:PH3<b>,</b><b> </b>:MIGRASYONCHANGE<b>,</b><b> </b>:MIGRASYONSTAIN<b>,</b>
+<b>         </b>:MIGRASYONSECONDARY<b>,</b><b> </b>:MIGRASYONBLEACHED<b>,</b><b> </b>:MIGRASYONNAYLON<b>,</b><b> </b>:MIGRASYONPOLYESTER<b>,</b><b> </b>:MIGRASYONAKRELIK<b>,</b><b> </b>:MIGRASYONYUN<b>,</b>
+<b>         </b>:MIGRASYONDURUMU<b>,</b><b> </b>:GECIRGENLIK<b>,</b><b> </b>:ISICEKMEZLIKENISTENEN<b>,</b><b> </b>:ISICEKMEZLIKBOYISTENEN<b>,</b><b> </b>:ISICEKMEZLIKENSONUC<b>,</b>
+<b>         </b>:ISICEKMEZLIKBOYSONUC<b>,</b><b> </b>:KLORLUSUHASLIGI<b>,</b><b> </b>:DENIZSUYUHASLIGI<b>,</b><b> </b>:TERLIISIKHASLIGI<b>,</b><b> </b>:SUITICI<b>,</b><b> </b>:YAGITICI<b>,</b><b> </b>:KOPMA1<b>,</b>
+<b>         </b>:KOPMA2<b>,</b><b> </b>:KOPMA3<b>,</b><b> </b>:DIKISACILIMI1<b>,</b><b> </b>:DIKISACILIMI2<b>,</b><b> </b>:DIKISACILIMI3<b>,</b><b> </b>:PACAKESMESI<b>,</b><b> </b>:TITAN1<b>,</b><b> </b>:TITAN2<b>,</b><b> </b>:TITAN3<b>,</b>
+<b>         </b>:ASINDIRMA1<b>,</b><b> </b>:ASINDIRMA2<b>,</b><b> </b>:ASINDIRMA3<b>,</b><b> </b>:BONCUKLAMAPEELING<b>,</b><b> </b>:ESNEKLIK<b>,</b><b> </b>:KALICIUZAMA<b>,</b><b> </b>:NUMUNEGIDISTARIHI<b>,</b>
+<b>         </b>:NUMUNEGONDERENKULLANICIID<b>,</b><b> </b>:NUMUNENOTU<b>,</b><b> </b>:ELASTIKIYETEN<b>,</b><b> </b>:ELASTIKIYETBOY<b>,</b><b> </b>:NUMUNEGONDERILDI<b>,</b><b> </b>:SANSVERILEN<b>,</b>
+<b>         </b>:SANSVERILEN2<b>,</b><b> </b>:ELASTIKIYETENISTENEN<b>,</b>:ELASTIKIYETBOYISTENEN<b>,</b>:SANSISTENEN<b>,</b>:FKONTROL1KONTROLKULLANICIADI<b>,</b>
+<b>         </b>:FKONTROL2KONTROLKULLANICIADI<b>,</b>:FKONTROL1ONAYKULLANICIADI<b>,</b>:FKONTROL2ONAYKULLANICIADI<b>,</b>:FIZIKSELPERSTANDARDIADI<b>,</b>
+<b>         </b>:RENKHASLIKPERSTANDARDIADI<b>,</b>:CEKMEZLIKSTANDARDIADI<b>,</b>:KURUTMASEKLIADI<b>,</b>:YIKAMADERECE<b>,</b>:YIKAMAHASLIGITESTIADI<b>,</b>:SIPARISKALITEID<b>,</b>
+<b>         </b>:MUSTERISIPARISNO<b>,</b>:MUSTERIKALITEADI<b>,</b>:SIPARISNOTU<b>,</b>:SIPARISPLANLAMANOTU<b>,</b>:SIPARISKALITEADI<b>,</b>:SIPARISPROSESADI<b>,</b>
+<b>         </b>:SIPILAVEISLEMLER<b>,</b><b> </b>:MusteriRenkKoduveAdi<b>,</b><b> </b>:BelgeHamAdi<b>,</b><b> </b>:CekmezlikEnVerilenStr<b>,</b>:CekmezlikBoyVerilenStr<b>,</b><b>:</b><b> </b>OzelTestler<b>,</b>:OzelApreler<b>,</b>
+<b>         </b>:TOPLAMBOYAYACIKIS<b>,</b><b> </b>:PARTILENENKILO<b>,</b><b> </b>:IptalKilo<b>,</b><b> </b>:SIPARISKILO<b>,</b><b> </b>:PUS<b>,</b><b> </b>:FEINE<b>,</b><b> </b>:SuIticilikTesti<b>,</b><b> </b>:HataPuani1<b>,</b><b> </b>:HataPuani2<b>,</b><b> </b>:BaskiTipiAdi<b>,</b>
+<b>         </b>:DiagonalSurtme<b>,</b><b> </b>:DiagonalSurtmeDurumu<b>,</b><b> </b>:YirtilmaAtki<b>,</b><b> </b>:YirtilmaAtkiBirimiId<b>,</b><b> </b>:YirtilmaCozgu<b>,</b><b> </b>:YirtilmaCozguBirimiId<b>,</b><b> </b>:Kopma1BirimiId<b>,</b><b> </b>:Kopma2BirimiId<b>,</b>
+<b>         </b>:Kopma3BirimiId<b>,</b><b> </b>:Titan1BirimiId<b>,</b><b> </b>:Titan2BirimiId<b>,</b><b> </b>:Titan3BirimiId<b>,</b><b> </b>:CaprazLekelemeYikama<b>,</b><b> </b>:CaprazLekelemeSu<b>,</b><b> </b>:RenkDegisimiYikama<b>,</b><b> </b>:RenkDegisimiSu<b>,</b><b> </b>:YikamaOncesiPaca<b>,</b>
+<b>         </b>:YikamaSonrasiPaca<b>,</b><b> </b>:YirtilmaWarp<b>,</b><b> </b>:YirtilmaWeft<b>,</b><b> </b>:YirtilmaPendulumId<b>,</b><b> </b>:BirinciElyafId<b>,</b><b> </b>:BirinciElyafDeger<b>,</b><b> </b>:IkinciElyafId<b>,</b><b> </b>:IkinciElyafDeger<b>,</b><b> </b>:OxidativeBleachToneId<b>,</b>
+<b>         </b>:TukrukHasligiRenkDegisimi<b>,</b><b> </b>:Iso_12945_2<b>,</b><b>  </b>:DiagonalSurtmeYas<b>,</b><b> </b>:DiagonalSurtmeKuru<b>,</b><b> </b>:Pilling12945_1<b>,</b><b> </b>:Pilling12945_2<b>,</b><b> </b>:KopmaAtki<b>,</b><b> </b>:KopmaCozgu<b>,</b><b> </b>:YikamaOncesiElastikiyet<b>,</b>
+<b>         </b>:YikamaOncesiRecovery<b>,</b><b> </b>:YikamaSonrasiElastikiyet<b>,</b><b> </b>:YikamaSonrasiRecovery<b>,</b><b> </b>:DikisAcilimiAtki13936_1<b>,</b><b> </b>:DikisAcilimiAtki13936_2<b>,</b>
+<b>         </b>:Asindirma1BirimId<b>,</b><b> </b>:Asindirma2BirimId<b>,</b><b> </b>:Asindirma3BirimId<b>,</b><b> </b>:DikisAcilimi1BirimId<b>,</b><b> </b>:DikisAcilimi2BirimId<b>,</b><b> </b>:DikisAcilimi3BirimId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>PartilenenMiktardanIptaliDus<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b>PartilenenKilo<b> </b><b>=</b><b> </b>PartilenenKilo<b> </b><b>-</b><b> </b>IptalKilo<b>;</b>
+
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="FIYATONAYISTENSINMI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="FOREIGNKEYVARMI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

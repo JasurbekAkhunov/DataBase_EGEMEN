@@ -1,0 +1,409 @@
+<HTML>
+<HEAD>
+<TITLE>ENMOSDOZAJLAMAISEMRIGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="508800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ENERJISARFIYATRAPORUHAZIRLA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ENMOSICINRECETEGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ENMOSDOZAJLAMAISEMRIGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARECETEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTIASAMALARIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">HEADERSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(4000)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DYELOT</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GONDERILDI_</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ENMOSDOZAJLAMAISEMRIGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ENMOSDOZAJLAMAISEMRIGETIR</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARECETEID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>APARTIASAMALARIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>HEADERSTR<b> </b><b>VARCHAR</b><b>(</b>4000<b>)</b><b>,</b>
+<b>    </b>DYELOT<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>GONDERILDI_<b> </b><b>SMALLINT</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FReceteIsEmriYil<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FReceteIsEmriId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSira<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RYDozajlamaIsEmriNoOlustur<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EgemenFirmaID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIsEmriYil<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIsEmriId<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiKayitId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FArgeNo<b>                </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiYil<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiId<b>               </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFirmaId<b>               </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFirmaAdi<b>              </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFirmaKisaAdi<b>           </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiAsamalariId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FReceteTarihi<b>          </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGirisKilo<b>             </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGirisMetre<b>            </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGirisMiktar<b>           </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBoyaSiparisYil<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBoyaSiparisId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSiparisGrupId<b>         </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSiparisGrupAdi<b>        </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSiparisGrup2Id<b>        </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSiparisGrup2Adi<b>       </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTerminTarihi<b>          </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBanyoCarpani<b>          </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBanyoCarpani2<b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBanyoCarpani3<b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBanyoCarpani4<b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFularBasinci<b>          </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKoyultma<b>              </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDurulamaSuyu<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBoyaSuyu<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBoyamaSeviyesi<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGrupProsesNo<b>          </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGrupProsesAdi<b>         </b><b>varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPlanlananMakinaId<b>     </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPlanlananOtomasyonMakinaNo<b>     </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiNotu<b>             </b><b>Blob</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FProsesNotu<b>            </b><b>Blob</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDozajlamayaGonderildi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIslemTipiID<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIslemTipiAdi<b>          </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStoktanDusuldu<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStoktanDusmeTarihi<b>    </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHamStokFlotteCarpani<b>  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIDSure<b>                </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDISure<b>                </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPompaHizID<b>            </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPompaHizDI<b>            </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFarkBasincID<b>          </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFarkBasincDI<b>          </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAkisID<b>                </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAkisDI<b>                </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFularHavaBasinci<b>     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBoyaMetodu<b>           </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFularLitre<b>           </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSiparisGrup3Id<b>       </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSiparisGrup3Adi<b>      </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSiparisGrup4Id<b>       </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSiparisGrup4Adi<b>      </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFason<b>                </b><b>smallint</b><b>;</b>
+
+<font color="# 0 0FF"><i>/*Dozajlama ,is emri getir*/</i></font>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDozajlamaIsEmriID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGonderildi<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOtomasyonMakinaNo<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiNoStr<b>        </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStatus<b>            </b><b>integer</b><b>;</b><b> </b><font color="# 0 0FF"><i>/* 0 yeni, 1 update */</i></font>
+<b>declare</b><b> </b><b>variable</b><b> </b>FReceteId<b>          </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTuzMiktari<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSoda1Miktar<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSoda2Miktar<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSoda3Miktar<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FInsertTarihi<b>      </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FEnIstenen<b>         </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGramajIstenen<b>     </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FYikamaOncesiEn<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FYikamaOncesiGramaj<b>   </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOnFikseAsamasiVar<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOnFikseCikisEn<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOnFikseCikisGramaj<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBuyukPartiSinifId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPompaDegeri<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAsamaPompaDegeri<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTur<b>             </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAsamaTur<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKuleHizi<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKumastakiSu<b>     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIlaveMiktar<b>     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIlaveMiktar2<b>     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIlaveMiktar3<b>     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIlaveMiktar4<b>     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMakinaOtomasyonGrupId<b>    </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHesaplananEn<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHesaplananGramaj<b>   </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAsamaKumastakiSu<b>    </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAsamaIlaveMiktar<b>    </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FGozUzunlugu<b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIslaklikOrani<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIcTamburHizi<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FYikamaKatSayisi<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDevirliCalismaHizi<b>  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMakinaIciYikama<b>     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAsamaKuleHizi<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStokGrupId<b>          </b><b>VarChar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFtpHost<b>             </b><b>varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFtpUserName<b>         </b><b>varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFtpPass<b>             </b><b>varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFtpDosyaYolu<b>        </b><b>varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIlaveTankHacmi<b>      </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFloteOraniYikama<b>    </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMaxKuleHizi<b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTuzCarpani<b>          </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDuze<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFSuTipiArtiTuz<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDozajlamaGrupDegerID<b>  </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDozajlamaGrupDegerAdi<b> </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTupSayisi<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFanGucu<b>               </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTork<b>                  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiTamirID<b>          </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FYikamaSeviyesi<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDuzeBasinci<b>           </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMakinaId<b>              </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSodaSayisi<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKostikSayisi<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAkuple<b>               </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSoda1IlaveMiktarOrani<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSoda2IlaveMiktarOrani<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSoda3IlaveMiktarOrani<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSulfatMiktar<b>          </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAlkaliMiktari<b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSiviKostikMiktari<b>     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBoyaGrubuIlaveMiktarOrani<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAlkaliKatsayi<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKostikKatsayi<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAlkaliSayisi<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FloteORani<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FloteORani2<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FloteORani3<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FloteORani4<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Miktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Birincisoda<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IkinciSoda<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSuyu<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AKOran<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RKOran<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AKBoyaOrani<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RKLitre<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RKBoyaOrani<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RKYumusatmaOrani<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AKYumusatmaOrani<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AKYikamaOrani<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RKYikamaOrani<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SulfatMiktar<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AKPolyBoyaOrani<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SiviKostikMiktari<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AKPolyYikamaOrani<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IstenenGramaj<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TuzCarpani<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TuzMiktari<b> </b><b>double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiNoStr<b>    </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFirmaKoduveyaAdi<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<font color="# 0 0FF"><i>/* iniden gelen parametreler */</i></font>
+<b>declare</b><b> </b><b>variable</b><b> </b>FYilTam<b>       </b><b>integer</b><b> </b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCustomer<b>     </b><b>integer</b><b> </b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiTabloTipi<b>  </b><b>integer</b><b> </b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFTuzCarpani<b>  </b><b>integer</b><b> </b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTuzSulfatBastan<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSlavemachine<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUstAsamaAdi<b> </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIslemGrubuAdi<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIsEmriPartiIdStr<b> </b><b>varchar</b><b>(</b>200<b>)</b><b>;</b>
+
+<font color="# 0 0FF"><i>/*Önceki output*/</i></font>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>ExternalDyelot<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Machine<b>        </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Customer<b>       </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Article<b>        </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Recipeno<b>       </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrderNo<b>        </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Color<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ColourNo<b>       </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ColourDescript<b> </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Text1<b>          </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Text2<b>          </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Text3<b>          </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Text4<b>          </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Text5<b>          </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Weight<b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Liquorratio<b>    </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Liquorquantity<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ImportState<b>    </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StartConfirm<b>   </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EndConfirm<b>     </b><b>smallint</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>Coupling<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Slavemachine1<b>  </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b><b> </b><font color="# 0 0FF"><i>/*Son karakteri _ olanı insert e dahil etmiyecek*/</i></font>
+<b>declare</b><b> </b><b>variable</b><b> </b>Note1<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Note2<b> </b><b>varchar</b><b>(</b>60<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Note3<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Note4<b> </b><b>varchar</b><b>(</b>60<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Note5<b> </b><b>varchar</b><b>(</b>60<b>)</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MachineGroup<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Flote<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Programno<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Programnoflote<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BirimID<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RenkKodu<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>R_<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>G_<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>B_<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDozajlamaProgramNo<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ProgramNoStr<b> </b><b>varchar</b><b>(</b>250<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>Egemenfirmaid<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>into</b><b> </b>:EgemenFirmaId<b>;</b>
+
+<b>  </b>FYilTam<b> </b><b>=</b>0<b>;</b><b> </b><font color="# 0 0FF"><i>/* bu parametre iniden geliyordu , farklı bir değer için EgemenFirmaId ye göre belirlenmesi gerekir */</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b>EgemenFirmaId<b> </b><b>=</b><b> </b>120<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>--Sadirlar</i></font>
+<b>    </b>FCustomer<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>else</b>
+<b>    </b>FCustomer<b> </b><b>=</b><b> </b>0<b>;</b><b> </b><font color="# 0 0FF"><i>/* bu parametre iniden geliyordu , farklı bir değer için EgemenFirmaId ye göre belirlenmesi gerekir */</i></font>
+
+<b>  </b>FFTuzCarpani<b> </b><b>=</b><b> </b>1<b>;</b><b> </b><font color="# 0 0FF"><i>/* bu parametre iniden geliyordu , farklı bir değer için EgemenFirmaId ye göre belirlenmesi gerekir */</i></font>
+
+<b>  </b><b>Select</b><b> </b>DozajlamaIsEmriID<b>,</b><b> </b>Gonderildi<b>,</b><b> </b>OtomasyonMakinaNo<b>,</b><b> </b>PartiNoStr<b>,</b><b> </b>Status<b>,</b><b> </b>ReceteId<b>,</b><b> </b>TuzMiktari<b>,</b><b> </b>Soda1Miktar<b>,</b><b> </b>Soda2Miktar<b>,</b><b> </b>Soda3Miktar<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>EnIstenen<b>,</b><b> </b>GramajIstenen<b>,</b>
+<b>         </b>YikamaOncesiEn<b>,</b><b> </b>YikamaOncesiGramaj<b>,</b><b> </b>OnFikseAsamasiVar<b>,</b><b> </b>OnFikseCikisEn<b>,</b><b> </b>OnFikseCikisGramaj<b>,</b><b> </b>BuyukPartiSinifId<b>,</b><b> </b>PompaDegeri<b>,</b><b> </b>AsamaPompaDegeri<b>,</b><b> </b>Tur<b>,</b><b> </b>AsamaTur<b>,</b><b> </b>KuleHizi<b>,</b><b> </b>KumastakiSu<b>,</b>
+<b>         </b>IlaveMiktar<b>,</b><b> </b>IlaveMiktar2<b>,</b><b> </b>IlaveMiktar3<b>,</b><b> </b>IlaveMiktar4<b>,</b><b> </b>MakinaOtomasyonGrupId<b>,</b><b> </b>HesaplananEn<b>,</b><b> </b>HesaplananGramaj<b>,</b><b> </b>AsamaKumastakiSu<b>,</b><b> </b>AsamaIlaveMiktar<b>,</b><b> </b>GozUzunlugu<b>,</b><b> </b>IslaklikOrani<b>,</b>
+<b>         </b>IcTamburHizi<b>,</b><b> </b>YikamaKatSayisi<b>,</b><b> </b>DevirliCalismaHizi<b>,</b><b> </b>MakinaIciYikama<b>,</b><b> </b>AsamaKuleHizi<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>FtpHost<b>,</b><b> </b>FtpUserName<b>,</b><b> </b>FtpPass<b>,</b><b> </b>FtpDosyaYolu<b>,</b><b> </b>IlaveTankHacmi<b>,</b><b> </b>FloteOraniYikama<b>,</b>
+<b>         </b>MaxKuleHizi<b>,</b><b> </b>TuzCarpani<b>,</b><b> </b>Duze<b>,</b><b> </b>SuTipiArtiTuz<b>,</b><b> </b>DozajlamaGrupDegerID<b>,</b><b> </b>DozajlamaGrupDegerAdi<b>,</b><b> </b>TupSayisi<b>,</b><b> </b>FanGucu<b>,</b><b> </b>Tork<b>,</b><b> </b>PartiTamirID<b>,</b><b> </b>YikamaSeviyesi<b>,</b><b> </b>DuzeBasinci<b>,</b><b> </b>MakinaId<b>,</b>
+<b>         </b>SodaSayisi<b>,</b><b> </b>KostikSayisi<b>,</b><b> </b>Akuple<b>,</b><b> </b>Soda1IlaveMiktarOrani<b>,</b><b> </b>Soda2IlaveMiktarOrani<b>,</b><b> </b>Soda3IlaveMiktarOrani<b>,</b><b> </b>SulfatMiktar<b>,</b><b> </b>AlkaliMiktari<b>,</b><b> </b>SiviKostikMiktari<b>,</b><b> </b>BoyaGrubuIlaveMiktarOrani<b>,</b>
+<b>         </b>AlkaliKatsayi<b>,</b><b> </b>KostikKatsayi<b>,</b><b> </b>AlkaliSayisi<b>,</b><b> </b>IsEmriPartiIdStr
+<b>  </b><b>from</b><b>  </b><font color="# 080 0"><u>DozajlamaIsEmriGetir</u></font><b>(</b>:APartiAsamalariId<b>)</b>
+<b>  </b><b>into</b><b>   </b>:FDozajlamaIsEmriID<b>,</b><b> </b>:FGonderildi<b>,</b><b> </b>:FOtomasyonMakinaNo<b>,</b><b> </b>:FPartiNoStr<b>,</b><b> </b>:FStatus<b>,</b><b> </b>:FReceteId<b>,</b><b> </b>:FTuzMiktari<b>,</b><b> </b>:FSoda1Miktar<b>,</b><b> </b>:FSoda2Miktar<b>,</b><b> </b>:FSoda3Miktar<b>,</b><b> </b>:FInsertTarihi<b>,</b><b> </b>:FEnIstenen<b>,</b><b> </b>:FGramajIstenen<b>,</b>
+<b>         </b>:FYikamaOncesiEn<b>,</b><b> </b>:FYikamaOncesiGramaj<b>,</b><b> </b>:FOnFikseAsamasiVar<b>,</b><b> </b>:FOnFikseCikisEn<b>,</b><b> </b>:FOnFikseCikisGramaj<b>,</b><b> </b>:FBuyukPartiSinifId<b>,</b><b> </b>:FPompaDegeri<b>,</b><b> </b>:FAsamaPompaDegeri<b>,</b><b> </b>:FTur<b>,</b><b> </b>:FAsamaTur<b>,</b><b> </b>:FKuleHizi<b>,</b><b> </b>:FKumastakiSu<b>,</b>
+<b>         </b>:FIlaveMiktar<b>,</b><b> </b>:FIlaveMiktar2<b>,</b><b> </b>:FIlaveMiktar3<b>,</b><b> </b>:FIlaveMiktar4<b>,</b><b> </b>:FMakinaOtomasyonGrupId<b>,</b><b> </b>:FHesaplananEn<b>,</b><b> </b>:FHesaplananGramaj<b>,</b><b> </b>:FAsamaKumastakiSu<b>,</b><b> </b>:FAsamaIlaveMiktar<b>,</b><b> </b>:FGozUzunlugu<b>,</b><b> </b>:FIslaklikOrani<b>,</b>
+<b>         </b>:FIcTamburHizi<b>,</b><b> </b>:FYikamaKatSayisi<b>,</b><b> </b>:FDevirliCalismaHizi<b>,</b><b> </b>:FMakinaIciYikama<b>,</b><b> </b>:FAsamaKuleHizi<b>,</b><b> </b>:FStokGrupId<b>,</b><b> </b>:FFtpHost<b>,</b><b> </b>:FFtpUserName<b>,</b><b> </b>:FFtpPass<b>,</b><b> </b>:FFtpDosyaYolu<b>,</b><b> </b>:FIlaveTankHacmi<b>,</b><b> </b>:FFloteOraniYikama<b>,</b>
+<b>         </b>:FMaxKuleHizi<b>,</b><b> </b>:FTuzCarpani<b>,</b><b> </b>:FDuze<b>,</b><b> </b>:FFSuTipiArtiTuz<b>,</b><b> </b>:FDozajlamaGrupDegerID<b>,</b><b> </b>:FDozajlamaGrupDegerAdi<b>,</b><b> </b>:FTupSayisi<b>,</b><b> </b>:FFanGucu<b>,</b><b> </b>:FTork<b>,</b><b> </b>:FPartiTamirID<b>,</b><b> </b>:FYikamaSeviyesi<b>,</b><b> </b>:FDuzeBasinci<b>,</b><b> </b>:FMakinaId<b>,</b>
+<b>         </b>:FSodaSayisi<b>,</b><b> </b>:FKostikSayisi<b>,</b><b> </b>:FAkuple<b>,</b><b> </b>:FSoda1IlaveMiktarOrani<b>,</b><b> </b>:FSoda2IlaveMiktarOrani<b>,</b><b> </b>:FSoda3IlaveMiktarOrani<b>,</b><b> </b>:FSulfatMiktar<b>,</b><b> </b>:FAlkaliMiktari<b>,</b><b> </b>:FSiviKostikMiktari<b>,</b><b> </b>:FBoyaGrubuIlaveMiktarOrani<b>,</b>
+<b>         </b>:FAlkaliKatsayi<b>,</b><b> </b>:FKostikKatsayi<b>,</b><b> </b>:FAlkaliSayisi<b>,</b><b> </b>FIsEmriPartiIdStr<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>First</b><b> </b>1<b> </b>IsEmriYil<b>,</b><b> </b>IsEmriId<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>ArgeNo<b>,</b><b> </b>PartiYil<b>,</b><b> </b>PartiId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>FirmaAdi<b>,</b><b> </b>FirmaKisaAdi<b>,</b><b> </b>PartiAsamalariId<b>,</b><b> </b>ReceteTarihi<b>,</b><b> </b>GirisKilo<b>,</b>
+<b>         </b>GirisMetre<b>,</b><b> </b>GirisMiktar<b>,</b><b> </b>BoyaSiparisYil<b>,</b><b> </b>BoyaSiparisId<b>,</b><b> </b>SiparisGrupId<b>,</b><b> </b>SiparisGrupAdi<b>,</b><b> </b>SiparisGrup2Id<b>,</b><b> </b>SiparisGrup2Adi<b>,</b><b> </b>TerminTarihi<b>,</b><b> </b>BanyoCarpani<b>,</b>
+<b>         </b>BanyoCarpani2<b>,</b><b> </b>BanyoCarpani3<b>,</b><b> </b>BanyoCarpani4<b>,</b><b> </b>FularBasinci<b>,</b><b> </b>Koyultma<b>,</b><b> </b>DurulamaSuyu<b>,</b><b> </b>BoyaSuyu<b>,</b><b> </b>BoyamaSeviyesi<b>,</b><b> </b>GrupProsesNo<b>,</b><b> </b>GrupProsesAdi<b>,</b>
+<b>         </b>PlanlananMakinaId<b>,</b><b> </b>PlanlananOtomasyonMakinaNo<b>,</b><b> </b>PartiNotu<b>,</b><b> </b>ProsesNotu<b>,</b><b> </b>DozajlamayaGonderildi<b>,</b><b> </b>IslemTipiID<b>,</b><b> </b>IslemTipiAdi<b>,</b><b> </b>StoktanDusuldu<b>,</b><b> </b>StoktanDusmeTarihi<b>,</b>
+<b>         </b>HamStokFlotteCarpani<b>,</b><b> </b>IDSure<b>,</b><b> </b>DISure<b>,</b><b> </b>PompaHizID<b>,</b><b> </b>PompaHizDI<b>,</b><b> </b>FarkBasincID<b>,</b><b> </b>FarkBasincDI<b>,</b><b> </b>AkisID<b>,</b><b> </b>AkisDI<b>,</b><b> </b>FularHavaBasinci<b>,</b><b> </b>BoyaMetodu<b>,</b><b> </b>FularLitre<b>,</b>
+<b>         </b>SiparisGrup3Id<b>,</b><b> </b>SiparisGrup3Adi<b>,</b><b> </b>SiparisGrup4Id<b>,</b><b> </b>SiparisGrup4Adi<b>,</b><b> </b>Fason<b>,</b><b> </b>IslemGrubuAdi
+<b>   </b><b>from</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_1</u></font><b>(</b>:APartiKayitId<b>,</b><b> </b>:AReceteId<b>,</b><b> </b>:APartiAsamalariId<b>)</b>
+<b>   </b><b>into</b><b>  </b>:FIsEmriYil<b>,</b><b> </b>:FIsEmriId<b>,</b><b> </b>:FPartiKayitId<b>,</b><b> </b>:FArgeNo<b>,</b><b> </b>:FPartiYil<b>,</b><b> </b>:FPartiId<b>,</b><b> </b>:FFirmaId<b>,</b><b> </b>:FFirmaAdi<b>,</b><b> </b>:FFirmaKisaAdi<b>,</b><b> </b>:FPartiAsamalariId<b>,</b><b> </b>:FReceteTarihi<b>,</b><b> </b>:FGirisKilo<b>,</b>
+<b>         </b>:FGirisMetre<b>,</b><b> </b>:FGirisMiktar<b>,</b><b> </b>:FBoyaSiparisYil<b>,</b><b> </b>:FBoyaSiparisId<b>,</b><b> </b>:FSiparisGrupId<b>,</b><b> </b>:FSiparisGrupAdi<b>,</b><b> </b>:FSiparisGrup2Id<b>,</b><b> </b>:FSiparisGrup2Adi<b>,</b><b> </b>:FTerminTarihi<b>,</b><b> </b>:FBanyoCarpani<b>,</b>
+<b>         </b>:FBanyoCarpani2<b>,</b><b> </b>:FBanyoCarpani3<b>,</b><b> </b>:FBanyoCarpani4<b>,</b><b> </b>:FFularBasinci<b>,</b><b> </b>:FKoyultma<b>,</b><b> </b>:FDurulamaSuyu<b>,</b><b> </b>:FBoyaSuyu<b>,</b><b> </b>:FBoyamaSeviyesi<b>,</b><b> </b>:FGrupProsesNo<b>,</b><b> </b>:FGrupProsesAdi<b>,</b>
+<b>         </b>:FPlanlananMakinaId<b>,</b><b> </b>:FPlanlananOtomasyonMakinaNo<b>,</b><b> </b>:FPartiNotu<b>,</b><b> </b>:FProsesNotu<b>,</b><b> </b>:FDozajlamayaGonderildi<b>,</b><b> </b>:FIslemTipiID<b>,</b><b> </b>:FIslemTipiAdi<b>,</b><b> </b>:FStoktanDusuldu<b>,</b><b> </b>:FStoktanDusmeTarihi<b>,</b>
+<b>         </b>:FHamStokFlotteCarpani<b>,</b><b> </b>:FIDSure<b>,</b><b> </b>:FDISure<b>,</b><b> </b>:FPompaHizID<b>,</b><b> </b>:FPompaHizDI<b>,</b><b> </b>:FFarkBasincID<b>,</b><b> </b>:FFarkBasincDI<b>,</b><b> </b>:FAkisID<b>,</b><b> </b>:FAkisDI<b>,</b><b> </b>:FFularHavaBasinci<b>,</b><b> </b>:FBoyaMetodu<b>,</b><b> </b>:FFularLitre<b>,</b>
+<b>         </b>:FSiparisGrup3Id<b>,</b><b> </b>:FSiparisGrup3Adi<b>,</b><b> </b>:FSiparisGrup4Id<b>,</b><b> </b>:FSiparisGrup4Adi<b>,</b><b> </b>:FFason<b>,</b><b> </b>:FIslemGrubuAdi<b>;</b>
+
+<b>  </b><font color="# 0 0FF"><i>/*Dyelot ve machine program tarafında kullaniliyor, dokunma!!!*/</i></font>
+<b>  </b>Dyelot<b>   </b><b>=</b><b> </b>FDozajlamaIsEmriID<b>;</b><b> </b><font color="# 0 0FF"><i>/* İşEmriNo */</i></font>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>slavemachine<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Makina</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaId<b> </b><b>=</b><b> </b>:FMakinaID<b> </b><b>into</b><b> </b>:FSlavemachine<b>;</b>
+
+<b>  </b>Machine<b>  </b><b>=</b><b> </b><b>coalesce</b><b>(</b>FOtomasyonMakinaNo<b>,</b>''<b>)</b><b>;</b><b> </b><font color="# 0 0FF"><i>/* OtomasyonMakineKodu*/</i></font>
+<b>  </b>MachineGroup<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>Flote<b> </b><b>=</b><b> </b>FBanyoCarpani<b>;</b>
+
+<b>  </b>ProgramNoStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>for</b><b>  </b><b>select</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b>.</b>DozajlamaProgramNo<b> </b><b>from</b><b>  </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b>.</b>ReceteAsamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b>.</b>ReceteAsamaId
+<b>    </b><b>where</b><b>  </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b>:APartiAsamalariId<b> </b><b>and</b><b>  </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>partikayitid<b> </b><b>=</b><b> </b>:APartiKayitID<b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>receteid<b> </b><b>=</b><b> </b>:AReceteId<b> </b><b>AND</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>  </b><b>into</b><b> </b>:FDozajlamaProgramNo<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>ProgramNoStr<b>=</b>''<b>)</b><b> </b><b>then</b>
+<b>      </b>ProgramNoStr<b> </b><b>=</b><b> </b>ProgramNoStr<b>|</b><b>|</b><b>cast</b><b>(</b>FDozajlamaProgramNo<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>20<b>)</b><b>)</b><b>|</b><b>|</b>'#'<b>|</b><b>|</b><b>cast</b><b>(</b><b>cast</b><b>(</b>Flote<b> </b><b>as</b><b> </b><b>numeric</b><b>(</b>12<b>,</b>2<b>)</b><b>)</b><b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>35<b>)</b><b>)</b><b>;</b>
+<b>    </b><b>else</b>
+<b>      </b>ProgramNoStr<b> </b><b>=</b><b> </b>ProgramNoStr<b>|</b><b>|</b>'|'<b>|</b><b>|</b><b>cast</b><b>(</b>FDozajlamaProgramNo<b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>20<b>)</b><b>)</b><b>|</b><b>|</b>'#'<b>|</b><b>|</b><b>cast</b><b>(</b><b>cast</b><b>(</b>Flote<b> </b><b>as</b><b> </b><b>numeric</b><b>(</b>12<b>,</b>2<b>)</b><b>)</b><b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>35<b>)</b><b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b><b>Sum</b><b>(</b>GirisMiktar<b>)</b><b>  </b><b>from</b><b> </b><font color="# 080 0"><u>PartiRecetesiDokumu_1</u></font><b>(</b>:APartiKayitID<b>,</b><b> </b>:AReceteId<b>,</b><b> </b>:APartiAsamalariId<b>)</b><b> </b><b>into</b><b> </b>:Miktar<b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>First</b><b> </b>1<b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Color<b>,</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>LabReceteAtisId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b>:AReceteID<b> </b><b>into</b><b> </b>:Color<b>,</b><b> </b>:ColourDescript<b>;</b>
+
+
+<b>  </b>R_<b> </b><b>=</b><b> </b>'0'<b>;</b>
+<b>  </b>G_<b> </b><b>=</b><b> </b>'0'<b>;</b>
+<b>  </b>B_<b> </b><b>=</b><b> </b>'0'<b>;</b>
+
+<b>  </b>HeaderStr<b>   </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b>HeaderStr<b>   </b><b>=</b><b> </b>HeaderStr<b>|</b><b>|</b><b> </b>'E'<b> </b><b>|</b><b>|</b><b> </b>Dyelot<b> </b><b>|</b><b>|</b><b> </b>','<b>;</b>
+<b>  </b>HeaderStr<b>   </b><b>=</b><b> </b>HeaderStr<b>|</b><b>|</b><b> </b>MachineGroup<b>  </b><b>|</b><b>|</b><b> </b>','<b>;</b>
+<b>  </b>HeaderStr<b>   </b><b>=</b><b> </b>HeaderStr<b>|</b><b>|</b><b> </b>Machine<b>       </b><b>|</b><b>|</b><b> </b>','<b>;</b>
+<b>  </b>HeaderStr<b>   </b><b>=</b><b> </b>HeaderStr<b>|</b><b>|</b><b> </b>ProgramNoStr<b>  </b><b>|</b><b>|</b><b> </b>','<b> </b><b>;</b>
+<b>  </b>HeaderStr<b>   </b><b>=</b><b> </b>HeaderStr<b>|</b><b>|</b><b> </b><b>cast</b><b>(</b><b>cast</b><b>(</b>Miktar<b> </b><b>as</b><b> </b><b>numeric</b><b>(</b>12<b>,</b>2<b>)</b><b>)</b><b> </b><b>as</b><b> </b><b>varchar</b><b>(</b>35<b>)</b><b>)</b><b> </b><b>|</b><b>|</b>','<b>;</b>
+<b>  </b>HeaderStr<b>   </b><b>=</b><b> </b>HeaderStr<b>|</b><b>|</b><b> </b>'0,0,0,0,0,0,0,0,0,'<b>;</b>
+<b>  </b>HeaderStr<b>   </b><b>=</b><b> </b>HeaderStr<b>|</b><b>|</b><b> </b>FReceteID<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>ColourDescript<b> </b><b>;</b>
+
+<b>  </b><b>select</b><b> </b>Gonderildi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>dozajlamaisemri</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>dozajlamaisemri</u></font><b>.</b>DozajlamaIsEmriId<b> </b><b>=</b><b> </b>:FDozajlamaIsEmriID<b> </b><b>into</b><b> </b>:Gonderildi_<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ENERJISARFIYATRAPORUHAZIRLA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ENMOSICINRECETEGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

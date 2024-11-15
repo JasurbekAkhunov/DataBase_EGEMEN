@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTDESEN</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="122800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTDEPARTMAN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTDESENISTEKLERI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTDESEN</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTDESEN)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTDESEN</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>DESEN</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FEgemenFirmaId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>COALESCE</b><b>(</b><font color="# 080 0"><u>rdb$get_context</u></font><b>(</b>'USER_TRANSACTION'<b>,</b><b> </b>'BaypasTrigger_Desen'<b>)</b><b>,</b><b> </b>0<b>)</b><b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>-- NULL olabiliyor, COALESCE'yi iptal etmeyin. (UP)</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>EgemenFirmaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>SistemID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FEgemenFirmaId<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Batı Basma*/</i></font>
+<b>      </b><b>if</b><b> </b><b>(</b><b>coalesce</b><b>(</b><b>new</b><b>.</b>TasarimNo<b>,</b><b> </b>''<b>)</b><b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>TasarimNo<b> </b><b>=</b><b> </b><b>new</b><b>.</b>TasarimNo<b> </b><b>into</b><b> </b>:KS<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>' '<b>|</b><b>|</b><b>new</b><b>.</b>TasarimNo<b>|</b><b>|</b>' tasarım nosu zaten kayıtlı.'<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>SablonSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>execute</b><b> </b><b>procedure</b><b> </b><font color="# 080 0"><u>DesenSablonOlustur</u></font><b>(</b><b>New</b><b>.</b>DesenId<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTDEPARTMAN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTDESENISTEKLERI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

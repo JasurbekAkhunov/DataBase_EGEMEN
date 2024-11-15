@@ -1,0 +1,209 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTORMEPLANLAMA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="970800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTORMEMAKINADURUS.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTORMEPLANLAMARECETE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTORMEPLANLAMA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTORMEPLANLAMA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTORMEPLANLAMA</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>ORMEPLANLAMA</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ASira<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OPID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemDovizId<b>  </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KTBoyaSiparisKayitId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OSDPlanlamaIzineBagli<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Planlanabilir<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SipPusFeineTalimatMakinadanAl<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPus<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFeine<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOnayDurumu<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OnaysizOrmeSipPlanlanmasin<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b><font color="# 080 0"><u>OrmeTalimatSipMaliyetAsilamaz</u></font><b> </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeBirimMaliyet<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeBirimMaliyetDovizId<b> </b><font color="# 080 0"><u>DovizSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeTalmatSipeUygunOlsun<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMakinePus<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMakineFeine<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SipPusFeineFasonTalimattanAl<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeTalimattanSipDetayGuncelle<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>SistemDovizId<b>,</b><b> </b>OSDPlanlamaIzineBagli<b>,</b><b> </b>SipPusFeineTalimatMakinadanAl<b>,</b><b> </b>OnaysizOrmeSipPlanlanmasin<b>,</b><b> </b><font color="# 080 0"><u>OrmeTalimatSipMaliyetAsilamaz</u></font><b>,</b><b> </b>OrmeTalmatSipeUygunOlsun<b>,</b><b> </b>SipPusFeineFasonTalimattanAl<b>,</b><b> </b>OrmeTalimattanSipDetayGuncelle<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>sistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b>
+<b>  </b>:SistemDovizId<b>,</b><b> </b>:OSDPlanlamaIzineBagli<b>,</b><b> </b>:SipPusFeineTalimatMakinadanAl<b>,</b><b> </b>:OnaysizOrmeSipPlanlanmasin<b>,</b><b> </b>:OrmeTalimatSipMaliyetAsilamaz<b>,</b><b> </b>:OrmeTalmatSipeUygunOlsun<b>,</b><b> </b>:SipPusFeineFasonTalimattanAl<b>,</b><b> </b>:OrmeTalimattanSipDetayGuncelle<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>FirmaId<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>FirmaId<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>FirmaId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>PlanlamaFirmaMakinaIdHatasi1</u></font><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>FirmaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>PlanlamaFirmaMakinaIdHatasi1</u></font><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>DovizId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>DovizId<b> </b><b>=</b><b> </b>SistemDovizId<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>MakinaAyar<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>OrmePlanlamaDetayIdHatasi</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>OrmeTalimatSipMaliyetAsilamaz</u></font><b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b>OrmeBirimMaliyet<b>,</b><b> </b>OrmeBirimMaliyetDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>into</b><b> </b>:OrmeBirimMaliyet<b>,</b><b> </b>:OrmeBirimMaliyetDovizId<b>;</b>
+
+<b>    </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b><b>new</b><b>.</b>DovizId<b>,</b><b> </b>:OrmeBirimMaliyetDovizId<b>,</b><b> </b><b>Current_Date</b><b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BirimFiyat<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>&gt;</b><b> </b>OrmeBirimMaliyet<b>)</b><b> </b><b>then</b>
+<b>      </b><b>Exception</b><b> </b><font color="# 080 0"><u>OrmeTalimatSipMaliyetAsilamaz</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BoyaSiparisKayitId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>select</b><b> </b>BoyaSiparisKayitId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>where</b><b> </b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId
+<b>    </b><b>into</b><b> </b><b>new</b><b>.</b>BoyaSiparisKayitId<b>;</b>
+<font color="# 0 0FF"><i>/*</i></font>
+<font color="# 0 0FF"><i>  Select KTBoyaSiparisKayitId, MakinaUstuGramaj, DinlenmisGramaj, IgneSayisi, MaySayisi, IplikBoyu1, IplikBoyu2, IplikBoyu3, IplikBoyu4,</i></font>
+<font color="# 0 0FF"><i>         TupAcikEnMayli, Planlanabilir, OnayDurumu from OrmeSiparisDetay</i></font>
+<font color="# 0 0FF"><i>    where OrmeSiparisDetayId = new.OrmeSiparisDetayId</i></font>
+<font color="# 0 0FF"><i>    into :KTBoyaSiparisKayitId, new.MakinaUstuGramaj, new.DinlenmisGramaj, new.IgneSayisi, new.MaySayisi, new.IplikBoyu1, new.IplikBoyu2,</i></font>
+<font color="# 0 0FF"><i>         new.IplikBoyu3, new.IplikBoyu4, New.TupAcikEnMayli, :Planlanabilir, :FOnayDurumu;</i></font>
+<font color="# 0 0FF"><i>*/</i></font>
+<b>  </b><b>Select</b><b> </b>KTBoyaSiparisKayitId<b>,</b><b> </b>Planlanabilir<b>,</b><b> </b>OnayDurumu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font>
+<b>    </b><b>where</b><b> </b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId
+<b>    </b><b>into</b><b> </b>:KTBoyaSiparisKayitId<b>,</b><b> </b>:Planlanabilir<b>,</b><b> </b>:FOnayDurumu<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KTBoyaSiparisKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KumasTeminSiparisiGirilmis</u></font><b> </b>'Kumaş Temin Siparişi açılmış, Örme Talimati Açılamaz.. '<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OSDPlanlamaIzineBagli<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>Planlanabilir<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>OSDPlanlamaIzniYok</u></font><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>OnaysizOrmeSipPlanlanmasin<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>FOnayDurumu<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>SiparisOnaylanmamisPlanlanamaz</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>SipPusFeineTalimatMakinadanAl<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>where</b><b> </b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b>Pus<b>,</b><b> </b>Feine<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b> </b><b>where</b><b> </b>OrmeMakinaID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>into</b><b> </b>:FPus<b>,</b><b> </b>:FFeine<b>;</b>
+
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>  </b><b>Set</b><b> </b>Pus<b> </b><b>=</b><b> </b>:FPus<b> </b><b>,</b><b> </b>Feine<b> </b><b>=</b><b> </b>:FFeine<b> </b><b>,</b><b> </b>LinkIslemi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OrmeTalmatSipeUygunOlsun<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>Pus<b>,</b><b> </b>Feine<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>into</b><b> </b>:FPus<b>,</b><b> </b>:FFeine<b>;</b>
+<b>    </b><b>Select</b><b> </b>Pus<b>,</b><b> </b>Feine<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b> </b><b>where</b><b> </b>OrmeMakinaID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>into</b><b> </b>:FMakinePus<b>,</b><b> </b>:FMakineFeine<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FMakinePus<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FPus<b> </b><b>or</b><b> </b>FMakineFeine<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FFeine<b>)</b><b> </b><b>then</b>
+<b>      </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Makine Pus Feine, Siparişe Uygun Değil !!!'<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>SipPusFeineFasonTalimattanAl<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>FirmaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>where</b><b> </b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>  </b><b>Set</b><b> </b>Pus<b> </b><b>=</b><b> </b><b>new</b><b>.</b>Pus<b> </b><b>,</b><b> </b>Feine<b> </b><b>=</b><b> </b><b>new</b><b>.</b>Feine<b> </b><b>,</b><b> </b>LinkIslemi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OrmeTalimattanSipDetayGuncelle<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>  </b><b>Set</b><b> </b>MakinaUstuGramaj<b> </b><b>=</b><b> </b><b>new</b><b>.</b>MakinaUstuGramaj<b> </b><b>,</b><b> </b>DinlenmisGramaj<b>  </b><b>=</b><b> </b><b>new</b><b>.</b>DinlenmisGramaj<b> </b><b>,</b>IgneSayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IgneSayisi<b>,</b><b> </b>MaySayisi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>MaySayisi<b>,</b><b>  </b>HamEn<b>  </b><b>=</b><b> </b><b>new</b><b>.</b>HamEn<b>,</b>
+<b>                             </b>IplikBoyu1<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IplikBoyu1<b>,</b><b> </b>IplikBoyu2<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IplikBoyu2<b>,</b><b> </b>IplikBoyu3<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IplikBoyu3<b>,</b><b> </b>IplikBoyu4<b> </b><b>=</b><b> </b><b>new</b><b>.</b>IplikBoyu4<b>,</b>
+<b>                             </b>LinkIslemi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b>;</b>
+<b>  </b><b>end</b>
+
+<font color="# 0 0FF"><i>/*test edicez</i></font>
+<font color="# 0 0FF"><i>  if (new.FirmaId is not null) then  Select count(*) from OrmePlanlama where OrmePlanlama.FirmaId = New.FirmaId and OrmePlanlama.OrmeSiparisDetayId = new.OrmeSiparisDetayId and OrmePlanlama.Bitti = 0 into :KayitSayisi;</i></font>
+<font color="# 0 0FF"><i>  else Select count(*) from OrmePlanlama where OrmePlanlama.OrmeMakinaId = New.OrmeMakinaId and OrmePlanlama.OrmeSiparisDetayId = new.OrmeSiparisDetayId and OrmePlanlama.Bitti = 0 into :KayitSayisi;</i></font>
+
+<font color="# 0 0FF"><i>  if (KayitSayisi &gt; 0) then exception SiparisMukerrerPlanlanamaz;</i></font>
+<font color="# 0 0FF"><i>*/</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Sira<b> </b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>ASira<b> </b><b>=</b><b> </b><b>new</b><b>.</b>Sira<b>;</b>
+<b>      </b><b>for</b><b> </b><b>select</b><b> </b>OrmePlanlamaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeMakinaId<b> </b><b>and</b><b> </b>Sira<b> </b><b>&gt;</b><b>=</b><b> </b><b>new</b><b>.</b>Sira<b> </b><b>order</b><b> </b><b>by</b><b> </b>Sira<b> </b><b>into</b><b> </b>:OPId<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>        </b><b>update</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>set</b><b> </b>Sira<b> </b><b>=</b><b> </b>:ASira<b> </b><b>where</b><b> </b>OrmePlanlamaId<b> </b><b>=</b><b> </b>:OPId<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><b>max</b><b>(</b>Sira<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeMakinaId<b> </b><b>into</b><b> </b>:ASira<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>ASira<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ASira<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>else</b><b> </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>new</b><b>.</b>Sira<b> </b><b>=</b><b> </b>ASira<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Sira<b> </b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>ASira<b> </b><b>=</b><b> </b><b>new</b><b>.</b>Sira<b>;</b>
+<b>      </b><b>for</b><b> </b><b>select</b><b> </b>OrmePlanlamaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>and</b><b> </b>Sira<b> </b><b>&gt;</b><b>=</b><b> </b><b>new</b><b>.</b>Sira<b> </b><b>order</b><b> </b><b>by</b><b> </b>Sira<b> </b><b>into</b><b> </b>:OPId<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>        </b><b>update</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>set</b><b> </b>Sira<b> </b><b>=</b><b> </b>:ASira<b> </b><b>where</b><b> </b>OrmePlanlamaId<b> </b><b>=</b><b> </b>:OPId<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><b>max</b><b>(</b>Sira<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>into</b><b> </b>:ASira<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>ASira<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ASira<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>else</b><b> </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>new</b><b>.</b>Sira<b> </b><b>=</b><b> </b>ASira<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>MiktarGun<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>MiktarGun<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>UretimPartiNo<b>,</b><b> </b>Numarator<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisUretimPartiNoUret</u></font><b>(</b><b>new</b><b>.</b>OrmeSiparisDetayId<b>,</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b>,</b><b> </b><b>New</b><b>.</b>FirmaId<b>,</b><b> </b><b>new</b><b>.</b>Beyazlik<b>)</b><b> </b><b>into</b><b> </b><b>new</b><b>.</b>UretimPartiNo<b>,</b><b> </b><b>New</b><b>.</b>Numarator<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>UretimPartiNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Üretim Parti No Olusturulamadı..'<b>;</b>
+
+<b>  </b><b>new</b><b>.</b>OrmePlanlamaId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>OrmePlanlama_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><b>Update</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>  </b><b>Set</b><b> </b>PlanlananMiktar<b> </b><b>=</b><b> </b>PlanlananMiktar<b> </b><b>+</b><b> </b><b>New</b><b>.</b>PlanlananMiktar<b>,</b><b> </b>LinkIslemi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeSiparisDetayId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTORMEMAKINADURUS.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTORMEPLANLAMARECETE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

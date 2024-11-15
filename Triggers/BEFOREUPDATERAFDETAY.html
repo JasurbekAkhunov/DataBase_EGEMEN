@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATERAFDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1460800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEPSTOKSONKONTROL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATERAFLOKASYON.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATERAFDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATERAFDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATERAFDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>RAFDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KalanMiktar<b>   </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamTipiId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMsg<b>         </b><b>varchar</b><b>(</b>255<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>into</b><b> </b>:DokumaKumasiKilodanTakipEt<b>;</b>
+<font color="# 0 0FF"><i>/* raf transfer yapılıyor ise diger id lerde deger olmamalı kontrol ediyoruz...*/</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>RafTransferFisiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>GeciciKabulRafId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><b>new</b><b>.</b>PartiStokIptalKayitId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>rafId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>RafId<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>Kilo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>Kilo<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>Metre<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Metre<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>RafTransferFisiId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>BuIslemiBuradanYapamazsiniz</u></font><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>HamTipiId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>into</b><b> </b>:HamTipiId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b> </b><b>or</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>New</b><b>.</b>Miktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>kilo<b>;</b>
+<b>    </b><b>New</b><b>.</b>IadeEdilecekMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IadeEdilecekKilo<b>;</b>
+<b>    </b><b>New</b><b>.</b>IadeEdilenMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IadeEdilenKilo<b>;</b>
+<b>    </b><b>New</b><b>.</b>PartilenenMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PartilenenKilo<b>;</b>
+<b>    </b><b>New</b><b>.</b>RafTransferMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>RafTransferKilo<b>;</b>
+<b>    </b><b>New</b><b>.</b>SatisMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>SatisKilo<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>New</b><b>.</b>Miktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Metre<b>;</b>
+<b>    </b><b>New</b><b>.</b>IadeEdilecekMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IadeEdilecekMetre<b>;</b>
+<b>    </b><b>New</b><b>.</b>IadeEdilenMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IadeEdilenMetre<b>;</b>
+<b>    </b><b>New</b><b>.</b>PartilenenMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PartilenenMetre<b>;</b>
+<b>    </b><b>New</b><b>.</b>RafTransferMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>RafTransferMetre<b>;</b>
+<b>    </b><b>New</b><b>.</b>SatisMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>SatisMetre<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Aktarma<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>new</b><b>.</b>RafTransferMiktar<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b>;</b>
+
+<b>  </b>KalanMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Miktar<b> </b><b>+</b><b> </b><b>New</b><b>.</b>AktarmadanIadeEdienKilo<b> </b><b>-</b><b> </b><b>New</b><b>.</b>AktarmayaCikanKilo<b> </b><b>-</b><b> </b><b>New</b><b>.</b>PartilenenMiktar<b> </b><b>-</b><b> </b><b>New</b><b>.</b>RafTransferMiktar<b> </b><b>-</b><b> </b><b>New</b><b>.</b>IadeEdilecekMiktar<b> </b><b>-</b><b> </b><b>New</b><b>.</b>IadeEdilenMiktar<b> </b><b>-</b><b> </b><b>new</b><b>.</b>SatisMiktar<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>Miktar<b> </b><b>&lt;</b><b>&gt;</b><b> </b>KalanMiktar<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>RafId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>RafId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>RafIdDegistirilemez</u></font><b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>KalanMiktar<b> </b><b>&lt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KullanilanKilonunAltinaDusemez</u></font><b>;</b>
+
+<b>  </b>KalanMiktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Miktar<b> </b><b>+</b><b> </b><b>New</b><b>.</b>AktarmadanIadeEdienKilo<b> </b><b>-</b><b> </b><b>New</b><b>.</b>AktarmayaCikanKilo<b> </b><b>-</b><b> </b><b>New</b><b>.</b>PartilenenMiktar<b> </b><b>-</b><b> </b><b>New</b><b>.</b>RafTransferMiktar<b> </b><b>-</b><b> </b><b>New</b><b>.</b>IadeEdilenMiktar<b> </b><b>-</b><b> </b><b>new</b><b>.</b>SatisMiktar<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KalanMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>StokVar<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>KalanMiktar<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>StokVar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>New</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>new</b><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEPSTOKSONKONTROL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATERAFLOKASYON.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

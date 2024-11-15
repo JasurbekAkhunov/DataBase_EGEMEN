@@ -1,0 +1,208 @@
+<HTML>
+<HEAD>
+<TITLE>GUNBAZINDAAYLIKURETIMRAPORU_3</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="600800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="GUNBAZINDAAYLIKURETIMRAPORU_2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="GUNLUKISLEMGRUPLUSEVKRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">GUNBAZINDAAYLIKURETIMRAPORU_3</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHAMTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTIGRUPID</TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">TARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NORMALSEVKIYAT</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TAMIRSEVKIYAT</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TOPLAMSEVKIYAT</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TAMIRORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NORMALNETSEVKIYAT</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TAMIRNETSEVKIYAT</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TOPLAMNETSEVKIYAT</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure GUNBAZINDAAYLIKURETIMRAPORU_3)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>GUNBAZINDAAYLIKURETIMRAPORU_3</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AHAMTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APARTIGRUPID<b> </b><b>VARCHAR</b><b>(</b>4<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>TARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>NORMALSEVKIYAT<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>TAMIRSEVKIYAT<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>TOPLAMSEVKIYAT<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>TAMIRORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>NORMALNETSEVKIYAT<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>TAMIRNETSEVKIYAT<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>TOPLAMNETSEVKIYAT<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIslemTipiId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKilo<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FNetKilo<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIrsaliyeTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLastIrsaliyeTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>itTamir<b>          </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>hstIplik<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>hstElyaf<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>hstTelef<b>        </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>hstIplik<b>,</b><b> </b>hstElyaf<b>,</b><b> </b>hstTelef<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamTipiGetir</u></font><b> </b><b>into</b><b> </b>:hstIplik<b>,</b><b> </b>:hstElyaf<b>,</b><b> </b>:hstTelef<b>;</b>
+<b>  </b><b>Select</b><b> </b>itTamir<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IslemTipiGetir</u></font><b> </b><b>into</b><b> </b>:itTamir<b>;</b>
+
+<b>  </b>FLastIrsaliyeTarihi<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>IrsaliyeTarihi<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>IslemTipiId<b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>BrutKilo<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>Kilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>BoyaIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>BoyaIrsaliyeId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>PartiKayitId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>HareketTipiID<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>PartiSinifID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>          </b><b>(</b><b> </b><b>(</b><b> </b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>=</b><b> </b>:hstIplik<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>=</b><b> </b>:hstElyaf<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>=</b><b> </b>:hstTelef<b>)</b><b> </b><b>and</b><b> </b>:AHamTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>or</b><b> </b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:hstIplik<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:hstElyaf<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:hstTelef<b> </b><b>and</b><b> </b>:AHamTipiId<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b><b> </b>:AHamTipiId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiGrupId<b> </b><b>=</b><b> </b>:APartiGrupId<b> </b><b>or</b><b> </b>:APartiGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>IrsaliyeTarihi<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>IslemTipiId
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>BoyaIrsaliyeDetay</u></font><b>.</b>IrsaliyeTarihi
+<b>    </b><b>into</b><b> </b>:FIrsaliyeTarihi<b>,</b><b> </b>:FIslemTipiId<b>,</b><b> </b>:FKilo<b>,</b><b> </b>:FNetKILO<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FLastIrsaliyeTarihi<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FIrsaliyeTarihi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FLastIrsaliyeTarihi<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FLastIrsaliyeTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>ToplamSevkiyat<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>TamirOrani<b> </b><b>=</b><b> </b>TamirSevkiyat<b> </b><b>*</b><b> </b>100<b>.</b>00<b> </b><b>/</b><b> </b>ToplamSevkiyat<b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b>ToplamNetSevkiyat<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>TamirOrani<b> </b><b>=</b><b> </b>TamirSevkiyat<b> </b><b>*</b><b> </b>100<b>.</b>00<b> </b><b>/</b><b> </b>ToplamNetSevkiyat<b>;</b>
+
+<b>        </b><b>suspend</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b>NormalSevkiyat<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>NormalNetSevkiyat<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>TamirSevkiyat<b>     </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>TamirNetSevkiyat<b>   </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>ToplamNetSevkiyat<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>ToplamSevkiyat<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>TamirOrani<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>Tarih<b> </b><b>=</b><b> </b>FIrsaliyeTarihi<b>;</b>
+<b>      </b>FLastIrsaliyeTarihi<b> </b><b>=</b><b> </b>FIrsaliyeTarihi<b>;</b>
+
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FIslemTipiId<b> </b><b>=</b><b> </b>itTamir<b>)</b><b> </b><b>then</b><b> </b>TamirSevkiyat<b> </b><b>=</b><b> </b>TamirSevkiyat<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>    </b><b>else</b><b> </b>NormalSevkiyat<b> </b><b>=</b><b> </b>NormalSevkiyat<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FIslemTipiId<b> </b><b>=</b><b> </b>itTamir<b>)</b><b> </b><b>then</b><b> </b>TamirNetSevkiyat<b> </b><b>=</b><b> </b>TamirSevkiyat<b> </b><b>+</b><b> </b>FNetKilo<b>;</b>
+<b>    </b><b>else</b><b> </b>NormalNetSevkiyat<b> </b><b>=</b><b> </b>NormalNetSevkiyat<b> </b><b>+</b><b> </b>FNetKilo<b>;</b>
+
+<b>    </b>ToplamSevkiyat<b> </b><b>=</b><b> </b>ToplamSevkiyat<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>    </b>ToplamNetSevkiyat<b> </b><b>=</b><b> </b>ToplamNetSevkiyat<b> </b><b>+</b><b> </b>FNetKilo<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FLastIrsaliyeTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>ToplamSevkiyat<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>TamirOrani<b> </b><b>=</b><b> </b>TamirSevkiyat<b> </b><b>*</b><b> </b>100<b>.</b>00<b> </b><b>/</b><b> </b>ToplamSevkiyat<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="GUNBAZINDAAYLIKURETIMRAPORU_2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="GUNLUKISLEMGRUPLUSEVKRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

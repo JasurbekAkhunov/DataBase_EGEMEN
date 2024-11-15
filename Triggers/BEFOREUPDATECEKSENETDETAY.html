@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATECEKSENETDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1177800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATECEKSENET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATECEKSENETHAREKET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATECEKSENETDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATECEKSENETDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATECEKSENETDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>CEKSENETDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BankaDovizId<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTopluKaydet<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b>  </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b><b>new</b><b>.</b>AV<b> </b><b>=</b><b> </b>'V'<b>)</b><b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Cs<b> </b><b>=</b><b> </b>'C'<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b>DovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BankaHesap</u></font><b> </b><b>where</b><b> </b>BankaHesapId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BankaHesapId<b> </b><b>into</b><b> </b>:BankaDovizId<b>;</b>
+<b>    </b><b>if</b><b>(</b><b>new</b><b>.</b>DovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>BankaDovizId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>HesabinDovizCinsindenFarkli</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>TahsilEdilenMeblag<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>TahsilEdilenMeblag<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Meblag<b> </b><b>&lt;</b><b> </b><b>new</b><b>.</b>TahsilEdilenMeblag<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>CekSenetMeblaginiAstiniz</u></font><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>TopluKaydet<b> </b><b>from</b><b> </b><font color="# 080 0"><u>CekSenet</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>CekSenet</u></font><b>.</b>CsBordroKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>CsBordroKayitId<b> </b><b>into</b><b> </b>:FTopluKaydet<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FTopluKaydet<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>Sinif<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Sinif<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>CekSenetDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>CekSenetDetay</u></font><b>.</b>CsBordroKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>CsBordroKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>CekSenetDetay</u></font><b>.</b>GenelKayitId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>GenelKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>CekSenetDetay</u></font><b>.</b>Sinif<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Sinif<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>SinifTopluKayitIcinUygunDegil</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>TahsilEdilenMeblag<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>TahsilEdilenMeblag<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Max</b><b>(</b><font color="# 080 0"><u>CekSenetTahsilat</u></font><b>.</b>Tarih<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>CekSenetTahsilat</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>CekSenetTahsilat</u></font><b>.</b>GenelKayitId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>GenelKayitId<b> </b><b>into</b><b> </b><b>new</b><b>.</b>TahsilTarihi<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>IslemDovizID<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>New</b><b>.</b>IslemDovizID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DovizID<b>;</b>
+<b>    </b><b>New</b><b>.</b>IslemDovizKuru1<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>New</b><b>.</b>IslemDovizKuru2<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>New</b><b>.</b>IslemDovizMeblag<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Meblag<b> </b><b>*</b><b> </b><b>New</b><b>.</b>IslemDovizKuru2<b> </b><b>/</b><b> </b><b>New</b><b>.</b>IslemDovizKuru1<b>;</b>
+
+<b>  </b><b>new</b><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>  </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>Logla</u></font><b>(</b>'U'<b>,</b><b> </b>1<b>,</b><b> </b>'CEKSENETDETAY'<b>,</b><b> </b>'CSBORDROKAYITID'<b>,</b><b> </b><b>new</b><b>.</b>CSBordroKayitId<b>,</b><b> </b><b>null</b><b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATECEKSENET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATECEKSENETHAREKET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

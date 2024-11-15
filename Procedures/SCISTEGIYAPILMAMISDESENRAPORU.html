@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<TITLE>SCISTEGIYAPILMAMISDESENRAPORU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1719800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="SATISICINREZERVLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="SEARCHSOURCE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">SCISTEGIYAPILMAMISDESENRAPORU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AFIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">DESENID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENGRUPID</TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERIDESENNO1</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERIDESENADI1</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERIDESENNO2</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERIDESENADI2</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure SCISTEGIYAPILMAMISDESENRAPORU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>SCISTEGIYAPILMAMISDESENRAPORU</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AFIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>DESENID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>DESENADI<b> </b><b>VARCHAR</b><b>(</b>80<b>)</b><b>,</b>
+<b>    </b>FIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIRMAADI<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>DESENGRUPID<b> </b><b>VARCHAR</b><b>(</b>4<b>)</b><b>,</b>
+<b>    </b>MUSTERIDESENNO1<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>MUSTERIDESENADI1<b> </b><b>VARCHAR</b><b>(</b>80<b>)</b><b>,</b>
+<b>    </b>MUSTERIDESENNO2<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>MUSTERIDESENADI2<b> </b><b>VARCHAR</b><b>(</b>80<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenIstekTipiId<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenGrupId<b>,</b>
+<b>             </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MusteriDesenNo1<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MusteriDesenAdi1<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MusteriDesenNo2<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MusteriDesenAdi2<b>,</b>
+<b>             </b><b>Max</b><b>(</b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekTipiId<b>)</b><b>  </b><b>from</b><b> </b><font color="# 080 0"><u>Desen</u></font>
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>DesenIstekTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenIstekleri</u></font><b>.</b>DesenIstekTipiID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>DesenIstekTipi</u></font><b>.</b>SablonCekimmi<b> </b><b>=</b><b> </b>1
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>TasarimOnayDurumu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>InsertTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>InsertTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b>)</b><b> </b><b>and</b>
+<b>         </b><b>(</b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>or</b><b> </b>:AFirmaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>  </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenId<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b>  </b><font color="# 080 0"><u>Desen</u></font><b>.</b>DesenGrupId<b>,</b>
+<b>           </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MusteriDesenNo1<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MusteriDesenAdi1<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MusteriDesenNo2<b>,</b><b> </b><font color="# 080 0"><u>Desen</u></font><b>.</b>MusteriDesenAdi2
+<b>  </b><b>into</b><b> </b>:DesenId<b>,</b><b> </b>:DesenAdi<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:DesenGrupId<b>,</b>
+<b>       </b>:MusteriDesenNo1<b>,</b><b> </b>:MusteriDesenAdi1<b>,</b><b> </b>:MusteriDesenNo2<b>,</b><b> </b>:MusteriDesenAdi2<b>,</b><b> </b>:DesenIstekTipiId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>DesenIstekTipiId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="SATISICINREZERVLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="SEARCHSOURCE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

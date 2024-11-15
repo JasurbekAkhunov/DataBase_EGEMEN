@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREDELETEBANKAHESAPCARI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="412800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREDELETEAVUKATCARI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREDELETEBANKAHESAPCARILOG.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREDELETEBANKAHESAPCARI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREDELETEBANKAHESAPCARI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREDELETEBANKAHESAPCARI</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BANKAHESAPCARI</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>DELETE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SonDonemBitisTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>begin</b>
+
+<b>  </b><b>select</b><b> </b><b>max</b><b>(</b>BitisTarihi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DonemKapatma</u></font><b> </b><b>where</b><b> </b>Bolum<b> </b><b>=</b><b> </b>4<b> </b><b>and</b><b> </b>OnayKullaniciId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>into</b><b> </b>:SonDonemBitisTarihi<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>SonDonemBitisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>SonDonemBitisTarihi<b> </b><b>&gt;</b><b> </b><b>old</b><b>.</b>Tarih<b>)</b><b> </b><b>then</b>
+<b>    </b><b>exception</b><b> </b><font color="# 080 0"><u>DonemKapaliHSilinemez</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>KsReferansId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KasadaKarsiligiVar</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>CsReferansId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>CekSenetGirisKarsiligiVar</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>FirmaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>cari</u></font><b> </b><b>set</b><b> </b>LinkIslemi<b> </b><b>=</b><b> </b>2<b> </b><b>where</b><b> </b>BcReferansId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>BankaHesapCariId<b>;</b>
+<b>    </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>cari</u></font><b> </b><b>where</b><b> </b>BcReferansId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>BankaHesapCariId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>TransferBankaHesapId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>BankaHesapCari</u></font><b> </b><b>set</b><b> </b>LinkIslemi<b> </b><b>=</b><b> </b>2<b> </b><b>where</b><b> </b>BHCReferansId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>BankaHesapCariId<b>;</b>
+<b>    </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>BankaHesapCari</u></font><b> </b><b>where</b><b> </b>BHCReferansId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>BankaHesapCariId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><font color="# 0 0FF"><i>/*insert into BankaHesapCariLog(YapilanIslem, BankaHesapCariId, BankaHesapId, FirmaId, Tarih, Aciklama, BorcAlacak,Sinif, CariHareketTipiId,</i></font>
+<font color="# 0 0FF"><i>                                Meblag, DovizKuru1, DovizKuru2, Notu, CsreferansId, StReferansId, KsReferansId)</i></font>
+<font color="# 0 0FF"><i>                         Values(2, Old.BankaHesapCariId, Old.BankaHesapId, Old.FirmaId, Old.Tarih, Old.Aciklama, Old.BorcAlacak, Old.Sinif,</i></font>
+<font color="# 0 0FF"><i>                                Old.CariHareketTipiId, Old.Meblag, Old.DovizKuru1, Old.DovizKuru2, Old.Notu, Old.CsreferansId, Old.StReferansId, Old.KsReferansId);*/</i></font>
+
+<b>  </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>Logla</u></font><b>(</b>'D'<b>,</b><b> </b>2<b>,</b><b> </b>'BANKAHESAPCARI'<b>,</b><b> </b>'BANKAHESAPCARIID'<b>,</b><b> </b><b>Old</b><b>.</b>BankaHesapCariId<b>,</b><b> </b>'Banka Hesap Id :'<b>|</b><b>|</b><b>Coalesce</b><b>(</b><b>Old</b><b>.</b>BankaHesapId<b>,</b>''<b>)</b><b>|</b><b>|</b>' Tarih :'<b>|</b><b>|</b><b>Coalesce</b><b>(</b><b>Extract</b><b>(</b><b>DAY</b><b> </b><b>from</b><b> </b><b>Old</b><b>.</b>Tarih<b>)</b><b>,</b><b> </b>''<b>)</b><b>|</b><b>|</b>'.'<b>|</b><b>|</b><b>Coalesce</b><b>(</b><b>Extract</b><b>(</b><b>MONTH</b><b> </b><b>from</b><b> </b><b>Old</b><b>.</b>Tarih<b>)</b><b>,</b><b> </b>''<b>)</b><b>|</b><b>|</b>'.'<b>|</b><b>|</b><b>Coalesce</b><b>(</b><b>Extract</b><b>(</b><b>YEAR</b><b> </b><b>from</b><b> </b><b>Old</b><b>.</b>Tarih<b>)</b><b>,</b><b> </b>''<b>)</b><b>|</b><b>|</b>' Firma :'<b>|</b><b>|</b><b>Coalesce</b><b>(</b><b>Old</b><b>.</b>FirmaId<b>,</b>''<b>)</b><b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREDELETEAVUKATCARI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREDELETEBANKAHESAPCARILOG.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

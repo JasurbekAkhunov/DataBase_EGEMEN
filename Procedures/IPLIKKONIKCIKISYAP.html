@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<TITLE>IPLIKKONIKCIKISYAP</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="857800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="IPLIKKALITEKONTROLRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="IPLIKLOTAYARLARIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">IPLIKKONIKCIKISYAP</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AIPLIKURETIMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">STOKID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">STOKDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure IPLIKKONIKCIKISYAP)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>IPLIKKONIKCIKISYAP</u></font><b>(</b>
+<b>    </b>AIPLIKURETIMID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>STOKID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>STOKDETAYID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StoktanDusuldu<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunId<b>                </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunBirimId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunMutfakDepoNo<b>      </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBirimFiyat<b>            </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunDovizId<b>           </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStokTabanDovizId<b>      </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHareketTipi<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFisSeriNo<b>             </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFisNo<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDovizKuru<b>             </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunBirim<b> </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMiktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTarih<b> </b><b>TimeStamp</b><b>;</b>
+<b>begin</b>
+<b>  </b>FHareketTipi<b> </b><b>=</b><b> </b>6<b>;</b><b>  </b><font color="# 0 0FF"><i>/* Uretime Cikis */</i></font>
+<b>  </b>FUrunBirim<b> </b><b>=</b><b> </b>'Ad'<b>;</b>
+<b>  </b>StoktanDusuldu<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>First</b><b> </b>1<b> </b><font color="# 080 0"><u>KonikCinsi</u></font><b>.</b>UrunId<b>,</b><b> </b>RUB<b>.</b>UrunBirimID<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>MutfakDepoNo<b>,</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyati<b> </b><b>*</b><b> </b>UBUCF<b>.</b>Carpan<b> </b><b>/</b><b> </b>RUB<b>.</b>Carpan<b>,</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiDovizId<b>,</b>
+<b>  </b><b>Cast</b><b>(</b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>UretimTarihi<b> </b><b>as</b><b> </b><b>Date</b><b>)</b><b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>BobinSayisi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>KonikCinsi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>KonikCinsi</u></font><b>.</b>KonikCinsiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>KonikCinsiId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>KonikCinsi</u></font><b>.</b>UrunId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>RUB<b> </b><b>on</b><b> </b>RUB<b>.</b>BirimID<b> </b><b>=</b><b> </b>:FUrunBirim<b> </b><b>and</b><b> </b>RUB<b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>UBUCF<b> </b><b>on</b><b> </b>UBUCF<b>.</b>urunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiUrunBirimId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>Iplikuretim</u></font><b>.</b>IplikUretimId<b> </b><b>=</b><b> </b>:AIplikUretimId<b> </b><b>into</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunBirimID<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:FBirimFiyat<b>,</b><b> </b>:FUrunDovizId<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FMiktar<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FUrunId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b>StokTabanDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FStokTabanDovizId<b>;</b>
+
+<b>    </b><b>Select</b><b> </b>FisSeriNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FFisSeriNo<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FFisSeriNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FFisSeriNo<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>select</b><b> </b>FisNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FisNumaratorAL</u></font><b>(</b>:FFisSeriNo<b>)</b><b> </b><b>into</b><b> </b>:FFisNo<b>;</b>
+<b>    </b>StokId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>Stok_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Stok</u></font><b>(</b>StokId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>SeriNo<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>DovizId<b>,</b><b> </b>TabanDovizKuru1<b>,</b><b> </b>TabanDovizKuru2<b>)</b>
+<b>             </b><b>values</b><b>(</b>:StokId<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FFisSeriNo<b>,</b><b> </b>:FFisNo<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FBirimFiyat<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FBirimFiyat<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FUrunDovizId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>FBirimFiyat<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FStokTabanDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FUrunDovizId<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FUrunDovizId<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b>:FTarih<b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+<b>      </b>FBirimFiyat<b> </b><b>=</b><b> </b>FBirimFiyat<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b>StokDetayId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>StokDetay_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>StokDetayId<b>,</b><b> </b>Tarih<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>UretimeCikisTarihi<b>)</b>
+<b>                   </b><b>values</b><b>(</b>:StokDetayId<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:StokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunBirimID<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FBirimFiyat<b>,</b><b> </b>:FTarih<b>)</b><b>;</b>
+
+<b>    </b>StoktanDusuldu<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>StoktanDusuldu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b> </b><b>set</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>StokId<b> </b><b>=</b><b> </b>:StokId<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>StokDetayId<b> </b><b>=</b><b> </b>:StokDetayId<b> </b><b>where</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikUretimId<b> </b><b>=</b><b> </b>:AIplikUretimId<b>;</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="IPLIKKALITEKONTROLRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="IPLIKLOTAYARLARIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

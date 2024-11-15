@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>TEMPTABLOOZELALANLISTE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1847800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="TEMPTABLOOZELALAN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="TERMINGECIKMEANALIZI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">TEMPTABLOOZELALANLISTE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AOZELALANKAYNAGIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATABLOKAYITIDSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ROZELALANTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ROZELALANTIPIDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ROZELALANTIPIDETAYADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure TEMPTABLOOZELALANLISTE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>TEMPTABLOOZELALANLISTE</u></font><b>(</b>
+<b>    </b>AOZELALANKAYNAGIID<b> </b><b>INTEGER</b><b> </b><b>NOT</b><b> </b><b>NULL</b><b>,</b>
+<b>    </b>ATABLOKAYITIDSTR<b> </b><font color="# 080 0"><u>ADI50</u></font><b> </b><b>NOT</b><b> </b><b>NULL</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>ROZELALANTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ROZELALANTIPIDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ROZELALANTIPIDETAYADI<b> </b><font color="# 080 0"><u>ADI255</u></font><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><b>Distinct</b><b> </b><font color="# 080 0"><u>OzelAlanTipi</u></font><b>.</b>OzelAlanTipiId<b>,</b><b> </b><font color="# 080 0"><u>OzelAlanTipiDetay</u></font><b>.</b>OzelAlanTipiDetayId<b>,</b><b> </b><font color="# 080 0"><u>OzelAlanTipiDetay</u></font><b>.</b>Adi<b> </b><b>as</b><b> </b>OzelAlanTipiDetayAdi<b> </b><b>From</b><b> </b><font color="# 080 0"><u>OzelAlanKaynagi</u></font>
+<b>  </b><b>Join</b><b> </b><font color="# 080 0"><u>OzelAlanTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OzelAlanKaynagi</u></font><b>.</b>OzelAlanKaynagiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OzelAlanTipi</u></font><b>.</b>OzelAlanKaynagiId<b> </b><b>And</b><b> </b><font color="# 080 0"><u>OzelAlanTipi</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>OzelAlan</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>OzelAlan</u></font><b>.</b>OzelAlanTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OzelAlanTipi</u></font><b>.</b>OzelAlanTipiId<b> </b><b>And</b><b> </b><font color="# 080 0"><u>OzelAlan</u></font><b>.</b>TabloKayitIdStr<b> </b><b>=</b><b> </b>:ATabloKayitIdStr
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>OzelAlanTipiDetay</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>OzelAlanTipiDetay</u></font><b>.</b>OzelAlanTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OzelAlanTipi</u></font><b>.</b>OzelAlanTipiId
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>OzelAlanKolonTipiGetir</u></font><b> </b><b>On</b><b> </b>1<b> </b><b>=</b><b> </b>1
+<b>  </b><b>Where</b><b> </b><font color="# 080 0"><u>OzelAlanKaynagi</u></font><b>.</b>OzelAlanKaynagiId<b> </b><b>=</b><b> </b>:AOzelAlanKaynagiId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OzelAlanTipi</u></font><b>.</b>OzelAlanKolonTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OzelAlanKolonTipiGetir</u></font><b>.</b>OaktListe<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OzelAlanTipiDetay</u></font><b>.</b>OzelAlanTipiDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>  </b><b>Into</b><b> </b>:ROzelAlanTipiId<b>,</b><b> </b>:ROzelAlanTipiDetayId<b>,</b><b> </b>:ROzelAlanTipiDetayAdi<b> </b><b>Do</b>
+<b>  </b><b>Begin</b>
+<b>    </b><b>Suspend</b><b>;</b>
+<b>  </b><b>End</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="TEMPTABLOOZELALAN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="TERMINGECIKMEANALIZI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

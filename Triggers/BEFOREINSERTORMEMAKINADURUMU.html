@@ -1,0 +1,197 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTORMEMAKINADURUMU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="968800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTORMEMAKINABOLUM.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTORMEMAKINADURUS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTORMEMAKINADURUMU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTORMEMAKINADURUMU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTORMEMAKINADURUMU</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>ORMEMAKINADURUMU</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldPlanlamaId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOrmeMakinaDurumuId<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAriza<b>                </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FArizaVar<b>             </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAyarYapiliyor<b>        </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FServisciVar<b>          </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMemingerKoptu<b>        </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAltMemingerKoptu<b>     </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLycraKoptu<b>           </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStartStop<b>            </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIgneKoptu<b>            </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKapakAcildi<b>          </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKenarStop<b>            </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCozguKoptu<b>           </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FAtkiKoptu<b>            </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLeventSonu<b>           </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FImalataAraVerildi<b>    </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTur<b>                  </b><b>Integer</b><b>;</b>
+<b>begin</b>
+<b>  </b>FOrmeMakinaDurumuID<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>select</b><b> </b>OrmeMakinaDurumuId<b> </b><font color="# 0 0FF"><i>/*, Ariza, Ayar, Bakim, AraVerme*/</i></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaDurumuOzet</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>MakinaDurumuOzet</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeMakinaId<b> </b><b>into</b><b> </b>:FOrmeMakinaDurumuID<b>;</b>
+<b>  </b><b>else</b>
+<b>      </b><b>select</b><b> </b>OrmeMakinaDurumuId<b> </b><font color="# 0 0FF"><i>/*, Ariza, Ayar, Bakim, AraVerme*/</i></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaDurumuOzet</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>MakinaDurumuOzet</u></font><b>.</b>DokumaMakinaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DokumaMakinaId<b> </b><b>into</b><b> </b>:FOrmeMakinaDurumuID<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FOrmeMakinaDurumuID<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>FAriza<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FServisciVar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FAyarYapiliyor<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FArizaVar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FMemingerKoptu<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FAltMemingerKoptu<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FLycraKoptu<b>  </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FStartStop<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FIgneKoptu<b>   </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FKapakAcildi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FKenarStop<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FCozguKoptu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FAtkiKoptu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FLeventSonu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>OldPlanlamaId<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>    </b>FImalataAraVerildi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>FTur<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b>Ariza<b>,</b><b> </b>ServisciVar<b>,</b><b> </b><font color="# 080 0"><u>AyarYapiliyor</u></font><b>,</b><b> </b>ArizaVar<b>,</b><b>  </b><b>iif</b><b>(</b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>null</b><b>,</b><b> </b>DokumaPlanlamaId<b>,</b><b> </b>OrmePlanlamaId<b>)</b><b>,</b><b> </b>MemingerKoptu<b>,</b><b> </b>AltMemingerKoptu<b>,</b><b> </b>StartStop<b>,</b><b> </b>IgneKoptu<b>,</b><b> </b>LycraKoptu<b>,</b><b> </b>KapakAcildi<b>,</b><b> </b>KenarStop<b>,</b><b> </b>CozguKoptu<b>,</b><b> </b>AtkiKoptu<b>,</b><b> </b>LeventSonu<b>,</b><b> </b>ImalataAraVerildi<b>,</b><b> </b>Tur
+<b>      </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>OrmeMakinaDurumuID<b> </b><b>=</b><b> </b>:FOrmeMakinaDurumuId<b> </b><font color="# 0 0FF"><i>--- and OrmeMakinaDurumu.Tarih &lt;= new.Tarih Furkan iptal 19.04.2021</i></font>
+<b>      </b><b>into</b><b> </b>:FAriza<b>,</b><b> </b>:FServisciVar<b>,</b><b> </b>:FAyarYapiliyor<b>,</b><b> </b>:FArizaVar<b>,</b><b> </b>:OldPlanlamaId<b>,</b><b> </b>:FMemingerKoptu<b>,</b><b> </b>:FAltMemingerKoptu<b>,</b><b> </b>:FStartStop<b>,</b><b> </b>:FIgneKoptu<b>,</b><b> </b>:FLycraKoptu<b>,</b><b> </b>:FKapakAcildi<b>,</b><b> </b>:FKenarStop<b>,</b><b> </b>:FCozguKoptu<b>,</b><b> </b>:FAtkiKoptu<b>,</b><b> </b>:FLeventSonu<b>,</b><b> </b>:FImalataAraVerildi<b>,</b><b> </b>:FTur<b>;</b>
+<b>   </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FAriza<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FAriza<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FServisciVar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FServisciVar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FAyarYapiliyor<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FAyarYapiliyor<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FArizaVar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FArizaVar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FMemingerKoptu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FMemingerKoptu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FAltMemingerKoptu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FAltMemingerKoptu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FLycraKoptu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FLycraKoptu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FStartStop<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FStartStop<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FIgneKoptu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FIgneKoptu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FKapakAcildi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FKapakAcildi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FKenarStop<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FKenarStop<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FCozguKoptu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FCozguKoptu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FAtkiKoptu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FAtkiKoptu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FLeventSonu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FLeventSonu<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FImalataAraVerildi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FImalataAraVerildi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FTur<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FTur<b> </b><b>=</b><b> </b>0<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Ariza<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FAriza<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>FAriza<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Ariza<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FAriza<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>FAriza<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Ariza<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b><font color="# 080 0"><u>AyarYapiliyor</u></font><b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>FAyarYapiliyor<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>exception</b><b> </b><font color="# 080 0"><u>AyarYapiliyor</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ImalataAraVerildi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FImalataAraVerildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>FImalataAraVerildi<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>ImalataAraVerildi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FImalataAraVerildi<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>FImalataAraVerildi<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>ImalataAraVerildi<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ServisciGeldi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>ServisciGeldi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ServisciVar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>ServisciVar<b> </b><b>=</b><b> </b>FServisciVar<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b><font color="# 080 0"><u>AyarYapiliyor</u></font><b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b><font color="# 080 0"><u>AyarYapiliyor</u></font><b> </b><b>=</b><b> </b>FAyarYapiliyor<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ArizaVar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>ArizaVar<b> </b><b>=</b><b> </b>FArizaVar<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>MemingerKoptu<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>MemingerKoptu<b> </b><b>=</b><b> </b>FMemingerKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>AltMemingerKoptu<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>AltMemingerKoptu<b> </b><b>=</b><b> </b>FAltMemingerKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LycraKoptu<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>LycraKoptu<b> </b><b>=</b><b> </b>FLycraKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>StartStop<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>FTur<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b><b>new</b><b>.</b>Tur<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>StartStop<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>StartStop<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>StartStop<b> </b><b>=</b><b> </b>FStartStop<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>IgneKoptu<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>IgneKoptu<b> </b><b>=</b><b> </b>FIgneKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>KapakAcildi<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>KapakAcildi<b> </b><b>=</b><b> </b>FKapakAcildi<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>TopKesme<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>TopKesme<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>TemizlikYapildi<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>TemizlikYapildi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>KenarStop<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>KenarStop<b> </b><b>=</b><b> </b>FKenarStop<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>CozguKoptu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>CozguKoptu<b> </b><b>=</b><b> </b>FCozguKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>AtkiKoptu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>AtkiKoptu<b> </b><b>=</b><b> </b>FAtkiKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LeventSonu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>LeventSonu<b> </b><b>=</b><b> </b>FLeventSonu<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>OrmePlanlamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>OrmePlanlamaId<b> </b><b>=</b><b> </b>OldPlanlamaId<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>DokumaMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>DokumaPlanlamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b>OldPlanlamaId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>OrmePlanlamaId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>TopKesme<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><b>new</b><b>.</b>TemizlikYapildi<b> </b><b>=</b><b> </b>1<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Max</b><b>(</b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmePlanlamaID<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>Bitti<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>Sira<b> </b><b>=</b><b> </b><b>(</b><b>Select</b><b> </b><b>Min</b><b>(</b>sira<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>Bitti<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmeMakinaId<b>)</b>
+<b>    </b><b>into</b><b> </b><b>new</b><b>.</b>OrmePlanlamaID<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>OrmeMakinaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>PersonelId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PKartiIcinSonVardiyaIdGetir</u></font><b>(</b><b>new</b><b>.</b>OrmeMakinaId<b>,</b><b> </b><b>new</b><b>.</b>DokumaMakinaId<b>,</b><b> </b>0<b>)</b>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeVardiyaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PKartiIcinSonVardiyaIdGetir</u></font><b>.</b>VardiyaId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmeMakinaId
+<b>      </b><b>into</b><b> </b><b>New</b><b>.</b>PersonelId<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>PersonelId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PKartiIcinSonVardiyaIdGetir</u></font><b>(</b><b>new</b><b>.</b>OrmeMakinaId<b>,</b><b> </b><b>new</b><b>.</b>DokumaMakinaId<b>,</b><b> </b>0<b>)</b>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>OrmeVardiyaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PKartiIcinSonVardiyaIdGetir</u></font><b>.</b>VardiyaId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeVardiyaPersonel</u></font><b>.</b>DokumaMakinaId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DokumaMakinaId
+<b>      </b><b>into</b><b> </b><b>New</b><b>.</b>PersonelId<b>;</b>
+<b>  </b><b>end</b>
+<font color="# 0 0FF"><i>/*</i></font>
+<font color="# 0 0FF"><i>  Select OrmeVardiyaPersonel.PersonelId from OrmeSonVardiyaIdGetir(new.OrmeMakinaId)</i></font>
+<font color="# 0 0FF"><i>    left join OrmeVardiyaPersonel on OrmeVardiyaPersonel.OrmeVardiyaId = OrmeSonVardiyaIdGetir.OrmeVardiyaId</i></font>
+<font color="# 0 0FF"><i>    where OrmeVardiyaPersonel.OrmeMakinaId = New.OrmeMakinaId</i></font>
+<font color="# 0 0FF"><i>    into New.PersonelId;</i></font>
+<font color="# 0 0FF"><i>  */</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OrmeMakinaDurumuId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>OrmeMakinaDurumuId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>OrmeMakinaDurumu_id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTORMEMAKINABOLUM.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTORMEMAKINADURUS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

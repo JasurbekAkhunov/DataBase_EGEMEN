@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTDISTAMIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="127800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTDISEMRITARTIDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTDISTASYONPLANLAMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTDISTAMIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTDISTAMIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTDISTAMIR</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>DISTAMIR</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Konu<b>             </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Aciklama<b>         </b><b>varchar</b><b>(</b>1500<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EskiPartiYil<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EskiPartiNo<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaId<b>          </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaAdi<b>         </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Kilo<b>           </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamAdi<b>         </b><b>varchar</b><b>(</b>255<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IrsaliyeNo<b>     </b><font color="# 080 0"><u>IrsaliyeNoSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IrsaliyeTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>begin</b>
+<b>  </b>Konu<b> </b><b>=</b><b> </b>'DIŞ TAMİR'<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>EskiPartiYil<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>EskiPartiNo<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>FirmaId<b>,</b>
+<b>         </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>IrsaliyeNo<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>HamStokIrsaliyeID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokIrsaliyeId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>FirmaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>KullaniciId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId
+<b>    </b><b>into</b><b> </b>:EskiPartiYil<b>,</b><b> </b>:EskiPartiNo<b>,</b><b> </b>:HamAdi<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:IrsaliyeNo<b>,</b><b> </b>:IrsaliyeTarihi<b>;</b>
+
+<font color="# 0 0FF"><i>/*  1233 nolu 01.02.2008 tarihli irsaliye ile (assdas) egemen yazilim firmasından Dış Tamir Gelmiştir.*/</i></font>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b><b>Cast</b><b>(</b>IrsaliyeNo<b> </b><b>|</b><b>|</b><b> </b>' Nolu '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>TimeStampToDateTimeStr</u></font><b>(</b>IrsaliyeTarihi<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' tarihli irsaliye ile Dış Tamir Açıldı..'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Firma  : ('<b> </b><b>|</b><b>|</b><b> </b>FirmaId<b> </b><b>|</b><b>|</b><b> </b>') '<b> </b><b>|</b><b>|</b><b> </b>FirmaAdi<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Kilo : '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>'#,##0.#0'<b>,</b><b> </b>Kilo<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Ham Stok Adı : '<b> </b><b>|</b><b>|</b><b> </b>HamAdi<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Ham Stok Giriş No : '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>HamStokMasterId<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Eski Parti No : ( '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>EskiPartiYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>EskiPartiNo<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>'SİSTEM YÖNETİCİSİ'<b>,</b><b> </b>:Konu<b>,</b><b> </b>:Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>DisTamirBildirilsin<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTDISEMRITARTIDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTDISTASYONPLANLAMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

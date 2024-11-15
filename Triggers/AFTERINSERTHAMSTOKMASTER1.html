@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTHAMSTOKMASTER1</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="151800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTHAMSTOKMASTER.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTHAMSTOKMASTERTOP.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTHAMSTOKMASTER1</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTHAMSTOKMASTER1)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTHAMSTOKMASTER1</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>HAMSTOKMASTER</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>1
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AlarmVar<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBlob<b>             </b><b>Blob</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Aciklama<b>          </b><b>varchar</b><b>(</b>1024<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamAdi<b>            </b><b>varchar</b><b>(</b>255<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisYil<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisId<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKullaniciID<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteTalepYil<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteTalepId<b>  </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>BoyaSiparisKayitId<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisStokGirisAlarm</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisStokGirisAlarm</u></font><b>.</b>BoyaSiparisKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BoyaSiparisKayitID<b> </b><b>into</b><b> </b>:AlarmVar<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>AlarmVar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b>BoyaSiparisYil<b>,</b><b> </b>BoyaSiparisID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BoyaSiparisKayitId<b> </b><b>into</b><b> </b>:BoyaSiparisYil<b>,</b><b> </b>:BoyaSiparisID<b>;</b>
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>into</b><b> </b>:HamAdi<b>;</b>
+
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b><b>Cast</b><b>(</b>'Lütfen Dikkat !'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'('<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>BoyaSiparisYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>BoyaSiparisId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Nolu Sipariş için, '<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>new</b><b>.</b>Kilo<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Kg  '<b> </b><b>|</b><b>|</b><b> </b>HamAdi<b> </b><b>|</b><b>|</b><b> </b>' gelmiştir..'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'Ham Stok Giriş No : '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>HamStokMasterId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BoyaSiparisDetayID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'Boya Sipariş Detay NO : '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>BoyaSiparisDetayID<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>      </b>FBlob<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_StrBlob</u></font><b>(</b>Aciklama<b>)</b><b>;</b>
+
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>SiparisStokGirisAlarm</u></font><b>.</b>KullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>'Sistem'<b>,</b><b> </b>'Sipariş Alarm İkaz'<b>,</b><b> </b>:FBlob<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisStokGirisAlarm</u></font>
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisStokGirisAlarm</u></font><b>.</b>BoyaSiparisKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BoyaSiparisKayitID<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OrmeSiparisDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>For</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>LabReceteTalepYil<b>,</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>LabReceteTalepId<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HamId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>HamStokSecimi<b> </b><b>=</b><b> </b>3<b> </b><b>into</b><b> </b>:LabReceteTalepYil<b>,</b><b> </b>:LabReceteTalepId<b> </b><b>Do</b>
+<b>    </b><b>begin</b>
+
+<b>      </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>LabKumasGelinceBildirimAlsin<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FKullaniciID<b> </b><b>Do</b>
+<b>      </b><b>begin</b>
+
+<b>        </b><b>Select</b><b> </b>BoyaSiparisYil<b>,</b><b> </b>BoyaSiparisID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BoyaSiparisKayitId<b> </b><b>into</b><b> </b>:BoyaSiparisYil<b>,</b><b> </b>:BoyaSiparisID<b>;</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>into</b><b> </b>:HamAdi<b>;</b>
+
+<b>        </b>Aciklama<b> </b><b>=</b><b> </b><b>Cast</b><b>(</b>'Lütfen Dikkat !'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>        </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'('<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>LabReceteTalepYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>LabReceteTalepId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Nolu Talep için, '<b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>        </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'('<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>BoyaSiparisYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>BoyaSiparisId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Nolu Sipariş için, '<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>        </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>new</b><b>.</b>Kilo<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Kg  '<b> </b><b>|</b><b>|</b><b> </b>HamAdi<b> </b><b>|</b><b>|</b><b> </b>' gelmiştir..'<b>  </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>        </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'Ham Stok Giriş No : '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>HamStokMasterId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BoyaSiparisDetayID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+
+<b>        </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'Boya Sipariş Detay NO : '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>BoyaSiparisDetayID<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>        </b>FBlob<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_StrBlob</u></font><b>(</b>Aciklama<b>)</b><b>;</b>
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>          </b><b>Values</b><b>(</b>:FKullaniciID<b>,</b><b> </b>1<b>,</b><b> </b>'Sistem'<b>,</b><b> </b>'Sipariş Alarm İkaz'<b>,</b><b> </b>:FBlob<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTHAMSTOKMASTER.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTHAMSTOKMASTERTOP.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEPERSONEL</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1452800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEPASTOKCIKISDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEPERSONELGIRISCIKIS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEPERSONEL</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEPERSONEL)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEPERSONEL</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>PERSONEL</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BakimciProxyId<b>  </b><b>varchar</b><b>(</b>8<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PostaBasiProxyId<b>  </b><b>varchar</b><b>(</b>8<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AyarciProxyId<b>     </b><b>varchar</b><b>(</b>8<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ProxyId<b>  </b><b>varchar</b><b>(</b>8<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPersonelAdi<b>  </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Imalatci<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>ProxyId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>PostaBasi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>PostaBasiProxyId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Bakimci<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>BakimciProxyId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>AyarPersoneli<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>AyarciProxyId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>  </b>ProxyId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ProxyId<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ProxyId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ProxyId<b> </b><b>=</b><b> </b>'-1'<b>;</b>
+
+<b>  </b>BakimciProxyId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BakimciProxyId<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BakimciProxyId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>BakimciProxyId<b> </b><b>=</b><b> </b>'-2'<b>;</b>
+
+<b>  </b>PostaBasiProxyId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PostaBasiProxyId<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>PostaBasiProxyId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>PostaBasiProxyId<b> </b><b>=</b><b> </b>'-3'<b>;</b>
+
+<b>  </b>AyarciProxyId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>AyarciProxyId<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>AyarciProxyId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>AyarciProxyId<b> </b><b>=</b><b> </b>'-4'<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ProxyId<b> </b><b>=</b><b> </b>PostaBasiProxyId<b> </b><b>or</b><b> </b>ProxyId<b> </b><b>=</b><b> </b>BakimciProxyId<b> </b><b>or</b><b> </b>BakimciProxyId<b> </b><b>=</b><b> </b>PostaBasiProxyId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>PersonelProxyKartHatasi</u></font><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AyarciProxyId<b> </b><b>=</b><b> </b>ProxyId<b> </b><b>or</b><b> </b>AyarciProxyId<b> </b><b>=</b><b> </b>BakimciProxyId<b> </b><b>or</b><b> </b>AyarciProxyId<b> </b><b>=</b><b> </b>PostaBasiProxyId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>PersonelProxyKartHatasi</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>Old</b><b>.</b>ProxyId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>ProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>old</b><b>.</b>ProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>ProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>Old</b><b>.</b>ProxyId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>ProxyId<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>FPersonelAdi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>Min</b><b>(</b><font color="# 080 0"><u>Personel</u></font><b>.</b>Adi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Personel</u></font><b> </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>Personel</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>BakimciProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PostaBasiProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>AyarciProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ProxyId<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PersonelId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>PersonelId<b> </b><b>into</b><b> </b>:FPersonelAdi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FPersonelAdi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ProxyBaskaPersoneldeKullanimda</u></font><b> </b>' Proxy Kullanımda, Personel Adı : '<b> </b><b>|</b><b>|</b><b> </b>FPersonelAdi<b>;</b>
+
+<b>    </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ProxyId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ProxyPartideKullanimda</u></font><b>;</b>
+
+<b>    </b><b>execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>ProxyOkuKaydet</u></font><b>(</b><b>new</b><b>.</b>ProxyId<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>Old</b><b>.</b>BakimciProxyId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>BakimciProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>old</b><b>.</b>BakimciProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>BakimciProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>Old</b><b>.</b>BakimciProxyId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>BakimciProxyId<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>FPersonelAdi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>Min</b><b>(</b><font color="# 080 0"><u>Personel</u></font><b>.</b>Adi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Personel</u></font><b> </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>Personel</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BakimciProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>BakimciProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BakimciProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PostaBasiProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BakimciProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>AyarciProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BakimciProxyId<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PersonelId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>PersonelId<b> </b><b>into</b><b> </b>:FPersonelAdi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FPersonelAdi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ProxyBaskaPersoneldeKullanimda</u></font><b> </b>' Proxy Kullanımda, Personel Adı : '<b> </b><b>|</b><b>|</b><b> </b>FPersonelAdi<b>;</b>
+
+<b>    </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BakimciProxyId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ProxyPartideKullanimda</u></font><b>;</b>
+<b>    </b><b>execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>ProxyOkuKaydet</u></font><b>(</b><b>new</b><b>.</b>BakimciProxyId<b>)</b><b>;</b>
+
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>Old</b><b>.</b>PostaBasiProxyId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>PostaBasiProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>old</b><b>.</b>PostaBasiProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>PostaBasiProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>Old</b><b>.</b>PostaBasiProxyId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>PostaBasiProxyId<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>FPersonelAdi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>Min</b><b>(</b><font color="# 080 0"><u>Personel</u></font><b>.</b>Adi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Personel</u></font><b> </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>Personel</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PostaBasiProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>BakimciProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PostaBasiProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PostaBasiProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PostaBasiProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>AyarciProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PostaBasiProxyId<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PersonelId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>PersonelId<b> </b><b>into</b><b> </b>:FPersonelAdi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FPersonelAdi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ProxyBaskaPersoneldeKullanimda</u></font><b> </b>' Proxy Kullanımda, Personel Adı : '<b> </b><b>|</b><b>|</b><b> </b>FPersonelAdi<b>;</b>
+
+<b>    </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PostaBasiProxyId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ProxyPartideKullanimda</u></font><b>;</b>
+<b>    </b><b>execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>ProxyOkuKaydet</u></font><b>(</b><b>new</b><b>.</b>PostaBasiProxyId<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>Old</b><b>.</b>AyarciProxyId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>AyarciProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>old</b><b>.</b>AyarciProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>AyarciProxyId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>Old</b><b>.</b>AyarciProxyId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>AyarciProxyId<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>FPersonelAdi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>Min</b><b>(</b><font color="# 080 0"><u>Personel</u></font><b>.</b>Adi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Personel</u></font><b> </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>Personel</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>AyarciProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>BakimciProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>AyarciProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PostaBasiProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>AyarciProxyId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>AyarciProxyId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>AyarciProxyId<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PersonelId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>PersonelId<b> </b><b>into</b><b> </b>:FPersonelAdi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FPersonelAdi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ProxyBaskaPersoneldeKullanimda</u></font><b> </b>' Proxy Kullanımda, Personel Adı : '<b> </b><b>|</b><b>|</b><b> </b>FPersonelAdi<b>;</b>
+
+<b>    </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>AyarciProxyId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ProxyPartideKullanimda</u></font><b>;</b>
+<b>    </b><b>execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>ProxyOkuKaydet</u></font><b>(</b><b>new</b><b>.</b>AyarciProxyId<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>new</b><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEPASTOKCIKISDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEPERSONELGIRISCIKIS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

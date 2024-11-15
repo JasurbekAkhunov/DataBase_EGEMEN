@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTBOYATEKLIFHAMMADDE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="663800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTBOYATEKLIFDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTBOYATEKLIFOZELTEST.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTBOYATEKLIFHAMMADDE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTBOYATEKLIFHAMMADDE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTBOYATEKLIFHAMMADDE</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BOYATEKLIFHAMMADDE</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TDovizId<b>       </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TTeklifTarihi<b>  </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DovizId<b>        </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDovizKuru<b>     </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LinkIslemi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BirimFiyat<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b>DovizId<b>,</b><b> </b>TeklifTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b>.</b>BoyaTeklifKayitId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BoyaTeklifKayitId<b> </b><b>into</b><b> </b>:TDovizId<b>,</b><b> </b>:TTeklifTarihi<b>;</b>
+
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisFiyati<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisFiyatiDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HamId
+<b>        </b><b>into</b><b> </b><b>new</b><b>.</b>BirimFiyat<b>,</b><b> </b>:DovizId<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>DovizId<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DovizKuruGetir</u></font><b>(</b>:DovizId<b>,</b><b> </b>:TDovizId<b>,</b><b> </b>:TTeklifTarihi<b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FDovizKuru<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>DovizKuruGirisiYapilmamis</u></font><b>;</b>
+
+<b>        </b><b>new</b><b>.</b>BirimFiyat<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BirimFiyat<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+
+<b>        </b><b>Select</b><b> </b>Fiyat<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FormataGoreFiyatYuvarla</u></font><b>(</b><b>New</b><b>.</b>BirimFiyat<b>,</b><b> </b>'BOYA'<b>,</b><b> </b>'BIRIMFIYAT'<b>)</b><b> </b><b>into</b><b> </b><b>New</b><b>.</b>BirimFiyat<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BirimFiyat<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>BirimFiyat<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>KullanimOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>KullanimOrani<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>new</b><b>.</b>BoyaTeklifHammaddeId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>BoyaTeklifHammadde_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTBOYATEKLIFDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTBOYATEKLIFOZELTEST.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,590 @@
+<HTML>
+<HEAD>
+<TITLE>DOKUMAIPLIKMIKTARIHESAPLAMA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="380800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DOKUMAIADEBARKODBILGILERIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DOKUMAIPLIKTAKIPRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DOKUMAIPLIKMIKTARIHESAPLAMA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ORMESIPARISDETAYRECETEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOKUMAPLANLAMARECETEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">COZGUISEMRIRECETEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETILENMIKTARIDUS</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHAMMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMSTOKRECETEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AGIRLIKKILO</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">UZUNLUKMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HATASTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(500)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DOKUMAIPLIKMIKTARIHESAPLAMA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DOKUMAIPLIKMIKTARIHESAPLAMA</u></font><b>(</b>
+<b>    </b>ORMESIPARISDETAYRECETEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DOKUMAPLANLAMARECETEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>COZGUISEMRIRECETEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>URETILENMIKTARIDUS<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>AHAMMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>HAMSTOKRECETEID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>AGIRLIKKILO<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>UZUNLUKMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>HATASTR<b> </b><b>VARCHAR</b><b>(</b>500<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AtkiCozgu<b>              </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BolgeselSiklik<b>         </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AtkiIplikCm<b>            </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IplikSikligiCm<b>         </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TarakEni<b>               </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Nm<b>                     </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TahminiFireOrani<b>       </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamMiktar<b>              </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MetredekiAtkiSayisi<b>    </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TarakEniMt<b>             </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IplikAgirligiGr<b>        </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TelSayisi<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ReceteTelSayisi<b>        </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SolKenarTelSayisi<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SagKenarTelSayisi<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>YuzeyTelSayisi<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CozguTelSayisiToplami<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AtkiTelSayisiToplami<b>   </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeSiparisDetayId<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CozguRaporTekrarSayisi<b>    </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CozguTelSayisiMt<b>          </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoydanCekme<b>               </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CozguCekmeDahilNm<b>         </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CozguFireOrani<b>            </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOrmeSiparisDetayReceteId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDokumaPlanlamaReceteId<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaPlanlamaId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCozguIsEmriReceteId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CozguIsEmriKayitId<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretim<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Denye<b>                     </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KalinlikNe<b>                </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FEgemenFirmaId<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamId<b>                     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KumasHamId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RenkId<b>                    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamMiktar2<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ToplamLeventAdedi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaProjesiAktif<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CozguDenye<b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ToplamDeger<b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKullanimOrani<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>begin</b>
+HataStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>EgemenFirmaID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FEgemenFirmaID<b>;</b>
+<b>  </b><b>select</b><b> </b>shtUretim<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font><b> </b><b>into</b><b> </b>:shtUretim<b>;</b>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>sistem</u></font><b>.</b>DokumaProjesiAktif<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b>  </b><b>into</b><b> </b>:DokumaProjesiAktif<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>OrmeSiparisDetayReceteId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>AtkiCozgu<b>,</b><b> </b><b>iif</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>BolgeselSiklik<b> </b><b>=</b><b> </b>1<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>IplikSikligiCm<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AtkiIplikCm<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>TarakEni<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Nm<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>TahminiFireOrani<b>,</b><b> </b><b>coalesce</b><b>(</b>:AHamMiktar<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>HamMiktar<b>)</b><b>,</b>
+<b>    </b><font color="# 080 0"><u>Ham</u></font><b>.</b>TelSayisi<b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>SolKenarTelSayisi<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>SagKenarTelSayisi<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>TelSayisi<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>BoydanCekme<b>,</b>
+<b>    </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>CozguFireOrani<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>OrmeSiparisDetayReceteId<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Denye<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>KalinlikNe<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>OrmeSiparisDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b>ReceteHam<b> </b><b>on</b><b> </b>ReceteHam<b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>KalinlikId<b> </b><b>=</b><b> </b>ReceteHam<b>.</b>KalinlikId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>OrmeSiparisDetayReceteId<b> </b><b>=</b><b> </b>:OrmeSiparisDetayReceteId<b> </b><b>into</b>
+<b>    </b>:AtkiCozgu<b>,</b><b> </b>:AtkiIplikCm<b>,</b><b> </b>:TarakEni<b>,</b><b> </b>:Nm<b>,</b><b> </b>:TahminiFireOrani<b>,</b><b> </b>:HamMiktar<b>,</b><b> </b>:TelSayisi<b>,</b><b> </b>:SolKenarTelSayisi<b>,</b><b> </b>:SagKenarTelSayisi<b>,</b><b> </b>:ReceteTelSayisi<b>,</b><b> </b>:OrmeSiparisDetayId<b>,</b><b> </b>:BoydanCekme<b>,</b>
+<b>    </b>:CozguFireOrani<b>,</b><b> </b>:FOrmeSiparisDetayReceteId<b>,</b><b> </b>:Denye<b>,</b><b> </b>:KalinlikNe<b>;</b>
+
+<b>    </b><b>if</b><b>(</b>FEgemenFirmaID<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Pak İpek ,EmnDenim, Licoteks*/</i></font>
+<b>      </b>BoydanCekme<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FOrmeSiparisDetayReceteId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>'Sipariş Detay Reçetesi Bulunamadı'<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AtkiIplikCm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>'Kumaş AtkiIplikCm veya Reçete IplikSikligiCm Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TarakEni<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş TarakEni Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>Nm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>Nm<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKalinlikDegerHesapla</u></font><b>(</b>:Denye<b>,</b><b> </b>:KalinlikNe<b>)</b><b> </b><b>into</b><b> </b>:Nm<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Nm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham Kalınlık Nm Eksik, '<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TahminiFireOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham TahminiFireOrani Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TelSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş Ham TelSayisi Eksik, '<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>UretilenMiktariDus<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*ham sipariş miktardan şimdiye kadar üretilmişleri düşerek ham miktarı hesaplayaağız*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>:HamMiktar<b> </b><b>-</b><b> </b><b>coalesce</b><b>(</b><b>sum</b><b>(</b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>GerceklesenMiktar<b>)</b><b>,</b>0<b>)</b>
+<b>      </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b>:OrmeSiparisDetayId<b> </b><b>into</b><b> </b>:HamMiktar<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>AtkiCozgu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*atki ise*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>HataStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>suspend</b><b>;</b>
+<b>        </b><b>exit</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b>MetredekiAtkiSayisi<b> </b><b>=</b><b> </b>AtkiIplikCm<b> </b><b>*</b><b> </b>100<b>;</b>
+<b>      </b>TarakEniMt<b> </b><b>=</b><b> </b>TarakEni<b> </b><b>/</b><b> </b>100<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b>  </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Pak İpek,EmnDenim, LicoTex*/</i></font>
+<b>        </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b><b>(</b>MetredekiAtkiSayisi<b> </b><b>*</b><b> </b>TarakEniMt<b>)</b><b> </b><b>/</b><b> </b>Nm<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>      </b><b>else</b>
+<b>        </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>MetredekiAtkiSayisi<b> </b><b>*</b><b> </b>TarakEniMt<b>)</b><b> </b><b>/</b><b> </b><b>(</b>Nm<b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>)</b><b>;</b>
+<b>      </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b>IplikAgirligiGr<b> </b><b>/</b><b> </b>1000<b>)</b><b> </b><b>*</b><b> </b>HamMiktar<b>;</b>
+
+<b>      </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AtkiCozgu<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*cozgu ise*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>ReceteTelSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham ReceteTelSayisi Eksik, '<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>BoydanCekme<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş Ham BoydanCekme Eksik, '<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>CozguFireOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete CozguFireOrani Eksik, '<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>HataStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>suspend</b><b>;</b>
+<b>        </b><b>exit</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>TelSayisi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b>:OrmeSiparisDetayId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetayRecete</u></font><b>.</b>AtkiCozgu<b> </b><b>=</b><b> </b>2<b> </b><b>into</b><b> </b>:CozguTelSayisiToplami<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Pak İpek,EmnDenim*/</i></font>
+<b>      </b><b>begin</b>
+<b>        </b>CozguCekmeDahilNm<b> </b><b>=</b><b> </b>Nm<b> </b><b>*</b><b> </b>100<b>;</b>
+<b>        </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>ReceteTelSayisi<b> </b><b>*</b><b> </b>100<b>)</b><b> </b><b>/</b><b> </b>CozguCekmeDahilNm<b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>        </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b>IplikAgirligiGr<b> </b><b>/</b><b> </b>1000<b>)</b><b> </b><b>*</b><b> </b>HamMiktar<b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>CozguFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>        </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>(</b>HamMiktar<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b> </b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>YuzeyTelSayisi<b> </b><b>=</b><b> </b>TelSayisi<b> </b><b>-</b><b> </b>SagKenarTelSayisi<b> </b><b>-</b><b> </b>SolKenarTelSayisi<b>;</b>
+<b>        </b>CozguRaporTekrarSayisi<b> </b><b>=</b><b> </b>YuzeyTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>;</b>
+<b>        </b>CozguTelSayisiMt<b> </b><b>=</b><b> </b>CozguRaporTekrarSayisi<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>*</b><b> </b>100<b>;</b>
+<b>        </b>CozguCekmeDahilNm<b> </b><b>=</b><b> </b>Nm<b> </b><b>*</b><b> </b><b>(</b>100<b> </b><b>-</b><b> </b>BoydanCekme<b>)</b><b>;</b>
+<b>        </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>CozguTelSayisiMt<b> </b><b>/</b><b> </b>CozguCekmeDahilNm<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>        </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b>IplikAgirligiGr<b> </b><b>/</b><b> </b>1000<b>)</b><b> </b><b>*</b><b> </b>HamMiktar<b>;</b>
+
+<b>        </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>(</b>HamMiktar<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>CozguFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>DokumaPlanlamaReceteId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>select</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>AtkiCozgu<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>IplikSikligiCm<b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>TarakEni<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>TarakEni<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Nm<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>TahminiFireOrani<b>,</b>
+<b>    </b><b>iif</b><b>(</b>:UretilenMiktariDus<b> </b><b>=</b><b> </b>0<b>,</b><b> </b><b>coalesce</b><b>(</b>:AHamMiktar<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>PlanlananMiktar<b>)</b><b>,</b><b> </b><b>coalesce</b><b>(</b>:AHamMiktar<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>PlanlananMiktar<b>)</b><b> </b><b>-</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>GerceklesenMiktar<b>)</b><b>,</b>
+<b>    </b><font color="# 080 0"><u>Ham</u></font><b>.</b>TelSayisi<b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>SolKenarTelSayisi<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>SagKenarTelSayisi<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>TelSayisi<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>BoydanCekme<b>,</b>
+<b>    </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>CozguFireOrani<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaReceteId<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaId<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Denye<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>KalinlikNe<b>,</b><b> </b>ReceteHam<b>.</b>HamId<b>,</b>
+<b>    </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>RenkId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>OrmeSiparisDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b>ReceteHam<b> </b><b>on</b><b> </b>ReceteHam<b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>KalinlikId<b> </b><b>=</b><b> </b>ReceteHam<b>.</b>KalinlikId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaReceteId<b> </b><b>=</b><b> </b>:DokumaPlanlamaReceteId<b> </b><b>into</b>
+<b>    </b>:AtkiCozgu<b>,</b><b> </b>:AtkiIplikCm<b>,</b><b> </b>:TarakEni<b>,</b><b> </b>:Nm<b>,</b><b> </b>:TahminiFireOrani<b>,</b><b> </b>:HamMiktar<b>,</b><b> </b>:TelSayisi<b>,</b><b> </b>:SolKenarTelSayisi<b>,</b><b> </b>:SagKenarTelSayisi<b>,</b><b> </b>:ReceteTelSayisi<b>,</b><b> </b>:OrmeSiparisDetayId<b>,</b><b> </b>:BoydanCekme<b>,</b>
+<b>    </b>:CozguFireOrani<b>,</b><b> </b>:FDokumaPlanlamaReceteId<b>,</b><b> </b>:DokumaPlanlamaId<b>,</b><b> </b>:Denye<b>,</b><b> </b>:KalinlikNe<b>,</b><b> </b>:HamId<b>,</b><b> </b>:KumasHamId<b>,</b><b> </b>:RenkId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>TahminiFireOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><b>max</b><b>(</b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>FireOrani<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:KumasHamId<b> </b><b>and</b>
+<b>      </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>ReceteHamID<b> </b><b>=</b><b> </b>:HamId<b> </b><b>and</b>
+<b>      </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>AtkiCozgu<b> </b><b>=</b><b> </b>:AtkiCozgu<b> </b><b>and</b>
+<b>      </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>RenkId<b>,</b><b> </b>:RenkID<b>)</b><b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:TahminiFireOrani<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Pak İpek, EmnDenim, Licotex*/</i></font>
+<b>      </b>BoydanCekme<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FDokumaPlanlamaReceteId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>'Talimat Reçetesi Bulunamadı'<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TahminiFireOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham TahminiFireOrani Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>Nm<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>)</b><b> </b><b>and</b><b> </b>AtkiCozgu<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>77<b>)</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>Nm<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKalinlikDegerHesapla</u></font><b>(</b>:Denye<b>,</b><b> </b>:KalinlikNe<b>)</b><b> </b><b>into</b><b> </b>:Nm<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Nm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham Kalınlık Nm Eksik, '<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>AtkiCozgu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*atki ise*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>TarakEni<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş TarakEni Eksik, '<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>AtkiIplikCm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>'Kumaş AtkiIplikCm veya Reçete IplikSikligi Eksik, '<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>HataStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>suspend</b><b>;</b>
+<b>        </b><b>exit</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Pak İpek,EmnDenim, Licoteks*/</i></font>
+<b>        </b>MetredekiAtkiSayisi<b> </b><b>=</b><b> </b>AtkiIplikCm<b> </b><b>*</b><b> </b>100<b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>TelSayisi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b>:DokumaPlanlamaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>AtkiCozgu<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:AtkiTelSayisiToplami<b>;</b>
+<b>        </b>MetredekiAtkiSayisi<b> </b><b>=</b><b> </b>AtkiIplikCm<b>  </b><b>*</b><b> </b><b>(</b>ReceteTelSayisi<b> </b><b>/</b><b> </b>AtkiTelSayisiToplami<b>)</b><b> </b><b>*</b><b> </b>100<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b>TarakEniMt<b> </b><b>=</b><b> </b>TarakEni<b> </b><b>/</b><b> </b>100<b>;</b>
+<b>      </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>MetredekiAtkiSayisi<b> </b><b>*</b><b> </b>TarakEniMt<b>)</b><b> </b><b>/</b><b> </b>Nm<b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>      </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b>IplikAgirligiGr<b> </b><b>/</b><b> </b>1000<b>)</b><b> </b><b>*</b><b> </b>HamMiktar<b>;</b>
+
+<b>      </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AtkiCozgu<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*cozgu ise*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>TelSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş Ham TelSayisi Eksik, '<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>ReceteTelSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham ReceteTelSayisi Eksik, '<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>BoydanCekme<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş Ham BoydanCekme Eksik, '<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>CozguFireOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete CozguFireOrani Eksik, '<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>(</b>HataStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>and</b><b> </b><b>(</b>DokumaProjesiAktif<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b>)</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>suspend</b><b>;</b>
+<b>        </b><b>exit</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>TelSayisi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b>:DokumaPlanlamaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>AtkiCozgu<b> </b><b>=</b><b> </b>2<b> </b><b>into</b><b> </b>:CozguTelSayisiToplami<b>;</b>
+
+<b>      </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>(</b>HamMiktar<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>CozguFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+
+
+<b>      </b><b>if</b><b> </b><b>(</b>DokumaProjesiAktif<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>update</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font>
+<b>        </b><b>set</b><b> </b>KullanimOrani<b> </b><b>=</b><b> </b>0
+<b>         </b><b>where</b>
+<b>           </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b>:DokumaPlanlamaId<b>;</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>        </b><font color="# 0 0FF"><i>--Deger1 =  (:Denye / Dokumaplanlamarecete.IplikUzama ) * Dokumaplanlamarecete.telsayisi  * Dokumaplanlamarecete.mmrack     -- Buradan çıkan SOnuç yüzde olarak  çıkıcak ve reçetedeki ipliğin o tarakta(İplik Numarasında) Orani Çıkıcak</i></font>
+<b>        </b><b>select</b><b> </b><b>cast</b><b>(</b><b>sum</b><b>(</b><b>(</b><font color="# 080 0"><u>kalinlik</u></font><b>.</b>Denye<b> </b><b>/</b><b> </b><font color="# 080 0"><u>Dokumaplanlamarecete</u></font><b>.</b>Uzama<b> </b><b>)</b><b> </b><b>*</b><b> </b><font color="# 080 0"><u>Dokumaplanlamarecete</u></font><b>.</b>telsayisi<b>  </b><b>*</b><b> </b><font color="# 080 0"><u>Dokumaplanlamarecete</u></font><b>.</b>mmrack<b>)</b><b> </b><b>as</b><b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b> </b><b>)</b>
+<b>          </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font>
+<b>           </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ham</u></font><b>.</b>hamid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Dokumaplanlamarecete</u></font><b>.</b>hamid
+<b>           </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>kalinlik</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>kalinlik</u></font><b>.</b>kalinlikid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ham</u></font><b>.</b>kalinlikid
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b>:DokumaPlanlamaId<b> </b><b>into</b><b> </b>:ToplamDeger<b>;</b>
+
+
+<b>        </b><b>update</b>
+<b>          </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font>
+<b>        </b><b>set</b>
+<b>          </b>KullanimOrani<b> </b><b>=</b><b> </b><b>cast</b><b>(</b><b>(</b><b>(</b><b>(</b>
+<b>          </b><b>(</b><b>select</b><b> </b><b>first</b><b> </b>1<b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>denye<b> </b><b>from</b><b>  </b><font color="# 080 0"><u>ham</u></font><b> </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>kalinlik</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>kalinlik</u></font><b>.</b>kalinlikid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ham</u></font><b>.</b>kalinlikid<b> </b><b>where</b><b> </b><font color="# 080 0"><u>ham</u></font><b>.</b>hamid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Dokumaplanlamarecete</u></font><b>.</b>hamid<b>)</b>
+<b>           </b><b>/</b><b> </b><font color="# 080 0"><u>Dokumaplanlamarecete</u></font><b>.</b>Uzama<b> </b><b>)</b><b> </b><b>*</b><b> </b><font color="# 080 0"><u>Dokumaplanlamarecete</u></font><b>.</b>TelSayisi<b>  </b><b>*</b><b> </b><font color="# 080 0"><u>Dokumaplanlamarecete</u></font><b>.</b>MMRack<b>)</b><b>/</b><b> </b>:ToplamDeger<b> </b><b>*</b><b> </b>100<b>)</b><b> </b><b>as</b><b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>)</b>
+<b>         </b><b>where</b>
+<b>           </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b>:DokumaPlanlamaId<b>;</b>
+
+<b>     </b><b>select</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>KullanimOrani
+<b>           </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaReceteID<b> </b><b>=</b><b> </b>:DokumaPlanlamaReceteId<b> </b><b>into</b><b> </b>:FKullanimOrani<b>;</b>
+
+<b>         </b>AgirlikKilo<b> </b><b>=</b><b>  </b>AHamMiktar<b> </b><b>/</b><b> </b>100<b> </b><b>*</b><b> </b>FKullanimOrani<b>;</b>
+
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*pak ipek, EmnDenim ,Licoteks*/</i></font>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><b>sum</b><b>(</b><b>coalesce</b><b>(</b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>.</b>AgirlikKilo<b>,</b><b> </b>0<b>)</b><b>)</b>
+<b>        </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>(</b><b>null</b><b>,</b><b> </b><b>null</b><b>,</b><b> </b><b>null</b><b>,</b><b> </b>0<b>,</b><b> </b>:UzunlukMetre<b>,</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>HamStokReceteId<b>)</b><b> </b><b>on</b><b> </b>1<b>=</b>1
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:HamId<b> </b><b>into</b><b> </b>:AgirlikKilo<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>          </b>YuzeyTelSayisi<b> </b><b>=</b><b> </b>TelSayisi<b> </b><b>-</b><b> </b>SagKenarTelSayisi<b> </b><b>-</b><b> </b>SolKenarTelSayisi<b>;</b>
+<b>          </b>CozguRaporTekrarSayisi<b> </b><b>=</b><b> </b>YuzeyTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>;</b>
+<b>          </b>CozguTelSayisiMt<b> </b><b>=</b><b> </b>CozguRaporTekrarSayisi<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>*</b><b> </b>100<b>;</b>
+<b>          </b>CozguCekmeDahilNm<b> </b><b>=</b><b> </b>Nm<b> </b><b>*</b><b> </b><b>(</b>100<b> </b><b>-</b><b> </b>BoydanCekme<b>)</b><b>;</b>
+<b>          </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>CozguTelSayisiMt<b> </b><b>/</b><b> </b>CozguCekmeDahilNm<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>          </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b>IplikAgirligiGr<b> </b><b>/</b><b> </b>1000<b>)</b><b> </b><b>*</b><b> </b>HamMiktar<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>CozguIsEmriReceteId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Nm<b>,</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>FireOrani<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>TelSayisi<b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>SolKenarTelSayisi<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>SagKenarTelSayisi<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>TelSayisi<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>BoydanCekme<b>,</b>
+<b>    </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>CozguFireOrani<b>,</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>CozguIsEmriReceteId<b>,</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>CozguIsEmriKayitId<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Denye<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>KalinlikNe<b>,</b><b> </b>CZDENYE<b>.</b>Denye<b> </b>CZDENYE<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b>.</b>CozguIsEmriKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>CozguIsEmriKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b>.</b>DokumaHamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b>ReceteHam<b> </b><b>on</b><b> </b>ReceteHam<b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>HamId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b>CozguHam<b> </b><b>on</b><b>  </b>CozguHam<b>.</b>HamId<b>=</b><font color="# 080 0"><u>CozguIsEmri</u></font><b>.</b>IplikHamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>KalinlikId<b> </b><b>=</b><b> </b>ReceteHam<b>.</b>KalinlikId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b> </b>CZDENYE<b> </b><b>on</b><b>  </b>CZDENYE<b>.</b>kalinlikid<b>  </b><b>=</b><b> </b>CozguHam<b>.</b>kalinlikid
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>CozguIsEmriReceteId<b> </b><b>=</b><b> </b>:CozguIsEmriReceteId<b> </b><b>into</b>
+<b>    </b>:Nm<b>,</b><b> </b>:TahminiFireOrani<b>,</b><b> </b>:TelSayisi<b>,</b><b> </b>:SolKenarTelSayisi<b>,</b><b> </b>:SagKenarTelSayisi<b>,</b><b> </b>:ReceteTelSayisi<b>,</b><b> </b>BoydanCekme<b>,</b>
+<b>    </b>:CozguFireOrani<b>,</b><b> </b>:FCozguIsEmriReceteId<b>,</b><b> </b>:CozguIsEmriKayitId<b>,</b><b> </b>:Denye<b>,</b><b> </b>:KalinlikNe<b>,</b><b> </b>:CozguDenye<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Pak İpek,EmnDenim, Licotex*/</i></font>
+<b>      </b>BoydanCekme<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FCozguIsEmriReceteId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>'Çözgü İş Emri Reçetesi Bulunamadı'<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TahminiFireOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham TahminiFireOrani Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>Nm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>Nm<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKalinlikDegerHesapla</u></font><b>(</b>:Denye<b>,</b><b> </b>:KalinlikNe<b>)</b><b> </b><b>into</b><b> </b>:Nm<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Nm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham Kalınlık Nm Eksik, '<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><font color="# 0 0FF"><i>/*if (TelSayisi is null) then</i></font>
+<font color="# 0 0FF"><i>      HataStr = HataStr ||'Kumaş Ham TelSayisi Eksik, '; */</i></font>
+<b>    </b><b>if</b><b> </b><b>(</b>ReceteTelSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham ReceteTelSayisi Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>BoydanCekme<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş Ham BoydanCekme Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>CozguFireOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete CozguFireOrani Eksik, '<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>(</b>HataStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>and</b><b> </b><b>(</b>DokumaProjesiAktif<b> </b><b>&lt;</b><b>&gt;</b>2<b>)</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>      </b><b>exit</b><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>TelSayisi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>CozguIsEmriRecete</u></font><b>.</b>CozguIsEmriKayitId<b> </b><b>=</b><b> </b>:CozguIsEmriKayitId<b> </b><b>into</b><b> </b>:CozguTelSayisiToplami<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>AHamMiktar<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>DokumaProjesiAktif<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>       </b>HataStr<b> </b><b>=</b>''<b>;</b>
+<b>       </b><b>select</b><b> </b><b>(</b><b>sum</b><b>(</b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>cozguleventmetre<b> </b><b>*</b><b> </b>:CozguDenye<b>  </b><b>*</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>TelAdedi<b> </b><b>*</b><b>  </b><font color="# 080 0"><u>CozguIsEmri</u></font><b>.</b>settekileventadedi<b> </b><b>*</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>leventadedi<b>)</b><b> </b><b>/</b><b> </b>9000<b>)</b><b> </b><b>/</b><b> </b>1000<b>,</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>CozguLeventMetre<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>LeventAdedi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font>
+<b>         </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b>.</b>CozguIsEmriKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>CozguIsEmriKayitId
+<b>         </b><b>where</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>CozguIsEmriKayitId<b> </b><b>=</b><b> </b>:CozguIsEmriKayitId<b> </b><b>into</b><b> </b>:HamMiktar<b>,</b><b> </b>:HamMiktar2<b>,</b><b> </b>:ToplamLeventAdedi<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>AHamMiktar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>LeventAdedi<b>  </b><b>*</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b>.</b>SettekiLeventAdedi<b> </b><b>*</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>CozguLeventMetre<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b>.</b>CozguIsEmriKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>CozguIsEmriKayitId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>CozguIsEmriKayitId<b> </b><b>=</b><b> </b>:CozguIsEmriKayitId<b> </b><b>into</b><b> </b>:HamMiktar<b>;</b>
+<b>    </b><b>else</b>
+<b>      </b>HamMiktar<b> </b><b>=</b><b> </b>AHamMiktar<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>UretilenMiktariDus<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>:HamMiktar<b> </b><b>-</b><b> </b><b>coalesce</b><b>(</b><b>sum</b><b>(</b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Miktar<b>)</b><b>,</b>0<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>CozguIsEmriKayitId<b> </b><b>=</b><b> </b>:CozguIsEmriKayitId<b> </b><b>and</b>
+<b>      </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>      </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>:ShtUretim<b> </b><b>into</b><b> </b>:HamMiktar<b>;</b>
+<b>    </b><b>end</b>
+
+<b>     </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>CozguLeventMetre<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>LeventAdedi<b>)</b><b>  </b><b>from</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>CozguIsEmri</u></font><b>.</b>CozguIsEmriKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>CozguIsEmriKayitId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>CozguIsEmriDetay</u></font><b>.</b>CozguIsEmriKayitId<b> </b><b>=</b><b> </b>:CozguIsEmriKayitId<b> </b><b>into</b><b> </b>:HamMiktar2<b>,</b><b> </b>:ToplamLeventAdedi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>DokumaProjesiAktif<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b>
+
+<b>     </b><b>begin</b>
+<b>        </b>AgirlikKilo<b>=</b><b>  </b>HamMiktar<b>;</b>
+<b>     </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Pak İpek, Licotex*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b>CozguCekmeDahilNm<b> </b><b>=</b><b> </b>Nm<b> </b><b>*</b><b> </b>100<b>;</b>
+<b>      </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>ReceteTelSayisi<b> </b><b>*</b><b> </b>100<b>)</b><b> </b><b>/</b><b> </b>CozguCekmeDahilNm<b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>      </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b><b>(</b>IplikAgirligiGr<b>  </b><b>*</b><b> </b>HamMiktar<b>)</b><b> </b><b>/</b><b> </b>1000<b> </b><b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>CozguFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>      </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>(</b>HamMiktar<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b> </b><b>;</b>
+<b>  </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*EmnDenim*/</i></font>
+<b>     </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AHamMiktar<b> </b><b>&gt;</b>0<b>)</b><b> </b><b>then</b><b> </b>Hammiktar2<b>=</b>AHamMiktar<b> </b><b>/</b><b> </b>ToplamLeventAdedi<b> </b><b>;</b>
+<b>      </b>CozguCekmeDahilNm<b> </b><b>=</b><b> </b>Nm<b> </b><b>;</b>
+<b>       </b>IplikAgirligiGr<b> </b><b>=</b>1<b> </b><b>/</b><b> </b>CozguCekmeDahilNm<b> </b><b>*</b><b>  </b>ReceteTelSayisi<b>;</b>
+<b>       </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b>IplikAgirligiGr<b>  </b><b>*</b><b> </b>HamMiktar2<b>)</b><b>/</b><b> </b>1000<b>  </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>CozguFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>      </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>(</b>HamMiktar<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b> </b><b>;</b>
+
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>CozguCekmeDahilNm<b> </b><b>=</b><b> </b>Nm<b> </b><b>*</b><b> </b><b>(</b>100<b> </b><b>-</b><b> </b>BoydanCekme<b>)</b><b>;</b>
+<b>      </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>ReceteTelSayisi<b> </b><b>*</b><b> </b>100<b>)</b><b> </b><b>/</b><b> </b>CozguCekmeDahilNm<b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>      </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b>IplikAgirligiGr<b> </b><b>/</b><b> </b>1000<b>)</b><b> </b><b>*</b><b> </b>HamMiktar<b>;</b>
+<b>      </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>(</b>HamMiktar<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>CozguFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>HamStokReceteId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>AtkiCozgu<b>,</b><b> </b><b>iif</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>BolgeselSiklik<b> </b><b>=</b><b> </b>1<b>,</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>IplikSikligiCm<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AtkiIplikCm<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>TarakEni<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Nm<b>,</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>FireOrani<b>,</b><b> </b>:AHamMiktar<b>,</b>
+<b>    </b><font color="# 080 0"><u>Ham</u></font><b>.</b>TelSayisi<b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>SolKenarTelSayisi<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>SagKenarTelSayisi<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>TelSayisi<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>BoydanCekme<b>,</b>
+<b>    </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>CozguFireOrani<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Denye<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>KalinlikNe<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b>ReceteHam<b> </b><b>on</b><b> </b>ReceteHam<b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>ReceteHamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>KalinlikId<b> </b><b>=</b><b> </b>ReceteHam<b>.</b>KalinlikId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>HamStokReceteId<b> </b><b>=</b><b> </b>:HamStokReceteId<b> </b><b>into</b>
+<b>    </b>:AtkiCozgu<b>,</b><b> </b>:AtkiIplikCm<b>,</b><b> </b>:TarakEni<b>,</b><b> </b>:Nm<b>,</b><b> </b>:TahminiFireOrani<b>,</b><b> </b>:HamMiktar<b>,</b><b> </b>:TelSayisi<b>,</b><b> </b>:SolKenarTelSayisi<b>,</b><b> </b>:SagKenarTelSayisi<b>,</b><b> </b>:ReceteTelSayisi<b>,</b><b> </b>:BoydanCekme<b>,</b>
+<b>    </b>:CozguFireOrani<b>,</b><b> </b>:Denye<b>,</b><b> </b>:KalinlikNe<b>;</b>
+
+<b>    </b><b>if</b><b>(</b>FEgemenFirmaID<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Pak İpek ,EmnDenim, Licotext*/</i></font>
+<b>      </b>BoydanCekme<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>AtkiIplikCm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>'Kumaş AtkiIplikCm veya Reçete IplikSikligiCm Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TarakEni<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş TarakEni Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>Nm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>Nm<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKalinlikDegerHesapla</u></font><b>(</b>:Denye<b>,</b><b> </b>:KalinlikNe<b>)</b><b> </b><b>into</b><b> </b>:Nm<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Nm<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham Kalınlık Nm Eksik, '<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TahminiFireOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham TahminiFireOrani Eksik, '<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TelSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş Ham TelSayisi Eksik, '<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>AtkiCozgu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*atki ise*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>HataStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>suspend</b><b>;</b>
+<b>        </b><b>exit</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b>MetredekiAtkiSayisi<b> </b><b>=</b><b> </b>AtkiIplikCm<b> </b><b>*</b><b> </b>100<b>;</b>
+<b>      </b>TarakEniMt<b> </b><b>=</b><b> </b>TarakEni<b> </b><b>/</b><b> </b>100<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Pak İpek , EmnDenim, Licotex*/</i></font>
+<b>        </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b><b>(</b>MetredekiAtkiSayisi<b> </b><b>*</b><b> </b>TarakEniMt<b>)</b><b> </b><b>/</b><b> </b>Nm<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>      </b><b>else</b>
+<b>        </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>MetredekiAtkiSayisi<b> </b><b>*</b><b> </b>TarakEniMt<b>)</b><b> </b><b>/</b><b> </b><b>(</b>Nm<b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>)</b><b>;</b>
+<b>      </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b>IplikAgirligiGr<b> </b><b>/</b><b> </b>1000<b>)</b><b> </b><b>*</b><b> </b>HamMiktar<b>;</b>
+
+<b>      </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AtkiCozgu<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*cozgu ise*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Fegemenfirmaid<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaID<b>=</b>151<b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b>=</b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>ReceteTelSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete Ham ReceteTelSayisi Eksik, '<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>BoydanCekme<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Kumaş Ham BoydanCekme Eksik, '<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>CozguFireOrani<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>HataStr<b> </b><b>=</b><b> </b>HataStr<b> </b><b>|</b><b>|</b>'Reçete CozguFireOrani Eksik, '<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>HataStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>suspend</b><b>;</b>
+<b>        </b><b>exit</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>TelSayisi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>HamStokReceteId<b> </b><b>=</b><b> </b>:HamStokReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>AtkiCozgu<b> </b><b>=</b><b> </b>2<b> </b><b>into</b><b> </b>:CozguTelSayisiToplami<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FEgemenFirmaId<b> </b><b>=</b><b> </b>77<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>139<b> </b><b>or</b><b> </b>FEgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Pak İpek,EmnDenim, Licotex */</i></font>
+<b>      </b><b>begin</b>
+<b>        </b>CozguCekmeDahilNm<b> </b><b>=</b><b> </b>Nm<b> </b><b>*</b><b> </b>100<b>;</b>
+<b>        </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>ReceteTelSayisi<b> </b><b>*</b><b> </b>100<b>)</b><b> </b><b>/</b><b> </b>CozguCekmeDahilNm<b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>        </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b><b>(</b>IplikAgirligiGr<b> </b><b>*</b><b> </b>HamMiktar<b>)</b><b> </b><b>/</b><b> </b>1000<b>)</b><b>   </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>CozguFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>        </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>(</b>HamMiktar<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b> </b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>YuzeyTelSayisi<b> </b><b>=</b><b> </b>TelSayisi<b> </b><b>-</b><b> </b>SagKenarTelSayisi<b> </b><b>-</b><b> </b>SolKenarTelSayisi<b>;</b>
+<b>        </b>CozguRaporTekrarSayisi<b> </b><b>=</b><b> </b>YuzeyTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>;</b>
+<b>        </b>CozguTelSayisiMt<b> </b><b>=</b><b> </b>CozguRaporTekrarSayisi<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>*</b><b> </b>100<b>;</b>
+<b>        </b>CozguCekmeDahilNm<b> </b><b>=</b><b> </b>Nm<b> </b><b>*</b><b> </b><b>(</b>100<b> </b><b>-</b><b> </b>BoydanCekme<b>)</b><b>;</b>
+<b>        </b>IplikAgirligiGr<b> </b><b>=</b><b> </b><b>(</b>CozguTelSayisiMt<b> </b><b>/</b><b> </b>CozguCekmeDahilNm<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>        </b>AgirlikKilo<b> </b><b>=</b><b> </b><b>(</b>IplikAgirligiGr<b> </b><b>/</b><b> </b>1000<b>)</b><b> </b><b>*</b><b> </b>HamMiktar<b>;</b>
+
+<b>        </b>UzunlukMetre<b> </b><b>=</b><b> </b><b>(</b>HamMiktar<b> </b><b>*</b><b> </b>ReceteTelSayisi<b> </b><b>/</b><b> </b>CozguTelSayisiToplami<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>TahminiFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b> </b><b>*</b><b> </b><b>(</b><b>(</b>100<b> </b><b>+</b><b> </b>CozguFireOrani<b>)</b><b> </b><b>/</b><b> </b>100<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DOKUMAIADEBARKODBILGILERIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DOKUMAIPLIKTAKIPRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>VLABRECETEATISRENKLISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="97800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Views</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="VLABGRUPLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="VLOGMAPPINGLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">VLABRECETEATISRENKLISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for view VLABRECETEATISRENKLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Fields</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Field</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="40%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">LABRECETEATISRENKID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABRECETEATISID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKKODU</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(120)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Triggers</P>
+<P CLASS="Base"><I>(There are no triggers for view VLABRECETEATISRENKLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>VIEW</b><b> </b><font color="# 080 0"><u>VLABRECETEATISRENKLISTESI</u></font><b>(</b>
+<b>    </b>LABRECETEATISRENKID<b>,</b>
+<b>    </b>LABRECETEATISID<b>,</b>
+<b>    </b>RENKKODU<b>,</b>
+<b>    </b>RENKADI<b>)</b>
+<b>AS</b>
+<b>Select</b><b> </b>LabReceteAtisRenkID<b>,</b><b> </b>LabReceteAtisID<b>,</b><b> </b>RenkKodu<b>,</b><b> </b>RenkAdi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteAtisRenk</u></font>
+<b>     </b><b>Order</b><b> </b><b>By</b><b> </b>Sira
+<b>;</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="VLABGRUPLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="VLOGMAPPINGLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

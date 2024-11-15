@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<TITLE>HAMKOPYALA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="657800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HAMKONTROLLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HAMLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HAMKOPYALA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYENIHAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">YENIHAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HAMKOPYALA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HAMKOPYALA</u></font><b>(</b>
+<b>    </b>AHAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AYENIHAMADI<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>YENIHAMID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b>YeniHamId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>ham_id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>(</b>HAMID<b>,</b><b> </b>HAMKODU<b>,</b><b> </b>ADI<b>,</b><b> </b>ADI2<b>,</b><b> </b>ADI3<b>,</b><b> </b>ADI4<b>,</b><b> </b>HAMTIPIID<b>,</b><b> </b>KALINLIKID<b>,</b><b> </b>IPLIKCINSIID<b>,</b><b> </b>URETICIID<b>,</b><b> </b>OZELLIKID<b>,</b>
+<b>                   </b>HARMANCINSIID<b>,</b><b> </b>ELYAFSINIFID<b>,</b><b> </b>ELYAFMARKAID<b>,</b><b> </b>CIRCIRID<b>,</b><b> </b>MENSEIID<b>,</b><b> </b>REFERANSKODU<b>,</b><b> </b>ATKIIPLIKCM<b>,</b>
+<b>                   </b>ATKIIPLIKINCH<b>,</b><b> </b>COZGUIPLIKCM<b>,</b><b> </b>COZGUIPLIKINCH<b>,</b><b> </b>HAMENCM<b>,</b><b> </b>HAMENINCH<b>,</b><b> </b>TELSAYISI<b>,</b><b> </b>COZGUIPLIKKALINLIKID<b>,</b>
+<b>                   </b>ATKIIPLIKKALINLIKID<b>,</b><b> </b>NOTU<b>,</b><b> </b>HAMGRAMAJ<b>,</b><b> </b>HAMRENKID<b>,</b><b> </b>LYCRATIPIID<b>,</b><b> </b>KUMASCINSIID<b>,</b>
+<b>                   </b>HAMSATISTRANSFERKODU<b>,</b><b> </b>SATISTRANSFERKODU<b>,</b><b> </b>FASONTRANSFERKODU<b>,</b><b> </b>FASONORMETRANSFERKODU<b>,</b>
+<b>                   </b>FASONBUKUMTRANSFERKODU<b>,</b><b> </b>FASONARTISATORMETRANSFERKODU<b>,</b><b> </b>YARIMAMULTRANSFERKODU<b>,</b>
+<b>                   </b>YARIMAMULSATISTRANSFERKODU<b>,</b><b> </b>ALISTRANSFERKODU<b>,</b><b> </b>RENKLIALISTRANSFERKODU<b>,</b><b> </b>SATISIADETRANSFERKODU<b>,</b>
+<b>                   </b>DEKONTTRANSFERKODU<b>,</b><b> </b>ALISIADETRANSFERKODU<b>,</b><b> </b>BOYALITRANSFERKODU<b>,</b><b> </b>SEKERKASARTRANSFERKODU<b>,</b>
+<b>                   </b>OPTIKBEYAZTRANSFERKODU<b>,</b><b> </b>YIKAMATRANSFERKODU<b>,</b><b> </b>SABOYALITRANSFERKODU<b>,</b><b> </b>SASEKERKASARTRANSFERKODU<b>,</b>
+<b>                   </b>SAOPTIKBEYAZTRANSFERKODU<b>,</b><b> </b>SAYIKAMATRANSFERKODU<b>,</b><b> </b>ALISBOYALITRANSFERKODU<b>,</b><b> </b>ALISSEKERKASARTRANSFERKODU<b>,</b>
+<b>                   </b>ALISOPTIKBEYAZTRANSFERKODU<b>,</b><b> </b>ALISYIKAMATRANSFERKODU<b>,</b><b> </b>ALISBASKILITRANSFERKODU<b>,</b><b> </b>MUHALISHESAPKODU<b>,</b>
+<b>                   </b>MUHALISIADEHESAPKODU<b>,</b><b> </b>MUHSATISHESAPKODU<b>,</b><b> </b>MUHFASONSATISHESAPKODU<b>,</b><b> </b>MUHHAMSATISHESAPKODU<b>,</b>
+<b>                   </b>MUHFASONORMEHESAPKODU<b>,</b><b> </b>MUHSATISIADEHESAPKODU<b>,</b><b> </b>KDVORANI<b>,</b><b> </b>AMBALAJSEKLIID<b>,</b><b> </b>TALEPNOTU<b>,</b><b> </b>MAXIMUMFIREORANI<b>,</b>
+<b>                   </b>MERSERIZERECETEID<b>,</b><b> </b>CONTINUEKASARRECETEID<b>,</b><b> </b>USTSEVIYE<b>,</b><b> </b>ALTSEVIYE<b>,</b><b> </b>USTSEVIYENINUSTUNECIKMA<b>,</b>
+<b>                   </b>ALTSEVIYENINALTINAINME<b>,</b><b> </b>KAPALI<b>,</b><b> </b>HAMGRUP1<b>,</b><b> </b>HAMGRUP2<b>,</b><b> </b>HAMGRUP3<b>,</b><b> </b>HAMGRUP4<b>,</b><b> </b>PUS<b>,</b><b> </b>FEINE<b>,</b><b> </b>GRAMAJ<b>,</b>
+<b>                   </b>TUPACIKENMAYLI<b>,</b><b> </b>IPLIKBOYU1<b>,</b><b> </b>IPLIKBOYU2<b>,</b><b> </b>IPLIKBOYU3<b>,</b><b> </b>IPLIKBOYU4<b>,</b><b> </b>ALISFIYATI<b>,</b><b> </b>ALISFIYATIDOVIZID<b>,</b>
+<b>                   </b>TARAKNUMARASI<b>,</b><b> </b>DOKUMADESENIID<b>,</b><b> </b>TARAKDISINDEKITELSAYISI<b>,</b><b> </b>INSERTKULLANICIID<b>,</b><b> </b>INSERTTARIHI<b>,</b><b> </b>MINIMUMFIREORANI<b>,</b><b> </b>ALISTRANSFERKODUMT<b>,</b><b> </b>RENKLIALISTRANSFERKODUMT<b>,</b><b> </b>BOYALITRANSFERKODUMT<b>,</b>
+<b>                   </b>SEKERKASARTRANSFERKODUMT<b>,</b><b> </b>OPTIKBEYAZTRANSFERKODUMT<b>,</b><b> </b>YIKAMATRANSFERKODUMT<b>,</b><b> </b>SABOYALITRANSFERKODUMT<b>,</b>
+<b>                   </b>SASEKERKASARTRANSFERKODUMT<b>,</b><b> </b>SAOPTIKBEYAZTRANSFERKODUMT<b>,</b><b> </b>SAYIKAMATRANSFERKODUMT<b>,</b>
+<b>                   </b>ALISBOYALITRANSFERKODUMT<b>,</b><b> </b>ALISSEKERKASARTRANSFERKODUMT<b>,</b><b> </b>ALISOPTIKBEYAZTRANSFERKODUMT<b>,</b>
+<b>                   </b>ALISYIKAMATRANSFERKODUMT<b>,</b><b> </b>ALISBASKILITRANSFERKODUMT<b>,</b><b> </b>DEFAULTHAMSTOKBIRIMID<b>,</b><b> </b>CIFTBOYATRANSFERKODU<b>,</b>
+<b>                   </b>SACIFTBOYATRANSFERKODU<b>,</b><b> </b>ALISCIFTBOYATRANSFERKODU<b>,</b><b> </b>CIFTBOYATRANSFERKODUMT<b>,</b><b> </b>SACIFTBOYATRANSFERKODUMT<b>,</b>
+<b>                   </b>ALISCIFTBOYATRANSFERKODUMT<b>,</b><b> </b>POLYESTERTRANSFERKODU<b>,</b><b> </b>SAPOLYESTERTRANSFERKODU<b>,</b><b> </b>ALISPOLYESTERTRANSFERKODU<b>,</b>
+<b>                   </b>POLYESTERTRANSFERKODUMT<b>,</b><b> </b>SAPOLYESTERTRANSFERKODUMT<b>,</b><b> </b>ALISPOLYESTERTRANSFERKODUMT<b>,</b><b> </b>NAYLONTRANSFERKODU<b>,</b>
+<b>                   </b>SANAYLONTRANSFERKODU<b>,</b><b> </b>ALISNAYLONTRANSFERKODU<b>,</b><b> </b>NAYLONTRANSFERKODUMT<b>,</b><b> </b>SANAYLONTRANSFERKODUMT<b>,</b>
+<b>                   </b>ALISNAYLONTRANSFERKODUMT<b>,</b><b> </b>ENDENCEKME<b>,</b><b> </b>BOYDANCEKME<b>,</b><b> </b>TARAKENI<b>,</b><b> </b>DOKUMAMALIYETHAMSTOKBIRIMID<b>,</b>
+<b>                   </b>COZGUMALIYETHAMSTOKBIRIMID<b>,</b><b> </b>HASILMALIYETHAMSTOKBIRIMID<b>,</b><b> </b>DOKUMAKDVORANI<b>,</b><b> </b>COZGUKDVORANI<b>,</b><b> </b>HASILKDVORANI<b>,</b>
+<b>                   </b>DOKUMABIRIMMALIYET<b>,</b><b> </b>COZGUBIRIMMALIYET<b>,</b><b> </b>HASILBIRIMMALIYET<b>,</b><b> </b>DOKUMABIRIMMALIYETDOVIZID<b>,</b>
+<b>                   </b>COZGUBIRIMMALIYETDOVIZID<b>,</b><b> </b>HASILBIRIMMALIYETDOVIZID<b>,</b><b> </b>SOLKENARTELSAYISI<b>,</b><b> </b>SAGKENARTELSAYISI<b>,</b><b> </b>RAPORDOKUMA<b>,</b>
+<b>                   </b>RAPORARMUR<b>,</b><b> </b>RAPORPICK<b>,</b><b> </b>TEZGAHTAATILACAKATKI<b>,</b><b> </b>RAPORTAHAR<b>,</b><b> </b>TAHARRAPORNOTU<b>,</b><b> </b>CerceveSayisi<b>,</b><b> </b>MetreKare<b>,</b><b> </b>MetreTul<b>)</b>
+<b>  </b><b>select</b><b> </b>:YeniHamId<b>,</b><b> </b>HAMKODU<b>,</b><b> </b>:AYeniHamAdi<b>,</b><b> </b>ADI2<b>,</b><b> </b>ADI3<b>,</b><b> </b>ADI4<b>,</b><b> </b>HAMTIPIID<b>,</b><b> </b>KALINLIKID<b>,</b><b> </b>IPLIKCINSIID<b>,</b><b> </b>URETICIID<b>,</b><b> </b>OZELLIKID<b>,</b><b> </b>HARMANCINSIID<b>,</b>
+<b>         </b>ELYAFSINIFID<b>,</b><b> </b>ELYAFMARKAID<b>,</b><b> </b>CIRCIRID<b>,</b><b> </b>MENSEIID<b>,</b><b> </b>REFERANSKODU<b>,</b><b> </b>ATKIIPLIKCM<b>,</b><b> </b>ATKIIPLIKINCH<b>,</b><b> </b>COZGUIPLIKCM<b>,</b>
+<b>         </b>COZGUIPLIKINCH<b>,</b><b> </b>HAMENCM<b>,</b><b> </b>HAMENINCH<b>,</b><b> </b>TELSAYISI<b>,</b><b> </b>COZGUIPLIKKALINLIKID<b>,</b><b> </b>ATKIIPLIKKALINLIKID<b>,</b><b> </b>NOTU<b>,</b><b> </b>HAMGRAMAJ<b>,</b>
+<b>         </b>HAMRENKID<b>,</b><b> </b>LYCRATIPIID<b>,</b><b> </b>KUMASCINSIID<b>,</b><b> </b>HAMSATISTRANSFERKODU<b>,</b><b> </b>SATISTRANSFERKODU<b>,</b><b> </b>FASONTRANSFERKODU<b>,</b>
+<b>         </b>FASONORMETRANSFERKODU<b>,</b><b> </b>FASONBUKUMTRANSFERKODU<b>,</b><b> </b>FASONARTISATORMETRANSFERKODU<b>,</b><b> </b>YARIMAMULTRANSFERKODU<b>,</b>
+<b>         </b>YARIMAMULSATISTRANSFERKODU<b>,</b><b> </b>ALISTRANSFERKODU<b>,</b><b> </b>RENKLIALISTRANSFERKODU<b>,</b><b> </b>SATISIADETRANSFERKODU<b>,</b><b> </b>DEKONTTRANSFERKODU<b>,</b>
+<b>         </b>ALISIADETRANSFERKODU<b>,</b><b> </b>BOYALITRANSFERKODU<b>,</b><b> </b>SEKERKASARTRANSFERKODU<b>,</b><b> </b>OPTIKBEYAZTRANSFERKODU<b>,</b><b> </b>YIKAMATRANSFERKODU<b>,</b>
+<b>         </b>SABOYALITRANSFERKODU<b>,</b><b> </b>SASEKERKASARTRANSFERKODU<b>,</b><b> </b>SAOPTIKBEYAZTRANSFERKODU<b>,</b><b> </b>SAYIKAMATRANSFERKODU<b>,</b>
+<b>         </b>ALISBOYALITRANSFERKODU<b>,</b><b> </b>ALISSEKERKASARTRANSFERKODU<b>,</b><b> </b>ALISOPTIKBEYAZTRANSFERKODU<b>,</b><b> </b>ALISYIKAMATRANSFERKODU<b>,</b>
+<b>         </b>ALISBASKILITRANSFERKODU<b>,</b><b> </b>MUHALISHESAPKODU<b>,</b><b> </b>MUHALISIADEHESAPKODU<b>,</b><b> </b>MUHSATISHESAPKODU<b>,</b><b> </b>MUHFASONSATISHESAPKODU<b>,</b>
+<b>         </b>MUHHAMSATISHESAPKODU<b>,</b><b> </b>MUHFASONORMEHESAPKODU<b>,</b><b> </b>MUHSATISIADEHESAPKODU<b>,</b><b> </b>KDVORANI<b>,</b><b> </b>AMBALAJSEKLIID<b>,</b><b> </b>TALEPNOTU<b>,</b>
+<b>         </b>MAXIMUMFIREORANI<b>,</b><b> </b>MERSERIZERECETEID<b>,</b><b> </b>CONTINUEKASARRECETEID<b>,</b><b> </b>USTSEVIYE<b>,</b><b> </b>ALTSEVIYE<b>,</b><b> </b>USTSEVIYENINUSTUNECIKMA<b>,</b>
+<b>         </b>ALTSEVIYENINALTINAINME<b>,</b><b> </b>KAPALI<b>,</b><b> </b>HAMGRUP1<b>,</b><b> </b>HAMGRUP2<b>,</b><b> </b>HAMGRUP3<b>,</b><b> </b>HAMGRUP4<b>,</b><b> </b>PUS<b>,</b><b> </b>FEINE<b>,</b><b> </b>GRAMAJ<b>,</b><b> </b>TUPACIKENMAYLI<b>,</b>
+<b>         </b>IPLIKBOYU1<b>,</b><b> </b>IPLIKBOYU2<b>,</b><b> </b>IPLIKBOYU3<b>,</b><b> </b>IPLIKBOYU4<b>,</b><b> </b>ALISFIYATI<b>,</b><b> </b>ALISFIYATIDOVIZID<b>,</b><b> </b>TARAKNUMARASI<b>,</b><b> </b>DOKUMADESENIID<b>,</b>
+<b>         </b>TARAKDISINDEKITELSAYISI<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timeStamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>MINIMUMFIREORANI<b>,</b>
+<b>         </b>ALISTRANSFERKODUMT<b>,</b><b> </b>RENKLIALISTRANSFERKODUMT<b>,</b><b> </b>BOYALITRANSFERKODUMT<b>,</b><b> </b>SEKERKASARTRANSFERKODUMT<b>,</b>
+<b>         </b>OPTIKBEYAZTRANSFERKODUMT<b>,</b><b> </b>YIKAMATRANSFERKODUMT<b>,</b><b> </b>SABOYALITRANSFERKODUMT<b>,</b><b> </b>SASEKERKASARTRANSFERKODUMT<b>,</b>
+<b>         </b>SAOPTIKBEYAZTRANSFERKODUMT<b>,</b><b> </b>SAYIKAMATRANSFERKODUMT<b>,</b><b> </b>ALISBOYALITRANSFERKODUMT<b>,</b><b> </b>ALISSEKERKASARTRANSFERKODUMT<b>,</b>
+<b>         </b>ALISOPTIKBEYAZTRANSFERKODUMT<b>,</b><b> </b>ALISYIKAMATRANSFERKODUMT<b>,</b><b> </b>ALISBASKILITRANSFERKODUMT<b>,</b><b> </b>DEFAULTHAMSTOKBIRIMID<b>,</b>
+<b>         </b>CIFTBOYATRANSFERKODU<b>,</b><b> </b>SACIFTBOYATRANSFERKODU<b>,</b><b> </b>ALISCIFTBOYATRANSFERKODU<b>,</b><b> </b>CIFTBOYATRANSFERKODUMT<b>,</b>
+<b>         </b>SACIFTBOYATRANSFERKODUMT<b>,</b><b> </b>ALISCIFTBOYATRANSFERKODUMT<b>,</b><b> </b>POLYESTERTRANSFERKODU<b>,</b><b> </b>SAPOLYESTERTRANSFERKODU<b>,</b>
+<b>         </b>ALISPOLYESTERTRANSFERKODU<b>,</b><b> </b>POLYESTERTRANSFERKODUMT<b>,</b><b> </b>SAPOLYESTERTRANSFERKODUMT<b>,</b><b> </b>ALISPOLYESTERTRANSFERKODUMT<b>,</b>
+<b>         </b>NAYLONTRANSFERKODU<b>,</b><b> </b>SANAYLONTRANSFERKODU<b>,</b><b> </b>ALISNAYLONTRANSFERKODU<b>,</b><b> </b>NAYLONTRANSFERKODUMT<b>,</b><b> </b>SANAYLONTRANSFERKODUMT<b>,</b>
+<b>         </b>ALISNAYLONTRANSFERKODUMT<b>,</b><b> </b>ENDENCEKME<b>,</b><b> </b>BOYDANCEKME<b>,</b><b> </b>TARAKENI<b>,</b><b> </b>DOKUMAMALIYETHAMSTOKBIRIMID<b>,</b>
+<b>         </b>COZGUMALIYETHAMSTOKBIRIMID<b>,</b><b> </b>HASILMALIYETHAMSTOKBIRIMID<b>,</b><b> </b>DOKUMAKDVORANI<b>,</b><b> </b>COZGUKDVORANI<b>,</b><b> </b>HASILKDVORANI<b>,</b>
+<b>         </b>DOKUMABIRIMMALIYET<b>,</b><b> </b>COZGUBIRIMMALIYET<b>,</b><b> </b>HASILBIRIMMALIYET<b>,</b><b> </b>DOKUMABIRIMMALIYETDOVIZID<b>,</b><b> </b>COZGUBIRIMMALIYETDOVIZID<b>,</b>
+<b>         </b>HASILBIRIMMALIYETDOVIZID<b>,</b><b> </b>SOLKENARTELSAYISI<b>,</b><b> </b>SAGKENARTELSAYISI<b>,</b><b> </b>RAPORDOKUMA<b>,</b><b> </b>RAPORARMUR<b>,</b><b> </b>RAPORPICK<b>,</b>
+<b>         </b>TEZGAHTAATILACAKATKI<b>,</b><b> </b>RAPORTAHAR<b>,</b><b> </b>TAHARRAPORNOTU<b>,</b><b> </b>CerceveSayisi<b>,</b><b> </b>MetreKare<b>,</b><b> </b>MetreTul
+<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:AHamId<b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b> </b><b>(</b>HAMSTOKRECETEID<b>,</b><b> </b>HAMID<b>,</b><b> </b>RECETEHAMID<b>,</b><b> </b>KULLANIMORANI<b>,</b><b> </b>FIREORANI<b>,</b><b> </b>INSERTKULLANICIID<b>,</b><b> </b>INSERTTARIHI<b>,</b><b> </b>RENKID<b>,</b><b> </b>ATKICOZGU<b>,</b><b> </b>TELSAYISI<b>,</b><b> </b>SIRANO<b>,</b><b> </b>BIRIMFIYAT<b>,</b>
+<b>                             </b>BIRIMFIYATDOVIZID<b>,</b><b> </b>COZGUFIREORANI<b>,</b><b> </b>MaliyetFireOrani<b>,</b><b> </b>IplikSikligiCm<b>)</b>
+<b>  </b><b>Select</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>hamstokrecete_id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>,</b><b> </b>:YeniHamId<b>,</b><b> </b>RECETEHAMID<b>,</b><b> </b>KULLANIMORANI<b>,</b><b> </b>FIREORANI<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timeStamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>RENKID<b>,</b><b> </b>ATKICOZGU<b>,</b><b> </b>TELSAYISI<b>,</b><b> </b>SiraNo<b>,</b><b> </b>BIRIMFIYAT<b>,</b><b> </b>BIRIMFIYATDOVIZID<b>,</b><b> </b>COZGUFIREORANI<b>,</b><b> </b>MaliyetFireOrani<b>,</b><b> </b>IplikSikligiCm
+<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokRecete</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:AHamId<b>;</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HAMKONTROLLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HAMLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

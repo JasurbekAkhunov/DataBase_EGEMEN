@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEHAMPAMUKSINIFLANDIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1254800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEHAMIADEREZERV.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEHAMSTOKDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEHAMPAMUKSINIFLANDIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEHAMPAMUKSINIFLANDIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEHAMPAMUKSINIFLANDIR</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>HAMPAMUKSINIFLANDIRMA</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>AS</b>
+
+<b>begin</b>
+<b>  </b><font color="# 0 0FF"><i>/* Trigger text */</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>KirlilikAgirlikMiktariSinif1<b> </b><b>&gt;</b><b> </b><b>new</b><b>.</b>KirlilikAgirlikMiktariSinif2<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'1. sınıf kirlilik ağırlığı 2. sınıf kirlilik ağırlığından Büyük olamaz'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>KirlilikAgirlikMiktariSinif2<b> </b><b>&gt;</b><b> </b><b>new</b><b>.</b>KirlilikAgirlikMiktariSinif3<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'2. sınıf kirlilik ağırlığı 3. sınıf kirlilik ağırlığından Büyük olamaz'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>NemlilikAgirlikOraniSinif1<b> </b><b>&gt;</b><b> </b><b>new</b><b>.</b>NemlilikAgirlikOraniSinif2<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'1. sınıf nemlilik ağırlık oranı 2. sınıf  nemlilik ağırlık oranından Büyük olamaz'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>NemlilikAgirlikOraniSinif2<b> </b><b>&gt;</b><b> </b><b>new</b><b>.</b>NemlilikAgirlikOraniSinif3<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'2. sınıf nemlilik ağırlık oranı 3. sınıf  nemlilik ağırlık oranından Büyük olamaz'<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEHAMIADEREZERV.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEHAMSTOKDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

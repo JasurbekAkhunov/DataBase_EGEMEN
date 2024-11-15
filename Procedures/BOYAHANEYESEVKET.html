@@ -1,0 +1,344 @@
+<HTML>
+<HEAD>
+<TITLE>BOYAHANEYESEVKET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="107800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BOYAHANEGUNLUKURETIMRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BOYAHANEZAMANRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BOYAHANEYESEVKET</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AORMEFISID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AORMEIRSALIYEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">STATUS</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FISSERINO</TD>
+    <TD><P CLASS="Base2">VARCHAR(2)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FISNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEFISID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure BOYAHANEYESEVKET)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>BOYAHANEYESEVKET</u></font><b>(</b>
+<b>    </b>AORMEFISID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AORMEIRSALIYEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>STATUS<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FISSERINO<b> </b><b>VARCHAR</b><b>(</b>2<b>)</b><b>,</b>
+<b>    </b>FISNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMEFISID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimIslemTipiId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>uitOrme<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>uitBoya<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretimeCikis<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemDovizId<b>          </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Aciklama<b>               </b><b>varchar</b><b>(</b>1000<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimFisNo<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimFisTarihi<b>        </b><b>Timestamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimIrsaliyeNo<b>       </b><font color="# 080 0"><u>IrsaliyeNoSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimIrsaliyeTarihi<b>   </b><b>Timestamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b>                     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XLot<b>                   </b><b>varchar</b><b>(</b>150<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XMelanjKodu<b>            </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XBoyaSiparisKayitId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XOrmeSiparisDetayId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XRenkId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XHamId<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XOrmeRafId<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XDepoId<b>                </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XKapAdedi<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XAdet<b>                  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XOlcuId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>XMiktar<b>                </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SatirAciklama<b>          </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FisTarihi<b>              </b><b>Timestamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AracId<b>                 </b><b>varchar</b><b>(</b>11<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SoforId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Sinif<b>                  </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKumasTeminSiparisi<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TeminToplamMiktar<b>      </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DagitimMiktar<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TeminMiktar<b>            </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TBoyaSiparisKayitId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ToplamBoyayaCikis<b>      </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeRafKalanMiktar<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeRafId<b>              </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSeriNo<b>                </b><font color="# 080 0"><u>SeriNoSize5</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSeriFis<b>               </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b>uitOrme<b>,</b><b> </b>uitBoya<b> </b><b>from</b><b> </b><font color="# 080 0"><u>UretimIslemTipiGetir</u></font><b> </b><b>into</b><b> </b>:uitOrme<b>,</b><b> </b>:uitBoya<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>shtUretimeCikis<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font><b> </b><b>into</b><b> </b>:shtUretimeCikis<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>SistemDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>into</b><b> </b>SistemDovizId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AOrmeFisID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeFisID<b> </b><b>=</b><b> </b>:AOrmeFisID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>=</b><b> </b>0<b> </b><b>into</b><b> </b>:KS<b>;</b>
+<b>    </b><b>Select</b><b> </b>UretimIslemTipiID<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>AracId<b>,</b><b> </b>SoforId<b>,</b><b> </b>Sinif<b>,</b><b> </b><b>coalesce</b><b>(</b>SeriNo<b>,</b>''<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeFis</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeFis</u></font><b>.</b>OrmeFisID<b> </b><b>=</b><b> </b>:AOrmeFisID<b> </b><b>into</b><b> </b>:UretimIslemTipiID<b>,</b><b> </b>:UretimFisNo<b>,</b><b> </b>:UretimFisTarihi<b>,</b><b> </b>:AracId<b>,</b><b> </b>:SoforId<b>,</b><b> </b>:Sinif<b>,</b><b> </b>:FSeriNo<b>;</b>
+<b>    </b>FisTarihi<b> </b><b>=</b><b> </b>UretimFisTarihi<b>;</b>
+
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b>FSeriNo<b> </b><b>|</b><b>|</b>'-'<b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>UretimFisNo<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Nolu '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>TimeStampToDateTimeStr</u></font><b>(</b>UretimFisTarihi<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Tarihli Fiş''in Boyahaneye Çıkışı'<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeIrsaliyeID<b> </b><b>=</b><b> </b>:AOrmeIrsaliyeID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>=</b><b> </b>0<b> </b><b>into</b><b> </b>:KS<b>;</b>
+<b>    </b><b>Select</b><b> </b>UretimIslemTipiID<b>,</b><b> </b>IrsaliyeNo<b>,</b><b> </b>IrsaliyeTarihi<b>,</b><b> </b>AracId<b>,</b><b> </b>SoforId<b>,</b><b> </b>Sinif<b>,</b><b> </b><b>coalesce</b><b>(</b>SeriNo<b>,</b>''<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>OrmeIrsaliyeID<b> </b><b>=</b><b> </b>:AOrmeIrsaliyeID<b> </b><b>into</b><b> </b>:UretimIslemTipiID<b>,</b><b> </b>:UretimIrsaliyeNo<b>,</b><b> </b>:UretimIrsaliyeTarihi<b>,</b><b> </b>:AracId<b>,</b><b> </b>:SoforId<b>,</b><b> </b>:Sinif<b>,</b><b> </b>:FSeriNo<b>;</b>
+
+<b>    </b>FisTarihi<b> </b><b>=</b><b> </b>UretimIrsaliyeTarihi<b>;</b>
+
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b>FSeriNo<b> </b><b>|</b><b>|</b>'-'<b>|</b><b>|</b><b> </b><font color="# 080 0"><u>format_float</u></font><b>(</b>''<b>,</b>UretimIrsaliyeNo<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Nolu '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>TimeStampToDateTimeStr</u></font><b>(</b>UretimIrsaliyeTarihi<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Tarihli İrsaliye''nin Boyahaneye Çıkışı'<b>;</b>
+<b>    </b>SatirAciklama<b> </b><b>=</b><b> </b>'Giriş İrsaliye NO ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>format_float</u></font><b>(</b>''<b>,</b>UretimIrsaliyeNo<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>UretimIslemTipiID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>uitOrme<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>Status<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>    </b><b>exit</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>Status<b> </b><b>=</b><b> </b><b>-</b>2<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>    </b><b>exit</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AOrmeFisID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeFisID<b> </b><b>=</b><b> </b>:AOrmeFisID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Miktar<b> </b><b>&lt;</b><b>&gt;</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>RaflananMiktar<b> </b><b>into</b><b> </b>:KS<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeIrsaliyeID<b> </b><b>=</b><b> </b>:AOrmeIrsaliyeID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Miktar<b> </b><b>&lt;</b><b>&gt;</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>RaflananMiktar<b> </b><b>into</b><b> </b>:KS<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>Status<b> </b><b>=</b><b> </b><b>-</b>3<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>    </b><b>exit</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b>FisSeriNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>:AKullaniciId<b> </b><b>into</b><b> </b>:FisSeriNo<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FisSeriNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FisSeriNo<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>FisNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FisNumaratorAL</u></font><b>(</b>:FisSeriNo<b>)</b><b> </b><b>into</b><b> </b>:FisNo<b>;</b>
+
+<b>  </b>OrmeFisId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>OrmeFis_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>OrmeFis</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>UretimIslemTipiId<b>,</b><b> </b>SeriNo<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>DovizId<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>AracId<b>,</b><b> </b>SoforId<b>,</b><b> </b>Sinif<b>)</b>
+<b>           </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:uitBoya<b>,</b><b> </b>:FisSeriNo<b>,</b><b> </b>:FisNo<b>,</b><b> </b>:FisTarihi<b>,</b><b> </b>:SistemDovizId<b>,</b><b> </b>:Aciklama<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AracId<b>,</b><b> </b>:SoforId<b>,</b><b> </b>:Sinif<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AOrmeFisID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>RenkId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>OrmeRafId<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>KapAdedi<b>,</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>MelanjKodu<b>,</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>DepoId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>OrmeRafId<b>,</b><b> </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Adet<b>,</b>0<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OlcuId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>StokHareketID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>StokHareketId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>OrmeRafId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>RafID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RafId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeFisID<b> </b><b>=</b><b> </b>:AOrmeFisID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>=</b><b> </b>0
+<b>      </b><b>into</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:XRenkId<b>,</b><b> </b>:XHamId<b>,</b><b> </b>:XOrmeRafId<b>,</b><b> </b>:XKapAdedi<b>,</b><b> </b>:XMiktar<b>,</b><b> </b>:XLot<b>,</b><b> </b>:XMelanjKodu<b>,</b><b> </b>:XDepoId<b>,</b><b> </b>:OrmeRafId<b>,</b><b> </b>:XAdet<b>,</b><b> </b>:XOlcuId<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>where</b><b> </b>OrmeRafId<b> </b><b>=</b><b> </b>:OrmeRafId<b> </b><b>into</b><b> </b>:OrmeRafKalanMiktar<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>OrmeRafKalanMiktar<b> </b><b>&lt;</b><b> </b>XMiktar<b>)</b><b> </b><b>then</b>
+<b>        </b>XMiktar<b> </b><b>=</b><b> </b>OrmeRafKalanMiktar<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>XMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>KumasTemin<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitID<b> </b><b>=</b><b> </b>:XBoyaSiparisKayitId<b> </b><b>into</b><b> </b>:FKumasTeminSiparisi<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FKumasTeminSiparisi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>TBoyaSiparisKayitId<b> </b><b>=</b><b> </b>XBoyaSiparisKayitId<b>;</b>
+<b>          </b><b>SELECT</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>HamMiktar<b>)</b><b> </b><b>FROM</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font>
+<b>            </b><b>WHERE</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>KtBoyaSiparisKayitId<b> </b><b>=</b><b> </b>:TBoyaSiparisKayitId
+<b>            </b><b>into</b><b> </b>:TeminToplamMiktar<b>;</b>
+
+<b>          </b>DagitimMiktar<b> </b><b>=</b><b> </b>XMiktar<b>;</b>
+
+<b>          </b><b>for</b><b> </b><b>SELECT</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>HamMiktar<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>ToplamBoyayaCikis<b> </b><b>FROM</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font>
+<b>            </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>BoyaSiparisKayitId
+<b>            </b><b>WHERE</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>KtBoyaSiparisKayitId<b> </b><b>=</b><b> </b>:TBoyaSiparisKayitId
+<b>            </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId
+<b>            </b><b>into</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:TeminMiktar<b>,</b><b> </b>:ToplamBoyayaCikis<b> </b><b>do</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>TeminMiktar<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TeminMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>ToplamBoyayaCikis<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>ToplamBoyayaCikis<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>            </b>TeminMiktar<b> </b><b>=</b><b> </b>TeminMiktar<b> </b><b>-</b><b> </b>ToplamBoyayaCikis<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>TeminMiktar<b> </b><b>&lt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>TeminMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>TeminMiktar<b> </b><b>&gt;</b><b>=</b><b> </b>DagitimMiktar<b>)</b><b> </b><b>then</b><b> </b>XMiktar<b> </b><b>=</b><b> </b>DagitimMiktar<b>;</b>
+<b>            </b><b>else</b><b> </b>XMiktar<b> </b><b>=</b><b> </b>TeminMiktar<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>XMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>HamId<b>,</b><b> </b>RenkId<b>,</b><b> </b>Lot<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>DepoId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>OrmeGirisIrsaliyeNo<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>OlcuId<b>,</b><b> </b>Adet<b>)</b>
+<b>                             </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:XHamId<b>,</b><b> </b>:XRenkId<b>,</b><b> </b>:Xlot<b>,</b><b> </b>:XMelanjKodu<b>,</b><b> </b>:XOrmeRafId<b>,</b><b> </b>:XDepoId<b>,</b><b> </b>:XKapAdedi<b>,</b><b> </b>:XMiktar<b>,</b><b> </b>:UretimIrsaliyeNo<b>,</b><b> </b>:SatirAciklama<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:XOlcuId<b>,</b><b> </b>:XAdet<b>)</b><b>;</b>
+<b>              </b>DagitimMiktar<b> </b><b>=</b><b> </b>DagitimMiktar<b> </b><b>-</b><b> </b>XMiktar<b>;</b>
+<b>            </b><b>end</b>
+<b>          </b><b>end</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DagitimMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b>XMiktar<b> </b><b>=</b><b> </b>DagitimMiktar<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>XMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>HamId<b>,</b><b> </b>RenkId<b>,</b><b> </b>Lot<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>DepoId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>OrmeGirisIrsaliyeNo<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>OlcuId<b>,</b><b> </b>Adet<b>)</b>
+<b>                             </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:XHamId<b>,</b><b> </b>:XRenkId<b>,</b><b> </b>:Xlot<b>,</b><b> </b>:XMelanjKodu<b>,</b><b> </b>:XOrmeRafId<b>,</b><b> </b>:XDepoId<b>,</b><b> </b>:XKapAdedi<b>,</b><b> </b>:XMiktar<b>,</b><b> </b>:UretimIrsaliyeNo<b>,</b><b> </b>:SatirAciklama<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:XOlcuId<b>,</b><b> </b>:XAdet<b>)</b><b>;</b>
+<b>              </b>DagitimMiktar<b> </b><b>=</b><b> </b>DagitimMiktar<b> </b><b>-</b><b> </b>XMiktar<b>;</b>
+<b>            </b><b>end</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>HamId<b>,</b><b> </b>RenkId<b>,</b><b> </b>Lot<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>DepoId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>OrmeGirisIrsaliyeNo<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>OlcuId<b>,</b><b> </b>Adet<b>)</b>
+<b>                           </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:XHamId<b>,</b><b> </b>:XRenkId<b>,</b><b> </b>:Xlot<b>,</b><b> </b>:XMelanjKodu<b>,</b><b> </b>:XOrmeRafId<b>,</b><b> </b>:XDepoId<b>,</b><b> </b>:XKapAdedi<b>,</b><b> </b>:XMiktar<b>,</b><b> </b>:UretimIrsaliyeNo<b>,</b><b> </b>:SatirAciklama<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:XOlcuId<b>,</b><b> </b>:XAdet<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>RenkId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>OrmeRafId<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>KapAdedi<b>,</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>MelanjKodu<b>,</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>DepoID<b>,</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>OrmeRafId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OlcuId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Adet<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>StokHareketID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>StokHareketId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRafDetay</u></font><b>.</b>OrmeRafId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>RafID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RafId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeIrsaliyeID<b> </b><b>=</b><b> </b>:AOrmeIrsaliyeID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>=</b><b> </b>0
+<b>      </b><b>into</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:XRenkId<b>,</b><b> </b>:XHamId<b>,</b><b> </b>:XOrmeRafId<b>,</b><b> </b>:XKapAdedi<b>,</b><b> </b>:XMiktar<b>,</b><b> </b>:XLot<b>,</b><b> </b>:XMelanjKodu<b>,</b><b> </b>:XDepoID<b>,</b><b> </b>:OrmeRafId<b>,</b><b> </b>:XOlcuId<b>,</b><b> </b>:XAdet<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>where</b><b> </b>OrmeRafId<b> </b><b>=</b><b> </b>:OrmeRafId<b> </b><b>into</b><b> </b>:OrmeRafKalanMiktar<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>OrmeRafKalanMiktar<b> </b><b>&lt;</b><b> </b>XMiktar<b>)</b><b> </b><b>then</b>
+<b>        </b>XMiktar<b> </b><b>=</b><b> </b>OrmeRafKalanMiktar<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>XMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>KumasTemin<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitID<b> </b><b>=</b><b> </b>:XBoyaSiparisKayitId<b> </b><b>into</b><b> </b>:FKumasTeminSiparisi<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FKumasTeminSiparisi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>TBoyaSiparisKayitId<b> </b><b>=</b><b> </b>XBoyaSiparisKayitId<b>;</b>
+<b>          </b><b>SELECT</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>HamMiktar<b>)</b><b> </b><b>FROM</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font>
+<b>            </b><b>WHERE</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>KtBoyaSiparisKayitId<b> </b><b>=</b><b> </b>:TBoyaSiparisKayitId
+<b>            </b><b>into</b><b> </b>:TeminToplamMiktar<b>;</b>
+
+<b>          </b>DagitimMiktar<b> </b><b>=</b><b> </b>XMiktar<b>;</b>
+
+<b>          </b><b>for</b><b> </b><b>SELECT</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>HamMiktar<b>,</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>ToplamBoyayaCikis<b> </b><b>FROM</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font>
+<b>            </b><b>LEFT</b><b> </b><b>JOIN</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>ON</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>BoyaSiparisKayitId
+<b>            </b><b>WHERE</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>KtBoyaSiparisKayitId<b> </b><b>=</b><b> </b>:TBoyaSiparisKayitId
+<b>            </b><b>into</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:TeminMiktar<b>,</b><b> </b>:ToplamBoyayaCikis<b> </b><b>do</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>TeminMiktar<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>TeminMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>ToplamBoyayaCikis<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>ToplamBoyayaCikis<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>            </b>TeminMiktar<b> </b><b>=</b><b> </b>TeminMiktar<b> </b><b>-</b><b> </b>ToplamBoyayaCikis<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>TeminMiktar<b> </b><b>&lt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>TeminMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>TeminMiktar<b> </b><b>&gt;</b><b>=</b><b> </b>DagitimMiktar<b>)</b><b> </b><b>then</b><b> </b>XMiktar<b> </b><b>=</b><b> </b>DagitimMiktar<b>;</b>
+<b>            </b><b>else</b><b> </b>XMiktar<b> </b><b>=</b><b> </b>TeminMiktar<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>XMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>HamId<b>,</b><b> </b>RenkId<b>,</b><b> </b>Lot<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>DepoID<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>OrmeGirisIrsaliyeNo<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>OlcuId<b>,</b><b> </b>Adet<b>)</b>
+<b>                           </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:XHamId<b>,</b><b> </b>:XRenkId<b>,</b><b> </b>:XLot<b>,</b><b> </b>:XMelanjKodu<b>,</b><b> </b>:XDepoID<b>,</b><b> </b>:XOrmeRafId<b>,</b><b> </b>:XKapAdedi<b>,</b><b> </b>:XMiktar<b>,</b><b> </b>:UretimIrsaliyeNo<b>,</b><b> </b>:SatirAciklama<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:XOlcuId<b>,</b><b> </b>:XAdet<b>)</b><b>;</b>
+<b>              </b>DagitimMiktar<b> </b><b>=</b><b> </b>DagitimMiktar<b> </b><b>-</b><b> </b>XMiktar<b>;</b>
+<b>            </b><b>end</b>
+<b>          </b><b>end</b>
+<b>          </b><b>if</b><b> </b><b>(</b>DagitimMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b>XMiktar<b> </b><b>=</b><b> </b>DagitimMiktar<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>XMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>HamId<b>,</b><b> </b>RenkId<b>,</b><b> </b>Lot<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>DepoID<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>OrmeGirisIrsaliyeNo<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>OlcuId<b>,</b><b> </b>Adet<b>)</b>
+<b>                           </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:XHamId<b>,</b><b> </b>:XRenkId<b>,</b><b> </b>:XLot<b>,</b><b> </b>:XMelanjKodu<b>,</b><b> </b>:XDepoID<b>,</b><b> </b>:XOrmeRafId<b>,</b><b> </b>:XKapAdedi<b>,</b><b> </b>:XMiktar<b>,</b><b> </b>:UretimIrsaliyeNo<b>,</b><b> </b>:SatirAciklama<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:XOlcuId<b>,</b><b> </b>:XAdet<b>)</b><b>;</b>
+<b>              </b>DagitimMiktar<b> </b><b>=</b><b> </b>DagitimMiktar<b> </b><b>-</b><b> </b>XMiktar<b>;</b>
+<b>            </b><b>end</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>HamId<b>,</b><b> </b>RenkId<b>,</b><b> </b>Lot<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>DepoID<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>OrmeGirisIrsaliyeNo<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>OlcuId<b>,</b><b> </b>Adet<b>)</b>
+<b>                         </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:XBoyaSiparisKayitId<b>,</b><b> </b>:XOrmeSiparisDetayId<b>,</b><b> </b>:XHamId<b>,</b><b> </b>:XRenkId<b>,</b><b> </b>:XLot<b>,</b><b> </b>:XMelanjKodu<b>,</b><b> </b>:XDepoID<b>,</b><b> </b>:XOrmeRafId<b>,</b><b> </b>:XKapAdedi<b>,</b><b> </b>:XMiktar<b>,</b><b> </b>:UretimIrsaliyeNo<b>,</b><b> </b>:SatirAciklama<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:XOlcuId<b>,</b><b> </b>:XAdet<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b>Status<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BOYAHANEGUNLUKURETIMRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BOYAHANEZAMANRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

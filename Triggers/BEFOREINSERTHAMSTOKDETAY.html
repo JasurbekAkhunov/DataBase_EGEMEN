@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTHAMSTOKDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="780800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTHAMRENK.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTHAMSTOKFATURA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTHAMSTOKDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTHAMSTOKDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTHAMSTOKDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>HAMSTOKDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>hshtGiris<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MasterOnayDurumu<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamTipiId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiSinifId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>into</b><b> </b>:DokumaKumasiKilodanTakipEt<b>;</b>
+
+<b>  </b><b>new</b><b>.</b>NeredenGirildi<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>OnayDurumu<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>StokFirmaId<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b>,</b>
+<b>         </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>Fason<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>HamStokHareketTipiId<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>PartiSinifId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>HamStokIrsaliyeID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokIrsaliyeID
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId
+<b>    </b><b>into</b><b> </b>:MasterOnayDurumu<b>,</b><b> </b><b>new</b><b>.</b>FirmaId<b>,</b><b> </b><b>new</b><b>.</b>StokFirmaId<b>,</b><b> </b><b>new</b><b>.</b>Tarih<b>,</b><b> </b><b>New</b><b>.</b>Fason<b>,</b><b> </b><b>new</b><b>.</b>HamStokHareketTipiId<b>,</b><b> </b>:PartiSinifId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>MasterOnayDurumu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KabulIslemiTamamlanmisDegisemez</u></font><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>hshtGiris<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokHareketTipiGetir</u></font><b> </b><b>into</b><b> </b>:hshtGiris<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HamStokHareketTipiId<b> </b><b>=</b><b> </b>hshtGiris<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>GirisCikis<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>  </b><b>new</b><b>.</b>GirisPartiYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TimeStampToYil</u></font><b>(</b><b>New</b><b>.</b>Tarih<b>)</b><b>;</b>
+<b>  </b><b>Select</b><b> </b>Id<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokGirisPartiNumaratorAl</u></font><b>(</b><b>New</b><b>.</b>GirisPartiYil<b>)</b><b> </b><b>into</b><b> </b><b>new</b><b>.</b>GirisPartiId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>PartiSinifId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*yari mamul degil*/</i></font>
+<b>    </b><b>execute</b><b> </b><b>procedure</b><b> </b><font color="# 080 0"><u>HamStokKumilatifGuncelle</u></font><b>(</b><b>New</b><b>.</b>StokFirmaId<b>,</b><b> </b><b>New</b><b>.</b>Fason<b>,</b><b> </b>1<b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>New</b><b>.</b>HamId<b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>New</b><b>.</b>tarih<b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>New</b><b>.</b>Kilo<b>,</b><b> </b><b>New</b><b>.</b>Metre<b>)</b><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>HamTipiId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>into</b><b> </b>:HamTipiId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b> </b><b>or</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Miktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>kilo<b>;</b>
+<b>  </b><b>else</b><b> </b><b>New</b><b>.</b>Miktar<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Metre<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HamStokDetayId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>hamStokDetayId<b>  </b><b>=</b><b> </b><b>Gen_Id</b><b>(</b><font color="# 080 0"><u>hamStokDetay_Id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>new</b><b>.</b>NeredenUpdate<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTHAMRENK.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTHAMSTOKFATURA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

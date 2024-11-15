@@ -1,0 +1,162 @@
+<HTML>
+<HEAD>
+<TITLE>ORMEMAKINABILGISIKAYDET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1273800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ORMEMAKINAAYARKAYDET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ORMEMAKINACALISMAANIMASYON.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ORMEMAKINABILGISIKAYDET</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATURSAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMEMINGERKOPTU</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AIGNEKOPTU</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKAPAKACILDI</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASTARTSTOP</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AALTMEMINGERKOPTU</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ALYCRAKOPTU</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">STATUS</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MESAJ</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ORMEMAKINABILGISIKAYDET)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ORMEMAKINABILGISIKAYDET</u></font><b>(</b>
+<b>    </b>AMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ATURSAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AMEMINGERKOPTU<b> </b><b>SMALLINT</b><b>,</b>
+<b>    </b>AIGNEKOPTU<b> </b><b>SMALLINT</b><b>,</b>
+<b>    </b>AKAPAKACILDI<b> </b><b>SMALLINT</b><b>,</b>
+<b>    </b>ASTARTSTOP<b> </b><b>SMALLINT</b><b>,</b>
+<b>    </b>ATARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AALTMEMINGERKOPTU<b> </b><b>SMALLINT</b><b>,</b>
+<b>    </b>ALYCRAKOPTU<b> </b><b>SMALLINT</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>STATUS<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>MESAJ<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmePlanlamaID<b>  </b><b>integer</b><b>;</b>
+
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AMakinaId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>Status<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Mesaj<b> </b><b>=</b><b> </b>'Makina Kodu zorunludur!'<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ATarih<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>ATarih<b> </b><b>=</b><b> </b><b>Current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ATurSayisi<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>ATurSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Max</b><b>(</b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmePlanlamaID<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:AMakinaId<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>Bitti<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>Sira<b> </b><b>=</b><b> </b><b>(</b><b>Select</b><b> </b><b>Min</b><b>(</b>sira<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>Bitti<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmePlanlama</u></font><b>.</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:AMakinaId<b> </b><b>)</b>
+<b>  </b><b>into</b><b> </b>:OrmePlanlamaID<b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>(</b>OrmeMakinaId<b>,</b><b> </b>OrmePlanlamaID<b>,</b><b> </b>Tarih<b>,</b><b> </b>Tur<b>,</b><b> </b>MemingerKoptu<b>,</b><b> </b>AltMemingerKoptu<b>,</b><b> </b>LycraKoptu<b>,</b><b> </b>IgneKoptu<b>,</b><b> </b>KapakAcildi<b>,</b><b> </b>StartStop<b>)</b>
+<b>                        </b><b>values</b><b>(</b>:AMakinaId<b>,</b><b> </b>:OrmePlanlamaID<b>,</b><b> </b>:ATarih<b>,</b><b> </b>:ATurSayisi<b>,</b><b> </b>:AMemingerKoptu<b>,</b><b> </b>:AAltMemingerKoptu<b>,</b><b> </b>:ALycraKoptu<b>,</b><b> </b>:AIgneKoptu<b>,</b><b> </b>:AKapakAcildi<b>,</b><b> </b>:AStartStop<b>)</b><b>;</b>
+<b>  </b>Status<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b>Mesaj<b> </b><b>=</b><b> </b>'Kayıt yapıldı'<b>;</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ORMEMAKINAAYARKAYDET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ORMEMAKINACALISMAANIMASYON.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

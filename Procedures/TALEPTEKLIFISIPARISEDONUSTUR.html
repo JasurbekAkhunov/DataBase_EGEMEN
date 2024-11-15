@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<TITLE>TALEPTEKLIFISIPARISEDONUSTUR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1822800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="TALEPTEKLIFDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="TALEPTEKLIFSATINALMATALEPGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">TALEPTEKLIFISIPARISEDONUSTUR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ATEKLIFTALEPKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure TALEPTEKLIFISIPARISEDONUSTUR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>TALEPTEKLIFISIPARISEDONUSTUR</u></font><b>(</b>
+<b>    </b>ATEKLIFTALEPKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaId<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VerilenSiparisYil<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VerilenSiparisId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SiparisTarihi<b>         </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SatinAlmaBirimId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VerilenSiparisKayitId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b>SiparisTarihi<b> </b><b>=</b><b> </b><b>Current_Date</b><b>;</b>
+
+<b>  </b>VerilenSiparisYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b>SiparisTarihi<b>)</b><b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>SatinAlmaTalep</u></font><b>.</b>SatinAlmaBirimId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>SatinAlmaTalep</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>SatinAlmaTalep</u></font><b>.</b>SatinAlmaTalepKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>SatinAlmaTalepKayitId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>TeklifTalepKayitId<b>=</b><b> </b>:ATeklifTalepKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>VerilenSiparisDetayID<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>SatinAlmaTalep</u></font><b>.</b>SatinAlmaBirimId
+<b>    </b><b>into</b><b> </b>:FirmaId<b>,</b><b> </b>:SatinAlmaBirimId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>VerilenSiparisId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>    </b><b>Select</b><b> </b>Id<b> </b><b>from</b><b> </b><font color="# 080 0"><u>VerilenSiparisNumaratoruAl</u></font><b>(</b>:VerilenSiparisYil<b>)</b><b> </b><b>into</b><b> </b>:VerilenSiparisId<b>;</b>
+
+<b>    </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>VerilenSiparis</u></font><b>(</b>VerilenSiparisYil<b>,</b><b> </b>VerilenSiparisId<b>,</b><b> </b>VerilenSiparisTipiId<b>,</b><b> </b>SatinAlmaBirimId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>SiparisTarihi<b>)</b>
+<b>      </b><b>Select</b><b> </b>:VerilenSiparisYil<b>,</b><b> </b>:VerilenSiparisId<b>,</b><b> </b><font color="# 080 0"><u>TeklifTalep</u></font><b>.</b>VerilenSiparisTipiId<b>,</b><b> </b>:SatinAlmaBirimId<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:SiparisTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>TeklifTalep</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>TeklifTalep</u></font><b>.</b>TeklifTalepKayitId<b> </b><b>=</b><b> </b>:ATeklifTalepKayitId<b>;</b>
+
+<b>    </b>VerilenSiparisKayitId<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b>VerilenSiparisKayitId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>VerilenSiparis</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>VerilenSiparis</u></font><b>.</b>VerilenSiparisYil<b> </b><b>=</b><b> </b>:VerilenSiparisYil<b> </b><b>and</b><b> </b><font color="# 080 0"><u>VerilenSiparis</u></font><b>.</b>VerilenSiparisId<b> </b><b>=</b><b> </b>:VerilenSiparisId<b> </b><b>into</b><b> </b>:VerilenSiparisKayitId<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>VerilenSiparisDetay</u></font><b>(</b>VerilenSiparisKayitId<b>,</b><b> </b>SatinAlmaTalepDetayId<b>,</b><b> </b>UrunId<b>,</b><b> </b>HamId<b>,</b><b> </b>Adi<b>,</b><b> </b>RenkId<b>,</b><b> </b>Miktar<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>DovizId<b>,</b><b> </b>VadeGun<b>,</b><b> </b>TeslimTarihi<b>,</b>
+<b>                                  </b>KullanilacakIplik1<b>,</b><b> </b>KullanilacakIplik2<b>,</b><b> </b>KullanilacakIplik3<b>,</b><b> </b>IplikOrani1<b>,</b><b> </b>IplikOrani2<b>,</b><b> </b>IplikOrani3<b>,</b>
+<b>                                  </b>IplikUzunlugu1<b>,</b><b> </b>IplikUzunlugu2<b>,</b><b> </b>IplikUzunlugu3<b>,</b><b> </b>YikamaDereceId<b>,</b><b> </b>KurutmaSekliId<b>,</b><b> </b>Denye<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>MakinaMarkasi<b>,</b>
+<b>                                  </b>MakinaCinsi<b>,</b><b> </b>SistemSayisi<b>,</b><b> </b>Pus<b>,</b><b> </b>Feine<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>KenarKonstruksiyonTipiId<b>,</b>
+<b>                                  </b>HamEn<b>,</b><b> </b>HamGramaj<b>,</b><b> </b>MamulEn<b>,</b><b> </b>MamulGramaj<b>,</b><b> </b>AmbalajSekliId<b>,</b><b> </b>TalepNotu<b>,</b><b> </b>SatinAlmaKullanimYeriId<b>,</b><b> </b>VerilenSiparisTipiId<b>,</b>
+<b>                                  </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>BoyaSiparisDetayId<b>,</b><b> </b>TupAcikEnMayli<b>,</b><b> </b>KontrolOrani<b>,</b><b> </b>ResimDosyaAdi1<b>,</b><b> </b>IstenenDonme<b>,</b>
+<b>                                  </b>TeklifTalepDetayId<b>,</b><b> </b>ReferansFirmaId<b>,</b><b> </b>ReferansSiparisNo<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>              </b><b>Select</b><b> </b>:VerilenSiparisKayitId<b>,</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>SatinAlmaTalepDetayId<b>,</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepDetay</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepDetay</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepDetay</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepDetay</u></font><b>.</b>RenkId<b>,</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>Miktar<b>,</b>
+<b>                     </b>UrunBirimId<b>,</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>BirimFiyat<b>,</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>DovizId<b>,</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>VadeGun<b>,</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>TerminTarihi<b>,</b>
+<b>                     </b>KullanilacakIplik1<b>,</b><b> </b>KullanilacakIplik2<b>,</b><b> </b>KullanilacakIplik3<b>,</b><b> </b>IplikOrani1<b>,</b><b> </b>IplikOrani2<b>,</b><b> </b>IplikOrani3<b>,</b>
+<b>                     </b>IplikUzunlugu1<b>,</b><b> </b>IplikUzunlugu2<b>,</b><b> </b>IplikUzunlugu3<b>,</b><b> </b>YikamaDereceId<b>,</b><b> </b>KurutmaSekliId<b>,</b><b> </b>Denye<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>MakinaMarkasi<b>,</b>
+<b>                     </b>MakinaCinsi<b>,</b><b> </b>SistemSayisi<b>,</b><b> </b>Pus<b>,</b><b> </b>Feine<b>,</b><b> </b>MelanjKodu<b>,</b><b> </b>KenarKonstruksiyonTipiId<b>,</b>
+<b>                     </b>HamEn<b>,</b><b> </b>HamGramaj<b>,</b><b> </b>MamulEn<b>,</b><b> </b>MamulGramaj<b>,</b><b> </b>AmbalajSekliId<b>,</b><b> </b>TalepNotu<b>,</b><b> </b>SatinAlmaKullanimYeriId<b>,</b><b> </b>VerilenSiparisTipiId<b>,</b>
+<b>                     </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>BoyaSiparisDetayId<b>,</b><b> </b>TupAcikEnMayli<b>,</b><b> </b>KontrolOrani<b>,</b><b> </b>ResimDosyaAdi<b>,</b><b> </b>IstenenDonme<b>,</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>TeklifTalepDetayId<b>,</b>
+<b>                     </b>ReferansFirmaId<b>,</b><b> </b>ReferansSiparisNo<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font>
+<b>               </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepDetay</u></font><b>.</b>SatinAlmaTalepDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>SatinAlmaTalepDetayId
+<b>              </b><b>where</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>TeklifTalepKayitId<b> </b><b>=</b><b> </b>:ATeklifTalepKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>VerilenSiparisDetayID<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>TeklifTalepDetay</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:FirmaId<b>;</b>
+
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="TALEPTEKLIFDETAYGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="TALEPTEKLIFSATINALMATALEPGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

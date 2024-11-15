@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<TITLE>BOSPROXYLISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="78800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BOLUNENSTOKDETAYLAR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BOYAALISIADEICINREZERVLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BOSPROXYLISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<P CLASS="Base"><I>(There are no input parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">PROXYID</TD>
+    <TD><P CLASS="Base2">VARCHAR(8)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure BOSPROXYLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>BOSPROXYLISTESI</u></font>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>PROXYID<b> </b><b>VARCHAR</b><b>(</b>8<b>)</b><b>,</b>
+<b>    </b>PARTIYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TARIH<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>Proxy</u></font><b>.</b>ProxyID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>proxy</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>personel</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>personel</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Proxy</u></font><b>.</b>ProxyID<b> </b><b>or</b><b> </b><font color="# 080 0"><u>personel</u></font><b>.</b>PostaBasiProxyId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Proxy</u></font><b>.</b>ProxyID<b> </b><b>or</b><b> </b><font color="# 080 0"><u>personel</u></font><b>.</b>BakimciProxyId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Proxy</u></font><b>.</b>ProxyID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Proxy</u></font><b>.</b>ProxyID
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>personel</u></font><b>.</b>personelid<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>Char_Length</b><b>(</b><font color="# 080 0"><u>Proxy</u></font><b>.</b>ProxyID<b>)</b><b> </b><b>&gt;</b><b>=</b>5<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>partisinifid<b> </b><b>is</b><b> </b><b>null</b>
+<b>  </b><b>into</b><b> </b>:ProxyId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>Tarih<b> </b><b>=</b><b> </b><b>NUll</b><b>;</b>
+<b>    </b>PartiYil<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>    </b>PartiId<b>  </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><b>Max</b><b>(</b>Tarih<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiProxyLog</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiProxyLog</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b>:ProxyId<b> </b><b>into</b><b> </b>:Tarih<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiYil<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiProxyLog</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiProxyLog</u></font><b>.</b>PartiKayitId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiProxyLog</u></font><b>.</b>ProxyId<b> </b><b>=</b><b> </b>:ProxyId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiProxyLog</u></font><b>.</b>Tarih<b> </b><b>=</b><b> </b>:Tarih
+<b>      </b><b>into</b><b> </b>:PartiYil<b>,</b><b> </b>:PartiId<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BOLUNENSTOKDETAYLAR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BOYAALISIADEICINREZERVLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERUPDATEBOYASIPARISDETAY1</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="262800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERUPDATEBOYASIPARISDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERUPDATEBOYASIPARISDETAY2.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERUPDATEBOYASIPARISDETAY1</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERUPDATEBOYASIPARISDETAY1)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERUPDATEBOYASIPARISDETAY1</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>1
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisYil<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBlob<b>             </b><b>Blob</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Konu<b>              </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Aciklama<b>          </b><b>varchar</b><b>(</b>1024<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldRenkAdi<b>        </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewRenkAdi<b>        </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KullaniciAdi<b>      </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaAdi<b>          </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>RenkId<b>,</b><b> </b><b>new</b><b>.</b>RenkId<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>BoyaSiparisYil<b>,</b><b> </b>BoyaSiparisId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BoyaSiparisKayitID<b> </b><b>into</b><b> </b>:BoyaSiparisYil<b>,</b><b> </b>:BoyaSiparisId<b>;</b>
+
+<b>    </b>Konu<b> </b><b>=</b><b> </b>'SIPARIŞ RENK/REÇETE DEĞIŞIKLIĞI'<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>KullaniciId<b> </b><b>into</b><b> </b>:KullaniciAdi<b>;</b>
+
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b><b>Cast</b><b>(</b>'('<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>BoyaSiparisYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>BoyaSiparisID<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' nolu Sipariş,'<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>BoyaSiparisDetayId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Nolu Detayında, '<b> </b><b>|</b><b>|</b><b> </b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' tarafından Renk/Reçete Değişiklği yapıldı.'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>RenkId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'Eski Lab.Reç.Kodu : '<b> </b><b>|</b><b>|</b><b> </b><b>Old</b><b>.</b>LabReceteKodu<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'Yeni Lab.Reç.Kodu : '<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>RenkId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>RenkId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>RenkID<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>RenkId<b> </b><b>into</b><b> </b>:OldRenkAdi<b>;</b>
+
+<b>        </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'Eski Renk : '<b> </b><b>|</b><b>|</b><b> </b>OldRenkAdi<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>RenkID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>RenkId<b> </b><b>into</b><b> </b>:NewRenkAdi<b>;</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>CAst</b><b>(</b>'Yeni Renk : '<b> </b><b>|</b><b>|</b><b> </b>NewRenkAdi<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>    </b><b>end</b>
+
+<b>    </b>FBlob<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_StrBlob</u></font><b>(</b>Aciklama<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>SiparisTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>'Sistem Yöneticisi'<b>,</b><b> </b>:Konu<b>,</b><b> </b>:FBlob<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>IBSipRenkDegisinceBildirilsin<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>       </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>'Sistem Yöneticisi'<b>,</b><b> </b>:Konu<b>,</b><b> </b>:FBlob<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>BSipRenkDegisinceBildirilsin<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>SiparisKilo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>SiparisKilo<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>BoyaSiparisYil<b>,</b><b> </b>BoyaSiparisId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font>
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>FirmaID
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>BoyaSiparisKayitID<b> </b><b>into</b><b> </b>:BoyaSiparisYil<b>,</b><b> </b>:BoyaSiparisId<b>,</b><b> </b>:FirmaAdi<b>;</b>
+
+<b>    </b>Konu<b> </b><b>=</b><b> </b>'SIPARIŞ KİLO DEĞIŞIKLIĞI'<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>KullaniciId<b> </b><b>into</b><b> </b>:KullaniciAdi<b>;</b>
+
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b><b>Cast</b><b>(</b>FirmaAdi<b> </b><b>|</b><b>|</b><b> </b>' ait ('<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>BoyaSiparisYil<b>)</b><b> </b><b>|</b><b>|</b><b> </b>') '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>BoyaSiparisID<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' nolu Siparişin,'<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>CAst</b><b>(</b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>BoyaSiparisDetayId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Nolu Detayında, '<b> </b><b>|</b><b>|</b><b> </b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' tarafından Kilo Değişiklği yapıldı.'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>SiparisKilo<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'Eski Kilo : '<b> </b><b>|</b><b>|</b><b> </b><b>Old</b><b>.</b>SiparisKilo<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>SiparisKilo<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>'Yeni Kilo : '<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>SiparisKilo<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>    </b>FBlob<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_StrBlob</u></font><b>(</b>Aciklama<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>'Sistem Yöneticisi'<b>,</b><b> </b>:Konu<b>,</b><b> </b>:FBlob<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>BSipKiloDegisinceBildirilsin<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERUPDATEBOYASIPARISDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERUPDATEBOYASIPARISDETAY2.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

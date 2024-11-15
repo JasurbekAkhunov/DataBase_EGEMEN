@@ -1,0 +1,162 @@
+<HTML>
+<HEAD>
+<TITLE>KRITIKSEVIYEDENTALEPYARAT</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1001800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="KOMBINPARTIUCRETLITAMIRDEGISTIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="KTEBOYALIKUMASSIPARISLERI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">KRITIKSEVIYEDENTALEPYARAT</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ATERMINTARIHI</TD>
+    <TD><P CLASS="Base2">DATE</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMIKTAR</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AURUNID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AENKISASUREDE</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">SATINALMATALEPKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SATINALMATALEPYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SATINALMATALEPID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure KRITIKSEVIYEDENTALEPYARAT)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>KRITIKSEVIYEDENTALEPYARAT</u></font><b>(</b>
+<b>    </b>ATERMINTARIHI<b> </b><b>DATE</b><b>,</b>
+<b>    </b>AMIKTAR<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AURUNID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AENKISASUREDE<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>SATINALMATALEPKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SATINALMATALEPYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SATINALMATALEPID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BakimSatinAlmaDepartmanId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BakimSatinAlmaTalepYeriId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BakimSatinAlmaBirimId<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BakimSatinAlmaKullanimYeriId<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemDovizId<b>                    </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DefaultBirimId<b>                   </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b>SatinAlmaTalepKayitId<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+
+<b>  </b><b>select</b><b> </b>BakimSatinAlmaDepartmanId<b>,</b><b> </b>BakimSatinAlmaTalepYeriId<b>,</b><b> </b>BakimSatinAlmaBirimId<b>,</b><b> </b>BakimSatinAlmaKullanimYeriId<b>,</b><b> </b>SistemDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font>
+<b>    </b><b>into</b><b> </b>:BakimSatinAlmaDepartmanId<b>,</b><b> </b>:BakimSatinAlmaTalepYeriId<b>,</b><b> </b>:BakimSatinAlmaBirimId<b>,</b><b> </b>:BakimSatinAlmaKullanimYeriId<b>,</b><b> </b>:SistemDovizId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BakimSatinAlmaDepartmanId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sistemde BakimSatinAlmaDepartmanId bilgisi girilmemiş...'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BakimSatinAlmaTalepYeriId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sistemde BakimSatinAlmaTalepYeriId bilgisi girilmemiş...'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BakimSatinAlmaBirimId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sistemde BakimSatinAlmaBirimId bilgisi girilmemiş...'<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>BakimSatinAlmaKullanimYeriId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Sistemde BakimSatinAlmaKullanimYeriId bilgisi girilmemiş...'<b>;</b>
+
+<b>  </b>SatinAlmaTalepKayitId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>SatinAlmaTalepKayit_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b>SatinAlmaTalepYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>Current_date</b><b>)</b><b>;</b>
+<b>  </b><b>select</b><b> </b>Id<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepNumaratoruAl</u></font><b>(</b>:SatinAlmaTalepYil<b>)</b><b> </b><b>into</b><b> </b>:SatinAlmaTalepId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AMiktar<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>AMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AEnKisaSurede<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>AEnKisaSurede<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>SatinAlmaTalep</u></font><b>(</b>SatinAlmaTalepKayitId<b>,</b><b> </b>SatinAlmaTalepYil<b>,</b><b> </b>SatinAlmaTalepId<b>,</b><b> </b>TalepKullaniciId<b>,</b><b> </b>Tarih<b>,</b><b> </b>DepartmanId<b>,</b>
+<b>        </b>SatinAlmaTalepYeriId<b>,</b><b> </b>SadeceFiyatArastirmasi<b>,</b><b> </b>SatinAlmaBirimId<b>,</b><b> </b>IstekYeri<b>,</b><b> </b>VerilenSiparisTipiId<b>,</b>
+<b>        </b>OnayDurumu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>)</b>
+<b>        </b><b>values</b><b>(</b>
+<b>        </b>:SatinAlmaTalepKayitId<b>,</b><b> </b>:SatinAlmaTalepYil<b>,</b><b> </b>:SatinAlmaTalepId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_date</b><b>,</b><b> </b>:BakimSatinAlmaDepartmanId<b>,</b>
+<b>        </b>:BakimSatinAlmaTalepYeriId<b>,</b><b> </b>0<b>,</b><b> </b>:BakimSatinAlmaBirimId<b>,</b><b> </b>1<b>,</b><b> </b>3<b>,</b>
+<b>        </b>0<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>)</b><b>;</b>
+
+<b>    </b><b>select</b><b> </b><b>first</b><b> </b>1<b> </b>UrunBirimId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b>:AUrunId<b> </b><b>and</b><b> </b>DefaultBirim<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:DefaultBirimId<b>;</b>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>SatinAlmaTalepDetay</u></font><b>(</b>SatinAlmaTalepKayitId<b>,</b><b> </b>VerilenSiparisTipiId<b>,</b><b> </b>UrunId<b>,</b><b>  </b>Miktar<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>DovizId<b>,</b>
+<b>      </b>TerminTarihi<b>,</b><b> </b>SatinAlmaKullanimYeriId<b>,</b><b> </b>SiparisiVerilenMiktar<b>,</b><b> </b>TalepNotu<b>,</b>
+<b>      </b>Notu<b>,</b><b> </b>Kapali<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b><b> </b>EnKisaSurede<b>)</b>
+<b>      </b><b>values</b><b>(</b>:SatinAlmaTalepKayitId<b>,</b><b> </b>3<b>,</b><b> </b>:AUrunId<b>,</b><b> </b>:AMiktar<b>,</b><b> </b>:DefaultBirimId<b>,</b><b> </b>:SistemDovizId<b>,</b>
+<b>      </b>:ATerminTarihi<b>,</b><b> </b>:BakimSatinAlmaKullanimYeriId<b>,</b><b> </b>0<b>,</b><b> </b>'Kritik seviye talebi'<b>,</b>
+<b>      </b>'Kritik seviye talebi'<b>,</b><b> </b>0<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AEnKisaSurede<b>)</b><b>;</b>
+<b>    </b><b>Suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="KOMBINPARTIUCRETLITAMIRDEGISTIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="KTEBOYALIKUMASSIPARISLERI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

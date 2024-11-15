@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<TITLE>HAMSTOKALISFATURASIRAPORU_3</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="664800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HAMSTOKALISFATURASIRAPORU_2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HAMSTOKANALIZIFASON.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HAMSTOKALISFATURASIRAPORU_3</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AFIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">FATURATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ALISFIATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SATISFIATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SERBESTALISFIATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SERBESTSATISFIATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HAMSTOKALISFATURASIRAPORU_3)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HAMSTOKALISFATURASIRAPORU_3</u></font><b>(</b>
+<b>    </b>AFIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>FATURATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>DOVIZID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>ALISFIATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>SATISFIATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>SERBESTALISFIATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>SERBESTSATISFIATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>HamStokAlisFaturasiRaporu_1</u></font><b>.</b>FaturaTarihi<b>,</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>DovizId<b>,</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>AlisFiati<b>,</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>SatisFiati<b>,</b>
+<b>             </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>SerbestAlisFiati<b>,</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>SerbestSatisFiati<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokAlisFaturasiRaporu_1</u></font><b>(</b>:AFirmaId<b>,</b><b> </b>:ABaslangicTarihi<b>,</b><b> </b>:ABitisTarihi<b>)</b>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>Tarih<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokAlisFaturasiRaporu_1</u></font><b>.</b>FaturaTarihi
+<b>  </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>HamStokAlisFaturasiRaporu_1</u></font><b>.</b>FaturaTarihi<b>,</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>DovizId<b>,</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>AlisFiati<b>,</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>SatisFiati<b>,</b>
+<b>           </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>SerbestAlisFiati<b>,</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>.</b>SerbestSatisFiati
+<b>  </b><b>into</b><b> </b>:FaturaTarihi<b>,</b><b> </b>:DovizId<b>,</b><b> </b>:AlisFiati<b>,</b><b> </b>:SatisFiati<b>,</b><b> </b>:SerbestAlisFiati<b>,</b><b> </b>:SerbestSatisFiati<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HAMSTOKALISFATURASIRAPORU_2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HAMSTOKANALIZIFASON.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

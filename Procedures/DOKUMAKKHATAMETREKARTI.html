@@ -1,0 +1,173 @@
+<HTML>
+<HEAD>
+<TITLE>DOKUMAKKHATAMETREKARTI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="399800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DOKUMAKKHATALARIGIRISKARTI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DOKUMAKKTOPNOGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DOKUMAKKHATAMETREKARTI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ADOKUMAKALITEKONTROLID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">DOKUMAKALITEKONTROLHATAMETREID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOKUMAKALITEKONTROLID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOKUMAHATATIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOKUMAHATATIPIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NOKTASALHATA</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NOKTASALHATASTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BASLANGICMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BITISMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HATAPUANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEGISIMTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DOKUMAKKHATAMETREKARTI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DOKUMAKKHATAMETREKARTI</u></font><b>(</b>
+<b>    </b>ADOKUMAKALITEKONTROLID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>DOKUMAKALITEKONTROLHATAMETREID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DOKUMAKALITEKONTROLID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DOKUMAHATATIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DOKUMAHATATIPIADI<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>NOKTASALHATA<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>NOKTASALHATASTR<b> </b><b>VARCHAR</b><b>(</b>4<b>)</b><b>,</b>
+<b>    </b>BASLANGICMETRE<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>BITISMETRE<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>HATAPUANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>INSERTKULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>INSERTTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>KULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>DEGISIMTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>DokumaKaliteKontrolId<b>,</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>DokumaKaliteKontrolHataMetreId<b>,</b>
+<b>             </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>DokumaHataTipiId<b>,</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>NoktasalHata<b>,</b>
+<b>             </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>BaslangicMetre<b>,</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>BitisMetre<b>,</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>HataPuani<b>,</b>
+<b>             </b>IK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>InsertTarihi<b>,</b><b> </b>SK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>DegisimTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DokumaHataTipi</u></font><b>.</b>DokumaHataTipiId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>DokumaHataTipiId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>IK<b> </b><b>on</b><b> </b>IK<b>.</b>KullaniciId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>InsertKullaniciId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>SK<b> </b><b>on</b><b> </b>SK<b>.</b>KullaniciId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>KullaniciId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrolHataMetre</u></font><b>.</b>DokumaKaliteKontrolID<b> </b><b>=</b><b> </b>:ADokumaKaliteKontrolId
+<b>  </b><b>into</b><b> </b>:DokumaKaliteKontrolId<b>,</b><b> </b>:DokumaKaliteKontrolHataMetreId<b>,</b><b> </b>:DokumaHataTipiId<b>,</b><b> </b>:DokumaHataTipiAdi<b>,</b><b> </b>:NoktasalHata<b>,</b>
+<b>       </b>:BaslangicMetre<b>,</b><b> </b>:BitisMetre<b>,</b><b> </b>:HataPuani<b>,</b><b> </b>:InsertKullaniciAdi<b>,</b><b> </b>:InsertTarihi<b>,</b><b> </b>:KullaniciAdi<b>,</b><b> </b>:DegisimTarihi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>NoktasalHata<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>NoktasalHataStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>    </b><b>else</b><b> </b>NoktasalHataStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DOKUMAKKHATALARIGIRISKARTI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DOKUMAKKTOPNOGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

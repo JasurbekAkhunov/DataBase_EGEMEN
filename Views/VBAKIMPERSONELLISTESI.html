@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<TITLE>VBAKIMPERSONELLISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="13800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Views</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="VBAKIMHIZMETTANITIMLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="VBANKAHESAPGRUPLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">VBAKIMPERSONELLISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for view VBAKIMPERSONELLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Fields</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Field</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="40%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">PERSONELID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEPERSONELI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKPERSONELI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IMALATCI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">POSTABASI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BAKIMCI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AYARPERSONELI</P></TD>
+    <TD><P CLASS="Base2">SMALLINT</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BAKIMDAIRESIID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTKULLANICIADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTTARIHI</P></TD>
+    <TD><P CLASS="Base2">TIMESTAMP</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEGISIMTARIHI</P></TD>
+    <TD><P CLASS="Base2">TIMESTAMP</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Triggers</P>
+<P CLASS="Base"><I>(There are no triggers for view VBAKIMPERSONELLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>VIEW</b><b> </b><font color="# 080 0"><u>VBAKIMPERSONELLISTESI</u></font><b>(</b>
+<b>    </b>PERSONELID<b>,</b>
+<b>    </b>ADI<b>,</b>
+<b>    </b>ORMEPERSONELI<b>,</b>
+<b>    </b>IPLIKPERSONELI<b>,</b>
+<b>    </b>IMALATCI<b>,</b>
+<b>    </b>POSTABASI<b>,</b>
+<b>    </b>BAKIMCI<b>,</b>
+<b>    </b>AYARPERSONELI<b>,</b>
+<b>    </b>BAKIMDAIRESIID<b>,</b>
+<b>    </b>INSERTKULLANICIADI<b>,</b>
+<b>    </b>INSERTTARIHI<b>,</b>
+<b>    </b>KULLANICIADI<b>,</b>
+<b>    </b>DEGISIMTARIHI<b>)</b>
+<b>AS</b>
+<b>Select</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PersonelId<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>OrmePersoneli<b>,</b><b>  </b><font color="# 080 0"><u>Personel</u></font><b>.</b>IplikPersoneli<b>,</b><b>  </b><font color="# 080 0"><u>Personel</u></font><b>.</b>Imalatci<b>,</b><b>  </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PostaBasi<b>,</b><b>  </b><font color="# 080 0"><u>Personel</u></font><b>.</b>Bakimci<b>,</b><b>  </b><font color="# 080 0"><u>Personel</u></font><b>.</b>AyarPersoneli<b>,</b>
+<b>     </b><font color="# 080 0"><u>Personel</u></font><b>.</b>BakimDairesiId<b>,</b><b> </b>IK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>InsertTarihi<b>,</b><b> </b>SK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>DegisimTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Personel</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>IK<b> </b><b>on</b><b> </b>IK<b>.</b>KullaniciId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>InsertKullaniciId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>SK<b> </b><b>on</b><b> </b>SK<b>.</b>KullaniciId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>KullaniciId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0
+<b>;</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="VBAKIMHIZMETTANITIMLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="VBANKAHESAPGRUPLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

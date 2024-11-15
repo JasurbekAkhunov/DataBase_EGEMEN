@@ -1,0 +1,273 @@
+<HTML>
+<HEAD>
+<TITLE>DONEMSONUHAMSTOKENVANTERI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="468800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DONEMSONUGIRISENVANTERRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DONEMSONUISLETMEDEKIPARTILER.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DONEMSONUHAMSTOKENVANTERI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHAMTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AFASON</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AUNITEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TRANSFERKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(55)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMDEPOSTOKMIKTARI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YARIMAMULSTOKMIKTARI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAMULSTOKMIKTARI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DONEMSONUHAMSTOKENVANTERI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DONEMSONUHAMSTOKENVANTERI</u></font><b>(</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AHAMTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AFASON<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AUNITEID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>FIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIRMAADI<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>HAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMADI<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>TRANSFERKODU<b> </b><b>VARCHAR</b><b>(</b>55<b>)</b><b>,</b>
+<b>    </b>HAMDEPOSTOKMIKTARI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>YARIMAMULSTOKMIKTARI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>MAMULSTOKMIKTARI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FasonTransferKodu<b>  </b><b>varchar</b><b>(</b>55<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SatisTransferKodu<b>  </b><b>varchar</b><b>(</b>55<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AFirmaId<b>           </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiSinifId<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamTipiId<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Miktar<b>             </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Kilo<b>               </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Metre<b>              </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TartiKilo<b>               </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TartiMetre<b>              </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>FirmaKodumuz<b>,</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>into</b><b> </b>:AFirmaId<b>,</b><b> </b>:DokumaKumasiKilodanTakipEt<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>FasonTransferKodu<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>SatisTransferKodu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font>
+<b>    </b><b>where</b><b> </b><b>(</b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>:AHamTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>or</b><b> </b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>:AHamTipiId<b> </b><b>=</b><b> </b>1<b>)</b><b>)</b>
+<b>    </b><b>into</b><b> </b>:HamId<b>,</b><b> </b>:HamAdi<b>,</b><b> </b>:HamTipiId<b>,</b><b> </b>:FasonTransferKodu<b>,</b><b> </b>:SatisTransferKodu<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AFason<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>TransferKodu<b> </b><b>=</b><b> </b>SatisTransferKodu<b>;</b>
+<b>    </b><b>else</b><b> </b>TransferKodu<b> </b><b>=</b><b> </b>FasonTransferKodu<b>;</b>
+
+<b>    </b>YariMamulStokMiktari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>MamulStokMiktari<b>     </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>AFason<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><b>sum</b><b>(</b>girisMiktar<b>)</b><b> </b><b>-</b><b> </b><b>sum</b><b>(</b>PartilenenMiktar<b>)</b><b> </b><b>-</b><b> </b><b>sum</b><b>(</b>iadeedilenMiktar<b>)</b><b> </b><b>-</b><b> </b><b>sum</b><b>(</b>satisMiktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font><b>.</b>Firmaid<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:HamId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi
+<b>        </b><b>into</b><b> </b>:HamDepoStokMiktari<b>;</b>
+
+<b>      </b><b>For</b><b> </b><b>Select</b><b> </b><b>Distinct</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifId<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Metre<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStokIptal</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStokIptal</u></font><b>.</b>PartiStokIptalKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:HamId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartilemeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>Fason<b> </b><b>=</b><b> </b>:AFason<b> </b><b>and</b>
+<b>             </b><b>(</b><font color="# 080 0"><u>PartiStokIptal</u></font><b>.</b>IptalTarihi<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>PartiStokIptal</u></font><b>.</b>IptalTarihi<b> </b><b>&gt;</b><b> </b>:ABitisTarihi<b> </b><b>+</b><b> </b>1<b>)</b>
+<b>        </b><b>into</b><b> </b>:PartiSinifId<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b> </b><b>or</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>          </b>Miktar<b> </b><b>=</b><b> </b>Kilo<b>;</b>
+<b>        </b><b>else</b>
+<b>          </b>Miktar<b> </b><b>=</b><b> </b>Metre<b>;</b>
+
+<b>        </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:PartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b> </b>:ABitisTarihi<b> </b><b>+</b><b> </b>1<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>YariMamulStokMiktari<b> </b><b>=</b><b> </b>YariMamulStokMiktari<b> </b><b>+</b><b> </b>Miktar<b>;</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b>TartiKilo<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>          </b>TartiMetre<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Kilo<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Metre<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>MamulDepoTransferFisiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>MamulDepoTransferFisiId
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Depo</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>DepoId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>TransferDepoId
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>BoyaIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeId
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokSarfFisi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokSarfFisi</u></font><b>.</b>HamStokSarfFisiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>HamStokSarfFisiId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:PartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b> </b>:ABitisTarihi<b> </b><b>+</b><b> </b>1<b> </b><b>and</b>
+<b>                 </b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&gt;</b><b> </b>:ABitisTarihi<b>)</b><b> </b><b>and</b>
+<b>                 </b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>HamStokSarfFisiId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>HamStokSarfFisi</u></font><b>.</b>FisTarihi<b> </b><b>&gt;</b><b> </b>:ABitisTarihi<b>)</b><b> </b><b>and</b>
+<b>                 </b><b>(</b><font color="# 080 0"><u>Depo</u></font><b>.</b>UniteId<b> </b><b>=</b><b> </b>:AUniteId<b> </b><b>or</b><b> </b>:AUniteId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>            </b><b>into</b><b> </b>:TartiKilo<b>,</b><b> </b>:TartiMetre<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>TartiKilo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>TartiKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>TartiMetre<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>TartiMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b> </b><b>or</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>            </b>MamulStokMiktari<b> </b><b>=</b><b> </b>MamulStokMiktari<b> </b><b>+</b><b> </b>TartiKilo<b>;</b>
+<b>          </b><b>else</b>
+<b>            </b>MamulStokMiktari<b> </b><b>=</b><b> </b>MamulStokMiktari<b> </b><b>+</b><b> </b>TartiMetre<b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>For</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><b>sum</b><b>(</b>girisMiktar<b>)</b><b> </b><b>-</b><b> </b><b>sum</b><b>(</b>PartilenenMiktar<b>)</b><b> </b><b>-</b><b> </b><b>sum</b><b>(</b>iadeedilenMiktar<b>)</b><b> </b><b>-</b><b> </b><b>sum</b><b>(</b>satisMiktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font><b>.</b>FirmaId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font><b>.</b>Firmaid<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:AFirmaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:HamId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi
+<b>        </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>HamStokKumilatif</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi
+<b>        </b><b>into</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:HamDepoStokMiktari<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>HamDepoStokMiktari<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>HamDepoStokMiktari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>YariMamulStokMiktari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>MamulStokMiktari<b>     </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b><b>For</b><b> </b><b>Select</b><b> </b><b>Distinct</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifId<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Metre<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifId
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:HamId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:FirmaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartilemeTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>Fason<b> </b><b>=</b><b> </b>:AFason
+<b>          </b><b>into</b><b> </b>:PartiSinifId<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b> </b><b>do</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b> </b><b>or</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>            </b>Miktar<b> </b><b>=</b><b> </b>Kilo<b>;</b>
+<b>          </b><b>else</b>
+<b>            </b>Miktar<b> </b><b>=</b><b> </b>Metre<b>;</b>
+
+<b>          </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:PartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b> </b>:ABitisTarihi<b> </b><b>+</b><b> </b>1<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>YariMamulStokMiktari<b> </b><b>=</b><b> </b>YariMamulStokMiktari<b> </b><b>+</b><b> </b>Miktar<b>;</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b>TartiKilo<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>            </b>TartiMetre<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>            </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Kilo<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Metre<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>              </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>MamulDepoTransferFisiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>MamulDepoTransferFisiId
+<b>              </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Depo</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>DepoId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>TransferDepoId
+<b>              </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>BoyaIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeId
+<b>              </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokSarfFisi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokSarfFisi</u></font><b>.</b>HamStokSarfFisiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>HamStokSarfFisiId
+<b>              </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:PartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b> </b>:ABitisTarihi<b> </b><b>+</b><b> </b>1<b> </b><b>and</b>
+<b>                   </b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>&gt;</b><b> </b>:ABitisTarihi<b>)</b><b> </b><b>and</b>
+<b>                   </b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>HamStokSarfFisiId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>HamStokSarfFisi</u></font><b>.</b>FisTarihi<b> </b><b>&gt;</b><b> </b>:ABitisTarihi<b>)</b><b> </b><b>and</b>
+<b>                   </b><b>(</b><font color="# 080 0"><u>Depo</u></font><b>.</b>UniteId<b> </b><b>=</b><b> </b>:AUniteId<b> </b><b>or</b><b> </b>:AUniteId<b> </b><b>is</b><b> </b><b>null</b><b>)</b>
+<b>              </b><b>into</b><b> </b>:TartiKilo<b>,</b><b> </b>:TartiMetre<b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>TartiKilo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>TartiKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>            </b><b>if</b><b> </b><b>(</b>TartiMetre<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>TartiMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b> </b><b>or</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>              </b>MamulStokMiktari<b> </b><b>=</b><b> </b>MamulStokMiktari<b> </b><b>+</b><b> </b>TartiKilo<b>;</b>
+<b>            </b><b>else</b>
+<b>              </b>MamulStokMiktari<b> </b><b>=</b><b> </b>MamulStokMiktari<b> </b><b>+</b><b> </b>TartiMetre<b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>HamDepoStokMiktari<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>or</b><b> </b>YariMamulStokMiktari<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>or</b><b> </b>MamulStokMiktari<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>suspend</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DONEMSONUGIRISENVANTERRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DONEMSONUISLETMEDEKIPARTILER.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>PARTIYIMERKEZESEVKET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1579800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTIYIBASKASIPARISETASI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PASAMALARIRECETEBOYAMIKTARGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTIYIMERKEZESEVKET</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTIYIMERKEZESEVKET)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTIYIMERKEZESEVKET</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APARTISINIFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeFirmaKodumuz<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IrsaliyeSeriNo<b>   </b><font color="# 080 0"><u>SeriNoSize5</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IrsaliyeNo<b>       </b><font color="# 080 0"><u>IrsaliyeNoSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UniteId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaIrsaliyeId<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaSevkAdresiId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DepoId<b>            </b><b>Varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ormeIrsaliyeId<b>  </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>     </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>           </b><font color="# 080 0"><u>PartistokTarti</u></font><b>.</b>HamStokSarfFisiDetayId<b> </b><b>is</b><b> </b><b>null</b>
+<b>  </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>PartiStokSevkEdilmis</u></font><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>OrmeFirmaKodumuz<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:OrmeFirmaKodumuz<b>;</b>
+<b>  </b><b>Select</b><b> </b>DefaultUniteId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b>:AKullaniciID<b> </b><b>into</b><b> </b>:UniteId<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>BoyaIrsaliyeId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b> </b><b>=</b><b> </b><b>Current_date</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>.</b>OtomatikIrsaliyeIplik<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:BoyaIrsaliyeId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BoyaIrsaliyeId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>BoyaIrsaliyeId<b> </b><b>=</b><b> </b><b>Gen_Id</b><b>(</b><font color="# 080 0"><u>BoyaIrsaliye_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b>IrsaliyeSeriNo<b> </b><b>=</b><b> </b>'XX'<b>;</b>
+
+<b>    </b><b>Select</b><b> </b>IrsaliyeNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IrsaliyeNumaratorAl</u></font><b>(</b>:IrsaliyeSeriNo<b>)</b><b> </b><b>into</b><b> </b>:IrsaliyeNo<b>;</b>
+
+<b>    </b><b>Select</b><b> </b>FirmaSevkAdresiId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FirmaSevkAdresi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>FirmaSevkAdresi</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b>:OrmeFirmaKodumuz<b> </b><b>And</b><b> </b><font color="# 080 0"><u>FirmaSevkAdresi</u></font><b>.</b>DefaultAdres<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FirmaSevkAdresiId<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaIrsaliye</u></font><b>(</b>BoyaIrsaliyeId<b>,</b><b> </b>HareketTipiId<b>,</b><b> </b>IrsaliyeTarihi<b>,</b><b> </b>IrsaliyeSeriNo<b>,</b><b> </b>IrsaliyeNo<b>,</b><b> </b>SevkTarihi<b>,</b><b> </b>FirmaId<b>,</b><b> </b>UniteId<b>,</b><b> </b>SevkSeferNo<b>,</b><b> </b>FirmaSevkAdresiId<b>,</b><b> </b>OtomatikIrsaliyeIplik<b>)</b>
+<b>                     </b><b>values</b><b>(</b>:BoyaIrsaliyeId<b>,</b><b> </b>0<b>,</b><b> </b><b>current_date</b><b>,</b><b> </b>:IrsaliyeSeriNo<b>,</b><b> </b>:IrsaliyeNo<b>,</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:OrmeFirmaKodumuz<b>,</b><b> </b>:UniteId<b>,</b><b> </b>1<b>,</b><b> </b>:FirmaSevkAdresiId<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b>DepoId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>     </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>           </b><font color="# 080 0"><u>PartistokTarti</u></font><b>.</b>HamStokSarfFisiDetayId<b> </b><b>is</b><b> </b><b>null</b>
+<b>    </b><b>group</b><b> </b><b>BY</b><b> </b>DepoId
+<b>    </b><b>into</b><b> </b>:DepoId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>PartiStokKapSevkEt</u></font><b>(</b>:BoyaIrsaliyeId<b>,</b><b> </b>:APartiKayitId<b>,</b><b> </b>:APartiSinifId<b>,</b><b> </b>:DepoId<b>,</b><b> </b><b>Null</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>null</b><b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b>OrmeIrsaliyeId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaSevkleriOrmeyeKaydet</u></font><b>(</b>:BoyaIrsaliyeId<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>0<b>)</b><b> </b><b>into</b><b> </b>:OrmeIrsaliyeId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTIYIBASKASIPARISETASI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PASAMALARIRECETEBOYAMIKTARGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

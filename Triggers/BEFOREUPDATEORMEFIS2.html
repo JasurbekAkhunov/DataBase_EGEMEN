@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEORMEFIS2</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1401800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEORMEFIS1.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEORMEFIS3.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEORMEFIS2</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEORMEFIS2)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEORMEFIS2</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>ORMEFIS</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>2
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FisDetaySayisi<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIrsaliyeFaturaId<b>      </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FHareketTipi<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFirmaId<b>               </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSevkFirmaId<b>           </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKdvDahil<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDovizId<b>               </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSinif<b>                 </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FEntegrasyon<b>           </b><b>integer</b><b>;</b>
+<b>begin</b>
+<font color="# 0 0FF"><i>/* Bu triggerde Fiş irsaliyeleştirme veya faturalastirma ile ilgili kontroller yapılıyor.. */</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OrmeIrsaliyeId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>OrmeFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>IrsaliyeFaturaBirlikteOlamaz</u></font><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>OrmeIrsaliyeId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>OrmeIrsaliyeId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>Old</b><b>.</b>OrmeIrsaliyeId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>OrmeIrsaliyeId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>IrsaliyeIdDegisemez</u></font><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>OrmeFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>OrmeFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>Old</b><b>.</b>OrmeFaturaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>OrmeFaturaId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>FaturaIdDegisemez</u></font><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>OrmeIrsaliyeId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>OrmeIrsaliyeId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OrmeFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>FaturalastirilmisIrsaliye</u></font><b>;</b>
+
+<b>      </b><b>Select</b><b> </b>OrmeFaturaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>OrmeIrsaliyeId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeIrsaliyeId<b> </b><b>into</b><b> </b>:FIrsaliyeFaturaId<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FIrsaliyeFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>UstBelgeVarDegistirilemez</u></font><b>;</b>
+
+<b>      </b><b>select</b><b> </b>HareketTipi<b>,</b><b> </b>FirmaId<b>,</b><b> </b>SevkFirmaId<b>,</b><b> </b>KdvDahil<b>,</b><b> </b>DovizId<b>,</b><b> </b>Sinif<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>OrmeIrsaliyeId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeIrsaliyeId
+<b>         </b><b>into</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FFirmaId<b>,</b><b> </b>:FSevkFirmaId<b>,</b><b> </b>:FKdvDahil<b>,</b><b> </b>:FDovizId<b>,</b><b> </b>:FSinif<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FHareketTipi<b> </b><b>or</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FFirmaId<b> </b><b>or</b><b> </b><b>new</b><b>.</b>KdvDahil<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FKdvDahil<b> </b><b>or</b>
+<b>          </b><b>new</b><b>.</b>DovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FDovizId<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Sinif<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FSinif<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>FisleIrsaliyeBasligiTutmuyor</u></font><b>;</b>
+
+
+<b>      </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeFisId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmeFisId<b> </b><b>into</b><b> </b>:FisDetaySayisi<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FisDetaySayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>FisDetayiGirilmemis</u></font><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>OrmeFaturaId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>OrmeFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>HareketTipi<b>,</b><b> </b>FirmaId<b>,</b><b> </b>KdvDahil<b>,</b><b> </b>DovizId<b>,</b><b> </b>Sinif<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>OrmeFaturaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>OrmeFaturaId
+<b>         </b><b>into</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FFirmaId<b>,</b><b> </b>:FKdvDahil<b>,</b><b> </b>:FDovizId<b>,</b><b> </b>:FSinif<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FHareketTipi<b> </b><b>or</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FFirmaId<b> </b><b>or</b><b> </b><b>new</b><b>.</b>KdvDahil<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FKdvDahil<b> </b><b>or</b>
+<b>          </b><b>new</b><b>.</b>DovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FDovizId<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Sinif<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FSinif<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>FisleFaturaBasligiTutmuyor</u></font><b>;</b>
+
+<b>      </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeFisId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>OrmeFisId<b> </b><b>into</b><b> </b>:FisDetaySayisi<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FisDetaySayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>FisDetayiGirilmemis</u></font><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>OrmeIrsaliyeId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Fiş, irsaliyeden cıkartılıyor */</i></font>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OrmeIrsaliyeId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>OrmeFaturaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeIrsaliye</u></font><b>.</b>OrmeIrsaliyeId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>OrmeIrsaliyeId<b> </b><b>into</b><b> </b>:FIrsaliyeFaturaId<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FIrsaliyeFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>SIFaturalastirilmisDegisemez</u></font><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>OrmeFaturaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Fiş, Faturadan cıkartılıyor */</i></font>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>OrmeFaturaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b>Entegrasyon<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeFatura</u></font><b>.</b>OrmeFaturaId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>OrmeFaturaId<b> </b><b>into</b><b> </b>:FEntegrasyon<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FEntegrasyon<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>FI_FaturaBitirilmisDegisemez</u></font><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEORMEFIS1.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEORMEFIS3.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

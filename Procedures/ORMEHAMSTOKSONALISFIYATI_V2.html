@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<TITLE>ORMEHAMSTOKSONALISFIYATI_V2</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1245800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ORMEHAMSTOKSONALISFIYATI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ORMEHAREKETMALIYETHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ORMEHAMSTOKSONALISFIYATI_V2</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASONTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">SONALISFIYATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SONALISDOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SONALISVERILENSIPARISFIYATI</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SONALISFIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SONALISFIRMAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ORMEHAMSTOKSONALISFIYATI_V2)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ORMEHAMSTOKSONALISFIYATI_V2</u></font><b>(</b>
+<b>    </b>AHAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ASONTARIH<b> </b><b>TIMESTAMP</b><b> </b><b>default</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>SONALISFIYATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>SONALISDOVIZID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>SONALISVERILENSIPARISFIYATI<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>,</b>
+<b>    </b>SONALISFIRMAID<b> </b><font color="# 080 0"><u>FIRMAKODUSIZE</u></font><b>,</b>
+<b>    </b>SONALISFIRMAADI<b> </b><font color="# 080 0"><u>ADI100</u></font><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMaxStokHareketId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimeCikisFiyatiHesapOran<b>  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemDovizKuru<b>   </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemDovizId<b>     </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrtalamaDovizId<b>   </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtAlis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtFasonUretim<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretim<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>uitBukum<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font><b>.</b>shtAlis<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font><b>.</b>shtUretim<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font><b>.</b>shtFasonUretim<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font><b> </b><b>into</b><b> </b>:shtAlis<b>,</b><b> </b>:shtUretim<b>,</b><b> </b>:shtFasonUretim<b>;</b>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>UretimIslemTipiGetir</u></font><b>.</b>uitBukum<b> </b><b>from</b><b> </b><font color="# 080 0"><u>UretimIslemTipiGetir</u></font><b> </b><b>into</b><b> </b>:uitBukum<b>;</b>
+
+<b>  </b><font color="# 0 0FF"><i>/*Maliyet olusmasin diye v2 yapildi*/</i></font>
+<b>  </b><b>select</b><b> </b><b>First</b><b> </b>1<b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>StokHareketId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font>
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:AHamId<b> </b><b>and</b>
+<b>  </b><b>(</b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>:shtAlis<b> </b><b>or</b><b> </b><b>(</b><b>(</b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>:shtUretim<b> </b><b>or</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>:shtFasonUretim<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>UretimIslemTipiId<b> </b><b>=</b><b> </b>:uitBukum<b>)</b><b>)</b><b> </b><b>and</b>
+<b>  </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>BirimFiyat<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b>=</b><b> </b>:ASonTarih
+<b>  </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Tarih<b> </b><b>desc</b><b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>StokHareketId<b> </b><b>desc</b><b> </b><b>into</b><b> </b>:FMaxStokHareketId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FMaxStokHareketId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Coalesce</b><b>(</b><font color="# 080 0"><u>VerilenSiparisDetay</u></font><b>.</b>BirimFiyat<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>BirimFiyat<b>)</b><b>,</b><b> </b><b>Coalesce</b><b>(</b><font color="# 080 0"><u>VerilenSiparisDetay</u></font><b>.</b>DovizId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>DovizId<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>HamTipi</u></font><b>.</b>UretimeCikisFiyatiHesapOran<b>,</b>
+<b>    </b><b>iif</b><b>(</b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>VerilenSiparisDetayId<b> </b><b>is</b><b> </b><b>null</b><b>,</b><b> </b>0<b>,</b><b> </b>1<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamTipi</u></font><b>.</b>HamTipiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>VerilenSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>VerilenSiparisDetay</u></font><b>.</b>VerilenSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>VerilenSiparisDetayId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>StokHareketId<b> </b><b>=</b><b> </b>:FMaxStokHareketId
+<b>      </b><b>into</b><b> </b>:SonAlisFiyati<b>,</b><b> </b>:SonAlisDovizId<b>,</b><b> </b>:UretimeCikisFiyatiHesapOran<b>,</b><b> </b>:SonalisVerilenSiparisFiyati<b>,</b><b> </b>:SonAlisFirmaId<b>,</b><b> </b>:SonAlisFirmaAdi<b>;</b>
+
+<b>    </b>SonAlisFiyati<b> </b><b>=</b><b> </b>SonAlisFiyati<b> </b><b>+</b><b> </b>SonAlisFiyati<b> </b><b>*</b><b> </b>UretimeCikisFiyatiHesapOran<b> </b><b>/</b><b> </b>100<b>;</b>
+
+<b>    </b><b>Suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ORMEHAMSTOKSONALISFIYATI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ORMEHAREKETMALIYETHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

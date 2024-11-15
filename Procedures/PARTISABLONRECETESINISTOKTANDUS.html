@@ -1,0 +1,340 @@
+<HTML>
+<HEAD>
+<TITLE>PARTISABLONRECETESINISTOKTANDUS</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1512800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTISABLONRECETEISEMRISIL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTISABRECETEILAVESTOKTANDUS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTISABLONRECETESINISTOKTANDUS</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTISABLONISEMRIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTISABLONRECETESINISTOKTANDUS)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTISABLONRECETESINISTOKTANDUS</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APARTISABLONISEMRIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFisSeriNo<b>             </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFisNo<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStokId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHareketTipi<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStokTabanDovizId<b>      </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiSinif<b>  </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTarih<b>                 </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunMutfakDepoNo<b>      </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDepoStokMevcudu<b>       </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunId<b>                </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunBirimId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUretimeCikisFiyati<b>    </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUretimeCikisFiyatiDovizId<b>  </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>Variable</b><b> </b>FMiktar<b>                </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>Variable</b><b> </b>FDovizKuru<b>             </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBaskiReceteStokKontrolu<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SablonReceteSarfStokGrupId<b> </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiKayitId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BaskiTartimAktif<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TeorikPatDusumu<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FReferansStokDetayId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLot<b> </b><b>VarChar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GirisYok<b>                    </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCikilanMiktar<b>              </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCikilacakMiktar<b>            </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FToplamLot<b>                  </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaKimyasalLotTakibiFifo<b>   </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunBirimCarpan<b>            </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKalanMiktar<b>                </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiSablonLot<b>             </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FDozajlamaIsEmriId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiAsamalariId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b>FHareketTipi<b> </b><b>=</b><b> </b>6<b>;</b><b>  </b><font color="# 0 0FF"><i>/* Uretime Cikis */</i></font>
+<b>  </b>FTarih<b> </b><b>=</b><b> </b><b>Current_date</b><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>FisSeriNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FFisSeriNo<b>;</b>
+
+<b>  </b><b>select</b><b> </b>FisNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FisNumaratorAl</u></font><b>(</b>:FFisSeriNo<b>)</b><b> </b><b>into</b><b> </b>:FFisNo<b>;</b>
+
+<b>  </b>FStokId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>Stok_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>select</b><b> </b>STOKTABANDOVIZID<b>,</b><b> </b>SablonReceteSarfStokGrupId<b>,</b><b> </b>BaskiTartimAktif<b>,</b><b> </b>TeorikPatDusumu<b>,</b><b> </b>BoyaKimyasalLotTakibiFifo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SISTEM</u></font><b> </b><b>where</b><b> </b>SISTEMID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:BaskiTartimAktif<b>,</b><b> </b>:TeorikPatDusumu<b>,</b><b> </b>:BoyaKimyasalLotTakibiFifo<b>;</b>
+
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>Sinif<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartikayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>into</b><b> </b>:PartiSinif<b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>first</b><b> </b>1<b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Asama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>AsamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>AsamaId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartikayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Asama</u></font><b>.</b>BaskiAsamasimi<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FPartiAsamalariId<b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Stok</u></font><b>(</b>StokId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>SeriNo<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>DovizId<b>,</b><b> </b>TabanDovizKuru1<b>,</b><b> </b>TabanDovizKuru2<b>,</b><b> </b>SablonRecetesi<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>PartiSablonIsEmriID<b>,</b><b> </b>Sinif<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>                  </b><b>values</b><b>(</b>:FStokId<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FFisSeriNo<b>,</b><b> </b>:FFisNo<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:APartiKayitId<b>,</b><b> </b>:APartiSablonIsEmriID<b>,</b><b> </b>:PartiSinif<b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BaskiTartimAktif<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>UrunBirimId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>MutfakDepoNo<b>,</b>
+<b>               </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyati<b> </b><b>*</b><b> </b>UBUCF<b>.</b>Carpan<b> </b><b>/</b><b> </b>RUB<b>.</b>Carpan<b>,</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiDovizId<b>,</b>
+<b>               </b><font color="# 080 0"><u>DozajlamaIsEmriTartiDetay</u></font><b>.</b>ReferansStokDetayId<b>,</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTartiDetay</u></font><b>.</b>Lot<b>,</b>
+<b>               </b><b>Sum</b><b>(</b><font color="# 080 0"><u>DozajlamaIsEmriTartiDetay</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmri</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTartiDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTartiDetay</u></font><b>.</b>DozajlamaIsEmriID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmri</u></font><b>.</b>DozajlamaIsEmriId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>DozajlamaIsEmriTartiID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTartiDetay</u></font><b>.</b>DozajlamaIsEmriTartiId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>RUB<b> </b><b>on</b><b> </b>RUB<b>.</b>urunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>urunBirimId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>UrunId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>UBUCF<b> </b><b>on</b><b> </b>UBUCF<b>.</b>urunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiUrunBirimId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmri</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>0
+<b>      </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>UrunBirimId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>MutfakDepoNo<b>,</b>
+<b>               </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyati<b>,</b><b> </b>UBUCF<b>.</b>Carpan<b>,</b><b> </b>RUB<b>.</b>Carpan<b>,</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiDovizId<b>,</b>
+<b>               </b><font color="# 080 0"><u>DozajlamaIsEmriTartiDetay</u></font><b>.</b>ReferansStokDetayId<b>,</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTartiDetay</u></font><b>.</b>Lot
+<b>      </b><b>into</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunBirimId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:FUretimeCikisFiyatiDovizId<b>,</b><b> </b>:FReferansStokDetayId<b>,</b><b> </b>:FLot<b>,</b><b> </b>:FMiktar<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FUretimeCikisFiyati<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FUretimeCikisFiyati<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FUretimeCikisFiyatiDovizId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>FUretimeCikisFiyati<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FStokTabanDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FUretimeCikisFiyatiDovizId<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FUretimeCikisFiyatiDovizId<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b>:FTarih<b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+<b>        </b>FUretimeCikisFiyati<b> </b><b>=</b><b> </b>FUretimeCikisFiyati<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>ReferansStokDetayId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>UretimeCikisTarihi<b>,</b><b> </b>Lot<b>,</b><b> </b>PartiAsamalariId<b>)</b>
+<b>                  </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunBirimId<b>,</b><b> </b>:FReferansStokDetayId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:APartiKayitId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FLot<b>,</b><b> </b>:FPartiAsamalariId<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>TeorikPatDusumu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>FReferansStokDetayId<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>      </b>FLot<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>      </b><b>For</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>EmulsiyonUrunId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>MutfakDepoNo<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunBirimId<b>,</b>
+<b>                 </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyati<b> </b><b>*</b><b> </b>UBUCF<b>.</b>Carpan<b> </b><b>/</b><b> </b>RUB<b>.</b>Carpan<b>,</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiDovizId<b>,</b><b> </b>UBPSB<b>.</b>carpan<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>EmulsiyonUrunId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>RUB<b> </b><b>on</b><b> </b>RUB<b>.</b>urunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunBirimId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>EmulsiyonUrunId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>UBUCF<b> </b><b>on</b><b> </b>UBUCF<b>.</b>urunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiUrunBirimId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>UBPSB<b> </b><b>on</b><b> </b>UBPSB<b>.</b>UrunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunBirimId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>EmulsiyonUrunId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>      </b><b>into</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:FUrunBirimId<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:FUretimeCikisFiyatiDovizId<b>,</b><b> </b>:FUrunBirimCarpan<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>FUretimeCikisFiyati<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FUretimeCikisFiyati<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FUretimeCikisFiyatiDovizId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>FUretimeCikisFiyati<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FStokTabanDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FUretimeCikisFiyatiDovizId<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FUretimeCikisFiyatiDovizId<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b>:FTarih<b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+<b>          </b>FUretimeCikisFiyati<b> </b><b>=</b><b> </b>FUretimeCikisFiyati<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>select</b><b> </b><b>first</b><b> </b>1<b> </b><font color="# 080 0"><u>DozajlamaIsEmri</u></font><b>.</b>DozajlamaIsemriId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmri</u></font><b> </b><b>where</b><b>  </b><font color="# 080 0"><u>DozajlamaIsEmri</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>into</b><b> </b>:FDozajlamaIsEmriId<b>;</b>
+<b>        </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>PlanlananMiktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font>
+<b>           </b><b>where</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>dozajlamaisemriid<b> </b><b>=</b><b> </b>:FDozajlamaIsEmriId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmriTarti</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b>:FUrunId<b> </b><b>into</b><b>  </b>:FMiktar<b>;</b>
+<b>        </b><font color="# 0 0FF"><i>/*BoyaKimyasalFifo*/</i></font>
+<b>        </b>FLot<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>GirisYok<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b>FCikilanMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>FCikilacakMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>FToplamLot<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>BoyaKimyasalLotTakibiFifo<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>UrunFifoBilgisi</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>UrunFifoBilgisi</u></font><b>.</b>KalanMiktar<b> </b><b>*</b><b> </b><b>(</b>:FUrunBirimCarpan<b> </b><b>/</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>Carpan<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>UrunFifoBilgisi</u></font><b>(</b>:FUrunId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>)</b>
+<b>              </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunBirimID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>UrunFifoBilgisi</u></font><b>.</b>UrunBirimId
+<b>              </b><b>order</b><b> </b><b>by</b><b> </b>GirisTarihi<b> </b><b>into</b><b> </b>:FLot<b>,</b><b> </b>FKalanMiktar<b> </b><b>do</b>
+<b>          </b><b>begin</b>
+<b>            </b>GirisYok<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>FKalanMiktar<b> </b><b>&lt;</b><b> </b>FMiktar<b> </b><b>-</b><b> </b>FCikilanMiktar<b>)</b><b> </b><b>then</b>
+<b>              </b>FCikilacakMiktar<b> </b><b>=</b><b> </b>FKalanMiktar<b>;</b>
+<b>            </b><b>else</b>
+<b>              </b>FCikilacakMiktar<b> </b><b>=</b><b> </b>FMiktar<b> </b><b>-</b><b> </b>FCikilanMiktar<b>;</b>
+
+<b>            </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>UretimeCikisTarihi<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>UrunId<b>,</b>Lot<b> </b><b>,</b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>PartiAsamalariId<b>)</b>
+<b>                    </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FLot<b>,</b><b>  </b>:FUrunBirimId<b>,</b><b> </b>:FCikilacakMiktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:APartiKayitId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:FPartiAsamalariId<b>)</b><b>;</b>
+
+
+<b>            </b>FCikilanMiktar<b> </b><b>=</b><b> </b>FCikilanMiktar<b> </b><b>+</b><b> </b>FCikilacakMiktar<b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>FToplamLot<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>FToplamLot<b> </b><b>=</b><b> </b>FLot<b>;</b>
+<b>            </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>FToplamLot<b>|</b><b>|</b>'+'<b>|</b><b>|</b>Flot<b>)</b><b> </b><b>&lt;</b><b> </b>21<b>)</b><b> </b><b>then</b><b> </b>FToplamLot<b> </b><b>=</b><b> </b>FToplamLot<b>|</b><b>|</b>'+'<b>|</b><b>|</b>Flot<b>;</b>
+
+<b>            </b><b>if</b><b> </b><b>(</b>FCikilanMiktar<b> </b><b>=</b><b> </b>FMiktar<b>)</b><b> </b><b>then</b><b> </b><b>break</b><b>;</b>
+<b>          </b><b>end</b>
+
+<b>          </b>FMiktar<b> </b><b>=</b><b> </b>FMiktar<b> </b><b>-</b><b> </b>FCikilanMiktar<b>;</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FMiktar<b> </b><b>&gt;</b><b> </b>0<b> </b><b>or</b><b> </b>GirisYok<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>            </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>UretimeCikisTarihi<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>UrunId<b> </b><b>,</b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>PartiAsamalariId<b>)</b>
+<b>                    </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:FUrunId<b>,</b><b>  </b>:FUrunBirimId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:APartiKayitId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:FPartiAsamalariId<b>)</b><b>;</b>
+
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>FPartiSablonLot<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Varyant Reçetede Lot girilse*/</i></font>
+<b>            </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>UretimeCikisTarihi<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>UrunId<b>,</b>Lot<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>PartiAsamalariId<b>)</b>
+<b>                    </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FPartiSablonLot<b>,</b>:FUrunBirimId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:APartiKayitId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:FPartiAsamalariId<b>)</b><b>;</b>
+<b>          </b><b>else</b>
+<b>            </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>UretimeCikisTarihi<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>PartiAsamalariId<b>)</b>
+<b>                    </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunBirimId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:APartiKayitId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:FPartiAsamalariId<b>)</b><b>;</b>
+
+<b>         </b><b>end</b>
+<b>        </b><font color="# 0 0FF"><i>/*BoyaKimyasalFifo*/</i></font>
+
+<b>        </b><font color="# 0 0FF"><i>/*</i></font>
+<font color="# 0 0FF"><i>        if (FUretimeCikisFiyati is null) then FUretimeCikisFiyati = 0;</i></font>
+<font color="# 0 0FF"><i>        if (FUretimeCikisFiyatiDovizId is not null and FUretimeCikisFiyati &gt; 0) then</i></font>
+<font color="# 0 0FF"><i>        if (FStokTabanDovizId &lt;&gt; FUretimeCikisFiyatiDovizId) then</i></font>
+<font color="# 0 0FF"><i>        begin</i></font>
+<font color="# 0 0FF"><i>          select DovizKuru from EnYakinDovizKuruGetir(:FUretimeCikisFiyatiDovizId, :FStokTabanDovizId, :FTarih) into :FDovizKuru;</i></font>
+<font color="# 0 0FF"><i>          FUretimeCikisFiyati = FUretimeCikisFiyati * FDovizKuru;</i></font>
+<font color="# 0 0FF"><i>        end</i></font>
+
+
+<font color="# 0 0FF"><i>        insert into StokDetay(Tarih, HareketTipi, StokId, DepoId, StokGrupId, UrunId, UrunBirimId, ReferansStokDetayId, Miktar, BirimFiyat, PartiKayitId, Otomasyon, KullaniciId, UretimeCikisTarihi, Lot)</i></font>
+<font color="# 0 0FF"><i>                   values(:FTarih, :FHareketTipi, :FStokId, :FUrunMutfakDepoNo, :SablonReceteSarfStokGrupId, :FEmulsiyonUrunId, :FUrunBirimId, :FReferansStokDetayId, :FMiktar, :FUretimeCikisFiyati, :APartiKayitId, 1, 1, :FTarih, :FLot);</i></font>
+<font color="# 0 0FF"><i>                   */</i></font>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>set</b><b> </b>SablonReceteStoktanDusuldu<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b>;</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b> </b><b>set</b><b> </b>StoktanDusuldu<b> </b><b>=</b><b> </b>1<b>,</b><b> </b>OkeyleyenKullaniciId<b> </b><b>=</b><b> </b>1<b>,</b><b> </b>OkeyTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>StoktanDusuldu<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>DozajlamaIsEmri</u></font><b> </b><b>set</b><b> </b>StoktanDusuldu<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>DepoId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunBirimId<b>,</b>
+<b>               </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyati<b> </b><b>*</b><b> </b>UBUCF<b>.</b>Carpan<b> </b><b>/</b><b> </b>UBPSB<b>.</b>Carpan<b>,</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiDovizId<b>,</b>
+<b>               </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>KullanilanMiktar<b>)</b><b>,</b>UBPSB<b>.</b>Carpan<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>Lot<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>UBPSB<b> </b><b>on</b><b> </b>UBPSB<b>.</b>UrunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunBirimId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>UBUCF<b> </b><b>on</b><b> </b>UBUCF<b>.</b>UrunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>urunFiyat</u></font><b>.</b>UretimeCikisFiyatiUrunBirimId
+<b>      </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonIsEmriID<b> </b><b>=</b><b> </b>:APartiSablonIsEmriID<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>      </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>DepoId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunBirimId<b>,</b>
+<b>               </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyati<b>,</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiDovizId<b>,</b><b> </b>UBUCF<b>.</b>Carpan<b>,</b><b> </b>UBPSB<b>.</b>Carpan<b>,</b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>Lot
+<b>      </b><b>into</b><b> </b>:FPartiKayitId<b>,</b><b> </b>FUrunMutfakDepoNo<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunBirimId<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:FUretimeCikisFiyatiDovizId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FUrunBirimCarpan<b>,</b><b> </b>:FPartiSablonLot<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FStokTabanDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FUretimeCikisFiyatiDovizId<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FUretimeCikisFiyatiDovizId<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b><b>Current_Date</b><b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+
+<b>        </b>FUretimeCikisFiyati<b> </b><b>=</b><b> </b>FUretimeCikisFiyati<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+<b>      </b><b>end</b>
+
+<font color="# 0 0FF"><i>/*MUSTAFA*/</i></font>
+
+
+<b>      </b>FLot<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>GirisYok<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b>FCikilanMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>FCikilacakMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>FToplamLot<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>BoyaKimyasalLotTakibiFifo<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>UrunFifoBilgisi</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>UrunFifoBilgisi</u></font><b>.</b>KalanMiktar<b> </b><b>*</b><b> </b><b>(</b>:FUrunBirimCarpan<b> </b><b>/</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>Carpan<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>UrunFifoBilgisi</u></font><b>(</b>:FUrunId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>)</b>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunBirimID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>UrunFifoBilgisi</u></font><b>.</b>UrunBirimId
+<b>            </b><b>order</b><b> </b><b>by</b><b> </b>GirisTarihi<b> </b><b>into</b><b> </b>:FLot<b>,</b><b> </b>FKalanMiktar<b> </b><b>do</b>
+<b>        </b><b>begin</b>
+<b>          </b>GirisYok<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>FKalanMiktar<b> </b><b>&lt;</b><b> </b>FMiktar<b> </b><b>-</b><b> </b>FCikilanMiktar<b>)</b><b> </b><b>then</b>
+<b>            </b>FCikilacakMiktar<b> </b><b>=</b><b> </b>FKalanMiktar<b>;</b>
+<b>          </b><b>else</b>
+<b>            </b>FCikilacakMiktar<b> </b><b>=</b><b> </b>FMiktar<b> </b><b>-</b><b> </b>FCikilanMiktar<b>;</b>
+
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>UrunId<b>,</b>Lot<b> </b><b>,</b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>PartiAsamalariId<b>)</b>
+<b>                  </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FLot<b>,</b><b>  </b>:FUrunBirimId<b>,</b><b> </b>:FCikilacakMiktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:FPartiKayitId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:FPartiAsamalariId<b>)</b><b>;</b>
+
+
+<b>          </b>FCikilanMiktar<b> </b><b>=</b><b> </b>FCikilanMiktar<b> </b><b>+</b><b> </b>FCikilacakMiktar<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>FToplamLot<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>FToplamLot<b> </b><b>=</b><b> </b>FLot<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>FToplamLot<b>|</b><b>|</b>'+'<b>|</b><b>|</b>Flot<b>)</b><b> </b><b>&lt;</b><b> </b>21<b>)</b><b> </b><b>then</b><b> </b>FToplamLot<b> </b><b>=</b><b> </b>FToplamLot<b>|</b><b>|</b>'+'<b>|</b><b>|</b>Flot<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b>FCikilanMiktar<b> </b><b>=</b><b> </b>FMiktar<b>)</b><b> </b><b>then</b><b> </b><b>break</b><b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b>FMiktar<b> </b><b>=</b><b> </b>FMiktar<b> </b><b>-</b><b> </b>FCikilanMiktar<b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FMiktar<b> </b><b>&gt;</b><b> </b>0<b> </b><b>or</b><b> </b>GirisYok<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>UrunId<b> </b><b>,</b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>PartiAsamalariId<b>)</b>
+<b>                  </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:FUrunId<b>,</b><b>  </b>:FUrunBirimId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:FPartiKayitId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:FPartiAsamalariId<b>)</b><b>;</b>
+
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FPartiSablonLot<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Varyant Reçetede Lot girilse*/</i></font>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>UrunId<b>,</b>Lot<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>PartiAsamalariId<b>)</b>
+<b>                  </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FPartiSablonLot<b>,</b>:FUrunBirimId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:FPartiKayitId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:FPartiAsamalariId<b>)</b><b>;</b>
+<b>        </b><b>else</b>
+
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>StokGrupId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>PartiAsamalariId<b>)</b>
+<b>                  </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:FUrunMutfakDepoNo<b>,</b><b> </b>:SablonReceteSarfStokGrupId<b>,</b><b> </b>:FUrunId<b>,</b><b> </b>:FUrunBirimId<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>:FPartiKayitId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:FPartiAsamalariId<b>)</b><b>;</b>
+
+<b>       </b><b>end</b>
+
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTISABLONRECETEISEMRISIL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTISABRECETEILAVESTOKTANDUS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

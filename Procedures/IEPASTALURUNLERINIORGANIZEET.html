@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>IEPASTALURUNLERINIORGANIZEET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="812800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ICTAMIRTAMIRTIPIANALIZI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="IKINCIKALITETOPLUSTOKKAYDIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">IEPASTALURUNLERINIORGANIZEET</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHGISEMRIPASTALID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure IEPASTALURUNLERINIORGANIZEET)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>IEPASTALURUNLERINIORGANIZEET</u></font><b>(</b>
+<b>    </b>AHGISEMRIPASTALID<b> </b><font color="# 080 0"><u>MODELKODUSIZE</u></font><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FModelKayitID<b> </b><font color="# 080 0"><u>ModelKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHGSiparisDEtayID<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HGIsEmriPastalIDUrun<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPlanlananMiktar<b>   </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunID<b>        </b><font color="# 080 0"><u>Urunkodusize</u></font><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>HGSiparisDetayID<b>,</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>ModelKayitID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HGISEmriPastal</u></font>
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>HGIsEmri</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HGISEmri</u></font><b>.</b>HGISEmriKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HGISEmriPastal</u></font><b>.</b>HGISEmriKayitID
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>HGSiparisDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HGISEmri</u></font><b>.</b>HGSiparisDetayID
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>HGISEmriPastal</u></font><b>.</b>HGISEmriPastalID<b> </b><b>=</b><b> </b>:AHGIsEmriPastalID<b> </b><b>into</b><b> </b>:FHGSiparisDEtayID<b>,</b><b> </b>:FModelKayitID<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>HgIsEmriPastalUrun</u></font><b>.</b>HGIsEmriPastalID<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b>,</b><b> </b><b>(</b><font color="# 080 0"><u>HGIsEmriPastalBeden</u></font><b>.</b>Miktar<b> </b><b>*</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalKumas</u></font><b>.</b>KatSayisi<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Urun</u></font>
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelBedenID
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>HGSiparisDetayKumas</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HGSiparisDetayKumas</u></font><b>.</b>HGSiparisDetayID<b> </b><b>=</b><b> </b>:FHGSiparisDEtayID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HGSiparisDetayKumas</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKumasID
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalBeden</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalBeden</u></font><b>.</b>HGIsEmriPastalID<b> </b><b>=</b><b> </b>:AHGIsEmriPastalID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalBeden</u></font><b>.</b>BedenID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>BedenID
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalKumas</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalKumas</u></font><b>.</b>HGIsEmriPastalID<b> </b><b>=</b><b> </b>:AHGIsEmriPastalID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalKumas</u></font><b>.</b>HGSiparisDetayKumasID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HGSiparisDetayKumas</u></font><b>.</b>HGSiparisDetayKumasID
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalUrun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalUrun</u></font><b>.</b>HGIsEmriPastalID<b> </b><b>=</b><b> </b>:AHGIsEmriPastalID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalUrun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID
+<b>    </b><b>Where</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKayitID<b> </b><b>=</b><b> </b>:FModelKayitID<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>HGIsEmriPastalBeden</u></font><b>.</b>HGIsEmriPastalBedenID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>HGIsEmriPastalKumas</u></font><b>.</b>HGIsEmriPastalKumasID<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>HGIsEmriPastalUrun</u></font><b>.</b>HGIsEmriPastalID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalUrun</u></font><b>.</b>PlanlananMiktar<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>(</b><font color="# 080 0"><u>HGIsEmriPastalBeden</u></font><b>.</b>Miktar<b> </b><b>*</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalKumas</u></font><b>.</b>KatSayisi<b>)</b><b> </b><b>)</b>
+<b>  </b><b>into</b><b> </b>:HGIsEmriPastalIDUrun<b>,</b><b> </b>:UrunID<b>,</b><b> </b>:FPlanlananMiktar<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>HGIsEmriPastalIDUrun<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalUrun</u></font><b> </b><b>set</b><b> </b>PlanlananMiktar<b> </b><b>=</b><b> </b>:FPlanlananMiktar<b> </b><b>where</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalUrun</u></font><b>.</b>HGIsEmriPastalID<b> </b><b>=</b><b> </b>:AHGIsEmriPastalID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalUrun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b>:UrunID<b>;</b>
+<b>    </b><b>else</b>
+<b>      </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>HGIsEmriPastalUrun</u></font><b>(</b>HGIsEmriPastalID<b>,</b><b> </b>UrunID<b>,</b><b> </b>PlanlananMiktar<b>)</b><b> </b><b>Values</b><b> </b><b>(</b>:AHGIsEmriPastalID<b>,</b><b> </b>:UrunID<b>,</b><b> </b>:FPlanlananMiktar<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ICTAMIRTAMIRTIPIANALIZI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="IKINCIKALITETOPLUSTOKKAYDIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

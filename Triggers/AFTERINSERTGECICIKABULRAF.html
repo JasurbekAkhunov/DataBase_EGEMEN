@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTGECICIKABULRAF</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="137800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTFIRMAINSTALLLOG.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTGELENMAIL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTGECICIKABULRAF</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTGECICIKABULRAF)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTGECICIKABULRAF</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>GECICIKABULRAF</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ToplamMiktar<b>     </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GelenMiktar<b>      </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DepartmanOnayiOtomatik<b>       </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HamStokMasterId<b> </b><b>into</b><b> </b>:ToplamMiktar<b>;</b>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Miktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HamStokMasterId<b> </b><b>into</b><b> </b>:GelenMiktar<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>ToplamMiktar<b> </b><b>&gt;</b><b> </b>GelenMiktar<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>GelenKilodanFazlasiRaflanamaz</u></font><b>;</b>
+
+<b>  </b><b>Update</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>set</b><b> </b>RaflananKilo<b> </b><b>=</b><b> </b>RaflananKilo<b> </b><b>+</b><b> </b><b>New</b><b>.</b>Kilo<b>,</b><b> </b>RaflananMetre<b> </b><b>=</b><b> </b>RaflananMetre<b> </b><b>+</b><b> </b><b>New</b><b>.</b>Metre<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>3<b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HamStokMasterId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ToplamMiktar<b> </b><b>=</b><b> </b>GelenMiktar<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>DepartmanOnayiOtomatik<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:DepartmanOnayiOtomatik<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>DepartmanOnayiOtomatik<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>UPDATE</b><b> </b><font color="# 080 0"><u>HAMSTOKMASTERKABUL</u></font><b> </b><b>SET</b><b> </b>KABULMIKTAR<b>=</b>0<b>,</b><b> </b>KONTROLDURUMU<b> </b><b>=</b><b> </b>0<b>,</b><b> </b>KONTROLKULLANICIID<b> </b><b>=</b><b> </b><b>Null</b><b> </b><b>WHERE</b><b> </b>HAMSTOKMASTERID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId<b>;</b>
+<b>      </b><b>UPDATE</b><b> </b><font color="# 080 0"><u>HAMSTOKMASTERKABUL</u></font><b> </b><b>SET</b><b> </b>KABULMIKTAR<b>=</b>:ToplamMiktar<b>,</b><b> </b>KONTROLDURUMU<b> </b><b>=</b><b> </b>1<b>,</b><b>  </b>KONTROLKULLANICIID<b> </b><b>=</b><b> </b>1<b> </b><b>WHERE</b><b> </b>HAMSTOKMASTERID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamStokMasterId<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTFIRMAINSTALLLOG.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTGELENMAIL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

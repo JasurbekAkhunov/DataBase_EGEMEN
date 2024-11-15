@@ -1,0 +1,438 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEBOYASIPARISDETAY1</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1160800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEBOYASIPARISDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEBOYASIPARISONGORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEBOYASIPARISDETAY1</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEBOYASIPARISDETAY1)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEBOYASIPARISDETAY1</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BOYASIPARISDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>1
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KullaniciAdi<b>           </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldLabReceteKodu<b>       </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewLabReceteKodu<b>       </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldRenkAdi<b>     </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewRenkAdi<b>     </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldSiparisProsesId<b>    </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewSiparisProsesId<b>    </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldMusteriSiparisNo<b>     </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewMusteriSiparisNo<b>     </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldNotu<b>     </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewNotu<b>     </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BlobSize<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StrSize<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldTarih<b>     </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewTarih<b>     </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldDeger<b>     </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewDeger<b>     </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldIlaveIslemler<b>     </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewIlaveIslemler<b>     </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldOzelTestler<b>     </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewOzelTestler<b>     </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewAdresAdi<b>    </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldAdresAdi<b>    </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewLot<b>    </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OldLot<b>    </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DegisimTarihiStr<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>    </b>DegisimTarihiStr<b> </b><b>=</b><b> </b><b>Lpad</b><b>(</b><b>Extract</b><b>(</b><b>Day</b><b> </b><b>From</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>)</b><b>,</b><b> </b>2<b>,</b><b> </b>'0'<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'.'<b> </b><b>|</b><b>|</b><b> </b><b>Lpad</b><b>(</b><b>Extract</b><b>(</b><b>Month</b><b> </b><b>From</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>)</b><b>,</b><b> </b>2<b>,</b><b> </b>'0'<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'.'<b> </b><b>|</b><b>|</b><b> </b><b>Extract</b><b>(</b><b>Year</b><b> </b><b>From</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>)</b><b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b><b>Lpad</b><b>(</b><b>Extract</b><b>(</b><b>Hour</b><b> </b><b>From</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>)</b><b>,</b><b> </b>2<b>,</b><b> </b>'0'<b>)</b><b> </b><b>|</b><b>|</b><b> </b>':'<b> </b><b>|</b><b>|</b><b> </b><b>Lpad</b><b>(</b><b>Extract</b><b>(</b><b>Minute</b><b> </b><b>From</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>)</b><b>,</b><b> </b>2<b>,</b><b> </b>'0'<b>)</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>KullaniciID<b> </b><b>into</b><b> </b>:KullaniciAdi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>DegisimLog<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b>''<b>;</b>
+
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>SiparisKilo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>SiparisKilo<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                      </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Sipariş Kilosunu Değiştirdi, Eski Sipariş Kilo = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>Old</b><b>.</b>SiparisKilo<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Yeni Sipariş Kilo = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>New</b><b>.</b>SiparisKilo<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>Kapali<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Kapali<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>Kapali<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Sipariş Kapatıldı.'<b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Sipariş Kapatma İptal Edildi.'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b>  </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>SiparisMetre<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>SiparisMetre<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                       </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Sipariş Metresini Değiştirdi, Eski Sipariş Metre = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>Old</b><b>.</b>SiparisMetre<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Yeni Sipariş Metre = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>New</b><b>.</b>SiparisMetre<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>OldLabReceteKodu<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>LabReceteKodu<b>;</b>
+<b>      </b>NewLabReceteKodu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>OldLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldLabReceteKodu<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>NewLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewLabReceteKodu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                       </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Lab.Reçete Kodunu Değiştirdi, Eski Lab Reçete Kodu = '<b> </b><b>|</b><b>|</b><b> </b>OldLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>' Yeni Lab Reçete Kodu = '<b> </b><b>|</b><b>|</b><b> </b>NewLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>RenkAdi<b>,</b><b> </b><b>New</b><b>.</b>RenkAdi<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>OldRenkAdi<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>RenkAdi<b>;</b>
+<b>      </b>NewRenkAdi<b> </b><b>=</b><b> </b><b>New</b><b>.</b>RenkAdi<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>OldRenkAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldRenkAdi<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>NewRenkAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewRenkAdi<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                       </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Renk Adını Değiştirdi, Eski Renk Adı = '<b> </b><b>|</b><b>|</b><b> </b>OldRenkAdi<b> </b><b>|</b><b>|</b><b> </b>' Yeni Renk Adı = '<b> </b><b>|</b><b>|</b><b> </b>NewRenkAdi<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>SiparisProsesId<b>,</b><b> </b><b>New</b><b>.</b>SiparisProsesId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>OldSiparisProsesId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>SiparisProsesId<b>;</b>
+<b>      </b>NewSiparisProsesId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>SiparisProsesId<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>OldSiparisProsesId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldSiparisProsesId<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>NewSiparisProsesId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewSiparisProsesId<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                       </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Sipariş Prosesini Değiştirdi, Eski Sipariş Proses No = '<b> </b><b>|</b><b>|</b><b> </b>OldSiparisProsesId<b> </b><b>|</b><b>|</b><b> </b>' Yeni Sipariş Proses No = '<b> </b><b>|</b><b>|</b><b> </b>NewSiparisProsesId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>MusteriSiparisNo<b>,</b><b> </b><b>New</b><b>.</b>MusteriSiparisNo<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>OldMusteriSiparisNo<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>MusteriSiparisNo<b>;</b>
+<b>    </b>NewMusteriSiparisNo<b> </b><b>=</b><b> </b><b>New</b><b>.</b>MusteriSiparisNo<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>OldMusteriSiparisNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldMusteriSiparisNo<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>NewMusteriSiparisNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewMusteriSiparisNo<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Müş.Sip.No Değiştirdi, Eski Müş.Sip.No = '<b> </b><b>|</b><b>|</b><b> </b>OldMusteriSiparisNo<b> </b><b>|</b><b>|</b><b> </b>' Yeni Müş.Sip.No = '<b> </b><b>|</b><b>|</b><b> </b>NewMusteriSiparisNo<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b><b>Old</b><b>.</b>TerminNotu<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>OldNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>Old</b><b>.</b>TerminNotu<b>,</b><b> </b>100<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>OldNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>Old</b><b>.</b>TerminNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>OldNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b><b>New</b><b>.</b>TerminNotu<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>NewNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>New</b><b>.</b>TerminNotu<b>,</b><b> </b>100<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>NewNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>New</b><b>.</b>TerminNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>NewNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldNotu<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewNotu<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Termin Notunu Değiştirdi, Eski Termin Notu = '<b> </b><b>|</b><b>|</b><b> </b>OldNotu<b> </b><b>|</b><b>|</b><b> </b>' Yeni Termin Notu = '<b> </b><b>|</b><b>|</b><b> </b>NewNotu<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b><b>Old</b><b>.</b>PlanlamaNotu<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>OldNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>Old</b><b>.</b>PlanlamaNotu<b>,</b><b> </b>100<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>OldNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>Old</b><b>.</b>PlanlamaNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>OldNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b><b>New</b><b>.</b>PlanlamaNotu<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>NewNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>New</b><b>.</b>PlanlamaNotu<b>,</b><b> </b>100<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>NewNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>New</b><b>.</b>PlanlamaNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>NewNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldNotu<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewNotu<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Planlama Notunu Değiştirdi, Eski Planlama Notu = '<b> </b><b>|</b><b>|</b><b> </b>OldNotu<b> </b><b>|</b><b>|</b><b> </b>' Yeni Planlama Notu = '<b> </b><b>|</b><b>|</b><b> </b>NewNotu<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b><b>Old</b><b>.</b>Notu<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>OldNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>Old</b><b>.</b>Notu<b>,</b><b> </b>100<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>OldNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>Old</b><b>.</b>Notu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>OldNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b><b>New</b><b>.</b>Notu<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>NewNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>New</b><b>.</b>Notu<b>,</b><b> </b>100<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>NewNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b><b>New</b><b>.</b>Notu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>NewNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldNotu<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewNotu<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Sipariş Notunu Değiştirdi, Eski Sipariş Notu = '<b> </b><b>|</b><b>|</b><b> </b>OldNotu<b> </b><b>|</b><b>|</b><b> </b>' Yeni Sipariş Notu = '<b> </b><b>|</b><b>|</b><b> </b>NewNotu<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>TerminTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldTarih<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TimeStampToDateStr</u></font><b>(</b><b>Old</b><b>.</b>TerminTarihi<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>OldTarih<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>TerminTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewTarih<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TimeStampToDateStr</u></font><b>(</b><b>New</b><b>.</b>TerminTarihi<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>NewTarih<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldTarih<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewTarih<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Termin Tarihini Değiştirdi, Eski Termin Tarihi = '<b> </b><b>|</b><b>|</b><b> </b>OldTarih<b> </b><b>|</b><b>|</b><b> </b>' Yeni Termin Tarihi = '<b> </b><b>|</b><b>|</b><b> </b>NewTarih<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>RevizeTerminTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldTarih<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TimeStampToDateStr</u></font><b>(</b><b>Old</b><b>.</b>RevizeTerminTarihi<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>OldTarih<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>RevizeTerminTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewTarih<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TimeStampToDateStr</u></font><b>(</b><b>New</b><b>.</b>RevizeTerminTarihi<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>NewTarih<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldTarih<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewTarih<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Revize Termin Tarihini Değiştirdi, Eski Rev.Termin Tarihi = '<b> </b><b>|</b><b>|</b><b> </b>OldTarih<b> </b><b>|</b><b>|</b><b> </b>' Yeni Rev.Termin Tarihi = '<b> </b><b>|</b><b>|</b><b> </b>NewTarih<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>IstenenRaporBoyu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldDeger<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>IstenenRaporBoyu<b>;</b>
+<b>  </b><b>else</b><b> </b>OldDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>IstenenRaporBoyu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewDeger<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IstenenRaporBoyu<b>;</b>
+<b>  </b><b>else</b><b> </b>NewDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldDeger<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewDeger<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' İstenen Rapor Boyunu Değiştirdi, Eski İstenen Rapor Boyu = '<b> </b><b>|</b><b>|</b><b> </b>OldDeger<b> </b><b>|</b><b>|</b><b> </b>' Yeni İstenen Rapor Boyu = '<b> </b><b>|</b><b>|</b><b> </b>NewDeger<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>IstenenOzelTuse<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldDeger<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>IstenenOzelTuse<b>;</b>
+<b>  </b><b>else</b><b> </b>OldDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>IstenenOzelTuse<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewDeger<b> </b><b>=</b><b> </b><b>New</b><b>.</b>IstenenOzelTuse<b>;</b>
+<b>  </b><b>else</b><b> </b>NewDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldDeger<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewDeger<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' İstenen Özel Tuşe Bilgisini Değiştirdi, Eski İstenen Özel Tuşe = '<b> </b><b>|</b><b>|</b><b> </b>OldDeger<b> </b><b>|</b><b>|</b><b> </b>' Yeni İstenen Özel Tuşe = '<b> </b><b>|</b><b>|</b><b> </b>NewDeger<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>EnIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldDeger<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>EnIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>OldDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>EnIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewDeger<b> </b><b>=</b><b> </b><b>New</b><b>.</b>EnIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>NewDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldDeger<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewDeger<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' İstenen En Bilgisini Değiştirdi, Eski İstenen En = '<b> </b><b>|</b><b>|</b><b> </b>OldDeger<b> </b><b>|</b><b>|</b><b> </b>' Yeni İstenen En = '<b> </b><b>|</b><b>|</b><b> </b>NewDeger<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>GramajIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldDeger<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>GramajIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>OldDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>GramajIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewDeger<b> </b><b>=</b><b> </b><b>New</b><b>.</b>GramajIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>NewDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldDeger<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewDeger<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' İstenen Gramaj Bilgisini Değiştirdi, Eski İstenen Gramaj = '<b> </b><b>|</b><b>|</b><b> </b>OldDeger<b> </b><b>|</b><b>|</b><b> </b>' Yeni İstenen Gramaj = '<b> </b><b>|</b><b>|</b><b> </b>NewDeger<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>DonmeIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldDeger<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>DonmeIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>OldDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>DonmeIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewDeger<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DonmeIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>NewDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldDeger<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewDeger<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' İstenen Donme Bilgisini Değiştirdi, Eski İstenen Donme = '<b> </b><b>|</b><b>|</b><b> </b>OldDeger<b> </b><b>|</b><b>|</b><b> </b>' Yeni İstenen Donme = '<b> </b><b>|</b><b>|</b><b> </b>NewDeger<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>SansIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldDeger<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>SansIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>OldDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>SansIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewDeger<b> </b><b>=</b><b> </b><b>New</b><b>.</b>SansIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>NewDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldDeger<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewDeger<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' İstenen Sans Bilgisini Değiştirdi, Eski İstenen Sans = '<b> </b><b>|</b><b>|</b><b> </b>OldDeger<b> </b><b>|</b><b>|</b><b> </b>' Yeni İstenen Sans = '<b> </b><b>|</b><b>|</b><b> </b>NewDeger<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>YikamaHasligiIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldDeger<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>YikamaHasligiIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>OldDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>YikamaHasligiIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewDeger<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YikamaHasligiIstenen<b>;</b>
+<b>  </b><b>else</b><b> </b>NewDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldDeger<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewDeger<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' İstenen YikamaHasligi Bilgisini Değiştirdi, Eski İstenen YikamaHasligi = '<b> </b><b>|</b><b>|</b><b> </b>OldDeger<b> </b><b>|</b><b>|</b><b> </b>' Yeni İstenen YikamaHasligi = '<b> </b><b>|</b><b>|</b><b> </b>NewDeger<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>CekmezlikEnIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldDeger<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>Old</b><b>.</b>CekmezlikEnIstenen<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>OldDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>CekmezlikEnIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewDeger<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>New</b><b>.</b>CekmezlikEnIstenen<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>NewDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldDeger<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewDeger<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Çekmezlik En Bilgisini Değiştirdi, Eski Çekmezlik En = '<b> </b><b>|</b><b>|</b><b> </b>OldDeger<b> </b><b>|</b><b>|</b><b> </b>' Yeni Çekmezlik En = '<b> </b><b>|</b><b>|</b><b> </b>NewDeger<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>CekmezlikBoyIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldDeger<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>Old</b><b>.</b>CekmezlikBoyIstenen<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>OldDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>CekmezlikBoyIstenen<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewDeger<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>New</b><b>.</b>CekmezlikBoyIstenen<b>)</b><b>;</b>
+<b>  </b><b>else</b><b> </b>NewDeger<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OldDeger<b> </b><b>&lt;</b><b>&gt;</b><b> </b>NewDeger<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Çekmezlik Boy Bilgisini Değiştirdi, Eski Çekmezlik Boy = '<b> </b><b>|</b><b>|</b><b> </b>OldDeger<b> </b><b>|</b><b>|</b><b> </b>' Yeni Çekmezlik Boy = '<b> </b><b>|</b><b>|</b><b> </b>NewDeger<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b><b>(</b><b>New</b><b>.</b>ReferansIsEmriNo<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>MusteriSiparisNo<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>Old</b><b>.</b>MusteriSiparisNo<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>ReferansIsEmriNo<b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>MusteriSiparisNo<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReferansIsEmriNo<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b>,</b><b> </b><b>New</b><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>StrSize<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>Old</b><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>StrSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>OldIlaveIslemler<b> </b><b>=</b><b> </b><b>SubString</b><b>(</b><b>Old</b><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b> </b><b>from</b><b> </b>1<b> </b><b>for</b><b> </b>99<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>StrSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>OldIlaveIslemler<b> </b><b>=</b><b> </b><b>SubString</b><b>(</b><b>Old</b><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b> </b><b>from</b><b> </b>1<b> </b><b>for</b><b> </b>StrSize<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b>OldIlaveIslemler<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b>StrSize<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>New</b><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>StrSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>NewIlaveIslemler<b> </b><b>=</b><b> </b><b>SubString</b><b>(</b><b>New</b><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b> </b><b>from</b><b> </b>1<b> </b><b>for</b><b> </b>99<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>StrSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>NewIlaveIslemler<b> </b><b>=</b><b> </b><b>SubString</b><b>(</b><b>New</b><b>.</b><font color="# 080 0"><u>IlaveIslemler</u></font><b> </b><b>from</b><b> </b>1<b> </b><b>for</b><b> </b>StrSize<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b>NewIlaveIslemler<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' İlave İşlemler Değiştirdi, Eskisi = '<b> </b><b>|</b><b>|</b><b> </b>OldIlaveIslemler<b> </b><b>|</b><b>|</b><b> </b>' Yenisi = '<b> </b><b>|</b><b>|</b><b> </b>NewIlaveIslemler<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>OzelTestler<b>,</b><b> </b><b>New</b><b>.</b>OzelTestler<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>StrSize<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>Old</b><b>.</b>OzelTestler<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>StrSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>OldOzelTestler<b> </b><b>=</b><b> </b><b>SubString</b><b>(</b><b>Old</b><b>.</b>OzelTestler<b> </b><b>from</b><b> </b>1<b> </b><b>for</b><b> </b>99<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>StrSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>OldOzelTestler<b> </b><b>=</b><b> </b><b>SubString</b><b>(</b><b>Old</b><b>.</b>OzelTestler<b> </b><b>from</b><b> </b>1<b> </b><b>for</b><b> </b>StrSize<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b>OldOzelTestler<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b>StrSize<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>New</b><b>.</b>OzelTestler<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>StrSize<b> </b><b>&gt;</b><b> </b>100<b>)</b><b> </b><b>then</b><b> </b>NewOzelTestler<b> </b><b>=</b><b> </b><b>SubString</b><b>(</b><b>New</b><b>.</b>OzelTestler<b> </b><b>from</b><b> </b>1<b> </b><b>for</b><b> </b>99<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>StrSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>NewOzelTestler<b> </b><b>=</b><b> </b><b>SubString</b><b>(</b><b>New</b><b>.</b>OzelTestler<b> </b><b>from</b><b> </b>1<b> </b><b>for</b><b> </b>StrSize<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b>NewOzelTestler<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Özel Testler Değiştirdi, Eskisi = '<b> </b><b>|</b><b>|</b><b> </b>OldOzelTestler<b> </b><b>|</b><b>|</b><b> </b>' Yenisi = '<b> </b><b>|</b><b>|</b><b> </b>NewOzelTestler<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>FirmaSevkAdresiID<b>,</b><b> </b><b>New</b><b>.</b>FirmaSevkAdresiID<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>AdresAdi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FirmaSevkAdresi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>FirmaSevkAdresi</u></font><b>.</b>FirmaSevkAdresiID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>FirmaSevkAdresiID<b> </b><b>into</b><b> </b>:NewAdresAdi<b>;</b>
+<b>    </b><b>Select</b><b> </b>AdresAdi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FirmaSevkAdresi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>FirmaSevkAdresi</u></font><b>.</b>FirmaSevkAdresiID<b> </b><b>=</b><b> </b><b>old</b><b>.</b>FirmaSevkAdresiID<b> </b><b>into</b><b> </b>:OldAdresAdi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>NewAdresAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewAdresAdi<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>OldAdresAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldAdresAdi<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Firma Sevk Adresi Değiştirdi, Eski Adres Adı= '<b> </b><b>|</b><b>|</b><b> </b>OldAdresAdi<b> </b><b>|</b><b>|</b><b> </b>' Yeni Adres Adı= '<b> </b><b>|</b><b>|</b><b> </b>NewAdresAdi<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>MaximumFireOrani<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>MaximumFireOrani<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Max Fire Orani Değiştirdi, Eski Oran = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>Old</b><b>.</b>MaximumFireOrani<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Yeni Oran = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>New</b><b>.</b>MaximumFireOrani<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>MinimumFireOrani<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>MinimumFireOrani<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Min Fire Orani Değiştirdi, Eski Oran = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>Old</b><b>.</b>MinimumFireOrani<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Yeni Oran = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b><b>New</b><b>.</b>MinimumFireOrani<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>Lot<b>,</b><b> </b><b>New</b><b>.</b>Lot<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>OldLot<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>Lot<b>;</b>
+<b>    </b>NewLOT<b> </b><b>=</b><b> </b><b>New</b><b>.</b>lot<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>OldLot<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>OldLot<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>NewLot<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>NewLot<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Lot Değiştirdi, Eski Lot = '<b> </b><b>|</b><b>|</b><b> </b>OldLot<b> </b><b>|</b><b>|</b><b> </b>' Yeni Lot = '<b> </b><b>|</b><b>|</b><b> </b>NewLot<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>coalesce</b><b>(</b><b>Old</b><b>.</b>HesaplamaCarpimDegeri<b>,</b>0<b>)</b><b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>coalesce</b><b>(</b><b>New</b><b>.</b>HesaplamaCarpimDegeri<b>,</b>0<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' Hesaplama Çarpım Değeri Değiştirdi, Eski Hesaplama Çarpım Değeri = '<b> </b><b>|</b><b>|</b><b> </b><b>coalesce</b><b>(</b><b>Old</b><b>.</b>HesaplamaCarpimDegeri<b>,</b>0<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Yeni Eski Hesaplama Çarpım Değeri = '<b> </b><b>|</b><b>|</b><b> </b><b>coalesce</b><b>(</b><b>New</b><b>.</b>HesaplamaCarpimDegeri<b>,</b>0<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>coalesce</b><b>(</b><b>Old</b><b>.</b>DesenId<b>,</b>''<b>)</b><b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>coalesce</b><b>(</b><b>New</b><b>.</b>DesenId<b>,</b>''<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>:DegisimTarihiStr<b> </b><b>|</b><b>|</b><b> </b>' DesenId Değeri Değiştirdi, Eski DesenId Değeri = '<b> </b><b>|</b><b>|</b><b> </b><b>coalesce</b><b>(</b><b>Old</b><b>.</b>DesenId<b>,</b>0<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Yeni Eski DesenId Değeri = '<b> </b><b>|</b><b>|</b><b> </b><b>coalesce</b><b>(</b><b>New</b><b>.</b>DesenId<b>,</b>0<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>UcretliTamir<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>UcretliTamir<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>new</b><b>.</b>DegisimLog<b> </b><b>=</b><b> </b><b>New</b><b>.</b>DegisimLog<b> </b><b>|</b><b>|</b>
+<b>                     </b><b>Cast</b><b>(</b>KullaniciAdi<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>new</b><b>.</b>UcretliTamir<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Ücretli Tamir Değeri Değiştirdi, Eski Ücretli Tamir Değeri = '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>new</b><b>.</b>UcretliTamir<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' Yeni Eski DesenId Değeri = '<b> </b><b>|</b><b>|</b><b> </b><b>coalesce</b><b>(</b><b>New</b><b>.</b>DesenId<b>,</b>0<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>new</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>Logla</u></font><b>(</b>'U'<b>,</b><b> </b>1<b>,</b><b> </b>'BOYASIPARISDETAY'<b>,</b><b> </b>'BOYASIPARISDETAYID'<b>,</b><b> </b><b>new</b><b>.</b>BoyaSiparisDetayId<b>,</b><b> </b><b>null</b><b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEBOYASIPARISDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEBOYASIPARISONGORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

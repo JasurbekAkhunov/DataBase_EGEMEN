@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>KALITERECETEYIPARTIDENOLUSTUR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="961800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="KALITERECETEGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="KALITEVEPROSESBAZINDAFIRERAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">KALITERECETEYIPARTIDENOLUSTUR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AKALITEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure KALITERECETEYIPARTIDENOLUSTUR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>KALITERECETEYIPARTIDENOLUSTUR</u></font><b>(</b>
+<b>    </b>AKALITEID<b> </b><font color="# 080 0"><u>KALITEKODUSIZE</u></font><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FKaliteReceteyiPartidenGuncelle<b> </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FPartiSinifId<b> </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FKaliteReceteSayisi<b> </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FOrmePlanlamaId<b> </b><b>Integer</b><b>;</b>
+<b>begin</b>
+<b>  </b>FPartiSinifId<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FKaliteReceteSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FOrmePlanlamaId<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>KaliteReceteyiPartidenGuncelle<b> </b><b>From</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>Where</b><b> </b>SistemId<b> </b><b>=</b><b> </b>1<b> </b><b>Into</b><b> </b>:FKaliteReceteyiPartidenGuncelle<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FKaliteReceteyiPartidenGuncelle<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>PartiSinifId<b>,</b><b> </b><b>Count</b><b>(</b><font color="# 080 0"><u>KaliteRecete</u></font><b>.</b>KaliteReceteId<b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>Kalite</u></font>
+<b>    </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>KaliteRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>KaliteRecete</u></font><b>.</b>KaliteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteId
+<b>    </b><b>Where</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteId<b> </b><b>=</b><b> </b>:AKaliteId
+<b>    </b><b>Group</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>KaliteId<b>,</b><b> </b><font color="# 080 0"><u>Kalite</u></font><b>.</b>PartiSinifId
+<b>    </b><b>Into</b><b> </b>:FPartiSinifId<b>,</b><b> </b>:FKaliteReceteSayisi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FPartiSinifId<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>FKaliteReceteSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>First</b><b> </b>1<b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>OrmePlanlamaId<b> </b><b>From</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font>
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>RafDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>RafDetayId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>.</b>HamStokDetayId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId
+<b>      </b><b>Where</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:FPartiSinifId<b> </b><b>Order</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>PartiStokDetay</u></font><b>.</b>Miktar<b> </b><b>Desc</b>
+<b>      </b><b>Into</b><b> </b>:FOrmePlanlamaId<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FOrmePlanlamaId<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>KaliteRecete</u></font><b>(</b>KaliteId<b>,</b><b> </b>ReceteHamId<b>,</b><b> </b>KullanimOrani<b>,</b><b> </b>RenkId<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>        </b><b>Select</b><b> </b>:AKaliteId<b>,</b><b> </b><font color="# 080 0"><u>OrmePlanlamaRecete</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>OrmePlanlamaRecete</u></font><b>.</b>KullanimOrani<b>,</b><b> </b><font color="# 080 0"><u>OrmePlanlamaRecete</u></font><b>.</b>RenkId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b> </b><b>From</b><b> </b><font color="# 080 0"><u>OrmePlanlamaRecete</u></font>
+<b>        </b><b>Where</b><b> </b><font color="# 080 0"><u>OrmePlanlamaRecete</u></font><b>.</b>OrmePlanlamaId<b> </b><b>=</b><b> </b>:FOrmePlanlamaId<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="KALITERECETEGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="KALITEVEPROSESBAZINDAFIRERAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

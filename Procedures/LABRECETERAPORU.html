@@ -1,0 +1,1295 @@
+<HTML>
+<HEAD>
+<TITLE>LABRECETERAPORU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1038800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="LABRECETERAPORDANETIKETYAZDIR2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="LABRECETERAPORUURUNLER.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">LABRECETERAPORU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ARAPORTIPI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AFIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ALABRENKGRUPID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ALABRECETEGRUPID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARECETETURUID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARENKDERINLIGIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ACALISMADURUMU</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICLABPROGRAMNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISLABPROGRAMNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICLABPROGRAMNO2</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISLABPROGRAMNO2</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASADECEOKEYLIATISLAR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASADECEETIKETYAZDIRILMAYAN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APIPETLEMEYEGONDERILMEYENLER</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARECETEKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARECETEADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AURUNFIYATGOREBILIR</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">LABRECETEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABRECETECALISMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABRECETEATISID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABRECETEKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABRECETEADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TALEPTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABRECETEGRUPID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABRECETEGRUPADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABRENKGRUPID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABRENKGRUPADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKDERINLIGIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKDERINLIGIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RECETETURUID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RECETETURUADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(15)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FASON</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FASONSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERIRENKKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ACIKLAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ACIKLAMA2</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ESKILABRECETEKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PANTONEKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CALISMATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TERMINTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CALISMABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORJINALDEGISIMTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RPTMI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILAVE</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KRITIKCALISMASI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SOKUMUZERIBOYA</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CALISMATIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATISNOSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GIDISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KARTELATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DURUMUSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(6)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">OKEY</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KRITIK</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CALISMANOTU</TD>
+    <TD><P CLASS="Base2">VARCHAR(1024)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTISAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTITOPLAMKILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYAYUZDESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYAMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KIMYASALMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYAMALIYETITL</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KIMYASALMALIYETITL</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TUZMIKTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SODAMIKTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RECETEONISLEMTIPIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABPROGRAMNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABPROGRAMNO2</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ACILPIPETLENECEK</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ACILPIPETLENECEKSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PIPETLEMEYEGONDERILDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PIPETLEMEYEGONDERILDISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PIPETLEMETARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ETIKETYAZDIRILDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ETIKETYAZDIRILDISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ETIKETYAZDIRMATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALITEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CALISMABIRIMFIYAT</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">CALISMADOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RECETETALEPGRUP1ID</TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RECETETALEPGRUP1ADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIYATFARKI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABGRUPID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LABGRUPADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(60)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure LABRECETERAPORU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>LABRECETERAPORU</u></font><b>(</b>
+<b>    </b>ARAPORTIPI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AFIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ALABRENKGRUPID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ALABRECETEGRUPID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARECETETURUID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARENKDERINLIGIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ACALISMADURUMU<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABASLANGICLABPROGRAMNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABITISLABPROGRAMNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABASLANGICLABPROGRAMNO2<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABITISLABPROGRAMNO2<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ASADECEOKEYLIATISLAR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ASADECEETIKETYAZDIRILMAYAN<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APIPETLEMEYEGONDERILMEYENLER<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARECETEKODU<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ARECETEADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>AURUNFIYATGOREBILIR<b> </b><b>SMALLINT</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>LABRECETEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>LABRECETECALISMAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>LABRECETEATISID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>LABRECETEKODU<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>LABRECETEADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>FIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIRMAADI<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>TALEPTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>LABRECETEGRUPID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>LABRECETEGRUPADI<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>LABRENKGRUPID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>LABRENKGRUPADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>RENKDERINLIGIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RENKDERINLIGIADI<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>RECETETURUID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RECETETURUADI<b> </b><b>VARCHAR</b><b>(</b>15<b>)</b><b>,</b>
+<b>    </b>FASON<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FASONSTR<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>MUSTERIRENKKODU<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>HAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMADI<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>ACIKLAMA<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>ACIKLAMA2<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>ESKILABRECETEKODU<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>PANTONEKODU<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>CALISMATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>TERMINTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>CALISMABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ORJINALDEGISIMTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>RPTMI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ILAVE<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KRITIKCALISMASI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SOKUMUZERIBOYA<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>CALISMATIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ATISNOSTR<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ATISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>GIDISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>KARTELATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>DURUMUSTR<b> </b><b>VARCHAR</b><b>(</b>6<b>)</b><b>,</b>
+<b>    </b>TARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>OKEY<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KRITIK<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>CALISMANOTU<b> </b><b>VARCHAR</b><b>(</b>1024<b>)</b><b>,</b>
+<b>    </b>PARTISAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTITOPLAMKILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>BOYAYUZDESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>BOYAMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KIMYASALMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>BOYAMALIYETITL<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KIMYASALMALIYETITL<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DOVIZID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>TUZMIKTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>SODAMIKTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>RECETEONISLEMTIPIADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>LABPROGRAMNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>LABPROGRAMNO2<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ACILPIPETLENECEK<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ACILPIPETLENECEKSTR<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>PIPETLEMEYEGONDERILDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PIPETLEMEYEGONDERILDISTR<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>PIPETLEMETARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ETIKETYAZDIRILDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ETIKETYAZDIRILDISTR<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>ETIKETYAZDIRMATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>KALITEID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>CALISMABIRIMFIYAT<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>CALISMADOVIZID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>RECETETALEPGRUP1ID<b> </b><b>VARCHAR</b><b>(</b>4<b>)</b><b>,</b>
+<b>    </b>RECETETALEPGRUP1ADI<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIYATFARKI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>LABGRUPID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>LABGRUPADI<b> </b><b>VARCHAR</b><b>(</b>60<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCalismaNotu<b> </b><b>Blob</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BlobSize<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ReceteId<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TuzKimyasalTipiId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SodaKimyasalTipiID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemDovizId<b>  </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>TuzKimyasalTipiID<b>,</b><b> </b>SodaKimyasalTipiID<b>,</b><b> </b>SistemDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:TuzKimyasalTipiID<b>,</b><b> </b>:SodaKimyasalTipiID<b>,</b><b> </b>:SistemDovizId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AraporTipi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteAtisId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>Adi<b>,</b><b>  </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b>,</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b>,</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Fason<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>MusteriRenkKodu<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama2<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiLabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>PantoneKodu<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>CalismaTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>OrjinalDegisimTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>TerminTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BitisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>KritikCalismasi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisNoStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>GidisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KartelaTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>DurumuStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Tarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Kritik<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Notu<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaYuzdesi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KimyasalMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>DovizId<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirmaTarihi<b>,</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AcilPipetlenecek<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>KaliteID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BirimFiyat<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>DovizID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1<b>,</b>
+<b>               </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>FiyatFarki<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>LabGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteCalismaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>ReceteOnIslemTipiID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>ReceteOnIslemTipiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>LabReceteTalepKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteTalepKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>ReceteTalepGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>LabGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabGrupId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>or</b><b> </b>:AFirmaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b>:ALabRenkGrupId<b> </b><b>or</b><b> </b>:ALabRenkGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b>:ALabReceteGrupId<b> </b><b>or</b><b> </b>:ALabReceteGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b>:AReceteTuruId<b> </b><b>or</b><b> </b>:AReceteTuruId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b>:ARenkDerinligiId<b> </b><b>or</b><b> </b>:ARenkDerinligiId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>:AReceteKodu<b> </b><b>or</b><b> </b>:AReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b> </b><b>like</b><b> </b>'%'<b> </b><b>|</b><b>|</b><b> </b>:AReceteAdi<b> </b><b>|</b><b>|</b><b> </b>'%'<b> </b><b>or</b><b> </b>:AReceteAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo<b> </b><b>or</b><b> </b>:ABitisLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo2<b> </b><b>or</b><b> </b>:ABitisLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><b> </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>)</b><b> </b><b>or</b>
+<b>            </b>:ACalismaDurumu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>:ASadeceOkeyliAtislar<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:ASadeceEtiketYazdirilmayan<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:APipetlemeyeGonderilmeyenler<b>=</b><b> </b>0<b>)</b>
+<b>    </b><b>into</b><b> </b>:LabReceteAtisId<b>,</b><b> </b>:LabReceteCalismaId<b>,</b><b> </b>:LabReceteId<b>,</b><b> </b>:LabReceteKodu<b>,</b><b> </b>:LabReceteAdi<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:TalepTarihi<b>,</b><b> </b>:LabReceteGrupId<b>,</b><b> </b>:LabReceteGrupAdi<b>,</b><b> </b>:LabRenkGrupId<b>,</b><b> </b>:LabRenkGrupAdi<b>,</b>
+<b>         </b>:RenkDerinligiId<b>,</b><b> </b>:RenkDerinligiAdi<b>,</b><b> </b>:ReceteTuruId<b>,</b><b> </b>:ReceteTuruAdi<b>,</b><b> </b>:Fason<b>,</b><b> </b>:MusteriRenkKodu<b>,</b><b> </b>:HamId<b>,</b><b> </b>:HamAdi<b>,</b>
+<b>         </b>:Aciklama<b>,</b><b> </b>:Aciklama2<b>,</b><b> </b>:EskiLabReceteKodu<b>,</b><b> </b>:PantoneKodu<b>,</b><b> </b>:CalismaTarihi<b>,</b><b> </b>:OrjinalDegisimTarihi<b>,</b><b> </b>:TerminTarihi<b>,</b><b> </b>:CalismaBitisTarihi<b>,</b><b>  </b>:Rptmi<b>,</b><b> </b>:Ilave<b>,</b><b> </b>:SokumUzeriBoya<b>,</b><b> </b>:KritikCalismasi<b>,</b>
+<b>         </b>:AtisNoStr<b>,</b><b> </b>:AtisTarihi<b>,</b><b> </b>:GidisTarihi<b>,</b><b> </b>:KartelaTarihi<b>,</b><b> </b>:DurumuStr<b>,</b><b> </b>:Tarihi<b>,</b><b> </b>:Okey<b>,</b><b> </b>:Kritik<b>,</b><b> </b>:FCalismaNotu<b>,</b>
+<b>         </b>:BoyaYuzdesi<b>,</b><b> </b>:BoyaMaliyeti<b>,</b><b> </b>:KimyasalMaliyeti<b>,</b><b> </b>:DovizId<b>,</b><b> </b>:EtiketYazdirildi<b>,</b><b>  </b>:EtiketYazdirmaTarihi<b>,</b><b> </b>:ReceteOnIslemTipiAdi<b>,</b>
+<b>         </b>:LabProgramNo<b>,</b><b> </b>:LabProgramNo2<b>,</b><b> </b>:AcilPipetlenecek<b>,</b><b> </b>:PipetlemeyeGonderildi<b>,</b><b> </b>:PipetlemeTarihi<b>,</b><b> </b>:KaliteID<b>,</b><b> </b>:CalismaBirimFiyat<b>,</b><b> </b>:CalismaDovizID<b>,</b><b> </b>:ReceteTalepGrup1Id<b>,</b><b> </b>:ReceteTalepGrup1Adi<b>,</b>
+<b>         </b>:FiyatFarki<b> </b><b>,</b>:LabGrupId<b>,</b><b> </b>:LabGrupAdi<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Fason<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Satış'<b>;</b>
+<b>      </b><b>else</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Fason'<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AcilPipetlenecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b>FCalismaNotu<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>1023<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>1023<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>CalismaTipiId<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>2<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>KritikCalismasi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>4<b>;</b>
+
+<b>      </b>PartiToplamKilo<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>TuzMiktari<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>SodaMiktari<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AtisNoStr<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>ReceteId<b> </b><b>=</b><b> </b>LabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'.'<b> </b><b>|</b><b>|</b><b> </b>AtisNoStr<b>;</b>
+
+
+<b>        </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>into</b><b> </b>:PartiSayisi<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitID<b> </b><b>is</b><b> </b><b>null</b>
+<b>            </b><b>into</b><b> </b>:PartiToplamKilo<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>TuzKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:TuzKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:TuzMiktari<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>SodaKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:SodaKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:SodaMiktari<b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:DovizId<b>,</b><b> </b>:SistemDovizId<b>,</b><b> </b>:AtisTarihi<b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+
+<b>      </b>BoyaMaliyetiTL<b> </b><b>=</b><b> </b>BoyaMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>      </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b>KimyasalMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AUrunFiyatGorebilir<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>BoyaMaliyeti<b>     </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyeti<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>BoyaMaliyetiTL<b>   </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>AraporTipi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* calisma tarihine göre */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteAtisId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>Adi<b>,</b><b>  </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b>,</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b>,</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Fason<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>MusteriRenkKodu<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama2<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiLabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>PantoneKodu<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>CalismaTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>OrjinalDegisimTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>TerminTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BitisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>KritikCalismasi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisNoStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>GidisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KartelaTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>DurumuStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Tarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Kritik<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Notu<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaYuzdesi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KimyasalMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>DovizId<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirmaTarihi<b>,</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AcilPipetlenecek<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>KaliteID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BirimFiyat<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>DovizID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1<b>,</b>
+<b>               </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>FiyatFarki<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>Labgrupid<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteCalismaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>ReceteOnIslemTipiID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>ReceteOnIslemTipiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>LabReceteTalepKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteTalepKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>ReceteTalepGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>LabGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabGrupId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>CalismaTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>CalismaTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>or</b><b> </b>:AFirmaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b>:ALabRenkGrupId<b> </b><b>or</b><b> </b>:ALabRenkGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b>:ALabReceteGrupId<b> </b><b>or</b><b> </b>:ALabReceteGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b>:AReceteTuruId<b> </b><b>or</b><b> </b>:AReceteTuruId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b>:ARenkDerinligiId<b> </b><b>or</b><b> </b>:ARenkDerinligiId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>:AReceteKodu<b> </b><b>or</b><b> </b>:AReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b> </b><b>like</b><b> </b>'%'<b> </b><b>|</b><b>|</b><b> </b>:AReceteAdi<b> </b><b>|</b><b>|</b><b> </b>'%'<b> </b><b>or</b><b> </b>:AReceteAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo<b> </b><b>or</b><b> </b>:ABitisLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo2<b> </b><b>or</b><b> </b>:ABitisLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><b> </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>)</b><b> </b><b>or</b>
+<b>            </b>:ACalismaDurumu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>:ASadeceOkeyliAtislar<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:ASadeceEtiketYazdirilmayan<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:APipetlemeyeGonderilmeyenler<b>=</b><b> </b>0<b>)</b>
+<b>    </b><b>into</b><b> </b>:LabReceteAtisId<b>,</b><b> </b>:LabReceteCalismaId<b>,</b><b>  </b>:LabReceteId<b>,</b><b> </b>:LabReceteKodu<b>,</b><b> </b>:LabReceteAdi<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:TalepTarihi<b>,</b><b> </b>:LabReceteGrupId<b>,</b><b> </b>:LabReceteGrupAdi<b>,</b><b> </b>:LabRenkGrupId<b>,</b><b> </b>:LabRenkGrupAdi<b>,</b>
+<b>         </b>:RenkDerinligiId<b>,</b><b> </b>:RenkDerinligiAdi<b>,</b><b> </b>:ReceteTuruId<b>,</b><b> </b>:ReceteTuruAdi<b>,</b><b> </b>:Fason<b>,</b><b> </b>:MusteriRenkKodu<b>,</b><b> </b>:HamId<b>,</b><b> </b>:HamAdi<b>,</b>
+<b>         </b>:Aciklama<b>,</b><b> </b>:Aciklama2<b>,</b><b> </b>:EskiLabReceteKodu<b>,</b><b> </b>:PantoneKodu<b>,</b><b> </b>:CalismaTarihi<b>,</b><b> </b>:OrjinalDegisimTarihi<b>,</b><b> </b>:TerminTarihi<b>,</b><b> </b>:CalismaBitisTarihi<b>,</b><b>  </b>:Rptmi<b>,</b><b> </b>:Ilave<b>,</b><b> </b>:SokumUzeriBoya<b>,</b><b> </b>:KritikCalismasi<b>,</b>
+<b>         </b>:AtisNoStr<b>,</b><b> </b>:AtisTarihi<b>,</b><b> </b>:GidisTarihi<b>,</b><b> </b>:KartelaTarihi<b>,</b><b> </b>:DurumuStr<b>,</b><b> </b>:Tarihi<b>,</b><b> </b>:Okey<b>,</b><b> </b>:Kritik<b>,</b><b> </b>:FCalismaNotu<b>,</b>
+<b>         </b>:BoyaYuzdesi<b>,</b><b> </b>:BoyaMaliyeti<b>,</b><b> </b>:KimyasalMaliyeti<b>,</b><b> </b>:DovizId<b>,</b><b> </b>:EtiketYazdirildi<b>,</b><b> </b>:EtiketYazdirmaTarihi<b>,</b><b> </b>:ReceteOnIslemTipiAdi<b>,</b>
+<b>         </b>:LabProgramNo<b>,</b><b> </b>:LabProgramNo2<b>,</b><b> </b>:AcilPipetlenecek<b>,</b><b> </b>:PipetlemeyeGonderildi<b>,</b><b> </b>:PipetlemeTarihi<b>,</b><b> </b>:KaliteID<b>,</b><b> </b>:CalismaBirimFiyat<b>,</b><b> </b>:CalismaDovizID<b>,</b><b> </b>:ReceteTalepGrup1Id<b>,</b><b> </b>:ReceteTalepGrup1Adi<b>,</b>
+<b>         </b>:FiyatFarki<b> </b><b>,</b>:LabGrupId<b>,</b><b> </b>:LabGrupAdi<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Fason<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Satış'<b>;</b>
+<b>      </b><b>else</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Fason'<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AcilPipetlenecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b>FCalismaNotu<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>1023<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>1023<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>CalismaTipiId<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>2<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>KritikCalismasi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>4<b>;</b>
+
+<b>      </b>PartiToplamKilo<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>TuzMiktari<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>SodaMiktari<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AtisNoStr<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>ReceteId<b> </b><b>=</b><b> </b>LabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'.'<b> </b><b>|</b><b>|</b><b> </b>AtisNoStr<b>;</b>
+
+
+<b>        </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>into</b><b> </b>:PartiSayisi<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitID<b> </b><b>is</b><b> </b><b>null</b>
+<b>            </b><b>into</b><b> </b>:PartiToplamKilo<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>TuzKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:TuzKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:TuzMiktari<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>SodaKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:SodaKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:SodaMiktari<b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:DovizId<b>,</b><b> </b>:SistemDovizId<b>,</b><b> </b>:AtisTarihi<b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+
+<b>      </b>BoyaMaliyetiTL<b> </b><b>=</b><b> </b>BoyaMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>      </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b>KimyasalMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AUrunFiyatGorebilir<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>BoyaMaliyeti<b>     </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyeti<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>BoyaMaliyetiTL<b>   </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>ARaporTipi<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* atıs gidis tarihine göre */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteAtisId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>Adi<b>,</b><b>  </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b>,</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b>,</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Fason<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>MusteriRenkKodu<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama2<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiLabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>PantoneKodu<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>CalismaTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>OrjinalDegisimTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>TerminTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BitisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>KritikCalismasi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisNoStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>GidisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KartelaTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>DurumuStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Tarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Kritik<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Notu<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaYuzdesi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KimyasalMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>DovizId<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirmaTarihi<b>,</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AcilPipetlenecek<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>KaliteID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BirimFiyat<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>DovizID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1<b>,</b>
+<b>               </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>FiyatFarki<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>LabGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteCalismaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>ReceteOnIslemTipiID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>ReceteOnIslemTipiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>LabReceteTalepKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteTalepKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>ReceteTalepGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>LabGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabGrupId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>GidisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>GidisTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>or</b><b> </b>:AFirmaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b>:ALabRenkGrupId<b> </b><b>or</b><b> </b>:ALabRenkGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b>:ALabReceteGrupId<b> </b><b>or</b><b> </b>:ALabReceteGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b>:AReceteTuruId<b> </b><b>or</b><b> </b>:AReceteTuruId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b>:ARenkDerinligiId<b> </b><b>or</b><b> </b>:ARenkDerinligiId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>:AReceteKodu<b> </b><b>or</b><b> </b>:AReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b> </b><b>like</b><b> </b>'%'<b> </b><b>|</b><b>|</b><b> </b>:AReceteAdi<b> </b><b>|</b><b>|</b><b> </b>'%'<b> </b><b>or</b><b> </b>:AReceteAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo<b> </b><b>or</b><b> </b>:ABitisLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo2<b> </b><b>or</b><b> </b>:ABitisLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><b> </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>)</b><b> </b><b>or</b>
+<b>            </b>:ACalismaDurumu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>:ASadeceOkeyliAtislar<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:ASadeceEtiketYazdirilmayan<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:APipetlemeyeGonderilmeyenler<b>=</b><b> </b>0<b>)</b>
+<b>    </b><b>into</b><b> </b>:LabReceteAtisId<b>,</b><b> </b>:LabReceteCalismaId<b>,</b><b>  </b>:LabReceteId<b>,</b><b> </b>:LabReceteKodu<b>,</b><b> </b>:LabReceteAdi<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:TalepTarihi<b>,</b><b> </b>:LabReceteGrupId<b>,</b><b> </b>:LabReceteGrupAdi<b>,</b><b> </b>:LabRenkGrupId<b>,</b><b> </b>:LabRenkGrupAdi<b>,</b>
+<b>         </b>:RenkDerinligiId<b>,</b><b> </b>:RenkDerinligiAdi<b>,</b><b> </b>:ReceteTuruId<b>,</b><b> </b>:ReceteTuruAdi<b>,</b><b> </b>:Fason<b>,</b><b> </b>:MusteriRenkKodu<b>,</b><b> </b>:HamId<b>,</b><b> </b>:HamAdi<b>,</b>
+<b>         </b>:Aciklama<b>,</b><b> </b>:Aciklama2<b>,</b><b> </b>:EskiLabReceteKodu<b>,</b><b> </b>:PantoneKodu<b>,</b><b> </b>:CalismaTarihi<b>,</b><b> </b>:OrjinalDegisimTarihi<b>,</b><b> </b>:TerminTarihi<b>,</b><b> </b>:CalismaBitisTarihi<b>,</b><b>  </b>:Rptmi<b>,</b><b> </b>:Ilave<b>,</b><b> </b>:SokumUzeriBoya<b>,</b><b> </b>:KritikCalismasi<b>,</b>
+<b>         </b>:AtisNoStr<b>,</b><b> </b>:AtisTarihi<b>,</b><b> </b>:GidisTarihi<b>,</b><b> </b>:KartelaTarihi<b>,</b><b> </b>:DurumuStr<b>,</b><b> </b>:Tarihi<b>,</b><b> </b>:Okey<b>,</b><b> </b>:Kritik<b>,</b><b> </b>:FCalismaNotu<b>,</b>
+<b>         </b>:BoyaYuzdesi<b>,</b><b> </b>:BoyaMaliyeti<b>,</b><b> </b>:KimyasalMaliyeti<b>,</b><b> </b>:DovizId<b>,</b><b> </b>:EtiketYazdirildi<b>,</b><b> </b>:EtiketYazdirmaTarihi<b>,</b><b> </b>:ReceteOnIslemTipiAdi<b>,</b>
+<b>         </b>:LabProgramNo<b>,</b><b> </b>:LabProgramNo2<b>,</b><b> </b>:AcilPipetlenecek<b>,</b><b> </b>:PipetlemeyeGonderildi<b>,</b><b> </b>:PipetlemeTarihi<b>,</b><b> </b>:KaliteID<b>,</b><b> </b>:CalismaBirimFiyat<b>,</b><b> </b>:CalismaDovizID<b>,</b><b> </b>:ReceteTalepGrup1Id<b>,</b><b> </b>:ReceteTalepGrup1Adi<b>,</b>
+<b>         </b>:FiyatFarki<b> </b><b>,</b>:LabGrupId<b>,</b><b> </b>:LabGrupAdi<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Fason<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Satış'<b>;</b>
+<b>      </b><b>else</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Fason'<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AcilPipetlenecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b>FCalismaNotu<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>1023<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>1023<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>CalismaTipiId<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>2<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>KritikCalismasi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>4<b>;</b>
+
+<b>      </b>PartiToplamKilo<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>TuzMiktari<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>SodaMiktari<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AtisNoStr<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>ReceteId<b> </b><b>=</b><b> </b>LabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'.'<b> </b><b>|</b><b>|</b><b> </b>AtisNoStr<b>;</b>
+
+
+<b>        </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>into</b><b> </b>:PartiSayisi<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitID<b> </b><b>is</b><b> </b><b>null</b>
+<b>            </b><b>into</b><b> </b>:PartiToplamKilo<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>TuzKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:TuzKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:TuzMiktari<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>SodaKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:SodaKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:SodaMiktari<b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:DovizId<b>,</b><b> </b>:SistemDovizId<b>,</b><b> </b>:AtisTarihi<b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+
+<b>      </b>BoyaMaliyetiTL<b> </b><b>=</b><b> </b>BoyaMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>      </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b>KimyasalMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AUrunFiyatGorebilir<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>BoyaMaliyeti<b>     </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyeti<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>BoyaMaliyetiTL<b>   </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>ARaporTipi<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>/* rapor tipi = 3 atıs tarihine göre */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteAtisId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>Adi<b>,</b><b>  </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b>,</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b>,</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Fason<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>MusteriRenkKodu<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama2<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiLabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>PantoneKodu<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>CalismaTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>OrjinalDegisimTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>TerminTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BitisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>KritikCalismasi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisNoStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>GidisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KartelaTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>DurumuStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Tarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Kritik<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Notu<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaYuzdesi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KimyasalMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>DovizId<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirmaTarihi<b>,</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AcilPipetlenecek<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>KaliteID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BirimFiyat<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>DovizID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1<b>,</b>
+<b>               </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>FiyatFarki<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>LabGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteCalismaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>ReceteOnIslemTipiID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>ReceteOnIslemTipiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>LabReceteTalepKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteTalepKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>ReceteTalepGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>LabGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabGrupId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>or</b><b> </b>:AFirmaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b>:ALabRenkGrupId<b> </b><b>or</b><b> </b>:ALabRenkGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b>:ALabReceteGrupId<b> </b><b>or</b><b> </b>:ALabReceteGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b>:AReceteTuruId<b> </b><b>or</b><b> </b>:AReceteTuruId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b>:ARenkDerinligiId<b> </b><b>or</b><b> </b>:ARenkDerinligiId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>:AReceteKodu<b> </b><b>or</b><b> </b>:AReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b> </b><b>like</b><b> </b>'%'<b> </b><b>|</b><b>|</b><b> </b>:AReceteAdi<b> </b><b>|</b><b>|</b><b> </b>'%'<b> </b><b>or</b><b> </b>:AReceteAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo<b> </b><b>or</b><b> </b>:ABitisLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo2<b> </b><b>or</b><b> </b>:ABitisLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><b> </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>)</b><b> </b><b>or</b>
+<b>            </b>:ACalismaDurumu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>:ASadeceOkeyliAtislar<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:ASadeceEtiketYazdirilmayan<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:APipetlemeyeGonderilmeyenler<b>=</b><b> </b>0<b>)</b>
+<b>    </b><b>into</b><b> </b>:LabReceteAtisId<b>,</b><b> </b>:LabReceteCalismaId<b>,</b><b> </b>:LabReceteId<b>,</b><b> </b>:LabReceteKodu<b>,</b><b> </b>:LabReceteAdi<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:TalepTarihi<b>,</b><b> </b>:LabReceteGrupId<b>,</b><b> </b>:LabReceteGrupAdi<b>,</b><b> </b>:LabRenkGrupId<b>,</b><b> </b>:LabRenkGrupAdi<b>,</b>
+<b>         </b>:RenkDerinligiId<b>,</b><b> </b>:RenkDerinligiAdi<b>,</b><b> </b>:ReceteTuruId<b>,</b><b> </b>:ReceteTuruAdi<b>,</b><b> </b>:Fason<b>,</b><b> </b>:MusteriRenkKodu<b>,</b><b> </b>:HamId<b>,</b><b> </b>:HamAdi<b>,</b>
+<b>         </b>:Aciklama<b>,</b><b> </b>:Aciklama2<b>,</b><b> </b>:EskiLabReceteKodu<b>,</b><b> </b>:PantoneKodu<b>,</b><b> </b>:CalismaTarihi<b>,</b><b> </b>:OrjinalDegisimTarihi<b>,</b><b> </b>:TerminTarihi<b>,</b><b> </b>:CalismaBitisTarihi<b>,</b><b>  </b>:Rptmi<b>,</b><b> </b>:Ilave<b>,</b><b> </b>:SokumUzeriBoya<b>,</b><b> </b>:KritikCalismasi<b>,</b>
+<b>         </b>:AtisNoStr<b>,</b><b> </b>:AtisTarihi<b>,</b><b> </b>:GidisTarihi<b>,</b><b> </b>:KartelaTarihi<b>,</b><b> </b>:DurumuStr<b>,</b><b> </b>:Tarihi<b>,</b><b> </b>:Okey<b>,</b><b> </b>:Kritik<b>,</b><b> </b>:FCalismaNotu<b>,</b>
+<b>         </b>:BoyaYuzdesi<b>,</b><b> </b>:BoyaMaliyeti<b>,</b><b> </b>:KimyasalMaliyeti<b>,</b><b> </b>:DovizId<b>,</b><b> </b>:EtiketYazdirildi<b>,</b><b> </b>:EtiketYazdirmaTarihi<b>,</b><b> </b>:ReceteOnIslemTipiAdi<b>,</b>
+<b>         </b>:LabProgramNo<b>,</b><b> </b>:LabProgramNo2<b>,</b><b> </b>:AcilPipetlenecek<b>,</b><b> </b>:PipetlemeyeGonderildi<b>,</b><b> </b>:PipetlemeTarihi<b>,</b><b> </b>:KaliteID<b>,</b><b> </b>:CalismaBirimFiyat<b>,</b><b> </b>:CalismaDovizID<b>,</b><b> </b>:ReceteTalepGrup1Id<b>,</b><b> </b>:ReceteTalepGrup1Adi<b>,</b>
+<b>         </b>:FiyatFarki<b> </b><b>,</b>:LabGrupId<b>,</b><b> </b>:LabGrupAdi<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Fason<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Satış'<b>;</b>
+<b>      </b><b>else</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Fason'<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AcilPipetlenecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b>FCalismaNotu<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>1023<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>1023<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>CalismaTipiId<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>2<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>KritikCalismasi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>4<b>;</b>
+
+<b>      </b>PartiToplamKilo<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>TuzMiktari<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>SodaMiktari<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AtisNoStr<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>ReceteId<b> </b><b>=</b><b> </b>LabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'.'<b> </b><b>|</b><b>|</b><b> </b>AtisNoStr<b>;</b>
+
+
+<b>        </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>into</b><b> </b>:PartiSayisi<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitID<b> </b><b>is</b><b> </b><b>null</b>
+<b>            </b><b>into</b><b> </b>:PartiToplamKilo<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>TuzKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:TuzKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:TuzMiktari<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>SodaKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:SodaKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:SodaMiktari<b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:DovizId<b>,</b><b> </b>:SistemDovizId<b>,</b><b> </b>:AtisTarihi<b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+
+<b>      </b>BoyaMaliyetiTL<b> </b><b>=</b><b> </b>BoyaMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>      </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b>KimyasalMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AUrunFiyatGorebilir<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>BoyaMaliyeti<b>     </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyeti<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>BoyaMaliyetiTL<b>   </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>AraporTipi<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* orjinal Degisim tarihine göre */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteAtisId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>Adi<b>,</b><b>  </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b>,</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b>,</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Fason<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>MusteriRenkKodu<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Aciklama2<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiLabReceteKodu<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>PantoneKodu<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>CalismaTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>OrjinalDegisimTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>TerminTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BitisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>KritikCalismasi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisNoStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AtisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>GidisTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KartelaTarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>DurumuStr<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Tarihi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Kritik<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Notu<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaYuzdesi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>BoyaMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>KimyasalMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>DovizId<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirmaTarihi<b>,</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>AcilPipetlenecek<b>,</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b>,</b>
+<b>               </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeTarihi<b>,</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>KaliteID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>BirimFiyat<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>DovizID<b>,</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1<b>,</b>
+<b>               </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>FiyatFarki<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>LabGrupId<b>,</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteGrup</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>LabReceteCalismaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteCalismaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteOnIslemTipi</u></font><b>.</b>ReceteOnIslemTipiID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>ReceteOnIslemTipiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>LabReceteTalepKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteTalepKayitId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ReceteTalepGrup</u></font><b>.</b>ReceteTalepGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteTalep</u></font><b>.</b>ReceteTalepGrup1
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>LabGrup</u></font><b>.</b>LabGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabGrupId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>OrjinalDegisimTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>OrjinalDegisimTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>or</b><b> </b>:AFirmaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b>:ALabRenkGrupId<b> </b><b>or</b><b> </b>:ALabRenkGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b>:ALabReceteGrupId<b> </b><b>or</b><b> </b>:ALabReceteGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b>:AReceteTuruId<b> </b><b>or</b><b> </b>:AReceteTuruId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b>:ARenkDerinligiId<b> </b><b>or</b><b> </b>:ARenkDerinligiId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>:AReceteKodu<b> </b><b>or</b><b> </b>:AReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>Adi<b> </b><b>like</b><b> </b>'%'<b> </b><b>|</b><b>|</b><b> </b>:AReceteAdi<b> </b><b>|</b><b>|</b><b> </b>'%'<b> </b><b>or</b><b> </b>:AReceteAdi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo<b> </b><b>or</b><b> </b>:ABitisLabProgramNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>or</b><b> </b>:ABaslangicLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabProgramNo2<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisLabProgramNo2<b> </b><b>or</b><b> </b>:ABitisLabProgramNo2<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><b> </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>or</b>
+<b>            </b><b>(</b>:ACalismaDurumu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Rptmi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>Ilave<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>)</b><b> </b><b>or</b>
+<b>            </b>:ACalismaDurumu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>Okey<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>:ASadeceOkeyliAtislar<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:ASadeceEtiketYazdirilmayan<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>LabReceteAtis</u></font><b>.</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>:APipetlemeyeGonderilmeyenler<b>=</b><b> </b>0<b>)</b>
+<b>    </b><b>into</b><b> </b>:LabReceteAtisId<b>,</b><b> </b>:LabReceteCalismaId<b>,</b><b>  </b>:LabReceteId<b>,</b><b> </b>:LabReceteKodu<b>,</b><b> </b>:LabReceteAdi<b>,</b><b> </b>:FirmaId<b>,</b><b> </b>:FirmaAdi<b>,</b><b> </b>:TalepTarihi<b>,</b><b> </b>:LabReceteGrupId<b>,</b><b> </b>:LabReceteGrupAdi<b>,</b><b> </b>:LabRenkGrupId<b>,</b><b> </b>:LabRenkGrupAdi<b>,</b>
+<b>         </b>:RenkDerinligiId<b>,</b><b> </b>:RenkDerinligiAdi<b>,</b><b> </b>:ReceteTuruId<b>,</b><b> </b>:ReceteTuruAdi<b>,</b><b> </b>:Fason<b>,</b><b> </b>:MusteriRenkKodu<b>,</b><b> </b>:HamId<b>,</b><b> </b>:HamAdi<b>,</b>
+<b>         </b>:Aciklama<b>,</b><b> </b>:Aciklama2<b>,</b><b> </b>:EskiLabReceteKodu<b>,</b><b> </b>:PantoneKodu<b>,</b><b> </b>:CalismaTarihi<b>,</b><b> </b>:OrjinalDegisimTarihi<b>,</b><b> </b>:TerminTarihi<b>,</b><b> </b>:CalismaBitisTarihi<b>,</b><b>  </b>:Rptmi<b>,</b><b> </b>:Ilave<b>,</b><b> </b>:SokumUzeriBoya<b>,</b><b> </b>:KritikCalismasi<b>,</b>
+<b>         </b>:AtisNoStr<b>,</b><b> </b>:AtisTarihi<b>,</b><b> </b>:GidisTarihi<b>,</b><b> </b>:KartelaTarihi<b>,</b><b> </b>:DurumuStr<b>,</b><b> </b>:Tarihi<b>,</b><b> </b>:Okey<b>,</b><b> </b>:Kritik<b>,</b><b> </b>:FCalismaNotu<b>,</b>
+<b>         </b>:BoyaYuzdesi<b>,</b><b> </b>:BoyaMaliyeti<b>,</b><b> </b>:KimyasalMaliyeti<b>,</b><b> </b>:DovizId<b>,</b><b> </b>:EtiketYazdirildi<b>,</b><b> </b>:EtiketYazdirmaTarihi<b>,</b><b> </b>:ReceteOnIslemTipiAdi<b>,</b>
+<b>         </b>:LabProgramNo<b>,</b><b> </b>:LabProgramNo2<b>,</b><b> </b>:AcilPipetlenecek<b>,</b><b> </b>:PipetlemeyeGonderildi<b>,</b><b> </b>:PipetlemeTarihi<b>,</b><b> </b>:KaliteID<b>,</b><b> </b>:CalismaBirimFiyat<b>,</b><b> </b>:CalismaDovizID<b>,</b><b> </b>:ReceteTalepGrup1Id<b>,</b><b> </b>:ReceteTalepGrup1Adi<b>,</b>
+<b>         </b>:FiyatFarki<b> </b><b>,</b>:LabGrupId<b>,</b><b> </b>:LabGrupAdi<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Fason<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Satış'<b>;</b>
+<b>      </b><b>else</b><b> </b>FasonStr<b> </b><b>=</b><b> </b>'Fason'<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>EtiketYazdirildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>EtiketYazdirildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AcilPipetlenecek<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>AcilPipetlenecekStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>PipetlemeyeGonderildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>'Evet'<b>;</b>
+<b>      </b><b>else</b><b> </b>PipetlemeyeGonderildiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>BlobSize<b> </b><b>=</b><b> </b><b>char_length</b><b>(</b>FCalismaNotu<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>1023<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>1023<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>BlobSize<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b><b>Left</b><b>(</b>FCalismaNotu<b>,</b><b> </b>BlobSize<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b>CalismaNotu<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b>CalismaTipiId<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Rptmi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Ilave<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>2<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>SokumUzeriBoya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>KritikCalismasi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>CalismaTipiId<b> </b><b>=</b><b> </b>4<b>;</b>
+
+<b>      </b>PartiToplamKilo<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>TuzMiktari<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b>SodaMiktari<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AtisNoStr<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>ReceteId<b> </b><b>=</b><b> </b>LabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'.'<b> </b><b>|</b><b>|</b><b> </b>AtisNoStr<b>;</b>
+
+
+<b>        </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>into</b><b> </b>:PartiSayisi<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Parti</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>ReceteID<b> </b><b>=</b><b> </b>:ReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitID<b> </b><b>is</b><b> </b><b>null</b>
+<b>            </b><b>into</b><b> </b>:PartiToplamKilo<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>PartiSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>PartiSayisi<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>TuzKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:TuzKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:TuzMiktari<b>;</b>
+<b>        </b><b>end</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>SodaKimyasalTipiID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>MiktarYuzde<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunId
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>LabReceteAtisId<b> </b><b>=</b><b> </b>:LabReceteAtisId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>KimyasalTipiID<b> </b><b>=</b><b> </b>:SodaKimyasalTipiID
+<b>          </b><b>into</b><b> </b>:SodaMiktari<b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:DovizId<b>,</b><b> </b>:SistemDovizId<b>,</b><b> </b>:AtisTarihi<b>)</b><b> </b><b>into</b><b> </b>:DovizKuru<b>;</b>
+
+<b>      </b>BoyaMaliyetiTL<b> </b><b>=</b><b> </b>BoyaMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+<b>      </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b>KimyasalMaliyeti<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AUrunFiyatGorebilir<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>BoyaMaliyeti<b>     </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyeti<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>BoyaMaliyetiTL<b>   </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b>KimyasalMaliyetiTL<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="LABRECETERAPORDANETIKETYAZDIR2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="LABRECETERAPORUURUNLER.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

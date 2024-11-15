@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERDELETEORTRANSFERFISIDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="58800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERDELETEORMESIPARISOLCU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERDELETEPARTIASAMALARI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERDELETEORTRANSFERFISIDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERDELETEORTRANSFERFISIDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERDELETEORTRANSFERFISIDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>ORMERAFTRANSFERFISIDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>DELETE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBolunduguStokHareketDetayId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKalanKilo<b> </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKalanBrutKilo<b> </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKalanMetre<b> </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKalanKapAdedi<b> </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EgemenFirmaId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><font color="# 0 0FF"><i>/*Update OrmeRaf Set CikisKapAdedi = CikisKapAdedi - Old.KapAdedi,</i></font>
+<font color="# 0 0FF"><i>                     NetCikisMiktari = NetCikisMiktari - Old.Kilo,</i></font>
+<font color="# 0 0FF"><i>                     BrutCikisMiktari = BrutCikisMiktari - Old.BrutKilo</i></font>
+<font color="# 0 0FF"><i>    where OrmeRaf.OrmeRafId = Old.OrmeRafId;</i></font>
+
+<font color="# 0 0FF"><i>  Update OrmeRaf Set GirisKapAdedi = GirisKapAdedi - Old.KapAdedi,</i></font>
+<font color="# 0 0FF"><i>                     NetGirisMiktari = NetGirisMiktari - Old.Kilo,</i></font>
+<font color="# 0 0FF"><i>                     BrutGirisMiktari = BrutGirisMiktari - Old.BrutKilo</i></font>
+<font color="# 0 0FF"><i>    where OrmeRaf.OrmeRafId = Old.YeniOrmeRafId;*/</i></font>
+<b>    </b><b>select</b><b> </b>EgemenFirmaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>into</b><b> </b>:EgemenFirmaId<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>EgemenFirmaId<b> </b><b>=</b><b> </b>151<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*LicoTeks*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>StokHareketDetay</u></font><b>.</b>BolunduguStokHareketDetayId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareketDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareketDetay</u></font><b>.</b>StokHareketDetayId<b> </b><b>=</b><b> </b><b>old</b><b>.</b>StokHareketDetayId<b> </b><b>into</b><b> </b>:FBolunduguStokHareketDetayId<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FBolunduguStokHareketDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>giriskilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>cikiskilo<b>,</b>
+<b>               </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>girisbrutkilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>cikisbrutkilo<b>,</b>
+<b>               </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>girismetre<b> </b><b>-</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>cikismetre<b>,</b>
+<b>               </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>giriskapadedi<b> </b><b>-</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>cikiskapadedi
+<b>               </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>Barkod<b> </b><b>=</b><b> </b>'S'<b> </b><b>|</b><b>|</b><b> </b><b>old</b><b>.</b>StokHareketDetayId
+<b>               </b><b>into</b><b> </b>:fkalankilo<b>,</b>:fkalanbrutkilo<b>,</b>:fkalanmetre<b>,</b>:fkalankapadedi<b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>Kilo<b> </b><b>=</b><b> </b>FKalanKilo<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>           </b><b>Delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareketDetay</u></font><b> </b><b>where</b><b>  </b>barkod<b> </b><b>=</b><b> </b>'S'<b>|</b><b>|</b><b>old</b><b>.</b>StokHareketDetayId<b>;</b>
+<b>           </b><b>Delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b> </b><b>where</b><b> </b>barkod<b> </b><b>=</b><b> </b>'S'<b>|</b><b>|</b><b>old</b><b>.</b>StokHareketDetayId<b>;</b>
+
+<b>           </b><b>Update</b><b> </b><font color="# 080 0"><u>StokHareketDetay</u></font><b> </b><b>Set</b><b> </b>Kilo<b> </b><b>=</b><b> </b>Kilo<b> </b><b>+</b><b> </b>:FKalanKilo<b>,</b><b> </b>BrutKilo<b> </b><b>=</b><b> </b>BrutKilo<b> </b><b>+</b><b> </b>:FKalanBrutKilo<b>,</b><b> </b>Metre<b> </b><b>=</b><b> </b>Metre<b> </b><b>+</b><b> </b>:FKalanMetre<b>,</b><b> </b>KapAdedi<b> </b><b>=</b><b> </b>KapAdedi<b> </b><b>+</b><b> </b>:FKalanKapAdedi
+<b>             </b><b>where</b><b> </b>StokHareketDetayID<b> </b><b>=</b><b> </b>:FBolunduguStokHareketDetayId<b>;</b>
+<b>          </b><b>end</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>HesaplanacakRafEkle</u></font><b>(</b><b>Old</b><b>.</b>OrmeRafId<b>)</b><b>;</b>
+<b>    </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>HesaplanacakRafEkle</u></font><b>(</b><b>Old</b><b>.</b>YeniOrmeRafId<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERDELETEORMESIPARISOLCU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERDELETEPARTIASAMALARI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

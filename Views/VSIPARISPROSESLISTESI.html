@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<TITLE>VSIPARISPROSESLISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="164800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Views</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="VSIPARISGRUPLISTESIALTGRUP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="VSIPARISPROSESTANITIMLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">VSIPARISPROSESLISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for view VSIPARISPROSESLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Fields</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Field</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="40%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISPROSESID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PROSESADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADI2</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TRANSFERKODU</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FASONMUHGELIRHESAPKODU</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SATISMUHGELIRHESAPKODU</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTKULLANICIADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTTARIHI</P></TD>
+    <TD><P CLASS="Base2">TIMESTAMP</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEGISIMTARIHI</P></TD>
+    <TD><P CLASS="Base2">TIMESTAMP</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Triggers</P>
+<P CLASS="Base"><I>(There are no triggers for view VSIPARISPROSESLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>VIEW</b><b> </b><font color="# 080 0"><u>VSIPARISPROSESLISTESI</u></font><b>(</b>
+<b>    </b>SIPARISPROSESID<b>,</b>
+<b>    </b>ADI<b>,</b>
+<b>    </b>PROSESADI<b>,</b>
+<b>    </b>ADI2<b>,</b>
+<b>    </b>TRANSFERKODU<b>,</b>
+<b>    </b>FASONMUHGELIRHESAPKODU<b>,</b>
+<b>    </b>SATISMUHGELIRHESAPKODU<b>,</b>
+<b>    </b>INSERTKULLANICIADI<b>,</b>
+<b>    </b>INSERTTARIHI<b>,</b>
+<b>    </b>KULLANICIADI<b>,</b>
+<b>    </b>DEGISIMTARIHI<b>)</b>
+<b>AS</b>
+<b>Select</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>SiparisProsesId<b>,</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Proses</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>Adi2<b>,</b><b> </b>IK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>TransferKodu<b>,</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>FasonMuhGelirHesapKodu<b>,</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>SatisMuhGelirHesapKodu<b>,</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>InsertTarihi<b>,</b><b> </b>SK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>DegisimTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Proses</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Proses</u></font><b>.</b>ProsesId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>ProsesId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>IK<b> </b><b>on</b><b> </b>IK<b>.</b>KullaniciId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>InsertKullaniciId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>SK<b> </b><b>on</b><b> </b>SK<b>.</b>KullaniciId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>KullaniciId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>SiparisProses</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0
+<b>;</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="VSIPARISGRUPLISTESIALTGRUP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="VSIPARISPROSESTANITIMLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

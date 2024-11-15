@@ -1,0 +1,167 @@
+<HTML>
+<HEAD>
+<TITLE>HGKOLIDETAYGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="738800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HGKESIMUIADEICINSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HGKOLIFISILISTESIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HGKOLIDETAYGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHGKOLIFISIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">HGKOLIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HGKOLIDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URUNID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URUNADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HGSIPARISDETAYASORTIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HGSIPARISDETAYASORTIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ASORTISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIKTAR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BEDENID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BEDENADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HGKOLIDETAYGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HGKOLIDETAYGETIR</u></font><b>(</b>
+<b>    </b>AHGKOLIFISIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>HGKOLIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HGKOLIDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>URUNID<b> </b><font color="# 080 0"><u>URUNKODUSIZE</u></font><b>,</b>
+<b>    </b>URUNADI<b> </b><font color="# 080 0"><u>ADI80</u></font><b>,</b>
+<b>    </b>HGSIPARISDETAYASORTIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HGSIPARISDETAYASORTIADI<b> </b><font color="# 080 0"><u>ADI100</u></font><b>,</b>
+<b>    </b>ASORTISTR<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>MIKTAR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RENKID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RENKADI<b> </b><font color="# 080 0"><u>ADI50</u></font><b>,</b>
+<b>    </b>BEDENID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BEDENADI<b> </b><font color="# 080 0"><u>ADI30</u></font><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>HgKoli</u></font><b>.</b>HgKoliId<b>,</b><b> </b><font color="# 080 0"><u>HgKoliDetay</u></font><b>.</b>HgKoliDetayId<b>,</b><b> </b><font color="# 080 0"><u>HgKoliDetay</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>HgKoliDetay</u></font><b>.</b>HgSiparisDetayAsortiId<b>,</b><b> </b><font color="# 080 0"><u>HgSiparisDetayAsorti</u></font><b>.</b>Adi<b>,</b>
+<b>             </b><b>iif</b><b>(</b><font color="# 080 0"><u>HgSiparisDetayAsorti</u></font><b>.</b>HgSiparisDetayAsortiId<b> </b><b>is</b><b> </b><b>null</b><b>,</b><b> </b>''<b>,</b><b> </b>'Evet'<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>HgKoliDetay</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>RenkId<b>,</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>BedenId<b>,</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HgKoli</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HgKoliDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HgKoliDetay</u></font><b>.</b>HgKoliId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HgKoli</u></font><b>.</b>HgKoliId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HgKoliDetay</u></font><b>.</b>UrunId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HgSiparisDetayAsorti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HgSiparisDetayAsorti</u></font><b>.</b>HgSiparisDetayAsortiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HgKoliDetay</u></font><b>.</b>HgsiparisDetayAsortiId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKumasId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>RenkId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>RenkId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelBedenId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Beden</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>BedenId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>BedenId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>HgKoli</u></font><b>.</b>HgKoliFisiId<b> </b><b>=</b><b> </b>:AHgKoliFisiId<b> </b><b>and</b>
+<b>      </b><font color="# 080 0"><u>HgKoliDetay</u></font><b>.</b>HgKoliDetayId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>      </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>HgKoliDetay</u></font><b>.</b>HgKoliDetayId
+<b>      </b><b>into</b><b> </b>:HgKoliId<b>,</b><b> </b>:HgKoliDetayId<b>,</b><b> </b>:UrunId<b>,</b><b> </b>:UrunAdi<b>,</b><b> </b>:HgSiparisDetayAsortiId<b>,</b><b> </b>:HgSiparisDetayAsortiAdi<b>,</b>
+<b>             </b>:AsortiStr<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:RenkId<b>,</b><b> </b>:RenkAdi<b>,</b><b> </b>:BedenId<b>,</b><b> </b>:BedenAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HGKESIMUIADEICINSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HGKOLIFISILISTESIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

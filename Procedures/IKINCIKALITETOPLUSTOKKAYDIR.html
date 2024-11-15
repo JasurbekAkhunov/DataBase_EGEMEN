@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<TITLE>IKINCIKALITETOPLUSTOKKAYDIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="813800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="IEPASTALURUNLERINIORGANIZEET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="IKITARIHARASIGUNLUKURETIMRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">IKINCIKALITETOPLUSTOKKAYDIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AORMERAFIDSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(1025)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure IKINCIKALITETOPLUSTOKKAYDIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>IKINCIKALITETOPLUSTOKKAYDIR</u></font><b>(</b>
+<b>    </b>AORMERAFIDSTR<b> </b><b>VARCHAR</b><b>(</b>1025<b>)</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VirgulPos<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Str<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeRafId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FisYil<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FisNo<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamTipiId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IkinciKaliteIplikHamId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IkinciKaliteKumasHamId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeDefaultIkinciKaliteRafId<b>          </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>IkinciKaliteIplikHamId<b>,</b><b> </b>IkinciKaliteKumasHamId<b>,</b><b> </b>OrmeDefaultIkinciKaliteRafId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:IkinciKaliteIplikHamId<b>,</b><b> </b>:IkinciKaliteKumasHamId<b>,</b><b> </b>:OrmeDefaultIkinciKaliteRafId<b>;</b>
+
+<b>  </b>VirgulPos<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PosBul</u></font><b>(</b>AOrmeRafIDStr<b>,</b><b> </b>','<b>)</b><b>;</b>
+<b>  </b>FisYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>Current_date</b><b>)</b><b>;</b>
+
+<b>  </b><b>While</b><b> </b><b>(</b>VirgulPos<b> </b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>Str<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>AOrmeRafIDStr<b>,</b><b> </b>1<b>,</b><b> </b>VirgulPos<b> </b><b>-</b>1<b>)</b><b>;</b>
+<b>    </b>OrmeRafId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>Str<b>)</b><b>;</b>
+
+<b>    </b><b>SELECT</b><b> </b>ID<b> </b><b>FROM</b><b> </b><font color="# 080 0"><u>OrmeStokKaydirmaNumaratorAl</u></font><b>(</b>:FisYil<b>)</b><b> </b><b>into</b><b> </b>:FisNo<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>HamId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b>:OrmeRafId
+<b>      </b><b>into</b><b> </b>:HamTipiID<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>HamID<b> </b><b>=</b><b> </b>IkinciKaliteIplikHamId<b>;</b>
+<b>    </b><b>else</b><b> </b>HamID<b> </b><b>=</b><b> </b>IkinciKaliteKumasHamId<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>OrmeStokKaydirma</u></font><b>(</b>FisYil<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>RafId<b>,</b><b> </b>HamId<b>,</b><b> </b>KaliteNo<b>,</b><b> </b>BrutMiktar<b>,</b><b> </b>NetMiktar<b>,</b><b> </b>InsertKullaniciId<b>)</b>
+<b>             </b><b>Select</b><b> </b>:FisYil<b>,</b><b> </b>:FisNo<b>,</b><b> </b><b>Current_date</b><b>,</b><b> </b>:OrmeRafId<b>,</b><b> </b>:OrmeDefaultIkinciKaliteRafId<b>,</b><b> </b>:HamId<b>,</b><b> </b>2<b>,</b>
+<b>                    </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>BrutGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>BrutCikisMiktari<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b>,</b><b> </b>:AKullaniciId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font>
+<b>               </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b>:OrmeRafId<b>;</b>
+
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>AOrmeRafIDStr<b>)</b><b> </b><b>&gt;</b><b> </b>VirgulPos<b>)</b><b> </b><b>then</b><b> </b>AOrmeRafIDStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>AOrmeRafIDStr<b>,</b><b> </b>VirgulPos<b> </b><b>+</b><b> </b>1<b>,</b><b> </b><b>Char_Length</b><b>(</b>AOrmeRafIDStr<b>)</b><b> </b><b>-</b><b> </b>VirgulPos<b>)</b><b>;</b>
+<b>    </b><b>else</b><b> </b>AOrmeRafIDStr<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b>VirgulPos<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PosBul</u></font><b>(</b>AOrmeRafIDStr<b>,</b><b> </b>','<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="IEPASTALURUNLERINIORGANIZEET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="IKITARIHARASIGUNLUKURETIMRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

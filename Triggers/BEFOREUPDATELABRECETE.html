@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATELABRECETE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1356800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEKURUTMATALIMATI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATELABRECETEATIS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATELABRECETE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATELABRECETE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATELABRECETE</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>LABRECETE</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteKoduTipi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EskiLabReceteKoduTekrarlayamaz<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EskiLabReceteKayitSayisi<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>LabReceteKoduTipi<b>,</b><b> </b>EskiLabReceteKoduTekrarlayamaz<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>into</b><b> </b>:LabReceteKoduTipi<b>,</b><b> </b>:EskiLabReceteKoduTekrarlayamaz<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>9<b> </b><b>and</b><b> </b>LabReceteKoduTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>16<b> </b><b>and</b><b> </b>LabReceteKoduTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>19<b> </b><b>and</b><b> </b>LabReceteKoduTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>30<b> </b><b>and</b><b> </b>LabReceteKoduTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>38<b> </b><b>and</b><b> </b>LabReceteKoduTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>71<b> </b><b>and</b>
+<b>      </b>LabReceteKoduTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>85<b> </b><b>and</b><b> </b>LabReceteKoduTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>142<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Bayteks, Tekboy, Osborn, KumasBoya, Akhan, Aycan, Aka Teks, AbmCotton*/</i></font>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>not</b><b> </b><b>in</b><b> </b><b>(</b>2<b>,</b><b> </b>100<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>RenkDerinligiId<b>,</b><b> </b><b>New</b><b>.</b>RenkDerinligiId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Renk Derinliği Değiştirilemez..'<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>25<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>FirmaID<b>,</b><b> </b><b>New</b><b>.</b>FirmaID<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Firma Kodu Değiştirilemez..'<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>LabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>LabReceteKoduDegistirilemez</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>HamId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>HamId<b>)</b><b> </b><b>then</b>
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b> </b><b>set</b><b> </b>HamId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HamId<b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>HamId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>FirmaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>FirmaId<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b> </b><b>set</b><b> </b>FirmaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteCalisma</u></font><b>.</b>LabReceteId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteId<b>;</b>
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b><b>set</b><b> </b>FirmaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>where</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>LabReceteId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>old</b><b>.</b>Adi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>Adi<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>LabRenkGrupId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>or</b><b> </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>Old</b><b>.</b>RenkDerinligiId<b>,</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>Recete</u></font><b> </b><b>set</b><b> </b>Adi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>Adi<b>,</b><b> </b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b>,</b><b> </b>RenkDerinligiId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>where</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>LabReceteID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>EskiLabReceteKodu<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>EskiLabReceteKoduTekrarlayamaz<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>where</b><b> </b>EskiLabReceteKodu<b> </b><b>=</b><b> </b><b>new</b><b>.</b>EskiLabReceteKodu<b> </b><b>and</b><b> </b>LabreceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabreceteKodu<b> </b><b>into</b><b> </b>:EskiLabReceteKayitSayisi<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>EskiLabReceteKayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>exception</b><b> </b><font color="# 080 0"><u>EskiLabReceteKoduTekrariOlustu</u></font><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>new</b><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEKURUTMATALIMATI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATELABRECETEATIS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

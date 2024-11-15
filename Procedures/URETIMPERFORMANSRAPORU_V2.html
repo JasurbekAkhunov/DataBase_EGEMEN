@@ -1,0 +1,221 @@
+<HTML>
+<HEAD>
+<TITLE>URETIMPERFORMANSRAPORU_V2</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1917800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="URETIMPERFORMANSRAPORUSEVKLER.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="URETIMPLANLAMADETAYGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">URETIMPERFORMANSRAPORU_V2</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">MAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAKINAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MAKINAGRUBU</TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA1URETIM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA1HEDEF</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA2URETIM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA2HEDEF</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA3URETIM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA3HEDEF</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA4URETIM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAFTA4HEDEF</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HEDEFLENENURETIM</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HEDEFTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure URETIMPERFORMANSRAPORU_V2)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>URETIMPERFORMANSRAPORU_V2</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIH<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>MAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>MAKINAADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>MAKINAGRUBU<b> </b><b>VARCHAR</b><b>(</b>4<b>)</b><b>,</b>
+<b>    </b>HAFTA1URETIM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HAFTA1HEDEF<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HAFTA2URETIM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HAFTA2HEDEF<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HAFTA3URETIM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HAFTA3HEDEF<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HAFTA4URETIM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HAFTA4HEDEF<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HEDEFLENENURETIM<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>HEDEFTARIH<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BasH1<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BitH1<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BasH2<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BitH2<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BasH3<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BitH3<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BasH4<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BitH4<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCikisTarihi<b>      </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKilo<b>             </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHedeflenenUretim<b>  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b>BasH1<b> </b><b>=</b><b> </b><b>Cast</b><b>(</b>ABaslangicTarih<b> </b><b>as</b><b> </b><b>Date</b><b>)</b><b>;</b>
+<b>  </b>BitH1<b> </b><b>=</b><b> </b>BasH1<b> </b><b>+</b><b> </b>7<b>;</b>
+
+<b>  </b>BasH2<b> </b><b>=</b><b> </b>BitH1<b>;</b>
+<b>  </b>BitH2<b> </b><b>=</b><b> </b>BasH2<b> </b><b>+</b><b> </b>7<b>;</b>
+
+<b>  </b>BasH3<b> </b><b>=</b><b> </b>BitH2<b>;</b>
+<b>  </b>BitH3<b> </b><b>=</b><b> </b>BasH3<b> </b><b>+</b><b> </b>7<b>;</b>
+
+<b>  </b>BasH4<b> </b><b>=</b><b> </b>BitH3<b>;</b>
+<b>  </b>BitH4<b> </b><b>=</b><b> </b>BasH4<b> </b><b>+</b><b> </b>7<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaId<b>,</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaGrubu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Makina</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>UretimRaporlarinaDahil<b> </b><b>=</b><b> </b>1
+<b>    </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaGrubu<b>,</b><b> </b><font color="# 080 0"><u>Makina</u></font><b>.</b>MakinaId
+<b>    </b><b>into</b><b> </b>:MakinaId<b>,</b><b> </b>:MakinaAdi<b>,</b><b> </b>:MakinaGrubu<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><b>Sum</b><b>(</b><b>iif</b><b>(</b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&gt;</b><b>=</b><b> </b>:BasH1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b> </b>:BitH1<b>,</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>HedeflenenUretim<b>,</b><b> </b><b>Null</b><b>)</b><b>)</b><b>,</b>
+<b>           </b><b>Sum</b><b>(</b><b>iif</b><b>(</b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&gt;</b><b>=</b><b> </b>:BasH2<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b> </b>:BitH2<b>,</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>HedeflenenUretim<b>,</b><b> </b><b>Null</b><b>)</b><b>)</b><b>,</b>
+<b>           </b><b>Sum</b><b>(</b><b>iif</b><b>(</b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&gt;</b><b>=</b><b> </b>:BasH3<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b> </b>:BitH3<b>,</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>HedeflenenUretim<b>,</b><b> </b><b>Null</b><b>)</b><b>)</b><b>,</b>
+<b>           </b><b>Sum</b><b>(</b><b>iif</b><b>(</b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&gt;</b><b>=</b><b> </b>:BasH4<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b> </b>:BitH4<b>,</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>HedeflenenUretim<b>,</b><b> </b><b>Null</b><b>)</b><b>)</b>
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>MakinaId<b> </b><b>=</b><b> </b>:MakinaId<b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&gt;</b><b>=</b><b> </b>:BasH1<b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>MakinaGunlukUretimHedefi</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b>=</b><b> </b>:BitH4<b> </b><b>into</b><b> </b>:Hafta1Hedef<b>,</b><b> </b>:Hafta2Hedef<b>,</b><b> </b>:Hafta3Hedef<b>,</b><b> </b>:Hafta4Hedef<b>;</b>
+
+<b>    </b>Hafta1Uretim<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Hafta2Uretim<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Hafta3Uretim<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Hafta4Uretim<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>CikisTarihi<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>Kilo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>MakinaId<b> </b><b>=</b><b> </b>:MakinaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>CikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:BasH1<b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>CikisTarihi<b> </b><b>&lt;</b><b> </b>:BitH4
+<b>      </b><b>into</b><b> </b>:FCikisTarihi<b>,</b><b> </b>:FKilo<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FCikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH1<b> </b><b>and</b><b> </b>FCikisTarihi<b> </b><b>&lt;</b><b> </b>BitH1<b>)</b><b> </b><b>then</b><b> </b>Hafta1Uretim<b> </b><b>=</b><b> </b>Hafta1Uretim<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FCikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH2<b> </b><b>and</b><b> </b>FCikisTarihi<b> </b><b>&lt;</b><b> </b>BitH2<b>)</b><b> </b><b>then</b><b> </b>Hafta2Uretim<b> </b><b>=</b><b> </b>Hafta2Uretim<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FCikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH3<b> </b><b>and</b><b> </b>FCikisTarihi<b> </b><b>&lt;</b><b> </b>BitH3<b>)</b><b> </b><b>then</b><b> </b>Hafta3Uretim<b> </b><b>=</b><b> </b>Hafta3Uretim<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FCikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH4<b> </b><b>and</b><b> </b>FCikisTarihi<b> </b><b>&lt;</b><b> </b>BitH4<b>)</b><b> </b><b>then</b><b> </b>Hafta4Uretim<b> </b><b>=</b><b> </b>Hafta4Uretim<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b>.</b>BitisTarihi<b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>HAktarmaIsEmriDetay</u></font><b>.</b>Kilo<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmriDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmriDetay</u></font><b>.</b>HAktarmaIsEmriKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b>.</b>HAktarmaIsEmriKayitId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b>.</b>MakinaId<b> </b><b>=</b><b> </b>:MakinaId<b> </b><b>and</b><b>  </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b>.</b>BitisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:BasH1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b>.</b>BitisTarihi<b> </b><b>&lt;</b><b> </b>:BitH4
+<b>      </b><b>group</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b>.</b>HAktarmaIsEmriKayitId<b>,</b><b> </b><font color="# 080 0"><u>HAktarmaIsEmri</u></font><b>.</b>BitisTarihi
+<b>      </b><b>into</b><b> </b>:FCikisTarihi<b>,</b><b> </b>:FKilo<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FCikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH1<b> </b><b>and</b><b> </b>FCikisTarihi<b> </b><b>&lt;</b><b> </b>BitH1<b>)</b><b> </b><b>then</b><b> </b>Hafta1Uretim<b> </b><b>=</b><b> </b>Hafta1Uretim<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FCikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH2<b> </b><b>and</b><b> </b>FCikisTarihi<b> </b><b>&lt;</b><b> </b>BitH2<b>)</b><b> </b><b>then</b><b> </b>Hafta2Uretim<b> </b><b>=</b><b> </b>Hafta2Uretim<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FCikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH3<b> </b><b>and</b><b> </b>FCikisTarihi<b> </b><b>&lt;</b><b> </b>BitH3<b>)</b><b> </b><b>then</b><b> </b>Hafta3Uretim<b> </b><b>=</b><b> </b>Hafta3Uretim<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>FCikisTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>BasH4<b> </b><b>and</b><b> </b>FCikisTarihi<b> </b><b>&lt;</b><b> </b>BitH4<b>)</b><b> </b><b>then</b><b> </b>Hafta4Uretim<b> </b><b>=</b><b> </b>Hafta4Uretim<b> </b><b>+</b><b> </b>FKilo<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="URETIMPERFORMANSRAPORUSEVKLER.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="URETIMPLANLAMADETAYGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

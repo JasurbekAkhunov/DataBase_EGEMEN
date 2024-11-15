@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREDELETEHAMSTOKDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="472800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREDELETEHAMKONTROLHATA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREDELETEHAMSTOKIRSALIYE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREDELETEHAMSTOKDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREDELETEHAMSTOKDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREDELETEHAMSTOKDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>HAMSTOKDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>DELETE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiSinifId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>PartiSinifId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b><b>old</b><b>.</b>HamStokMasterId<b> </b><b>into</b><b> </b>:PartiSinifId<b>;</b>
+
+<b>  </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>where</b><b> </b>HamStokDetayId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>HamStokDetayId<b>;</b>
+<b>  </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HSDRezervBilgi</u></font><b> </b><b>where</b><b> </b>HamStokDetayId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>HamStokDetayId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>PartiSinifId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*yari mamul degil*/</i></font>
+<b>    </b><b>execute</b><b> </b><b>procedure</b><b> </b><font color="# 080 0"><u>HamStokKumilatifGuncelle</u></font><b>(</b><b>Old</b><b>.</b>StokFirmaId<b>,</b><b> </b><b>Old</b><b>.</b>Fason<b>,</b><b> </b>1<b>,</b><b> </b><b>Old</b><b>.</b>HamId<b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>Old</b><b>.</b>Tarih<b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>Old</b><b>.</b>Kilo<b>,</b><b> </b><b>Old</b><b>.</b>Metre<b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>null</b><b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREDELETEHAMKONTROLHATA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREDELETEHAMSTOKIRSALIYE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

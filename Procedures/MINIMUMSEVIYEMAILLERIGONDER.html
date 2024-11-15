@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>MINIMUMSEVIYEMAILLERIGONDER</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1151800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="MIKTARTIPI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="MOBILARIZAATANANPERSONELGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">MINIMUMSEVIYEMAILLERIGONDER</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AURUNID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure MINIMUMSEVIYEMAILLERIGONDER)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>MINIMUMSEVIYEMAILLERIGONDER</u></font><b>(</b>
+<b>    </b>AURUNID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StokMiktari<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunAltSeviye<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunAdi<b>              </b><b>varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Aciklama<b>          </b><b>varchar</b><b>(</b>1024<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Konu<b>              </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>AltSeviye<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Urunid<b> </b><b>=</b><b> </b>:AUrunId<b> </b><b>into</b><b> </b>:UrunAltSeviye<b>,</b><b> </b>:UrunAdi<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b>UrunAltSeviye<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>and</b><b> </b><b>(</b>UrunAltSeviye<b> </b><b>&gt;</b><b> </b>0<b>)</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>Miktar<b> </b><b>*</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>GirisCikis<b> </b><b>/</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>Carpan<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>stokdetay</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>UrunBirimId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>Stokdetay</u></font><b>.</b>Urunid<b> </b><b>=</b><b> </b>:AUrunId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>HareketTipi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>5
+<b>    </b><b>into</b><b> </b>:StokMiktari<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>StokMiktari<b> </b><b>&lt;</b><b> </b>UrunAltSeviye<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Konu<b> </b><b>=</b><b> </b>'Ürün Alt Seviye Uyarı İletisi'<b>;</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>'Aşağıdaki ürün için stok alt seviyenin altında: '<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>UrunAdi<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Ürün Adı : '<b> </b><b>|</b><b>|</b><b> </b>UrunAdi<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>UrunAdi<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Alt Seviye : '<b> </b><b>|</b><b>|</b><b> </b>UrunAltSeviye<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>UrunAdi<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Mevcut Stok : '<b> </b><b>|</b><b>|</b><b> </b>StokMiktari<b>;</b>
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>        </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>'BOYS Alt Seviye Takipçisi'<b>,</b><b> </b>:Konu<b>,</b><b> </b>:Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>StokMinimumSeviyeMailUyari<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="MIKTARTIPI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="MOBILARIZAATANANPERSONELGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,323 @@
+<HTML>
+<HEAD>
+<TITLE>DOKUMAURETIMICINATKICIKISYAP</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="455800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DOKUMAURETIMHATAKAYDET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DOKUMAURETIMPNOBILGISIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DOKUMAURETIMICINATKICIKISYAP</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ADOKUMAKALITEKONTROLID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ORMEFISID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ACIKLAMA</TD>
+    <TD><P CLASS="Base2">BLOB SUB_TYPE 0 SEGMENT SIZE 80</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DOKUMAURETIMICINATKICIKISYAP)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DOKUMAURETIMICINATKICIKISYAP</u></font><b>(</b>
+<b>    </b>ADOKUMAKALITEKONTROLID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>ORMEFISID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ACIKLAMA<b> </b><b>BLOB</b><b> </b><b>SUB_TYPE</b><b> </b>0<b> </b><b>SEGMENT</b><b> </b><b>SIZE</b><b> </b>80<b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FisNo<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SeriNo<b>                </b><font color="# 080 0"><u>SeriNoSize5</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretimeCikis<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>uitDokuma<b>             </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaPlanlamaId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisKayitId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeSiparisDetayId<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Miktar<b>                </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>HamId<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Lot<b>                   </b><b>varchar</b><b>(</b>150<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RafLot<b>                </b><b>varchar</b><b>(</b>150<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SarfMiktari<b>           </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SarfMiktari2<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RafMiktari<b>            </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FisTarihi<b>             </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemDovizId<b>         </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BirimId<b>               </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MakinaId<b>              </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimPartiNo<b>         </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KapAdedi<b>              </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunRafId<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimeCikisFiyati<b>    </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimeCikisDovizId<b>   </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UCIcinDovizKuru<b>       </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StokTabanDovizId<b>      </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RafId<b>                 </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamAdi<b>             </b><b>varchar</b><b>(</b>255<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UretimHamAdi<b>       </b><b>varchar</b><b>(</b>255<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ToplamSarfMiktari<b>  </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FRenkId<b>            </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HataStr<b>            </b><b>varchar</b><b>(</b>500<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaPlanlamaReceteId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaFirmaKodumuz<b> </b><font color="# 080 0"><u>FirmaKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AtkiCozgu<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaProjesiAktif<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IplikSiraNo<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TarakdaTukenmesiGerekenMiktar<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PlanlananLeventSayisi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SiparisFirmaId<b> </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Fason<b> </b><b>smallint</b><b>;</b>
+<b>begin</b>
+<b>  </b>Aciklama<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>DokumaUretimeCikisSeriNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b>:AKullaniciID<b> </b><b>into</b><b> </b>:SeriNo<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>FisNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FisNumaratorAL</u></font><b>(</b>:SeriNo<b>)</b><b> </b><b>into</b><b> </b>:FisNO<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>ShtUretimeCikis<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font><b> </b><b>into</b><b> </b>:shtUretimeCikis<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>uitDokuma<b> </b><b>from</b><b> </b><font color="# 080 0"><u>UretimIslemTipiGetir</u></font><b> </b><b>into</b><b> </b>:uitDokuma<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>SistemDovizId<b>,</b><b> </b>StokTabanDovizId<b>,</b><b> </b>DokumaFirmaKodumuz<b>,</b><b> </b>DokumaProjesiAktif<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:SistemDovizId<b>,</b><b> </b>:StokTabanDovizId<b>,</b><b> </b>:DokumaFirmaKodumuz<b>,</b><b> </b>:DokumaProjesiAktif<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b>.</b>Tarih<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b>.</b>DokumaKaliteKontrolId<b> </b><b>=</b><b> </b>:ADokumaKaliteKontrolId
+<b>    </b><b>into</b><b> </b>:FisTarihi<b>;</b>
+
+<b>  </b>OrmeFisId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>OrmeFis_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>OrmeFis</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>UretimIslemTipiId<b>,</b><b> </b>SeriNo<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>DovizId<b>,</b><b> </b>OtomatikOlusturuldu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DokumaHareketi<b>,</b><b> </b>DokumaKaliteKontrolId<b>)</b>
+<b>           </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:UitDokuma<b>,</b><b> </b>:SeriNo<b>,</b><b> </b>:FisNo<b>,</b><b> </b>:FisTarihi<b>,</b><b> </b>:SistemDovizId<b>,</b><b> </b>1<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>:ADokumaKaliteKontrolId<b>)</b><b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisFiyati<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisFiyatiDovizId<b>,</b>
+<b>    </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>RenkId<b>,</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b>.</b>HesaplananMetre<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>BoyaSiparisKayitId<b>,</b>
+<b>    </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>OrmeSiparisDetayID<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>UretimPartiNo<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>DokumaMakinaId<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>DokumaPlanlamaId<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaReceteId<b>,</b>
+<b>    </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>AtkiCozgu<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>SiraNo<b>,</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b>.</b>Miktar<b> </b><b>/</b><b> </b>100<b> </b><b>*</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>KullanimOrani<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>Fason<b> </b><b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>FirmaId
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b>.</b>DokumaPlanlamaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>DokumaPlanlamaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaRecete</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaSiparis</u></font><b>.</b>BoyaSiparisKayitId<b>=</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>BoyaSiparisKayitId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b>.</b>DokumaKaliteKontrolId<b> </b><b>=</b><b> </b>:ADokumaKaliteKontrolId
+<b>    </b><b>into</b><b> </b>:HamId<b>,</b><b> </b>:Lot<b>,</b><b> </b>:UretimeCikisFiyati<b>,</b><b> </b>:UretimeCikisDovizId<b>,</b>
+<b>    </b>:HamAdi<b>,</b><b> </b>:FRenkId<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:OrmeSiparisDetayID<b>,</b><b> </b>:UretimPartiNo<b>,</b><b> </b>:MakinaId<b>,</b><b> </b>:DokumaPlanlamaId<b>,</b><b> </b>:DokumaPlanlamaReceteId<b>,</b><b> </b>:AtkiCozgu<b>,</b><b> </b>:IplikSiraNo<b>,</b><b> </b>:TarakdaTukenmesiGerekenMiktar<b>,</b><b> </b>:Fason<b>,</b><b> </b>:SiparisFirmaId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><font color="# 0 0FF"><i>/*atkida kilo, cozgude metre hesaplanir*/</i></font>
+<b>    </b><b>select</b><b> </b><b>iif</b><b>(</b>:AtkiCozgu<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b>:DokumaProjesiAktif<b> </b><b>=</b><b> </b>2<b>,</b><b> </b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>.</b>AgirlikKilo<b>,</b><b> </b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>.</b>UzunlukMetre<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>.</b>HataStr<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>(</b><b>Null</b><b>,</b><b> </b>:DokumaPlanlamaReceteId<b>,</b><b> </b><b>Null</b><b>,</b><b> </b>0<b>,</b><b> </b>:Miktar<b>,</b><b> </b><b>Null</b><b>)</b><b> </b><b>into</b><b> </b>:SarfMiktari<b>,</b><b> </b>:HataStr<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>HataStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>        </b><b>exception</b><b> </b><font color="# 080 0"><u>kayithatasi</u></font><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b>|</b><b>|</b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b>|</b><b>|</b>HamAdi<b>|</b><b>|</b>': '<b>|</b><b>|</b>HataStr<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>SarfMiktari<b> </b><b>&lt;</b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>Miktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>kayithatasi</u></font><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b>|</b><b>|</b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b>|</b><b>|</b>HamAdi<b>|</b><b>|</b>': Hesaplama sonucu '<b>|</b><b>|</b>SarfMiktari<b>|</b><b>|</b>' çıktığı için çıkış yapılamadı'<b>;</b>
+
+<b>    </b>ToplamSarfMiktari<b> </b><b>=</b><b> </b>SarfMiktari<b>;</b>
+<b>    </b>KapAdedi<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>HataStr<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Lot<b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b>Lot<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:UretimeCikisDovizId<b>,</b><b> </b>:StokTabanDovizId<b>,</b><b> </b><b>current_date</b><b>)</b><b> </b><b>into</b><b> </b>:UCIcinDovizKuru<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>UCIcinDovizKuru<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>UCIcinDovizKuru<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>UCIcinDovizKuru<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>UCIcinDovizKuru<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b>UretimeCikisFiyati<b> </b><b>=</b><b> </b>UretimeCikisFiyati<b> </b><b>*</b><b> </b>UCIcinDovizKuru<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>AtkiCozgu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeHamRafListesiGetir</u></font><b>.</b>RafId<b>,</b><b> </b>UrunRafId<b>,</b><b> </b>RafMiktari<b>,</b><b> </b><font color="# 080 0"><u>OrmeHamRafListesiGetir</u></font><b>.</b>Lot<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeHamRafListesiGetir</u></font><b>(</b>:HamId<b>,</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:OrmeSiparisDetayId<b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>Null</b><b>,</b><b> </b><b>Null</b><b>)</b>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeHamRafListesiGetir</u></font><b>.</b>UrunRafId
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Raf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Raf</u></font><b>.</b>RafId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RafId
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>RafId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Raf</u></font><b>.</b>RafId
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Depo</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>DepoId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>DepoId
+<b>          </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>Raf</u></font><b>.</b>FirmaId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>Raf</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b>:DokumaFirmaKodumuz<b>)</b><b> </b><b>and</b>
+<b>                </b><b>(</b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><font color="# 080 0"><u>OrmeHamRafListesiGetir</u></font><b>.</b>Lot<b>,</b><b> </b>:Lot<b>)</b><b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>and</b>
+<b>                </b><b>(</b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><font color="# 080 0"><u>OrmeHamRafListesiGetir</u></font><b>.</b>RenkId<b>,</b><b> </b>:FRenkID<b>)</b><b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>and</b><b> </b>RafMiktari<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b>
+<b>                </b><b>(</b>
+<b>                  </b><b>(</b>:Fason<b>=</b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>StokFirmaId<b>=</b>:SiparisFirmaId<b>)</b><b> </b><b>or</b>
+<b>                  </b><b>(</b>:Fason<b>=</b>0<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>FasonStok<b> </b><b>=</b><b> </b>0<b> </b><b>)</b>
+<b>                </b><b>)</b><b> </b><b>and</b>
+<b>                </b><font color="# 080 0"><u>Depo</u></font><b>.</b>AtkiDeposu<b> </b><b>=</b><b> </b>1
+<b>          </b><b>into</b><b> </b>:RafId<b>,</b><b> </b>:UrunRafId<b>,</b><b> </b>:RafMiktari<b>,</b><b> </b>:RafLot<b> </b><b>do</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b>SarfMiktari<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>if</b><b> </b><b>(</b>SarfMiktari<b> </b><b>&gt;</b><b> </b>RafMiktari<b>)</b><b> </b><b>then</b>
+<b>            </b><b>begin</b>
+<b>              </b>SarfMiktari<b> </b><b>=</b><b> </b>SarfMiktari<b> </b><b>-</b><b> </b>RafMiktari<b>;</b>
+<b>            </b><b>end</b>
+<b>            </b><b>else</b>
+<b>            </b><b>begin</b>
+<b>              </b>RafMiktari<b> </b><b>=</b><b> </b>SarfMiktari<b>;</b>
+<b>              </b>SarfMiktari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>            </b><b>end</b>
+
+<b>            </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>UretimIslemTipiId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>HamId<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>UretimPartiNo<b>,</b><b> </b>Lot<b>,</b><b> </b>DokumaMakinaId<b>,</b><b> </b>DokumaPlanlamaId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>RenkID<b>,</b><b> </b>DokumaHareketi<b>,</b><b> </b>Tarih<b>)</b>
+<b>                             </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:uitDokuma<b>,</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:OrmeSiparisDetayId<b>,</b><b> </b>:HamId<b>,</b><b> </b>:UrunRafId<b>,</b><b> </b>:KapAdedi<b>,</b><b> </b>:RafMiktari<b>,</b><b> </b>:UretimPartiNo<b>,</b><b> </b>:RafLot<b>,</b><b> </b>:MakinaId<b>,</b><b> </b>:DokumaPlanlamaId<b>,</b><b> </b>:UretimeCikisFiyati<b>,</b><b> </b>:FRenkId<b>,</b><b> </b>1<b>,</b><b> </b>:FisTarihi<b>)</b><b>;</b>
+<b>          </b><b>end</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SarfMiktari<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>HamAdi<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>' ipliğinden; '<b> </b><b>|</b><b>|</b><b> </b>ToplamSarfMiktari<b> </b><b>|</b><b>|</b><b> </b>' gerekirken, '<b> </b><b>|</b><b>|</b><b> </b><b>(</b>ToplamSarfMiktari<b> </b><b>-</b><b> </b>SarfMiktari<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' düşülebildi... '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>AtkiCozgu<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>DokumaProjesiAktif<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b>   </b><font color="# 0 0FF"><i>/*Reaşel ise*/</i></font>
+<b>        </b><b>begin</b>
+<b>          </b><b>select</b><b> </b><b>count</b><b>(</b><font color="# 080 0"><u>DokumaStokPlanlama</u></font><b>.</b>dokumaplanlamarecetesirano<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font>
+<b>            </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font><b>.</b>OrmeRafID
+<b>            </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b>:DokumaPlanlamaId<b> </b><b>and</b>
+<b>                        </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font><b>.</b>DokumaPlanlamaReceteSirano<b> </b><b>=</b><b> </b>:IplikSiraNo<b> </b><b>and</b>
+<b>                        </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b> </b><b>&gt;</b><b> </b>0<b> </b><b>into</b><b> </b>:PlanlananLeventSayisi<b>;</b>
+
+<b>          </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RafId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>Lot<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font>
+<b>              </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font><b>.</b>OrmeRafID
+<b>              </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b>:DokumaPlanlamaId<b> </b><b>and</b>
+<b>                    </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font><b>.</b>DokumaPlanlamaReceteSirano<b> </b><b>=</b><b> </b>:IplikSiraNo<b> </b><b>and</b>
+<b>                    </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b> </b><b>&gt;</b><b> </b>0
+<b>            </b><b>into</b><b> </b>:RafId<b>,</b><b> </b>:UrunRafId<b>,</b><b> </b>:RafMiktari<b>,</b><b> </b>:RafLot<b> </b><b>do</b>
+<b>          </b><b>begin</b>
+<b>             </b>RafMiktari<b> </b><b>=</b><b> </b>TarakdaTukenmesiGerekenMiktar<b> </b><b>/</b><b> </b>PlanlananLeventSayisi<b> </b><b>;</b>
+<b>      </b>SarfMiktari<b> </b><b>=</b><b> </b>RafMiktari<b>;</b>
+<b>            </b><font color="# 0 0FF"><i>/*if (SarfMiktari &gt; 0) then</i></font>
+<font color="# 0 0FF"><i>            begin</i></font>
+<font color="# 0 0FF"><i>              if (SarfMiktari &gt; RafMiktari) then</i></font>
+<font color="# 0 0FF"><i>              begin</i></font>
+<font color="# 0 0FF"><i>                SarfMiktari = SarfMiktari - RafMiktari;</i></font>
+<font color="# 0 0FF"><i>              end</i></font>
+<font color="# 0 0FF"><i>              else</i></font>
+<font color="# 0 0FF"><i>              begin</i></font>
+<font color="# 0 0FF"><i>                RafMiktari = SarfMiktari;</i></font>
+<font color="# 0 0FF"><i>                SarfMiktari = 0;</i></font>
+<font color="# 0 0FF"><i>              end*/</i></font>
+
+<b>              </b><b>select</b><b> </b><b>Coalesce</b><b>(</b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>.</b>AgirlikKilo<b>,</b><b> </b>0<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>(</b><b>Null</b><b>,</b><b> </b>:DokumaPlanlamaReceteId<b>,</b><b> </b><b>Null</b><b>,</b><b> </b>0<b>,</b><b> </b>:RafMiktari<b>,</b><b> </b><b>Null</b><b>)</b><b> </b><b>into</b><b> </b>:SarfMiktari2<b>;</b>
+
+<b>              </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>UretimIslemTipiId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>HamId<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>Kilo<b>,</b><b> </b>UretimPartiNo<b>,</b><b> </b>Lot<b>,</b><b> </b>DokumaMakinaId<b>,</b><b> </b>DokumaPlanlamaId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>RenkID<b>,</b><b> </b>DokumaHareketi<b>,</b><b> </b>Tarih<b>)</b>
+<b>                               </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:uitDokuma<b>,</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:OrmeSiparisDetayId<b>,</b><b> </b>:HamId<b>,</b><b> </b>:UrunRafId<b>,</b><b> </b>:KapAdedi<b>,</b><b> </b>:RafMiktari<b>,</b><b> </b>:SarfMiktari2<b>,</b><b> </b>:UretimPartiNo<b>,</b><b> </b>:RafLot<b>,</b><b> </b>:MakinaId<b>,</b><b> </b>:DokumaPlanlamaId<b>,</b><b> </b>:UretimeCikisFiyati<b>,</b><b> </b>:FRenkId<b>,</b><b> </b>1<b>,</b><b> </b>:FisTarihi<b>)</b><b>;</b>
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>DokumaUretimeOtomatikCikis</u></font><b>(</b>DokumaKaliteKontrolId<b>,</b><b> </b>DokumaPlanlamaReceteId<b>,</b><b> </b>OrmeFisId<b>,</b><b> </b>HesaplananMiktar<b>,</b><b> </b>CikilanMiktar<b>,</b><b> </b>TamamiCikildi<b>,</b><b> </b>Aciklama<b>)</b>
+<b>                               </b><b>values</b><b>(</b>:ADokumaKaliteKontrolId<b>,</b><b> </b>:DokumaPlanlamaReceteId<b>,</b><b> </b>:OrmeFisId<b>,</b><b> </b>:ToplamSarfMiktari<b>,</b><b> </b><b>Coalesce</b><b>(</b>:SarfMiktari<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b><b>iif</b><b>(</b>:SarfMiktari<b> </b><b>=</b><b> </b>0<b>,</b><b> </b>1<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b>:HataStr<b>)</b><b>;</b>
+
+<b>            </b><b>end</b>
+<b>            </b>SarfMiktari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>end</b>
+<b>          </b><b>else</b>
+<b>          </b><b>begin</b>
+<b>            </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RafId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafId<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>Lot<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font>
+<b>              </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font><b>.</b>OrmeRafID
+<b>              </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaStokPlanlama</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b>:DokumaPlanlamaId<b> </b><b>and</b>
+<b>                  </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b> </b><b>&gt;</b><b> </b>0
+<b>              </b><b>into</b><b> </b>:RafId<b>,</b><b> </b>:UrunRafId<b>,</b><b> </b>:RafMiktari<b>,</b><b> </b>:RafLot<b> </b><b>do</b>
+<b>            </b><b>begin</b>
+<b>              </b><b>if</b><b> </b><b>(</b>SarfMiktari<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>              </b><b>begin</b>
+<b>                </b><b>if</b><b> </b><b>(</b>SarfMiktari<b> </b><b>&gt;</b><b> </b>RafMiktari<b>)</b><b> </b><b>then</b>
+<b>                </b><b>begin</b>
+<b>                  </b>SarfMiktari<b> </b><b>=</b><b> </b>SarfMiktari<b> </b><b>-</b><b> </b>RafMiktari<b>;</b>
+<b>                </b><b>end</b>
+<b>                </b><b>else</b>
+<b>                </b><b>begin</b>
+<b>                  </b>RafMiktari<b> </b><b>=</b><b> </b>SarfMiktari<b>;</b>
+<b>                  </b>SarfMiktari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>                </b><b>end</b>
+
+<b>                </b><b>select</b><b> </b><b>Coalesce</b><b>(</b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>.</b>AgirlikKilo<b>,</b><b> </b>0<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaIplikMiktariHesaplama</u></font><b>(</b><b>Null</b><b>,</b><b> </b>:DokumaPlanlamaReceteId<b>,</b><b> </b><b>Null</b><b>,</b><b> </b>0<b>,</b><b> </b>:RafMiktari<b>,</b><b> </b><b>Null</b><b>)</b><b> </b><b>into</b><b> </b>:SarfMiktari2<b>;</b>
+
+<b>                </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>(</b>OrmeFisId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>UretimIslemTipiId<b>,</b><b> </b>BoyaSiparisKayitId<b>,</b><b> </b>OrmeSiparisDetayId<b>,</b><b> </b>HamId<b>,</b><b> </b>OrmeRafId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Miktar<b>,</b><b> </b>Kilo<b>,</b><b> </b>UretimPartiNo<b>,</b><b> </b>Lot<b>,</b><b> </b>DokumaMakinaId<b>,</b><b> </b>DokumaPlanlamaId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>RenkID<b>,</b><b> </b>DokumaHareketi<b>,</b><b> </b>Tarih<b>)</b>
+<b>                   </b><b>values</b><b>(</b>:OrmeFisId<b>,</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:uitDokuma<b>,</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:OrmeSiparisDetayId<b>,</b><b> </b>:HamId<b>,</b><b> </b>:UrunRafId<b>,</b><b> </b>:KapAdedi<b>,</b><b> </b>:RafMiktari<b>,</b><b> </b>:SarfMiktari2<b>,</b><b> </b>:UretimPartiNo<b>,</b><b> </b>:RafLot<b>,</b><b> </b>:MakinaId<b>,</b><b> </b>:DokumaPlanlamaId<b>,</b><b> </b>:UretimeCikisFiyati<b>,</b><b> </b>:FRenkId<b>,</b><b> </b>1<b>,</b><b> </b>:FisTarihi<b>)</b><b>;</b>
+<b>              </b><b>end</b>
+<b>            </b><b>end</b>
+<b>        </b><b>end</b>
+<b>        </b><b>if</b><b> </b><b>(</b>SarfMiktari<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>HamAdi<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>' çözgüsünden; '<b> </b><b>|</b><b>|</b><b> </b>ToplamSarfMiktari<b> </b><b>|</b><b>|</b><b> </b>' gerekirken, '<b> </b><b>|</b><b>|</b><b> </b><b>(</b>ToplamSarfMiktari<b> </b><b>-</b><b> </b>SarfMiktari<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' düşülebildi... '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>HamAdi<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>' Miktar hesap hatası:'<b> </b><b>|</b><b>|</b><b> </b>HataStr<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>HataStr<b> </b><b>=</b><b> </b>''<b> </b><b>and</b><b> </b>SarfMiktari<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>HataStr<b> </b><b>=</b><b> </b>'Mevcut Stok Yetmedi.'<b>;</b>
+<b>      </b><b>exception</b><b> </b><font color="# 080 0"><u>kayithatasi</u></font><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b>|</b><b>|</b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b>|</b><b>|</b>HamAdi<b>|</b><b>|</b>': '<b>|</b><b>|</b>HataStr<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>if</b><b> </b><b>(</b>DokumaProjesiAktif<b>&lt;</b><b>&gt;</b>2<b>)</b><b> </b><b>then</b>
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>DokumaUretimeOtomatikCikis</u></font><b>(</b>DokumaKaliteKontrolId<b>,</b><b> </b>DokumaPlanlamaReceteId<b>,</b><b> </b>OrmeFisId<b>,</b><b> </b>HesaplananMiktar<b>,</b><b> </b>CikilanMiktar<b>,</b><b> </b>TamamiCikildi<b>,</b><b> </b>Aciklama<b>)</b><b> </b><b>values</b>
+<b>      </b><b>(</b>:ADokumaKaliteKontrolId<b>,</b><b> </b>:DokumaPlanlamaReceteId<b>,</b><b> </b>:OrmeFisId<b>,</b><b> </b>:ToplamSarfMiktari<b>,</b><b> </b><b>(</b><b>Coalesce</b><b>(</b>:ToplamSarfMiktari<b>,</b><b> </b>0<b>)</b><b> </b><b>-</b><b> </b><b>Coalesce</b><b>(</b>:SarfMiktari<b>,</b><b> </b>0<b>)</b><b>)</b><b>,</b><b> </b><b>iif</b><b>(</b>:SarfMiktari<b> </b><b>=</b><b> </b>0<b>,</b><b> </b>1<b>,</b><b> </b>0<b>)</b><b>,</b><b> </b>:HataStr<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b>,</b><b> </b>1<b>,</b><b> </b>'SİSTEM YÖNETİCİSİ'<b>,</b><b> </b>'Dokuma Üretim İçin Otomatik Üretime Çıkış Bildirimi'<b>,</b><b> </b>:Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>DokumaOtomatikCikisBildirimAl<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DOKUMAURETIMHATAKAYDET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DOKUMAURETIMPNOBILGISIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

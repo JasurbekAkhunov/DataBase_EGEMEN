@@ -1,0 +1,188 @@
+<HTML>
+<HEAD>
+<TITLE>HGTASNIFSTOKOLUSTUR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="777800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HGTASNIFFISINUMARATORAL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HGURETIMECIKISKAYDET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HGTASNIFSTOKOLUSTUR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHGTASNIFFISIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHGTASNIFFISIDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HGTASNIFSTOKOLUSTUR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HGTASNIFSTOKOLUSTUR</u></font><b>(</b>
+<b>    </b>AHGTASNIFFISIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AHGTASNIFFISIDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KesimDepoID<b>            </b><font color="# 080 0"><u>DepoKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TasnifDepoID<b>           </b><font color="# 080 0"><u>DepoKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStokTabanDovizId<b>      </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FStokId<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHareketTipi<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFisSeriNo<b>             </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FFisNo<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FTarih<b>                 </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FNow<b> </b><b>date</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKalanMiktar<b>           </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCikilanMiktar<b>         </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FCikilacakMiktar<b>       </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HGSiparisDetayID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HGIsEmriKayitID<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HGIsEmriPastalID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HGSiparisKayitID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IEUretimPartiNo<b>  </b><b>Type</b><b> </b><b>of</b><b> </b><b>Column</b><b> </b><font color="# 080 0"><u>HGIsEmri</u></font><b>.</b>UretimPartiNo<b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunId<b>           </b><font color="# 080 0"><u>UrunKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TasnifMiktar<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DusulmusMiktar<b>   </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUrunBirimID<b>     </b><b>Type</b><b> </b><b>of</b><b> </b><b>Column</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunBirimId<b>;</b>
+<b>begin</b>
+<b>  </b>FHareketTipi<b> </b><b>=</b><b> </b>6<b>;</b><b>  </b><font color="# 0 0FF"><i>/* Uretime Cikis */</i></font>
+<b>  </b><b>Select</b><b> </b>StokId<b>,</b><b> </b>FisTarihi<b> </b><b>From</b><b> </b><font color="# 080 0"><u>Stok</u></font><b> </b><b>Where</b><b> </b>HGTasnifFisiId<b> </b><b>=</b><b> </b>:AHGTasnifFisiId<b> </b><b>and</b><b> </b>HareketTipi<b> </b><b>=</b><b> </b>:FHareketTipi<b> </b><b>into</b><b> </b>:FStokId<b>,</b><b> </b>:FTarih<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FStokId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>FNow<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>    </b>FTarih<b> </b><b>=</b><b>  </b>FNow<b>;</b>
+
+<b>    </b><b>select</b><b> </b>StokTabanDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FStokTabanDovizId<b>;</b>
+<b>    </b><b>Select</b><b> </b>FisSeriNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>:AKullaniciID<b> </b><b>into</b><b> </b>:FFisSeriNo<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FFisSeriNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FFisSeriNo<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>select</b><b> </b>FisNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FisNumaratorAL</u></font><b>(</b>:FFisSeriNo<b>)</b><b> </b><b>into</b><b> </b>:FFisNo<b>;</b>
+<b>    </b>FStokId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>Stok_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Stok</u></font><b>(</b>StokId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>SeriNo<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>DovizId<b>,</b><b> </b>TabanDovizKuru1<b>,</b><b> </b>TabanDovizKuru2<b>,</b><b> </b>HGTasnifFisiId<b>,</b><b> </b>IslemKaynagi<b>,</b><b> </b>KullaniciID<b>,</b><b> </b>InsertKullaniciID<b>)</b>
+<b>              </b><b>values</b><b>(</b>:FStokId<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FFisSeriNo<b>,</b><b> </b>:FFisNo<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:AHGTasnifFisiId<b>,</b><b> </b>1<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>HGIsEmri</u></font><b>.</b>HGSiparisKayitID<b>,</b><b> </b><font color="# 080 0"><u>HGIsEmri</u></font><b>.</b>UretimPartiNo<b>,</b><b> </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font><b>.</b>DepoId<b>,</b><b> </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font><b>.</b>HGSiparisDetayID<b>,</b><b> </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font><b>.</b>HGIsEmriKayitID<b>,</b>
+<b>         </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font><b>.</b>HGIsEmriPastalID<b>,</b><b> </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font><b>.</b>TasnifMiktar<b>,</b><b> </b>UrunBirimID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font>
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>HGIsEmri</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HGIsEmri</u></font><b>.</b>HGIsEmriKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font><b>.</b>HGIsEmriKayitId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font><b>.</b>UrunId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>DefaultBirim<b> </b><b>=</b><b> </b>1
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>HGTasnifFisiDetay</u></font><b>.</b>HGTasnifFisiDetayId<b> </b><b>=</b><b> </b>:AHGTasnifFisiDetayID
+<b>    </b><b>into</b><b> </b>:HGSiparisKayitID<b>,</b><b> </b>:IEUretimPartiNo<b>,</b><b> </b>:TasnifDepoID<b>,</b><b> </b>:HGSiparisDetayID<b>,</b><b> </b>:HGIsEmriKayitID<b>,</b><b> </b>:HGIsEmriPastalID<b>,</b><b>  </b>:UrunId<b>,</b><b> </b>:TasnifMiktar<b>,</b><b> </b>:FUrunBirimID<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Sum</b><b>(</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b> </b><b>Where</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>HGTasnifFisiDetayId<b> </b><b>=</b><b> </b>:AHGTasnifFisiDetayId<b> </b><b>and</b><b> </b>HareketTipi<b> </b><b>=</b><b> </b>:FHareketTipi<b> </b><b>into</b><b> </b>:DusulmusMiktar<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>DusulmusMiktar<b> </b><b>&lt;</b><b>&gt;</b><b> </b>TasnifMiktar<b>)</b><b> </b><b>then</b><b> </b><b>Delete</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>HGTasnifFisiDetayId<b> </b><b>=</b><b> </b>:AHGTasnifFisiDetayId<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>First</b><b> </b>1<b> </b><font color="# 080 0"><u>ModelUretimIslemTipi</u></font><b>.</b>DefaultDepoId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ModelUretimIslemTipi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ModelUretimIslemTipi</u></font><b>.</b>KesimIslemi<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KesimDepoId<b>;</b>
+
+<b>  </b>FCikilanMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>FCikilacakMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><b>Sum</b><b>(</b>Miktar<b> </b><b>*</b><b> </b>GirisCikis<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokDetay</u></font>
+<b>          </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Depo</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>DepoID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>DepoID
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>UrunID<b> </b><b>=</b><b> </b>:UrunID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>DepoID<b> </b><b>=</b><b> </b>:KesimDepoId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>.</b>HGIsEmriPastalID<b> </b><b>=</b><b> </b>:HGIsEmriPastalID<b> </b><b>and</b><b> </b>HGYariMamul<b> </b><b>=</b><b> </b>1
+<b>  </b><b>into</b><b> </b>:FKalanMiktar<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FKalanMiktar<b> </b><b>&lt;</b><b> </b>TasnifMiktar<b> </b><b>-</b><b> </b>FCikilanMiktar<b>)</b><b> </b><b>then</b>
+<b>      </b>FCikilacakMiktar<b> </b><b>=</b><b> </b>FKalanMiktar<b>;</b>
+<b>    </b><b>else</b>
+<b>      </b>FCikilacakMiktar<b> </b><b>=</b><b> </b>TasnifMiktar<b> </b><b>-</b><b> </b>FCikilanMiktar<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>Tarih<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>HGSiparisKayitID<b>,</b><b> </b>HGSiparisDetayID<b>,</b><b> </b>HGIsEmriKayitID<b>,</b><b> </b>HGIsEmriPastalID<b>,</b><b> </b>StokId<b>,</b><b> </b>DepoId<b>,</b><b> </b>UrunId<b>,</b><b> </b>Miktar<b>,</b><b> </b>UrunBirimID<b>,</b><b> </b>Otomasyon<b>,</b><b> </b>PastalNo<b>,</b><b> </b>HGTasnifFisiDetayId<b>,</b><b> </b>KullaniciID<b>,</b><b> </b>InsertKullaniciID<b>)</b>
+<b>                 </b><b>values</b><b>(</b>:FTarih<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:HGSiparisKayitID<b>,</b><b> </b>:HGSiparisDetayID<b>,</b><b> </b>:HGIsEmriKayitID<b>,</b><b> </b>:HGIsEmriPastalID<b>,</b><b> </b>:FStokId<b>,</b><b> </b>:KesimDepoId<b>,</b><b> </b>:UrunId<b>,</b><b> </b>:FCikilacakMiktar<b>,</b><b> </b>:FUrunBirimID<b>,</b><b> </b>1<b>,</b><b> </b>:IEUretimPartiNo<b>,</b><b> </b>:AHGTasnifFisiDetayId<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>)</b><b>;</b>
+
+
+<b>    </b>FCikilanMiktar<b> </b><b>=</b><b> </b>FCikilanMiktar<b> </b><b>+</b><b> </b>FCikilacakMiktar<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FCikilanMiktar<b> </b><b>=</b><b> </b>TasnifMiktar<b>)</b><b> </b><b>then</b><b> </b><b>break</b><b>;</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><font color="# 0 0FF"><i>/***************Üretim Girişi Yapalım***************/</i></font>
+
+<b>  </b>FStokId<b>    </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b>FFisSeriNo<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b>FFisNo<b>     </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b>FHareketTipi<b> </b><b>=</b><b> </b>7<b>;</b><b>  </b><font color="# 0 0FF"><i>/* Uretim */</i></font>
+<b>  </b><b>Select</b><b> </b>StokId<b>,</b><b> </b>FisTarihi<b> </b><b>From</b><b> </b><font color="# 080 0"><u>Stok</u></font><b> </b><b>Where</b><b> </b>HGTasnifFisiId<b> </b><b>=</b><b> </b>:AHGTasnifFisiId<b> </b><b>and</b><b> </b>HareketTipi<b> </b><b>=</b><b> </b>:FHareketTipi<b> </b><b>into</b><b> </b>:FStokId<b>,</b><b> </b>:FTarih<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FStokId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>FNow<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>    </b>FTarih<b> </b><b>=</b><b>  </b>FNow<b>;</b>
+
+<b>    </b><b>Select</b><b> </b>UretimFisSeriNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>:AKullaniciID<b> </b><b>into</b><b> </b>:FFisSeriNo<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FFisSeriNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FFisSeriNo<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>select</b><b> </b>FisNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FisNumaratorAL</u></font><b>(</b>:FFisSeriNo<b>)</b><b> </b><b>into</b><b> </b>:FFisNo<b>;</b>
+<b>    </b>FStokId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>Stok_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Stok</u></font><b>(</b>StokId<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>SeriNo<b>,</b><b> </b>FisNo<b>,</b><b> </b>FisTarihi<b>,</b><b> </b>DovizId<b>,</b><b> </b>TabanDovizKuru1<b>,</b><b> </b>TabanDovizKuru2<b>,</b><b> </b>HGTasnifFisiId<b>,</b><b> </b>IslemKaynagi<b>,</b><b> </b>KullaniciID<b>,</b><b> </b>InsertKullaniciID<b>)</b>
+<b>              </b><b>values</b><b>(</b>:FStokId<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:FFisSeriNo<b>,</b><b> </b>:FFisNo<b>,</b><b> </b>:FTarih<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b>:AHGTasnifFisiId<b>,</b><b> </b>1<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>StokDetay</u></font><b>(</b>StokID<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>HGSiparisKayitID<b>,</b><b> </b>HGSiparisDetayID<b>,</b><b> </b>HGIsEmriKayitID<b>,</b><b> </b>HGIsEmriPastalID<b>,</b><b> </b>DepoId<b>,</b><b>  </b>UrunID<b>,</b><b> </b>UrunBirimID<b>,</b><b> </b>Miktar<b>,</b><b> </b>PastalNo<b>,</b><b> </b>HGTasnifFisiDetayId<b>,</b><b> </b>KullaniciID<b>,</b><b> </b>InsertKullaniciID<b>,</b><b> </b>Otomasyon<b>)</b><b> </b><b>values</b>
+<b>                      </b><b>(</b>:FStokId<b>,</b><b> </b>:FHareketTipi<b>,</b><b> </b>:HGSiparisKayitID<b>,</b><b> </b>:HGSiparisDetayID<b>,</b><b> </b>:HGIsEmriKayitID<b>,</b><b> </b>:HGIsEmriPastalID<b>,</b><b> </b>:TasnifDepoId<b>,</b><b> </b>:UrunId<b>,</b><b> </b>:FUrunBirimID<b>,</b><b> </b>:TasnifMiktar<b>,</b><b> </b>:IEUretimPartiNo<b>,</b><b> </b>:AHGTasnifFisiDetayId<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HGTASNIFFISINUMARATORAL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HGURETIMECIKISKAYDET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

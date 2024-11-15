@@ -1,0 +1,210 @@
+<HTML>
+<HEAD>
+<TITLE>PARTISABLONACILIMIHESAPLA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1494800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTIRPTDURUMRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTISABLONGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTISABLONACILIMIHESAPLA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTISABLONACILIMIHESAPLA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTISABLONACILIMIHESAPLA</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EmulsiyonUrunId<b>       </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunBirimId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiSablonId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Acilim1<b>               </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Acilim2<b>               </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AcilimToplami<b>         </b><b>Double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HazirlananMiktar<b>      </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaToplami<b>           </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PatToplami<b>            </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>B1<b>                    </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>X1<b>                    </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaCarpani<b>           </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PatCarpani<b>            </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Carpan<b>                </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SablonReceteHesapSekli<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SablonDolulukOrani<b>    </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DesenVaryantId<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HesaplananPatMiktari<b>  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KullanilanBoyaMiktari<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>SablonReceteHesapSekli<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:SablonReceteHesapSekli<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>DesenvaryantId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>parti</u></font>
+<b>    </b><b>Where</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId
+<b>  </b><b>into</b><b> </b>:DesenvaryantId<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>EmulsiyonUrunId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>Acilim1<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>Acilim2<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PatMiktari<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>HazirlananMiktar<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>BoyaToplami<b>,</b>
+<b>             </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DolulukOrani<b>,</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunBirimId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DesenVaryantID<b> </b><b>=</b><b> </b>:DesenvaryantId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>SablonNo<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>SablonNo
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>EmulsiyonUrunId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b>.</b>ReceteDefaultBirim<b> </b><b>=</b><b> </b>1
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b>:APartiKayitId
+<b>    </b><b>into</b><b> </b>:EmulsiyonUrunId<b>,</b><b> </b>:PartiSablonId<b>,</b><b> </b>:Acilim1<b>,</b><b> </b>:Acilim2<b>,</b><b> </b>:PatToplami<b>,</b><b> </b>:HazirlananMiktar<b>,</b><b> </b>:BoyaToplami<b>,</b><b> </b>:SablonDolulukOrani<b>,</b><b> </b>:UrunBirimId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>SablonReceteHesapSekli<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>/*Tekboy*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b>AcilimToplami<b> </b><b>=</b><b> </b>Acilim1<b> </b><b>+</b><b> </b>Acilim2<b>;</b>
+
+<b>      </b>PatToplami<b> </b><b>=</b><b> </b>Acilim2<b> </b><b>*</b><b> </b>1000<b>;</b>
+<b>      </b>B1<b> </b><b>=</b><b> </b>BoyaToplami<b> </b><b>*</b><b> </b>Acilim1<b>;</b>
+<b>      </b>X1<b> </b><b>=</b><b> </b>Acilim1<b> </b><b>*</b><b> </b>1000<b>;</b>
+<b>      </b>PatToplami<b> </b><b>=</b><b> </b>PatToplami<b> </b><b>+</b><b> </b>X1<b> </b><b>-</b><b> </b>B1<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Acilim1<b> </b><b>+</b><b> </b>Acilim2<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>BoyaCarpani<b> </b><b>=</b><b> </b>B1<b> </b><b>/</b><b> </b><b>(</b>Acilim1<b> </b><b>+</b><b> </b>Acilim2<b>)</b><b>;</b><b> </b><font color="# 0 0FF"><i>/* 1 kg icin kullanılacak boya miktarı */</i></font>
+<b>        </b>PatCarpani<b> </b><b>=</b><b> </b>PatToplami<b> </b><b>/</b><b> </b><b>(</b>Acilim1<b> </b><b>+</b><b> </b>Acilim2<b>)</b><b>;</b><b> </b><font color="# 0 0FF"><i>/* 1 kg icin kullanılacak Emulsiyon miktarı */</i></font>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>PatCarpani<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>BoyaCarpani<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>Set</b><b> </b>KullanilanMiktar<b> </b><b>=</b><b> </b>Miktar<b> </b><b>*</b><b> </b>:HazirlananMiktar<b> </b><b>*</b><b> </b>:BoyaCarpani
+<b>         </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonId<b> </b><b>=</b><b> </b>:PartiSablonId<b>;</b>
+
+
+<b>      </b><b>if</b><b> </b><b>(</b>PatCarpani<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>if</b><b> </b><b>(</b>EmulsiyonUrunId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KullanilacakPatSecilmemis</u></font><b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>(</b>PartiKayitId<b>,</b><b> </b>PartiSablonId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>KullanilanMiktar<b>,</b><b> </b>Pat<b>)</b>
+<b>                        </b><b>values</b><b>(</b>:APartiKayitId<b>,</b><b> </b>:PartiSablonId<b>,</b><b> </b>:EmulsiyonUrunId<b>,</b><b> </b>:UrunBirimId<b>,</b><b> </b>0<b>,</b><b> </b>:HazirlananMiktar<b> </b><b>*</b><b> </b>:PatCarpani<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>SablonReceteHesapSekli<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>Set</b><b> </b>KullanilanMiktar<b> </b><b>=</b><b> </b>Miktar<b> </b><b>*</b><b> </b>:HazirlananMiktar
+<b>         </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonId<b> </b><b>=</b><b> </b>:PartiSablonId<b>;</b>
+
+<b>      </b><b>Select</b><b> </b><b>Sum</b><b>(</b>KullanilanMiktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonID<b> </b><b>=</b><b> </b>:PartiSablonID<b> </b><b>into</b><b> </b>:KullanilanBoyaMiktari<b>;</b>
+
+<b>      </b>HesaplananPatMiktari<b> </b><b>=</b><b> </b>HazirlananMiktar<b> </b><b>*</b><b> </b>1000<b> </b><b>-</b><b> </b>KullanilanBoyaMiktari<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>HesaplananPatMiktari<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>if</b><b> </b><b>(</b>EmulsiyonUrunId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KullanilacakPatSecilmemis</u></font><b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>(</b>PartiKayitId<b>,</b><b> </b>PartiSablonId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>KullanilanMiktar<b>,</b><b> </b>Pat<b>)</b>
+<b>                        </b><b>values</b><b>(</b>:APartiKayitId<b>,</b><b> </b>:PartiSablonId<b>,</b><b> </b>:EmulsiyonUrunId<b>,</b><b> </b>:UrunBirimId<b>,</b><b> </b>0<b>,</b><b> </b>:HesaplananPatMiktari<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>SablonReceteHesapSekli<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Orkum falan filan*/</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Acilim1<b> </b><b>+</b><b> </b>Acilim2<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>AcilimToplami<b> </b><b>=</b><b> </b>Acilim1<b> </b><b>+</b><b> </b>Acilim2<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>AcilimToplami<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b>Acilim1<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>Set</b><b> </b>KullanilanMiktar<b> </b><b>=</b><b> </b>Miktar<b> </b><b>/</b><b> </b>:AcilimToplami<b> </b><b>*</b><b> </b>:Acilim1<b> </b><b>*</b><b> </b>:HazirlananMiktar
+<b>         </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonId<b> </b><b>=</b><b> </b>:PartiSablonId<b>;</b>
+
+<b>      </b><b>Select</b><b> </b><b>Sum</b><b>(</b>KullanilanMiktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonID<b> </b><b>=</b><b> </b>:PartiSablonID<b> </b><b>into</b><b> </b>:KullanilanBoyaMiktari<b>;</b>
+
+<b>      </b>HesaplananPatMiktari<b> </b><b>=</b><b> </b>HazirlananMiktar<b> </b><b>*</b><b> </b>1000<b> </b><b>-</b><b> </b>KullanilanBoyaMiktari<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>HesaplananPatMiktari<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>if</b><b> </b><b>(</b>EmulsiyonUrunId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KullanilacakPatSecilmemis</u></font><b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>(</b>PartiKayitId<b>,</b><b> </b>PartiSablonId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>KullanilanMiktar<b>,</b><b> </b>Pat<b>)</b>
+<b>                        </b><b>values</b><b>(</b>:APartiKayitId<b>,</b><b> </b>:PartiSablonId<b>,</b><b> </b>:EmulsiyonUrunId<b>,</b><b> </b>:UrunBirimId<b>,</b><b> </b>0<b>,</b><b> </b>:HesaplananPatMiktari<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>SablonReceteHesapSekli<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Baht */</i></font>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Acilim1<b> </b><b>+</b><b> </b>Acilim2<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>AcilimToplami<b> </b><b>=</b><b> </b>Acilim1<b> </b><b>+</b><b> </b>Acilim2<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>AcilimToplami<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b>Acilim1<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>Set</b><b> </b>KullanilanMiktar<b> </b><b>=</b><b> </b>Miktar<b> </b><b>/</b><b> </b>:AcilimToplami<b> </b><b>*</b><b> </b>:Acilim1<b> </b><b>*</b><b> </b>:HazirlananMiktar
+<b>         </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonId<b> </b><b>=</b><b> </b>:PartiSablonId<b>;</b>
+
+
+<b>      </b><b>Select</b><b> </b><b>Sum</b><b>(</b>KullanilanMiktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonID<b> </b><b>=</b><b> </b>:PartiSablonID<b> </b><b>into</b><b> </b>:KullanilanBoyaMiktari<b>;</b>
+
+<b>      </b>HesaplananPatMiktari<b> </b><b>=</b><b> </b>PatToplami<b> </b><b>*</b><b> </b>1000<b> </b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>HesaplananPatMiktari<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>if</b><b> </b><b>(</b>EmulsiyonUrunId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KullanilacakPatSecilmemis</u></font><b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>(</b>PartiKayitId<b>,</b><b> </b>PartiSablonId<b>,</b><b> </b>UrunId<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>Miktar<b>,</b><b> </b>KullanilanMiktar<b>,</b><b> </b>Pat<b>)</b>
+<b>                        </b><b>values</b><b>(</b>:APartiKayitId<b>,</b><b> </b>:PartiSablonId<b>,</b><b> </b>:EmulsiyonUrunId<b>,</b><b> </b>:UrunBirimId<b>,</b><b> </b>0<b>,</b><b> </b>:HesaplananPatMiktari<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTIRPTDURUMRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTISABLONGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

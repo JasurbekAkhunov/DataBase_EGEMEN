@@ -1,0 +1,151 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTRECETEDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1043800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTRDHAMTRANSFERKOD.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTRECETEISEMRI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTRECETEDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTRECETEDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTRECETEDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>RECETEDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RdId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ASira<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBRBoyaYuzdesiDegistirilebilir<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FOrtakRecete<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PAReceteBoyaMiktarDevrede<b> </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaAsamasimi<b> </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiKayitId<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FPartiAsamalariId<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiKilo<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>ReceteAltAsamaId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>UrunId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteDetayEksikBilgi</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>UrunId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>UrunBirimId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteDetayEksikBilgi</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>new</b><b>.</b>ReceteAsamaSablonId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteDetayEksikBilgi</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b><b>new</b><b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteAltAsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><b>new</b><b>.</b>UrunId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>)</b><b> </b><b>or</b>
+<b>     </b><b>(</b><b>new</b><b>.</b>ReceteAltAsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><b>new</b><b>.</b>UrunId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>)</b><b> </b><b>or</b>
+<b>     </b><b>(</b><b>new</b><b>.</b>UrunId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>or</b><b> </b><b>new</b><b>.</b>ReceteAltAsamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteDetayFazlaBilgi</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteAsamaSablonId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteAsamaSablon</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteAsamaSablon</u></font><b>.</b>ReceteAsamaSablonID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteAsamaSablonID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>ReceteAsamaSablon</u></font><b>.</b>ReceteAsamaID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteAsamaID<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>SecilenSablonAsamaninDegil</u></font><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b>OrtakRecete<b> </b><b>from</b><b> </b><font color="# 080 0"><u>recete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Recete</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteId<b> </b><b>into</b><b> </b>:FOrtakRecete<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FOrtakRecete<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>Miktar<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>Miktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>BRBoyaYuzdesiDegistirilebilir<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>sistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FBRBoyaYuzdesiDegistirilebilir<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FBRBoyaYuzdesiDegistirilebilir<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>AsamayaDahil<b> </b><b>=</b><b> </b>1
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>GirisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteKullanilmisBoyaDegisemez</u></font><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Sira<b> </b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>ASira<b> </b><b>=</b><b> </b><b>new</b><b>.</b>Sira<b>;</b>
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b>ReceteDetayId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b><b>where</b><b> </b>ReceteId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteId<b> </b><b>and</b><b> </b>Sira<b> </b><b>&gt;</b><b>=</b><b> </b><b>new</b><b>.</b>Sira<b> </b><b>order</b><b> </b><b>by</b><b> </b>Sira<b> </b><b>into</b><b> </b>:RdId<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>update</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b><b>set</b><b> </b>Sira<b> </b><b>=</b><b> </b>:ASira<b> </b><b>where</b><b> </b>ReceteDetayId<b> </b><b>=</b><b> </b>:RdId<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><b>max</b><b>(</b>sira<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteDetay</u></font><b> </b><b>where</b><b> </b>ReceteId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteId<b> </b><b>into</b><b> </b>:ASira<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>ASira<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>ASira<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>else</b><b> </b>ASira<b> </b><b>=</b><b> </b>ASira<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>    </b><b>new</b><b>.</b>Sira<b> </b><b>=</b><b> </b>ASira<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b>PAReceteBoyaMiktarDevrede<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>into</b><b> </b>:PAReceteBoyaMiktarDevrede<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>PAReceteBoyaMiktarDevrede<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>New</b><b>.</b>ReceteAsamaId<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>BoyaAsamasimi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteAsama</u></font><b>.</b>ReceteAsamaId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteAsamaId<b> </b><b>into</b><b> </b>:BoyaAsamasimi<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>BoyaAsamasimi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitId<b>,</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>PartiAsamalariReceteBoyaMiktar</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamalariReceteBoyaMiktar</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalariReceteBoyaMiktar</u></font><b>.</b>ReceteAsamaId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteAsamaId
+<b>        </b><b>Where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalariReceteBoyaMiktar</u></font><b>.</b>PartiAsamalariId<b> </b><b>is</b><b> </b><b>Null</b>
+<b>      </b><b>into</b><b> </b>:FPartiKayitId<b>,</b><b> </b>:FPartiAsamalariId<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font>
+<b>          </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>AsamayaDahil<b> </b><b>=</b><b> </b>1
+<b>          </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>ReceteId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>GirisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:FPartiKayitId<b>  </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b>:FPartiAsamalariId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b>PartiKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>          </b><b>Select</b><b> </b><b>Sum</b><b>(</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>Where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:FPartiKayitId<b> </b><b>into</b><b> </b>:PartiKilo<b>;</b>
+
+<b>          </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>PartiAsamalariReceteBoyaMiktar</u></font><b> </b><b>(</b>PartiAsamalariID<b>,</b><b> </b>PartiKayitID<b>,</b><b> </b>ReceteAsamaID<b>,</b><b> </b>Miktar<b>,</b><b> </b>InsertKullaniciId<b>)</b><b> </b><b>Values</b>
+<b>                                                    </b><b>(</b>:FPartiAsamalariId<b>,</b><b> </b>:FPartiKayitId<b>,</b><b> </b><b>New</b><b>.</b>ReceteAsamaID<b>,</b><b> </b>:PartiKilo<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+
+<b>  </b><b>new</b><b>.</b>ReceteDetayId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>ReceteDetay_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><b>new</b><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Miktar<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Miktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTRDHAMTRANSFERKOD.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTRECETEISEMRI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

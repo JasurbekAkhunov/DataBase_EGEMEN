@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<TITLE>FOREIGNKEYVARMI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="581800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="FIZIKKONTROLVEPARTISTOKGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="FORMATAGOREFIYATYUVARLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">FOREIGNKEYVARMI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AKOLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATABLO</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">FOREIGNKOLON</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FOREIGNTABLO</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure FOREIGNKEYVARMI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>FOREIGNKEYVARMI</u></font><b>(</b>
+<b>    </b>AKOLON<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>ATABLO<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>FOREIGNKOLON<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>FOREIGNTABLO<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>)</b>
+<b>AS</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FTabloAdi<b> </b><b>Varchar</b><b>(</b>255<b>)</b><b>;</b>
+<b>Begin</b>
+<b>    </b><b>SELECT</b>
+<b>        </b><b>Trim</b><b>(</b>master_relation_constraints<b>.</b>rdb$relation_name<b>)</b><b> </b><b>AS</b><b> </b>reference_table<b>,</b>
+<b>        </b><b>Trim</b><b>(</b>master_index_segments<b>.</b>rdb$field_name<b>)</b><b> </b><b>AS</b><b> </b>fk_field<b>   </b>
+<b>    </b><b>FROM</b>
+<b>        </b>rdb$relation_constraints<b> </b>detail_relation_constraints
+<b>        </b><b>JOIN</b><b> </b>rdb$index_segments<b> </b>detail_index_segments<b> </b><b>ON</b><b> </b>detail_relation_constraints<b>.</b>rdb$index_name<b> </b><b>=</b><b> </b>detail_index_segments<b>.</b>rdb$index_name<b> </b>
+<b>        </b><b>JOIN</b><b> </b>rdb$ref_constraints<b> </b><b>ON</b><b> </b>detail_relation_constraints<b>.</b>rdb$constraint_name<b> </b><b>=</b><b> </b>rdb$ref_constraints<b>.</b>rdb$constraint_name<b> </b><font color="# 0 0FF"><i>-- Master indeksas</i></font>
+<b>        </b><b>JOIN</b><b> </b>rdb$relation_constraints<b> </b>master_relation_constraints<b> </b><b>ON</b><b> </b>rdb$ref_constraints<b>.</b>rdb$const_name_uq<b> </b><b>=</b><b> </b>master_relation_constraints<b>.</b>rdb$constraint_name
+<b>        </b><b>JOIN</b><b> </b>rdb$index_segments<b> </b>master_index_segments<b> </b><b>ON</b><b> </b>master_relation_constraints<b>.</b>rdb$index_name<b> </b><b>=</b><b> </b>master_index_segments<b>.</b>rdb$index_name<b>     </b>
+<b>    </b><b>WHERE</b>
+<b>        </b>detail_relation_constraints<b>.</b>rdb$constraint_type<b> </b><b>=</b><b> </b>'FOREIGN KEY'
+<b>        </b><b>AND</b><b> </b>detail_relation_constraints<b>.</b>rdb$relation_name<b> </b><b>=</b><b> </b>:ATablo
+<b>        </b><b>And</b><b> </b>detail_index_segments<b>.</b>rdb$field_name<b> </b><b>=</b><b> </b>:AKolon
+<b>    </b><b>INTO</b><b> </b>:ForeignTablo<b>,</b><b> </b>:ForeignKolon<b>;</b>
+<b>	</b>
+<b>	</b><b>suspend</b><b>;</b>
+<b>End</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="FIZIKKONTROLVEPARTISTOKGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="FORMATAGOREFIYATYUVARLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

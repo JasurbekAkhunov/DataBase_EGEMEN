@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<TITLE>TAMIRGIRISUYARIMAILIGONDER</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1828800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="TAMIRGIRISNUMARATORAL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="TAMIRINSARIMACIKISINIKAYDET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">TAMIRGIRISUYARIMAILIGONDER</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AFIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AIRSALIYETARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AIRSALIYENO</TD>
+    <TD><P CLASS="Base2">NUMERIC(18,0)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARENK</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMIKTAR</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AGIRISYERI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure TAMIRGIRISUYARIMAILIGONDER)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>TAMIRGIRISUYARIMAILIGONDER</u></font><b>(</b>
+<b>    </b>AFIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>AIRSALIYETARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AIRSALIYENO<b> </b><font color="# 080 0"><u>IRSALIYENOSIZE</u></font><b>,</b>
+<b>    </b>AHAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARENK<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>AMIKTAR<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AGIRISYERI<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FirmaAdi<b>          </b><b>varchar</b><b>(</b>100<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamAdi<b>            </b><b>varchar</b><b>(</b>255<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Aciklama<b>          </b><b>varchar</b><b>(</b>1024<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Konu<b>              </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>begin</b>
+<b>    </b><b>select</b><b> </b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>where</b><b> </b>FirmaId<b> </b><b>=</b><b> </b>:AFirmaId<b> </b><b>into</b><b> </b>:FirmaAdi<b>;</b>
+<b>    </b><b>select</b><b> </b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>where</b><b> </b>HamId<b> </b><b>=</b><b> </b>:AHamId<b> </b><b>into</b><b> </b>:HamAdi<b>;</b>
+<b>    </b>Konu<b> </b><b>=</b><b> </b>'Tamir Bilgilendirme İletisi'<b>;</b>
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b><b>left</b><b>(</b><b>Cast</b><b>(</b>AIrsaliyeNo<b> </b><b>|</b><b>|</b><b> </b>' Nolu '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>TimeStampToDateTimeStr</u></font><b>(</b>AIrsaliyeTarihi<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' tarihli irsaliye ile tamir kaydı girildi.'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>,</b><b> </b>1024<b>)</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FirmaAdi<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>Aciklama<b> </b><b>=</b><b> </b><b>LEFT</b><b>(</b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Firma  : ('<b> </b><b>|</b><b>|</b><b> </b>AFirmaId<b> </b><b>|</b><b>|</b><b> </b>') '<b> </b><b>|</b><b>|</b><b> </b>FirmaAdi<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>,</b><b> </b>1024<b>)</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AMiktar<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>Aciklama<b> </b><b>=</b><b> </b><b>LEFT</b><b>(</b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Miktar : '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b><b> </b>AMiktar<b>)</b><b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>,</b><b> </b>1024<b>)</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>HamAdi<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>Aciklama<b> </b><b>=</b><b> </b><b>LEFT</b><b>(</b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>CAst</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Ürün Adı : '<b> </b><b>|</b><b>|</b><b> </b>HamAdi<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b>,</b><b> </b>1024<b>)</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>ARenk<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>Aciklama<b> </b><b>=</b><b> </b><b>LEFT</b><b>(</b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b>' '<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b>ARenk<b>,</b><b> </b>1024<b>)</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>AGirisYeri<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>Aciklama<b> </b><b>=</b><b> </b><b>LEFT</b><b>(</b>Aciklama<b> </b><b>|</b><b>|</b><b> </b><b>Cast</b><b>(</b><font color="# 080 0"><u>Chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'Giriş Yeri : '<b> </b><b>as</b><b> </b><b>Blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>|</b><b>|</b><b> </b>AGirisYeri<b>,</b><b> </b>1024<b>)</b><b>;</b>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GelenMail</u></font><b>(</b>KullaniciId<b>,</b><b> </b>KimdenKullaniciId<b>,</b><b> </b>KimdenKullaniciAdi<b>,</b><b> </b>Konu<b>,</b><b> </b>Mesaj<b>)</b>
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>,</b><b> </b>1<b>,</b><b> </b>'Tamir Uyarısı'<b>,</b><b> </b>:Konu<b>,</b><b> </b>:Aciklama<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>TamirGirislerindeMailUyari<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="TAMIRGIRISNUMARATORAL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="TAMIRINSARIMACIKISINIKAYDET.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

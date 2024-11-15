@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>PSKALITEKONTROLKOPYALA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1619800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PSKALITEKONTROLHATAPUANHESAPLA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PSKALITEKONTROLPARTISTOKGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PSKALITEKONTROLKOPYALA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APSKALITEKONTROLID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMIKTAR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PSKALITEKONTROLKOPYALA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PSKALITEKONTROLKOPYALA</u></font><b>(</b>
+<b>    </b>APSKALITEKONTROLID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AMIKTAR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Counter<b> </b><b>integer</b><b> </b><b>=</b><b> </b>0<b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AMiktar<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exit</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>APsKaliteKontrolId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>APsKaliteKontrolId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exit</b><b>;</b>
+
+<b>  </b><b>while</b><b> </b><b>(</b><b> </b>Counter<b> </b><b>&lt;</b><b> </b>AMiktar<b> </b><b>)</b><b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font><b> </b><b>(</b>PsKaliteKontrolId<b>,</b><b> </b>PsKaliteKontrolAsamaid<b>,</b><b> </b>PaketlemeId<b>,</b><b> </b>Tarih<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>PartiSinifId<b>,</b><b> </b>MakinaId<b>,</b><b> </b>PersonelId<b>,</b>
+<b>           </b>KaliteNo<b>,</b><b> </b>Kilo<b>,</b><b> </b>Dara<b>,</b><b> </b>Metre<b>,</b><b> </b>BrutMetre<b>,</b><b> </b>En<b>,</b><b> </b>Gramaj<b>,</b><b> </b>Donme<b>,</b><b> </b>Egrilik<b>,</b><b> </b>BaslangicEn<b>,</b><b> </b>OrtaEn<b>,</b><b> </b>BitisEn<b>,</b>
+<b>           </b>OrtalamaEn<b>,</b><b> </b>Aciklama<b>,</b><b> </b>PartiStokTartiId<b>,</b><b> </b>HataPuani<b>,</b><b> </b>PuanliSistem<b>,</b><b> </b>Parcayarim<b>,</b><b> </b>PaketlemeHataPuani<b>,</b>
+<b>           </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b><b> </b>ParcaSayisi<b>,</b><b> </b>PartiRenkLotNo<b>,</b><b> </b>ReddenBolunenYeniPartiSinifId<b>,</b><b> </b>MusteriAciklama<b>,</b><b> </b>RaporBoyu<b>,</b><b> </b>OlcuId<b>)</b>
+<b>    </b><b>select</b><b> </b><b>gen_ID</b><b>(</b><font color="# 080 0"><u>PsKaliteKontrol_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>,</b><b> </b>PsKaliteKontrolAsamaid<b>,</b><b> </b>PaketlemeId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>PartiSinifId<b>,</b><b> </b>MakinaId<b>,</b><b> </b>PersonelId<b>,</b>
+<b>           </b>KaliteNo<b>,</b><b> </b>Kilo<b>,</b><b> </b>Dara<b>,</b><b> </b>Metre<b>,</b><b> </b>BrutMetre<b>,</b><b> </b>En<b>,</b><b> </b>Gramaj<b>,</b><b> </b>Donme<b>,</b><b> </b>Egrilik<b>,</b><b> </b>BaslangicEn<b>,</b><b> </b>OrtaEn<b>,</b><b> </b>BitisEn<b>,</b>
+<b>           </b>OrtalamaEn<b>,</b><b> </b>Aciklama<b>,</b><b> </b>PartiStokTartiId<b>,</b><b> </b>HataPuani<b>,</b><b> </b>PuanliSistem<b>,</b><b> </b>Parcayarim<b>,</b><b> </b>PaketlemeHataPuani<b>,</b>
+<b>           </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>ParcaSayisi<b>,</b><b> </b>PartiRenkLotNo<b>,</b><b> </b>ReddenBolunenYeniPartiSinifId<b>,</b><b> </b>MusteriAciklama<b>,</b><b> </b>RaporBoyu<b>,</b>
+<b>           </b>OlcuId
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font><b>.</b>PsKaliteKontrolId<b> </b><b>=</b><b> </b>:APsKaliteKontrolId<b>;</b>
+<b>    </b>Counter<b> </b><b>=</b><b> </b>Counter<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PSKALITEKONTROLHATAPUANHESAPLA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PSKALITEKONTROLPARTISTOKGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

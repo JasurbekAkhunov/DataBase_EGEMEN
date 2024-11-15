@@ -1,0 +1,239 @@
+<HTML>
+<HEAD>
+<TITLE>YUMUSAKSARIMURETIMRAPORU</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1997800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="YKONTROLTALEPSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="YUMUSAKSARIMURETIMRAPORUAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">YUMUSAKSARIMURETIMRAPORU</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ATARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALINLIKADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKCINSIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LOT</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LOTKAPALI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYA1KAPADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYA1MIKTAR</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYA2KAPADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYA2MIKTAR</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYA3KAPADEDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYA3MIKTAR</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure YUMUSAKSARIMURETIMRAPORU)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>YUMUSAKSARIMURETIMRAPORU</u></font><b>(</b>
+<b>    </b>ATARIH<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>IPLIKMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>HAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMADI<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>KALINLIKADI<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>IPLIKCINSIADI<b> </b><b>VARCHAR</b><b>(</b>80<b>)</b><b>,</b>
+<b>    </b>LOT<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>LOTKAPALI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>VARDIYA1KAPADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>VARDIYA1MIKTAR<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>VARDIYA2KAPADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>VARDIYA2MIKTAR<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>VARDIYA3KAPADEDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>VARDIYA3MIKTAR<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ABaslangicTarihi<b>  </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ABitisTarihi<b>  </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIplikMakinaID<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHamId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHamAdi<b>        </b><b>varchar</b><b>(</b>255<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLot<b>           </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUretimTarihi<b>  </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMiktar<b>        </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLastIplikMakinaID<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLastHamId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLastLot<b>           </b><b>varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLotKapali<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FKalinlikAdi<b>       </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FIplikCinsiAdi<b>     </b><b>varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Vardiya<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>VardiyaSayisi<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>T1<b>                </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b>ABaslangicTarihi<b> </b><b>=</b><b> </b>ATarih<b>;</b>
+<b>  </b>ABitisTarihi<b> </b><b>=</b><b> </b>ABaslangicTarihi<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>IplikVardiyaSayisi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>where</b><b> </b>sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:VardiyaSayisi<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>VardiyaSayisi<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>VardiyaSayisi<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>VardiyaSayisi<b> </b><b>=</b><b> </b>3<b>;</b>
+
+<b>  </b>FLastIplikMakinaID<b> </b><b>=</b><b> </b>'@@'<b>;</b>
+<b>  </b>FLastHamId<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>FLastLot<b> </b><b>=</b><b> </b>'@@'<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikMakinaId<b>,</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>Kapali<b>,</b>
+<b>             </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>IplikCinsi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>UretimTarihi<b>,</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>Miktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>IplikLotID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikLotId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>HamId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>IplikCinsi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>IplikCinsi</u></font><b>.</b>IplikCinsiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>IplikCinsiId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>KalinlikId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>KalinlikId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>UretimTarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>UretimTarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi<b> </b><b>and</b>
+<b>        </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>SarimSekliID<b> </b><b>=</b><b> </b>1
+<b>  </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>IplikUretim</u></font><b>.</b>IplikMakinaId<b>,</b><b> </b><font color="# 080 0"><u>Kalinlik</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>IplikCinsi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>IplikLot</u></font><b>.</b>Lot
+<b>  </b><b>into</b><b> </b>:FIplikMakinaId<b>,</b><b> </b>:FHamId<b>,</b><b> </b>:FHamAdi<b>,</b><b> </b>:FLot<b>,</b><b> </b>FLotKapali<b>,</b><b> </b>:FKalinlikAdi<b>,</b><b> </b>:FIplikCinsiAdi<b>,</b><b> </b>:FUretimTarihi<b>,</b><b> </b>:FMiktar<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FLastIplikMakinaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FIplikMakinaId<b> </b><b>or</b><b> </b>FLastHamId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FHamId<b> </b><b>or</b><b> </b>FLastLot<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FLot<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>FLastHamId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b><b>suspend</b><b>;</b>
+
+<b>      </b>FLastIplikMakinaID<b> </b><b>=</b><b> </b>FIplikMakinaId<b>;</b>
+<b>      </b>FLastHamId<b> </b><b>=</b><b> </b>FHamId<b>;</b>
+<b>      </b>FLastLot<b> </b><b>=</b><b> </b>FLot<b>;</b>
+
+<b>      </b>IplikMakinaId<b> </b><b>=</b><b> </b>FIplikMakinaId<b>;</b>
+<b>      </b>HamId<b> </b><b>=</b><b> </b>FHamId<b>;</b>
+<b>      </b>HamAdi<b> </b><b>=</b><b> </b>FHamAdi<b>;</b>
+<b>      </b>Lot<b> </b><b>=</b><b> </b>FLot<b>;</b>
+<b>      </b>LotKapali<b> </b><b>=</b><b> </b>FLotKapali<b>;</b>
+<b>      </b>KalinlikAdi<b> </b><b>=</b><b> </b>FKalinlikAdi<b>;</b>
+<b>      </b>IplikCinsiAdi<b> </b><b>=</b><b> </b>FIplikCinsiAdi<b>;</b>
+
+<b>      </b>Vardiya1KapAdedi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>Vardiya1Miktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>Vardiya2KapAdedi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>Vardiya2Miktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>Vardiya3KapAdedi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>Vardiya3Miktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b>T1<b> </b><b>=</b><b> </b>FUretimTarihi<b> </b><b>-</b><b> </b>ABaslangicTarihi<b>;</b>
+<b>    </b>vardiya<b> </b><b>=</b><b> </b><font color="# 080 0"><u>VardiyaHesapla</u></font><b>(</b>T1<b>,</b><b> </b>VardiyaSayisi<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>Vardiya<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Vardiya1KapAdedi<b> </b><b>=</b><b> </b>Vardiya1KapAdedi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b>Vardiya1Miktar<b> </b><b>=</b><b> </b>Vardiya1Miktar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Vardiya<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Vardiya2KapAdedi<b> </b><b>=</b><b> </b>Vardiya2KapAdedi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b>Vardiya2Miktar<b> </b><b>=</b><b> </b>Vardiya2Miktar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>Vardiya<b> </b><b>&gt;</b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Vardiya3KapAdedi<b> </b><b>=</b><b> </b>Vardiya3KapAdedi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b>Vardiya3Miktar<b> </b><b>=</b><b> </b>Vardiya3Miktar<b> </b><b>+</b><b> </b>FMiktar<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>if</b><b> </b><b>(</b>FLastHamId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="YKONTROLTALEPSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="YUMUSAKSARIMURETIMRAPORUAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

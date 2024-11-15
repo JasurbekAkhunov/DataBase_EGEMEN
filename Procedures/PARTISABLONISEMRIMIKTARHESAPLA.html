@@ -1,0 +1,171 @@
+<HTML>
+<HEAD>
+<TITLE>PARTISABLONISEMRIMIKTARHESAPLA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1502800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTISABLONISEMRILISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTISABLONISEMRIOKEYIPTAL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTISABLONISEMRIMIKTARHESAPLA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTISABLONISEMRIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AREFPARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AREFPARTIGUNCELLE</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTISABLONISEMRIMIKTARHESAPLA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTISABLONISEMRIMIKTARHESAPLA</u></font><b>(</b>
+<b>    </b>APARTISABLONISEMRIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AREFPARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AREFPARTIGUNCELLE<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RefPartiKayitID<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Acilim1<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Acilim2<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HazirlananMiktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RefPartiMiktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BirimHazirlananMiktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BirimKullanilanMiktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SablonNo<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EmulsiyonUrunId<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TopPartiMiktar<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DepoID<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PatMiktari<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FikseSicakligi<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunID<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunBirimId<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Miktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KullanilanMiktar<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Pat<b> </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Lot<b> </b><b>Varchar</b><b>(</b>150<b>)</b><b>;</b>
+<b>Begin</b>
+<b>  </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PARTISTOKIPTALKAYITID<b> </b><b>IS</b><b> </b><b>NULL</b><b> </b><b>AND</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:ARefPartiKayitID<b> </b><b>into</b><b> </b>:RefPartiMiktar<b>;</b>
+
+<b>  </b><font color="# 0 0FF"><i>/*Ref Parti Upd*/</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b>ARefPartiGuncelle<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PARTISTOKIPTALKAYITID<b> </b><b>IS</b><b> </b><b>NULL</b><b> </b><b>AND</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>in</b>
+<b>      </b><b>(</b><b>select</b><b> </b><b>distinct</b><b> </b><font color="# 080 0"><u>partisablon</u></font><b>.</b>PartiKayitID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>partisablon</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>partisablon</u></font><b>.</b>PartiSablonIsEmriID<b> </b><b>=</b><b> </b>:APartiSablonIsEmriID<b>)</b><b> </b><b>into</b><b> </b>:TopPartiMiktar<b>;</b>
+
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>SablonNo<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>EmulsiyonUrunId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>Acilim1<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>Acilim2<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>HazirlananMiktar<b>,</b>
+<b>               </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>DepoID<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PatMiktari<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>FikseSicakligi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonIsEmriID<b> </b><b>=</b><b> </b>:APartiSablonIsEmriID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:ARefPartiKayitID
+<b>      </b><b>into</b><b> </b>:SablonNo<b>,</b><b> </b>:EmulsiyonUrunId<b>,</b><b> </b>:Acilim1<b>,</b><b> </b>:Acilim2<b>,</b><b> </b>:HazirlananMiktar<b>,</b><b> </b>:DepoID<b>,</b><b> </b>:PatMiktari<b>,</b><b> </b>:FikseSicakligi<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>HazirlananMiktar<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>RefPartiMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>BirimHazirlananMiktar<b> </b><b>=</b><b>  </b>HazirlananMiktar<b> </b><b>/</b><b> </b>RefPartiMiktar<b>;</b>
+<b>      </b><b>else</b><b> </b>BirimHazirlananMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b> </b><b>set</b><b> </b>EmulsiyonUrunId<b> </b><b>=</b><b> </b>:EmulsiyonUrunId<b>,</b><b> </b>Acilim1<b> </b><b>=</b><b> </b>:Acilim1<b>,</b><b> </b>Acilim2<b> </b><b>=</b><b> </b>:Acilim2<b>,</b><b> </b>DepoID<b> </b><b>=</b><b> </b>:DepoID<b>,</b><b> </b>PatMiktari<b> </b><b>=</b><b> </b>:PatMiktari<b>,</b><b> </b>FikseSicakligi<b> </b><b>=</b><b> </b>:FikseSicakligi<b>,</b>KullaniciID<b> </b><b>=</b><b> </b>:AKullaniciID<b>,</b>
+<b>                             </b>HazirlananMiktar<b> </b><b>=</b><b> </b>:HazirlananMiktar<b> </b><b>*</b><b> </b><b>(</b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Partistok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitId<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b>)</b><b>/</b>:TopPartiMiktar
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonIsEmriID<b> </b><b>=</b><b> </b>:APartiSablonIsEmriID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:ARefPartiKayitID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>SablonNo<b> </b><b>=</b><b> </b>:SablonNo<b> </b><b>;</b>
+
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><font color="# 0 0FF"><i>/*Ref Parti Upd*/</i></font>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>SablonNo<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>EmulsiyonUrunId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>Acilim1<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>Acilim2<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>HazirlananMiktar<b>,</b>
+<b>             </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>DepoID<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PatMiktari<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>FikseSicakligi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonIsEmriID<b> </b><b>=</b><b> </b>:APartiSablonIsEmriID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:ARefPartiKayitID
+<b>    </b><b>into</b><b> </b>:SablonNo<b>,</b><b> </b>:EmulsiyonUrunId<b>,</b><b> </b>:Acilim1<b>,</b><b> </b>:Acilim2<b>,</b><b> </b>:HazirlananMiktar<b>,</b><b> </b>:DepoID<b>,</b><b> </b>:PatMiktari<b>,</b><b> </b>:FikseSicakligi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>HazirlananMiktar<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>RefPartiMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>BirimHazirlananMiktar<b> </b><b>=</b><b>  </b>HazirlananMiktar<b> </b><b>/</b><b> </b>RefPartiMiktar<b>;</b>
+<b>    </b><b>else</b><b> </b>BirimHazirlananMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b> </b><b>set</b><b> </b>EmulsiyonUrunId<b> </b><b>=</b><b> </b>:EmulsiyonUrunId<b>,</b><b> </b>Acilim1<b> </b><b>=</b><b> </b>:Acilim1<b>,</b><b> </b>Acilim2<b> </b><b>=</b><b> </b>:Acilim2<b>,</b><b> </b>DepoID<b> </b><b>=</b><b> </b>:DepoID<b>,</b><b> </b>PatMiktari<b> </b><b>=</b><b> </b>:PatMiktari<b>,</b><b> </b>FikseSicakligi<b> </b><b>=</b><b> </b>:FikseSicakligi<b>,</b>KullaniciID<b> </b><b>=</b><b> </b>:AKullaniciID<b>,</b>
+<b>                           </b>HazirlananMiktar<b> </b><b>=</b><b> </b>:BirimHazirlananMiktar<b> </b><b>*</b><b> </b><b>(</b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Partistok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitId<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b>)</b>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonIsEmriID<b> </b><b>=</b><b> </b>:APartiSablonIsEmriID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:ARefPartiKayitID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>SablonNo<b> </b><b>=</b><b> </b>:SablonNo<b> </b><b>;</b>
+
+<b>  </b><b>end</b>
+
+<b>  </b><b>Delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>where</b><b> </b>PartiSablonID<b> </b><b>in</b><b> </b><b>(</b><b>Select</b><b> </b>PartiSablonID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b> </b><b>Where</b><b> </b>PartiSablonIsEmriID<b> </b><b>=</b><b> </b>:APartiSablonIsEmriID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:ARefPartiKayitID<b>)</b><b>;</b>
+
+<b>  </b><b>Delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>where</b><b> </b>PartiKayitID<b> </b><b>=</b><b> </b>:ARefPartiKayitID<b> </b><b>and</b><b> </b>Pat<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>  </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>PartiSablonAcilimiHesapla</u></font><b>(</b>:ARefPartiKayitID<b>)</b><b>;</b>
+
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>SablonNo<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunID<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunBirimId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>KullanilanMiktar<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>Pat<b>,</b>
+<b>            </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>Lot<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font>
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonID
+<b>      </b><b>Where</b><b> </b>PartiSablonIsEmriID<b> </b><b>=</b><b> </b>:APartiSablonIsEmriID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:ARefPartiKayitID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonReceteID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b>
+
+<b>      </b><b>into</b><b> </b>:SablonNo<b>,</b><b> </b>:UrunID<b>,</b><b> </b>:UrunBirimId<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:KullanilanMiktar<b>,</b><b> </b>:Pat<b>,</b><b> </b>:Lot<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KullanilanMiktar<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>RefPartiMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>BirimKullanilanMiktar<b> </b><b>=</b><b>  </b>KullanilanMiktar<b> </b><b>/</b><b> </b>RefPartiMiktar<b>;</b>
+<b>    </b><b>else</b><b> </b>BirimKullanilanMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+
+<b>    </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b> </b><b>(</b>PartiSablonID<b>,</b><b> </b>PartiKayitID<b>,</b><b> </b>UrunID<b>,</b><b> </b>UrunBirimID<b>,</b><b> </b>Miktar<b>,</b><b> </b>KullanilanMiktar<b>,</b><b> </b>Pat<b>,</b><b> </b>InsertKullaniciID<b>,</b><b> </b>KullaniciID<b>,</b><b> </b>Lot<b>)</b>
+<b>      </b><b>Select</b><b> </b>PartiSablonID<b>,</b><b> </b>PartiKayitID<b>,</b><b> </b>:UrunId<b>,</b><b> </b>:UrunBirimId<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:BirimKullanilanMiktar<b> </b><b>*</b><b> </b><b>(</b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Partistok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiStokIptalKayitId<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b>)</b><b>,</b>
+<b>      </b>:Pat<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:Lot<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonIsEmriID<b> </b><b>=</b><b> </b>:APartiSablonIsEmriID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:ARefPartiKayitID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>SablonNo<b> </b><b>=</b><b> </b>:SablonNo<b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTISABLONISEMRILISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTISABLONISEMRIOKEYIPTAL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

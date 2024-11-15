@@ -1,0 +1,1567 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTLABRECETE2</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="894800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTLABRECETE1.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTLABRECETE3.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTLABRECETE2</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTLABRECETE2)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTLABRECETE2</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>LABRECETE</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>2
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteFirmaBaslangic<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteFirmaDigit<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteAyraci<b>           </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MaxNumara<b>                 </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NumaraStr<b>                 </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MaxLen<b>                    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FLabReceteKodu<b>            </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NumaraDigit<b>               </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteKoduTipi<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TurId<b>                     </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DerinlikId<b>                </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GrupId<b>                    </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TF<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>YilStr<b>                    </b><b>varchar</b><b>(</b>4<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteGrupStr<b>          </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ReceteHamTipiId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamTipiStr<b>                </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IkiHaneYil<b>                </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>I<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RenkDerinligiIcinX<b>        </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RenkDerinligiAdi<b>          </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EgemenFirmaID<b>             </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>LabReceteFirmaBaslangic<b>,</b><b> </b>LabReceteFirmaDigit<b>,</b><b> </b>LabReceteAyraci<b>,</b><b> </b>LabReceteKoduTipi<b>,</b><b> </b>EgemenFirmaID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>into</b><b> </b>:LabReceteFirmaBaslangic<b>,</b><b> </b>:LabReceteFirmaDigit<b>,</b><b> </b>:LabReceteAyraci<b>,</b><b> </b>:LabReceteKoduTipi<b>,</b><b> </b>:EgemenFirmaID<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>14<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* HAS */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b>YilStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TimeStampToYil</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b><b>Select</b><b> </b>DerinlikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:DerinlikId<b>;</b>
+
+<b>    </b><b>New</b><b>.</b>YilAyStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>YilStr<b>,</b><b> </b>3<b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>FirmaId<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>YilAyStr<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YilAyStr<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>F_year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b>2007<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>201<b>;</b>
+<b>        </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>'H'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>YilAyStr<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>6<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>TurID<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>DerinlikId<b>)</b><b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>'H'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>YilAyStr<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>15<b> </b><b>or</b><b> </b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>91<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* ÖZAK, DOST ÖZBEK*/</i></font>
+<b>  </b><b>begin</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b>GrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>into</b><b> </b>:GrupId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'B'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'Ç'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'P'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'E'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b>;</b>
+
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteGrupId<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b><b> </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>LabReceteGrupStr<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>3<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>TurID<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>GrupId<b>)</b><b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>LabReceteGrupStr<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>15<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* ÖZAK ESKI - BURAYA HIC GIRMIYOR, YUKARIDAN DOLAYI */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b>YilStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TimeStampToYil</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b>DerinlikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:DerinlikId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'B'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'Ç'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'P'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'E'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b>;</b>
+
+<b>    </b><b>New</b><b>.</b>YilAyStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>YilStr<b>,</b><b> </b>3<b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>YilAyStr<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YilAyStr<b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b><b> </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>LabReceteGrupStr<b>,</b><b> </b>1<b>,</b>1<b>)</b><b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>YilAyStr<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>6<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>DerinlikId<b>)</b><b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b>LabReceteGrupStr<b>,</b><b> </b>1<b>,</b>1<b>)</b><b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>YilAyStr<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* imaj */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>DerinlikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:DerinlikId<b>;</b>
+
+<b>    </b><b>Select</b><b> </b>GrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabBoyaGrup</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabBoyaGrup</u></font><b>.</b>LabBoyaGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabBoyaGrupId<b> </b><b>into</b><b> </b>:GrupId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b>GrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabBoyaGrup</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabBoyaGrup</u></font><b>.</b>LabBoyaGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabBoyaGrupId<b> </b><b>into</b><b> </b>:GrupId<b>;</b>
+<b>      </b><b>Select</b><b> </b>DerinlikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:DerinlikId<b>;</b>
+
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>GrupId<b>)</b><b> </b><b>+</b><b> </b>2<b>;</b>
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>-</b><b> </b><b>Char_Length</b><b>(</b>DerinlikId<b>)</b><b>;</b>
+
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>NumaraStr<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>16<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Tekboy */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>into</b><b> </b>:ReceteHamTipiId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ReceteHamTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>HamTipiStr<b> </b><b>=</b><b> </b>'İ'<b>;</b>
+<b>    </b><b>else</b><b> </b>HamTipiStr<b> </b><b>=</b><b> </b>'K'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>HamId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteGrupId<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><b>(</b><b> </b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiID<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>:ReceteHamTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>or</b><b> </b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>:ReceteHamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>)</b>
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Pat Patch*/</i></font>
+<b>      </b><b>begin</b>
+<b>          </b>HamTipiStr<b> </b><b>=</b><b> </b>'P'<b>;</b>
+<b>          </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>HamTipiStr<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>ReceteHamTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>/*Iplik*/</i></font>
+<b>          </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>HamTipiStr<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+<b>        </b><b>else</b>
+<b>          </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>HamTipiStr<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>5<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>TurID<b>)</b><b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>HamTipiStr<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>17<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>100<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>         </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>           </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiTipRecete<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>                 </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>         </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>95000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>4<b> </b><b>or</b><b> </b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>         </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>           </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>4<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiTipRecete<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>                 </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>100<b> </b><b>and</b>
+<b>                 </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>         </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>90000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>2<b> </b><b>or</b><b> </b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>6<b> </b><b>or</b><b> </b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>9<b>  </b><b>or</b><b> </b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>10<b> </b><b>or</b><b> </b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>11<b> </b><b>or</b><b> </b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>12<b> </b><b>or</b><b> </b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>13<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>         </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>           </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>2<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>6<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>9<b>  </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>10<b> </b><b>or</b>
+<b>                  </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>11<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>12<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>13<b>)</b><b> </b><b>and</b>
+<b>                  </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>100<b> </b><b>and</b>
+<b>                  </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiTipRecete<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>                 </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>         </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>         </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>           </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>and</b>
+<b>                 </b><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>3<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>7<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>8<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>14<b> </b><b>or</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b>15<b>)</b><b> </b><b>and</b>
+<b>                  </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>EskiTipRecete<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>                 </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>         </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>101<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>10000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>102<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>20000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>103<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>30000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>104<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>40000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>105<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>106<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>60000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>107<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>70000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>108<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>85000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>|</b><b>|</b><b> </b>'/'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>FirmaId<b>,</b><b> </b>LabReceteFirmaBaslangic<b>,</b><b> </b>LabReceteFirmaDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'/'<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>I<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PosBul</u></font><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>,</b><b> </b>'/'<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>I<b> </b><b>&gt;</b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>1<b>,</b><b> </b>I<b> </b><b>-</b><b> </b>1<b>)</b><b>;</b>
+
+<b>        </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>|</b><b>|</b><b> </b>'/'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>FirmaId<b>,</b><b> </b>LabReceteFirmaBaslangic<b>,</b><b> </b>LabReceteFirmaDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'/'<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>19<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* OSBORN */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>20<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Kral  */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b>GrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>into</b><b> </b>:GrupId<b>;</b>
+<b>    </b><b>Select</b><b> </b>DerinlikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:DerinlikId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>2<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>GrupId<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>DerinlikId<b>)</b><b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>21<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Gülcek */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteTuruID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupID
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>11<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>12<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>10000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>13<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>20000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>14<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>300000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>15<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>40000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>16<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>17<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>60000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>18<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>700000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>19<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>20<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>90000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>TurID<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b>TurId<b>)</b><b> </b><b>+</b><b> </b>2<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>11<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>10000<b>)</b><b>  </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>12<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>20000<b>)</b><b>  </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>13<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>300000<b>)</b><b>  </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>14<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>40000<b>)</b><b>  </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>15<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>50000<b>)</b><b>  </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>16<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>60000<b>)</b><b>  </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>17<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>700000<b>)</b><b>  </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>18<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>80000<b>)</b><b>  </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>19<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>90000<b>)</b><b>  </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>20<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>100000<b>)</b><b> </b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>Numara<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>22<b>  </b><b>or</b><b> </b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>31<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Fon Boya,  Pima */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>GrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>into</b><b> </b>:GrupId<b>;</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b>TurID<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b>GrupId<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>TurId<b>)</b><b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>24<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Safari */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HamId<b> </b><b>into</b><b> </b>:ReceteHamTipiId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ReceteHamTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>HamTipiStr<b> </b><b>=</b><b> </b>'İ'<b>;</b>
+<b>    </b><b>else</b><b> </b>HamTipiStr<b> </b><b>=</b><b> </b>'K'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>HamId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaID<b> </b><b>and</b>
+<b>              </b><b>(</b><b> </b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiID<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>:ReceteHamTipiId<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>or</b><b> </b><b>(</b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>:ReceteHamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>)</b>
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>HamTipiStr<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>New</b><b>.</b>FirmaId<b>)</b><b> </b><b>+</b><b> </b>5<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>HamTipiStr<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>25<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* KARDESLER */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>FirmaID<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>FirmaID<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>5<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b><b>New</b><b>.</b>FirmaId<b>)</b><b> </b><b>+</b><b> </b>6<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>FirmaID<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>26<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* UNTEKS */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&gt;</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Renk Grup Hatalı...'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>100<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>10000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>20000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>30000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>40000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>60000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>70000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80000<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b>-</b>4<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b>   </b>100<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>10000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>10000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>20000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>20000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>30000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>30000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>40000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>40000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>50000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>50000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>60000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>60000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>70000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>70000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>80000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>80000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>90000<b>)</b><b>)</b><b> </b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>Numara<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>36<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Birlik Orme */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&gt;</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Renk Grup Hatalı...'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b>      </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>10000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>20000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>30000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>40000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>60000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>70000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>90000<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b>-</b>4<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>1<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>10000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>10000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>20000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>20000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>30000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>30000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>40000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>40000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>50000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>50000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>60000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>60000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>70000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>70000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>80000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>80000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>90000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>90000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>99999<b>)</b><b>)</b><b> </b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>Numara<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>27<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* ARI */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteTuruID
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b>RenkDerinligiIcinX<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>select</b><b> </b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:RenkDerinligiAdi<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>RenkDerinligiAdi<b> </b><b>=</b><b> </b>'Süper Koyu'<b>)</b><b> </b><b>then</b><b> </b>RenkDerinligiIcinX<b> </b><b>=</b><b> </b>'X'<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>RenkDerinligiIcinX<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b>,</b><b> </b>2<b>)</b><b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>RenkDerinligiIcinX<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>      </b><b>select</b><b> </b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:RenkDerinligiAdi<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>RenkDerinligiAdi<b> </b><b>=</b><b> </b>'Süper Koyu'<b>)</b><b> </b><b>then</b><b> </b>RenkDerinligiIcinX<b> </b><b>=</b><b> </b>'X'<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b>-</b>3<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>RenkDerinligiIcinX<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b>,</b><b> </b>2<b>)</b><b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>28<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* ERENSAR */</i></font>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b>-</b>4<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>29<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* DOKUBOY */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&gt;</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Renk Grup Hatalı...'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>100<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>10000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>20000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>30000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>40000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>60000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>70000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>90000<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b>-</b>4<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b>   </b>100<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>10000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>10000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>20000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>20000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>30000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>30000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>40000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>40000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>50000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>50000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>60000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>60000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>70000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>70000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>80000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>80000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>90000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>90000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>99999<b>)</b><b>)</b><b> </b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>Numara<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>30<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* KUMASBOYA */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b><b>Select</b><b> </b>GrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>into</b><b> </b>:GrupId<b>;</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*exception KayitHatasi 'TurId: ' || TurId || ' GrupId: ' || GrupId;*/</i></font>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&gt;</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Renk Grup Hatalı...'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId<b> </b><b>and</b>
+<b>        </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruID
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>GrupId<b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b>-</b>3<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><font color="# 0 0FF"><i>/*else if (LabReceteKoduTipi = 31) then   CALISKAN</i></font>
+<font color="# 0 0FF"><i>  begin</i></font>
+<font color="# 0 0FF"><i>    if (New.LabReceteKodu is null) then</i></font>
+<font color="# 0 0FF"><i>    begin</i></font>
+<font color="# 0 0FF"><i>      Select max(Numara) from LabRecete</i></font>
+<font color="# 0 0FF"><i>        into :MaxNumara;</i></font>
+
+<font color="# 0 0FF"><i>      if (MaxNumara is not null) then</i></font>
+<font color="# 0 0FF"><i>        new.Numara = MaxNumara + 1;</i></font>
+<font color="# 0 0FF"><i>      else</i></font>
+<font color="# 0 0FF"><i>        New.Numara = 1;</i></font>
+
+<font color="# 0 0FF"><i>      New.LabReceteKodu = EgemenIntToLzStr(new.Numara, 5);</i></font>
+<font color="# 0 0FF"><i>    end</i></font>
+<font color="# 0 0FF"><i>    else</i></font>
+<font color="# 0 0FF"><i>    begin</i></font>
+<font color="# 0 0FF"><i>      NumaraStr = EgemenCopyStr(New.LabReceteKodu, 1, 5);</i></font>
+
+<font color="# 0 0FF"><i>      TF = EgemenStrToIntOlurmu(NumaraStr);</i></font>
+
+<font color="# 0 0FF"><i>      if (TF = 1) then new.Numara = EgemenStrToInt(NumaraStr);</i></font>
+<font color="# 0 0FF"><i>      else exception ReceteNumaraOlusturulamadi;</i></font>
+
+<font color="# 0 0FF"><i>      FLabReceteKodu = EgemenIntToLzStr(new.Numara, 5);</i></font>
+
+<font color="# 0 0FF"><i>      if (FLabReceteKodu is null or FLabReceteKodu &lt;&gt; New.LabReceteKodu) then</i></font>
+<font color="# 0 0FF"><i>       exception ManuelGirilenLabRecKoduHatali ' FRK =' || FLabReceteKodu || '- N.RK=' || New.LabReceteKodu;</i></font>
+<font color="# 0 0FF"><i>    end</i></font>
+<font color="# 0 0FF"><i>  end */</i></font>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>32<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Ottoman Bursa */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>LabRenkGrupID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>into</b><b> </b>:GrupID<b>;</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b><b> </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupId<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b>
+<b>        </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>'P'<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>GrupID<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>GrupID<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>35<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* ZEMIR */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>FirmaId<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>and</b>
+<b>             </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteTuruId<b> </b><b>and</b>
+<b>             </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>FirmaId<b>,</b><b> </b>LabReceteFirmaBaslangic<b>,</b><b> </b>LabReceteFirmaDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b>
+<b>                                </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>LabReceteFirmaDigit<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>TurId<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b>)</b><b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>FirmaId<b>,</b><b> </b>LabReceteFirmaBaslangic<b>,</b><b> </b>LabReceteFirmaDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b>
+<b>                                </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>        </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Recete Kodu ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>37<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* ARTA */</i></font>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b>=</b><b> </b>9999<b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>1<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>2<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>7<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>TurID<b>)</b><b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b>(</b><b>New</b><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>9999<b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>Numara<b>)</b><b>;</b>
+
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b>=</b><b> </b>9999<b>)</b><b> </b><b>then</b><b> </b>FLabReceteKodu<b> </b><b>=</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>1<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b>FLabReceteKodu<b> </b><b>=</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>2<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>42<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* ArBul */</i></font>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b>
+<b>                          </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>7<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>TurID<b>)</b><b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b>(</b><b>New</b><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>9999<b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>Numara<b>)</b><b>;</b>
+
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b>
+<b>                       </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>46<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* BaşyazıcıOğlu */</i></font>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b><b>Select</b><b> </b>DerinlikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:DerinlikId<b>;</b>
+
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font>
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupID
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>GrupId<b> </b><b>=</b><b> </b><b>(</b><b>Select</b><b> </b>GrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>where</b><b> </b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>and</b>
+<b>        </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>5<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>DerinlikId<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>TurID<b>)</b><b> </b><b>+</b><b> </b>2<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b>(</b><b>New</b><b>.</b>RenkDerinligiId<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>999<b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>Numara<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>LabRenkGrupId<b>)</b><b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>3<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>50<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* MegaSan */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b> </b>1<b> </b><b>and</b><b> </b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&gt;</b><b> </b>10<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Renk Grup Hatalı...'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>10000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>20000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>30000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>40000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>60000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>70000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>90000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>10<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>100000<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b>  </b><b>=</b><b> </b>10<b>)</b><b> </b><b>then</b>
+<b>        </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>6<b>)</b><b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>52<b> </b><b>or</b><b> </b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>88<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* NazÖrme  - TüpMerserize*/</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b><b>Select</b><b> </b>DerinlikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:DerinlikId<b>;</b>
+
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&gt;</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Renk Grup Hatalı...'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>10000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>20000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>30000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>40000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>60000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>70000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>90000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>00000<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b>-</b>4<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>10000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>20000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>20000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>30000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>30000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>40000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>40000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>50000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>50000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>60000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>60000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>70000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>70000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>80000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>80000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>90000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>90000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>100000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>0<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>10000<b>)</b><b>)</b><b> </b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>Numara<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>57<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/* Hefa/Fayteks */</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>RenkDerinligiID<b>=</b>4<b>)</b><b> </b><b>then</b><b> </b>DerinlikId<b>=</b>'X'<b>  </b><b>;</b>
+<b>    </b><b>else</b><b> </b>DerinlikId<b>=</b>''<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'J'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'E'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'C'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b>LabReceteGrupStr<b> </b><b>=</b><b> </b>'EL'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b>;</b>
+
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>&gt;</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Renk Grup Hatalı...'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>10000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>20000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>30000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>40000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>60000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>70000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80000<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>90000<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>LabReceteGrupStr<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b>-</b>4<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>10000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>20000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>20000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>30000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>30000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>40000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>40000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>50000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>50000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>60000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>60000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>70000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>70000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>80000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>80000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>90000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>             </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b> </b><b>and</b><b> </b><b>(</b><b>New</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>90000<b> </b><b>or</b><b> </b><b>New</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>100000<b>)</b><b>)</b><b> </b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>Numara<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b>IkiHaneYil<b>  </b><b>|</b><b>|</b><b> </b>LabReceteGrupStr<b> </b><b>|</b><b>|</b><b> </b>TurId<b>  </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>48<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b><b>Select</b><b> </b>DerinlikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:DerinlikId<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>DerinlikId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>DerinlikId<b> </b><b>=</b><b> </b>''<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b>
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>(</b>5<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>TurId<b>)</b><b>)</b><b>,</b>5<b>)</b><b>;</b>
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>5<b>)</b><b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>59<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+<b>    </b><b>Select</b><b> </b>GrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId<b> </b><b>into</b><b> </b>:GrupId<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>Char_Length</b><b>(</b>GrupId<b>)</b><b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>GrupId<b> </b><b>=</b><b> </b>'0'<b> </b><b>|</b><b>|</b><b> </b>GrupId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>FirmaId<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>FirmaID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>FirmaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>FirmaId<b>,</b><b> </b>LabReceteFirmaBaslangic<b>,</b><b> </b>LabReceteFirmaDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b>
+<b>                                </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>GrupID<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>LabReceteFirmaDigit<b> </b><b>+</b><b> </b>6<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>FirmaId<b>,</b><b> </b>LabReceteFirmaBaslangic<b>,</b><b> </b>LabReceteFirmaDigit<b>)</b><b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b>
+<b>                                </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b>GrupID<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>60<b>)</b><b> </b><b>then</b><b>   </b><font color="# 0 0FF"><i>/*Boybo*/</i></font>
+<b>  </b><b>begin</b>
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>    </b><b>Select</b><b> </b>GrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRenkGrup</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabRenkGrupId<b> </b><b>into</b><b> </b>:GrupId<b>;</b>
+<b>    </b><b>Select</b><b> </b>DerinlikId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>RenkDerinligi</u></font><b>.</b>RenkDerinligiID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>RenkDerinligiId<b> </b><b>into</b><b> </b>:DerinlikId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>New</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId
+<b>        </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>else</b>
+<b>        </b><b>New</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>      </b><b>New</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>      </b>NumaraDigit<b> </b><b>=</b><b> </b>2<b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>GrupId<b>)</b><b> </b><b>+</b><b> </b><b>Char_Length</b><b>(</b>DerinlikId<b>)</b><b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>MaxLen<b> </b><b>=</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>-</b><b> </b>NumaraDigit<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b>NumaraDigit<b>,</b><b> </b>MaxLen<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b> </b>IkiHaneYil<b> </b><b>|</b><b>|</b><b> </b>GrupId<b> </b><b>|</b><b>|</b><b> </b>DerinlikId<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>       </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK'<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>LabReceteKoduTipi<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*Emin*/</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b>TurId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ReceteTuru</u></font><b>.</b>ReceteTuruID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ReceteTuruID<b> </b><b>into</b><b> </b>:TurId<b>;</b>
+
+<b>    </b>IkiHaneYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>(</b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>-</b><b> </b>2000<b>)</b><b>,</b><b> </b>2<b>)</b><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>&lt;</b><b> </b>0<b> </b><b>and</b><b> </b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>&gt;</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Renk Grup Hatalı...'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>TurId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>'P'<b> </b><b>and</b><b> </b>TurId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>'SP'<b> </b><b>and</b><b> </b>TurId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>'PS'<b> </b><b>and</b><b> </b><b>New</b><b>.</b>ReceteTuruId<b>&lt;</b>12<b>)</b><b>  </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>       </b><b>select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabReceteGrupID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Labrecete</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteTuruId<b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>  </b><b>where</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>TalepTarihi<b>)</b><b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>new</b><b>.</b>TalepTarihi<b>)</b><b> </b><b>and</b>
+<b>              </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>LabRenkGrupId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Labrecete</u></font><b>.</b>LabreceteGrupID<b>  </b><b>=</b><b>new</b><b>.</b>LabreceteGrupID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Labrecete</u></font><b>.</b>ReceteTuruId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ReceteTuruId
+<b>          </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>        </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>ReceteTuruId<b> </b><b>&lt;</b>12<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b>   </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>15500<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>21000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>31500<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>41000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50200<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>62500<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>71500<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80500<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>91000<b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b>)</b><b>   </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>10000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>20000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>30000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>40000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>50000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>60000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>70000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>80000<b>;</b>
+<b>          </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>90000<b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>new</b><b>.</b>LabReceteKodu<b> </b><b>=</b><b> </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b>6<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>NumaraStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b>-</b>5<b>,</b><b> </b>6<b>)</b><b>;</b>
+
+<b>      </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LabReceteGrupID<b> </b><b>=</b><b> </b>5<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b>NumaraStr<b>)</b><b>;</b>
+
+<b>          </b><b>if</b><b> </b><b>(</b><b> </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>10000<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>20000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>               </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>2<b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>20000<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>30000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>               </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>3<b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>30000<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>40000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>               </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>4<b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>40000<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>50000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>               </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>5<b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>50000<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>60000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>               </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>6<b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>60000<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>70000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>               </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>7<b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>70000<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>80000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>               </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>8<b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>80000<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>90000<b>)</b><b>)</b><b> </b><b>or</b>
+<b>               </b><b>(</b><b>new</b><b>.</b>LabRenkGrupID<b> </b><b>=</b><b> </b>9<b> </b><b>and</b><b> </b><b>(</b><b>new</b><b>.</b>Numara<b> </b><b>&lt;</b><b> </b>90000<b> </b><b>or</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>&gt;</b><b>=</b><b> </b>100000<b>)</b><b>)</b><b> </b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' Numara ='<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>        </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>ReceteNumaraOlusturulamadi</u></font><b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b>FLabReceteKodu<b> </b><b>=</b><b>  </b>TurId<b> </b><b>|</b><b>|</b><b> </b>LabReceteAyraci<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b>6<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FLabReceteKodu<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>or</b><b> </b>FLabReceteKodu<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>LabReceteKodu<b>)</b><b> </b><b>then</b>
+<b>        </b><b>exception</b><b> </b><font color="# 080 0"><u>ManuelGirilenLabRecKoduHatali</u></font><b> </b>' FRK ='<b> </b><b>|</b><b>|</b><b> </b>FLabReceteKodu<b> </b><b>|</b><b>|</b><b> </b>'- N.RK='<b> </b><b>|</b><b>|</b><b> </b><b>new</b><b>.</b>LabReceteKodu<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTLABRECETE1.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTLABRECETE3.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

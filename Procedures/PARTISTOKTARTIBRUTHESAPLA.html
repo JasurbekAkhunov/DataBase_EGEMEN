@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<TITLE>PARTISTOKTARTIBRUTHESAPLA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1561800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTISTOKTARTIBOL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTISTOKTARTIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTISTOKTARTIBRUTHESAPLA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AEKRANDAN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTISTOKTARTIBRUTHESAPLA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTISTOKTARTIBRUTHESAPLA</u></font><b>(</b>
+<b>    </b>APARTISINIFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AEKRANDAN<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiStokTartiId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TamamiTartildi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiBrutKilo<b>   </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiBrutMetre<b>  </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ToplamBrutKilo<b>   </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ToplamBrutMetre<b>  </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BrutKilo<b>   </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BrutMetre<b>  </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BrutuHesaplanmiyacakKaliteNolar<b> </b><b>varchar</b><b>(</b>15<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SevkEdilenBrutKilo<b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SevkEdilenMetre<b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SevkEdilmeyenKilo<b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SevkEdilmeyenMetre<b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SevktenKalanKilo<b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KiloKatSayi<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SevktenKalanMetre<b> </b><b>numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MetreKatSayi<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>begin</b>
+
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>BrutuHesaplanmiyacakKaliteNolar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>into</b><b> </b>:BrutuHesaplanmiyacakKaliteNolar<b>;</b>
+
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Metre<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>parti</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiKayitId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId
+<b>    </b><b>into</b><b> </b>:PartiBrutKilo<b>,</b><b> </b>:PartiBrutMetre<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BrutKilo<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BrutMetre<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId
+<b>    </b><b>into</b><b> </b>:ToplamBrutKilo<b>,</b><b> </b>:ToplamBrutMetre<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Kilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>Metre<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>MamulDepoTransferFisiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>MamulDepoTransferFisiId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b>:APartiSinifID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>SistemKaydi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>HamStokSarfFisiDetayId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>            </b><b>(</b><b>Position</b><b>(</b>KaliteNo<b>,</b><b> </b>:BrutuHesaplanmiyacakKaliteNolar<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b><b>Coalesce</b><b>(</b>:BrutuHesaplanmiyacakKaliteNolar<b>,</b><b> </b>''<b>)</b><b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>into</b><b> </b>:SevkEdilmeyenKilo<b>,</b><b> </b>:SevkEdilmeyenMetre<b>;</b>
+
+
+<b> </b><b>Select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BrutKilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BrutMetre<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>MamulDepoTransferFisiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>MamulDepoTransferFisiId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>SistemKaydi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>          </b><b>(</b><b>not</b><b>  </b><b>(</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>HamStokSarfFisiDetayId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>)</b><b> </b><b>and</b>
+<b>            </b><b>(</b><b>Position</b><b>(</b>KaliteNo<b>,</b><b> </b>:BrutuHesaplanmiyacakKaliteNolar<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b><b>Coalesce</b><b>(</b>:BrutuHesaplanmiyacakKaliteNolar<b>,</b><b> </b>''<b>)</b><b> </b><b>=</b><b> </b>''<b>)</b><b> </b><b>into</b><b>  </b>:SevkEdilenBrutKilo<b>,</b><b> </b>:SevkedilenMetre<b>;</b>
+
+<b>  </b>KiloKatSayi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b>SevktenKalanKilo<b> </b><b>=</b><b> </b>PartiBrutKilo<b> </b><b>-</b><b> </b><b>coalesce</b><b>(</b>SevkEdilenBrutKilo<b>,</b>0<b>)</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>SevkEdilmeyenKilo<b> </b><b>=</b><b> </b>0<b> </b><b>)</b><b> </b><b>then</b><b> </b>SevkEdilmeyenKilo<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>SevkEdilmeyenKilo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>   </b><b>then</b><b> </b>SevkEdilmeyenKilo<b> </b><b>=</b><b> </b>SevktenKalanKilo<b>;</b>
+<b>  </b>BrutKilo<b> </b><b>=</b><b> </b>PartiBrutKilo<b> </b><b>-</b><b> </b>ToplamBrutKilo<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b>SevktenKalanKilo<b>)</b><b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b><b>(</b>SevkEdilmeyenKilo<b> </b><b>&gt;</b><b> </b>0<b>)</b><b>)</b><b> </b><b>then</b><b> </b>KiloKatSayi<b> </b><b>=</b><b> </b>SevktenKalanKilo<b> </b><b>/</b><b> </b>SevkEdilmeyenKilo<b>;</b>
+
+
+<b>  </b>MetreKatSayi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b>SevktenKalanMetre<b> </b><b>=</b><b> </b>PartiBrutMetre<b> </b><b>-</b><b> </b><b>coalesce</b><b>(</b>SevkEdilenMetre<b>,</b>0<b>)</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>SevkEdilmeyenMetre<b> </b><b>=</b><b> </b>0<b> </b><b>)</b><b> </b><b>then</b><b> </b>SevkEdilmeyenMetre<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>SevkEdilmeyenMetre<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>   </b><b>then</b><b> </b>SevkEdilmeyenMetre<b> </b><b>=</b><b> </b>SevktenKalanMetre<b>;</b>
+<b>  </b>BrutMetre<b> </b><b>=</b><b> </b>PartiBrutMetre<b> </b><b>-</b><b> </b>ToplamBrutMetre<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>SevktenKalanMetre<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>SevkEdilmeyenMetre<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>MetreKatSayi<b> </b><b>=</b><b> </b>SevktenKalanMetre<b> </b><b>/</b><b> </b>SevkEdilmeyenMetre<b>;</b>
+
+
+<b>  </b><font color="# 0 0FF"><i>--if (MetreKatSayi &gt; 1 or KiloKatSayi &gt; 1) then</i></font>
+<b>  </b><font color="# 0 0FF"><i>--begin</i></font>
+
+<b>    </b><b>for</b><b> </b><b>Select</b><b> </b>PartiStokTartiId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>MamulDepoTransferFisiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>MamulDepoTransferFisiId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiSinifID<b> </b><b>=</b><b> </b>:APartiSinifID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>MamulDepoTransferFisi</u></font><b>.</b>SistemKaydi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>HamStokSarfFisiDetayId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>            </b><b>(</b><b>Position</b><b>(</b>KaliteNo<b>,</b><b> </b>:BrutuHesaplanmiyacakKaliteNolar<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b><b>Coalesce</b><b>(</b>:BrutuHesaplanmiyacakKaliteNolar<b>,</b><b> </b>''<b>)</b><b> </b><b>=</b><b> </b>''<b>)</b>
+<b>         </b><b>into</b><b> </b>:PartiStokTartiId<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b><font color="# 080 0"><u>StrLength</u></font><b>(</b>BrutuHesaplanmiyacakKaliteNolar<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>           </b><b>if</b><b> </b><b>(</b>PartiStokTartiId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>Kayithatasi</u></font><b> </b>'Tamami tartildi bilgisi kaydedilemedi..'<b>;</b>
+
+<b>        </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b> </b><b>Set</b><b> </b>BrutKilo<b> </b><b>=</b><b> </b>Kilo<b> </b><b>*</b><b> </b>:KILOKatSayi<b> </b><b>,</b><b> </b>BrutMetre<b> </b><b>=</b><b> </b>Metre<b> </b><b>*</b><b> </b>:MetreKatsayi<b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiStokTartiId<b> </b><b>=</b><b> </b>:PartiStokTartiId<b>;</b>
+
+<b>      </b><b>end</b>
+<b>  </b><font color="# 0 0FF"><i>--end</i></font>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AEkrandan<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>Set</b><b> </b>TamamiTartildi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTISTOKTARTIBOL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTISTOKTARTIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

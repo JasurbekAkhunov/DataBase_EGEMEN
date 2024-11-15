@@ -1,0 +1,183 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERUPDATEORMEFATURA1</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="338800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERUPDATEORMEFATURA0.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERUPDATEORMEFIS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERUPDATEORMEFATURA1</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERUPDATEORMEFATURA1)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERUPDATEORMEFATURA1</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>ORMEFATURA</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>1
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BA<b>              </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CariHareketTipi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Aciklama<b>        </b><b>varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BankaHesapId<b>    </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtDevir<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtAlis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtSatis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtAlisIade<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtSatisIade<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtFasonAlis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtFasonUretimeCikis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretimeCikis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtFasonUretim<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretim<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CariDovizKuru1<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>CariDovizKuru2<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtReklamasyonGiris<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtReklamasyonCikis<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FaturaCariyeIslemDovizinden<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FaturaTipiStr<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+
+<b>begin</b>
+<b>  </b><b>select</b><b> </b>shtDevir<b>,</b><b> </b>shtAlis<b>,</b><b> </b>shtSatis<b>,</b><b> </b>ShtAlisIade<b>,</b><b> </b>ShtSatisIade<b>,</b><b> </b>ShtFasonAlis<b>,</b><b> </b>shtFasonUretimeCikis<b>,</b><b>  </b>shtUretimeCikis<b>,</b><b> </b>shtFasonUretim<b>,</b>
+<b>         </b>ShtUretim<b>,</b><b> </b>shtReklamasyonGiris<b>,</b><b> </b>shtReklamasyonCikis<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font>
+<b>         </b><b>into</b><b> </b>:shtDevir<b>,</b><b> </b>:shtAlis<b>,</b><b> </b>:shtSatis<b>,</b><b> </b>:ShtAlisIade<b>,</b><b> </b>:ShtSatisIade<b>,</b><b> </b>:ShtFasonAlis<b>,</b><b> </b>:shtFasonUretimeCikis<b>,</b><b>  </b>:shtUretimeCikis<b>,</b>
+<b>              </b>:shtFasonUretim<b>,</b><b> </b>:ShtUretim<b>,</b><b> </b>:shtReklamasyonGiris<b>,</b><b> </b>:shtReklamasyonCikis<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>Entegrasyon<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Entegrasyon<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>BankaHesapId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BankaHesap</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BankaHesap</u></font><b>.</b>FirmaId<b> </b><b>=</b><b> </b><b>New</b><b>.</b>FirmaId<b> </b><b>into</b><b> </b>:BankaHesapId<b>;</b>
+<b>    </b><b>select</b><b> </b>FaturaCariyeIslemDovizinden<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FaturaCariyeIslemDovizinden<b>;</b>
+
+<b>    </b>Aciklama<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>'#0'<b>,</b><b> </b><b>new</b><b>.</b>FaturaNo<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'.Nolu '<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>DokumaHareketi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b>FaturaTipiStr<b> </b><b>=</b><b> </b>'(Örme)'<b>;</b>
+<b>    </b><b>else</b>
+<b>      </b>FaturaTipiStr<b> </b><b>=</b><b> </b>'(Dokuma)'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtAlis<b>)</b><b>  </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>'Alış Faturası '<b> </b><b>|</b><b>|</b><b> </b>FaturaTipiStr<b>;</b>
+<b>      </b>CariHareketTipi<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>      </b>BA<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>ShtSatis<b>)</b><b>  </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>'Satış Faturası '<b> </b><b>|</b><b>|</b><b> </b>FaturaTipiStr<b>;</b>
+<b>      </b>BA<b> </b><b>=</b><b> </b>'B'<b>;</b>
+<b>      </b>CariHareketTipi<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtFasonUretimeCikis<b>)</b><b>  </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>'Örme Fason Üretime Çıkış Faturası '<b> </b><b>|</b><b>|</b><b> </b>FaturaTipiStr<b>;</b>
+<b>      </b>BA<b> </b><b>=</b><b> </b>'B'<b>;</b>
+<b>      </b>CariHareketTipi<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtAlisIade<b>)</b><b>  </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>'Alış İade Faturası '<b> </b><b>|</b><b>|</b><b> </b>FaturaTipiStr<b>;</b>
+<b>      </b>CariHareketTipi<b> </b><b>=</b><b> </b>6<b>;</b>
+<b>      </b>BA<b> </b><b>=</b><b> </b>'B'<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtSatisIade<b>)</b><b>  </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>'Satış İade Faturası '<b> </b><b>|</b><b>|</b><b> </b>FaturaTipiStr<b>;</b>
+<b>      </b>CariHareketTipi<b> </b><b>=</b><b> </b>6<b>;</b>
+<b>      </b>BA<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtFasonUretim<b>)</b><b>  </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>'Üretim Faturası '<b> </b><b>|</b><b>|</b><b> </b>FaturaTipiStr<b>;</b>
+<b>      </b>CariHareketTipi<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>      </b>BA<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtFasonUretim<b>)</b><b>  </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>'Üretim Faturası '<b> </b><b>|</b><b>|</b><b> </b>FaturaTipiStr<b>;</b>
+<b>      </b>CariHareketTipi<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>      </b>BA<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtReklamasyonGiris<b>)</b><b>  </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>'Reklamasyon Giriş Fat. '<b> </b><b>|</b><b>|</b><b> </b>FaturaTipiStr<b>;</b>
+<b>      </b>CariHareketTipi<b> </b><b>=</b><b> </b>8<b>;</b>
+<b>      </b>BA<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtReklamasyonCikis<b>)</b><b>  </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Aciklama<b> </b><b>=</b><b> </b>Aciklama<b> </b><b>|</b><b>|</b><b> </b>'Reklamasyon Çıkış Fat. '<b> </b><b>|</b><b>|</b><b> </b>FaturaTipiStr<b>;</b>
+<b>      </b>CariHareketTipi<b> </b><b>=</b><b> </b>8<b>;</b>
+<b>      </b>BA<b> </b><b>=</b><b> </b>'B'<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b>CariDovizKuru1<b> </b><b>=</b><b> </b><b>New</b><b>.</b>FirmaDovizKuru1<b>/</b><b>New</b><b>.</b>IslemDovizKuru1<b>;</b>
+<b>    </b>CariDovizKuru2<b> </b><b>=</b><b> </b><b>New</b><b>.</b>FirmaDovizKuru2<b>/</b><b>New</b><b>.</b>IslemDovizKuru2<b>;</b>
+
+<b>    </b>CariDovizKuru1<b> </b><b>=</b><b> </b>CariDovizKuru1<b> </b><b>*</b><b> </b>1000000<b> </b><b>+</b><b> </b>0<b>.</b>5<b>;</b>
+<b>    </b>CariDovizKuru1<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Yuvarla</u></font><b>(</b>CariDovizKuru1<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>    </b>CariDovizKuru1<b> </b><b>=</b><b> </b>CariDovizKuru1<b> </b><b>/</b><b> </b>1000000<b>;</b>
+
+<b>    </b>CariDovizKuru2<b> </b><b>=</b><b> </b>CariDovizKuru2<b> </b><b>*</b><b> </b>1000000<b> </b><b>+</b><b> </b>0<b>.</b>5<b>;</b>
+<b>    </b>CariDovizKuru2<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Yuvarla</u></font><b>(</b>CariDovizKuru2<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>    </b>CariDovizKuru2<b> </b><b>=</b><b> </b>CariDovizKuru2<b> </b><b>/</b><b> </b>1000000<b>;</b>
+
+<font color="# 0 0FF"><i>/*    insert into cari(FirmaId, Tarih, Aciklama, BorcAlacak, CariTipiId, Meblag, DovizId, ValorTarihi, OrmeSTReferansId, DovizKuru1, DovizKuru2, KullaniciId, Sinif)</i></font>
+<font color="# 0 0FF"><i>              values(new.FirmaId, new.FaturaTarihi, :Aciklama, :BA, :CariHareketTipi,</i></font>
+<font color="# 0 0FF"><i>              (new.IslemDovizToplam + new.IslemDovizTahsilEdilecekKdv), new.IslemDovizId, new.OdemeTarihi, new.OrmeFaturaId,</i></font>
+<font color="# 0 0FF"><i>              :CariDovizKuru1, :CariDovizKuru2, new.KullaniciId, new.Sinif);</i></font>
+<font color="# 0 0FF"><i>*/</i></font>
+<b>    </b><b>if</b><b> </b><b>(</b>FaturaCariyeIslemDovizinden<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>cari</u></font><b>(</b>FirmaId<b>,</b><b> </b>Tarih<b>,</b><b> </b>Aciklama<b>,</b><b> </b>BorcAlacak<b>,</b><b> </b>CariTipiId<b>,</b><b> </b>Meblag<b>,</b><b> </b>DovizId<b>,</b><b> </b>ValorTarihi<b>,</b><b> </b>OrmeSTReferansId<b>,</b><b> </b>DovizKuru1<b>,</b><b> </b>DovizKuru2<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>Sinif<b>,</b><b> </b>Notu<b>)</b>
+<b>              </b><b>values</b><b>(</b><b>new</b><b>.</b>FirmaId<b>,</b><b> </b><b>new</b><b>.</b>FaturaTarihi<b>,</b><b> </b>:Aciklama<b>,</b><b> </b>:BA<b>,</b><b> </b>:CariHareketTipi<b>,</b>
+<b>              </b><b>(</b><b>new</b><b>.</b>BrutToplam<b>  </b><b>-</b><b> </b><b>new</b><b>.</b>IskontoToplami<b> </b><b>+</b><b> </b><b>new</b><b>.</b>TahsilEdilecekKdv<b>)</b><b>,</b><b> </b><b>new</b><b>.</b>DovizId<b>,</b><b> </b><b>new</b><b>.</b>OdemeTarihi<b>,</b><b> </b><b>new</b><b>.</b>OrmeFaturaId<b>,</b><b> </b><b>new</b><b>.</b>FirmaDovizKuru1<b>,</b><b> </b><b>new</b><b>.</b>FirmaDovizKuru2<b>,</b><b> </b><b>new</b><b>.</b>KullaniciId<b>,</b><b> </b><b>new</b><b>.</b>Sinif<b>,</b><b> </b><b>New</b><b>.</b>Notu<b>)</b><b>;</b>
+<b>    </b><b>else</b>
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>cari</u></font><b>(</b>FirmaId<b>,</b><b> </b>Tarih<b>,</b><b> </b>Aciklama<b>,</b><b> </b>BorcAlacak<b>,</b><b> </b>CariTipiId<b>,</b><b> </b>Meblag<b>,</b><b> </b>DovizId<b>,</b><b> </b>ValorTarihi<b>,</b><b> </b>OrmeSTReferansId<b>,</b><b> </b>DovizKuru1<b>,</b><b> </b>DovizKuru2<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>Sinif<b>,</b><b> </b>Notu<b>)</b>
+<b>              </b><b>values</b><b>(</b><b>new</b><b>.</b>FirmaId<b>,</b><b> </b><b>new</b><b>.</b>FaturaTarihi<b>,</b><b> </b>:Aciklama<b>,</b><b> </b>:BA<b>,</b><b> </b>:CariHareketTipi<b>,</b>
+<b>              </b><b>(</b><b>new</b><b>.</b>IslemDovizToplam<b> </b><b>+</b><b> </b><b>new</b><b>.</b>IslemDovizTahsilEdilecekKdv<b>)</b><b>,</b><b> </b><b>new</b><b>.</b>IslemDovizID<b>,</b><b> </b><b>new</b><b>.</b>OdemeTarihi<b>,</b><b> </b><b>new</b><b>.</b>OrmeFaturaId<b>,</b><b> </b><b>new</b><b>.</b>FirmaDovizKuru1<b>,</b><b> </b><b>new</b><b>.</b>FirmaDovizKuru2<b>,</b><b> </b><b>new</b><b>.</b>KullaniciId<b>,</b><b> </b><b>new</b><b>.</b>Sinif<b>,</b><b> </b><b>New</b><b>.</b>Notu<b>)</b><b>;</b>
+
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>Entegrasyon<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Entegrasyon<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>cari</u></font><b> </b><b>set</b><b> </b>LinkIslemi<b> </b><b>=</b><b> </b>2<b> </b><b>where</b><b> </b>OrmeStReferansId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>OrmeFaturaId<b>;</b>
+<b>    </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>cari</u></font><b> </b><b>where</b><b> </b>OrmeStReferansId<b> </b><b>=</b><b> </b><b>Old</b><b>.</b>OrmeFaturaId<b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERUPDATEORMEFATURA0.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERUPDATEORMEFIS.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

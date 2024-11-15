@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTPIPETLEMEGOND</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1027800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTPERSONELGIRISCIKIS.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTPROSESASAMALARI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTPIPETLEMEGOND</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTPIPETLEMEGOND)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTPIPETLEMEGOND</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>PIPETLEMEGONDERIMLERI</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunID<b> </b><b>VarChar</b><b>(</b>20<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FLRDovizID<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUretimeCikisFiyati<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>new</b><b>.</b>PipetlemeGonderimleriID<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>PipetlemeGonderimleri_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>(</b><b>New</b><b>.</b>LabReceteID<b> </b><b>=</b><b> </b><b>-</b>1<b> </b><b>or</b><b> </b><b>New</b><b>.</b>LabReceteOnCalismaAtisID<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>PipetlemeKodu<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>First</b><b> </b>1<b> </b>PipetlemeGrupNo<b>,</b><b> </b>LabReceteID<b>,</b><b> </b>LabReceteCalismaID<b>,</b><b> </b>LabReceteOnCalismaAtisID<b>,</b><b> </b>ReceteAsamaID<b>,</b><b> </b>FirmaAdi<b>,</b><b> </b>FirmaKisaAdi<b>,</b><b> </b>LabReceteKodu<b>,</b><b> </b>KumasCinsiAdi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PipetlemeGonderimleri</u></font><b> </b><b>where</b><b> </b>PipetlemeKodu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>PipetlemeKodu
+<b>      </b><b>into</b><b> </b><b>New</b><b>.</b>PipetlemeGrupNo<b>,</b><b> </b><b>New</b><b>.</b>LabReceteID<b>,</b><b> </b><b>New</b><b>.</b>LabReceteCalismaID<b>,</b><b> </b><b>New</b><b>.</b>LabReceteOnCalismaAtisID<b>,</b><b> </b><b>New</b><b>.</b>ReceteAsamaID<b>,</b><b> </b><b>New</b><b>.</b>FirmaAdi<b>,</b><b> </b><b>New</b><b>.</b>FirmaKisaAdi<b>,</b><b> </b><b>New</b><b>.</b>LabReceteKodu<b>,</b><b> </b><b>New</b><b>.</b>KumasCinsiAdi<b>;</b>
+
+<b>    </b><b>Select</b><b> </b>DovizID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabRecete</u></font><b>.</b>LabReceteID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>LabReceteID<b> </b><b>into</b><b> </b>:FLRDovizID<b>;</b>
+
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>BoyaTipiID<b>,</b>
+<b>          </b><b>(</b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyati<b> </b><b>*</b><b> </b><b>(</b><b>Select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyatiDovizID<b>,</b><b> </b>:FLRDovizID<b>,</b><b> </b><b>Current_Date</b><b>)</b><b>)</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Urun</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId
+<b>    </b><b>where</b><b> </b>PipetlemeTransferKodu<b> </b><b>=</b><b> </b><b>New</b><b>.</b>UrunID<b> </b><b>Into</b><b> </b>:FUrunID<b>,</b><b> </b><b>New</b><b>.</b>BoyaTuru<b>,</b><b> </b>:FUretimeCikisFiyati<b>;</b>
+
+<b>    </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>LabReceteOnCalismaUrun</u></font><b>(</b>LabReceteOnCalismaAtisId<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>UrunId<b>,</b><b> </b>MiktarYuzde<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>            </b><b>Values</b><b> </b><b>(</b><b>New</b><b>.</b>LabReceteOnCalismaAtisID<b>,</b><b> </b><b>New</b><b>.</b>LabReceteId<b>,</b><b> </b>:FUrunID<b>,</b><b> </b><b>New</b><b>.</b>Miktar<b>,</b><b> </b>:FUretimeCikisFiyati<b>,</b><b> </b>1<b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTPERSONELGIRISCIKIS.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTPROSESASAMALARI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

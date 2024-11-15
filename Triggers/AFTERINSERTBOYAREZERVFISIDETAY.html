@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTBOYAREZERVFISIDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="101800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTBOYAIRSALIYEDETAY1.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTBOYASIPARISBASKI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTBOYAREZERVFISIDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTBOYAREZERVFISIDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTBOYAREZERVFISIDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BOYAREZERVFISIDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NewLog<b> </b><b>varchar</b><b>(</b>1000<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><font color="# 0 0FF"><i>/*Rezerv edilen parti stok miktarlari guncelle*/</i></font>
+<b>  </b><b>update</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>set</b>
+<b>  </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BrutRezervKilo<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BrutRezervKilo<b> </b><b>+</b><b> </b><b>new</b><b>.</b>EdilecekBrutKilo<b>,</b>
+<b>  </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BrutRezervMiktar<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BrutRezervMiktar<b> </b><b>+</b><b> </b><b>new</b><b>.</b>EdilecekBrutMiktar<b>,</b>
+<b>  </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>RezervKilo<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>RezervKilo<b> </b><b>+</b><b> </b><b>new</b><b>.</b>EdilecekKilo<b>,</b>
+<b>  </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>RezervMiktar<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>RezervMiktar<b> </b><b>+</b><b> </b><b>new</b><b>.</b>EdilecekMiktar<b>,</b>
+<b>  </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>KullaniciId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>KullaniciId<b>,</b>
+<b>  </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>new</b><b>.</b>DegisimTarihi
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>PartiSinifId<b>;</b>
+
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>BoyaRezervFisi</u></font><b>.</b>FisNo<b> </b><b>|</b><b>|</b><b> </b>' nolu Rezerv Fişine Ekleme:'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>Adi<b> </b><b>|</b><b>|</b><b> </b>'('<b>|</b><b>|</b><b>new</b><b>.</b>InsertTarihi<b>|</b><b>|</b>')'<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaRezervFisi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaRezervFisi</u></font><b>.</b>BoyaRezervFisiId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BoyaRezervFisiId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>InsertKullaniciId<b> </b><b>into</b><b> </b>:NewLog<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>NewLog<b> </b><b>&lt;</b><b>&gt;</b><b> </b>''<b>)</b><b> </b><b>then</b>
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b> </b><b>set</b><b> </b>LinkIslemi<b>=</b>1<b>,</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>DegisimLog<b> </b><b>=</b><b> </b>DegisimLog<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>13<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>chr</u></font><b>(</b>10<b>)</b><b> </b><b>|</b><b>|</b><b> </b><b>cast</b><b>(</b>:NewLog<b> </b><b>as</b><b> </b><b>blob</b><b> </b><b>character</b><b> </b><b>set</b><b> </b>UTF8<b>)</b><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayID<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BoyaSiparisDetayId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTBOYAIRSALIYEDETAY1.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTBOYASIPARISBASKI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

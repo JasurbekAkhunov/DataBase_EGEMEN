@@ -1,0 +1,190 @@
+<HTML>
+<HEAD>
+<TITLE>BOYATALIMATRECETEGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="219800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BOYATALIMATRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BOYATALIMATRECETERAFLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BOYATALIMATRECETEGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABOYASIPARISKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABOYATALIMATKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">BOYATALIMATRECETEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYATALIMATKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMERAFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RAFID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANILANMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALANMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RAFKALANMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RAFKULLANILABILIRMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BASKATALIMATRECETEMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTKULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEGISIMTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure BOYATALIMATRECETEGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>BOYATALIMATRECETEGETIR</u></font><b>(</b>
+<b>    </b>ABOYASIPARISKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABOYATALIMATKAYITID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>BOYATALIMATRECETEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYATALIMATKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMERAFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RAFID<b> </b><font color="# 080 0"><u>RAFKODUSIZE</u></font><b>,</b>
+<b>    </b>MIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>KULLANILANMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>KALANMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>RAFKALANMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>RAFKULLANILABILIRMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>BASKATALIMATRECETEMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>INSERTKULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>INSERTTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>KULLANICIADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>DEGISIMTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>Begin</b>
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>BoyaTalimatReceteId<b>,</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>BoyaTalimatKayitID<b>,</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>OrmeRafID<b>,</b><b> </b><font color="# 080 0"><u>Raf</u></font><b>.</b>RafID<b>,</b>
+<b>             </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>KullanilanMiktar<b>,</b><b> </b><b>(</b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>Miktar<b> </b><b>-</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>KullanilanMiktar<b>)</b><b>,</b>
+<b>             </b>IK<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>InsertTarihi<b>,</b><b> </b>Sk<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>DegisimTarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b> </b><b>From</b><b> </b><font color="# 080 0"><u>BoyaTalimat</u></font>
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>BoyaTalimatKayitID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaTalimat</u></font><b>.</b>BoyaTalimatKayitID
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>OrmeRafId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>OrmeRafId
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Raf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Raf</u></font><b>.</b>RafId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RafId
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>IK<b> </b><b>on</b><b> </b>IK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>InsertKullaniciId
+<b>  </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b>SK<b> </b><b>on</b><b> </b>SK<b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>KullaniciId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTalimat</u></font><b>.</b>BoyaSiparisKayitID<b> </b><b>=</b><b> </b>:ABoyaSiparisKayitID<b> </b><b>and</b>
+<b>        </b><b>(</b><font color="# 080 0"><u>BoyaTalimat</u></font><b>.</b>BoyaTalimatKayitID<b> </b><b>=</b><b> </b>:ABoyaTalimatKayitID<b> </b><b>or</b><b> </b>:ABoyaTalimatKayitID<b> </b><b>is</b><b> </b><b>Null</b><b>)</b>
+<b>  </b><b>Into</b><b> </b>:BoyaTalimatReceteId<b>,</b><b> </b>:BoyaTalimatKayitID<b>,</b><b> </b>:OrmeRafID<b>,</b><b> </b>:RafID<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:Kullanilanmiktar<b>,</b><b> </b>:KalanMiktar<b>,</b>
+<b>         </b>:InsertKullaniciAdi<b>,</b><b> </b>:InsertTarihi<b>,</b><b> </b>:KullaniciAdi<b>,</b><b> </b>:DegisimTarihi<b>,</b><b> </b>:RafKalanMiktar<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>Select</b><b> </b><b>Sum</b><b>(</b>Miktar<b> </b><b>-</b><b> </b>KullanilanMiktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>OrmeRafID<b> </b><b>=</b><b> </b>:OrmeRafId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>BoyaTalimatRecete</u></font><b>.</b>BoyaTalimatReceteID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:BoyaTalimatReceteID
+<b>      </b><b>into</b><b> </b>:BaskaTalimatReceteMiktar<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>BaskaTalimatReceteMiktar<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>BaskaTalimatReceteMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b>RafKullanilabilirMiktar<b> </b><b>=</b><b> </b>RafKalanMiktar<b> </b><b>-</b><b> </b>BaskaTalimatReceteMiktar<b>;</b>
+
+<b>    </b><b>Suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BOYATALIMATRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BOYATALIMATRECETERAFLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

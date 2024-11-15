@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTBOYATEKLIF</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="660800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTBOYATALIMATRECETE.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTBOYATEKLIFASAMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTBOYATEKLIF</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTBOYATEKLIF)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTBOYATEKLIF</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BOYATEKLIF</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SistemTeklifDovizId<b>         </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDovizKuru<b>                  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>update</b><b> </b><font color="# 080 0"><u>BoyaTeklifNumarator</u></font><b> </b><b>set</b><b> </b>Id<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BoyaTeklifId<b> </b><b>where</b><b> </b>Yil<b> </b><b>=</b><b> </b><b>new</b><b>.</b>BoyaTeklifYil<b> </b><b>and</b><b> </b>Id<b> </b><b>&lt;</b><b> </b><b>New</b><b>.</b>BoyaTeklifId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>LinkIslemi<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>Fason<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>      </b><b>Select</b><b> </b>FasonDuzeltmeFaktoru<b>,</b><b> </b>FasonUretimGideri<b>,</b><b> </b>FasonYonetimGideri<b>,</b><b> </b>FasonAmortisman<b>,</b><b> </b>TeklifVadeFarkiOrani<b>,</b><b> </b>TeklifDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemID<b> </b><b>=</b><b> </b>1
+<b>          </b><b>into</b><b>  </b><b>New</b><b>.</b>DuzeltmeFaktoru<b>,</b><b> </b><b>New</b><b>.</b>UretimGideri<b>,</b><b> </b><b>New</b><b>.</b>YonetimGideri<b>,</b><b> </b><b>New</b><b>.</b>Amortisman<b>,</b><b> </b><b>New</b><b>.</b>VadeFarkiOrani<b>,</b><b> </b>:SistemTeklifDovizId<b>;</b>
+<b>    </b><b>else</b>
+<b>      </b><b>Select</b><b> </b>SatisDuzeltmeFaktoru<b>,</b><b> </b>SatisUretimGideri<b>,</b><b> </b>SatisYonetimGideri<b>,</b><b> </b>SatisAmortisman<b>,</b><b> </b>TeklifVadeFarkiOrani<b>,</b><b> </b>TeklifDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemID<b> </b><b>=</b><b> </b>1
+<b>          </b><b>into</b><b> </b><b>New</b><b>.</b>DuzeltmeFaktoru<b>,</b><b> </b><b>New</b><b>.</b>UretimGideri<b>,</b><b> </b><b>New</b><b>.</b>YonetimGideri<b>,</b><b> </b><b>New</b><b>.</b>Amortisman<b>,</b><b> </b><b>New</b><b>.</b>VadeFarkiOrani<b>,</b><b> </b>:SistemTeklifDovizId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SistemTeklifDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>DovizId<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DovizKuruGetir</u></font><b>(</b>:SistemTeklifDovizId<b>,</b><b> </b><b>new</b><b>.</b>DovizId<b>,</b><b> </b><b>New</b><b>.</b>TeklifTarihi<b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FDovizKuru<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>DovizKuruGirisiYapilmamis</u></font><b>;</b>
+
+<b>      </b><b>New</b><b>.</b>UretimGideri<b> </b><b>=</b><b> </b><b>New</b><b>.</b>UretimGideri<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+<b>      </b><b>New</b><b>.</b>YonetimGideri<b> </b><b>=</b><b> </b><b>New</b><b>.</b>YonetimGideri<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+<b>      </b><b>New</b><b>.</b>Amortisman<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Amortisman<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+
+<b>      </b><b>Select</b><b> </b>Fiyat<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FormataGoreFiyatYuvarla</u></font><b>(</b><b>New</b><b>.</b>UretimGideri<b>,</b><b> </b>'BOYA'<b>,</b><b> </b>'BIRIMFIYAT'<b>)</b><b> </b><b>into</b><b> </b><b>New</b><b>.</b>UretimGideri<b>;</b>
+<b>      </b><b>Select</b><b> </b>Fiyat<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FormataGoreFiyatYuvarla</u></font><b>(</b><b>New</b><b>.</b>YonetimGideri<b>,</b><b> </b>'BOYA'<b>,</b><b> </b>'BIRIMFIYAT'<b>)</b><b> </b><b>into</b><b> </b><b>New</b><b>.</b>YonetimGideri<b>;</b>
+<b>      </b><b>Select</b><b> </b>Fiyat<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FormataGoreFiyatYuvarla</u></font><b>(</b><b>New</b><b>.</b>Amortisman<b>,</b><b> </b>'BOYA'<b>,</b><b> </b>'BIRIMFIYAT'<b>)</b><b> </b><b>into</b><b> </b><b>New</b><b>.</b>Amortisman<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BoyaTeklifKayitId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>new</b><b>.</b>BoyaTeklifKayitId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>BoyaTeklifKayit_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><b>new</b><b>.</b>InsertTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+<b>  </b><b>new</b><b>.</b>LinkIslemi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTBOYATALIMATRECETE.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTBOYATEKLIFASAMA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

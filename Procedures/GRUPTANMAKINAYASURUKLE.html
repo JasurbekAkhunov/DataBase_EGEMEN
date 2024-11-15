@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<TITLE>GRUPTANMAKINAYASURUKLE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="596800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="GRUPPLANLANACAKASAMALAR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="GULLESTOKDUZENLE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">GRUPTANMAKINAYASURUKLE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YENISEPETAC</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AURETIMPLANLAMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AGRUPPLANLAMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">URETIMPLANLAMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure GRUPTANMAKINAYASURUKLE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>GRUPTANMAKINAYASURUKLE</u></font><b>(</b>
+<b>    </b>AMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>YENISEPETAC<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AURETIMPLANLAMAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AGRUPPLANLAMAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>URETIMPLANLAMAID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FUretimPlanlamaId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSepetNo<b>               </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ImalatBaslamis<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MakinaPlanlamaGrupId<b>   </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BolumPlanlamaId<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PUretimPlanlamaId<b>      </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FOldMakinaPlanlamaGrupId<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FNewMakinaPlanlamaGrupId<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DegisimLog<b> </b><b>Blob</b><b> </b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KullaniciAdi<b>           </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AGrupPlanlamaId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>AMakinaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>UretimPlanlamaParemetreHatasi</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AUretimPlanlamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>FSepetNo<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b><b>else</b><b> </b><b>Select</b><b> </b>SepetNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>UretimPlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>UretimPlanlama</u></font><b>.</b>MakinaId<b> </b><b>=</b><b> </b>:AMakinaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>UretimPlanlama</u></font><b>.</b>UretimPlanlamaId<b> </b><b>=</b><b> </b>:AUretimPlanlamaId<b> </b><b>into</b><b> </b>:FSepetNo<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FSepetNo<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>MakinaSepetBulunamadi</u></font><b>;</b>
+
+<b>  </b><b>Select</b><b> </b>BolumPlanlamaId<b>,</b><b> </b>UretimPlanlamaId<b>,</b><b> </b>MakinaPlanlamaGrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>GrupPlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>GrupPlanlama</u></font><b>.</b>GrupPlanlamaId<b> </b><b>=</b><b> </b>:AGrupPlanlamaId<b> </b><b>into</b><b> </b>:BolumPlanlamaId<b>,</b><b> </b>:PUretimPlanlamaId<b>,</b><b> </b>:FOldMakinaPlanlamaGrupId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>BolumPlanlamaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>GrupPlanlamaKaydiBulunamadi</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>PUretimPlanlamaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>GrubMakinaPlanlamasiyapilmis</u></font><b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>BolumPlanlama</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BolumPlanlama</u></font><b>.</b>PartiAsamalariId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BolumPlanlama</u></font><b>.</b>PartiSinifId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>BolumPlanlama</u></font><b>.</b>BolumPlanlamaID<b> </b><b>=</b><b> </b>:BolumPlanlamaId<b> </b><b>and</b>
+<b>        </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>MakinaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:AMakinaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>GirisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>into</b><b> </b>:ImalatBaslamis<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ImalatBaslamis<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>AsamaImalataBaslamisTasinamaz</u></font><b>;</b>
+
+<font color="# 0 0FF"><i>/* Eger Mevcut grup dısındaki bir gruba ait makinaya planlanmaya calısıyor ise önce grupa sürükleyecegiz */</i></font>
+<b>  </b><b>Select</b><b> </b>MakinaPlanlamaGrupId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Makina</u></font><b> </b><b>where</b><b> </b>MakinaID<b> </b><b>=</b><b> </b>:AMakinaId<b> </b><b>into</b><b> </b>FNewMakinaPlanlamaGrupId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>FOLdMakinaPlanlamaGrupId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>FNewMakinaPlanlamaGrupId<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>     </b><b>execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>BolumGrupArasiSurukleBirak</u></font><b>(</b>:BolumPlanlamaId<b>,</b><b> </b>:FNewMakinaPlanlamaGrupId<b>)</b><b>;</b>
+
+<b>     </b><b>Select</b><b> </b>GrupPlanlamaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>GrupPlanlama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>GrupPlanlama</u></font><b>.</b>BolumPlanlamaId<b> </b><b>=</b><b> </b>:BolumPlanlamaId<b> </b><b>into</b><b> </b>:AGrupPlanlamaId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>YeniSepetAc<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FSepetNo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>UretimPlanlama</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UretimPlanlamaDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UretimPlanlamaDetay</u></font><b>.</b>UretimPlanlamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>UretimPlanlama</u></font><b>.</b>UretimPlanlamaId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BolumPlanlama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BolumPlanlama</u></font><b>.</b>BolumPlanlamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>UretimPlanlamaDetay</u></font><b>.</b>BolumPlanlamaId
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BolumPlanlama</u></font><b>.</b>PartiAsamalariId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BolumPlanlama</u></font><b>.</b>PartiSinifId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>UretimPlanlama</u></font><b>.</b>MakinaId<b> </b><b>=</b><b> </b>:AMakinaId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>UretimPlanlama</u></font><b>.</b>SepetNo<b> </b><b>&gt;</b><b>=</b><b> </b>:FSepetNo<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>GirisTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>into</b><b> </b>:ImalatBaslamis<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>ImalatBaslamis<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KazanImalattaArayaGirilemez</u></font><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b>FUretimPlanlamaId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>UretimPlanlama_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>UretimPlanlama</u></font><b>(</b>UretimPlanlamaId<b>,</b><b> </b>MakinaId<b>,</b><b> </b>SepetNo<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>                        </b><b>values</b><b>(</b>:FUretimPlanlamaId<b>,</b><b> </b>:AMakinaId<b>,</b><b> </b>:FSepetNo<b>,</b><b> </b>:AKullaniciId<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b>FUretimPlanlamaId<b> </b><b>=</b><b> </b>AUretimPlanlamaId<b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>UretimPlanlamaDetay</u></font><b>(</b>UretimPlanlamaId<b>,</b><b> </b>BolumPlanlamaId<b>,</b><b> </b>GrupPlanlamaId<b>,</b><b> </b>PlanlayanKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>                      </b><b>values</b><b>(</b>:FUretimPlanlamaId<b>,</b><b> </b>:BolumPlanlamaId<b>,</b><b> </b>:AGrupPlanlamaId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>)</b><b>;</b>
+
+<b>  </b>UretimPlanlamaId<b> </b><b>=</b><b> </b>FUretimPlanlamaId<b>;</b>
+<b> </b><font color="# 0 0FF"><i>/*</i></font>
+<font color="# 0 0FF"><i>  Select Kullanici.Adi from Kullanici where Kullanici.KullaniciID = :AKullaniciID into :KullaniciAdi;</i></font>
+<font color="# 0 0FF"><i>  select DegisimLog from BolumPlanlama where BolumPlanlama.BolumPlanlamaId = :BolumPlanlamaId into :DegisimLog;</i></font>
+
+<font color="# 0 0FF"><i>  if (DegisimLog is null) then DegisimLog = '';</i></font>
+<font color="# 0 0FF"><i>  DegisimLog = DegisimLog || KullaniciAdi || ' ' || NowTarihSaatStr() || ' tarihinde Gruptan Makinaya Planlandı. ' || chr(13) || chr(10);</i></font>
+
+<font color="# 0 0FF"><i>  update BolumPlanlama set DegisimLog = :DegisimLog where BolumPlanlama.BolumPlanlamaId = :BolumPlanlamaId;</i></font>
+<font color="# 0 0FF"><i>   */</i></font>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="GRUPPLANLANACAKASAMALAR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="GULLESTOKDUZENLE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,204 @@
+<HTML>
+<HEAD>
+<TITLE>PARTIIZAKLARILISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1452800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTIIPLIKPAKETLEMEKOLILISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTIKALITEKONTROLTARTIYAAKTAR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTIIZAKLARILISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<P CLASS="Base"><I>(There are no input parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTINOSTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIIKAZTIPI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIIKAZTIPISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIBASLAMATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIBITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IKAZSURESIGUN</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IKAZSURESISAAT</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IKAZSURESIDAKIKA</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IKAZGONDERILDISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IKAZYERI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IKAZYERISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IKAZSURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTIIZAKLARILISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTIIZAKLARILISTESI</u></font>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>KULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KULLANICIADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>,</b>
+<b>    </b>PARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTINOSTR<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>PARTIIKAZTIPI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTIIKAZTIPISTR<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>PARTIBASLAMATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>PARTIBITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>IKAZSURESIGUN<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IKAZSURESISAAT<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IKAZSURESIDAKIKA<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IKAZGONDERILDISTR<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>IKAZYERI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IKAZYERISTR<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>IKAZSURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>pitBitmezIse<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>pitBitince<b>        </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>iyBilgisayar<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>iySirketIciMail<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>iyEmail<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>iySms<b>             </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>iyFax<b>             </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b>pitBitmezIse<b>,</b><b> </b>pitBitince<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiIkazTipiGetir</u></font><b> </b><b>into</b><b> </b>:pitBitmezIse<b>,</b><b> </b>:pitBitince<b>;</b>
+<b>  </b><b>select</b><b> </b>iyBilgisayar<b>,</b><b> </b>iySirketIciMail<b>,</b><b> </b>iyEmail<b>,</b><b> </b>iySms<b>,</b><b> </b>iyFax<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiIkazYeriGetir</u></font><b> </b><b>into</b><b> </b>:iyBilgisayar<b>,</b><b> </b>:iySirketIciMail<b>,</b><b> </b>:iyEmail<b>,</b><b> </b>:iySms<b>,</b><b> </b>:iyFax<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>KullaniciId<b>,</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>PartiKayitId<b>,</b><b> </b>'('<b>|</b><b>|</b><font color="# 080 0"><u>Parti</u></font><b>.</b>Partiyil<b>|</b><b>|</b>')'<b>|</b><b>|</b>' '<b>|</b><b>|</b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiId<b>,</b><b> </b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>PartiIkazTipi<b>,</b>
+<b>             </b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>PartiBaslamaTarihi<b>,</b><b> </b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>PartiBitisTarihi<b>,</b><b> </b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>IkazSuresi<b>,</b><b> </b><b>Decode</b><b>(</b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>IkazGosterildi<b>,</b><b> </b>0<b>,</b><b> </b>'Hayır'<b>,</b><b> </b>'Evet'<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>IkazYeri<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiIkazlari</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>KullaniciId
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiIkazlari</u></font><b>.</b>PartiKayitId
+<b>      </b><b>into</b><b> </b>:KullaniciId<b>,</b><b> </b>:KullaniciAdi<b>,</b><b> </b>:PartiKayitId<b>,</b><b> </b>:PartiNoStr<b>,</b><b> </b>:PartiIkazTipi<b>,</b>
+<b>           </b>:PartiBaslamaTarihi<b>,</b><b> </b>:PartiBitisTarihi<b>,</b><b> </b>:IkazSuresi<b>,</b><b> </b>:IkazGonderildiStr<b>,</b><b> </b>:IkazYeri<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>IkazSuresiGun<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>    </b>IkazSuresiSaat<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>    </b>IkazSuresiDakika<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>PartiIkazTipi<b> </b><b>=</b><b> </b>pitBitmezIse<b>)</b><b> </b><b>then</b>
+<b>      </b>PartiIkazTipiStr<b> </b><b>=</b><b> </b>'Bitmezse'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>PartiIkazTipi<b> </b><b>=</b><b> </b>pitBitince<b>)</b><b> </b><b>then</b>
+<b>      </b>PartiIkazTipiStr<b> </b><b>=</b><b> </b>'Bitince'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>IkazYeri<b> </b><b>=</b><b> </b>iyBilgisayar<b>)</b><b> </b><b>then</b>
+<b>      </b>IkazYeriStr<b> </b><b>=</b><b> </b>'Bilgisayar'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>IkazYeri<b> </b><b>=</b><b> </b>iySirketIciMail<b>)</b><b> </b><b>then</b>
+<b>      </b>IkazYeriStr<b> </b><b>=</b><b> </b>'Şirket İçi Mail'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>IkazYeri<b> </b><b>=</b><b> </b>iyEmail<b>)</b><b> </b><b>then</b>
+<b>      </b>IkazYeriStr<b> </b><b>=</b><b> </b>'E-mail'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>IkazYeri<b> </b><b>=</b><b> </b>iySms<b>)</b><b> </b><b>then</b>
+<b>      </b>IkazYeriStr<b> </b><b>=</b><b> </b>'Sms'<b>;</b>
+<b>    </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>IkazYeri<b> </b><b>=</b><b> </b>iyFax<b>)</b><b> </b><b>then</b>
+<b>      </b>IkazYeriStr<b> </b><b>=</b><b> </b>'Fax'<b>;</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*if (IkazSuresi &gt; 0 ) then</i></font>
+<font color="# 0 0FF"><i>    begin</i></font>
+<font color="# 0 0FF"><i>      IkazSuresiGun = Trunc(IkazSuresi);</i></font>
+<font color="# 0 0FF"><i>      IkazSuresiSaat = Extract(hour from cast('01.01.01 ' || dateadd(hour, IkazSuresi - IkazSuresiGun, cast('00:00' as time)) as TimeStamp));</i></font>
+<font color="# 0 0FF"><i>      IkazSuresiDakika = Extract(minute from cast('01.01.01 ' || dateadd(hour, IkazSuresi - IkazSuresiGun, cast('00:00' as time)) as TimeStamp));</i></font>
+<font color="# 0 0FF"><i>    end*/</i></font>
+
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTIIPLIKPAKETLEMEKOLILISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTIKALITEKONTROLTARTIYAAKTAR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

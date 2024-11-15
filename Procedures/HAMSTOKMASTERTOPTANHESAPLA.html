@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<TITLE>HAMSTOKMASTERTOPTANHESAPLA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="700800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HAMSTOKMASTERTOPGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HAMSTOKRAFDETAYIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HAMSTOKMASTERTOPTANHESAPLA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHAMSTOKMASTERID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SADECERAFLARISIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HAMSTOKMASTERTOPTANHESAPLA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HAMSTOKMASTERTOPTANHESAPLA</u></font><b>(</b>
+<b>    </b>AHAMSTOKMASTERID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SADECERAFLARISIL<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RafId<b> </b><b>varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Kilo<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Metre<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KapAdedi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciKabulRafId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EgemenFirmaId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>sistem</u></font><b>.</b>EgemenFirmaId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>sistem</u></font><b> </b><b>into</b><b> </b>:EgemenFirmaId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>EgemenFirmaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>133<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>set</b><b> </b>OnayDurumu<b> </b><b>=</b><b> </b>0<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>1<b>,</b><b> </b>TopRaflamaYapildi<b> </b><b>=</b><b> </b>0<b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>    </b><b>UPDATE</b><b> </b><font color="# 080 0"><u>HAMSTOKMASTERKABUL</u></font><b> </b><b>SET</b><b> </b>KABULMIKTAR<b>=</b>0<b>,</b><b> </b>KONTROLDURUMU<b> </b><b>=</b><b> </b>0<b>,</b><b>  </b>KONTROLKULLANICIID<b> </b><b>=</b><b> </b><b>Null</b><b> </b><b>WHERE</b><b> </b>HAMSTOKMASTERID<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b>GeciciKabulRafId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b> </b><b>where</b><b> </b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b> </b><b>into</b><b> </b>:GeciciKabulRafId<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b> </b><b>where</b><b> </b>GeciciKabulRafId<b> </b><b>=</b><b> </b>:GeciciKabulRafId<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>delete</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b> </b><b>where</b><b> </b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SadeceRaflariSil<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMasterTop</u></font><b> </b><b>where</b><b> </b>RafId<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>TumToplarRaflanmamis</u></font><b>;</b>
+
+<b>      </b><b>Select</b><b> </b><b>sum</b><b>(</b>Kilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>Metre<b>)</b><b>,</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMasterTop</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMasterTop</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b> </b><b>into</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>:KapAdedi<b>;</b>
+
+<b>      </b><b>update</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>set</b><b> </b>OnayDurumu<b> </b><b>=</b><b> </b>0<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>      </b><b>update</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>set</b><b> </b>Kilo<b> </b><b>=</b><b> </b>:Kilo<b>,</b><b> </b>Metre<b> </b><b>=</b><b> </b>:Metre<b>,</b><b> </b>KapAdedi<b> </b><b>=</b><b> </b>:KapAdedi<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>1<b>,</b><b> </b>TopRaflamaYapildi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+
+<b>      </b><b>for</b><b> </b><b>select</b><b> </b>RafId<b>,</b><b> </b><b>sum</b><b>(</b>Kilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>Metre<b>)</b><b>,</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMasterTop</u></font>
+<b>        </b><b>where</b><b> </b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId
+<b>        </b><b>group</b><b> </b><b>by</b><b> </b>RafId
+<b>        </b><b>into</b><b> </b>:RafId<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>:KapAdedi<b> </b><b>do</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>if</b><b> </b><b>(</b>RafId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b> </b><b>(</b>HamStokMasterId<b>,</b><b> </b>RafId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Kilo<b>,</b><b> </b>Metre<b>,</b><b> </b>Adet<b>)</b>
+<b>            </b><b>values</b><b>(</b>:AHamStokMasterId<b>,</b><b> </b>:RafId<b>,</b><b> </b>:KapAdedi<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>0<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><font color="# 0 0FF"><i>/*bteks*/</i></font>
+<b>    </b><b>update</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>set</b><b> </b>OnayDurumu<b> </b><b>=</b><b> </b>0<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>1<b>,</b><b> </b>TopRaflamaYapildi<b> </b><b>=</b><b> </b>0<b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>    </b><b>UPDATE</b><b> </b><font color="# 080 0"><u>HAMSTOKMASTERKABUL</u></font><b> </b><b>SET</b><b> </b>KABULMIKTAR<b>=</b>0<b>,</b><b> </b>KONTROLDURUMU<b> </b><b>=</b><b> </b>0<b>,</b><b>  </b>KONTROLKULLANICIID<b> </b><b>=</b><b> </b><b>Null</b><b> </b><b>WHERE</b><b> </b>HAMSTOKMASTERID<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>SadeceRaflariSil<b> </b><b>&lt;</b><b>&gt;</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMasterTop</u></font><b> </b><b>where</b><b> </b>RafId<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>TumToplarRaflanmamis</u></font><b>;</b>
+
+<b>      </b><b>Select</b><b> </b><b>sum</b><b>(</b>Kilo<b>)</b><b>,</b><b> </b><b>sum</b><b>(</b>Metre<b>)</b><b>,</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMasterTop</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMasterTop</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b> </b><b>into</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>:KapAdedi<b>;</b>
+
+<b>      </b><b>update</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>set</b><b> </b>OnayDurumu<b> </b><b>=</b><b> </b>0<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>      </b><b>update</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>set</b><b> </b>Miktar2<b> </b><b>=</b><b> </b>:Kilo<b>,</b><b> </b>NeredenUpdate<b> </b><b>=</b><b> </b>1<b>,</b><b> </b>TopRaflamaYapildi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+
+<b>     </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HAMSTOKMASTERTOPGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HAMSTOKRAFDETAYIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

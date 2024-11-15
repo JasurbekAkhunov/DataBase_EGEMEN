@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<TITLE>MOBILKULLANICIGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1157800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="MOBILARIZASARFIYATYAP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="MODELAKSESUARDETAYGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">MOBILKULLANICIGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANICIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PERSONELADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PERSONELKISAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BANTSEFI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BAKIMCI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEPARTMANID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEPARTMANADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">VARDIYAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PERSONELID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure MOBILKULLANICIGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>MOBILKULLANICIGETIR</u></font><b>(</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>KULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KULLANICIADI<b> </b><b>TYPE</b><b> </b><b>OF</b><b> </b><b>COLUMN</b><b> </b><font color="# 080 0"><u>KULLANICI</u></font><b>.</b>ADI<b>,</b>
+<b>    </b>PERSONELADI<b> </b><b>TYPE</b><b> </b><b>OF</b><b> </b><b>COLUMN</b><b> </b><font color="# 080 0"><u>PERSONEL</u></font><b>.</b>ADI<b>,</b>
+<b>    </b>PERSONELKISAADI<b> </b><font color="# 080 0"><u>ADI50</u></font><b>,</b>
+<b>    </b>BANTSEFI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BAKIMCI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DEPARTMANID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DEPARTMANADI<b> </b><b>TYPE</b><b> </b><b>OF</b><b> </b><b>COLUMN</b><b> </b><font color="# 080 0"><u>DEPARTMAN</u></font><b>.</b>ADI<b>,</b>
+<b>    </b>VARDIYAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>VARDIYAADI<b> </b><font color="# 080 0"><u>ADI50</u></font><b>,</b>
+<b>    </b>PERSONELID<b> </b><b>TYPE</b><b> </b><b>OF</b><b> </b><b>COLUMN</b><b> </b><font color="# 080 0"><u>PERSONEL</u></font><b>.</b>PERSONELID<b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>For</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b>,</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>Bakimci<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PostaBasi<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>DepartmanId<b>,</b><b> </b><font color="# 080 0"><u>Departman</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PersonelId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font>
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Personel</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>PersonelId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>PersonelId
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Departman</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Departman</u></font><b>.</b>DepartmanId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Personel</u></font><b>.</b>DepartmanId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciId<b> </b><b>=</b><b> </b>:AKullaniciId
+<b>  </b><b>into</b><b> </b>:KullaniciId<b>,</b><b> </b>:KullaniciAdi<b>,</b><b> </b>:PersonelAdi<b>,</b><b> </b>:Bakimci<b>,</b><b> </b>:BantSefi<b>,</b><b> </b>:DepartmanId<b>,</b><b> </b>:DepartmanAdi<b>,</b><b> </b>:PersonelId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="MOBILARIZASARFIYATYAP.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="MODELAKSESUARDETAYGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

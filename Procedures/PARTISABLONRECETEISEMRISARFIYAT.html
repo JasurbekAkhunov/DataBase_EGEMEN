@@ -1,0 +1,209 @@
+<HTML>
+<HEAD>
+<TITLE>PARTISABLONRECETEISEMRISARFIYAT</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1510800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTISABLONRECETEILAVEGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTISABLONRECETEISEMRISIL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTISABLONRECETEISEMRISARFIYAT</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">PARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTISABLONID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URUNID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URUNADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMID</TD>
+    <TD><P CLASS="Base2">VARCHAR(2)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENVARYANTID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMECIKISFIYATI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMECIKISFIYATIBUGUN</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMECIKISFIYATIBIRIMID</TD>
+    <TD><P CLASS="Base2">VARCHAR(2)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMKULLANILANMIKTAR</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANILANMIKTAR</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILAVEMIKTARI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DUZELTMEMIKTARI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILAVEKULLANILANMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DUZELTMEKULLANILANMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base">İş Emrine bağlı tüm partilerin "İş Emri ile alakalı" sarfiyatlarını listeler. Bu liste üzerinden gruplayarak toplam sarfiyatlar da hesaplanabilir. Parametre olarak İş Emrine bağlı herhangi bir PartiKayıtID verilmesi yeterlidir.</P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTISABLONRECETEISEMRISARFIYAT</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>PARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTISABLONID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>URUNID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>URUNADI<b> </b><b>VARCHAR</b><b>(</b>80<b>)</b><b>,</b>
+<b>    </b>BIRIMID<b> </b><b>VARCHAR</b><b>(</b>2<b>)</b><b>,</b>
+<b>    </b>DESENVARYANTID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>URETIMECIKISFIYATI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>URETIMECIKISFIYATIBUGUN<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>URETIMECIKISFIYATIBIRIMID<b> </b><b>VARCHAR</b><b>(</b>2<b>)</b><b>,</b>
+<b>    </b>BIRIMKULLANILANMIKTAR<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KULLANILANMIKTAR<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ILAVEMIKTARI<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>DUZELTMEMIKTARI<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>ILAVEKULLANILANMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>DUZELTMEKULLANILANMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b>FSablonHazirlananMiktar<b>    </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b>FAcilisTarihi<b>              </b><b>timestamp</b><b>;</b>
+<b>declare</b><b> </b>FDovizKuru<b>                 </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b>FUretimeCikisFiyati<b>        </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b>FUretimeCikisFiyatiDovizId<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b>FStokTabanDovizId<b>          </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>select</b><b> </b><b>first</b><b> </b>1<b> </b>StokTabanDovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>SISTEM</u></font><b> </b><b>where</b><b> </b>SISTEMID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:FStokTabanDovizId<b>;</b>
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiKayitID<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonID<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b>,</b><b> </b>PSRUB<b>.</b>BirimId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>DesenVaryantID<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>KullanilanMiktar<b>,</b>
+<b>    </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UretimeCikisFiyati<b>,</b><b> </b>UBUCF<b>.</b>BirimId<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>AcilisTarihi<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>HazirlananMiktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiSablonID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>PartiKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiKayitID
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>PSRUB<b> </b><b>on</b><b> </b>PSRUB<b>.</b>UrunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunBirimId<b> </b><b>and</b><b> </b>PSRUB<b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>UrunId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>UrunFiyat</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b>UBUCF<b> </b><b>on</b><b> </b>UBUCF<b>.</b>UrunBirimId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>urunFiyat</u></font><b>.</b>UretimeCikisFiyatiUrunBirimId
+<b>    </b><b>where</b><b>  </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiSablonIsEmriId<b> </b><b>in</b><b> </b><b>(</b><b> </b><b>SELECT</b><b> </b><b>DISTINCT</b><b> </b>PartiSablonIsEmriId<b> </b><b>FROM</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b> </b><b>WHERE</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>PartiKayitID<b> </b><b>=</b><b> </b>:APartiKayitId<b> </b><b>)</b>
+<b>    </b><b>order</b><b> </b><b>by</b><b>  </b><font color="# 080 0"><u>PartiSablonRecete</u></font><b>.</b>PartiKayitId<b>,</b><b> </b><font color="# 080 0"><u>PartiSablon</u></font><b>.</b>SablonNo<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunTipiId
+<b>    </b><b>into</b><b> </b>:PartiKayitID<b>,</b><b> </b>:PartiSablonId<b>,</b><b> </b>:UrunId<b>,</b><b> </b>:UrunAdi<b>,</b><b> </b>:BirimId<b>,</b><b> </b>:DesenVaryantID<b>,</b><b> </b>:KullanilanMiktar<b>,</b>
+<b>    </b>:FUretimeCikisFiyati<b>,</b><b> </b>:UretimeCikisFiyatiBirimId<b>,</b><b> </b>:FAcilisTarihi<b>,</b><b> </b>:FSablonHazirlananMiktar<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>BirimKullanilanMiktar<b> </b><b>=</b><b> </b><b>iif</b><b>(</b>FSablonHazirlananMiktar<b> </b><b>=</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>KullanilanMiktar<b> </b><b>/</b><b> </b>FSablonHazirlananMiktar<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FUretimeCikisFiyatiDovizId<b> </b><b>=</b><b> </b>FStokTabanDovizId<b>)</b><b> </b><b>then</b><b> </b>FDovizKuru<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>else</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FUretimeCikisFiyatiDovizId<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b><b>Current_Date</b><b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+
+<b>    </b>UretimeCikisFiyatiBugun<b> </b><b>=</b><b> </b>FUretimeCikisFiyati<b> </b><b>*</b><b> </b><b>IIF</b><b>(</b>FDovizKuru<b> </b><b>is</b><b> </b><b>null</b><b>,</b><b> </b>0<b>,</b><b> </b>FDovizKuru<b>)</b><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FUretimeCikisFiyatiDovizId<b> </b><b>=</b><b> </b>FStokTabanDovizId<b>)</b><b> </b><b>then</b><b> </b>FDovizKuru<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>else</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>EnYakinDovizKuruGetir</u></font><b>(</b>:FUretimeCikisFiyatiDovizId<b>,</b><b> </b>:FStokTabanDovizId<b>,</b><b> </b>:FAcilisTarihi<b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+
+<b>    </b>UretimeCikisFiyati<b> </b><b>=</b><b> </b>FUretimeCikisFiyati<b> </b><b>*</b><b> </b><b>IIF</b><b>(</b>FDovizKuru<b> </b><b>is</b><b> </b><b>null</b><b>,</b><b> </b>0<b>,</b><b> </b>FDovizKuru<b>)</b><b>;</b>
+
+<b>    </b><b>select</b><b> </b><b>Sum</b><b>(</b><b>iif</b><b>(</b><font color="# 080 0"><u>PartiSablonIlave</u></font><b>.</b><font color="# 080 0"><u>IlaveTipi</u></font><b> </b><b>=</b><b> </b>1<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b>.</b>Miktar<b>,</b><b> </b>0<b>)</b><b>)</b><b>,</b>
+<b>      </b><b>Sum</b><b>(</b><b>iif</b><b>(</b><font color="# 080 0"><u>PartiSablonIlave</u></font><b>.</b><font color="# 080 0"><u>IlaveTipi</u></font><b> </b><b>=</b><b> </b>2<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b>.</b>Miktar<b>,</b><b> </b>0<b>)</b><b>)</b><b>,</b>
+<b>      </b><b>Sum</b><b>(</b><b>iif</b><b>(</b><font color="# 080 0"><u>PartiSablonIlave</u></font><b>.</b><font color="# 080 0"><u>IlaveTipi</u></font><b> </b><b>=</b><b> </b>1<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b>.</b>KullanilanMiktar<b>,</b><b> </b>0<b>)</b><b>)</b><b>,</b>
+<b>      </b><b>Sum</b><b>(</b><b>iif</b><b>(</b><font color="# 080 0"><u>PartiSablonIlave</u></font><b>.</b><font color="# 080 0"><u>IlaveTipi</u></font><b> </b><b>=</b><b> </b>2<b>,</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b>.</b>KullanilanMiktar<b>,</b><b> </b>0<b>)</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiSablonIlave</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b>.</b>PartiSablonIlaveId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiSablonIlave</u></font><b>.</b>PartiSablonIlaveId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiSablonIlave</u></font><b>.</b>PartiSablonId<b> </b><b>=</b><b> </b>:PartiSablonId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiSablonReceteIlave</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b>:UrunId
+<b>    </b><b>into</b><b> </b>:IlaveMiktari<b>,</b><b> </b>:DuzeltmeMiktari<b>,</b><b> </b>:IlaveKullanilanMiktar<b>,</b><b> </b>:DuzeltmeKullanilanMiktar<b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTISABLONRECETEILAVEGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTISABLONRECETEISEMRISIL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

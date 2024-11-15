@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTHGSIPARISDETAYURUN</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="159800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTHGKOLIDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTHGTASNIFFISIDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTHGSIPARISDETAYURUN</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTHGSIPARISDETAYURUN)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTHGSIPARISDETAYURUN</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>HGSIPARISDETAYURUN</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AsortiMiktar<b> </b><font color="# 080 0"><u>BoyaMiktarSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FMiktar<b> </b><b>Numeric</b><b>(</b>12<b>,</b>4<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>HGSiparisDetayID<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ModelKumasID<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ModelBedenID<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SiparisKopyalaniyor<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>UrunID<b>            </b><font color="# 080 0"><u>UrunKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FireOrani<b>         </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BirimFiyat<b>        </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BirimFiyatDovizId<b> </b><font color="# 080 0"><u>DovizSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Notu<b>              </b><b>Blob</b><b>;</b>
+<b>begin</b>
+<b>  </b>SiparisKopyalaniyor<b> </b><b>=</b><b> </b><b>Coalesce</b><b>(</b><font color="# 080 0"><u>rdb$get_context</u></font><b>(</b>'USER_TRANSACTION'<b>,</b><b> </b>'SiparisKopyalaniyor'<b>)</b><b>,</b><b> </b>0<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>HGSiparisDetayAsortiID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>SiparisKopyalaniyor<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>HGSiparisDetayUrun</u></font>
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>HGSiparisDetayUrun</u></font><b>.</b>HGSiparisDetayID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HGSiparisDetayID<b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>HGSiparisDetayUrun</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ModelKumasID<b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>HGSiparisDetayUrun</u></font><b>.</b>HGSiparisDetayAsortiID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>HGSiparisDetayUrun</u></font><b>.</b>HGSiparisDetayUrunID<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>HGSiparisDetayUrunID
+<b>      </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>HGSiparisDetayKumas</u></font><b>(</b>HGSiparisKayitID<b>,</b><b> </b>HGSiparisDetayID<b>,</b><b> </b>ModelKumasID<b>,</b><b> </b>HamId<b>,</b><b> </b>Miktar<b>,</b><b> </b>FireOrani<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>LabReceteKodu<b>,</b><b> </b>LabReceteAtisId<b>,</b>
+<b>                                      </b>RenkId<b>,</b><b> </b>RenkAdi<b>,</b><b> </b>PantoneKodu<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>BirimFiyatDovizId<b>,</b><b> </b>Notu<b>,</b><b> </b>AnaKumas<b>,</b><b> </b>AnaKumasModelKumasID<b>,</b><b> </b>BoyaliGramaj<b>,</b><b> </b>BoyaliEn<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>TupAcikEnMayli<b>,</b><b> </b>TedarikciRenkKodu<b>)</b>
+<b>        </b><b>Select</b><b> </b><b>New</b><b>.</b>HGSiparisKayitID<b>,</b><b> </b><b>New</b><b>.</b>HGSiparisDetayID<b>,</b><b> </b>ModelKumasID<b>,</b><b> </b>HamId<b>,</b><b> </b>Miktar<b>,</b><b> </b>FireOrani<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>LabReceteKodu<b>,</b><b> </b>LabReceteAtisId<b>,</b>
+<b>               </b>RenkId<b>,</b><b> </b>RenkAdi<b>,</b><b> </b>PantoneKodu<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>BirimFiyatDovizId<b>,</b><b> </b>Notu<b>,</b><b> </b>AnaKumas<b>,</b><b> </b>AnaKumasModelKumasID<b>,</b><b> </b>BoyaliGramaj<b>,</b><b> </b>BoyaliEn<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>,</b><b> </b>TupAcikEnMayli<b>,</b><b> </b>TedarikciRenkKodu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font>
+<b>        </b><b>where</b><b> </b><b>(</b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ModelKumasID<b> </b><b>or</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>AnaKumasModelKumasID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ModelKumasID<b>)</b><b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>Kapali<b> </b><b>=</b><b> </b>0<b>)</b><b>;</b>
+
+<b>    </b><b>end</b>
+
+<b>    </b><b>for</b><b> </b><b>Select</b><b> </b>HGSiparisDetayID<b>,</b><b> </b>ModelKumasID<b>,</b><b> </b>ModelBedenID<b>,</b><b> </b>UrunID<b>,</b><b> </b>Miktar<b>,</b><b> </b>FireOrani<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>BirimFiyatDovizId<b>,</b><b> </b>Notu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HGSiparisAksesuarOrganizeEt</u></font><b>(</b><b>New</b><b>.</b>HGSiparisDetayID<b>,</b><b> </b><b>New</b><b>.</b>ModelKumasID<b>,</b><b> </b><b>New</b><b>.</b>ModelBedenID<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>)</b>
+<b>        </b><b>where</b><b> </b>UrunID<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b>
+<b>      </b><b>into</b><b> </b>:HGSiparisDetayID<b>,</b><b> </b>:ModelKumasID<b>,</b><b> </b>:ModelBedenID<b>,</b><b> </b>:UrunID<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FireOrani<b>,</b><b> </b>:BirimFiyat<b>,</b><b> </b>:BirimFiyatDovizId<b>,</b><b> </b>:Notu<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>HGSiparisDetayAksesuar</u></font><b>(</b>HGSiparisKayitID<b>,</b><b> </b>HGSiparisDetayID<b>,</b><b> </b>ModelKumasID<b>,</b><b> </b>ModelBedenID<b>,</b><b> </b>UrunID<b>,</b><b> </b>Miktar<b>,</b><b> </b>FireOrani<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>BirimFiyatDovizId<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b><b> </b><b>Values</b>
+<b>                  </b><b>(</b><b>New</b><b>.</b>HGSiparisKayitID<b>,</b><b> </b><b>New</b><b>.</b>HGSiparisDetayID<b>,</b><b> </b>:ModelKumasID<b>,</b><b> </b>:ModelBedenID<b>,</b><b> </b>:UrunID<b>,</b><b> </b>:FMiktar<b>,</b><b> </b>:FireOrani<b>,</b><b> </b>:BirimFiyat<b>,</b><b> </b>:BirimFiyatDovizId<b>,</b><b> </b>:Notu<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+
+
+<b>  </b><b>end</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTHGKOLIDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTHGTASNIFFISIDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

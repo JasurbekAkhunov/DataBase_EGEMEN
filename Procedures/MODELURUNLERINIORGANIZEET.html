@@ -1,0 +1,175 @@
+<HTML>
+<HEAD>
+<TITLE>MODELURUNLERINIORGANIZEET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1167800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="MODELURUNGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="MUSTERIFIYATLISTESIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">MODELURUNLERINIORGANIZEET</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AMODELKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure MODELURUNLERINIORGANIZEET)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>MODELURUNLERINIORGANIZEET</u></font><b>(</b>
+<b>    </b>AMODELKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>BedenKodu<b> </b><b>Varchar</b><b>(</b>7<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>RenkAdi<b> </b><b>Varchar</b><b>(</b>50<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>MaxNumara<b> </b><b>integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunID<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunAdi<b> </b><b>Varchar</b><b>(</b>80<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FUrunTipiID<b> </b><b>SmallInt</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>DefaultUniteID<b>  </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ModelKumasID<b>    </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ModelBedenID<b>    </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>AnaKumasModelKumasID<b> </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>KDVOrani<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ModelParcaID<b>    </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>KayitliUrunID<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ParcaKodu<b> </b><b>Varchar</b><b>(</b>10<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ParcaAdi<b>  </b><font color="# 080 0"><u>Adi30</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>LastKayitliUrunID<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FModelAdi<b> </b><font color="# 080 0"><u>Adi40</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>AModelId<b> </b><font color="# 080 0"><u>ModelKoduSize</u></font><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ResimDosyasi<b> </b><b>Type</b><b> </b><b>Of</b><b> </b><b>Column</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ResimDosyasi<b>;</b>
+<b>begin</b>
+<b>  </b>FUrunTipiID<b> </b><b>=</b><b> </b>8<b>;</b><b> </b><font color="# 0 0FF"><i>/*Ticari Mal*/</i></font>
+
+<b>  </b><b>Select</b><b> </b>DefaultUniteID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>KullaniciID<b> </b><b>=</b><b> </b>:AKullaniciID<b> </b><b>into</b><b> </b>:DefaultUniteID<b>;</b>
+<b>  </b><b>Select</b><b> </b>KdvOrani<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>SistemID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KDVOrani<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>DefaultUniteID<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Kullanıcının Varsayılarn Unite Kodu Tanımlanmamış..'<b>;</b>
+<b>  </b><b>Select</b><b> </b>ModelID<b> </b><b>From</b><b> </b><font color="# 080 0"><u>Model</u></font><b> </b><b>Where</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b>:AModelKayitId<b> </b><b>into</b><b> </b>:AModelID<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Max</b><b>(</b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b><b>SubString</b><b>(</b>UrunID<b> </b><b>From</b><b> </b><b>Char_Length</b><b>(</b>:AModelID<b>)</b><b> </b><b>+</b><b> </b>2<b> </b><b>for</b><b> </b>3<b>)</b><b>)</b><b>)</b><b>  </b><b>from</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b>:AModelKayitId<b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b>,</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenID<b>,</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>KisaKodu<b>,</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Model</u></font>
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>AnaKumas<b> </b><b>=</b><b> </b>1
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>RenkId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>RenkID
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelKayitId
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Beden</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>BedenId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>BedenID
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelBedenID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenID
+<b>      </b><b>Where</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b>:AModelKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenID<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b>
+<b>      </b><b>Order</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>BedenID
+<b>  </b><b>into</b><b> </b>:ModelKumasID<b>,</b><b> </b>:RenkAdi<b>,</b><b> </b>:ModelBedenID<b>,</b><b> </b>:BedenKodu<b>,</b><b> </b>:FModelAdi<b>  </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>BedenKodu<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>BedenBilgisiBulunamadi</u></font><b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>RenkAdi<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>RenkBilgisiBulunamadi</u></font><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>MaxNumara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>else</b><b> </b>MaxNumara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>    </b>FUrunID<b> </b><b>=</b><b> </b>AModelID<b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenInttoLzStr</u></font><b>(</b>MaxNumara<b>,</b><b> </b>3<b>)</b><b>;</b>
+<b>    </b>FUrunAdi<b> </b><b>=</b><b> </b><b>Substring</b><b>(</b><b>(</b>AModelID<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>RenkAdi<b> </b><b>|</b><b>|</b><b> </b>' - '<b> </b><b>|</b><b>|</b><b> </b>BedenKodu<b> </b><b>|</b><b>|</b><b> </b><b>Iif</b><b>(</b><b>Char_Length</b><b>(</b>FModelAdi<b>)</b><b> </b><b>&gt;</b><b> </b>0<b>,</b><b> </b>' - '<b> </b><b>|</b><b>|</b><b> </b>FModelAdi<b>,</b><b> </b>''<b>)</b><b>)</b><b> </b><b>From</b><b> </b>1<b> </b><b>For</b><b> </b>80<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>(</b>UrunId<b>,</b><b> </b>Adi<b>,</b><b> </b>UrunTipiId<b>,</b><b> </b>UniteID<b>,</b><b> </b>KDVOrani<b>,</b><b> </b>ModelKayitId<b>,</b><b> </b>ModelKumasID<b>,</b><b> </b>ModelBedenID<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>             </b><b>Values</b><b> </b><b>(</b>:FUrunID<b>,</b><b> </b>:FUrunAdi<b>,</b><b> </b>:FUrunTipiID<b>,</b><b> </b>:DefaultUniteID<b>,</b><b> </b>:KdvOrani<b>,</b><b> </b>:AModelKayitId<b>,</b><b> </b>:ModelKumasID<b>,</b><b> </b>:ModelBedenID<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>(</b>UrunID<b>,</b><b> </b>BirimID<b>,</b><b> </b>DefaultBirim<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b><b> </b><b>Values</b><b> </b><b>(</b>:FUrunID<b>,</b><b> </b>'Ad'<b>,</b><b> </b>1<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b>FUrunTipiID<b> </b><b>=</b><b> </b>7<b>;</b><b> </b><font color="# 0 0FF"><i>/*Aksesuar*/</i></font>
+<b>  </b>MaxNumara<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b>LastKayitliUrunID<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>for</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ModelParcaID<b>,</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ModelKumasID<b>,</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>AnaKumasModelKumasID<b>,</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenID<b>,</b><b> </b><font color="# 080 0"><u>Parca</u></font><b>.</b>KisaKodu<b>,</b><b> </b>KayitliUrun<b>.</b>UrunID<b>,</b><b> </b>KayitliUrun<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Parca</u></font><b>.</b>Adi<b>,</b><b> </b>KayitliUrun<b>.</b>ResimDosyasi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>ModelParca</u></font>
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ModelKumasID
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ModelKayitId
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Parca</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Parca</u></font><b>.</b>ParcaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ParcaID
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>RenkId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>RenkID
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ModelKayitId<b> </b><b>and</b>
+<b>                          </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelBedenID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelParcaID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ModelParcaID
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b>KayitliUrun<b> </b><b>on</b><b> </b>KayitliUrun<b>.</b>ModelKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ModelKayitId<b> </b><b>and</b>
+<b>                                      </b><b>(</b>KayitliUrun<b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b> </b><b>or</b><b> </b>KayitliUrun<b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>AnaKumasModelKumasID<b>)</b><b> </b><b>and</b>
+<b>                                      </b>KayitliUrun<b>.</b>ModelBedenID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenID<b> </b><b>and</b><b> </b>KayitliUrun<b>.</b>ModelParcaID<b> </b><b>is</b><b> </b><b>Null</b>
+<b>      </b><b>Where</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b>:AModelKayitId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenID<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>ModelParca</u></font><b>.</b>ModelParcaID<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b>
+<b>      </b><b>Order</b><b> </b><b>By</b><b> </b>KayitliUrun<b>.</b>UrunID
+<b>  </b><b>into</b><b> </b>:ModelParcaID<b>,</b><b> </b>:ModelKumasID<b>,</b><b> </b>:AnaKumasModelKumasID<b>,</b><b> </b>:ModelBedenID<b>,</b><b> </b>:ParcaKodu<b>,</b><b> </b>:KayitliUrunID<b>,</b><b> </b>:FUrunAdi<b>,</b><b> </b>:RenkAdi<b>,</b><b> </b>:ParcaAdi<b>,</b><b> </b>:ResimDosyasi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KayitliUrunID<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>' Ürünün Ana Kumaşı Kaydedilememiş!'<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>LastKayitliUrunID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b>LastKayitliUrunID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>KayitliUrunID<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>Select</b><b> </b><b>Max</b><b>(</b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b><b>SubString</b><b>(</b>UrunID<b> </b><b>From</b><b> </b><b>Char_Length</b><b>(</b>:AModelID<b>)</b><b> </b><b>+</b><b> </b>6<b> </b><b>for</b><b> </b>2<b>)</b><b>)</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font>
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKayitId<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>AnaKumasModelKumasID<b>)</b>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b>:AModelKayitId<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>ModelKumasID<b> </b><b>=</b><b> </b>:ModelKumasID<b> </b><b>or</b><b> </b><font color="# 080 0"><u>ModelKumas</u></font><b>.</b>AnaKumasModelKumasID<b> </b><b>=</b><b> </b>:ModelKumasID<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelBedenID<b> </b><b>=</b><b> </b>:ModelBedenID<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>ModelParcaID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b>
+<b>      </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>      </b>LastKayitliUrunID<b> </b><b>=</b><b> </b>KayitliUrunID<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>MaxNumara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b><b>else</b><b> </b>MaxNumara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>    </b>FUrunID<b> </b><b>=</b><b> </b>KayitliUrunID<b> </b><b>|</b><b>|</b><b> </b>'.'<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenInttoLzStr</u></font><b>(</b>MaxNumara<b>,</b><b> </b>2<b>)</b><b>;</b>
+<b>    </b>FUrunAdi<b> </b><b>=</b><b> </b><b>SubString</b><b>(</b>FUrunAdi<b> </b><b>|</b><b>|</b><b> </b>' / '<b> </b><b>|</b><b>|</b><b> </b>RenkAdi<b> </b><b>|</b><b>|</b>' '<b> </b><b>|</b><b>|</b><b> </b>ParcaKodu<b> </b><b>|</b><b>|</b><b> </b>' '<b> </b><b>|</b><b>|</b><b> </b>ParcaAdi<b> </b><b>From</b><b> </b>1<b> </b><b>for</b><b> </b>80<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>(</b>UrunId<b>,</b><b> </b>Adi<b>,</b><b> </b>UrunTipiId<b>,</b><b> </b>UniteID<b>,</b><b> </b>KDVOrani<b>,</b><b> </b>ModelKayitId<b>,</b><b> </b>ModelKumasID<b>,</b><b> </b>ModelBedenID<b>,</b><b> </b>ModelParcaID<b>,</b><b> </b>AnaUrunID<b>,</b><b> </b>ResimDosyasi<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>             </b><b>Values</b><b> </b><b>(</b>:FUrunID<b>,</b><b> </b>:FUrunAdi<b>,</b><b> </b>:FUrunTipiID<b>,</b><b> </b>:DefaultUniteID<b>,</b><b> </b>:KdvOrani<b>,</b><b> </b>:AModelKayitId<b>,</b><b> </b>:ModelKumasID<b>,</b><b> </b>:ModelBedenID<b>,</b><b> </b>:ModelParcaID<b>,</b><b> </b>:KayitliUrunID<b>,</b><b> </b>:ResimDosyasi<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>UrunBirim</u></font><b> </b><b>(</b>UrunID<b>,</b><b> </b>BirimID<b>,</b><b> </b>DefaultBirim<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b><b> </b><b>Values</b><b> </b><b>(</b>:FUrunID<b>,</b><b> </b>'Ad'<b>,</b><b> </b>1<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="MODELURUNGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="MUSTERIFIYATLISTESIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,259 @@
+<HTML>
+<HEAD>
+<TITLE>PSKALITEKONTROLBITIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1612800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PSKALITEKONTROLBASLAT.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PSKALITEKONTROLBITTIIPTAL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PSKALITEKONTROLBITIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APERSONELID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITIR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ATARTIDANGELDI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">APSKALITEKONTROLASAMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PSKALITEKONTROLBITIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PSKALITEKONTROLBITIR</u></font><b>(</b>
+<b>    </b>APARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APARTISINIFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APERSONELID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABITIR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ATARTIDANGELDI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>APSKALITEKONTROLASAMAID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TamamiTartildi<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NetKilo<b>        </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Dara<b>           </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NetMetre<b>       </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KapAdedi<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PartiStokTartiId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PsKaliteKontrolId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KS<b>                </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KaliteNo<b>          </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KKBitinceTartiyaAktar<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KKMetreleriHataPuanaGoreEksilt<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KullaniciId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FSonKayit<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KKTartiTamamlanmamisAsOnemseme<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>hstDokumaKumas<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>hstOrmeKumas<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TopAktarimiVar<b> </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OlcuId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Adet<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FHataPuaniCarpani<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EgemenFirmaID<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DKumasdaKGveMtSifirOlamaz<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KKOrmeKumasKiloKontrolu<b>    </b><font color="# 080 0"><u>EgeBoolean</u></font><b> </b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PlanlananKilo<b>  </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NetKiloToplam<b>  </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MaximumFireOrani<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>EgemenFirmaID<b>,</b><b> </b>DKumasdaKGveMtSifirOlamaz<b>,</b><b> </b>KKOrmeKumasKiloKontrolu<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>sistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:EgemenFirmaID<b>,</b><b> </b>:DKumasdaKGveMtSifirOlamaz<b>,</b><b> </b>:KKOrmeKumasKiloKontrolu<b>;</b>
+
+<font color="# 0 0FF"><i>/* Kalite Kontrol bitti degiginde bu procedure calısacak, 1.tartıyı olusturacak, default rafa koyacak */</i></font>
+
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>HamTipiGetir</u></font><b>.</b>hstDokumaKumas<b>,</b><b> </b><font color="# 080 0"><u>HamTipiGetir</u></font><b>.</b>hstOrmeKumas<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamTipiGetir</u></font><b> </b><b>into</b><b> </b>:hstDokumaKumas<b>,</b><b> </b>:hstOrmeKumas<b>;</b>
+<b>  </b><b>Select</b><b> </b>KKBitinceTartiyaAktar<b>,</b><b> </b>KKMetreleriHataPuanaGoreEksilt<b>,</b><b> </b>KKTartiTamamlanmamisAsOnemseme<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>Sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:KKBitinceTartiyaAktar<b>,</b><b> </b>:KKMetreleriHataPuanaGoreEksilt<b>,</b><b> </b>:KKTartiTamamlanmamisAsOnemseme<b>;</b>
+
+<b>  </b><b>Select</b><b> </b><b>Max</b><b>(</b>KullaniciId<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Kullanici</u></font><b>.</b>PersonelId<b> </b><b>=</b><b> </b>:APersonelId<b> </b><b>into</b><b> </b>:KullaniciId<b>;</b>
+
+<b>  </b>FSonKayit<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>APSKaliteKontrolAsamaID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>Select</b><b> </b>SonKayit<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b>:APSKaliteKontrolAsamaID<b> </b><b>into</b><b> </b>:FSonKayit<b>;</b>
+
+<b>  </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>HamId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>=</b><b> </b>:hstDokumaKumas<b> </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font>
+<b>      </b><b>where</b><b> </b><b>(</b>:APSKaliteKontrolAsamaID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b>:APSKaliteKontrolAsamaID<b>)</b><b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiStokTartiId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>           </b><b>(</b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Kilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Dara<b>)</b><b> </b><b>&lt;</b><b>=</b><b> </b>0
+<b>      </b><b>into</b><b> </b>:KS<b>;</b>
+
+
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>' Top net kilo 0 olamaz...'<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>HamId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>=</b><b> </b>:hstDokumaKumas<b> </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>DKumasdaKGveMtSifirOlamaz<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font>
+<b>      </b><b>where</b><b> </b><b>(</b>:APSKaliteKontrolAsamaID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b>:APSKaliteKontrolAsamaID<b>)</b><b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiStokTartiId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b>
+<b>           </b><b>(</b><b>(</b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Kilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Dara<b>)</b><b> </b><b>&lt;</b><b>=</b><b> </b>0<b> </b><b>or</b>
+<b>           </b><b>(</b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>metre<b>)</b><b> </b><b>&lt;</b><b>=</b><b> </b>0<b> </b><b>)</b>
+<b>      </b><b>into</b><b> </b>:KS<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>KS<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>' Top net metre ve kilo 0 olamaz...'<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Kilo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>HamId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>=</b><b> </b>:hstOrmeKumas<b> </b><b>into</b><b> </b>:PlanlananKilo<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KKOrmeKumasKiloKontrolu<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>:PlanlananKilo<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>sum</b><b>(</b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>kilo<b> </b><b>-</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>dara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font>
+<b>      </b><b>where</b><b> </b><b>(</b>:APSKaliteKontrolAsamaID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b>:APSKaliteKontrolAsamaID<b>)</b><b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiStokTartiId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1
+<b>      </b><b>into</b><b> </b>:NetKiloToplam<b>;</b>
+
+<b>   </b><b>Select</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>MaximumFireOrani<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BoyaSiparisDetayId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>into</b><b> </b>:MaximumFireOrani<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>NetKiloToplam<b> </b><b>&gt;</b><b> </b>PlanlananKilo<b> </b><b>+</b><b> </b><b>(</b>PlanlananKilo<b> </b><b>*</b><b>(</b>MaximumFireOrani<b> </b><b>/</b><b> </b>100<b>)</b><b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Parti Açılış Kilosunu Geçti ( Parti Açılış Kilosu : '<b> </b><b>|</b><b>|</b><b> </b>PlanlananKilo<b> </b><b>|</b><b>|</b>' Bitirilen Sinifin Kilosu : '<b> </b><b>|</b><b>|</b><b> </b>NetKiloToplam<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KKMetreleriHataPuanaGoreEksilt<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>ATartidanGeldi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+
+<b>   </b>FHataPuaniCarpani<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>    </b><b>Select</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>HataPuaniCarpani<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font>
+<b>      </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>BoyaSiparisDetay</u></font><b>.</b>BoyaSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>BoyaSiparisDetayId
+<b>      </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId
+<b>      </b><b>into</b><b>  </b>:FHataPuaniCarpani<b>;</b>
+
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b> </b><b>set</b><b> </b>Metre<b> </b><b>=</b><b> </b>Metre<b> </b><b>-</b><b> </b><b>(</b>PaketlemeHataPuani<b> </b><b>*</b><b> </b><b>Coalesce</b><b>(</b>:FHataPuaniCarpani<b> </b><b>,</b><b> </b>0<b>.</b>2<b>)</b><b>)</b><b>,</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>:KullaniciId<b> </b><b>where</b><b> </b><b>(</b>:APSKaliteKontrolAsamaID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b>:APSKaliteKontrolAsamaID<b>)</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PuanliSistem<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>PaketlemeHataPuani<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b>Metre<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>PartiAsamalariId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiAsamalariId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>AsamayaDahil<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>          </b><font color="# 080 0"><u>PartiAsamalari</u></font><b>.</b>OtomasyonaDahilmi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PartiAsamaStok</u></font><b>.</b>CikisTarihi<b> </b><b>is</b><b> </b><b>null</b>
+<b>    </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>ATartidanGeldi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>KKTartiTamamlanmamisAsOnemseme<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>YapilmamisAsamaVarTartiGiremez</u></font><b>;</b><b> </b><font color="# 0 0FF"><i>/*Sonraki aşama varsa ve tartıdan girilmişse işlem yapılmasın*/</i></font>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KKBitinceTartiyaAktar<b> </b><b>=</b><b> </b>1<b>  </b><b>and</b><b> </b>FSonKayit<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>(</b>KKTartiTamamlanmamisAsOnemseme<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><b>(</b>ATartidanGeldi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>KayitSayisi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>or</b><b> </b>ATartidanGeldi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>)</b><b> </b><b>then</b><b>  </b><font color="# 0 0FF"><i>/*Sonraki aşama yoksa tartıya otomatik Atalım*/</i></font>
+<b>  </b><b>begin</b>
+
+<b>    </b><b>Select</b><b> </b>TamamiTartildi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>into</b><b> </b>:TamamiTartildi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>TamamiTartildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>TamamiTartilmisKiloGiremezsiniz</u></font><b>;</b>
+
+<b>    </b>PartiStokTartiId<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>    </b>TopAktarimiVar<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b>PsKaliteKontrolId<b>,</b><b> </b>KaliteNo<b>,</b><b> </b>Dara<b>,</b><b> </b><b>(</b>Kilo<b> </b><b>-</b><b> </b>Dara<b>)</b><b>,</b><b> </b>Metre<b>,</b><b> </b>OlcuId<b>,</b><b> </b>Adet<b> </b><b>from</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font>
+<b>      </b><b>where</b><b> </b><b>(</b>:APSKaliteKontrolAsamaID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b>:APSKaliteKontrolAsamaID<b>)</b><b> </b><b>and</b>
+<b>            </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>PartiStokTartiId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>OnayDurumu<b> </b><b>=</b><b> </b>1
+<b>      </b><b>into</b><b> </b>:PsKaliteKontrolId<b>,</b><b> </b>:KaliteNo<b>,</b><b> </b>:Dara<b>,</b><b> </b>:NetKilo<b>,</b><b> </b>:NetMetre<b>,</b><b> </b>:OlcuId<b>,</b><b> </b>:Adet<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b>TopAktarimiVar<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b>KapAdedi<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>      </b>PartiStokTartiId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>PartiStokTarti_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>      </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>(</b>PartiStokTartiId<b>,</b><b> </b>PartiKayitId<b>,</b><b> </b>PartiSinifId<b>,</b><b> </b>Kilo<b>,</b><b> </b>Dara<b>,</b><b> </b>Metre<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>KaliteNo<b>,</b><b> </b>KaliteKontrol<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>OlcuId<b>,</b><b> </b>Adet<b>)</b>
+<b>                          </b><b>values</b><b>(</b>:PartiStokTartiId<b>,</b><b> </b>:APartiKayitId<b>,</b><b> </b>:APartiSinifId<b>,</b><b> </b>:NetKilo<b>,</b><b> </b>:Dara<b>,</b><b> </b>:NetMetre<b>,</b><b> </b>:KapAdedi<b>,</b><b> </b>:KaliteNo<b>,</b><b> </b>1<b>,</b><b> </b>:KullaniciId<b>,</b><b> </b>:OlcuId<b>,</b><b> </b>:Adet<b>)</b><b>;</b>
+
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font><b> </b><b>set</b><b> </b>PartiStokTartiId<b> </b><b>=</b><b> </b>:PartiStokTartiId<b>,</b><b> </b>LinkIslemi<b> </b><b>=</b><b> </b>1<b>,</b><b> </b>KullaniciId<b> </b><b>=</b><b> </b>:KullaniciId<b> </b><b>where</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font><b>.</b>PsKaliteKontrolId<b> </b><b>=</b><b> </b>:PsKaliteKontrolId<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>ABitir<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>(</b>TopAktarimiVar<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b><b> </b><b>(</b>EgemenFirmaID<b> </b><b>&lt;</b><b>&gt;</b><b> </b>37<b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Aktarılacak Kalite Kontrol Kaytdı Bulunamadı.'<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>APSKaliteKontrolAsamaID<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>Update</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b> </b><b>set</b><b> </b>TartiyaAktarildi<b> </b><b>=</b><b> </b>1<b>,</b><b> </b>KKBITIRENPERSONELID<b> </b><b>=</b><b> </b>:APersonelId<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b>:APSKaliteKontrolAsamaID<b>;</b>
+
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>Set</b><b> </b>KKBitirenPersonelId<b> </b><b>=</b><b> </b>:APersonelId<b>,</b><b> </b>KKBitisTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>TamamiTartildi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b>;</b>
+
+<b>      </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>PartiStokTartiBrutHesapla</u></font><b>(</b>:APartiSinifId<b>,</b><b> </b>0<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>ABitir<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>APSKaliteKontrolAsamaID<b> </b><b>is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>Update</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b> </b><b>set</b><b> </b>KKBITIRENPERSONELID<b> </b><b>=</b><b> </b>:APersonelId<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>PSKaliteKontrolAsama</u></font><b>.</b>PSKaliteKontrolAsamaID<b> </b><b>=</b><b> </b>:APSKaliteKontrolAsamaID<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>FSonKayit<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>        </b><b>Update</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b> </b><b>Set</b><b> </b>KKBitirenPersonelId<b> </b><b>=</b><b> </b>:APersonelId<b>,</b><b> </b>KKBitisTarihi<b> </b><b>=</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b> </b><b>where</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:APartiSinifId<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PSKALITEKONTROLBASLAT.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PSKALITEKONTROLBITTIIPTAL.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

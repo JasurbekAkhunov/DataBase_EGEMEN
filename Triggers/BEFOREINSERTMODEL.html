@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTMODEL</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="939800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTMENUGRUPELEMAN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTMODELAKSESUAR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTMODEL</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTMODEL)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTMODEL</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>MODEL</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>ModelKoduOtomatik<b> </b><b>Type</b><b> </b><b>of</b><b> </b><b>Column</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>ModelKoduOtomatik<b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>Ayrac<b>             </b><b>Type</b><b> </b><b>of</b><b> </b><b>Column</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>LabReceteAyraci<b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>MaxNumara<b>         </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FModelId<b>          </b><b>Type</b><b> </b><b>of</b><b> </b><b>Column</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelId<b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>NumaraStr<b>         </b><b>varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TF<b>                </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>ModelKoduOtomatik<b>,</b><b> </b>LabReceteAyraci<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>into</b><b> </b>:ModelKoduOtomatik<b>,</b><b> </b>:Ayrac<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ModelKoduOtomatik<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>ModelId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>     </b><b>if</b><b> </b><b>(</b><b>(</b><b>new</b><b>.</b>ModelGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>or</b><b> </b><b>(</b><b>new</b><b>.</b>ModelGrup2Id<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b>)</b><b> </b><b>then</b><b> </b><b>Exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b>  </b>' Otomatik kod üretilebilmesi için model grup kodlarının dolu olması zorunludur!'<b>;</b>
+<b>     </b><b>Select</b><b> </b><b>max</b><b>(</b>Numara<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>Model</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelGrupId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ModelGrupId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelGrup2Id<b> </b><b>=</b><b> </b><b>New</b><b>.</b>ModelGrup2Id<b> </b><b>into</b><b> </b>:MaxNumara<b>;</b>
+
+<b>     </b><b>if</b><b> </b><b>(</b>MaxNumara<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>     </b><b>else</b><b> </b><b>new</b><b>.</b>Numara<b> </b><b>=</b><b> </b>MaxNumara<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>     </b><b>New</b><b>.</b>ModelId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>ModelGrupId<b>  </b><b>|</b><b>|</b><b> </b>Ayrac<b> </b><b>|</b><b>|</b><b> </b><b>New</b><b>.</b>ModelGrup2Id<b> </b><b>|</b><b>|</b><b> </b>Ayrac<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntToLzStr</u></font><b>(</b><b>new</b><b>.</b>Numara<b>,</b><b> </b>4<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+<b>   </b><font color="# 0 0FF"><i>/*</i></font>
+<font color="# 0 0FF"><i>    else</i></font>
+<font color="# 0 0FF"><i>    begin</i></font>
+<font color="# 0 0FF"><i>      NumaraStr = Substring(New.ModelId from Char_Length(New.ModelId) - 3  for 4);</i></font>
+<font color="# 0 0FF"><i>      TF = EgemenStrToIntOlurmu(NumaraStr);</i></font>
+
+<font color="# 0 0FF"><i>      if (TF = 1) then new.Numara = EgemenStrToInt(NumaraStr);</i></font>
+<font color="# 0 0FF"><i>      else exception ReceteNumaraOlusturulamadi;</i></font>
+
+<font color="# 0 0FF"><i>      FModelId = new.ModelGrupId  || Ayrac || New.ModelGrup2Id || Ayrac || EgemenIntToLzStr(new.Numara, 4);</i></font>
+
+
+<font color="# 0 0FF"><i>       --if (FModelId is null or FModelId &lt;&gt; New.ModelId) then exception ManuelGirilenLabRecKoduHatali;</i></font>
+<font color="# 0 0FF"><i>    end    */</i></font>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>ModelKayitId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b><b>new</b><b>.</b>ModelKayitId<b> </b><b>=</b><b> </b><b>Gen_Id</b><b>(</b><font color="# 080 0"><u>ModelKayitId_Gen</u></font><b>,</b>1<b>)</b><b>;</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTMENUGRUPELEMAN.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTMODELAKSESUAR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

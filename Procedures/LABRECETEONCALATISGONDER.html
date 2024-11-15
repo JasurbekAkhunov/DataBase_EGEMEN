@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>LABRECETEONCALATISGONDER</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1032800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="LABRECETEONCALATISBIRLESTIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="LABRECETEONCALATISKOPYALA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">LABRECETEONCALATISGONDER</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ALABRECETEONCALISMAATISID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure LABRECETEONCALATISGONDER)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>LABRECETEONCALATISGONDER</u></font><b>(</b>
+<b>    </b>ALABRECETEONCALISMAATISID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LabReceteAtisId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b>LabReceteAtisId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>LabReceteAtis_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>LabReceteAtis</u></font><b>(</b>LabReceteCalismaId<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>LabReceteAtisId<b>,</b><b> </b>Migrasyon<b>,</b><b> </b>Color<b>,</b><b> </b>Notu<b>,</b><b> </b>NotuStr<b>,</b><b> </b>RenkDerinligiId<b>,</b><b> </b>ReceteAsamaId<b>,</b><b> </b>GidisTarihi<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>LabReceteOnCalismaAtisID<b>)</b>
+<b>      </b><b>Select</b><b> </b>LabReceteCalismaId<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>:LabReceteAtisId<b>,</b><b> </b>Migrasyon<b>,</b><b> </b>Color<b>,</b><b> </b>Notu<b>,</b><b> </b>NotuStr<b>,</b><b> </b>RenkDerinligiId<b>,</b><b> </b>ReceteAsamaId<b>,</b><b> </b><b>Current_date</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>LabReceteOnCalismaAtisID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteOnCalismaAtis</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteOnCalismaAtis</u></font><b>.</b>LabReceteOnCalismaAtisID<b> </b><b>=</b><b> </b>:ALabReceteOnCalismaAtisId<b>;</b>
+
+<b>  </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>LabReceteUrun</u></font><b>(</b>LabReceteAtisId<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>Sira<b>,</b><b> </b>UrunId<b>,</b><b> </b>MiktarYuzde<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>FiyatUrunBirimId<b>,</b><b> </b>FiyatCarpan<b>,</b><b> </b>Notu<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>LabReceteOnCalismaUrunID<b>)</b>
+<b>      </b><b>Select</b><b> </b>:LabReceteAtisId<b>,</b><b> </b>LabReceteId<b>,</b><b> </b>Sira<b>,</b><b> </b>UrunId<b>,</b><b> </b>MiktarYuzde<b>,</b><b> </b>UrunBirimId<b>,</b><b> </b>BirimFiyat<b>,</b><b> </b>FiyatUrunBirimId<b>,</b><b> </b>FiyatCarpan<b>,</b><b> </b>Notu<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>LabReceteOnCalismaUrunID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>LabReceteOnCalismaUrun</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteOnCalismaUrun</u></font><b>.</b>LabReceteOnCalismaAtisID<b> </b><b>=</b><b> </b>:ALabReceteOnCalismaAtisId
+<b>        </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>LabReceteOnCalismaUrun</u></font><b>.</b>LabReceteOnCalismaUrunId<b>;</b>
+
+<b>  </b><b>Update</b><b> </b><font color="# 080 0"><u>LabReceteOnCalismaAtis</u></font><b> </b><b>set</b><b> </b>MusteriyeGonderildi<b> </b><b>=</b><b> </b>1<b> </b><b>where</b><b> </b><font color="# 080 0"><u>LabReceteOnCalismaAtis</u></font><b>.</b>LabReceteOnCalismaAtisID<b> </b><b>=</b><b> </b>:ALabReceteOnCalismaAtisId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="LABRECETEONCALATISBIRLESTIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="LABRECETEONCALATISKOPYALA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

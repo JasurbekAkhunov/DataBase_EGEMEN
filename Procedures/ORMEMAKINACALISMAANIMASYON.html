@@ -1,0 +1,552 @@
+<HTML>
+<HEAD>
+<TITLE>ORMEMAKINACALISMAANIMASYON</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1274800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ORMEMAKINABILGISIKAYDET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ORMEMAKINACALISMAHAREKETIRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ORMEMAKINACALISMAANIMASYON</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AORMEMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMAKINAGRUPID</TD>
+    <TD><P CLASS="Base2">VARCHAR(4)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ORMEMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEMAKINAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SURE</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MEMINGERKOPTUSURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MEMINGERKOPTUSURESISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MEMINGERKOPTUSAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ALTMEMINGERKOPTUSURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ALTMEMINGERKOPTUSURESISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ALTMEMINGERKOPTUSAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LYCRAKOPTUSURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LYCRAKOPTUSURESISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LYCRAKOPTUSAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IGNEKOPTUSURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IGNEKOPTUSURESISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IGNEKOPTUSAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KAPAKACILDISURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KAPAKACILDISURESISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KAPAKACILDISAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">STARTSTOPSURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">STARTSTOPSAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">STARTSTOPSURESISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TEMIZLIKYAPILDISURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TEMIZLIKYAPILDISAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TEMIZLIKYAPILDISURESISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TOPKESMESAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DURUSSURESI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DURUSSAYISI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DURUSSURESISTR</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TOPLAMTUR</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KAPALI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ORMEMAKINACALISMAANIMASYON)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ORMEMAKINACALISMAANIMASYON</u></font><b>(</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AORMEMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>AMAKINAGRUPID<b> </b><b>VARCHAR</b><b>(</b>4<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>ORMEMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ORMEMAKINAADI<b> </b><b>VARCHAR</b><b>(</b>40<b>)</b><b>,</b>
+<b>    </b>SURE<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>MEMINGERKOPTUSURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>MEMINGERKOPTUSURESISTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>MEMINGERKOPTUSAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ALTMEMINGERKOPTUSURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ALTMEMINGERKOPTUSURESISTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>ALTMEMINGERKOPTUSAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>LYCRAKOPTUSURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>LYCRAKOPTUSURESISTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>LYCRAKOPTUSAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IGNEKOPTUSURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>IGNEKOPTUSURESISTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>IGNEKOPTUSAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KAPAKACILDISURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>KAPAKACILDISURESISTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>KAPAKACILDISAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>STARTSTOPSURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>STARTSTOPSAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>STARTSTOPSURESISTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>TEMIZLIKYAPILDISURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TEMIZLIKYAPILDISAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TEMIZLIKYAPILDISURESISTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>TOPKESMESAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DURUSSURESI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DURUSSAYISI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DURUSSURESISTR<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>TOPLAMTUR<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KAPALI<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Tarih<b>  </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Tur<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmePlanlamaId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciAd<b> </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciId<b> </b><font color="# 080 0"><u>MakinaKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciKapali<b>         </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciTarih<b>         </b><b>timestamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciTur<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciOrmePlanlamaId<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciMemingerKoptu<b>     </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciAltMemingerKoptu<b> </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciLycraKoptu<b>     </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciIgneKoptu<b>     </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciKapakAcildi<b>     </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciStartStop<b>     </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciTopKesme<b>     </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GeciciTemizlikYapildi<b>     </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastOrmeMakinaId<b>     </b><font color="# 080 0"><u>MakinaKoduSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastTarih<b>         </b><b>timestamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastTur<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastOrmePlanlamaId<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastOrmeMakinaAdi<b>     </b><b>varchar</b><b>(</b>40<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastKapali<b>            </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastTopKesme<b>           </b><b>smallint</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FarkTarih<b>              </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastMemingerKoptu<b>      </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastAltMemingerKoptu<b>   </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastLycraKoptu<b>         </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastIgneKoptu<b>          </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastKapakAcildi<b>        </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastStartStop<b>          </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LastTemizlikYapildi<b>    </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>MemingerKoptu<b>          </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AltMemingerKoptu<b>       </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>LycraKoptu<b>             </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IgneKoptu<b>              </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KapakAcildi<b>            </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StartStop<b>              </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TemizlikYapildi<b>        </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TopKesme<b>               </b><b>SmallInt</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeAnimasyonDurusSebepAktif<b> </b><font color="# 080 0"><u>EgeBoolean</u></font><b>;</b>
+
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>ABitisTarihi<b> </b><b>&gt;</b><b> </b><b>Current_TimeStamp</b><b>(</b>0<b>)</b><b>)</b><b> </b><b>then</b><b> </b>ABitisTarihi<b> </b><b>=</b><b> </b><b>Current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+
+<b>  </b><b>select</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>OrmeAnimasyonDurusSebepAktif<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>SistemId<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:OrmeAnimasyonDurusSebepAktif<b>;</b>
+
+<b>  </b>Sure<b> </b><b>=</b><b> </b>ABitistarihi<b> </b><b>-</b><b> </b>ABaslangicTarihi<b>;</b>
+<b>  </b>MemingerKoptuSuresi<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>MemingerKoptuSayisi<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>AltMemingerKoptuSuresi<b>   </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>AltMemingerKoptuSayisi<b>   </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>LycraKoptuSuresi<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>LycraKoptuSayisi<b>         </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>IgneKoptuSuresi<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>IgneKoptuSayisi<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>KapakAcildiSuresi<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>KapakAcildiSayisi<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>StartStopSuresi<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>StartStopSayisi<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>TemizlikYapildiSuresi<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>TemizlikYapildiSayisi<b>    </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>TopKesmeSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>DurusSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b>LastOrmeMakinaId<b> </b><b>=</b><b>null</b><b>;</b>
+<b>  </b>LastOrmeMakinaAdi<b>  </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b>LastKapali<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastTopKesme<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastTur<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastOrmePlanlamaId<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastTarih<b> </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>  </b>LastMemingerKoptu<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastAltMemingerKoptu<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastLycraKoptu<b>      </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastIgneKoptu<b>       </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastKapakAcildi<b>     </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastStartStop<b>       </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>LastTemizlikYapildi<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>  </b>ToplamTur<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>For</b><b> </b><b>Select</b><b> </b>OrmeMakinaId<b>,</b><b> </b>Adi<b>,</b><b> </b>Kapali<b>,</b><b> </b>Tarih<b>,</b><b> </b>Tur<b>,</b><b> </b>OrmePlanlamaId<b>,</b><b> </b>MemingerKoptu<b>,</b><b> </b>AltMemingerKoptu<b>,</b><b> </b>LycraKoptu<b>,</b><b> </b>IgneKoptu<b>,</b><b> </b>KapakAcildi<b>,</b><b> </b>StartStop<b>,</b><b> </b>TopKesme<b>,</b><b> </b>TemizlikYapildi<b>  </b><b>from</b>
+<b>        </b><b>(</b>
+<b>         </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>OrmeMakinaID<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>Kapali<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>MakinaGrupId<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>OtomasyonaDahil<b>,</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>OrmeMakinaDurumuId<b>,</b><b> </b>Tarih<b>,</b><b> </b>OrmePlanlamaId<b>,</b><b> </b>Tur<b>,</b><b> </b>MemingerKoptu<b>,</b><b> </b>AltMemingerKoptu<b>,</b><b> </b>LycraKoptu<b>,</b><b> </b>IgneKoptu<b>,</b><b> </b>KapakAcildi<b>,</b><b> </b>StartStop<b>,</b>
+<b>                </b>DokumaPlanlamaId<b>,</b><b> </b>AtkiKoptu<b>,</b><b> </b>CozguKoptu<b>,</b><b> </b>LeventSonu<b>,</b><b> </b>TopKesme<b>,</b><b> </b>TemizlikYapildi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font>
+<b>                </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font><b>.</b>OrmeMakinaID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>OrmeMakinaID
+<b>                </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>Tarih<b> </b><b>&gt;</b><b>=</b><b> </b>:ABaslangicTarihi<b> </b><b>and</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b>=</b><b> </b>:ABitisTarihi
+<b>        </b><b>Union</b>
+<b>         </b><b>Select</b><b> </b>OrmeMakinaID<b>,</b><b> </b>Adi<b>,</b><b> </b>Kapali<b>,</b><b> </b>MakinaGrupId<b>,</b><b> </b>OtomasyonaDahil<b>,</b><b> </b>0<b>,</b><b>Null</b><b>,</b><b> </b><b>Null</b><b>,</b><b>Null</b><b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b>0<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeMakina</u></font>
+<b>         </b><b>)</b><b> </b>TumKayitlar
+<b>      </b><b>where</b><b> </b><b>(</b>OrmeMakinaId<b> </b><b>=</b><b> </b>:AOrmeMakinaId<b> </b><b>or</b><b> </b>:AOrmeMakinaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>            </b><b>(</b>MakinaGrupId<b> </b><b>=</b><b> </b>:AMakinaGrupId<b> </b><b>or</b><b> </b>:AMakinaGrupId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b><b> </b>OtomasyonaDahil<b> </b><b>=</b><b> </b>1
+<b>      </b><b>Order</b><b> </b><b>By</b><b> </b>OrmeMakinaID<b>,</b><b> </b>Tarih<b>,</b><b> </b>OrmeMakinaDurumuId
+<b>      </b><b>into</b><b> </b>:OrmeMakinaId<b>,</b><b> </b>:OrmeMakinaAdi<b>,</b><b> </b>:Kapali<b>,</b><b> </b>:Tarih<b>,</b><b> </b>:Tur<b>,</b><b> </b>:OrmePlanlamaId<b>,</b><b> </b>:MemingerKoptu<b>,</b><b> </b>:AltMemingerKoptu<b>,</b><b> </b>:LycraKoptu<b>,</b><b> </b>:IgneKoptu<b>,</b><b> </b>:KapakAcildi<b>,</b><b> </b>:StartStop<b>,</b><b> </b>:TopKesme<b>,</b><b> </b>:TemizlikYapildi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>:LastOrmeMakinaId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>      </b>LastOrmeMakinaId<b>  </b><b>=</b><b>  </b>:OrmeMakinaId<b>;</b>
+<b>    </b><b>else</b>
+<b>      </b><b>if</b><b>(</b>:LastOrmeMakinaId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>:OrmeMakinaId<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><font color="# 0 0FF"><i>/*</i></font>
+<font color="# 0 0FF"><i>           Eğer makina değişirse  son okunan kaydı geçici bir değikene alıp eski kaydı tekrar getirip kayıdı basıyoruz</i></font>
+<font color="# 0 0FF"><i>           daha sonra gecici değişkenlerin içindeki değerleri tekrar atayıp sayaçları sıfırlayıp yolumuza devam ediyoruz</i></font>
+<font color="# 0 0FF"><i>        */</i></font>
+<b>         </b>GeciciId<b>               </b><b>=</b><b> </b>:OrmeMakinaId<b>;</b>
+<b>         </b>GeciciAd<b>               </b><b>=</b><b> </b>:OrmeMakinaAdi<b>;</b>
+<b>         </b>GeciciKapali<b>           </b><b>=</b><b> </b>:Kapali<b>;</b>
+<b>         </b>GeciciTur<b>              </b><b>=</b><b> </b>:Tur<b>;</b>
+<b>         </b>GeciciOrmePlanlamaId<b>   </b><b>=</b><b> </b>:OrmePlanlamaId<b>;</b>
+<b>         </b>GeciciMemingerKoptu<b>    </b><b>=</b><b> </b>:MemingerKoptu<b>;</b>
+<b>         </b>GeciciAltMemingerKoptu<b> </b><b>=</b><b> </b>:AltMemingerKoptu<b>;</b>
+<b>         </b>GeciciLycraKoptu<b>       </b><b>=</b><b> </b>:LycraKoptu<b>;</b>
+<b>         </b>GeciciIgneKoptu<b>        </b><b>=</b><b> </b>:IgneKoptu<b>;</b>
+<b>         </b>GeciciKapakAcildi<b>      </b><b>=</b><b> </b>:KapakAcildi<b>;</b>
+<b>         </b>GeciciStartStop<b>        </b><b>=</b><b> </b>:StartStop<b>;</b>
+<b>         </b>GeciciTopKesme<b>         </b><b>=</b><b> </b>:TopKesme<b>;</b>
+<b>         </b>GeciciTemizlikYapildi<b>  </b><b>=</b><b> </b>:TemizlikYapildi<b>;</b>
+<b>         </b>OrmeMakinaId<b>           </b><b>=</b><b> </b>:LastOrmeMakinaId<b>;</b>
+<b>         </b>OrmeMakinaAdi<b>          </b><b>=</b><b> </b>:LastOrmeMakinaAdi<b>;</b>
+<b>         </b>Kapali<b>                 </b><b>=</b><b> </b>:LastKapali<b>;</b>
+<b>         </b>OrmePlanlamaId<b>         </b><b>=</b><b> </b>:LastOrmePlanlamaId<b>;</b>
+<b>         </b>TopKesme<b>               </b><b>=</b><b> </b>:LastTopKesme<b>;</b>
+<b>         </b>Tarih<b>                  </b><b>=</b><b> </b>LastTarih<b>;</b>
+<b>         </b>Tur<b>                    </b><b>=</b><b> </b>LastTur<b>;</b>
+<b>         </b>MemingerKoptu<b>          </b><b>=</b><b> </b>:LastMemingerKoptu<b>;</b>
+<b>         </b>AltMemingerKoptu<b>       </b><b>=</b><b> </b>:LastAltMemingerKoptu<b>;</b>
+<b>         </b>LycraKoptu<b>             </b><b>=</b><b> </b>:LastLycraKoptu<b>;</b>
+<b>         </b>IgneKoptu<b>              </b><b>=</b><b> </b>:LastIgneKoptu<b>;</b>
+<b>         </b>KapakAcildi<b>            </b><b>=</b><b> </b>:LastKapakAcildi<b>;</b>
+<b>         </b>StartStop<b>              </b><b>=</b><b> </b>:LastStartStop<b>;</b>
+<b>         </b>TemizlikYapildi<b>        </b><b>=</b><b> </b>:LastTemizlikYapildi<b>;</b>
+<b>         </b><b>suspend</b><b>;</b><b>   </b><font color="# 0 0FF"><i>--Kayıt Basma İşlemi</i></font>
+<b>         </b>MemingerKoptuSuresi<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>MemingerKoptuSayisi<b>        </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>AltMemingerKoptuSuresi<b>     </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>AltMemingerKoptuSayisi<b>     </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>LycraKoptuSuresi<b>           </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>LycraKoptuSayisi<b>           </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>IgneKoptuSuresi<b>            </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>IgneKoptuSayisi<b>            </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>KapakAcildiSuresi<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>KapakAcildiSayisi<b>          </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>StartStopSuresi<b>            </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>StartStopSayisi<b>            </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>TemizlikYapildiSuresi<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>TemizlikYapildiSayisi<b>      </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>TopKesmeSayisi<b>             </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>DurusSuresi<b>                </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>DurusSayisi<b>                </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>LastOrmeMakinaId<b>           </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>         </b>LastOrmeMakinaAdi<b>          </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>         </b>LastKapali<b>                 </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastTopKesme<b>               </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastTur<b>                    </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastOrmePlanlamaId<b>         </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastTarih<b>                  </b><b>=</b><b> </b><b>null</b><b>;</b>
+<b>         </b>LastMemingerKoptu<b>          </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastAltMemingerKoptu<b>       </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastLycraKoptu<b>             </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastIgneKoptu<b>              </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastKapakAcildi<b>            </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastStartStop<b>              </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>LastTemizlikYapildi<b>        </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>         </b>ToplamTur<b>                  </b><b>=</b><b> </b>0<b>;</b>
+<b>         </b>OrmeMakinaId<b>               </b><b>=</b><b> </b>:GeciciId<b>;</b>
+<b>         </b>OrmeMakinaAdi<b>              </b><b>=</b><b> </b>:GeciciAd<b>;</b>
+<b>         </b>Kapali<b>                     </b><b>=</b><b> </b>:GeciciKapali<b>;</b>
+<b>         </b>OrmePlanlamaId<b>             </b><b>=</b><b> </b>:GeciciOrmePlanlamaId<b>;</b>
+<b>         </b>TopKesme<b>                   </b><b>=</b><b> </b>:GeciciTopKesme<b>;</b>
+<b>         </b>Tarih<b>                      </b><b>=</b><b> </b>:GeciciTarih<b>;</b>
+<b>         </b>Tur<b>                        </b><b>=</b><b> </b>:GeciciTur<b>;</b>
+<b>         </b>MemingerKoptu<b>              </b><b>=</b><b> </b>:GeciciMemingerKoptu<b>;</b>
+<b>         </b>AltMemingerKoptu<b>           </b><b>=</b><b> </b>:GeciciAltMemingerKoptu<b>;</b>
+<b>         </b>LycraKoptu<b>                 </b><b>=</b><b> </b>:GeciciLycraKoptu<b>;</b>
+<b>         </b>IgneKoptu<b>                  </b><b>=</b><b> </b>:GeciciIgneKoptu<b>;</b>
+<b>         </b>KapakAcildi<b>                </b><b>=</b><b> </b>:GeciciKapakAcildi<b>;</b>
+<b>         </b>StartStop<b>                  </b><b>=</b><b> </b>:GeciciStartStop<b>;</b>
+<b>         </b>TemizlikYapildi<b>            </b><b>=</b><b> </b>:GeciciTemizlikYapildi<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>         </b>LastOrmeMakinaId<b>            </b><b>=</b><b> </b>:OrmeMakinaId<b> </b><b>;</b>
+<b>      </b><b>end</b>
+
+<b>  </b><b>if</b><b>(</b>:Tur<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>ToplamTur<b> </b><b>=</b><b> </b>ToplamTur<b> </b><b>+</b><b> </b>Tur<b>;</b>
+<b>    </b>TopKesmeSayisi<b> </b><b>=</b><b> </b>TopKesmeSayisi<b> </b><b>+</b><b> </b>TopKesme<b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastTarih<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b><b> </b>LastTarih<b> </b><b>=</b><b> </b>Tarih<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastTur<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>LastTur<b> </b><b>=</b><b> </b>Tur<b>;</b>
+<b>  </b>FarkTarih<b> </b><b>=</b><b> </b>Tarih<b> </b><b>-</b><b> </b>LastTarih<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>Tur<b> </b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>MemingerKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>AltMemingerKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>KapakAcildi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>IgneKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>LycraKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>StartStop<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>TemizlikYapildi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b>Tur<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b><b>else</b><b> </b>Tur<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>LastTur<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>LastTur<b> </b><b>=</b><b> </b>Tur<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastMemingerKoptu<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>LastMemingerKoptu<b> </b><b>=</b><b> </b>MemingerKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastAltMemingerKoptu<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>LastAltMemingerKoptu<b> </b><b>=</b><b> </b>AltMemingerKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastLycraKoptu<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>LastLycraKoptu<b> </b><b>=</b><b> </b>LycraKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastIgneKoptu<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>LastIgneKoptu<b> </b><b>=</b><b> </b>IgneKoptu<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastKapakAcildi<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>LastKapakAcildi<b> </b><b>=</b><b> </b>KapakAcildi<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastStartStop<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>LastStartStop<b> </b><b>=</b><b> </b>StartStop<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastTemizlikYapildi<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>LastTemizlikYapildi<b> </b><b>=</b><b> </b>TemizlikYapildi<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastMemingerKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>MemingerKoptuSuresi<b> </b><b>=</b><b> </b>MemingerKoptuSuresi<b> </b><b>+</b><b> </b>FarkTarih<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastAltMemingerKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>AltMemingerKoptuSuresi<b> </b><b>=</b><b> </b>AltMemingerKoptuSuresi<b> </b><b>+</b><b> </b>FarkTarih<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastLycraKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>LycraKoptuSuresi<b> </b><b>=</b><b> </b>LycraKoptuSuresi<b> </b><b>+</b><b> </b>FarkTarih<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastIgneKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>IgneKoptuSuresi<b> </b><b>=</b><b> </b>IgneKoptuSuresi<b> </b><b>+</b><b> </b>FarkTarih<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastKapakAcildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>KapakAcildiSuresi<b> </b><b>=</b><b> </b>KapakAcildiSuresi<b> </b><b>+</b><b> </b>FarkTarih<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastTemizlikYapildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>TemizlikYapildiSuresi<b> </b><b>=</b><b> </b>TemizlikYapildiSuresi<b> </b><b>+</b><b> </b>FarkTarih<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastStartStop<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>LastMemingerKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>LastAltMemingerKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>LastLycraKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>LastIgneKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>LastKapakAcildi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>LastTemizlikYapildi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>    </b>StartStopSuresi<b> </b><b>=</b><b> </b>StartStopSuresi<b> </b><b>+</b><b> </b>FarkTarih<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastTur<b> </b><b>&lt;</b><b> </b>1<b>)</b><b> </b><b>then</b><b> </b>DurusSuresi<b> </b><b>=</b><b> </b>DurusSuresi<b> </b><b>+</b><b> </b>FarkTarih<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastMemingerKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>MemingerKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b>MemingerKoptuSayisi<b> </b><b>=</b><b> </b>MemingerKoptuSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastAltMemingerKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>AltMemingerKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b>AltMemingerKoptuSayisi<b> </b><b>=</b><b> </b>AltMemingerKoptuSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastIgneKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>IgneKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b>IgneKoptuSayisi<b> </b><b>=</b><b> </b>IgneKoptuSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastLycraKoptu<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>LycraKoptu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b>LycraKoptuSayisi<b> </b><b>=</b><b> </b>LycraKoptuSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastKapakAcildi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>KapakAcildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b>KapakAcildiSayisi<b> </b><b>=</b><b> </b>KapakAcildiSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastStartStop<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>StartStop<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b>StartStopSayisi<b> </b><b>=</b><b> </b>StartStopSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastTemizlikYapildi<b> </b><b>=</b><b> </b>0<b> </b><b>and</b><b> </b>TemizlikYapildi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b>TemizlikYapildiSayisi<b> </b><b>=</b><b> </b>TemizlikYapildiSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>  </b><b>if</b><b> </b><b>(</b>LastTur<b> </b><b>&gt;</b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>Tur<b> </b><b>&lt;</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b>DurusSayisi<b> </b><b>=</b><b> </b>DurusSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>  </b>LastOrmeMakinaId<b>=</b>:OrmeMakinaId<b>;</b>
+<b>  </b>LastOrmeMakinaAdi<b>=</b>:OrmeMakinaAdi<b>;</b>
+<b>  </b>LastKapali<b> </b><b>=</b><b> </b>:Kapali<b>;</b>
+<b>  </b>LastOrmePlanlamaId<b> </b><b>=</b><b> </b>:OrmePlanlamaId<b>;</b>
+<b>  </b>LastTopKesme<b> </b><b>=</b><b> </b>:TopKesme<b>;</b>
+<b>  </b>LastTarih<b> </b><b>=</b><b> </b>Tarih<b>;</b>
+<b>  </b>LastTur<b> </b><b>=</b><b> </b>Tur<b>;</b>
+<b>  </b>LastMemingerKoptu<b> </b><b>=</b><b> </b>MemingerKoptu<b>;</b>
+<b>  </b>LastAltMemingerKoptu<b> </b><b>=</b><b> </b>AltMemingerKoptu<b>;</b>
+<b>  </b>LastLycraKoptu<b> </b><b>=</b><b> </b>LycraKoptu<b>;</b>
+<b>  </b>LastIgneKoptu<b> </b><b>=</b><b> </b>IgneKoptu<b>;</b>
+<b>  </b>LastKapakAcildi<b> </b><b>=</b><b> </b>KapakAcildi<b>;</b>
+<b>  </b>LastStartStop<b> </b><b>=</b><b> </b>StartStop<b>;</b>
+<b>  </b>LastTemizlikYapildi<b> </b><b>=</b><b> </b>TemizlikYapildi<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>MemingerKoptuSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>MemingerKoptuSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>else</b><b> </b>MemingerKoptuSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>MemingerKoptuSuresi<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AltMemingerKoptuSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>AltMemingerKoptuSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>else</b><b> </b>AltMemingerKoptuSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>AltMemingerKoptuSuresi<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>IgneKoptuSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>IgneKoptuSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>else</b><b> </b>IgneKoptuSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>IgneKoptuSuresi<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>LycraKoptuSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>LycraKoptuSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>else</b><b> </b>LycraKoptuSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>LycraKoptuSuresi<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KapakAcildiSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>KapakAcildiSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>else</b><b> </b>KapakAcildiSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>KapakAcildiSuresi<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>StartStopSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>StartStopSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>else</b><b> </b>StartStopSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>StartStopSuresi<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>TemizlikYapildiSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>TemizlikYapildiSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>else</b><b> </b>TemizlikYapildiSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>TemizlikYapildiSuresi<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>OrmeAnimasyonDurusSebepAktif<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>DurusSuresi<b> </b><b>=</b><b> </b>MemingerKoptuSuresi<b> </b><b>+</b><b> </b>AltMemingerKoptuSuresi<b> </b><b>+</b><b> </b>LycraKoptuSuresi<b> </b><b>+</b><b> </b>IgneKoptuSuresi<b> </b><b>+</b><b> </b>KapakAcildiSuresi<b> </b><b>+</b><b> </b>StartStopSuresi<b> </b><b>+</b><b> </b>TemizlikYapildiSuresi<b>;</b>
+<b>    </b>DurusSayisi<b> </b><b>=</b><b> </b>MemingerKoptuSayisi<b> </b><b>+</b><b> </b>AltMemingerKoptuSayisi<b> </b><b>+</b><b> </b>LycraKoptuSayisi<b> </b><b>+</b><b> </b>IgneKoptuSayisi<b> </b><b>+</b><b> </b>KapakAcildiSayisi<b> </b><b>+</b><b> </b>StartStopSayisi<b> </b><b>+</b><b> </b>TemizlikYapildiSayisi<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>DurusSuresi<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b>''<b>;</b>
+<b>  </b><b>else</b><b> </b>DurusSuresiStr<b> </b><b>=</b><b> </b><font color="# 080 0"><u>TarihToStr</u></font><b>(</b>DurusSuresi<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ORMEMAKINABILGISIKAYDET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ORMEMAKINACALISMAHAREKETIRAPORU.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

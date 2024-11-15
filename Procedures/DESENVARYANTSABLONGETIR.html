@@ -1,0 +1,168 @@
+<HTML>
+<HEAD>
+<TITLE>DESENVARYANTSABLONGETIR</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="341800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DESENVARYANTSABLONBILGIKOPYA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DESENVARYANTSABLONRECETEGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DESENVARYANTSABLONGETIR</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ADESENID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADESENVARYANTID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">DESENVARYANTID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENVARYANTSABLONID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SABLONNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ACILIM</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SABLONRENKID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SABLONRENKADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEPOID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MESHID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOLULUKORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">EMULSIYONURUNID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">EMULSIYONURUNADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(80)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DESENVARYANTSABLONGETIR)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DESENVARYANTSABLONGETIR</u></font><b>(</b>
+<b>    </b>ADESENID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>ADESENVARYANTID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>DESENVARYANTID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DESENVARYANTSABLONID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SABLONNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ACILIM<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>SABLONRENKID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>SABLONRENKADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>DEPOID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>MESHID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>DOLULUKORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>EMULSIYONURUNID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>EMULSIYONURUNADI<b> </b><b>VARCHAR</b><b>(</b>80<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Acilim1<b>               </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Acilim2<b>               </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DesenvaryantId<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DesenVaryantSablonId<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>SablonNo<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>Acilim1<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>Acilim2<b>,</b>
+<b>             </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DepoId<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>SablonRenkId<b>,</b><b> </b><font color="# 080 0"><u>SablonRenk</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>MeshId<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DolulukOrani<b>,</b>
+<b>             </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>EmulsiyonUrunId<b>,</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>Adi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DesenVaryantID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenVaryantId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>SablonRenk</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>SablonRenk</u></font><b>.</b>SablonRenkID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>SablonRenkId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Urun</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Urun</u></font><b>.</b>UrunId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>EmulsiyonUrunId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenID<b> </b><b>=</b><b> </b>:ADesenID<b> </b><b>and</b><b> </b><b>(</b><font color="# 080 0"><u>DesenVaryant</u></font><b>.</b>DesenVaryantId<b> </b><b>=</b><b> </b>:ADesenVaryantId<b> </b><b>or</b><b> </b>:ADesenVaryantId<b> </b><b>is</b><b> </b><b>null</b><b>)</b><b> </b><b>and</b>
+<b>        </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DesenVaryantID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b>
+<b>  </b><b>order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>DesenVaryantID<b>,</b><b> </b><font color="# 080 0"><u>DesenVaryantSablon</u></font><b>.</b>SablonNo
+<b>  </b><b>into</b><b> </b>:DesenvaryantId<b>,</b><b> </b>:DesenVaryantSablonId<b>,</b><b> </b>:SablonNo<b>,</b><b> </b>:Acilim1<b>,</b><b> </b>:Acilim2<b>,</b><b> </b>:DepoId<b>,</b><b> </b>:SablonRenkId<b>,</b><b> </b>:SablonRenkAdi<b>,</b><b> </b>:MeshId<b>,</b><b> </b>:DolulukOrani<b>,</b>
+<b>       </b>:EmulsiyonUrunId<b>,</b><b> </b>:EmulsiyonUrunAdi<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b>Acilim<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b>Acilim1<b>)</b><b> </b><b>|</b><b>|</b><b> </b>' / '<b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>Format_Float</u></font><b>(</b>''<b>,</b>Acilim2<b>)</b><b>;</b>
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DESENVARYANTSABLONBILGIKOPYA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DESENVARYANTSABLONRECETEGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

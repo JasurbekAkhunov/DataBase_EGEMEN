@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>VSIPARISDETAYBEDENLISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="161800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Views</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="VSEVKFIRMALISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="VSIPARISGRUPLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">VSIPARISDETAYBEDENLISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for view VSIPARISDETAYBEDENLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Fields</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Field</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="40%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">HGSIPARISDETAYID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BEDENID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BEDENADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KISAKODU</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(7)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Triggers</P>
+<P CLASS="Base"><I>(There are no triggers for view VSIPARISDETAYBEDENLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>VIEW</b><b> </b><font color="# 080 0"><u>VSIPARISDETAYBEDENLISTESI</u></font><b>(</b>
+<b>    </b>HGSIPARISDETAYID<b>,</b>
+<b>    </b>BEDENID<b>,</b>
+<b>    </b>BEDENADI<b>,</b>
+<b>    </b>KISAKODU<b>)</b>
+<b>AS</b>
+<b>Select</b><b> </b><b>Distinct</b><b> </b><font color="# 080 0"><u>HGSiparisDetayUrun</u></font><b>.</b>HGSiparisDetayID<b>,</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>BedenID<b>,</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>KisaKodu<b> </b><b>From</b><b> </b><font color="# 080 0"><u>HGSiparisDetayUrun</u></font>
+<b>       </b><b>left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>ModelBedenID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HGSiparisDetayUrun</u></font><b>.</b>ModelBedenID
+<b>       </b><b>left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Beden</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Beden</u></font><b>.</b>BedenID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ModelBeden</u></font><b>.</b>BedenID
+<b>;</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="VSEVKFIRMALISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="VSIPARISGRUPLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

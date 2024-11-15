@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+<TITLE>ELYAFURETIMICINHAMPAMUKLISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="499800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ELYAFKALITEDEGERGIRISRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ELYAFURETIMIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ELYAFURETIMICINHAMPAMUKLISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AIPLIKDEPOID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKIRSALIYEDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKSTOKGIRISNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IRSALIYENO</TD>
+    <TD><P CLASS="Base2">NUMERIC(18,0)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IRSALIYETARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LOT</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KALITENO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GELISSIRASI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">NETMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANILABILIRMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KULLANILABILIRNETMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ELYAFURETIMICINHAMPAMUKLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ELYAFURETIMICINHAMPAMUKLISTESI</u></font><b>(</b>
+<b>    </b>AIPLIKDEPOID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>IPLIKIRSALIYEDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>IPLIKSTOKGIRISNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMADI<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>IRSALIYENO<b> </b><font color="# 080 0"><u>IRSALIYENOSIZE</u></font><b>,</b>
+<b>    </b>IRSALIYETARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>LOT<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>KALITENO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>GELISSIRASI<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>MIKTAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>NETMIKTAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>KULLANILABILIRMIKTAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>KULLANILABILIRNETMIKTAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>)</b>
+<b>AS</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>shtFasonAlis<b> </b><b>SmallInt</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>hstHamPamuk<b> </b><b>SmallInt</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FKullanilan<b>  </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>hstHamPamuk<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamTipiGetir</u></font><b> </b><b>into</b><b> </b>:hstHamPamuk<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikIrsaliyeDetayId<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>IplikStokGirisNo<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>IrsaliyeNo<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b>,</b>
+<b>             </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>NetMiktar<b>,</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b>
+<b>             </b><b>Sum</b><b>(</b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>Miktar<b>)</b><b>,</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>NetMiktar<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>GelisSirasi<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>KaliteNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikStok</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>IplikIrsaliyeid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikIrsaliyeId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>IplikIrsaliyeDetayid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikIrsaliyeDetayId
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Hamid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>HamId
+<b>  </b><b>where</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>CikisIplikIrsaliyeDetayId<b> </b><b>is</b><b> </b><b>null</b><b> </b><b>and</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>IplikDepoId<b> </b><b>=</b><b> </b>:AIplikDepoId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b> </b><b>=</b><b> </b>:hstHamPamuk
+<b>  </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikIrsaliyeDetayId<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>IplikStokGirisNo<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>IrsaliyeNo<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliye</u></font><b>.</b>IrsaliyeTarihi<b>,</b>
+<b>           </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>NetMiktar<b>,</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b>
+<b>           </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>GelisSirasi<b>,</b><b> </b><font color="# 080 0"><u>IplikIrsaliyeDetay</u></font><b>.</b>KaliteNo
+<b>  </b><b>into</b><b> </b>:IplikIrsaliyeDetayId<b>,</b><b> </b>:IplikStokGirisNo<b>,</b><b> </b>:IrsaliyeNo<b>,</b><b> </b>:IrsaliyeTarihi<b>,</b><b> </b>:Lot<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:NetMiktar<b>,</b><b> </b>:HamId<b>,</b><b> </b>:HamAdi<b>,</b>
+<b>       </b>:KullanilabilirMiktar<b>,</b><b> </b>:KullanilabilirNetMiktar<b>,</b><b> </b>:GelisSirasi<b>,</b><b> </b>:KaliteNo<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>ElyafUretimIsEmriRecete</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>ElyafUretimIsEmriRecete</u></font><b>.</b>IplikIrsaliyeDetayId<b> </b><b>=</b><b> </b>:IplikIrsaliyeDetayId<b> </b><b>into</b><b> </b>:FKullanilan<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>FKullanilan<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b>FKullanilan<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>FKullanilan<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ELYAFKALITEDEGERGIRISRAPORU.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ELYAFURETIMIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

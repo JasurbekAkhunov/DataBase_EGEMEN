@@ -1,0 +1,201 @@
+<HTML>
+<HEAD>
+<TITLE>COZGUURETIMECIKISRAPORU_3</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="278800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="COZGUURETIMECIKISRAPORU_2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="COZGUURETIMIADEMIKTARIHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">COZGUURETIMECIKISRAPORU_3</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABASLAMATARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">STOKHAREKETID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LOT</TD>
+    <TD><P CLASS="Base2">VARCHAR(150)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">REFERANSKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KUMASHAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KUMASHAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TOPLAMKKMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">COZGUMETRE</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">STOKMIKTARI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GIRISMIKTARI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMPARTINO</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure COZGUURETIMECIKISRAPORU_3)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>COZGUURETIMECIKISRAPORU_3</u></font><b>(</b>
+<b>    </b>ABASLAMATARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>STOKHAREKETID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMADI<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>LOT<b> </b><b>VARCHAR</b><b>(</b>150<b>)</b><b>,</b>
+<b>    </b>REFERANSKODU<b> </b><font color="# 080 0"><u>HAMKODUSIZE</u></font><b>,</b>
+<b>    </b>KUMASHAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>KUMASHAMADI<b> </b><font color="# 080 0"><u>ADI255</u></font><b>,</b>
+<b>    </b>TOPLAMKKMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>COZGUMETRE<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>STOKMIKTARI<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>GIRISMIKTARI<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>URETIMPARTINO<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ShtUretimeCikis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtAlis<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>OrmeRafId<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaPlanlamaId<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>ShtUretimeCikis<b>,</b><b> </b>shtAlis<b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font><b> </b><b>into</b><b> </b>:shtUretimeCikis<b>,</b><b> </b>:shtAlis<b>;</b>
+
+<b>  </b><font color="# 0 0FF"><i>/*Çözgü çıkışı ile aynı ham ve lottaki çözgü çıkışları*/</i></font>
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>CozguUretimeCikisRaporu</u></font><b>.</b>StokHareketId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Lot<b>,</b><b> </b>HamKumas<b>.</b>ReferansKodu<b>,</b><b> </b>HamKumas<b>.</b>HamId<b>,</b><b> </b>HamKumas<b>.</b>Adi<b>,</b>
+<b>    </b><b>Sum</b><b>(</b><b>(</b><b>select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>DokumaKaliteKontrol</u></font><b>.</b>OrmeRafId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeRafId<b>)</b><b>)</b><b>,</b>
+<b>    </b><b>Sum</b><b>(</b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Miktar<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>UretimPartiNo
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>CozguUretimeCikisRaporu</u></font><b>(</b>:ABaslamaTarihi<b>,</b><b> </b>:ABitisTarihi<b>,</b><b> </b>0<b>)</b>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>CozguUretimeCikisRaporu</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><font color="# 080 0"><u>CozguUretimeCikisRaporu</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Lot<b>)</b><b> </b><b>=</b><b> </b>1
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Depo</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>DepoId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>DepoId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>OrmeSiparisDetayId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>OrmeSiparisDetayId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b>HamKumas<b> </b><b>on</b><b> </b>HamKumas<b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeSiparisDetay</u></font><b>.</b>HamId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>DokumaPlanlamaId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>DokumaHareketi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>:ShtUretimeCikis<b> </b><b>and</b>
+<b>    </b><b>(</b><font color="# 080 0"><u>Depo</u></font><b>.</b>CozguDeposu<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>HasilDeposu<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>IndigoDeposu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>=</b><b> </b>0
+<b>    </b><b>group</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>CozguUretimeCikisRaporu</u></font><b>.</b>StokHareketId<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamId<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Lot<b>,</b><b> </b>HamKumas<b>.</b>ReferansKodu<b>,</b><b> </b>HamKumas<b>.</b>HamId<b>,</b><b> </b>HamKumas<b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>DokumaPlanlama</u></font><b>.</b>UretimPartiNo
+<b>    </b><b>into</b><b> </b>:StokHareketId<b>,</b><b> </b>:HamId<b>,</b><b> </b>:HamAdi<b>,</b><b> </b>:Lot<b>,</b><b> </b>:ReferansKodu<b>,</b><b> </b>:KumasHamId<b>,</b><b> </b>:KumasHamAdi<b>,</b><b> </b>:ToplamKKMetre<b>,</b><b> </b>:CozguMetre<b>,</b><b> </b>:UretimPartiNo<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><font color="# 0 0FF"><i>/*Çözgünün stok miktarı*/</i></font>
+<b>    </b><b>select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetGirisMiktari<b> </b><b>-</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>NetCikisMiktari<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>RafId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>RafId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Depo</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>DepoId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DepoRaf</u></font><b>.</b>DepoId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>StokVar<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:HamId<b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><font color="# 080 0"><u>OrmeRaf</u></font><b>.</b>Lot<b>,</b><b> </b>:Lot<b>)</b><b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>    </b><b>(</b><font color="# 080 0"><u>Depo</u></font><b>.</b>CozguDeposu<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>HasilDeposu<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>IndigoDeposu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>into</b><b> </b>:StokMiktari<b>;</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*Çözgünün alım miktarı*/</i></font>
+<b>    </b><b>select</b><b> </b><b>Sum</b><b>(</b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Miktar<b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Depo</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>DepoId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>DepoId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>DokumaHareketi<b> </b><b>=</b><b> </b>1<b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>:shtAlis<b> </b><b>and</b>
+<b>    </b><b>(</b><font color="# 080 0"><u>Depo</u></font><b>.</b>CozguDeposu<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>HasilDeposu<b> </b><b>=</b><b> </b>1<b> </b><b>or</b><b> </b><font color="# 080 0"><u>Depo</u></font><b>.</b>IndigoDeposu<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamIade<b> </b><b>=</b><b> </b>0<b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b>:HamId<b> </b><b>and</b>
+<b>    </b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Lot<b>,</b><b> </b>:Lot<b>)</b><b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:GirisMiktari<b>;</b>
+
+<b>    </b><b>suspend</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="COZGUURETIMECIKISRAPORU_2.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="COZGUURETIMIADEMIKTARIHESAPLA.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

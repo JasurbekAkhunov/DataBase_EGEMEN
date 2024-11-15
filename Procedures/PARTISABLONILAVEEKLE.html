@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>PARTISABLONILAVEEKLE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1497800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="PARTISABLONILAVEACILIMIHESAPLA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="PARTISABLONILAVEGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">PARTISABLONILAVEEKLE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">APARTISABLONID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AILAVEMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ILAVETIPI</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">RESULT</TD>
+    <TD><P CLASS="Base2">SMALLINT</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure PARTISABLONILAVEEKLE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>PARTISABLONILAVEEKLE</u></font><b>(</b>
+<b>    </b>APARTISABLONID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AILAVEMIKTAR<b> </b><font color="# 080 0"><u>BOYAMIKTARSIZE</u></font><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b><font color="# 080 0"><u>ILAVETIPI</u></font><b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>RESULT<b> </b><font color="# 080 0"><u>EGEBOOLEAN</u></font><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>partisablonilave</u></font><b> </b><b>(</b>partisablonid<b>,</b><b> </b>partikayitid<b>,</b><b> </b>partisinifid<b>,</b><b> </b>sablonno<b>,</b><b> </b>sira<b>,</b><b> </b>acilim1<b>,</b>
+<b>                                </b>acilim2<b>,</b><b> </b>hazirlananmiktar<b>,</b><b> </b>kullanimmiktari<b>,</b><b> </b>depoid<b>,</b><b> </b>boyatoplami<b>,</b><b> </b>emulsiyonurunid<b>,</b><b> </b>rakle<b>,</b>
+<b>                                </b>pres<b>,</b><b> </b>fiksesicakligi<b>,</b><b> </b>patmiktari<b>,</b><b> </b>stoktandusuldu<b>,</b><b> </b>okeyleyenkullaniciid<b>,</b><b> </b>okeytarihi<b>,</b>
+<b>                                </b>partisablonisemriid<b>,</b><b> </b>insertkullaniciid<b>,</b><b> </b>inserttarihi<b>,</b><b> </b>kullaniciid<b>,</b><b> </b>degisimtarihi<b>,</b><b> </b><font color="# 080 0"><u>IlaveTipi</u></font><b>)</b>
+<b>  </b><b>select</b><b> </b>partisablonid<b>,</b><b> </b>partikayitid<b>,</b><b> </b>partisinifid<b>,</b><b> </b>sablonno<b>,</b><b> </b>sira<b>,</b><b> </b>acilim1<b>,</b><b> </b>acilim2<b>,</b>
+<b>         </b>:AIlaveMiktar<b>,</b><b> </b>kullanimmiktari<b>,</b><b> </b>depoid<b>,</b><b> </b>boyatoplami<b>,</b><b> </b>emulsiyonurunid<b>,</b><b> </b>rakle<b>,</b><b> </b>pres<b>,</b><b> </b>fiksesicakligi<b>,</b><b> </b>patmiktari<b>,</b>
+<b>         </b>0<b>,</b><b> </b><b>null</b><b>,</b><b> </b><b>null</b><b>,</b><b> </b><b>null</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>null</b><b>,</b><b> </b>:IlaveTipi
+<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>partisablon</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>partisablon</u></font><b>.</b>partisablonid<b> </b><b>=</b><b> </b>:APartiSablonId<b>;</b>
+
+<b>  </b>Result<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="PARTISABLONILAVEACILIMIHESAPLA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="PARTISABLONILAVEGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

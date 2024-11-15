@@ -1,0 +1,169 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTSTOKHAREKETDETAY</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="236800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTSTOKHAREKET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTUNITEIRSALIYEDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTSTOKHAREKETDETAY</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTSTOKHAREKETDETAY)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTSTOKHAREKETDETAY</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>STOKHAREKETDETAY</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtDevir<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtAlis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtSatis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtAlisIade<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtSatisIade<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtFasonAlis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtFasonUretimeCikis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretimeCikis<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtFasonUretim<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtUretim<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtKaydirmaCikis<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtKaydirmaGiris<b>  </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtReklamasyonGiris<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>shtReklamasyonCikis<b>   </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StokHareketID<b>         </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IplikStokNumarator<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Kilo<b>                  </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BrutKilo<b>              </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>StokHareketDetayMiktarID<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>IK<b>     </b><b>varchar</b><b>(</b>2<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TF<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>PaketId<b> </b><b>integer</b><b>;</b>
+
+<b>begin</b>
+<b>  </b><b>select</b><b> </b>shtDevir<b>,</b><b> </b>shtAlis<b>,</b><b> </b>shtSatis<b>,</b><b> </b>ShtAlisIade<b>,</b><b> </b>ShtSatisIade<b>,</b><b> </b>ShtFasonAlis<b>,</b><b> </b>shtFasonUretimeCikis<b>,</b><b>  </b>shtUretimeCikis<b>,</b><b> </b>shtFasonUretim<b>,</b>
+<b>         </b>ShtUretim<b>,</b><b> </b>shtKaydirmaCikis<b>,</b><b> </b>shtKaydirmaGiris<b>,</b><b> </b>shtReklamasyonGiris<b>,</b><b> </b>shtReklamasyonCikis<b> </b><b>From</b><b> </b><font color="# 080 0"><u>OrmeStokHareketTipiGetir</u></font>
+<b>    </b><b>into</b><b> </b>:shtDevir<b>,</b><b> </b>:shtAlis<b>,</b><b> </b>:shtSatis<b>,</b><b> </b>:ShtAlisIade<b>,</b><b> </b>:ShtSatisIade<b>,</b><b> </b>:ShtFasonAlis<b>,</b><b> </b>:shtFasonUretimeCikis<b>,</b><b>  </b>:shtUretimeCikis<b>,</b>
+<b>         </b>:shtFasonUretim<b>,</b><b> </b>:ShtUretim<b>,</b><b> </b>:shtKaydirmaCikis<b>,</b><b> </b>:shtKaydirmaGiris<b>,</b><b> </b>:shtReklamasyonGiris<b>,</b><b> </b>:shtReklamasyonCikis<b>;</b>
+
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtAlis<b> </b><b>or</b><b> </b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtSatisIade<b> </b><b>or</b><b> </b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtFasonAlis<b> </b><b>or</b><b> </b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtFasonUretim<b> </b><b>or</b>
+<b>      </b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtUretim<b> </b><b>or</b><b> </b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtKaydirmaGiris<b> </b><b>or</b><b> </b><b>new</b><b>.</b>HareketTipi<b> </b><b>=</b><b> </b>shtReklamasyonGiris<b> </b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b><b> </b><font color="# 0 0FF"><i>/*Girişler*/</i></font>
+<b>    </b><b>Select</b><b> </b>StokHareketDetayMiktarID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>Barkod<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Barkod<b> </b><b>into</b><b> </b>:StokHareketDetayMiktarID<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>StokHareketDetayMiktarID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b> </b><b>set</b><b> </b>GirisKilo<b> </b><b>=</b><b> </b>GirisKilo<b> </b><b>+</b><b> </b><b>New</b><b>.</b>Kilo<b>,</b><b> </b>GirisBrutKilo<b> </b><b>=</b><b> </b>GirisBrutKilo<b> </b><b>+</b><b> </b><b>New</b><b>.</b>BrutKilo<b>,</b><b> </b>GirisMetre<b> </b><b>=</b><b> </b>GirisMetre<b> </b><b>+</b><b> </b><b>New</b><b>.</b>Metre<b>,</b><b> </b>GirisKapAdedi<b> </b><b>=</b><b> </b>GirisKapAdedi<b> </b><b>+</b><b> </b><b>New</b><b>.</b>KapAdedi<b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>Barkod<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Barkod<b>;</b>
+<b>    </b><b>else</b>
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>(</b>Barkod<b>,</b><b> </b>GirisKilo<b>,</b><b> </b>GirisBrutKilo<b>,</b><b> </b>GirisMetre<b>,</b><b> </b>GirisKapAdedi<b>)</b><b> </b><b>Values</b><b> </b><b>(</b><b>New</b><b>.</b>Barkod<b>,</b><b> </b><b>New</b><b>.</b>Kilo<b>,</b><b> </b><b>New</b><b>.</b>BrutKilo<b>,</b><b> </b><b>New</b><b>.</b>Metre<b>,</b><b> </b><b>New</b><b>.</b>KapAdedi<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b><b> </b><font color="# 0 0FF"><i>/*Çıkışlar*/</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>StokHareketDetayMiktarID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>Barkod<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Barkod<b> </b><b>into</b><b> </b>:StokHareketDetayMiktarID<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>StokHareketDetayMiktarID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>Update</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b> </b><b>set</b><b> </b>CikisKilo<b> </b><b>=</b><b> </b>CikisKilo<b> </b><b>+</b><b> </b><b>New</b><b>.</b>Kilo<b>,</b><b> </b>CikisBrutKilo<b> </b><b>=</b><b> </b>CikisBrutKilo<b> </b><b>+</b><b> </b><b>New</b><b>.</b>BrutKilo<b>,</b><b> </b>CikisMetre<b> </b><b>=</b><b> </b>CikisMetre<b> </b><b>+</b><b> </b><b>New</b><b>.</b>Metre<b>,</b><b> </b>CikisKapAdedi<b> </b><b>=</b><b> </b>CikisKapAdedi<b> </b><b>+</b><b> </b><b>New</b><b>.</b>KapAdedi<b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>Barkod<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Barkod<b>;</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>IK<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>Barkod<b>,</b><b> </b>1<b>,</b><b> </b>2<b>)</b><b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>IK<b> </b><b>=</b><b> </b>'K-'<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>Barkod<b>,</b><b> </b>3<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>New</b><b>.</b>Barkod<b>)</b><b> </b><b>-</b><b> </b>2<b>)</b><b>)</b><b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>BarkodHatali1</u></font><b>;</b>
+<b>        </b>PaketId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>Barkod<b>,</b><b> </b>3<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>New</b><b>.</b>Barkod<b>)</b><b> </b><b>-</b><b> </b>2<b>)</b><b>)</b><b>;</b>
+
+<b>        </b><b>Select</b><b> </b><b>first</b><b> </b>1<b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>StokHareketID<b>,</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Kilo<b> </b><b>+</b><b> </b><font color="# 080 0"><u>PSKaliteKontrol</u></font><b>.</b>Dara<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiStokTartiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font><b>.</b>PartiStokTartiId
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>BoyaIrsaliyeDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeDetayID
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>PsKaliteKontrol</u></font><b>.</b>PsKaliteKontrolId<b> </b><b>=</b><b> </b>:PaketId
+<b>        </b><b>into</b><b> </b>:StokHareketID<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:BrutKilo<b>;</b>
+
+<b>        </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareketDetay</u></font><b>(</b>StokHareketID<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>PsKaliteKontrolId<b>,</b><b> </b>Kilo<b>,</b><b> </b>BrutKilo<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b><b> </b><b>Values</b>
+<b>                                    </b><b>(</b>:StokHareketID<b>,</b><b> </b>:shtAlis<b>,</b><b> </b>:PaketId<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:BrutKilo<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>)</b><b>;</b>
+
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>if</b><b> </b><b>(</b>IK<b> </b><b>=</b><b> </b>'I-'<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>TF<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToIntOlurmu</u></font><b>(</b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>Barkod<b>,</b><b> </b>3<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>New</b><b>.</b>Barkod<b>)</b><b> </b><b>-</b><b> </b>2<b>)</b><b>)</b><b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b>TF<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>BarkodHatali1</u></font><b>;</b>
+<b>        </b>PaketId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenStrToInt</u></font><b>(</b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><b>New</b><b>.</b>Barkod<b>,</b><b> </b>3<b>,</b><b> </b><b>Char_Length</b><b>(</b><b>New</b><b>.</b>Barkod<b>)</b><b> </b><b>-</b><b> </b>2<b>)</b><b>)</b><b>;</b>
+
+<b>        </b><b>Select</b><b> </b><b>first</b><b> </b>1<b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>StokHareketID<b>,</b><b> </b><font color="# 080 0"><u>IplikPaketleme</u></font><b>.</b>NetKilo<b>,</b><b> </b><font color="# 080 0"><u>IplikPaketleme</u></font><b>.</b>BrutKilo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikPaketleme</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>PartiStokTartiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>IplikPaketleme</u></font><b>.</b>PartiStokTartiId
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>BoyaIrsaliyeDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStokTarti</u></font><b>.</b>BoyaIrsaliyeDetayID
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>IplikPaketleme</u></font><b>.</b>IplikPaketlemeID<b> </b><b>=</b><b> </b>:PaketId
+<b>        </b><b>into</b><b> </b>:StokHareketID<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:BrutKilo<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>StokHareketID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareketDetay</u></font><b>(</b>StokHareketID<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>IplikPaketlemeID<b>,</b><b> </b>Kilo<b>,</b><b> </b>BrutKilo<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b><b> </b><b>Values</b>
+<b>                                      </b><b>(</b>:StokHareketID<b>,</b><b> </b>:shtAlis<b>,</b><b> </b>:PaketId<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:BrutKilo<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>)</b><b>;</b>
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b><b> </b><b>if</b><b> </b><b>(</b>IK<b> </b><b>&lt;</b><b>&gt;</b><b> </b>'G-'<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Select</b><b> </b><b>first</b><b> </b>1<b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>StokHareketID<b>,</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>Numarator<b>,</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>NetMiktar<b>,</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>Miktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>IplikStok</u></font>
+<b>        </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>IplikIrsaliyeDetayID<b> </b><b>=</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>CikisIplikIrsaliyeDetayID
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>IplikStokID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Barkod<b> </b><b>and</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>StokHareketID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b>
+<b>        </b><b>Order</b><b> </b><b>by</b><b> </b><font color="# 080 0"><u>IplikStok</u></font><b>.</b>Numarator<b> </b><b>Desc</b>
+<b>        </b><b>into</b><b> </b>:StokHareketID<b>,</b><b> </b>:IplikStokNumarator<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:BrutKilo<b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b>StokHareketID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>        </b><b>begin</b>
+<b>          </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>StokHareketDetay</u></font><b>(</b>StokHareketID<b>,</b><b> </b>HareketTipi<b>,</b><b> </b>IplikStokID<b>,</b><b> </b>IplikStokNumarator<b>,</b><b> </b>Kilo<b>,</b><b> </b>BrutKilo<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b><b> </b><b>Values</b>
+<b>                                      </b><b>(</b>:StokHareketID<b>,</b><b> </b>:shtAlis<b>,</b><b> </b><b>New</b><b>.</b>Barkod<b>,</b><b> </b>:IplikStokNumarator<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:BrutKilo<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>)</b><b>;</b>
+
+<b>        </b><b>end</b>
+<b>      </b><b>end</b>
+
+
+<b>      </b><b>if</b><b> </b><b>(</b>StokHareketID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>Select</b><b> </b>StokHareketDetayMiktarID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>Barkod<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Barkod<b> </b><b>into</b><b> </b>:StokHareketDetayMiktarID<b>;</b>
+
+<b>        </b><b>if</b><b> </b><b>(</b>StokHareketDetayMiktarID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>          </b><b>Update</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b> </b><b>set</b><b> </b>CikisKilo<b> </b><b>=</b><b> </b>CikisKilo<b> </b><b>+</b><b> </b><b>New</b><b>.</b>Kilo<b>,</b><b> </b>CikisBrutKilo<b> </b><b>=</b><b> </b>CikisBrutKilo<b> </b><b>+</b><b> </b><b>New</b><b>.</b>BrutKilo<b>,</b><b> </b>CikisMetre<b> </b><b>=</b><b> </b>CikisMetre<b> </b><b>+</b><b> </b><b>New</b><b>.</b>Metre<b> </b><b>,</b><b> </b>CikisKapAdedi<b> </b><b>=</b><b> </b>CikisKapAdedi<b> </b><b>+</b><b> </b><b>New</b><b>.</b>KapAdedi<b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareketDetayMiktar</u></font><b>.</b>Barkod<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Barkod<b>;</b>
+<b>        </b><b>else</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KayitHatasi</u></font><b> </b>'Çıkışı Yapılmak İstenen Barkod un Girişi Bulunamadı'<b>;</b>
+
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTSTOKHAREKET.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTUNITEIRSALIYEDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

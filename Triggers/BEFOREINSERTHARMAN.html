@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREINSERTHARMAN</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="789800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREINSERTHAMSTOKSARFFISI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREINSERTHARMANCINSI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREINSERTHARMAN</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREINSERTHARMAN)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREINSERTHARMAN</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>HARMAN</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>EgemenFirmaID<b> </b><b>Integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AnaLot1<b> </b><b>VarChar</b><b>(</b>10<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AnaLot2<b> </b><b>VarChar</b><b>(</b>10<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>EgemenFirmaID<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b>SistemID<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:EgemenFirmaID<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>KarisikHarman<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>New</b><b>.</b>Karisim1HarmanKayitID<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>    </b><b>New</b><b>.</b>Karisim2HarmanKayitID<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>EgemenFirmaID<b> </b><b>=</b><b> </b>46<b>)</b><b> </b><b>then</b><b> </b><font color="# 0 0FF"><i>/*BaşYazıcıOğlu*/</i></font>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>KarisikHarman<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>Select</b><b> </b>AnaLotID<b> </b><b>From</b><b> </b><font color="# 080 0"><u>AnaLotNumaratorGetir</u></font><b>(</b><b>New</b><b>.</b>HarmanCinsiID<b>,</b><b> </b><b>New</b><b>.</b>HarmanKarisimID<b>,</b><b> </b><b>New</b><b>.</b>IplikIsletmeID<b>)</b><b> </b><b>into</b><b> </b><b>new</b><b>.</b>AnaLot<b>;</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>Karisim1HarmanKayitID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b><b>New</b><b>.</b>Karisim2HarmanKayitID<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KarisikHarmanBilgisiEksik</u></font><b>;</b>
+
+<b>      </b><b>Select</b><b> </b><b>SubString</b><b>(</b>AnaLot<b> </b><b>from</b><b> </b>5<b> </b><b>for</b><b> </b>5<b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>Harman</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Harman</u></font><b>.</b>HarmanKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Karisim1HarmanKayitID<b> </b><b>into</b><b> </b>:AnaLot1<b>;</b>
+<b>      </b><b>Select</b><b> </b><b>iif</b><b>(</b><b>New</b><b>.</b>IlkBolum<b> </b><b>=</b><b> </b>1<b> </b><b>,</b><b> </b><b>SubString</b><b>(</b>AnaLot<b> </b><b>from</b><b> </b>10<b> </b><b>for</b><b> </b>5<b>)</b><b>,</b><b> </b><b>SubString</b><b>(</b>AnaLot<b> </b><b>from</b><b> </b>5<b> </b><b>for</b><b> </b>5<b>)</b><b>)</b><b> </b><b>From</b><b> </b><font color="# 080 0"><u>Harman</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Harman</u></font><b>.</b>HarmanKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>Karisim2HarmanKayitID<b> </b><b>into</b><b> </b>:AnaLot2<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>AnaLot1<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>or</b><b> </b>AnaLot2<b> </b><b>is</b><b> </b><b>Null</b><b> </b><b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KarisikHarmanBilgisiEksik</u></font><b>;</b>
+
+<b>      </b><b>New</b><b>.</b>AnaLot<b> </b><b>=</b><b> </b><font color="# 080 0"><u>EgemenCopyStr</u></font><b>(</b><font color="# 080 0"><u>TimeStampToYil</u></font><b>(</b><b>Current_TimeStamp</b><b>)</b><b>,</b><b> </b>3<b>,</b><b> </b>2<b>)</b><b> </b><b>|</b><b>|</b><b> </b><font color="# 080 0"><u>EgemenIntegerToStr</u></font><b>(</b><b>New</b><b>.</b>IplikIsletmeID<b>)</b><b> </b><b>|</b><b>|</b><b> </b>'-'<b> </b><b>|</b><b>|</b><b> </b>AnaLot1<b> </b><b>|</b><b>|</b><b> </b>AnaLot2<b>;</b>
+
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>new</b><b>.</b>HarmanKayitId<b> </b><b>=</b><b> </b><b>Gen_Id</b><b>(</b><font color="# 080 0"><u>HarmanKayit_Id_Gen</u></font><b>,</b>1<b>)</b><b>;</b>
+
+<b>  </b><b>update</b><b> </b><font color="# 080 0"><u>HarmanNumarator</u></font><b> </b><b>set</b><b> </b>Id<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HarmanId<b> </b><b>where</b><b> </b>Yil<b> </b><b>=</b><b> </b><b>new</b><b>.</b>HarmanYil<b> </b><b>and</b><b> </b>Id<b> </b><b>&lt;</b><b> </b><b>new</b><b>.</b>HarmanId<b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREINSERTHAMSTOKSARFFISI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREINSERTHARMANCINSI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>BEFOREUPDATEHASILISEMRI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1270800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BEFOREUPDATEHARMANRECETEDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BEFOREUPDATEHASILISEMRIDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BEFOREUPDATEHASILISEMRI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger BEFOREUPDATEHASILISEMRI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>BEFOREUPDATEHASILISEMRI</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>HASILISEMRI</u></font>
+<b>ACTIVE</b><b> </b><b>BEFORE</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KayitSayisi<b>   </b><b>Integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>new</b><b>.</b>DegisimTarihi<b> </b><b>=</b><b> </b><b>Current_TimeStamp</b><b>(</b>0<b>)</b><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b><b>New</b><b>.</b>IplikHamID<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>Old</b><b>.</b>IplikHamID<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>New</b><b>.</b>FirmaID<b>,</b><b> </b><b>Old</b><b>.</b>FirmaID<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>StrKarsilastir</u></font><b>(</b><b>New</b><b>.</b>Lot<b>,</b><b> </b><b>Old</b><b>.</b>Lot<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>New</b><b>.</b>BoyaSiparisKayitID<b>,</b><b> </b><b>Old</b><b>.</b>BoyaSiparisKayitID<b>)</b><b> </b><b>=</b><b> </b>0<b> </b><b>or</b>
+<b>      </b><font color="# 080 0"><u>IntKarsilastir</u></font><b>(</b><b>New</b><b>.</b>OrmeSiparisDetayID<b>,</b><b> </b><b>Old</b><b>.</b>OrmeSiparisDetayID<b>)</b><b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b><b>Count</b><b>(</b><b>*</b><b>)</b><b> </b><b>from</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>HasilIsEmriKayitID<b> </b><b>=</b><b> </b><b>New</b><b>.</b>HasilIsEmriKayitID<b> </b><b>into</b><b> </b>:KayitSayisi<b>;</b>
+<b>    </b><b>if</b><b> </b><b>(</b>KayitSayisi<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>CozguHasilHareketiVarDegisemez</u></font><b>;</b>
+<b>  </b><b>end</b>
+<font color="# 0 0FF"><i>/*</i></font>
+<font color="# 0 0FF"><i>  if (New.BoyaSiparisKayitID &lt;&gt; Old.BoyaSiparisKayitID or New.OrmeSiparisDetayID &lt;&gt; Old.OrmeSiparisDetayID) then</i></font>
+<font color="# 0 0FF"><i>  begin</i></font>
+<font color="# 0 0FF"><i>    Select Count(*) from StokHareket where StokHareket.HasilIsEmriKayitID = New.HasilIsEmriKayitID and StokHareket.BoyaSiparisKayitID = old.BoyaSiparisKayitID into :KayitSayisi;</i></font>
+<font color="# 0 0FF"><i>    if (KayitSayisi &gt; 0) then exception CozguHasilHareketiVarDegisemez;</i></font>
+<font color="# 0 0FF"><i>  end</i></font>
+<font color="# 0 0FF"><i>*/</i></font>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>Kapali<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>Kapali<b> </b><b>and</b><b> </b><b>New</b><b>.</b>Kapali<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b><b>New</b><b>.</b>BaslamaTarihi<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b> </b><b>and</b><b> </b><b>New</b><b>.</b>BitisTarihi<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b><b> </b><b>New</b><b>.</b>BitisTarihi<b> </b><b>=</b><b> </b><b>Current_Date</b><b>;</b>
+
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BEFOREUPDATEHARMANRECETEDETAY.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BEFOREUPDATEHASILISEMRIDETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,852 @@
+<HTML>
+<HEAD>
+<TITLE>ORMESTOKHAREKET</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="1343800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="ORMESTOKENVANTERRAPORU_IC.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="ORMESTOKHAREKETKARTIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">ORMESTOKHAREKET</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHAZIRLIK</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AHAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABASLANGICTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AORMERAFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">STOKHAREKETID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FIRMAADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(100)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMERAFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">YENIORMERAFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FASONSTOK</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">GIRISCIKIS</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAREKETTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAREKETTIPIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMISLEMTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMISLEMTIPIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(15)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMIADE</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMTIPIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HAMTIPIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LOT</TD>
+    <TD><P CLASS="Base2">VARCHAR(150)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MELANJKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">FLAMKODU</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RENKADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DESENVARYANTID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIKTARBIRIM</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BRUTMIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MIKTAR</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMFIYAT</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMFIYATSISTEMDOVIZ</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BIRIMMALIYET</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TABANDOVIZKURU1</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">TABANDOVIZKURU2</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">INSERTTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">DEGISIMTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">RAFSTOKMIKTARI</TD>
+    <TD><P CLASS="Base2">NUMERIC(12,3)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMESIPARISDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYASIPARISID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYAIRSALIYEDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTISINIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PARTIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSHAMSTOKMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSGUGPAYITUTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSELEKTRIKPAYITUTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSDOGALGAZPAYITUTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSBUHARPAYITUTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSSUPAYITUTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSISCILIKPAYITUTARI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSBOYAMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSKIMYASALMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSBOYAKIMYASALMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSTOPLAMMALIYET</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">PSKGMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEPLANLAMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMPARTINO</TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEFISID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEFISNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEFISTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEIRSALIYEID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEIRSALIYENO</TD>
+    <TD><P CLASS="Base2">NUMERIC(18,0)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMEIRSALIYETARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMERAFTRANSFERFISID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMERAFTRANSFERFISIDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMERAFTRANSFERFISYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMERAFTRANSFERFISNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMERAFTRANSFERFISTARIH</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMECIKANKILO</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">URETIMECIKANMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKKULLANIMORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">IPLIKMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LIKRAKULLANIMORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">LIKRAMALIYETI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISTAHMINIFIREORANI</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMESTOKKAYDIRMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMESTOKKAYDIRMAFISYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMESTOKKAYDIRMAFISNO</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMESTOKKAYDIRMAFISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ORMESTOKKAYDIRMAORMERAFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure ORMESTOKHAREKET)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>ORMESTOKHAREKET</u></font><b>(</b>
+<b>    </b>AHAZIRLIK<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AHAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ABASLANGICTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ABITISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>AORMERAFID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>STOKHAREKETID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>TARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>FIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FIRMAADI<b> </b><b>VARCHAR</b><b>(</b>100<b>)</b><b>,</b>
+<b>    </b>ORMERAFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>YENIORMERAFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>FASONSTOK<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>GIRISCIKIS<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAREKETTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAREKETTIPIADI<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>URETIMISLEMTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>URETIMISLEMTIPIADI<b> </b><b>VARCHAR</b><b>(</b>15<b>)</b><b>,</b>
+<b>    </b>HAMIADE<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMADI<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>HAMTIPIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>HAMTIPIADI<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>LOT<b> </b><b>VARCHAR</b><b>(</b>150<b>)</b><b>,</b>
+<b>    </b>MELANJKODU<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>FLAMKODU<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>RENKID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>RENKADI<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>DESENID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>DESENVARYANTID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>MIKTARBIRIM<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BRUTMIKTAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>MIKTAR<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>BIRIMFIYAT<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>DOVIZID<b> </b><b>VARCHAR</b><b>(</b>5<b>)</b><b>,</b>
+<b>    </b>BIRIMFIYATSISTEMDOVIZ<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>BIRIMMALIYET<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TABANDOVIZKURU1<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>TABANDOVIZKURU2<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>INSERTTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>DEGISIMTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>RAFSTOKMIKTARI<b> </b><b>NUMERIC</b><b>(</b>12<b>,</b>3<b>)</b><b>,</b>
+<b>    </b>ORMESIPARISDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYASIPARISKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYASIPARISYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYASIPARISID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYAIRSALIYEDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTIKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTISINIFID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTIYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PARTIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>PSHAMSTOKMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSGUGPAYITUTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSELEKTRIKPAYITUTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSDOGALGAZPAYITUTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSBUHARPAYITUTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSSUPAYITUTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSISCILIKPAYITUTARI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSBOYAMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSKIMYASALMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSBOYAKIMYASALMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSTOPLAMMALIYET<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>PSKGMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ORMEPLANLAMAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>URETIMPARTINO<b> </b><b>VARCHAR</b><b>(</b>30<b>)</b><b>,</b>
+<b>    </b>ORMEFISID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMEFISNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMEFISTARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ORMEIRSALIYEID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMEIRSALIYENO<b> </b><font color="# 080 0"><u>IRSALIYENOSIZE</u></font><b>,</b>
+<b>    </b>ORMEIRSALIYETARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ORMERAFTRANSFERFISID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMERAFTRANSFERFISIDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMERAFTRANSFERFISYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMERAFTRANSFERFISNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMERAFTRANSFERFISTARIH<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>URETIMECIKANKILO<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>URETIMECIKANMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>IPLIKKULLANIMORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>IPLIKMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>LIKRAKULLANIMORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>LIKRAMALIYETI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>SIPARISTAHMINIFIREORANI<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ORMESTOKKAYDIRMAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMESTOKKAYDIRMAFISYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMESTOKKAYDIRMAFISNO<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ORMESTOKKAYDIRMAFISTARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ORMESTOKKAYDIRMAORMERAFID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>OrmeFirmaKodumuz<b> </b><b>Varchar</b><b>(</b>20<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>SistemDovizid<b>    </b><b>Varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FOrmeRafID<b>       </b><b>Integer</b><b>;</b>
+<b>Declare</b><b> </b><b>Variable</b><b> </b>FSayac<b>           </b><b>Integer</b><b>;</b>
+<b>Begin</b>
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>Ormefirmakodumuz<b>,</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>Sistemdovizid<b>  </b><b>From</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b>.</b>Sistemid<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:OrmeFirmaKodumuz<b>,</b><b> </b>:SistemDovizid<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AHazirlik<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<font color="# 0 0FF"><i>/* 2 giriş çıkışlar - stok hareket tablosu*/</i></font>
+<font color="# 0 0FF"><i>/* 3 giriş çıkışlar - örme raftransferi*/</i></font>
+<b>    </b>FSayac<b> </b><b>=</b><b> </b>2<b>;</b>
+<b>    </b><b>while</b><b> </b><b>(</b>FSayac<b> </b><b>&lt;</b><b>=</b><b> </b>3<b>)</b><b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Stokhareketid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Tarih<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>FirmaID<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Firmaadi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>OrmeRafID<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>YeniOrmeRafID<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>FasonStok<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Giriscikis<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>HareketTipiID<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>HareketTipiAdi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Uretimislemtipiid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>UretimIslemTipiAdi<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>HamIade<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Hamid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Hamadi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>HamTipiID<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>HamTipiAdi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Melanjkodu<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>FlamKodu<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>RenkID<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>RenkAdi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>DesenID<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>DesenVaryantID<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>MiktarBirim<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>BrutMiktar<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Birimfiyat<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Dovizid<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>BirimFiyatSistemDoviz<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>BirimMaliyet<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>TabanDovizKuru1<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>TabanDovizKuru2<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>InsertTarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>DegisimTarihi<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>OrmeSiparisDetayID<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>SiparisTahminiFireOrani<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Boyasipariskayitid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Boyasiparisyil<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Boyasiparisid<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Boyairsaliyedetayid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Partikayitid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Partisinifid<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Partiyil<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Partiid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSHamStokMaliyeti<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Psgugpayitutari<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PsElektrikPayiTutari<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Psdogalgazpayitutari<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PsbuharPayiTutari<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Pssupayitutari<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Psiscilikpayitutari<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Psboyamaliyeti<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Pskimyasalmaliyeti<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Psboyakimyasalmaliyeti<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Pstoplammaliyet<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Pskgmaliyeti<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeplanlamaid<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Uretimpartino<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormefisid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormefisno<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormefistarih<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeirsaliyeid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeirsaliyeno<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeirsaliyetarih<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfisid<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfisidetayid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfisyil<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfisno<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfistarih<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmaid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmafisyil<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmafisno<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmafistarihi<b>,</b>
+<b>                 </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmaormerafid
+<b>        </b><b>From</b><b> </b><font color="# 080 0"><u>Ormestokhareket</u></font><b>(</b>:FSayac<b>,</b><b> </b>:Ahamid<b>,</b><b> </b>:Abaslangictarihi<b>,</b><b> </b>:Abitistarihi<b>,</b><b> </b>:Aormerafid<b>)</b>
+<b>        </b><b>Order</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Tarih<b> </b><b>Asc</b><b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Giriscikis<b> </b><b>Desc</b>
+<b>        </b><b>into</b><b> </b>:Stokhareketid<b>,</b><b> </b>:Tarih<b>,</b><b> </b>:Firmaid<b>,</b><b> </b>:Firmaadi<b>,</b><b> </b>:Ormerafid<b>,</b><b> </b>:Yeniormerafid<b>,</b><b> </b>:Fasonstok<b>,</b><b> </b>:Giriscikis<b>,</b>
+<b>             </b>:Harekettipiid<b>,</b><b> </b>:Harekettipiadi<b>,</b><b> </b>:Uretimislemtipiid<b>,</b><b> </b>:Uretimislemtipiadi<b>,</b><b> </b>:Hamiade<b>,</b><b> </b>:Hamid<b>,</b><b> </b>:Hamadi<b>,</b>
+<b>             </b>:Hamtipiid<b>,</b><b> </b>:Hamtipiadi<b>,</b><b> </b>:Lot<b>,</b><b> </b>:Melanjkodu<b>,</b><b> </b>:Flamkodu<b>,</b><b> </b>:Renkid<b>,</b><b> </b>Renkadi<b>,</b><b> </b>:Desenid<b>,</b><b> </b>:Desenvaryantid<b>,</b>
+<b>             </b>:miktarbirim<b>,</b><b> </b>:Brutmiktar<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:Birimfiyat<b>,</b><b> </b>:Dovizid<b>,</b><b> </b>:Birimfiyatsistemdoviz<b>,</b><b> </b>:Birimmaliyet<b>,</b>
+<b>             </b>:Tabandovizkuru1<b>,</b><b> </b>:Tabandovizkuru2<b>,</b><b> </b>:Inserttarihi<b>,</b><b> </b>:Degisimtarihi<b>,</b><b> </b>:Ormesiparisdetayid<b>,</b>
+<b>             </b>:Siparistahminifireorani<b>,</b><b> </b>:Boyasipariskayitid<b>,</b><b> </b>:Boyasiparisyil<b>,</b><b> </b>:Boyasiparisid<b>,</b><b> </b>:Boyairsaliyedetayid<b>,</b>
+<b>             </b>:Partikayitid<b>,</b><b> </b>:Partisinifid<b>,</b><b> </b>:Partiyil<b>,</b><b> </b>:Partiid<b>,</b><b> </b>:Pshamstokmaliyeti<b>,</b><b> </b>:PSGUGPayiTutari<b>,</b>
+<b>             </b>:PSElektrikPayiTutari<b>,</b><b> </b>:Psdogalgazpayitutari<b>,</b><b> </b>:PSBuharPayiTutari<b>,</b><b> </b>:PSSuPayiTutari<b>,</b><b> </b>:PSIscilikPayiTutari<b>,</b>
+<b>             </b>:PSBoyaMaliyeti<b>,</b><b> </b>:PSKimyasalMaliyeti<b>,</b><b> </b>:PSBoyaKimyasalMaliyeti<b>,</b><b> </b>:PSToplamMaliyet<b>,</b><b> </b>:PSKgMaliyeti<b>,</b>
+<b>             </b>:Ormeplanlamaid<b>,</b><b> </b>:Uretimpartino<b>,</b><b> </b>:Ormefisid<b>,</b><b> </b>:Ormefisno<b>,</b><b> </b>:Ormefistarih<b>,</b><b> </b>:Ormeirsaliyeid<b>,</b><b> </b>:Ormeirsaliyeno<b>,</b>
+<b>             </b>:Ormeirsaliyetarih<b>,</b><b> </b>:Ormeraftransferfisid<b>,</b><b> </b>:Ormeraftransferfisidetayid<b>,</b><b> </b>:Ormeraftransferfisyil<b>,</b>
+<b>             </b>:Ormeraftransferfisno<b>,</b><b> </b>:Ormeraftransferfistarih<b>,</b><b> </b>:Ormestokkaydirmaid<b>,</b><b> </b>:Ormestokkaydirmafisyil<b>,</b>
+<b>             </b>:Ormestokkaydirmafisno<b>,</b><b> </b>:Ormestokkaydirmafistarihi<b>,</b><b> </b>:Ormestokkaydirmaormerafid
+<b>        </b><b>do</b><b> </b><b>Suspend</b><b>;</b>
+<b>      </b>FSayac<b> </b><b>=</b><b> </b>FSayac<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AHazirlik<b> </b><b>=</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Stokhareketid<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Tarih<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Firmaid<b>,</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b>Girisormeraf<b>.</b>Ormerafid<b>,</b><b> </b>Cikisormeraf<b>.</b>Ormerafid<b>)</b><b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b>Girisormeraf<b>.</b>Fasonstok<b>,</b><b> </b>Cikisormeraf<b>.</b>Fasonstok<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Giriscikis<b>,</b>
+<b>               </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Harekettipi<b>,</b><b> </b><font color="# 080 0"><u>Ormestokharekettipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Uretimislemtipiid<b>,</b><b> </b><font color="# 080 0"><u>Uretimislemtipi</u></font><b>.</b>Adi<b>,</b>
+<b>               </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Hamiade<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Hamid<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Hamtipiid<b>,</b><b> </b><font color="# 080 0"><u>Hamtipi</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Lot<b>,</b>
+<b>               </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Melanjkodu<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Flamkodu<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Renkid<b>,</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Desenid<b>,</b>
+<b>               </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Desenvaryantid<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Miktarbirim<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Brutmiktar<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Miktar<b>,</b>
+<b>               </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Birimfiyat<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Dovizid<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Birimmaliyet<b>,</b>
+<b>               </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ormefatura</u></font><b>.</b>Tabandovizkuru1<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Tabandovizkuru1<b>)</b><b>,</b>
+<b>               </b><b>coalesce</b><b>(</b><font color="# 080 0"><u>Ormefatura</u></font><b>.</b>Tabandovizkuru2<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Tabandovizkuru2<b>)</b><b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Inserttarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Degisimtarihi<b>,</b><b> </b><font color="# 080 0"><u>StokHareket</u></font><b>.</b>Ormesiparisdetayid<b>,</b><b> </b><font color="# 080 0"><u>Ormesiparisdetay</u></font><b>.</b>Tahminifireorani<b>,</b>
+<b>               </b><font color="# 080 0"><u>Boyasiparis</u></font><b>.</b>Boyasipariskayitid<b>,</b><b> </b><font color="# 080 0"><u>Boyasiparis</u></font><b>.</b>Boyasiparisyil<b>,</b><b> </b><font color="# 080 0"><u>Boyasiparis</u></font><b>.</b>Boyasiparisid<b>,</b>
+<b>               </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Boyairsaliyedetayid<b>,</b><b> </b><font color="# 080 0"><u>Boyairsaliyedetay</u></font><b>.</b>Partikayitid<b>,</b><b> </b><font color="# 080 0"><u>Boyairsaliyedetay</u></font><b>.</b>Partisinifid<b>,</b>
+<b>               </b><font color="# 080 0"><u>Parti</u></font><b>.</b>Partiyil<b>,</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>Partiid<b>,</b><b> </b><font color="# 080 0"><u>PartiSinifMaliyetKumulatif</u></font><b>.</b>HamStokMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Ormeplanlamaid<b>,</b>
+<b>               </b><font color="# 080 0"><u>Ormeplanlama</u></font><b>.</b>Uretimpartino<b>,</b><b> </b><font color="# 080 0"><u>Ormefis</u></font><b>.</b>Ormefisid<b>,</b><b> </b><font color="# 080 0"><u>Ormefis</u></font><b>.</b>Fisno<b>,</b><b> </b><font color="# 080 0"><u>Ormefis</u></font><b>.</b>Fistarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>Ormeirsaliye</u></font><b>.</b>Ormeirsaliyeid<b>,</b><b> </b><font color="# 080 0"><u>Ormeirsaliye</u></font><b>.</b>Irsaliyeno<b>,</b><b> </b><font color="# 080 0"><u>Ormeirsaliye</u></font><b>.</b>Irsaliyetarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>Ormefis</u></font><b>.</b>Ormestokkaydirmaid<b>,</b><b> </b><font color="# 080 0"><u>Ormestokkaydirma</u></font><b>.</b>Fisyil<b>,</b><b> </b><font color="# 080 0"><u>Ormestokkaydirma</u></font><b>.</b>Fisno<b>,</b><b> </b><font color="# 080 0"><u>Ormestokkaydirma</u></font><b>.</b>Fistarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>Ormestokkaydirma</u></font><b>.</b>Ormerafid
+<b>      </b><b>From</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font>
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormefis</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ormefis</u></font><b>.</b>Ormefisid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Ormefisid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormeirsaliye</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ormeirsaliye</u></font><b>.</b>Ormeirsaliyeid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Ormeirsaliyeid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormefatura</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ormefatura</u></font><b>.</b>Ormefaturaid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Ormefaturaid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormeplanlama</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ormeplanlama</u></font><b>.</b>Ormeplanlamaid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Ormeplanlamaid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Firma</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Firma</u></font><b>.</b>Firmaid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Firmaid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormerafdetay</u></font><b> </b>Girisormerafdetay<b> </b><b>on</b><b> </b>Girisormerafdetay<b>.</b>Stokhareketid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Stokhareketid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>ormeraf</u></font><b> </b>Girisormeraf<b> </b><b>On</b><b> </b>Girisormeraf<b>.</b>Ormerafid<b> </b><b>=</b><b> </b>Girisormerafdetay<b>.</b>Ormerafid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>ormeraf</u></font><b> </b>Cikisormeraf<b> </b><b>on</b><b> </b>Cikisormeraf<b>.</b>Ormerafid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Ormerafid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormestokharekettipi</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ormestokharekettipi</u></font><b>.</b>Ormestokharekettipiid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Harekettipi
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Hamid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Hamid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Hamtipi</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Hamtipi</u></font><b>.</b>Hamtipiid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Hamtipiid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Renkid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Renkid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormesiparisdetay</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ormesiparisdetay</u></font><b>.</b>Ormesiparisdetayid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Ormesiparisdetayid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Boyasiparis</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Boyasiparis</u></font><b>.</b>Boyasipariskayitid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Boyasipariskayitid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Boyairsaliyedetay</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Boyairsaliyedetay</u></font><b>.</b>Boyairsaliyedetayid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Boyairsaliyedetayid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Partistok</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Partistok</u></font><b>.</b>Partisinifid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Boyairsaliyedetay</u></font><b>.</b>Partisinifid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Parti</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Parti</u></font><b>.</b>Partikayitid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Partistok</u></font><b>.</b>Partikayitid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Uretimislemtipi</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Uretimislemtipi</u></font><b>.</b>Uretimislemtipiid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Uretimislemtipiid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>PartiSinifMaliyetKumulatif</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>PartiSinifMaliyetKumulatif</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>PartiStok</u></font><b>.</b>Partisinifid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormestokkaydirma</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ormestokkaydirma</u></font><b>.</b>Ormestokkaydirmaid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Ormefis</u></font><b>.</b>Ormestokkaydirmaid
+<b>      </b><b>Where</b><b> </b><b>(</b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Hamid<b> </b><b>=</b><b> </b>:Ahamid<b> </b><b>Or</b><b> </b>:Ahamid<b> </b><b>Is</b><b> </b><b>Null</b><b>)</b><b> </b><b>And</b>
+<b>            </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Tarih<b> </b><b>&gt;</b><b>=</b><b> </b>:Abaslangictarihi<b> </b><b>And</b>
+<b>            </b><font color="# 080 0"><u>Stokhareket</u></font><b>.</b>Tarih<b> </b><b>&lt;</b><b>=</b><b> </b>:Abitistarihi<b> </b><b>and</b>
+<b>            </b><b>(</b>Girisormeraf<b>.</b>Fasonstok<b> </b><b>=</b><b> </b>0<b> </b><b>or</b><b> </b>Cikisormeraf<b>.</b>Fasonstok<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>and</b>
+<b>            </b><b>(</b>Girisormeraf<b>.</b>Ormerafid<b> </b><b>=</b><b> </b>:Aormerafid<b> </b><b>or</b><b> </b>Cikisormeraf<b>.</b>Ormerafid<b> </b><b>=</b><b> </b>:Aormerafid<b> </b><b>or</b><b> </b>:Aormerafid<b> </b><b>Is</b><b> </b><b>Null</b><b>)</b>
+<b>      </b><b>Into</b><b> </b>:Stokhareketid<b>,</b><b> </b>:Tarih<b>,</b><b> </b>:Firmaid<b>,</b><b> </b>:Firmaadi<b>,</b><b> </b>:Ormerafid<b>,</b><b> </b>:Fasonstok<b>,</b><b> </b>:Giriscikis<b>,</b><b> </b>:Harekettipiid<b>,</b>
+<b>           </b>:Harekettipiadi<b>,</b><b> </b>:Uretimislemtipiid<b>,</b><b> </b>:Uretimislemtipiadi<b>,</b><b> </b>:Hamiade<b>,</b><b> </b>:Hamid<b>,</b><b> </b>:Hamadi<b>,</b><b> </b>:Hamtipiid<b>,</b><b> </b>:Hamtipiadi<b>,</b>
+<b>           </b>:Lot<b>,</b><b> </b>:Melanjkodu<b>,</b><b> </b>:Flamkodu<b>,</b><b> </b>:Renkid<b>,</b><b> </b>:Renkadi<b>,</b><b> </b>:Desenid<b>,</b><b> </b>:Desenvaryantid<b>,</b><b> </b>:Miktarbirim<b>,</b><b> </b>:Brutmiktar<b>,</b>
+<b>           </b>:Miktar<b>,</b><b> </b>:Birimfiyat<b>,</b><b> </b>:Dovizid<b>,</b><b> </b>:Birimmaliyet<b>,</b><b> </b>:Tabandovizkuru1<b>,</b><b> </b>:Tabandovizkuru2<b>,</b><b> </b>:Inserttarihi<b>,</b>
+<b>           </b>:Degisimtarihi<b>,</b><b> </b>:Ormesiparisdetayid<b>,</b><b> </b>:SiparisTahminifireorani<b>,</b><b> </b>:Boyasipariskayitid<b>,</b><b> </b>:Boyasiparisyil<b>,</b>
+<b>           </b>:Boyasiparisid<b>,</b><b> </b>:Boyairsaliyedetayid<b>,</b><b> </b>:Partikayitid<b>,</b><b> </b>:Partisinifid<b>,</b><b> </b>:Partiyil<b>,</b><b> </b>:Partiid<b>,</b><b> </b>:Pshamstokmaliyeti<b>,</b>
+<b>           </b>:Ormeplanlamaid<b>,</b><b> </b>:Uretimpartino<b>,</b><b> </b>:Ormefisid<b>,</b><b> </b>:Ormefisno<b>,</b><b> </b>:Ormefistarih<b>,</b><b> </b>:Ormeirsaliyeid<b>,</b><b> </b>:Ormeirsaliyeno<b>,</b>
+<b>           </b>:Ormeirsaliyetarih<b>,</b><b> </b>:Ormestokkaydirmaid<b>,</b><b> </b>:Ormestokkaydirmafisyil<b>,</b><b> </b>:Ormestokkaydirmafisno<b>,</b>
+<b>           </b>:Ormestokkaydirmafistarihi<b>,</b><b> </b>:Ormestokkaydirmaormerafid<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>Birimmaliyet<b> </b><b>Is</b><b> </b><b>Null</b><b>)</b><b> </b><b>Then</b>
+<b>        </b>Birimmaliyet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>Birimfiyatsistemdoviz<b> </b><b>=</b><b> </b>Birimfiyat<b> </b><b>*</b><b> </b>Tabandovizkuru2<b> </b><b>/</b><b> </b>Tabandovizkuru1<b>;</b>
+
+<b>      </b>PSGUGPayiTutari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>PSElektrikPayiTutari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>PSDogalgazPayiTutari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>PSBuharPayiTutari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>PSSuPayiTutari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>PSIscilikPayiTutari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>PSBoyaMaliyeti<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>PSKimyasalMaliyeti<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>PSBoyaKimyasalMaliyeti<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>PSToplamMaliyet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>Pskgmaliyeti<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>      </b><b>If</b><b> </b><b>(</b>PartiSinifId<b> </b><b>Is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b> </b><b>Then</b>
+<b>      </b><b>Begin</b>
+<b>        </b><b>Select</b><b> </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>GenelUretimGiderPayiTutari<b>)</b><b>,</b><b> </b>0<b>)</b><b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b><b>sum</b><b>(</b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>ElektrikPayiTutari<b>)</b><b>,</b><b> </b>0<b>)</b><b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>DogalgazPayiTutari<b>)</b><b>,</b><b> </b>0<b>)</b><b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>BuharPayiTutari<b>)</b><b>,</b><b> </b>0<b>)</b><b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>SuPayiTutari<b>)</b><b>,</b><b> </b>0<b>)</b><b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>IscilikPayiTutari<b>)</b><b>,</b><b> </b>0<b>)</b><b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>BoyaMaliyeti<b>)</b><b>,</b><b> </b>0<b>)</b><b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>KimyasalMaliyeti<b>)</b><b>,</b><b> </b>0<b>)</b><b>,</b>
+<b>               </b><b>Coalesce</b><b>(</b><b>Sum</b><b>(</b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>BoyaMaliyeti<b> </b><b>+</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>KimyasalMaliyeti<b>)</b><b>,</b><b> </b>0<b>)</b>
+<b>        </b><b>From</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font>
+<b>        </b><b>Where</b><b> </b><font color="# 080 0"><u>PartiAsamaStokDetay</u></font><b>.</b>PartiSinifId<b> </b><b>=</b><b> </b>:PartiSinifId
+<b>        </b><b>Into</b><b> </b>:PSGUGPayiTutari<b>,</b><b> </b>:PSElektrikPayiTutari<b>,</b><b> </b>:PSDogalgazPayiTutari<b>,</b><b> </b>:PSBuharPayiTutari<b>,</b><b> </b>:PSSuPayiTutari<b>,</b>
+<b>             </b>:PSIscilikPayiTutari<b>,</b><b> </b>:PSBoyaMaliyeti<b>,</b><b> </b>:PSKimyasalMaliyeti<b>,</b><b> </b>:PSBoyaKimyasalMaliyeti<b>;</b>
+
+<b>        </b>PSToplamMaliyet<b> </b><b>=</b><b> </b>Pshamstokmaliyeti<b> </b><b>+</b><b> </b>PSGUGPayiTutari<b> </b><b>+</b><b> </b>PSElektrikPayiTutari<b> </b><b>+</b><b> </b>PSDogalgazPayiTutari<b> </b><b>+</b><b> </b>PSBuharPayiTutari<b> </b><b>+</b><b> </b>PSSuPayiTutari<b> </b><b>+</b><b> </b>PSIscilikPayiTutari<b> </b><b>+</b><b> </b>PSBoyaKimyasalMaliyeti<b>;</b>
+<b>        </b><b>If</b><b> </b><b>(</b><b>(</b>Pstoplammaliyet<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>And</b>
+<b>            </b><b>(</b>Brutmiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b>)</b><b> </b><b>Then</b>
+<b>          </b>Pskgmaliyeti<b> </b><b>=</b><b> </b>PSToplamMaliyet<b> </b><b>/</b><b> </b>Brutmiktar<b>;</b>
+<b>      </b><b>End</b>
+
+<b>      </b><b>Suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>if</b><b> </b><b>(</b>Ahazirlik<b> </b><b>=</b><b> </b>3<b>)</b><b> </b><b>Then</b>
+<b>  </b><b>begin</b>
+<font color="# 0 0FF"><i>/* rafdan giriş çıkışlar*/</i></font>
+
+<b>    </b>Hamiade<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Birimfiyat<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b>Dovizid<b> </b><b>=</b><b> </b>Sistemdovizid<b>;</b>
+<b>    </b>Tabandovizkuru1<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>    </b>Tabandovizkuru2<b> </b><b>=</b><b> </b>1<b>;</b>
+
+<b>    </b>Harekettipiid<b> </b><b>=</b><b> </b><b>-</b>1<b>;</b>
+<b>    </b>Harekettipiadi<b> </b><b>=</b><b> </b>'Raf Transfer'<b>;</b>
+<b>    </b>Miktarbirim<b> </b><b>=</b><b> </b>0<b>;</b>
+
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisi</u></font><b>.</b>Fistarihi<b>,</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b>.</b>Ormerafid<b>,</b>
+<b>               </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b>.</b>Yeniormerafid<b>,</b><b> </b>Cikisormeraf<b>.</b>Fasonstok<b>,</b>
+<b>               </b><b>IIF</b><b>(</b>Cikisormeraf<b>.</b>Ormerafid<b> </b><b>=</b><b> </b>:Aormerafid<b>,</b><b> </b><b>-</b>1<b>,</b><b> </b>1<b>)</b><b>,</b><b> </b>Cikisormeraf<b>.</b>Hamid<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Hamtipiid<b>,</b>
+<b>               </b><font color="# 080 0"><u>Hamtipi</u></font><b>.</b>Adi<b>,</b><b> </b>Cikisormeraf<b>.</b>Lot<b>,</b><b> </b>Cikisormeraf<b>.</b>Melanjkodu<b>,</b><b> </b>Cikisormeraf<b>.</b>Flamkodu<b>,</b><b> </b>Cikisormeraf<b>.</b>Renkid<b>,</b>
+<b>               </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Adi<b>,</b><b> </b>Cikisormeraf<b>.</b>Desenid<b>,</b><b> </b>Cikisormeraf<b>.</b>Desenvaryantid<b>,</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b>.</b>Kilo<b>,</b>
+<b>               </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b>.</b>Birimmaliyet<b>,</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b>.</b>Inserttarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b>.</b>Degisimtarihi<b>,</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisi</u></font><b>.</b>Ormeraftransferfisiid<b>,</b>
+<b>               </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b>.</b>Ormeraftransferfisidetayid<b>,</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisi</u></font><b>.</b>Fisyil<b>,</b>
+<b>               </b><font color="# 080 0"><u>Ormeraftransferfisi</u></font><b>.</b>Fisno<b>,</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisi</u></font><b>.</b>Fistarihi
+<b>      </b><b>From</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisi</u></font>
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b>.</b>Ormeraftransferfisiid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisi</u></font><b>.</b>Ormeraftransferfisiid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormeraf</u></font><b> </b>Cikisormeraf<b> </b><b>On</b><b> </b>Cikisormeraf<b>.</b>Ormerafid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisidetay</u></font><b>.</b>Ormerafid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ormeraf</u></font><b> </b>Girisormeraf<b> </b><b>On</b><b> </b>Girisormeraf<b>.</b>Ormerafid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ormeraftransferfisidetay</u></font><b>.</b>Yeniormerafid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Hamid<b> </b><b>=</b><b> </b>Cikisormeraf<b>.</b>Hamid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Hamtipi</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Hamtipi</u></font><b>.</b>Hamtipiid<b> </b><b>=</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>Hamtipiid
+<b>      </b><b>Left</b><b> </b><b>Join</b><b> </b><font color="# 080 0"><u>Renk</u></font><b> </b><b>On</b><b> </b><font color="# 080 0"><u>Renk</u></font><b>.</b>Renkid<b> </b><b>=</b><b> </b>Cikisormeraf<b>.</b>Renkid
+<b>      </b><b>Where</b><b> </b><font color="# 080 0"><u>Ormeraftransferfisi</u></font><b>.</b>Fistarihi<b> </b><b>&gt;</b><b>=</b><b> </b>:Abaslangictarihi<b> </b><b>And</b>
+<b>            </b><font color="# 080 0"><u>Ormeraftransferfisi</u></font><b>.</b>Fistarihi<b> </b><b>&lt;</b><b>=</b><b> </b>:Abitistarihi<b> </b><b>And</b>
+<b>            </b><b>(</b>Cikisormeraf<b>.</b>Hamid<b> </b><b>=</b><b> </b>:Ahamid<b> </b><b>Or</b><b> </b>:Ahamid<b> </b><b>Is</b><b> </b><b>Null</b><b>)</b><b> </b><b>And</b>
+<b>            </b><b>(</b>Cikisormeraf<b>.</b>Ormerafid<b> </b><b>=</b><b> </b>:Aormerafid<b> </b><b>Or</b><b> </b>Girisormeraf<b>.</b>Ormerafid<b> </b><b>=</b><b> </b>:Aormerafid<b> </b><b>Or</b><b> </b>:Aormerafid<b> </b><b>Is</b><b> </b><b>Null</b><b>)</b>
+<b>      </b><b>Into</b><b> </b>:Tarih<b>,</b><b> </b>:Ormerafid<b>,</b><b> </b>:Yeniormerafid<b>,</b><b> </b>:Fasonstok<b>,</b><b> </b>:Giriscikis<b>,</b><b> </b>:Hamid<b>,</b><b> </b>:Hamadi<b>,</b><b> </b>:Hamtipiid<b>,</b><b> </b>:Hamtipiadi<b>,</b><b> </b>:Lot<b>,</b>
+<b>           </b>:Melanjkodu<b>,</b><b> </b>:Flamkodu<b>,</b><b> </b>:Renkid<b>,</b><b> </b>:Renkadi<b>,</b><b> </b>:Desenid<b>,</b><b> </b>:Desenvaryantid<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:Birimmaliyet<b>,</b><b> </b>:Inserttarihi<b>,</b>
+<b>           </b>:Degisimtarihi<b>,</b><b> </b>:Ormeraftransferfisid<b>,</b><b> </b>:Ormeraftransferfisidetayid<b>,</b><b> </b>:Ormeraftransferfisyil<b>,</b>
+<b>           </b>:Ormeraftransferfisno<b>,</b><b> </b>:Ormeraftransferfistarih
+<b>    </b><b>Do</b>
+<b>    </b><b>Begin</b>
+<b>      </b><b>If</b><b> </b><b>(</b>Birimmaliyet<b> </b><b>Is</b><b> </b><b>Null</b><b>)</b><b> </b><b>Then</b>
+<b>        </b>Birimmaliyet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>Suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AHazirlik<b> </b><b>Is</b><b> </b><b>Null</b><b>)</b><b> </b><b>Then</b>
+<b>  </b><b>begin</b>
+<b>    </b>RafStokmiktari<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>For</b><b> </b><b>Select</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>StokHareketID<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Tarih<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Firmaid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Firmaadi<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormerafid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Yeniormerafid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Fasonstok<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Giriscikis<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Harekettipiid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Harekettipiadi<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Uretimislemtipiid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Uretimislemtipiadi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Hamiade<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Hamid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Hamadi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Hamtipiid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Hamtipiadi<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Lot<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Melanjkodu<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Flamkodu<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Renkid<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Renkadi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Desenid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Desenvaryantid<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Miktarbirim<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Brutmiktar<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Miktar<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Birimfiyat<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Dovizid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Birimfiyatsistemdoviz<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Birimmaliyet<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Tabandovizkuru1<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Tabandovizkuru2<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Inserttarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Degisimtarihi<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormesiparisdetayid<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>SiparisTahminifireorani<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Boyasipariskayitid<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Boyasiparisyil<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Boyasiparisid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Boyairsaliyedetayid<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Partikayitid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Partisinifid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Partiyil<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Partiid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PShamstokmaliyeti<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSGUGPayiTutari<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSElektrikPayiTutari<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSDogalgazPayiTutari<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSBuharPayiTutari<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSSuPayiTutari<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSIscilikPayiTutari<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSBoyaMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSKimyasalMaliyeti<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSBoyaKimyasalMaliyeti<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSToplamMaliyet<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>PSKgMaliyeti<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeplanlamaid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Uretimpartino<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormefisid<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormefisno<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormefistarih<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeirsaliyeid<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeirsaliyeno<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeirsaliyetarih<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfisid<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfisidetayid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfisyil<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfisno<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormeraftransferfistarih<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmaid<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmafisyil<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmafisno<b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmafistarihi<b>,</b>
+<b>               </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Ormestokkaydirmaormerafid
+<b>      </b><b>From</b><b> </b><font color="# 080 0"><u>Ormestokhareket</u></font><b>(</b>1<b>,</b><b> </b>:Ahamid<b>,</b><b> </b>:Abaslangictarihi<b>,</b><b> </b>:Abitistarihi<b>,</b><b> </b>:Aormerafid<b>)</b>
+<b>      </b><b>Order</b><b> </b><b>By</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Tarih<b> </b><b>Asc</b><b>,</b><b> </b><font color="# 080 0"><u>OrmeStokHareket</u></font><b>.</b>Giriscikis<b> </b><b>Desc</b>
+<b>      </b><b>Into</b><b> </b>:Stokhareketid<b>,</b><b> </b>:Tarih<b>,</b><b> </b>:Firmaid<b>,</b><b> </b>:Firmaadi<b>,</b><b> </b>:Ormerafid<b>,</b><b> </b>:Yeniormerafid<b>,</b><b> </b>:Fasonstok<b>,</b><b> </b>:Giriscikis<b>,</b>
+<b>           </b>:Harekettipiid<b>,</b><b> </b>:Harekettipiadi<b>,</b><b> </b>:Uretimislemtipiid<b>,</b><b> </b>:Uretimislemtipiadi<b>,</b><b> </b>:Hamiade<b>,</b><b> </b>:Hamid<b>,</b><b> </b>:Hamadi<b>,</b>
+<b>           </b>:Hamtipiid<b>,</b><b> </b>:Hamtipiadi<b>,</b><b> </b>:Lot<b>,</b><b> </b>:Melanjkodu<b>,</b><b> </b>:Flamkodu<b>,</b><b> </b>:Renkid<b>,</b><b> </b>:Renkadi<b>,</b><b> </b>:Desenid<b>,</b><b> </b>:Desenvaryantid<b>,</b>
+<b>           </b>:Miktarbirim<b>,</b><b> </b>:Brutmiktar<b>,</b><b> </b>:Miktar<b>,</b><b> </b>:Birimfiyat<b>,</b><b> </b>:Dovizid<b>,</b><b> </b>:Birimfiyatsistemdoviz<b>,</b><b> </b>:Birimmaliyet<b>,</b>
+<b>           </b>:Tabandovizkuru1<b>,</b><b> </b>:Tabandovizkuru2<b>,</b><b> </b>:Inserttarihi<b>,</b><b> </b>:Degisimtarihi<b>,</b><b> </b>:Ormesiparisdetayid<b>,</b>
+<b>           </b>:SiparisTahminifireorani<b>,</b><b> </b>:Boyasipariskayitid<b>,</b><b> </b>:Boyasiparisyil<b>,</b><b> </b>:Boyasiparisid<b>,</b><b> </b>:Boyairsaliyedetayid<b>,</b>
+<b>           </b>:Partikayitid<b>,</b><b> </b>:Partisinifid<b>,</b><b> </b>:Partiyil<b>,</b><b> </b>:Partiid<b>,</b><b> </b>:PShamstokmaliyeti<b>,</b><b> </b>:PSGUGPayiTutari<b>,</b>
+<b>           </b>:PSElektrikPayiTutari<b>,</b><b> </b>:PSDogalgazPayiTutari<b>,</b><b> </b>:PSBuharPayiTutari<b>,</b><b> </b>:PSSuPayiTutari<b>,</b><b> </b>:PSIscilikPayiTutari<b>,</b>
+<b>           </b>:PSBoyaMaliyeti<b>,</b><b> </b>:PSKimyasalMaliyeti<b>,</b><b> </b>:PSBoyaKimyasalMaliyeti<b>,</b><b> </b>:PSToplamMaliyet<b>,</b><b> </b>:PSKgMaliyeti<b>,</b>
+<b>           </b>:Ormeplanlamaid<b>,</b><b> </b>:Uretimpartino<b>,</b><b> </b>:Ormefisid<b>,</b><b> </b>:Ormefisno<b>,</b><b> </b>:Ormefistarih<b>,</b><b> </b>:Ormeirsaliyeid<b>,</b><b> </b>:Ormeirsaliyeno<b>,</b>
+<b>           </b>:Ormeirsaliyetarih<b>,</b><b> </b>:Ormeraftransferfisid<b>,</b><b> </b>:Ormeraftransferfisidetayid<b>,</b><b> </b>:Ormeraftransferfisyil<b>,</b>
+<b>           </b>:Ormeraftransferfisno<b>,</b><b> </b>:Ormeraftransferfistarih<b>,</b><b> </b>:Ormestokkaydirmaid<b>,</b><b> </b>:Ormestokkaydirmafisyil<b>,</b>
+<b>           </b>:Ormestokkaydirmafisno<b>,</b><b> </b>:Ormestokkaydirmafistarihi<b>,</b><b> </b>:Ormestokkaydirmaormerafid<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>Harekettipiid<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>-</b>1<b> </b><b>or</b><b> </b><b>(</b>Aormerafid<b> </b><b>Is</b><b> </b><b>Not</b><b> </b><b>Null</b><b>)</b><b>)</b><b> </b><b>Then</b>
+<b>        </b>RafStokmiktari<b> </b><b>=</b><b> </b>RafStokmiktari<b> </b><b>+</b><b> </b><b>(</b>Giriscikis<b> </b><b>*</b><b> </b>Miktar<b>)</b><b>;</b>
+
+<b>      </b><b>Suspend</b><b>;</b>
+<b>    </b><b>end</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="ORMESTOKENVANTERRAPORU_IC.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="ORMESTOKHAREKETKARTIGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

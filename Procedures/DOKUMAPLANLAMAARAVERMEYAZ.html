@@ -1,0 +1,157 @@
+<HTML>
+<HEAD>
+<TITLE>DOKUMAPLANLAMAARAVERMEYAZ</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="415800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="DOKUMAPLANICINCOZGUSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="DOKUMAPLANLAMAATKICOZGUGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">DOKUMAPLANLAMAARAVERMEYAZ</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ADOKUMAPLANLAMAGRUPID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADOKUMAMAKINAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(10)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AFIRMAID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">DOKUMAPLANLAMAID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAVERMESEBEBIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAVERMESEBEBIADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAVERDIRENPERSONELID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAVERDIRENPERSONELADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAYIBITIRENPERSONELID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAYIBITIRENPERSONELADI</TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARAVERMETARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ARABITISTARIHI</TD>
+    <TD><P CLASS="Base2">TIMESTAMP</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure DOKUMAPLANLAMAARAVERMEYAZ)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>DOKUMAPLANLAMAARAVERMEYAZ</u></font><b>(</b>
+<b>    </b>ADOKUMAPLANLAMAGRUPID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>ADOKUMAMAKINAID<b> </b><b>VARCHAR</b><b>(</b>10<b>)</b><b>,</b>
+<b>    </b>AFIRMAID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>DOKUMAPLANLAMAID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARAVERMESEBEBIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARAVERMESEBEBIADI<b> </b><font color="# 080 0"><u>ADI50</u></font><b>,</b>
+<b>    </b>ARAVERDIRENPERSONELID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARAVERDIRENPERSONELADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>,</b>
+<b>    </b>ARAYIBITIRENPERSONELID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>ARAYIBITIRENPERSONELADI<b> </b><font color="# 080 0"><u>ADI40</u></font><b>,</b>
+<b>    </b>ARAVERMETARIHI<b> </b><b>TIMESTAMP</b><b>,</b>
+<b>    </b>ARABITISTARIHI<b> </b><b>TIMESTAMP</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>for</b><b>  </b><b>select</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaYaz</u></font><b>.</b>DokumaPlanlamaId<b>,</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b>.</b>AraVermeSebebiId<b>,</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b>.</b>Adi<b> </b>AraVermeSebebiAdi<b>,</b><b> </b>AVP<b>.</b>PersonelId<b> </b>AraVerdirenPersonelId<b>,</b><b> </b>AVP<b>.</b>Adi<b> </b>AraVerdirenPersonelAdi<b>,</b>
+<b>    </b>AVBP<b>.</b>PersonelId<b> </b>ArayiBitirenPersonelId<b>,</b><b> </b>AVBP<b>.</b>Adi<b> </b>ArayiBitirenPersonelAdi<b>,</b>
+<b>    </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>Tarih<b> </b>AraVermeTarihi<b>,</b><b> </b>OMD<b>.</b>Tarih<b> </b>AraBitisTarihi
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaYaz</u></font><b>(</b>:ADokumaPlanlamaGrupId<b>,</b><b> </b>:ADokumaMakinaId<b>,</b><b> </b>:AFirmaId<b>)</b>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>DokumaPlanlamaId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>DokumaPlanlamaYaz</u></font><b>.</b>DokumaPlanlamaId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>BasladiOrmeMakinaDurumuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>OrmeMakinaDurumuId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>AraVermeSebebi</u></font><b>.</b>AraVermeSebebiId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>AraVermeSebebiId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Personel</u></font><b> </b>AVP<b> </b><b>on</b><b> </b>AVP<b>.</b>PersonelId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>AraVerdirenPersonelId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Personel</u></font><b> </b>AVBP<b> </b><b>on</b><b> </b>AVBP<b>.</b>PersonelId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>ArayiBitirenPersonelId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b> </b>OMD<b> </b><b>on</b><b> </b>OMD<b>.</b>OrmeMakinaDurumuId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>ImalataAraVerme</u></font><b>.</b>BittiOrmeMakinaDurumuId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>OrmeMakinaDurumu</u></font><b>.</b>ImalataAraVerildi<b> </b><b>=</b><b> </b>1<b> </b><b>into</b><b> </b>:DokumaPlanlamaId<b>,</b><b> </b>:AraVermeSebebiId<b>,</b><b> </b>:AraVermeSebebiAdi<b>,</b><b> </b>:AraVerdirenPersonelId<b>,</b><b> </b>:AraVerdirenPersonelAdi<b>,</b>
+<b>    </b>:ArayiBitirenPersonelId<b>,</b><b> </b>:ArayiBitirenPersonelAdi<b>,</b><b> </b>:AraVermeTarihi<b>,</b><b> </b>:AraBitisTarihi<b> </b><b>do</b>
+<b>      </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="DOKUMAPLANICINCOZGUSTOKLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="DOKUMAPLANLAMAATKICOZGUGETIR.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

@@ -1,0 +1,375 @@
+<HTML>
+<HEAD>
+<TITLE>HAMSTOKKABULISLEMITAMAMLA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="691800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="HAMSTOKIRSALIYESIL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="HAMSTOKKUMILATIFGUNCELLE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">HAMSTOKKABULISLEMITAMAMLA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AHAMSTOKMASTERID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<P CLASS="Base"><I>(There are no output parameters)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure HAMSTOKKABULISLEMITAMAMLA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>HAMSTOKKABULISLEMITAMAMLA</u></font><b>(</b>
+<b>    </b>AHAMSTOKMASTERID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamStokDetayId<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GelenMiktar<b>         </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GelenKilo<b>           </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GelenMetre<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GelenAdet<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>GelenKapAdedi<b>       </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>KabulMiktar<b>         </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>RetMiktar<b>           </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SartliKabulMiktar<b>   </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>ZorunluKabulMiktar<b>  </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>HsktKabul<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HsktKismiKabul<b>      </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HsktSartliKabul<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HsktZorunluKabul<b>     </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HsktRet<b>              </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>HamTipiId<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>HamStokKabulTipiId<b>  </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>Kilo<b>           </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Metre<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>Adet<b>           </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KapAdedi<b>       </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>FMiktar<b>         </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>InsertSayisi<b>       </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisDetayId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaSiparisKayitId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TransferYeri<b>    </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>DepartmanOnayindaOtoRezervYap<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SertifikaNo<b> </b><b>Varchar</b><b>(</b>30<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SertifikaKilo<b>           </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SertifikaMetre<b>          </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>SertifikaMiktar<b>         </b><b>Numeric</b><b>(</b>12<b>,</b>3<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>Select</b><b> </b>DokumaKumasiKilodanTakipEt<b>,</b><b> </b>DepartmanOnayindaOtoRezervYap<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Sistem</u></font><b> </b><b>into</b><b> </b>:DokumaKumasiKilodanTakipEt<b>,</b><b> </b>:DepartmanOnayindaOtoRezervYap<b>;</b>
+
+<b>  </b>HsktKabul<b> </b><b>=</b><b> </b>1<b>;</b>
+<b>  </b>HsktKismiKabul<b> </b><b>=</b><b> </b>2<b>;</b>
+<b>  </b>HsktSartliKabul<b> </b><b>=</b><b> </b>3<b>;</b>
+<b>  </b>HsktZorunluKabul<b> </b><b>=</b><b> </b>4<b>;</b>
+<b>  </b>HsktRet<b> </b><b>=</b><b> </b>5<b>;</b>
+
+<b>  </b>InsertSayisi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>  </b><b>Select</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Miktar<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>KapAdedi<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Metre<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>Adet<b>,</b><b>  </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamTipiId<b>,</b>
+<b>         </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>BoyaSiparisKayitId<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>BoyaSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>TransferYeri<b>,</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>SertifikaNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font>
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>HamStokIrsaliye</u></font><b>.</b>HamStokIrsaliyeId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokIrsaliyeId
+<b>    </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamId
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId
+<b>    </b><b>into</b><b> </b>:GelenMiktar<b>,</b><b> </b>:GelenKapAdedi<b>,</b><b> </b>:GelenKilo<b>,</b><b> </b>:GelenMetre<b>,</b><b> </b>:GelenAdet<b>,</b><b> </b>:HamTipiId<b>,</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b>:TransferYeri<b>,</b><b> </b>:SertifikaNo<b>;</b>
+
+<b>  </b><b>Select</b><b> </b>KabulMiktar<b>,</b><b> </b>RetMiktar<b>,</b><b> </b>SartliKabulMiktar<b>,</b><b> </b>ZorunluKabulMiktar<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMasterKabul</u></font>
+<b>    </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMasterKabul</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b> </b><b>and</b><b> </b><font color="# 080 0"><u>HamStokMasterKabul</u></font><b>.</b>SonKarar<b> </b><b>=</b><b> </b>1
+<b>    </b><b>into</b><b> </b>:KabulMiktar<b>,</b><b> </b>:RetMiktar<b>,</b><b> </b>:SartliKabulMiktar<b>,</b><b> </b>:ZorunluKabulMiktar<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KabulMiktar<b> </b><b>+</b><b> </b>RetMiktar<b> </b><b>+</b><b> </b>SartliKabulMiktar<b> </b><b>+</b><b> </b>ZorunluKabulMiktar<b> </b><b>&lt;</b><b>&gt;</b><b> </b>GelenMiktar<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KararMiktarMiktardanFarkli</u></font><b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>KabulMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>if</b><b> </b><b>(</b>RetMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b>HamStokKabulTipiId<b> </b><b>=</b><b> </b>HsktKismiKabul<b>;</b>
+<b>    </b><b>else</b><b> </b>HamStokKabulTipiId<b> </b><b>=</b><b> </b>HsktKabul<b>;</b>
+
+<b>    </b>FMiktar<b> </b><b>=</b><b> </b>KabulMiktar<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b> </b><b>or</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Kilo<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>GelenKilo<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>Metre<b> </b><b>=</b><b> </b>GelenMetre<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>        </b>KapAdedi<b> </b><b>=</b><b> </b>GelenKapAdedi<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>        </b>Adet<b> </b><b>=</b><b> </b>GelenAdet<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>Metre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>KapAdedi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>Adet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>Metre<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>      </b>Kilo<b> </b><b>=</b><b> </b>GelenKilo<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>      </b>KapAdedi<b> </b><b>=</b><b> </b>GelenKapAdedi<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>      </b>Adet<b> </b><b>=</b><b> </b>GelenAdet<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b>InsertSayisi<b> </b><b>=</b><b> </b>InsertSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Coalesce</b><b>(</b>SertifikaNo<b>,</b>''<b>)</b><b>&lt;</b><b>&gt;</b>''<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>SertifikaKilo<b> </b><b>=</b><b> </b>Kilo<b>;</b>
+<b>      </b>SertifikaMetre<b> </b><b>=</b><b> </b>Metre<b>;</b>
+<b>      </b>SertifikaMiktar<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>SertifikaKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>SertifikaMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>SertifikaMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>(</b>HamStokMasterId<b>,</b><b> </b>HamStokIrsaliyeId<b>,</b><b> </b>HamStokHareketTipiId<b>,</b><b> </b>HamStokKabulTipiId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>StokFirmaId<b>,</b><b> </b>Fason<b>,</b><b> </b>Tarih<b>,</b><b> </b>HamId<b>,</b>
+<b>                              </b>KapAdedi<b>,</b><b> </b>Kilo<b>,</b><b> </b>Metre<b>,</b><b> </b>Adet<b>,</b><b> </b>FireOrani<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>                              </b>En<b>,</b><b> </b>Grm2<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>Aciklama<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b>
+<b>                              </b>FaturaNo<b>,</b><b> </b>FaturaTarihi<b>,</b><b> </b>GirisCikis<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b>
+<b>                              </b>SertifikaGirisKilo<b>,</b><b> </b>SertifikaGirisMetre<b>,</b><b> </b>SertifikaCikisKilo<b>,</b><b> </b>SertifikaCikisMetre<b>,</b><b> </b>SertifikaGirisMiktar<b>,</b><b> </b>SertifikaCikisMiktar<b>)</b>
+<b>       </b><b>Select</b><b> </b>:AHamStokMasterId<b>,</b><b> </b>HamStokIrsaliyeId<b>,</b><b> </b>HamStokHareketTipiId<b>,</b><b> </b>:HamStokKabulTipiId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>StokFirmaId<b>,</b><b> </b>Fason<b>,</b><b> </b>Tarih<b>,</b><b> </b>HamId<b>,</b>
+<b>              </b>:KapAdedi<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>:Adet<b>,</b><b> </b>FireOrani<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>              </b>En<b>,</b><b> </b>Grm2<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>Aciklama<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b>
+<b>              </b>FaturaNo<b>,</b><b> </b>FaturaTarihi<b>,</b><b> </b>GirisCikis<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b>
+<b>              </b>:SertifikaKilo<b>,</b><b> </b>:SertifikaMetre<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>:SertifikaMiktar<b>,</b><b> </b>0<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>RetMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>HamStokKabulTipiId<b> </b><b>=</b><b> </b>HsktRet<b>;</b>
+
+<b>    </b>FMiktar<b> </b><b>=</b><b> </b>RetMiktar<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b> </b><b>or</b><b> </b>DokumaKumasiKilodanTakipEt<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Kilo<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+
+<b>      </b><b>if</b><b> </b><b>(</b>GelenKilo<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>Metre<b> </b><b>=</b><b> </b>GelenMetre<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>        </b>KapAdedi<b> </b><b>=</b><b> </b>GelenKapAdedi<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>        </b>Adet<b> </b><b>=</b><b> </b>GelenAdet<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>Metre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>KapAdedi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>Adet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>Metre<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>      </b>Kilo<b> </b><b>=</b><b> </b>GelenKilo<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>      </b>KapAdedi<b> </b><b>=</b><b> </b>GelenKapAdedi<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>      </b>Adet<b> </b><b>=</b><b> </b>GelenAdet<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Coalesce</b><b>(</b>SertifikaNo<b>,</b>''<b>)</b><b>&lt;</b><b>&gt;</b>''<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>SertifikaKilo<b> </b><b>=</b><b> </b>Kilo<b>;</b>
+<b>      </b>SertifikaMetre<b> </b><b>=</b><b> </b>Metre<b>;</b>
+<b>      </b>SertifikaMiktar<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>SertifikaKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>SertifikaMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>SertifikaMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b>InsertSayisi<b> </b><b>=</b><b> </b>InsertSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>    </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>(</b>HamStokMasterId<b>,</b><b> </b>HamStokIrsaliyeId<b>,</b><b> </b>HamStokHareketTipiId<b>,</b><b> </b>HamStokKabulTipiId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>StokFirmaId<b>,</b><b> </b>Fason<b>,</b><b> </b>Tarih<b>,</b><b> </b>HamId<b>,</b>
+<b>                              </b>KapAdedi<b>,</b><b> </b>Kilo<b>,</b><b> </b>Metre<b>,</b><b> </b>Adet<b>,</b><b> </b>FireOrani<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>                              </b>En<b>,</b><b> </b>Grm2<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>Aciklama<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b>
+<b>                              </b>FaturaNo<b>,</b><b> </b>FaturaTarihi<b>,</b><b> </b>GirisCikis<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b>
+<b>                              </b>SertifikaGirisKilo<b>,</b><b> </b>SertifikaGirisMetre<b>,</b><b> </b>SertifikaCikisKilo<b>,</b><b> </b>SertifikaCikisMetre<b>,</b><b> </b>SertifikaGirisMiktar<b>,</b><b> </b>SertifikaCikisMiktar<b>)</b>
+<b>       </b><b>Select</b><b> </b>:AHamStokMasterId<b>,</b><b> </b>HamStokIrsaliyeId<b>,</b><b> </b>HamStokHareketTipiId<b>,</b><b> </b>:HamStokKabulTipiId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>StokFirmaId<b>,</b><b> </b>Fason<b>,</b><b> </b>Tarih<b>,</b><b> </b>HamId<b>,</b>
+<b>              </b>:KapAdedi<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>:Adet<b>,</b><b> </b>FireOrani<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>              </b>En<b>,</b><b> </b>Grm2<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>Aciklama<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b>
+<b>              </b>FaturaNo<b>,</b><b> </b>FaturaTarihi<b>,</b><b> </b>GirisCikis<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b>
+<b>              </b>:SertifikaKilo<b>,</b><b> </b>:SertifikaMetre<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>:SertifikaMiktar<b>,</b>0<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>SartliKabulMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>HamStokKabulTipiId<b> </b><b>=</b><b> </b>HsktSartliKabul<b>;</b>
+
+<b>    </b>FMiktar<b> </b><b>=</b><b> </b>SartliKabulMiktar<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Kilo<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>GelenKilo<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>Metre<b> </b><b>=</b><b> </b>GelenMetre<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>        </b>KapAdedi<b> </b><b>=</b><b> </b>GelenKapAdedi<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>        </b>Adet<b> </b><b>=</b><b> </b>GelenAdet<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>Metre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>KapAdedi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>Adet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>Metre<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>      </b>Kilo<b> </b><b>=</b><b> </b>GelenKilo<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>      </b>KapAdedi<b> </b><b>=</b><b> </b>GelenKapAdedi<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>      </b>Adet<b> </b><b>=</b><b> </b>GelenAdet<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Coalesce</b><b>(</b>SertifikaNo<b>,</b>''<b>)</b><b>&lt;</b><b>&gt;</b>''<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>SertifikaKilo<b> </b><b>=</b><b> </b>Kilo<b>;</b>
+<b>      </b>SertifikaMetre<b> </b><b>=</b><b> </b>Metre<b>;</b>
+<b>      </b>SertifikaMiktar<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>SertifikaKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>SertifikaMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>SertifikaMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b>InsertSayisi<b> </b><b>=</b><b> </b>InsertSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>    </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>(</b>HamStokMasterId<b>,</b><b> </b>HamStokIrsaliyeId<b>,</b><b> </b>HamStokHareketTipiId<b>,</b><b> </b>HamStokKabulTipiId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>StokFirmaId<b>,</b><b> </b>Fason<b>,</b><b> </b>Tarih<b>,</b><b> </b>HamId<b>,</b>
+<b>                              </b>KapAdedi<b>,</b><b> </b>Kilo<b>,</b><b> </b>Metre<b>,</b><b> </b>Adet<b>,</b><b> </b>FireOrani<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>                              </b>En<b>,</b><b> </b>Grm2<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>Aciklama<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b>
+<b>                              </b>FaturaNo<b>,</b><b> </b>FaturaTarihi<b>,</b><b> </b>GirisCikis<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b>
+<b>                              </b>SertifikaGirisKilo<b>,</b><b> </b>SertifikaGirisMetre<b>,</b><b> </b>SertifikaCikisKilo<b>,</b><b> </b>SertifikaCikisMetre<b>,</b><b> </b>SertifikaGirisMiktar<b>,</b><b> </b>SertifikaCikisMiktar<b>)</b>
+<b>       </b><b>Select</b><b> </b>:AHamStokMasterId<b>,</b><b> </b>HamStokIrsaliyeId<b>,</b><b> </b>HamStokHareketTipiId<b>,</b><b> </b>:HamStokKabulTipiId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>StokFirmaId<b>,</b><b> </b>Fason<b>,</b><b> </b>Tarih<b>,</b><b> </b>HamId<b>,</b>
+<b>              </b>:KapAdedi<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>:Adet<b>,</b><b> </b>FireOrani<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>              </b>En<b>,</b><b> </b>Grm2<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>Aciklama<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b>
+<b>              </b>FaturaNo<b>,</b><b> </b>FaturaTarihi<b>,</b><b> </b>GirisCikis<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b>
+<b>              </b>:SertifikaKilo<b>,</b><b> </b>:SertifikaMetre<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>:SertifikaMiktar<b>,</b><b> </b>0<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>ZorunluKabulMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>HamStokKabulTipiId<b> </b><b>=</b><b> </b>HsktZorunluKabul<b>;</b>
+
+<b>    </b>FMiktar<b> </b><b>=</b><b> </b>ZorunluKabulMiktar<b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>2<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>Kilo<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>      </b><b>if</b><b> </b><b>(</b>GelenKilo<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b>Metre<b> </b><b>=</b><b> </b>GelenMetre<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>        </b>KapAdedi<b> </b><b>=</b><b> </b>GelenKapAdedi<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>        </b>Adet<b> </b><b>=</b><b> </b>GelenAdet<b> </b><b>*</b><b> </b>Kilo<b> </b><b>/</b><b> </b>GelenKilo<b>;</b>
+<b>      </b><b>end</b>
+<b>      </b><b>else</b>
+<b>      </b><b>begin</b>
+<b>        </b>Metre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>KapAdedi<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>        </b>Adet<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b><b>end</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>Metre<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>      </b>Kilo<b> </b><b>=</b><b> </b>GelenKilo<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>      </b>KapAdedi<b> </b><b>=</b><b> </b>GelenKapAdedi<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>      </b>Adet<b> </b><b>=</b><b> </b>GelenAdet<b> </b><b>*</b><b> </b>Metre<b> </b><b>/</b><b> </b>GelenMetre<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>Coalesce</b><b>(</b>SertifikaNo<b>,</b>''<b>)</b><b>&lt;</b><b>&gt;</b>''<b>)</b><b> </b><b>then</b>
+<b>    </b><b>begin</b>
+<b>      </b>SertifikaKilo<b> </b><b>=</b><b> </b>Kilo<b>;</b>
+<b>      </b>SertifikaMetre<b> </b><b>=</b><b> </b>Metre<b>;</b>
+<b>      </b>SertifikaMiktar<b> </b><b>=</b><b> </b>FMiktar<b>;</b>
+<b>    </b><b>end</b>
+<b>    </b><b>else</b>
+<b>    </b><b>begin</b>
+<b>      </b>SertifikaKilo<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>SertifikaMetre<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>      </b>SertifikaMiktar<b> </b><b>=</b><b> </b>0<b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b>InsertSayisi<b> </b><b>=</b><b> </b>InsertSayisi<b> </b><b>+</b><b> </b>1<b>;</b>
+<b>    </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>(</b>HamStokMasterId<b>,</b><b> </b>HamStokIrsaliyeId<b>,</b><b> </b>HamStokHareketTipiId<b>,</b><b> </b>HamStokKabulTipiId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>StokFirmaId<b>,</b><b> </b>Fason<b>,</b><b> </b>Tarih<b>,</b><b> </b>HamId<b>,</b>
+<b>                              </b>KapAdedi<b>,</b><b> </b>Kilo<b>,</b><b> </b>Metre<b>,</b><b> </b>Adet<b>,</b><b> </b>FireOrani<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>                              </b>En<b>,</b><b> </b>Grm2<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>Aciklama<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b>
+<b>                              </b>FaturaNo<b>,</b><b> </b>FaturaTarihi<b>,</b><b> </b>GirisCikis<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b>
+<b>                              </b>SertifikaGirisKilo<b>,</b><b> </b>SertifikaGirisMetre<b>,</b><b> </b>SertifikaCikisKilo<b>,</b><b> </b>SertifikaCikisMetre<b>,</b><b> </b>SertifikaGirisMiktar<b>,</b><b> </b>SertifikaCikisMiktar<b>)</b>
+<b>       </b><b>Select</b><b> </b>:AHamStokMasterId<b>,</b><b> </b>HamStokIrsaliyeId<b>,</b><b> </b>HamStokHareketTipiId<b>,</b><b> </b>:HamStokKabulTipiId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>StokFirmaId<b>,</b><b> </b>Fason<b>,</b><b> </b>Tarih<b>,</b><b> </b>HamId<b>,</b>
+<b>              </b>:KapAdedi<b>,</b><b> </b>:Kilo<b>,</b><b> </b>:Metre<b>,</b><b> </b>:Adet<b>,</b><b> </b>FireOrani<b>,</b><b> </b>TupAcikEnMayli<b>,</b>
+<b>              </b>En<b>,</b><b> </b>Grm2<b>,</b><b> </b>LycraUreticiId<b>,</b><b> </b>Aciklama<b>,</b><b> </b>Miktar<b>,</b><b> </b>BirimFiyat<b>,</b>
+<b>              </b>FaturaNo<b>,</b><b> </b>FaturaTarihi<b>,</b><b> </b>GirisCikis<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>,</b>
+<b>              </b>:SertifikaKilo<b>,</b><b> </b>:SertifikaMetre<b>,</b><b> </b>0<b>,</b><b> </b>0<b>,</b><b> </b>:SertifikaMiktar<b>,</b><b> </b>0<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokMaster</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>InsertSayisi<b> </b><b>=</b><b> </b>1<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Select</b><b> </b>HamStokDetayId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b> </b><b>into</b><b> </b>:HamStokDetayId<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>RafDetay</u></font><b>(</b>GeciciKabulRafId<b>,</b><b> </b>HamStokIrsaliyeId<b>,</b><b> </b>HamStokDetayId<b>,</b><b> </b>RafId<b>,</b><b> </b>KapAdedi<b>,</b><b> </b>Kilo<b>,</b><b> </b>Metre<b>,</b><b> </b>Adet<b>,</b><b> </b>InsertKullaniciId<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>      </b><b>Select</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>GeciciKabulRafId<b>,</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>HamStokIrsaliyeId<b>,</b><b> </b>:HamStokDetayId<b>,</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>RafId<b>,</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>KapAdedi<b>,</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>Metre<b>,</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>Adet<b>,</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>InsertKullaniciId<b>,</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>InsertKullaniciId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font>
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>GeciciKabulRaf</u></font><b>.</b>HamStokMasterID<b> </b><b>=</b><b> </b>:AHamStokMasterId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>DepartmanOnayindaOtoRezervYap<b> </b><b>=</b><b> </b>1<b> </b><b>and</b><b> </b>HamTipiId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>0<b> </b><b>and</b><b> </b>BoyaSiparisDetayID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b> </b><b>and</b><b> </b>BoyaSiparisKayitID<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>if</b><b> </b><b>(</b>KabulMiktar<b> </b><b>&gt;</b><b> </b>0<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaSiparisRezervDetay</u></font><b>(</b>BoyaSiparisKayitId<b>,</b><b> </b>BoyaSiparisDetayId<b>,</b><b> </b>HamStokDetayId<b>,</b><b> </b>Kilo<b>,</b><b> </b>Metre<b>,</b><b> </b>Adet<b>,</b><b> </b>KapAdedi<b>)</b>
+<b>                   </b><b>Select</b><b> </b>:BoyaSiparisKayitId<b>,</b><b> </b>:BoyaSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokDetayID<b>,</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>Kilo<b>,</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>Metre<b>,</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>Adet<b>,</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>KapAdedi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font>
+<b>                      </b><b>where</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokMasterId<b> </b><b>=</b><b> </b>:AHamStokMasterId<b> </b><b>and</b>
+<b>                            </b><b>(</b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokKabulTipiId<b> </b><b>=</b><b> </b>:HsktKismiKabul<b> </b><b>or</b><b> </b><font color="# 080 0"><u>HamStokDetay</u></font><b>.</b>HamStokKabulTipiId<b> </b><b>=</b><b> </b>:HsktKabul<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="HAMSTOKIRSALIYESIL.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="HAMSTOKKUMILATIFGUNCELLE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

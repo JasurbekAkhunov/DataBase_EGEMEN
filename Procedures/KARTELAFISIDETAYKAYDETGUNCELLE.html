@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+<TITLE>KARTELAFISIDETAYKAYDETGUNCELLE</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="978800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="KARTBILGISIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="KARTELAFISIKAYDETGUNCELLE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">KARTELAFISIDETAYKAYDETGUNCELLE</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">AKARTELAFISIDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKARTELAFISIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKALITEID</TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMIKTAR</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AACIKLAMA</TD>
+    <TD><P CLASS="Base2">VARCHAR(255)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ABIRIMFIYAT</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">ADOVIZID</TD>
+    <TD><P CLASS="Base2">VARCHAR(5)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AMETRE</TD>
+    <TD><P CLASS="Base2">DOUBLE PRECISION</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">DURUMMSG</TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">KARTELAFISIDETAYID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure KARTELAFISIDETAYKAYDETGUNCELLE)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>KARTELAFISIDETAYKAYDETGUNCELLE</u></font><b>(</b>
+<b>    </b>AKARTELAFISIDETAYID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKARTELAFISIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKALITEID<b> </b><b>VARCHAR</b><b>(</b>20<b>)</b><b>,</b>
+<b>    </b>AMIKTAR<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>AACIKLAMA<b> </b><b>VARCHAR</b><b>(</b>255<b>)</b><b>,</b>
+<b>    </b>ABIRIMFIYAT<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>,</b>
+<b>    </b>ADOVIZID<b> </b><font color="# 080 0"><u>DOVIZSIZE</u></font><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AMETRE<b> </b><b>DOUBLE</b><b> </b><b>PRECISION</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>DURUMMSG<b> </b><b>VARCHAR</b><b>(</b>50<b>)</b><b>,</b>
+<b>    </b>KARTELAFISIDETAYID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b>AKartelaFisiDetayId<b> </b><b>=</b><b> </b><b>-</b>1<b>)</b><b> </b><b>then</b><b> </b>AKartelaFisiDetayId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b>KartelaFisiDetayId<b> </b><b>=</b><b> </b>:AKartelaFisiDetayId<b>;</b>
+
+<b>  </b><b>if</b><b> </b><b>(</b>AKartelaFisiDetayId<b> </b><b>is</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>KartelaFisiDetayId<b> </b><b>=</b><b> </b><b>gen_ID</b><b>(</b><font color="# 080 0"><u>KartelaFisiDetay_Id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b><b>Insert</b><b> </b><b>Into</b><b> </b><font color="# 080 0"><u>KartelaFisidetay</u></font><b> </b><b>(</b>Kartelafisidetayid<b>,</b><b> </b>Kartelafisiid<b>,</b><b> </b>Kaliteid<b>,</b><b> </b>Miktar<b>,</b><b> </b>Aciklama<b>,</b><b> </b>Giris<b>,</b><b> </b>Insertkullaniciid<b>,</b><b> </b>Kullaniciid<b>,</b><b> </b>Birimfiyat<b>,</b><b> </b>DovizId<b>,</b><b> </b>Metre<b>)</b>
+<b>                          </b><b>Values</b><b> </b><b>(</b>:KartelaFisiDetayId<b>,</b><b> </b>:AKartelaFisiId<b>,</b><b> </b>:AKaliteid<b>,</b><b> </b>:AMiktar<b>,</b><b> </b>:AAciklama<b>,</b><b> </b><b>-</b>1<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b>:ABirimfiyat<b>,</b><b> </b>:ADovizId<b>,</b><b> </b>:AMetre<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>else</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>Update</b><b> </b><font color="# 080 0"><u>KartelaFisiDetay</u></font><b> </b><b>set</b><b> </b>Kaliteid<b> </b><b>=</b><b> </b>:AKaliteid<b>,</b><b> </b>Miktar<b> </b><b>=</b><b> </b>:AMiktar<b>,</b><b> </b>Aciklama<b> </b><b>=</b><b> </b>:AAciklama<b>,</b><b> </b>Kullaniciid<b> </b><b>=</b><b> </b>:AKullaniciid<b>,</b><b> </b>Birimfiyat<b> </b><b>=</b><b> </b>:ABirimfiyat<b>,</b><b> </b>DovizId<b> </b><b>=</b><b> </b>:ADovizId<b>,</b><b> </b>Metre<b> </b><b>=</b><b> </b>:AMetre<b> </b><b>Where</b><b> </b>Kartelafisidetayid<b> </b><b>=</b><b> </b>:AKartelafisidetayid<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b>DurumMsg<b> </b><b>=</b><b> </b>'OK'<b>;</b>
+<b>  </b><b>Suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="KARTBILGISIGETIR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="KARTELAFISIKAYDETGUNCELLE.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

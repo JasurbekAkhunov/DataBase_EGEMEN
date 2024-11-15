@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<TITLE>VHGSIPARISDETAYLISTESI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="71800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Views</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="VHGRAFLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="VIADEICINUCIKISHAREKETLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">VHGSIPARISDETAYLISTESI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for view VHGSIPARISDETAYLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Fields</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Field</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="40%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">HGSIPARISKAYITID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">HGSIPARISDETAYID</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">SIPARISSIRANO</P></TD>
+    <TD><P CLASS="Base2">INTEGER</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MODELID</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(20)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MODELADI</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(40)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERISIPARISNO</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">MUSTERIMODELNO</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(50)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">REFERANSSIPARISNO</P></TD>
+    <TD><P CLASS="Base2">VARCHAR(30)</P></TD>
+    <TD><P CLASS="Base2">&nbsp;</P></TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Triggers</P>
+<P CLASS="Base"><I>(There are no triggers for view VHGSIPARISDETAYLISTESI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>VIEW</b><b> </b><font color="# 080 0"><u>VHGSIPARISDETAYLISTESI</u></font><b>(</b>
+<b>    </b>HGSIPARISKAYITID<b>,</b>
+<b>    </b>HGSIPARISDETAYID<b>,</b>
+<b>    </b>SIPARISSIRANO<b>,</b>
+<b>    </b>MODELID<b>,</b>
+<b>    </b>MODELADI<b>,</b>
+<b>    </b>MUSTERISIPARISNO<b>,</b>
+<b>    </b>MUSTERIMODELNO<b>,</b>
+<b>    </b>REFERANSSIPARISNO<b>)</b>
+<b>AS</b>
+<b>Select</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>HGSiparisKayitId<b>,</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>HGSiparisDetayId<b>,</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>SiparisSiraNo<b>,</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelId<b>,</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>Adi<b>,</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>MusteriSiparisNo<b>,</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>MusteriModelNo<b>,</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>ReferansSiparisNo<b> </b><b>from</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font>
+<b>  </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Model</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Model</u></font><b>.</b>ModelKayitId<b>  </b><b>=</b><b> </b><font color="# 080 0"><u>HGSiparisDetay</u></font><b>.</b>ModelKayitId
+<b>;</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="VHGRAFLISTESI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="VIADEICINUCIKISHAREKETLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

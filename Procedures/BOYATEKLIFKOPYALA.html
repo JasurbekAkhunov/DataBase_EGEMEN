@@ -1,0 +1,187 @@
+<HTML>
+<HEAD>
+<TITLE>BOYATEKLIFKOPYALA</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="223800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Procedures</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="BOYATEKLIFDETAYVERILERINIAKTAR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="BOYATEKLIFLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">BOYATEKLIFKOPYALA</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Input Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">ABOYATEKLIFKAYITID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">AKULLANICIID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Output Parameters</P>
+<TABLE CLASS="dtArg" CELLSPACING="0">
+  <TH WIDTH="1%"><P CLASS="Base2"><B>Parameter</B></P>
+  <TH WIDTH="20%"><P CLASS="Base2"><B>Type</B></P>
+  <TH WIDTH="50%"><P CLASS="Base2"><B>Description</B></P>
+  <TR>
+    <TD><P CLASS="Base2">BOYATEKLIFYIL</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD><P CLASS="Base2">BOYATEKLIFID</TD>
+    <TD><P CLASS="Base2">INTEGER</TD>
+    <TD><P CLASS="Base2">&nbsp;</TD>
+  </TR>
+</TABLE>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for procedure BOYATEKLIFKOPYALA)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>PROCEDURE</b><b> </b><font color="# 080 0"><u>BOYATEKLIFKOPYALA</u></font><b>(</b>
+<b>    </b>ABOYATEKLIFKAYITID<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>AKULLANICIID<b> </b><b>INTEGER</b><b>)</b>
+<b>RETURNS</b><b> </b><b>(</b>
+<b>    </b>BOYATEKLIFYIL<b> </b><b>INTEGER</b><b>,</b>
+<b>    </b>BOYATEKLIFID<b> </b><b>INTEGER</b><b>)</b>
+<b>AS</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>YeniBoyaTeklifKayitId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>YeniBoyaTeklifDetayId<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FBoyaTeklifDetayId<b>    </b><b>integer</b><b>;</b>
+
+<b>declare</b><b> </b><b>variable</b><b> </b>hamid<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>kullanimorani<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AlisFiyati<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>fireorani<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>fasonboyabirimfiyat<b> </b><b>double</b><b> </b><b>precision</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>renkid<b> </b><b>integer</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AlisfiyatiDovizId<b> </b><font color="# 080 0"><u>DovizSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TeklifDovizId<b> </b><font color="# 080 0"><u>DovizSize</u></font><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>TeklifTarihi<b> </b><b>TimeStamp</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>FDovizKuru<b> </b><b>Double</b><b> </b><b>Precision</b><b>;</b>
+<b>begin</b>
+<b>  </b>BoyaTeklifYil<b> </b><b>=</b><b> </b><font color="# 080 0"><u>f_Year</u></font><b>(</b><b>Current_date</b><b>)</b><b>;</b>
+<b>  </b>BoyaTeklifId<b> </b><b>=</b><b> </b><b>Null</b><b>;</b>
+<b>  </b><b>Select</b><b> </b>Id<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklifNumaratoruAl</u></font><b>(</b>:BoyaTeklifYil<b>)</b><b> </b><b>into</b><b> </b>:BoyaTeklifId<b>;</b>
+<b>  </b>YeniBoyaTeklifKayitId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>BoyaTeklifKayit_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>  </b><font color="# 0 0FF"><i>/*BoyaTeklif Tablosu*/</i></font>
+<b>  </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b> </b><b>(</b>BoyaTeklifKayitId<b>,</b><b> </b>BoyaTeklifYil<b>,</b><b> </b>BoyaTeklifId<b>,</b><b> </b>FirmaId<b>,</b><b> </b>TeklifTarihi<b>,</b><b> </b>Fason<b>,</b><b> </b>DovizId<b>,</b>
+<b>                          </b>Musterireferansi_1<b>,</b><b> </b>Musterireferansi_2<b>,</b><b> </b>Firmayetkiliid<b>,</b><b> </b>kontroldurumu<b>,</b><b> </b>kontrolkullaniciid<b>,</b>
+<b>                          </b>kontroltarihi<b>,</b><b> </b>onaydurumu<b>,</b><b> </b>onaylayankullaniciid<b>,</b><b> </b>onaytarihi<b>,</b><b> </b>notu<b>,</b><b> </b>teklifsuresi<b>,</b>
+<b>                          </b>duzeltmefaktoru<b>,</b><b> </b>uretimgideri<b>,</b><b> </b>yonetimgideri<b>,</b><b> </b>amortisman<b>,</b><b> </b>vadefarkiorani<b>,</b><b> </b>IslemKaynagi<b>,</b><b> </b>linkislemi<b>,</b>
+<b>                          </b>insertkullaniciid<b>,</b><b> </b>OdemeSekliID<b>)</b>
+<b>  </b><b>select</b><b> </b>:YeniBoyaTeklifKayitId<b>,</b><b> </b>:BoyaTeklifYil<b>,</b><b> </b>:BoyaTeklifId<b>,</b><b> </b>firmaid<b>,</b><b> </b><b>current_date</b><b>,</b><b> </b>fason<b>,</b><b> </b>dovizid<b>,</b><b> </b>musterireferansi_1<b>,</b>
+<b>         </b>musterireferansi_2<b>,</b><b> </b>firmayetkiliid<b>,</b><b> </b>kontroldurumu<b>,</b><b> </b>kontrolkullaniciid<b>,</b><b> </b>kontroltarihi<b>,</b><b> </b>onaydurumu<b>,</b>
+<b>         </b>onaylayankullaniciid<b>,</b><b> </b>onaytarihi<b>,</b><b> </b>notu<b>,</b><b> </b>teklifsuresi<b>,</b><b> </b>duzeltmefaktoru<b>,</b><b> </b>uretimgideri<b>,</b><b> </b>yonetimgideri<b>,</b><b> </b>amortisman<b>,</b>
+<b>         </b>vadefarkiorani<b>,</b><b> </b>IslemKaynagi<b>,</b><b> </b>2<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b>OdemeSekliID
+<b>  </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b>.</b>BoyaTeklifKayitId<b> </b><b>=</b><b> </b>:ABoyaTeklifKayitId<b>;</b>
+
+<b>  </b><b>for</b><b> </b><b>select</b><b> </b>BoyaTeklifDetayId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklifDetay</u></font><b> </b><b>where</b><b> </b>BoyaTeklifKayitId<b> </b><b>=</b><b> </b>:ABoyaTeklifKayitId<b> </b><b>into</b><b> </b>:FBoyaTeklifDetayId<b> </b><b>do</b>
+<b>  </b><b>begin</b>
+<b>    </b><font color="# 0 0FF"><i>/*BoyaTeklifDetay tablosu*/</i></font>
+<b>    </b>YeniBoyaTeklifDetayId<b> </b><b>=</b><b> </b><b>gen_id</b><b>(</b><font color="# 080 0"><u>BoyaTeklifDetay_Id_Gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaTeklifDetay</u></font><b> </b><b>(</b>boyateklifkayitid<b>,</b><b> </b>boyateklifdetayid<b>,</b><b> </b>fason<b>,</b><b> </b>hamid<b>,</b><b> </b>kaliteid<b>,</b><b> </b>labreceteatisid<b>,</b>
+<b>                                 </b>globalteklif<b>,</b><b> </b>renkderinligiid<b>,</b><b> </b>hesaplananfiyat<b>,</b><b> </b>teklifedilenfiyat<b>,</b><b> </b>recetemaliyeti<b>,</b><b> </b>kilo<b>,</b>
+<b>                                 </b>metre<b>,</b><b> </b>adet<b>,</b><b> </b>siparisprosesid<b>,</b><b> </b>vadegun<b>,</b><b> </b>uretimkarorani<b>,</b><b> </b>satiskarorani<b>,</b><b> </b>tekliffireorani<b>,</b>
+<b>                                 </b>hamstokbedeli<b>,</b><b> </b>teklifsuresi<b>,</b><b> </b>ormebirimmaliyet<b>,</b><b> </b>iplikfireorani<b>,</b><b> </b>komisyon<b>,</b><b> </b>navlun<b>,</b>
+<b>                                 </b>fasonbirimfiyat<b>,</b><b> </b>fasonfireorani<b>,</b><b> </b>enistenen<b>,</b><b> </b>gramajistenen<b>,</b><b> </b>notu<b>,</b><b> </b>linkislemi<b>,</b>
+<b>                                 </b>insertkullaniciid<b>,</b><b> </b>inserttarihi<b>,</b><b> </b>ModelKayitId<b>,</b><b> </b>urunid<b>)</b>
+<b>    </b><b>select</b><b> </b>:YeniBoyaTeklifKayitId<b>,</b><b> </b>:YeniBoyaTeklifDetayId<b>,</b><b> </b>fason<b>,</b><b> </b>hamid<b>,</b><b> </b>kaliteid<b>,</b><b> </b>labreceteatisid<b>,</b><b> </b>globalteklif<b>,</b><b> </b>renkderinligiid<b>,</b>
+<b>           </b>hesaplananfiyat<b>,</b><b> </b>teklifedilenfiyat<b>,</b><b> </b>recetemaliyeti<b>,</b><b> </b>kilo<b>,</b><b> </b>metre<b>,</b><b> </b>adet<b>,</b><b> </b>siparisprosesid<b>,</b><b> </b>vadegun<b>,</b><b> </b>uretimkarorani<b>,</b>
+<b>           </b>satiskarorani<b>,</b><b> </b>tekliffireorani<b>,</b><b> </b>hamstokbedeli<b>,</b><b> </b>teklifsuresi<b>,</b><b> </b>ormebirimmaliyet<b>,</b><b> </b>iplikfireorani<b>,</b><b> </b>komisyon<b>,</b><b> </b>navlun<b>,</b>
+<b>           </b>fasonbirimfiyat<b>,</b><b> </b>fasonfireorani<b>,</b><b> </b>enistenen<b>,</b><b> </b>gramajistenen<b>,</b><b> </b>notu<b>,</b><b> </b>2<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>ModelKayitId<b>,</b><b> </b>urunid
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklifDetay</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTeklifDetay</u></font><b>.</b>BoyaTeklifDetayId<b> </b><b>=</b><b> </b>:FBoyaTeklifDetayId<b>;</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*BoyaTeklifAsama tablosu*/</i></font>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaTeklifAsama</u></font><b> </b><b>(</b>boyateklifkayitid<b>,</b><b> </b>boyateklifdetayid<b>,</b><b> </b>asamaid<b>,</b><b> </b>birimfiyat<b>,</b><b> </b>insertkullaniciid<b>,</b><b> </b>inserttarihi<b>,</b><b> </b>linkislemi<b>)</b>
+<b>    </b><b>select</b><b> </b>:YeniBoyaTeklifKayitId<b>,</b><b> </b>:YeniBoyaTeklifDetayId<b>,</b><b> </b>asamaid<b>,</b><b> </b>birimfiyat<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>2
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklifAsama</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTeklifAsama</u></font><b>.</b>BoyaTeklifDetayId<b> </b><b>=</b><b> </b>:FBoyaTeklifDetayId<b>;</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*BoyaTeklifHammadde tablosu*/</i></font>
+<b>    </b><b>select</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b>.</b>DovizId<b>,</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b>.</b>TeklifTarihi<b> </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTeklif</u></font><b>.</b>BoyaTeklifKayitId<b> </b><b>=</b><b> </b>:YeniBoyaTeklifKayitId<b> </b><b>into</b><b> </b>:TeklifDovizId<b>,</b><b> </b>:TeklifTarihi<b>;</b>
+
+<b>    </b><b>for</b><b> </b><b>select</b><b> </b><font color="# 080 0"><u>BoyaTeklifHamMadde</u></font><b>.</b>hamid<b>,</b><b> </b><font color="# 080 0"><u>BoyaTeklifHamMadde</u></font><b>.</b>kullanimorani<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisFiyati<b>,</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>AlisfiyatiDovizId<b>,</b><b> </b><font color="# 080 0"><u>BoyaTeklifHamMadde</u></font><b>.</b>fireorani<b>,</b><b> </b><font color="# 080 0"><u>BoyaTeklifHamMadde</u></font><b>.</b>fasonboyabirimfiyat<b>,</b><b> </b><font color="# 080 0"><u>BoyaTeklifHamMadde</u></font><b>.</b>renkid
+<b>        </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklifHamMadde</u></font>
+<b>        </b><b>left</b><b> </b><b>join</b><b> </b><font color="# 080 0"><u>Ham</u></font><b> </b><b>on</b><b> </b><font color="# 080 0"><u>Ham</u></font><b>.</b>HamId<b> </b><b>=</b><b> </b><font color="# 080 0"><u>BoyaTeklifHamMadde</u></font><b>.</b>HamId
+<b>        </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTeklifHamMadde</u></font><b>.</b>BoyaTeklifDetayId<b> </b><b>=</b><b> </b>:FBoyaTeklifDetayId<b> </b><b>into</b><b> </b>:hamid<b>,</b><b> </b>:kullanimorani<b>,</b><b> </b>:AlisFiyati<b>,</b><b> </b>:AlisfiyatiDovizId<b>,</b><b> </b>:fireorani<b>,</b><b> </b>:fasonboyabirimfiyat<b>,</b><b> </b>:renkid<b> </b><b>do</b>
+<b>    </b><b>begin</b>
+<b>      </b><b>if</b><b> </b><b>(</b>TeklifDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AlisfiyatiDovizId<b>)</b><b> </b><b>then</b>
+<b>      </b><b>begin</b>
+<b>        </b><b>select</b><b> </b><font color="# 080 0"><u>DovizKuru</u></font><b> </b><b>from</b><b> </b><font color="# 080 0"><u>DovizKuruGetir</u></font><b>(</b>:AlisfiyatiDovizId<b>,</b><b> </b>:TeklifDovizId<b>,</b><b> </b>:TeklifTarihi<b>)</b><b> </b><b>into</b><b> </b>:FDovizKuru<b>;</b>
+<b>        </b><b>if</b><b> </b><b>(</b>FDovizKuru<b> </b><b>=</b><b> </b>0<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>DovizKuruGirisiYapilmamis</u></font><b>;</b>
+<b>        </b>AlisFiyati<b> </b><b>=</b><b> </b>AlisFiyati<b> </b><b>*</b><b> </b>FDovizKuru<b>;</b>
+
+<b>        </b><b>Select</b><b> </b>Fiyat<b> </b><b>from</b><b> </b><font color="# 080 0"><u>FormataGoreFiyatYuvarla</u></font><b>(</b>:AlisFiyati<b>,</b><b> </b>'BOYA'<b>,</b><b> </b>'BIRIMFIYAT'<b>)</b><b> </b><b>into</b><b> </b>:AlisFiyati<b>;</b>
+<b>      </b><b>end</b>
+
+<b>      </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaTeklifHamMadde</u></font><b> </b><b>(</b>boyateklifkayitid<b>,</b><b> </b>boyateklifdetayid<b>,</b><b> </b>hamid<b>,</b><b> </b>kullanimorani<b>,</b><b> </b>birimfiyat<b>,</b><b> </b>insertkullaniciid<b>,</b><b> </b>inserttarihi<b>,</b><b> </b>fireorani<b>,</b><b> </b>fasonboyabirimfiyat<b>,</b><b> </b>renkid<b>,</b><b> </b>linkislemi<b>)</b>
+<b>                              </b><b>values</b><b> </b><b>(</b>:YeniBoyaTeklifKayitId<b>,</b><b> </b>:YeniBoyaTeklifDetayId<b>,</b><b> </b>:hamid<b>,</b><b> </b>:kullanimorani<b>,</b><b> </b>:AlisFiyati<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_timestamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>:fireorani<b>,</b><b> </b>:fasonboyabirimfiyat<b>,</b><b> </b>:renkid<b>,</b><b> </b>2<b>)</b><b>;</b>
+<b>    </b><b>end</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*BoyaTeklifRenk tablosu*/</i></font>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaTeklifRenk</u></font><b> </b><b>(</b>boyateklifkayitid<b>,</b><b> </b>boyateklifdetayid<b>,</b><b> </b>labreceteatisid<b>,</b><b> </b>renkderinligiid<b>,</b>
+<b>                                </b>miktar<b>,</b><b> </b>birimfiyat<b>,</b><b> </b>insertkullaniciid<b>,</b><b> </b>inserttarihi<b>,</b><b> </b>linkislemi<b>)</b>
+<b>    </b><b>select</b><b> </b>:YeniBoyaTeklifKayitId<b>,</b><b> </b>:YeniBoyaTeklifDetayId<b>,</b><b> </b>labreceteatisid<b>,</b><b> </b>renkderinligiid<b>,</b><b> </b>miktar<b>,</b><b> </b>birimfiyat<b>,</b>
+<b>           </b>:AKullaniciId<b>,</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>2
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklifRenk</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTeklifRenk</u></font><b>.</b>BoyaTeklifDetayId<b> </b><b>=</b><b> </b>:FBoyaTeklifDetayId<b>;</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*BoyaTeklifOzelTest tablosu*/</i></font>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaTeklifOzelTest</u></font><b> </b><b>(</b>boyateklifkayitid<b>,</b><b> </b>boyateklifdetayid<b>,</b><b> </b>ozeltestid<b>,</b><b> </b>birimfiyat<b>,</b><b> </b>insertkullaniciid<b>,</b><b> </b>inserttarihi<b>,</b><b> </b>linkislemi<b>)</b>
+<b>    </b><b>select</b><b> </b>:YeniBoyaTeklifKayitId<b>,</b><b> </b>:YeniBoyaTeklifDetayId<b>,</b><b> </b>ozeltestid<b>,</b><b> </b>birimfiyat<b>,</b><b> </b>:AKullaniciId<b>,</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>2
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklifOzelTest</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTeklifOzelTest</u></font><b>.</b>BoyaTeklifDetayId<b> </b><b>=</b><b> </b>:FBoyaTeklifDetayId<b>;</b>
+
+<b>    </b><font color="# 0 0FF"><i>/*BoyaTeklifIlaveIslem tablosu*/</i></font>
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaTeklifIlaveIslem</u></font><b> </b><b>(</b>boyateklifkayitid<b>,</b><b> </b>boyateklifdetayid<b>,</b><b> </b>ilaveislemlerid<b>,</b><b> </b>birimfiyat<b>,</b><b> </b>insertkullaniciid<b>,</b><b> </b>inserttarihi<b>,</b><b> </b>linkislemi<b>)</b>
+<b>    </b><b>select</b><b> </b>:YeniBoyaTeklifKayitId<b>,</b><b> </b>:YeniBoyaTeklifDetayId<b>,</b><b> </b>ilaveislemlerid<b>,</b><b> </b>birimfiyat<b>,</b><b> </b>:AKullaniciID<b>,</b><b> </b><b>current_TimeStamp</b><b>(</b>0<b>)</b><b>,</b><b> </b>2
+<b>    </b><b>from</b><b> </b><font color="# 080 0"><u>BoyaTeklifIlaveIslem</u></font><b> </b><b>where</b><b> </b><font color="# 080 0"><u>BoyaTeklifIlaveIslem</u></font><b>.</b>BoyaTeklifDetayId<b> </b><b>=</b><b> </b>:FBoyaTeklifDetayId<b>;</b>
+<b>  </b><b>end</b>
+
+<b>  </b><b>suspend</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="BOYATEKLIFDETAYVERILERINIAKTAR.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="BOYATEKLIFLISTESI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

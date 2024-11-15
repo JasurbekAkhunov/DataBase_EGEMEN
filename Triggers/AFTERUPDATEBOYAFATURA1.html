@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERUPDATEBOYAFATURA1</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="254800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERUPDATEBOYAFATURA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERUPDATEBOYAFATURADETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERUPDATEBOYAFATURA1</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERUPDATEBOYAFATURA1)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERUPDATEBOYAFATURA1</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>BOYAFATURA</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>UPDATE</b><b> </b><b>POSITION</b><b> </b>1
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BoyaFaturaLogID<b> </b><b>integer</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>Old</b><b>.</b>FaturaSeriNo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>FaturaSeriNo<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>FaturaNo<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>FaturaNo<b> </b><b>or</b>
+<b>      </b><b>Old</b><b>.</b>FaturaTarihi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>FaturaTarihi<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>Entegrasyon<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Entegrasyon<b> </b><b>or</b>
+<b>      </b><b>Old</b><b>.</b>Sinif<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Sinif<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>TransferEdildi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>new</b><b>.</b>TransferEdildi<b> </b><b>or</b>
+<b>      </b><b>Old</b><b>.</b>TransferTarihi<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>TransferTarihi<b> </b><b>or</b><b> </b><b>Old</b><b>.</b>Status<b> </b><b>&lt;</b><b>&gt;</b><b> </b><b>New</b><b>.</b>Status<b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b>BoyaFaturaLogID<b> </b><b>=</b><b> </b><b>Gen_Id</b><b>(</b><font color="# 080 0"><u>BoyaFaturaLog_Id_gen</u></font><b>,</b><b> </b>1<b>)</b><b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>BoyaFaturaLog</u></font><b>(</b>BoyaFaturaLogId<b>,</b><b> </b>BoyaFaturaId<b>,</b><b> </b>OldFaturaSeriNo<b>,</b><b> </b>OldFaturaNo<b>,</b><b> </b>OldFaturaTarihi<b>,</b><b> </b>newFaturaSeriNo<b>,</b><b> </b>newFaturaNo<b>,</b><b> </b>newFaturaTarihi<b>,</b><b> </b>OldEntegrasyon<b>,</b><b> </b>NewEntegrasyon<b>,</b>
+<b>                              </b>OldSinif<b>,</b><b> </b>NewSinif<b>,</b><b> </b>OldTransferEdildi<b>,</b><b> </b>newTransferEdildi<b>,</b><b> </b>OldTransferTarihi<b>,</b><b> </b>NewTransferTarihi<b>,</b><b> </b>OldTransferKullaniciId<b>,</b><b> </b>NewTransferKullaniciId<b>,</b><b> </b>OldStatus<b>,</b><b> </b>NewStatus<b>,</b>
+<b>                              </b>InsertKullaniciId<b>,</b><b> </b>InsertTarihi<b>,</b><b> </b>KullaniciId<b>,</b><b> </b>DegisimTarihi<b>)</b>
+<b>      </b><b>values</b><b>(</b>:BoyaFaturaLogId<b>,</b><b> </b><b>New</b><b>.</b>BoyaFaturaId<b>,</b><b> </b><b>Old</b><b>.</b>FaturaSeriNo<b>,</b><b> </b><b>Old</b><b>.</b>FaturaNo<b>,</b><b> </b><b>Old</b><b>.</b>FaturaTarihi<b>,</b><b> </b><b>new</b><b>.</b>FaturaSeriNo<b>,</b><b> </b><b>new</b><b>.</b>FaturaNo<b>,</b><b> </b><b>new</b><b>.</b>FaturaTarihi<b>,</b><b> </b><b>Old</b><b>.</b>Entegrasyon<b>,</b><b> </b><b>New</b><b>.</b>Entegrasyon<b>,</b>
+<b>                              </b><b>Old</b><b>.</b>Sinif<b>,</b><b> </b><b>New</b><b>.</b>Sinif<b>,</b><b> </b><b>Old</b><b>.</b>TransferEdildi<b>,</b><b> </b><b>new</b><b>.</b>TransferEdildi<b>,</b><b> </b><b>Old</b><b>.</b>TransferTarihi<b>,</b><b> </b><b>New</b><b>.</b>TransferTarihi<b>,</b><b> </b><b>Old</b><b>.</b>TransferKullaniciId<b>,</b><b> </b><b>New</b><b>.</b>TransferKullaniciId<b>,</b>
+<b>                              </b><b>Old</b><b>.</b>Status<b>,</b><b> </b><b>New</b><b>.</b>Status<b>,</b><b> </b><b>New</b><b>.</b>InsertKullaniciId<b>,</b><b> </b><b>New</b><b>.</b>InsertTarihi<b>,</b><b> </b><b>New</b><b>.</b>KullaniciId<b>,</b><b> </b><b>New</b><b>.</b>DegisimTarihi<b>)</b><b>;</b>
+<b>  </b><b>end</b>
+<b>  </b><b>Execute</b><b> </b><b>Procedure</b><b> </b><font color="# 080 0"><u>Logla</u></font><b>(</b>'U'<b>,</b><b> </b>2<b>,</b><b> </b>'BOYAFATURA'<b>,</b><b> </b>'BOYAFATURAID'<b>,</b><b> </b><b>new</b><b>.</b>BoyaFaturaId<b>,</b><b> </b>'Fatura No :'<b>|</b><b>|</b><b>new</b><b>.</b>FaturaNo<b>|</b><b>|</b>' Tarih:'<b>|</b><b>|</b><b>Extract</b><b>(</b><b>DAY</b><b> </b><b>from</b><b> </b><b>new</b><b>.</b>FaturaTarihi<b>)</b><b>|</b><b>|</b>'.'<b>|</b><b>|</b><b>Extract</b><b>(</b><b>MONTH</b><b> </b><b>from</b><b> </b><b>new</b><b>.</b>FaturaTarihi<b>)</b><b>|</b><b>|</b>'.'<b>|</b><b>|</b><b>Extract</b><b>(</b><b>YEAR</b><b> </b><b>from</b><b> </b><b>new</b><b>.</b>FaturaTarihi<b>)</b><b>|</b><b>|</b>' Firma Kodu: '<b>|</b><b>|</b><b>new</b><b>.</b>FirmaId<b>)</b><b>;</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERUPDATEBOYAFATURA.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERUPDATEBOYAFATURADETAY.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>

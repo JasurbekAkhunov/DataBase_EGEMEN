@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<TITLE>AFTERINSERTAVUKATCARI</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK HREF="../IBEHTMLDoc.css" type=text/css rel=STYLESHEET>
+ 
+<xml>
+<IBEHelp:Attr Name="ItemOrder" Value="95800"/>
+</xml>
+ 
+</HEAD>
+<BODY>
+<DIV ID="nsbanner">
+  <DIV ID="bannerrow1">
+    <TABLE CLASS="bannerparthead" CELLSPACING=0>
+      <TR ID="hdr" VALIGN="middle">
+        <TD CLASS="runninghead">"E:\Egemen\EB01\Dataserver\DATA\FERGANAGLOBAL\EB01DATA.GDB". Triggers</TD>
+        <TD ALIGN="left" WIDTH="54px" NOWRAP>
+          <A HREF="AFTERINSERTASAMADEGERTIPI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+          <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+          <A HREF="AFTERINSERTBANKACARI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+        </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV ID="TitleRow">
+    <P CLASS="dtH1">AFTERINSERTAVUKATCARI</P>
+  </DIV>
+ </DIV>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Description</P>
+<P CLASS="Base"><I>(There is no description for trigger AFTERINSERTAVUKATCARI)</I></P>
+<P CLASS="Base">&nbsp;</P>
+<P CLASS="Header1">Definition</P>
+<P CLASS="Base"><span class="DDLCode">
+<code><pre>
+<b>CREATE</b><b> </b><b>TRIGGER</b><b> </b><font color="# 080 0"><u>AFTERINSERTAVUKATCARI</u></font><b> </b><b>FOR</b><b> </b><font color="# 080 0"><u>AVUKATCARI</u></font>
+<b>ACTIVE</b><b> </b><b>AFTER</b><b> </b><b>INSERT</b><b> </b><b>POSITION</b><b> </b>0
+<b>as</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>BA<b> </b><b>varchar</b><b>(</b>1<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>KasaDovizid<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>declare</b><b> </b><b>variable</b><b> </b>AvukatDovizid<b> </b><b>varchar</b><b>(</b>5<b>)</b><b>;</b>
+<b>begin</b>
+<b>  </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>KasaId<b> </b><b>is</b><b> </b><b>not</b><b> </b><b>Null</b><b>)</b><b> </b><b>then</b>
+<b>  </b><b>begin</b>
+<b>    </b><b>select</b><b> </b>DovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Kasa</u></font><b> </b><b>where</b><b> </b>KasaId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>KasaID<b> </b><b>into</b><b> </b>:KasaDovizId<b>;</b>
+<b>    </b><b>select</b><b> </b>DovizId<b> </b><b>from</b><b> </b><font color="# 080 0"><u>Avukat</u></font><b> </b><b>where</b><b> </b>AvukatId<b> </b><b>=</b><b> </b><b>new</b><b>.</b>AvukatId<b> </b><b>into</b><b> </b>:AvukatDovizId<b>;</b>
+
+<b>    </b><b>if</b><b>(</b>KasaDovizId<b> </b><b>&lt;</b><b>&gt;</b><b> </b>AvukatDovizId<b>)</b><b> </b><b>then</b><b> </b><b>exception</b><b> </b><font color="# 080 0"><u>KasaDovizCinsindenFarkli</u></font><b>;</b>
+
+<b>    </b><b>if</b><b> </b><b>(</b><b>new</b><b>.</b>BorcAlacak<b> </b><b>=</b><b> </b>'B'<b>)</b><b>  </b><b>then</b><b>  </b>BA<b> </b><b>=</b><b> </b>'A'<b>;</b>
+<b>    </b><b>else</b><b> </b>BA<b> </b><b>=</b><b> </b>'B'<b>;</b>
+
+<b>    </b><b>insert</b><b> </b><b>into</b><b> </b><font color="# 080 0"><u>KasaHareket</u></font><b>(</b>KasaId<b>,</b><b> </b>Tarih<b>,</b><b> </b>Aciklama<b>,</b><b>  </b>BorcAlacak<b>,</b><b> </b>Meblag<b>,</b><b> </b>ACReferansId<b>,</b><b> </b>DovizKuru1<b>,</b><b> </b>DovizKuru2<b>,</b><b> </b>Sinif<b>,</b><b> </b>KullaniciId<b>)</b>
+<b>          </b><b>values</b><b>(</b><b>new</b><b>.</b>KasaId<b>,</b><b> </b><b>new</b><b>.</b>tarih<b>,</b><b> </b><b>new</b><b>.</b>Aciklama<b>,</b><b> </b>:BA<b>,</b><b> </b><b>new</b><b>.</b>Meblag<b>,</b><b> </b><b>new</b><b>.</b>AvukatCariID<b>,</b><b> </b>1<b>,</b><b> </b>1<b>,</b><b> </b><b>new</b><b>.</b>Sinif<b>,</b><b> </b><b>new</b><b>.</b>KullaniciId<b>)</b><b>;</b>
+
+<b>  </b><b>end</b>
+<b>end</b>
+
+</pre></code>
+</span></P>
+<P CLASS="Base">&nbsp;</P>
+<DIV CLASS="footer"><BR><HR></DIV>
+  <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH=100%>
+    <TR VALIGN="middle">
+      <TD>&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+      <TD ALIGN="left" WIDTH="54px" NOWRAP>
+        <A HREF="AFTERINSERTASAMADEGERTIPI.html"><IMG ALT="Previous topic" SRC="../Images/GoPrev.gif" BORDER="0"></A>
+        <A HREF="../Index.html"><IMG ALT="Chapter index" SRC="../Images/GoIndex.gif" BORDER="0"></A>
+        <A HREF="AFTERINSERTBANKACARI.html"><IMG ALT="Next topic" SRC="../Images/GoNext.gif" BORDER="0"></A>
+      </TD>
+    </TR>
+  </TABLE>
+<P CLASS="Base">&nbsp;</P>
+</BODY></HTML>
